@@ -1,0 +1,819 @@
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccocMMaK.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"USBUART_1_vnd.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.USBUART_1_HandleVendorRqst,"ax",%progbits
+  19              		.align	1
+  20              		.global	USBUART_1_HandleVendorRqst
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	USBUART_1_HandleVendorRqst, %function
+  24              	USBUART_1_HandleVendorRqst:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\USBUART_1_vnd.c"
+   1:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** * File Name: USBUART_1_vnd.c
+   3:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** * Version 2.60
+   4:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *
+   5:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** * Description:
+   6:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *  USB vendor request handler.
+   7:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *
+   8:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** * Note:
+   9:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *
+  10:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  17:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** #include "USBUART_1.h"
+  18:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** #include "USBUART_1_pvt.h"
+  19:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  20:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** #if(USBUART_1_EXTERN_VND == USBUART_1_FALSE)
+  21:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  22:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  23:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** /***************************************
+  24:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** * Vendor Specific Declarations
+  25:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** ***************************************/
+  26:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  27:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** /* `#START VENDOR_SPECIFIC_DECLARATIONS` Place your declaration here */
+  28:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  29:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** /* `#END` */
+  30:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  31:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccocMMaK.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** /*******************************************************************************
+  33:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** * Function Name: USBUART_1_HandleVendorRqst
+  34:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** ********************************************************************************
+  35:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *
+  36:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** * Summary:
+  37:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *  This routine provide users with a method to implement vendor specifc
+  38:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *  requests.
+  39:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *
+  40:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *  To implement vendor specific requests, add your code in this function to
+  41:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *  decode and disposition the request.  If the request is handled, your code
+  42:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *  must set the variable "requestHandled" to TRUE, indicating that the
+  43:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *  request has been handled.
+  44:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *
+  45:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** * Parameters:
+  46:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *  None.
+  47:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *
+  48:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** * Return:
+  49:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *  requestHandled.
+  50:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *
+  51:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** * Reentrant:
+  52:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *  No.
+  53:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *
+  54:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** *******************************************************************************/
+  55:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** uint8 USBUART_1_HandleVendorRqst(void) 
+  56:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** {
+  27              		.loc 1 56 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  57:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****     uint8 requestHandled = USBUART_1_FALSE;
+  58:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  59:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****     if ((CY_GET_REG8(USBUART_1_bmRequestType) & USBUART_1_RQST_DIR_MASK) == USBUART_1_RQST_DIR_D2H)
+  33              		.loc 1 59 0
+  34 0000 084B     		ldr	r3, .L7
+  35 0002 1878     		ldrb	r0, [r3, #0]	@ zero_extendqisi2
+  36 0004 0306     		lsls	r3, r0, #24
+  37 0006 0AD5     		bpl	.L2
+  60:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****     {
+  61:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****         /* Control Read */
+  62:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****         switch (CY_GET_REG8(USBUART_1_bRequest))
+  38              		.loc 1 62 0
+  39 0008 0749     		ldr	r1, .L7+4
+  40 000a 0A78     		ldrb	r2, [r1, #0]	@ zero_extendqisi2
+  41 000c 012A     		cmp	r2, #1
+  42 000e 06D1     		bne	.L2
+  63:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****         {
+  64:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****             case USBUART_1_GET_EXTENDED_CONFIG_DESCRIPTOR:
+  65:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****                 #if defined(USBUART_1_ENABLE_MSOS_STRING)
+  66:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****                     USBUART_1_currentTD.pData = (volatile uint8 *)&USBUART_1_MSOS_CONFIGURATION_DES
+  43              		.loc 1 66 0
+  44 0010 0648     		ldr	r0, .L7+8
+  45 0012 074B     		ldr	r3, .L7+12
+  67:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****                     USBUART_1_currentTD.count = USBUART_1_MSOS_CONFIGURATION_DESCR[0u];
+  46              		.loc 1 67 0
+  47 0014 0178     		ldrb	r1, [r0, #0]	@ zero_extendqisi2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccocMMaK.s 			page 3
+
+
+  66:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****                     USBUART_1_currentTD.pData = (volatile uint8 *)&USBUART_1_MSOS_CONFIGURATION_DES
+  48              		.loc 1 66 0
+  49 0016 5860     		str	r0, [r3, #4]
+  50              		.loc 1 67 0
+  51 0018 1980     		strh	r1, [r3, #0]	@ movhi
+  68:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****                     requestHandled  = USBUART_1_InitControlRead();
+  69:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****                 #endif /* End USBUART_1_ENABLE_MSOS_STRING */
+  70:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****                 break;
+  71:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****             default:
+  72:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****                 break;
+  73:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****         }
+  74:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****     }
+  75:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  76:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****     /* `#START VENDOR_SPECIFIC_CODE` Place your vendor specific request here */
+  77:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  78:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****     /* `#END` */
+  79:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  80:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****     return(requestHandled);
+  81:.\Generated_Source\PSoC5/USBUART_1_vnd.c **** }
+  52              		.loc 1 81 0
+  68:.\Generated_Source\PSoC5/USBUART_1_vnd.c ****                     requestHandled  = USBUART_1_InitControlRead();
+  53              		.loc 1 68 0
+  54 001a FFF7FEBF 		b	USBUART_1_InitControlRead
+  55              	.LVL1:
+  56              	.L2:
+  57              		.loc 1 81 0
+  58 001e 0020     		movs	r0, #0
+  59 0020 7047     		bx	lr
+  60              	.L8:
+  61 0022 00BF     		.align	2
+  62              	.L7:
+  63 0024 00600040 		.word	1073766400
+  64 0028 01600040 		.word	1073766401
+  65 002c 00000000 		.word	USBUART_1_MSOS_CONFIGURATION_DESCR
+  66 0030 00000000 		.word	USBUART_1_currentTD
+  67              		.cfi_endproc
+  68              	.LFE0:
+  69              		.size	USBUART_1_HandleVendorRqst, .-USBUART_1_HandleVendorRqst
+  70              		.text
+  71              	.Letext0:
+  72              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+  73              		.file 3 ".\\Generated_Source\\PSoC5\\USBUART_1.h"
+  74              		.file 4 ".\\Generated_Source\\PSoC5\\USBUART_1_pvt.h"
+  75              		.section	.debug_info,"",%progbits
+  76              	.Ldebug_info0:
+  77 0000 A1010000 		.4byte	0x1a1
+  78 0004 0200     		.2byte	0x2
+  79 0006 00000000 		.4byte	.Ldebug_abbrev0
+  80 000a 04       		.byte	0x4
+  81 000b 01       		.uleb128 0x1
+  82 000c 6A010000 		.4byte	.LASF25
+  83 0010 01       		.byte	0x1
+  84 0011 0E020000 		.4byte	.LASF26
+  85 0015 73000000 		.4byte	.LASF27
+  86 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  87 001d 00000000 		.4byte	0
+  88 0021 00000000 		.4byte	0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccocMMaK.s 			page 4
+
+
+  89 0025 00000000 		.4byte	.Ldebug_line0
+  90 0029 02       		.uleb128 0x2
+  91 002a 01       		.byte	0x1
+  92 002b 06       		.byte	0x6
+  93 002c DF010000 		.4byte	.LASF0
+  94 0030 02       		.uleb128 0x2
+  95 0031 01       		.byte	0x1
+  96 0032 08       		.byte	0x8
+  97 0033 48000000 		.4byte	.LASF1
+  98 0037 02       		.uleb128 0x2
+  99 0038 02       		.byte	0x2
+ 100 0039 05       		.byte	0x5
+ 101 003a 60010000 		.4byte	.LASF2
+ 102 003e 02       		.uleb128 0x2
+ 103 003f 02       		.byte	0x2
+ 104 0040 07       		.byte	0x7
+ 105 0041 22000000 		.4byte	.LASF3
+ 106 0045 02       		.uleb128 0x2
+ 107 0046 04       		.byte	0x4
+ 108 0047 05       		.byte	0x5
+ 109 0048 C2010000 		.4byte	.LASF4
+ 110 004c 02       		.uleb128 0x2
+ 111 004d 04       		.byte	0x4
+ 112 004e 07       		.byte	0x7
+ 113 004f 5B000000 		.4byte	.LASF5
+ 114 0053 02       		.uleb128 0x2
+ 115 0054 08       		.byte	0x8
+ 116 0055 05       		.byte	0x5
+ 117 0056 2F010000 		.4byte	.LASF6
+ 118 005a 02       		.uleb128 0x2
+ 119 005b 08       		.byte	0x8
+ 120 005c 07       		.byte	0x7
+ 121 005d F4000000 		.4byte	.LASF7
+ 122 0061 03       		.uleb128 0x3
+ 123 0062 04       		.byte	0x4
+ 124 0063 05       		.byte	0x5
+ 125 0064 696E7400 		.ascii	"int\000"
+ 126 0068 02       		.uleb128 0x2
+ 127 0069 04       		.byte	0x4
+ 128 006a 07       		.byte	0x7
+ 129 006b CD000000 		.4byte	.LASF8
+ 130 006f 04       		.uleb128 0x4
+ 131 0070 6D000000 		.4byte	.LASF9
+ 132 0074 02       		.byte	0x2
+ 133 0075 5B       		.byte	0x5b
+ 134 0076 30000000 		.4byte	0x30
+ 135 007a 04       		.uleb128 0x4
+ 136 007b C6000000 		.4byte	.LASF10
+ 137 007f 02       		.byte	0x2
+ 138 0080 5C       		.byte	0x5c
+ 139 0081 3E000000 		.4byte	0x3e
+ 140 0085 02       		.uleb128 0x2
+ 141 0086 04       		.byte	0x4
+ 142 0087 04       		.byte	0x4
+ 143 0088 42000000 		.4byte	.LASF11
+ 144 008c 02       		.uleb128 0x2
+ 145 008d 08       		.byte	0x8
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccocMMaK.s 			page 5
+
+
+ 146 008e 04       		.byte	0x4
+ 147 008f BF000000 		.4byte	.LASF12
+ 148 0093 02       		.uleb128 0x2
+ 149 0094 01       		.byte	0x1
+ 150 0095 08       		.byte	0x8
+ 151 0096 3D010000 		.4byte	.LASF13
+ 152 009a 04       		.uleb128 0x4
+ 153 009b 56000000 		.4byte	.LASF14
+ 154 009f 02       		.byte	0x2
+ 155 00a0 F0       		.byte	0xf0
+ 156 00a1 A5000000 		.4byte	0xa5
+ 157 00a5 05       		.uleb128 0x5
+ 158 00a6 6F000000 		.4byte	0x6f
+ 159 00aa 02       		.uleb128 0x2
+ 160 00ab 04       		.byte	0x4
+ 161 00ac 07       		.byte	0x7
+ 162 00ad 26010000 		.4byte	.LASF15
+ 163 00b1 06       		.uleb128 0x6
+ 164 00b2 04       		.byte	0x4
+ 165 00b3 03       		.byte	0x3
+ 166 00b4 8B       		.byte	0x8b
+ 167 00b5 D6000000 		.4byte	0xd6
+ 168 00b9 07       		.uleb128 0x7
+ 169 00ba 35000000 		.4byte	.LASF16
+ 170 00be 03       		.byte	0x3
+ 171 00bf 8D       		.byte	0x8d
+ 172 00c0 6F000000 		.4byte	0x6f
+ 173 00c4 02       		.byte	0x2
+ 174 00c5 23       		.byte	0x23
+ 175 00c6 00       		.uleb128 0
+ 176 00c7 07       		.uleb128 0x7
+ 177 00c8 37020000 		.4byte	.LASF17
+ 178 00cc 03       		.byte	0x3
+ 179 00cd 8E       		.byte	0x8e
+ 180 00ce 7A000000 		.4byte	0x7a
+ 181 00d2 02       		.byte	0x2
+ 182 00d3 23       		.byte	0x23
+ 183 00d4 02       		.uleb128 0x2
+ 184 00d5 00       		.byte	0
+ 185 00d6 04       		.uleb128 0x4
+ 186 00d7 42010000 		.4byte	.LASF18
+ 187 00db 03       		.byte	0x3
+ 188 00dc 8F       		.byte	0x8f
+ 189 00dd B1000000 		.4byte	0xb1
+ 190 00e1 06       		.uleb128 0x6
+ 191 00e2 0C       		.byte	0xc
+ 192 00e3 03       		.byte	0x3
+ 193 00e4 91       		.byte	0x91
+ 194 00e5 14010000 		.4byte	0x114
+ 195 00e9 07       		.uleb128 0x7
+ 196 00ea 1C000000 		.4byte	.LASF19
+ 197 00ee 03       		.byte	0x3
+ 198 00ef 93       		.byte	0x93
+ 199 00f0 7A000000 		.4byte	0x7a
+ 200 00f4 02       		.byte	0x2
+ 201 00f5 23       		.byte	0x23
+ 202 00f6 00       		.uleb128 0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccocMMaK.s 			page 6
+
+
+ 203 00f7 07       		.uleb128 0x7
+ 204 00f8 3C000000 		.4byte	.LASF20
+ 205 00fc 03       		.byte	0x3
+ 206 00fd 94       		.byte	0x94
+ 207 00fe 14010000 		.4byte	0x114
+ 208 0102 02       		.byte	0x2
+ 209 0103 23       		.byte	0x23
+ 210 0104 04       		.uleb128 0x4
+ 211 0105 07       		.uleb128 0x7
+ 212 0106 00000000 		.4byte	.LASF21
+ 213 010a 03       		.byte	0x3
+ 214 010b 95       		.byte	0x95
+ 215 010c 1A010000 		.4byte	0x11a
+ 216 0110 02       		.byte	0x2
+ 217 0111 23       		.byte	0x23
+ 218 0112 08       		.uleb128 0x8
+ 219 0113 00       		.byte	0
+ 220 0114 08       		.uleb128 0x8
+ 221 0115 04       		.byte	0x4
+ 222 0116 A5000000 		.4byte	0xa5
+ 223 011a 08       		.uleb128 0x8
+ 224 011b 04       		.byte	0x4
+ 225 011c D6000000 		.4byte	0xd6
+ 226 0120 04       		.uleb128 0x4
+ 227 0121 0D000000 		.4byte	.LASF22
+ 228 0125 03       		.byte	0x3
+ 229 0126 96       		.byte	0x96
+ 230 0127 E1000000 		.4byte	0xe1
+ 231 012b 09       		.uleb128 0x9
+ 232 012c 01       		.byte	0x1
+ 233 012d 0B010000 		.4byte	.LASF28
+ 234 0131 01       		.byte	0x1
+ 235 0132 37       		.byte	0x37
+ 236 0133 01       		.byte	0x1
+ 237 0134 6F000000 		.4byte	0x6f
+ 238 0138 00000000 		.4byte	.LFB0
+ 239 013c 34000000 		.4byte	.LFE0
+ 240 0140 02       		.byte	0x2
+ 241 0141 7D       		.byte	0x7d
+ 242 0142 00       		.sleb128 0
+ 243 0143 01       		.byte	0x1
+ 244 0144 62010000 		.4byte	0x162
+ 245 0148 0A       		.uleb128 0xa
+ 246 0149 B3010000 		.4byte	.LASF29
+ 247 014d 01       		.byte	0x1
+ 248 014e 39       		.byte	0x39
+ 249 014f 6F000000 		.4byte	0x6f
+ 250 0153 00000000 		.4byte	.LLST0
+ 251 0157 0B       		.uleb128 0xb
+ 252 0158 1E000000 		.4byte	.LVL1
+ 253 015c 01       		.byte	0x1
+ 254 015d 96010000 		.4byte	0x196
+ 255 0161 00       		.byte	0
+ 256 0162 0C       		.uleb128 0xc
+ 257 0163 6F000000 		.4byte	0x6f
+ 258 0167 72010000 		.4byte	0x172
+ 259 016b 0D       		.uleb128 0xd
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccocMMaK.s 			page 7
+
+
+ 260 016c AA000000 		.4byte	0xaa
+ 261 0170 27       		.byte	0x27
+ 262 0171 00       		.byte	0
+ 263 0172 0E       		.uleb128 0xe
+ 264 0173 EB010000 		.4byte	.LASF23
+ 265 0177 04       		.byte	0x4
+ 266 0178 28       		.byte	0x28
+ 267 0179 7F010000 		.4byte	0x17f
+ 268 017d 01       		.byte	0x1
+ 269 017e 01       		.byte	0x1
+ 270 017f 0F       		.uleb128 0xf
+ 271 0180 62010000 		.4byte	0x162
+ 272 0184 0E       		.uleb128 0xe
+ 273 0185 CB010000 		.4byte	.LASF24
+ 274 0189 04       		.byte	0x4
+ 275 018a 35       		.byte	0x35
+ 276 018b 91010000 		.4byte	0x191
+ 277 018f 01       		.byte	0x1
+ 278 0190 01       		.byte	0x1
+ 279 0191 05       		.uleb128 0x5
+ 280 0192 20010000 		.4byte	0x120
+ 281 0196 10       		.uleb128 0x10
+ 282 0197 01       		.byte	0x1
+ 283 0198 DA000000 		.4byte	.LASF30
+ 284 019c 04       		.byte	0x4
+ 285 019d 4B       		.byte	0x4b
+ 286 019e 01       		.byte	0x1
+ 287 019f 6F000000 		.4byte	0x6f
+ 288 01a3 01       		.byte	0x1
+ 289 01a4 00       		.byte	0
+ 290              		.section	.debug_abbrev,"",%progbits
+ 291              	.Ldebug_abbrev0:
+ 292 0000 01       		.uleb128 0x1
+ 293 0001 11       		.uleb128 0x11
+ 294 0002 01       		.byte	0x1
+ 295 0003 25       		.uleb128 0x25
+ 296 0004 0E       		.uleb128 0xe
+ 297 0005 13       		.uleb128 0x13
+ 298 0006 0B       		.uleb128 0xb
+ 299 0007 03       		.uleb128 0x3
+ 300 0008 0E       		.uleb128 0xe
+ 301 0009 1B       		.uleb128 0x1b
+ 302 000a 0E       		.uleb128 0xe
+ 303 000b 55       		.uleb128 0x55
+ 304 000c 06       		.uleb128 0x6
+ 305 000d 11       		.uleb128 0x11
+ 306 000e 01       		.uleb128 0x1
+ 307 000f 52       		.uleb128 0x52
+ 308 0010 01       		.uleb128 0x1
+ 309 0011 10       		.uleb128 0x10
+ 310 0012 06       		.uleb128 0x6
+ 311 0013 00       		.byte	0
+ 312 0014 00       		.byte	0
+ 313 0015 02       		.uleb128 0x2
+ 314 0016 24       		.uleb128 0x24
+ 315 0017 00       		.byte	0
+ 316 0018 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccocMMaK.s 			page 8
+
+
+ 317 0019 0B       		.uleb128 0xb
+ 318 001a 3E       		.uleb128 0x3e
+ 319 001b 0B       		.uleb128 0xb
+ 320 001c 03       		.uleb128 0x3
+ 321 001d 0E       		.uleb128 0xe
+ 322 001e 00       		.byte	0
+ 323 001f 00       		.byte	0
+ 324 0020 03       		.uleb128 0x3
+ 325 0021 24       		.uleb128 0x24
+ 326 0022 00       		.byte	0
+ 327 0023 0B       		.uleb128 0xb
+ 328 0024 0B       		.uleb128 0xb
+ 329 0025 3E       		.uleb128 0x3e
+ 330 0026 0B       		.uleb128 0xb
+ 331 0027 03       		.uleb128 0x3
+ 332 0028 08       		.uleb128 0x8
+ 333 0029 00       		.byte	0
+ 334 002a 00       		.byte	0
+ 335 002b 04       		.uleb128 0x4
+ 336 002c 16       		.uleb128 0x16
+ 337 002d 00       		.byte	0
+ 338 002e 03       		.uleb128 0x3
+ 339 002f 0E       		.uleb128 0xe
+ 340 0030 3A       		.uleb128 0x3a
+ 341 0031 0B       		.uleb128 0xb
+ 342 0032 3B       		.uleb128 0x3b
+ 343 0033 0B       		.uleb128 0xb
+ 344 0034 49       		.uleb128 0x49
+ 345 0035 13       		.uleb128 0x13
+ 346 0036 00       		.byte	0
+ 347 0037 00       		.byte	0
+ 348 0038 05       		.uleb128 0x5
+ 349 0039 35       		.uleb128 0x35
+ 350 003a 00       		.byte	0
+ 351 003b 49       		.uleb128 0x49
+ 352 003c 13       		.uleb128 0x13
+ 353 003d 00       		.byte	0
+ 354 003e 00       		.byte	0
+ 355 003f 06       		.uleb128 0x6
+ 356 0040 13       		.uleb128 0x13
+ 357 0041 01       		.byte	0x1
+ 358 0042 0B       		.uleb128 0xb
+ 359 0043 0B       		.uleb128 0xb
+ 360 0044 3A       		.uleb128 0x3a
+ 361 0045 0B       		.uleb128 0xb
+ 362 0046 3B       		.uleb128 0x3b
+ 363 0047 0B       		.uleb128 0xb
+ 364 0048 01       		.uleb128 0x1
+ 365 0049 13       		.uleb128 0x13
+ 366 004a 00       		.byte	0
+ 367 004b 00       		.byte	0
+ 368 004c 07       		.uleb128 0x7
+ 369 004d 0D       		.uleb128 0xd
+ 370 004e 00       		.byte	0
+ 371 004f 03       		.uleb128 0x3
+ 372 0050 0E       		.uleb128 0xe
+ 373 0051 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccocMMaK.s 			page 9
+
+
+ 374 0052 0B       		.uleb128 0xb
+ 375 0053 3B       		.uleb128 0x3b
+ 376 0054 0B       		.uleb128 0xb
+ 377 0055 49       		.uleb128 0x49
+ 378 0056 13       		.uleb128 0x13
+ 379 0057 38       		.uleb128 0x38
+ 380 0058 0A       		.uleb128 0xa
+ 381 0059 00       		.byte	0
+ 382 005a 00       		.byte	0
+ 383 005b 08       		.uleb128 0x8
+ 384 005c 0F       		.uleb128 0xf
+ 385 005d 00       		.byte	0
+ 386 005e 0B       		.uleb128 0xb
+ 387 005f 0B       		.uleb128 0xb
+ 388 0060 49       		.uleb128 0x49
+ 389 0061 13       		.uleb128 0x13
+ 390 0062 00       		.byte	0
+ 391 0063 00       		.byte	0
+ 392 0064 09       		.uleb128 0x9
+ 393 0065 2E       		.uleb128 0x2e
+ 394 0066 01       		.byte	0x1
+ 395 0067 3F       		.uleb128 0x3f
+ 396 0068 0C       		.uleb128 0xc
+ 397 0069 03       		.uleb128 0x3
+ 398 006a 0E       		.uleb128 0xe
+ 399 006b 3A       		.uleb128 0x3a
+ 400 006c 0B       		.uleb128 0xb
+ 401 006d 3B       		.uleb128 0x3b
+ 402 006e 0B       		.uleb128 0xb
+ 403 006f 27       		.uleb128 0x27
+ 404 0070 0C       		.uleb128 0xc
+ 405 0071 49       		.uleb128 0x49
+ 406 0072 13       		.uleb128 0x13
+ 407 0073 11       		.uleb128 0x11
+ 408 0074 01       		.uleb128 0x1
+ 409 0075 12       		.uleb128 0x12
+ 410 0076 01       		.uleb128 0x1
+ 411 0077 40       		.uleb128 0x40
+ 412 0078 0A       		.uleb128 0xa
+ 413 0079 9742     		.uleb128 0x2117
+ 414 007b 0C       		.uleb128 0xc
+ 415 007c 01       		.uleb128 0x1
+ 416 007d 13       		.uleb128 0x13
+ 417 007e 00       		.byte	0
+ 418 007f 00       		.byte	0
+ 419 0080 0A       		.uleb128 0xa
+ 420 0081 34       		.uleb128 0x34
+ 421 0082 00       		.byte	0
+ 422 0083 03       		.uleb128 0x3
+ 423 0084 0E       		.uleb128 0xe
+ 424 0085 3A       		.uleb128 0x3a
+ 425 0086 0B       		.uleb128 0xb
+ 426 0087 3B       		.uleb128 0x3b
+ 427 0088 0B       		.uleb128 0xb
+ 428 0089 49       		.uleb128 0x49
+ 429 008a 13       		.uleb128 0x13
+ 430 008b 02       		.uleb128 0x2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccocMMaK.s 			page 10
+
+
+ 431 008c 06       		.uleb128 0x6
+ 432 008d 00       		.byte	0
+ 433 008e 00       		.byte	0
+ 434 008f 0B       		.uleb128 0xb
+ 435 0090 898201   		.uleb128 0x4109
+ 436 0093 00       		.byte	0
+ 437 0094 11       		.uleb128 0x11
+ 438 0095 01       		.uleb128 0x1
+ 439 0096 9542     		.uleb128 0x2115
+ 440 0098 0C       		.uleb128 0xc
+ 441 0099 31       		.uleb128 0x31
+ 442 009a 13       		.uleb128 0x13
+ 443 009b 00       		.byte	0
+ 444 009c 00       		.byte	0
+ 445 009d 0C       		.uleb128 0xc
+ 446 009e 01       		.uleb128 0x1
+ 447 009f 01       		.byte	0x1
+ 448 00a0 49       		.uleb128 0x49
+ 449 00a1 13       		.uleb128 0x13
+ 450 00a2 01       		.uleb128 0x1
+ 451 00a3 13       		.uleb128 0x13
+ 452 00a4 00       		.byte	0
+ 453 00a5 00       		.byte	0
+ 454 00a6 0D       		.uleb128 0xd
+ 455 00a7 21       		.uleb128 0x21
+ 456 00a8 00       		.byte	0
+ 457 00a9 49       		.uleb128 0x49
+ 458 00aa 13       		.uleb128 0x13
+ 459 00ab 2F       		.uleb128 0x2f
+ 460 00ac 0B       		.uleb128 0xb
+ 461 00ad 00       		.byte	0
+ 462 00ae 00       		.byte	0
+ 463 00af 0E       		.uleb128 0xe
+ 464 00b0 34       		.uleb128 0x34
+ 465 00b1 00       		.byte	0
+ 466 00b2 03       		.uleb128 0x3
+ 467 00b3 0E       		.uleb128 0xe
+ 468 00b4 3A       		.uleb128 0x3a
+ 469 00b5 0B       		.uleb128 0xb
+ 470 00b6 3B       		.uleb128 0x3b
+ 471 00b7 0B       		.uleb128 0xb
+ 472 00b8 49       		.uleb128 0x49
+ 473 00b9 13       		.uleb128 0x13
+ 474 00ba 3F       		.uleb128 0x3f
+ 475 00bb 0C       		.uleb128 0xc
+ 476 00bc 3C       		.uleb128 0x3c
+ 477 00bd 0C       		.uleb128 0xc
+ 478 00be 00       		.byte	0
+ 479 00bf 00       		.byte	0
+ 480 00c0 0F       		.uleb128 0xf
+ 481 00c1 26       		.uleb128 0x26
+ 482 00c2 00       		.byte	0
+ 483 00c3 49       		.uleb128 0x49
+ 484 00c4 13       		.uleb128 0x13
+ 485 00c5 00       		.byte	0
+ 486 00c6 00       		.byte	0
+ 487 00c7 10       		.uleb128 0x10
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccocMMaK.s 			page 11
+
+
+ 488 00c8 2E       		.uleb128 0x2e
+ 489 00c9 00       		.byte	0
+ 490 00ca 3F       		.uleb128 0x3f
+ 491 00cb 0C       		.uleb128 0xc
+ 492 00cc 03       		.uleb128 0x3
+ 493 00cd 0E       		.uleb128 0xe
+ 494 00ce 3A       		.uleb128 0x3a
+ 495 00cf 0B       		.uleb128 0xb
+ 496 00d0 3B       		.uleb128 0x3b
+ 497 00d1 0B       		.uleb128 0xb
+ 498 00d2 27       		.uleb128 0x27
+ 499 00d3 0C       		.uleb128 0xc
+ 500 00d4 49       		.uleb128 0x49
+ 501 00d5 13       		.uleb128 0x13
+ 502 00d6 3C       		.uleb128 0x3c
+ 503 00d7 0C       		.uleb128 0xc
+ 504 00d8 00       		.byte	0
+ 505 00d9 00       		.byte	0
+ 506 00da 00       		.byte	0
+ 507              		.section	.debug_loc,"",%progbits
+ 508              	.Ldebug_loc0:
+ 509              	.LLST0:
+ 510 0000 00000000 		.4byte	.LVL0
+ 511 0004 1E000000 		.4byte	.LVL1
+ 512 0008 0200     		.2byte	0x2
+ 513 000a 30       		.byte	0x30
+ 514 000b 9F       		.byte	0x9f
+ 515 000c 00000000 		.4byte	0
+ 516 0010 00000000 		.4byte	0
+ 517              		.section	.debug_aranges,"",%progbits
+ 518 0000 1C000000 		.4byte	0x1c
+ 519 0004 0200     		.2byte	0x2
+ 520 0006 00000000 		.4byte	.Ldebug_info0
+ 521 000a 04       		.byte	0x4
+ 522 000b 00       		.byte	0
+ 523 000c 0000     		.2byte	0
+ 524 000e 0000     		.2byte	0
+ 525 0010 00000000 		.4byte	.LFB0
+ 526 0014 34000000 		.4byte	.LFE0-.LFB0
+ 527 0018 00000000 		.4byte	0
+ 528 001c 00000000 		.4byte	0
+ 529              		.section	.debug_ranges,"",%progbits
+ 530              	.Ldebug_ranges0:
+ 531 0000 00000000 		.4byte	.LFB0
+ 532 0004 34000000 		.4byte	.LFE0
+ 533 0008 00000000 		.4byte	0
+ 534 000c 00000000 		.4byte	0
+ 535              		.section	.debug_line,"",%progbits
+ 536              	.Ldebug_line0:
+ 537 0000 92000000 		.section	.debug_str,"MS",%progbits,1
+ 537      02006E00 
+ 537      00000201 
+ 537      FB0E0D00 
+ 537      01010101 
+ 538              	.LASF21:
+ 539 0000 70537461 		.ascii	"pStatusBlock\000"
+ 539      74757342 
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccocMMaK.s 			page 12
+
+
+ 539      6C6F636B 
+ 539      00
+ 540              	.LASF22:
+ 541 000d 545F5553 		.ascii	"T_USBUART_1_TD\000"
+ 541      42554152 
+ 541      545F315F 
+ 541      544400
+ 542              	.LASF19:
+ 543 001c 636F756E 		.ascii	"count\000"
+ 543      7400
+ 544              	.LASF3:
+ 545 0022 73686F72 		.ascii	"short unsigned int\000"
+ 545      7420756E 
+ 545      7369676E 
+ 545      65642069 
+ 545      6E7400
+ 546              	.LASF16:
+ 547 0035 73746174 		.ascii	"status\000"
+ 547      757300
+ 548              	.LASF20:
+ 549 003c 70446174 		.ascii	"pData\000"
+ 549      6100
+ 550              	.LASF11:
+ 551 0042 666C6F61 		.ascii	"float\000"
+ 551      7400
+ 552              	.LASF1:
+ 553 0048 756E7369 		.ascii	"unsigned char\000"
+ 553      676E6564 
+ 553      20636861 
+ 553      7200
+ 554              	.LASF14:
+ 555 0056 72656738 		.ascii	"reg8\000"
+ 555      00
+ 556              	.LASF5:
+ 557 005b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 557      20756E73 
+ 557      69676E65 
+ 557      6420696E 
+ 557      7400
+ 558              	.LASF9:
+ 559 006d 75696E74 		.ascii	"uint8\000"
+ 559      3800
+ 560              	.LASF27:
+ 561 0073 433A5C55 		.ascii	"C:\\Users\\Luke\\Desktop\\Laserschutzschaltung.cyds"
+ 561      73657273 
+ 561      5C4C756B 
+ 561      655C4465 
+ 561      736B746F 
+ 562 00a2 6E5C4C61 		.ascii	"n\\Laserschutzschaltung.cydsn\000"
+ 562      73657273 
+ 562      63687574 
+ 562      7A736368 
+ 562      616C7475 
+ 563              	.LASF12:
+ 564 00bf 646F7562 		.ascii	"double\000"
+ 564      6C6500
+ 565              	.LASF10:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccocMMaK.s 			page 13
+
+
+ 566 00c6 75696E74 		.ascii	"uint16\000"
+ 566      313600
+ 567              	.LASF8:
+ 568 00cd 756E7369 		.ascii	"unsigned int\000"
+ 568      676E6564 
+ 568      20696E74 
+ 568      00
+ 569              	.LASF30:
+ 570 00da 55534255 		.ascii	"USBUART_1_InitControlRead\000"
+ 570      4152545F 
+ 570      315F496E 
+ 570      6974436F 
+ 570      6E74726F 
+ 571              	.LASF7:
+ 572 00f4 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 572      206C6F6E 
+ 572      6720756E 
+ 572      7369676E 
+ 572      65642069 
+ 573              	.LASF28:
+ 574 010b 55534255 		.ascii	"USBUART_1_HandleVendorRqst\000"
+ 574      4152545F 
+ 574      315F4861 
+ 574      6E646C65 
+ 574      56656E64 
+ 575              	.LASF15:
+ 576 0126 73697A65 		.ascii	"sizetype\000"
+ 576      74797065 
+ 576      00
+ 577              	.LASF6:
+ 578 012f 6C6F6E67 		.ascii	"long long int\000"
+ 578      206C6F6E 
+ 578      6720696E 
+ 578      7400
+ 579              	.LASF13:
+ 580 013d 63686172 		.ascii	"char\000"
+ 580      00
+ 581              	.LASF18:
+ 582 0142 545F5553 		.ascii	"T_USBUART_1_XFER_STATUS_BLOCK\000"
+ 582      42554152 
+ 582      545F315F 
+ 582      58464552 
+ 582      5F535441 
+ 583              	.LASF2:
+ 584 0160 73686F72 		.ascii	"short int\000"
+ 584      7420696E 
+ 584      7400
+ 585              	.LASF25:
+ 586 016a 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 586      4320342E 
+ 586      372E3320 
+ 586      32303133 
+ 586      30333132 
+ 587 019d 616E6368 		.ascii	"anch revision 196615]\000"
+ 587      20726576 
+ 587      6973696F 
+ 587      6E203139 
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccocMMaK.s 			page 14
+
+
+ 587      36363135 
+ 588              	.LASF29:
+ 589 01b3 72657175 		.ascii	"requestHandled\000"
+ 589      65737448 
+ 589      616E646C 
+ 589      656400
+ 590              	.LASF4:
+ 591 01c2 6C6F6E67 		.ascii	"long int\000"
+ 591      20696E74 
+ 591      00
+ 592              	.LASF24:
+ 593 01cb 55534255 		.ascii	"USBUART_1_currentTD\000"
+ 593      4152545F 
+ 593      315F6375 
+ 593      7272656E 
+ 593      74544400 
+ 594              	.LASF0:
+ 595 01df 7369676E 		.ascii	"signed char\000"
+ 595      65642063 
+ 595      68617200 
+ 596              	.LASF23:
+ 597 01eb 55534255 		.ascii	"USBUART_1_MSOS_CONFIGURATION_DESCR\000"
+ 597      4152545F 
+ 597      315F4D53 
+ 597      4F535F43 
+ 597      4F4E4649 
+ 598              	.LASF26:
+ 599 020e 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\USBUART_1_vnd.c\000"
+ 599      6E657261 
+ 599      7465645F 
+ 599      536F7572 
+ 599      63655C50 
+ 600              	.LASF17:
+ 601 0237 6C656E67 		.ascii	"length\000"
+ 601      746800
+ 602              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

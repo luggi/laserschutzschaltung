@@ -1,0 +1,2651 @@
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"ADC_DelSig_theACLK.c"
+  14              		.section	.debug_abbrev,"",%progbits
+  15              	.Ldebug_abbrev0:
+  16              		.section	.debug_info,"",%progbits
+  17              	.Ldebug_info0:
+  18              		.section	.debug_line,"",%progbits
+  19              	.Ldebug_line0:
+  20 0000 A0010000 		.text
+  20      02006A00 
+  20      00000201 
+  20      FB0E0D00 
+  20      01010101 
+  21              	.Ltext0:
+  22              		.cfi_sections	.debug_frame
+  23              		.section	.text.ADC_DelSig_theACLK_Start,"ax",%progbits
+  24              		.align	2
+  25              		.global	ADC_DelSig_theACLK_Start
+  26              		.thumb
+  27              		.thumb_func
+  28              		.type	ADC_DelSig_theACLK_Start, %function
+  29              	ADC_DelSig_theACLK_Start:
+  30              	.LFB0:
+  31              		.file 1 ".\\Generated_Source\\PSoC5\\ADC_DelSig_theACLK.c"
+   1:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * File Name: ADC_DelSig_theACLK.c
+   3:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Version 1.70
+   4:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+   5:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Description:
+   6:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   This file provides the source code to the API for the clock component.
+   7:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+   8:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Note:
+   9:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+  10:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Copyright 2008-2010, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** ********************************************************************************/
+  16:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+  17:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #include <cydevice_trm.h>
+  18:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #include "ADC_DelSig_theACLK.h"
+  19:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+  20:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /* Clock Distribution registers. */
+  21:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #define CLK_DIST_LD              (* (reg8 *) CYREG_CLKDIST_LD)
+  22:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #define CLK_DIST_BCFG2           (* (reg8 *) CYREG_CLKDIST_BCFG2)
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 2
+
+
+  23:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #define BCFG2_MASK               (0x80u)
+  24:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #define CLK_DIST_DMASK           (* (reg8 *) CYREG_CLKDIST_DMASK)
+  25:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #define CLK_DIST_AMASK           (* (reg8 *) CYREG_CLKDIST_AMASK)
+  26:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+  27:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #define HAS_CLKDIST_LD_DISABLE   (CY_PSOC3 || CY_PSOC5LP)
+  28:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+  29:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+  30:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /*******************************************************************************
+  31:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Function Name: ADC_DelSig_theACLK_Start
+  32:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** ********************************************************************************
+  33:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Summary:
+  34:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Starts the clock. Note that on startup, clocks may be already running if the
+  35:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  "Start on Reset" option is enabled in the DWR.
+  36:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+  37:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Parameters:
+  38:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  void
+  39:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+  40:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Returns:
+  41:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  void
+  42:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+  43:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *******************************************************************************/
+  44:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** void ADC_DelSig_theACLK_Start(void) 
+  45:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** {
+  32              		.loc 1 45 0
+  33              		.cfi_startproc
+  34              		@ args = 0, pretend = 0, frame = 0
+  35              		@ frame_needed = 1, uses_anonymous_args = 0
+  36              		@ link register save eliminated.
+  37 0000 80B4     		push	{r7}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 4
+  40 0002 00AF     		add	r7, sp, #0
+  41              		.cfi_offset 7, -4
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_register 7
+  46:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     /* Set the bit to enable the clock. */
+  47:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     ADC_DelSig_theACLK_CLKEN |= ADC_DelSig_theACLK_CLKEN_MASK;
+  44              		.loc 1 47 0
+  45 0004 44F2A133 		movw	r3, #:lower16:1073759137
+  46 0008 C4F20003 		movt	r3, #:upper16:1073759137
+  47 000c 44F2A132 		movw	r2, #:lower16:1073759137
+  48 0010 C4F20002 		movt	r2, #:upper16:1073759137
+  49 0014 1278     		ldrb	r2, [r2, #0]
+  50 0016 D2B2     		uxtb	r2, r2
+  51 0018 42F00202 		orr	r2, r2, #2
+  52 001c D2B2     		uxtb	r2, r2
+  53 001e 1A70     		strb	r2, [r3, #0]
+  48:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** }
+  54              		.loc 1 48 0
+  55 0020 BD46     		mov	sp, r7
+  56 0022 80BC     		pop	{r7}
+  57 0024 7047     		bx	lr
+  58              		.cfi_endproc
+  59              	.LFE0:
+  60              		.size	ADC_DelSig_theACLK_Start, .-ADC_DelSig_theACLK_Start
+  61 0026 00BF     		.section	.text.ADC_DelSig_theACLK_Stop,"ax",%progbits
+  62              		.align	2
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 3
+
+
+  63              		.global	ADC_DelSig_theACLK_Stop
+  64              		.thumb
+  65              		.thumb_func
+  66              		.type	ADC_DelSig_theACLK_Stop, %function
+  67              	ADC_DelSig_theACLK_Stop:
+  68              	.LFB1:
+  49:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+  50:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+  51:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /*******************************************************************************
+  52:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Function Name: ADC_DelSig_theACLK_Stop
+  53:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** ********************************************************************************
+  54:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Summary:
+  55:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Stops the clock and returns immediately. This API does not require the
+  56:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  source clock to be running but may return before the hardware is actually
+  57:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  disabled. If the settings of the clock are changed after calling this
+  58:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  function, the clock may glitch when it is started. To avoid the clock
+  59:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  glitch, use the StopBlock function.
+  60:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+  61:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Parameters:
+  62:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  void
+  63:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+  64:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Returns:
+  65:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  void
+  66:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+  67:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *******************************************************************************/
+  68:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** void ADC_DelSig_theACLK_Stop(void) 
+  69:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** {
+  69              		.loc 1 69 0
+  70              		.cfi_startproc
+  71              		@ args = 0, pretend = 0, frame = 0
+  72              		@ frame_needed = 1, uses_anonymous_args = 0
+  73              		@ link register save eliminated.
+  74 0000 80B4     		push	{r7}
+  75              	.LCFI2:
+  76              		.cfi_def_cfa_offset 4
+  77 0002 00AF     		add	r7, sp, #0
+  78              		.cfi_offset 7, -4
+  79              	.LCFI3:
+  80              		.cfi_def_cfa_register 7
+  70:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     /* Clear the bit to disable the clock. */
+  71:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     ADC_DelSig_theACLK_CLKEN &= ~ADC_DelSig_theACLK_CLKEN_MASK;
+  81              		.loc 1 71 0
+  82 0004 44F2A133 		movw	r3, #:lower16:1073759137
+  83 0008 C4F20003 		movt	r3, #:upper16:1073759137
+  84 000c 44F2A132 		movw	r2, #:lower16:1073759137
+  85 0010 C4F20002 		movt	r2, #:upper16:1073759137
+  86 0014 1278     		ldrb	r2, [r2, #0]
+  87 0016 D2B2     		uxtb	r2, r2
+  88 0018 02F0FD02 		and	r2, r2, #253
+  89 001c 1A70     		strb	r2, [r3, #0]
+  72:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** }
+  90              		.loc 1 72 0
+  91 001e BD46     		mov	sp, r7
+  92 0020 80BC     		pop	{r7}
+  93 0022 7047     		bx	lr
+  94              		.cfi_endproc
+  95              	.LFE1:
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 4
+
+
+  96              		.size	ADC_DelSig_theACLK_Stop, .-ADC_DelSig_theACLK_Stop
+  97              		.section	.text.ADC_DelSig_theACLK_StopBlock,"ax",%progbits
+  98              		.align	2
+  99              		.global	ADC_DelSig_theACLK_StopBlock
+ 100              		.thumb
+ 101              		.thumb_func
+ 102              		.type	ADC_DelSig_theACLK_StopBlock, %function
+ 103              	ADC_DelSig_theACLK_StopBlock:
+ 104              	.LFB2:
+  73:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+  74:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+  75:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #if(CY_PSOC3 || CY_PSOC5LP)
+  76:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /*******************************************************************************
+  77:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Function Name: ADC_DelSig_theACLK_StopBlock
+  78:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** ********************************************************************************
+  79:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Summary:
+  80:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Stops the clock and waits for the hardware to actually be disabled before
+  81:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  returning. This ensures that the clock is never truncated (high part of the
+  82:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  cycle will terminate before the clock is disabled and the API returns).
+  83:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Note that the source clock must be running or this API will never return as
+  84:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  a stopped clock cannot be disabled.
+  85:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+  86:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Parameters:
+  87:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  void
+  88:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+  89:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Returns:
+  90:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  void
+  91:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+  92:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *******************************************************************************/
+  93:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** void ADC_DelSig_theACLK_StopBlock(void) 
+  94:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** {
+ 105              		.loc 1 94 0
+ 106              		.cfi_startproc
+ 107              		@ args = 0, pretend = 0, frame = 8
+ 108              		@ frame_needed = 1, uses_anonymous_args = 0
+ 109              		@ link register save eliminated.
+ 110 0000 80B4     		push	{r7}
+ 111              	.LCFI4:
+ 112              		.cfi_def_cfa_offset 4
+ 113 0002 83B0     		sub	sp, sp, #12
+ 114              	.LCFI5:
+ 115              		.cfi_def_cfa_offset 16
+ 116 0004 00AF     		add	r7, sp, #0
+ 117              		.cfi_offset 7, -4
+ 118              	.LCFI6:
+ 119              		.cfi_def_cfa_register 7
+  95:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     if (ADC_DelSig_theACLK_CLKEN & ADC_DelSig_theACLK_CLKEN_MASK)
+ 120              		.loc 1 95 0
+ 121 0006 44F2A133 		movw	r3, #:lower16:1073759137
+ 122 000a C4F20003 		movt	r3, #:upper16:1073759137
+ 123 000e 1B78     		ldrb	r3, [r3, #0]
+ 124 0010 DBB2     		uxtb	r3, r3
+ 125 0012 03F00203 		and	r3, r3, #2
+ 126 0016 002B     		cmp	r3, #0
+ 127 0018 59D0     		beq	.L8
+ 128              	.LBB2:
+  96:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     {
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 5
+
+
+  97:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #if HAS_CLKDIST_LD_DISABLE
+  98:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         uint16 oldDivider;
+  99:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 100:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         CLK_DIST_LD = 0;
+ 129              		.loc 1 100 0
+ 130 001a 44F20103 		movw	r3, #:lower16:1073758209
+ 131 001e C4F20003 		movt	r3, #:upper16:1073758209
+ 132 0022 4FF00002 		mov	r2, #0
+ 133 0026 1A70     		strb	r2, [r3, #0]
+ 101:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 102:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         /* Clear all the mask bits except ours. */
+ 103:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #if defined(ADC_DelSig_theACLK__CFG3)
+ 104:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         CLK_DIST_AMASK = ADC_DelSig_theACLK_CLKEN_MASK;
+ 134              		.loc 1 104 0
+ 135 0028 44F21403 		movw	r3, #:lower16:1073758228
+ 136 002c C4F20003 		movt	r3, #:upper16:1073758228
+ 137 0030 4FF00202 		mov	r2, #2
+ 138 0034 1A70     		strb	r2, [r3, #0]
+ 105:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         CLK_DIST_DMASK = 0x00u;
+ 139              		.loc 1 105 0
+ 140 0036 44F21003 		movw	r3, #:lower16:1073758224
+ 141 003a C4F20003 		movt	r3, #:upper16:1073758224
+ 142 003e 4FF00002 		mov	r2, #0
+ 143 0042 1A70     		strb	r2, [r3, #0]
+ 106:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #else
+ 107:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         CLK_DIST_DMASK = ADC_DelSig_theACLK_CLKEN_MASK;
+ 108:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         CLK_DIST_AMASK = 0x00u;
+ 109:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #endif
+ 110:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 111:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         /* Clear mask of bus clock. */
+ 112:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         CLK_DIST_BCFG2 &= ~BCFG2_MASK;
+ 144              		.loc 1 112 0
+ 145 0044 44F20803 		movw	r3, #:lower16:1073758216
+ 146 0048 C4F20003 		movt	r3, #:upper16:1073758216
+ 147 004c 44F20802 		movw	r2, #:lower16:1073758216
+ 148 0050 C4F20002 		movt	r2, #:upper16:1073758216
+ 149 0054 1278     		ldrb	r2, [r2, #0]
+ 150 0056 D2B2     		uxtb	r2, r2
+ 151 0058 02F07F02 		and	r2, r2, #127
+ 152 005c 1A70     		strb	r2, [r3, #0]
+ 113:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 114:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         oldDivider = CY_GET_REG16(ADC_DelSig_theACLK_DIV_PTR);
+ 153              		.loc 1 114 0
+ 154 005e 44F20413 		movw	r3, #:lower16:1073758468
+ 155 0062 C4F20003 		movt	r3, #:upper16:1073758468
+ 156 0066 1B88     		ldrh	r3, [r3, #0]	@ movhi
+ 157 0068 FB80     		strh	r3, [r7, #6]	@ movhi
+ 115:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         CY_SET_REG16(CYREG_CLKDIST_WRK0, oldDivider);
+ 158              		.loc 1 115 0
+ 159 006a 44F20203 		movw	r3, #:lower16:1073758210
+ 160 006e C4F20003 		movt	r3, #:upper16:1073758210
+ 161 0072 FA88     		ldrh	r2, [r7, #6]	@ movhi
+ 162 0074 1A80     		strh	r2, [r3, #0]	@ movhi
+ 116:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         CLK_DIST_LD = CYCLK_LD_DISABLE | CYCLK_LD_SYNC_EN | CYCLK_LD_LOAD;
+ 163              		.loc 1 116 0
+ 164 0076 44F20103 		movw	r3, #:lower16:1073758209
+ 165 007a C4F20003 		movt	r3, #:upper16:1073758209
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 6
+
+
+ 166 007e 4FF00702 		mov	r2, #7
+ 167 0082 1A70     		strb	r2, [r3, #0]
+ 168              	.L7:
+ 117:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 118:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         /* Wait for clock to be disabled */
+ 119:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         while (CLK_DIST_LD & CYCLK_LD_LOAD) { }
+ 169              		.loc 1 119 0
+ 170 0084 44F20103 		movw	r3, #:lower16:1073758209
+ 171 0088 C4F20003 		movt	r3, #:upper16:1073758209
+ 172 008c 1B78     		ldrb	r3, [r3, #0]
+ 173 008e DBB2     		uxtb	r3, r3
+ 174 0090 03F00103 		and	r3, r3, #1
+ 175 0094 DBB2     		uxtb	r3, r3
+ 176 0096 002B     		cmp	r3, #0
+ 177 0098 F4D1     		bne	.L7
+ 120:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #endif
+ 121:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 122:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         /* Clear the bit to disable the clock. */
+ 123:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         ADC_DelSig_theACLK_CLKEN &= ~ADC_DelSig_theACLK_CLKEN_MASK;
+ 178              		.loc 1 123 0
+ 179 009a 44F2A133 		movw	r3, #:lower16:1073759137
+ 180 009e C4F20003 		movt	r3, #:upper16:1073759137
+ 181 00a2 44F2A132 		movw	r2, #:lower16:1073759137
+ 182 00a6 C4F20002 		movt	r2, #:upper16:1073759137
+ 183 00aa 1278     		ldrb	r2, [r2, #0]
+ 184 00ac D2B2     		uxtb	r2, r2
+ 185 00ae 02F0FD02 		and	r2, r2, #253
+ 186 00b2 1A70     		strb	r2, [r3, #0]
+ 124:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 125:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #if HAS_CLKDIST_LD_DISABLE
+ 126:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         /* Clear the disable bit */
+ 127:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         CLK_DIST_LD = 0x00u;
+ 187              		.loc 1 127 0
+ 188 00b4 44F20103 		movw	r3, #:lower16:1073758209
+ 189 00b8 C4F20003 		movt	r3, #:upper16:1073758209
+ 190 00bc 4FF00002 		mov	r2, #0
+ 191 00c0 1A70     		strb	r2, [r3, #0]
+ 128:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         CY_SET_REG16(ADC_DelSig_theACLK_DIV_PTR, oldDivider);
+ 192              		.loc 1 128 0
+ 193 00c2 44F20413 		movw	r3, #:lower16:1073758468
+ 194 00c6 C4F20003 		movt	r3, #:upper16:1073758468
+ 195 00ca FA88     		ldrh	r2, [r7, #6]	@ movhi
+ 196 00cc 1A80     		strh	r2, [r3, #0]	@ movhi
+ 197              	.L8:
+ 198              	.LBE2:
+ 129:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #endif
+ 130:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     }
+ 131:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** }
+ 199              		.loc 1 131 0
+ 200 00ce 07F10C07 		add	r7, r7, #12
+ 201 00d2 BD46     		mov	sp, r7
+ 202 00d4 80BC     		pop	{r7}
+ 203 00d6 7047     		bx	lr
+ 204              		.cfi_endproc
+ 205              	.LFE2:
+ 206              		.size	ADC_DelSig_theACLK_StopBlock, .-ADC_DelSig_theACLK_StopBlock
+ 207              		.section	.text.ADC_DelSig_theACLK_StandbyPower,"ax",%progbits
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 7
+
+
+ 208              		.align	2
+ 209              		.global	ADC_DelSig_theACLK_StandbyPower
+ 210              		.thumb
+ 211              		.thumb_func
+ 212              		.type	ADC_DelSig_theACLK_StandbyPower, %function
+ 213              	ADC_DelSig_theACLK_StandbyPower:
+ 214              	.LFB3:
+ 132:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #endif
+ 133:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 134:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /*******************************************************************************
+ 135:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Function Name: ADC_DelSig_theACLK_StandbyPower
+ 136:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** ********************************************************************************
+ 137:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Summary:
+ 138:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Sets whether the clock is active in standby mode.
+ 139:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 140:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Parameters:
+ 141:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  state:  0 to disable clock during standby, nonzero to enable.
+ 142:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 143:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Returns:
+ 144:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  void
+ 145:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 146:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *******************************************************************************/
+ 147:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** void ADC_DelSig_theACLK_StandbyPower(uint8 state) 
+ 148:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** {
+ 215              		.loc 1 148 0
+ 216              		.cfi_startproc
+ 217              		@ args = 0, pretend = 0, frame = 8
+ 218              		@ frame_needed = 1, uses_anonymous_args = 0
+ 219              		@ link register save eliminated.
+ 220 0000 80B4     		push	{r7}
+ 221              	.LCFI7:
+ 222              		.cfi_def_cfa_offset 4
+ 223 0002 83B0     		sub	sp, sp, #12
+ 224              	.LCFI8:
+ 225              		.cfi_def_cfa_offset 16
+ 226 0004 00AF     		add	r7, sp, #0
+ 227              		.cfi_offset 7, -4
+ 228              	.LCFI9:
+ 229              		.cfi_def_cfa_register 7
+ 230 0006 0346     		mov	r3, r0
+ 231 0008 FB71     		strb	r3, [r7, #7]
+ 149:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     if(state == 0)
+ 232              		.loc 1 149 0
+ 233 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 234 000c 002B     		cmp	r3, #0
+ 235 000e 0DD1     		bne	.L10
+ 150:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     {
+ 151:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         ADC_DelSig_theACLK_CLKSTBY &= ~ADC_DelSig_theACLK_CLKSTBY_MASK;
+ 236              		.loc 1 151 0
+ 237 0010 44F2B133 		movw	r3, #:lower16:1073759153
+ 238 0014 C4F20003 		movt	r3, #:upper16:1073759153
+ 239 0018 44F2B132 		movw	r2, #:lower16:1073759153
+ 240 001c C4F20002 		movt	r2, #:upper16:1073759153
+ 241 0020 1278     		ldrb	r2, [r2, #0]
+ 242 0022 D2B2     		uxtb	r2, r2
+ 243 0024 02F0FD02 		and	r2, r2, #253
+ 244 0028 1A70     		strb	r2, [r3, #0]
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 8
+
+
+ 245 002a 0DE0     		b	.L12
+ 246              	.L10:
+ 152:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     }
+ 153:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     else
+ 154:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     {
+ 155:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         ADC_DelSig_theACLK_CLKSTBY |= ADC_DelSig_theACLK_CLKSTBY_MASK;
+ 247              		.loc 1 155 0
+ 248 002c 44F2B133 		movw	r3, #:lower16:1073759153
+ 249 0030 C4F20003 		movt	r3, #:upper16:1073759153
+ 250 0034 44F2B132 		movw	r2, #:lower16:1073759153
+ 251 0038 C4F20002 		movt	r2, #:upper16:1073759153
+ 252 003c 1278     		ldrb	r2, [r2, #0]
+ 253 003e D2B2     		uxtb	r2, r2
+ 254 0040 42F00202 		orr	r2, r2, #2
+ 255 0044 D2B2     		uxtb	r2, r2
+ 256 0046 1A70     		strb	r2, [r3, #0]
+ 257              	.L12:
+ 156:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     }
+ 157:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** }
+ 258              		.loc 1 157 0
+ 259 0048 07F10C07 		add	r7, r7, #12
+ 260 004c BD46     		mov	sp, r7
+ 261 004e 80BC     		pop	{r7}
+ 262 0050 7047     		bx	lr
+ 263              		.cfi_endproc
+ 264              	.LFE3:
+ 265              		.size	ADC_DelSig_theACLK_StandbyPower, .-ADC_DelSig_theACLK_StandbyPower
+ 266 0052 00BF     		.section	.text.ADC_DelSig_theACLK_SetDividerRegister,"ax",%progbits
+ 267              		.align	2
+ 268              		.global	ADC_DelSig_theACLK_SetDividerRegister
+ 269              		.thumb
+ 270              		.thumb_func
+ 271              		.type	ADC_DelSig_theACLK_SetDividerRegister, %function
+ 272              	ADC_DelSig_theACLK_SetDividerRegister:
+ 273              	.LFB4:
+ 158:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 159:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 160:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /*******************************************************************************
+ 161:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Function Name: ADC_DelSig_theACLK_SetDividerRegister
+ 162:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** ********************************************************************************
+ 163:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Summary:
+ 164:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Modifies the clock divider and, thus, the frequency. When the clock divider
+ 165:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  register is set to zero or changed from zero, the clock will be temporarily
+ 166:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  disabled in order to change the SSS mode bit. If the clock is enabled when
+ 167:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  SetDividerRegister is called, then the source clock must be running.
+ 168:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 169:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Parameters:
+ 170:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  clkDivider:  Divider register value (0-65,535). This value is NOT the
+ 171:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *    divider; the clock hardware divides by clkDivider plus one. For example,
+ 172:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *    to divide the clock by 2, this parameter should be set to 1.
+ 173:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  restart:  If nonzero, restarts the clock divider: the current clock cycle
+ 174:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   will be truncated and the new divide value will take effect immediately. If
+ 175:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   zero, the new divide value will take effect at the end of the current clock
+ 176:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   cycle.
+ 177:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 178:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Returns:
+ 179:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  void
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 9
+
+
+ 180:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 181:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *******************************************************************************/
+ 182:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** void ADC_DelSig_theACLK_SetDividerRegister(uint16 clkDivider, uint8 restart) 
+ 183:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** {
+ 274              		.loc 1 183 0
+ 275              		.cfi_startproc
+ 276              		@ args = 0, pretend = 0, frame = 16
+ 277              		@ frame_needed = 1, uses_anonymous_args = 0
+ 278 0000 80B5     		push	{r7, lr}
+ 279              	.LCFI10:
+ 280              		.cfi_def_cfa_offset 8
+ 281 0002 84B0     		sub	sp, sp, #16
+ 282              	.LCFI11:
+ 283              		.cfi_def_cfa_offset 24
+ 284 0004 00AF     		add	r7, sp, #0
+ 285              		.cfi_offset 14, -4
+ 286              		.cfi_offset 7, -8
+ 287              	.LCFI12:
+ 288              		.cfi_def_cfa_register 7
+ 289 0006 0246     		mov	r2, r0
+ 290 0008 0B46     		mov	r3, r1
+ 291 000a FA80     		strh	r2, [r7, #6]	@ movhi
+ 292 000c 7B71     		strb	r3, [r7, #5]
+ 184:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     uint8 enabled;
+ 185:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 186:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     uint8 currSrc = ADC_DelSig_theACLK_GetSourceRegister();
+ 293              		.loc 1 186 0
+ 294 000e FFF7FEFF 		bl	ADC_DelSig_theACLK_GetSourceRegister
+ 295 0012 0346     		mov	r3, r0
+ 296 0014 7B73     		strb	r3, [r7, #13]
+ 187:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     uint16 oldDivider = ADC_DelSig_theACLK_GetDividerRegister();
+ 297              		.loc 1 187 0
+ 298 0016 FFF7FEFF 		bl	ADC_DelSig_theACLK_GetDividerRegister
+ 299 001a 0346     		mov	r3, r0
+ 300 001c FB81     		strh	r3, [r7, #14]	@ movhi
+ 188:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 189:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     if (clkDivider != oldDivider)
+ 301              		.loc 1 189 0
+ 302 001e FA88     		ldrh	r2, [r7, #6]
+ 303 0020 FB89     		ldrh	r3, [r7, #14]
+ 304 0022 9A42     		cmp	r2, r3
+ 305 0024 00F0D180 		beq	.L26
+ 190:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     {
+ 191:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         enabled = ADC_DelSig_theACLK_CLKEN & ADC_DelSig_theACLK_CLKEN_MASK;
+ 306              		.loc 1 191 0
+ 307 0028 44F2A133 		movw	r3, #:lower16:1073759137
+ 308 002c C4F20003 		movt	r3, #:upper16:1073759137
+ 309 0030 1B78     		ldrb	r3, [r3, #0]
+ 310 0032 DBB2     		uxtb	r3, r3
+ 311 0034 03F00203 		and	r3, r3, #2
+ 312 0038 3B73     		strb	r3, [r7, #12]
+ 192:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 193:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         if (currSrc == CYCLK_SRC_SEL_CLK_SYNC_D && (oldDivider == 0 || clkDivider == 0))
+ 313              		.loc 1 193 0
+ 314 003a 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 315 003c 002B     		cmp	r3, #0
+ 316 003e 35D1     		bne	.L15
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 10
+
+
+ 317 0040 FB89     		ldrh	r3, [r7, #14]
+ 318 0042 002B     		cmp	r3, #0
+ 319 0044 02D0     		beq	.L16
+ 320 0046 FB88     		ldrh	r3, [r7, #6]
+ 321 0048 002B     		cmp	r3, #0
+ 322 004a 2FD1     		bne	.L15
+ 323              	.L16:
+ 194:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         {
+ 195:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             /* Moving to/from SSS requires correct ordering to prevent halting the clock    */
+ 196:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             if (oldDivider == 0 && clkDivider != 0)
+ 324              		.loc 1 196 0
+ 325 004c FB89     		ldrh	r3, [r7, #14]
+ 326 004e 002B     		cmp	r3, #0
+ 327 0050 17D1     		bne	.L17
+ 328 0052 FB88     		ldrh	r3, [r7, #6]
+ 329 0054 002B     		cmp	r3, #0
+ 330 0056 14D0     		beq	.L17
+ 197:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             {
+ 198:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 /* Moving away from SSS, set the divider first so when SSS is cleared we    */
+ 199:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 /* don't halt the clock.  Using the shadow load isn't required as the       */
+ 200:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 /* divider is ignored while SSS is set.                                     */
+ 201:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 CY_SET_REG16(ADC_DelSig_theACLK_DIV_PTR, clkDivider);
+ 331              		.loc 1 201 0
+ 332 0058 44F20413 		movw	r3, #:lower16:1073758468
+ 333 005c C4F20003 		movt	r3, #:upper16:1073758468
+ 334 0060 FA88     		ldrh	r2, [r7, #6]	@ movhi
+ 335 0062 1A80     		strh	r2, [r3, #0]	@ movhi
+ 202:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 ADC_DelSig_theACLK_MOD_SRC &= ~CYCLK_SSS;
+ 336              		.loc 1 202 0
+ 337 0064 44F20613 		movw	r3, #:lower16:1073758470
+ 338 0068 C4F20003 		movt	r3, #:upper16:1073758470
+ 339 006c 44F20612 		movw	r2, #:lower16:1073758470
+ 340 0070 C4F20002 		movt	r2, #:upper16:1073758470
+ 341 0074 1278     		ldrb	r2, [r2, #0]
+ 342 0076 D2B2     		uxtb	r2, r2
+ 343 0078 02F0BF02 		and	r2, r2, #191
+ 344 007c 1A70     		strb	r2, [r3, #0]
+ 345              		.loc 1 196 0
+ 346 007e 00BF     		nop
+ 347              		.loc 1 193 0
+ 348 0080 A3E0     		b	.L26
+ 349              	.L17:
+ 203:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             }
+ 204:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             else
+ 205:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             {
+ 206:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 /* Moving to SSS, set SSS which then ignores the divider and we can set     */
+ 207:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 /* it without bothering with the shadow load.                               */
+ 208:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 ADC_DelSig_theACLK_MOD_SRC |= CYCLK_SSS;
+ 350              		.loc 1 208 0
+ 351 0082 44F20613 		movw	r3, #:lower16:1073758470
+ 352 0086 C4F20003 		movt	r3, #:upper16:1073758470
+ 353 008a 44F20612 		movw	r2, #:lower16:1073758470
+ 354 008e C4F20002 		movt	r2, #:upper16:1073758470
+ 355 0092 1278     		ldrb	r2, [r2, #0]
+ 356 0094 D2B2     		uxtb	r2, r2
+ 357 0096 42F04002 		orr	r2, r2, #64
+ 358 009a D2B2     		uxtb	r2, r2
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 11
+
+
+ 359 009c 1A70     		strb	r2, [r3, #0]
+ 209:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 CY_SET_REG16(ADC_DelSig_theACLK_DIV_PTR, clkDivider);
+ 360              		.loc 1 209 0
+ 361 009e 44F20413 		movw	r3, #:lower16:1073758468
+ 362 00a2 C4F20003 		movt	r3, #:upper16:1073758468
+ 363 00a6 FA88     		ldrh	r2, [r7, #6]	@ movhi
+ 364 00a8 1A80     		strh	r2, [r3, #0]	@ movhi
+ 365              		.loc 1 193 0
+ 366 00aa 8EE0     		b	.L26
+ 367              	.L15:
+ 210:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             }
+ 211:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         }
+ 212:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         else
+ 213:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         {
+ 214:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             if (enabled)
+ 368              		.loc 1 214 0
+ 369 00ac 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 370 00ae 002B     		cmp	r3, #0
+ 371 00b0 4DD0     		beq	.L19
+ 215:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             {
+ 216:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 CLK_DIST_LD = 0x00u;
+ 372              		.loc 1 216 0
+ 373 00b2 44F20103 		movw	r3, #:lower16:1073758209
+ 374 00b6 C4F20003 		movt	r3, #:upper16:1073758209
+ 375 00ba 4FF00002 		mov	r2, #0
+ 376 00be 1A70     		strb	r2, [r3, #0]
+ 217:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 218:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 /* Clear all the mask bits except ours. */
+ 219:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #if defined(ADC_DelSig_theACLK__CFG3)
+ 220:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 CLK_DIST_AMASK = ADC_DelSig_theACLK_CLKEN_MASK;
+ 377              		.loc 1 220 0
+ 378 00c0 44F21403 		movw	r3, #:lower16:1073758228
+ 379 00c4 C4F20003 		movt	r3, #:upper16:1073758228
+ 380 00c8 4FF00202 		mov	r2, #2
+ 381 00cc 1A70     		strb	r2, [r3, #0]
+ 221:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 CLK_DIST_DMASK = 0x00u;
+ 382              		.loc 1 221 0
+ 383 00ce 44F21003 		movw	r3, #:lower16:1073758224
+ 384 00d2 C4F20003 		movt	r3, #:upper16:1073758224
+ 385 00d6 4FF00002 		mov	r2, #0
+ 386 00da 1A70     		strb	r2, [r3, #0]
+ 222:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #else
+ 223:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 CLK_DIST_DMASK = ADC_DelSig_theACLK_CLKEN_MASK;
+ 224:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 CLK_DIST_AMASK = 0x00u;
+ 225:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #endif
+ 226:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 /* Clear mask of bus clock. */
+ 227:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 CLK_DIST_BCFG2 &= ~BCFG2_MASK;
+ 387              		.loc 1 227 0
+ 388 00dc 44F20803 		movw	r3, #:lower16:1073758216
+ 389 00e0 C4F20003 		movt	r3, #:upper16:1073758216
+ 390 00e4 44F20802 		movw	r2, #:lower16:1073758216
+ 391 00e8 C4F20002 		movt	r2, #:upper16:1073758216
+ 392 00ec 1278     		ldrb	r2, [r2, #0]
+ 393 00ee D2B2     		uxtb	r2, r2
+ 394 00f0 02F07F02 		and	r2, r2, #127
+ 395 00f4 1A70     		strb	r2, [r3, #0]
+ 228:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 12
+
+
+ 229:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #if HAS_CLKDIST_LD_DISABLE
+ 230:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 CY_SET_REG16(CYREG_CLKDIST_WRK0, oldDivider);
+ 396              		.loc 1 230 0
+ 397 00f6 44F20203 		movw	r3, #:lower16:1073758210
+ 398 00fa C4F20003 		movt	r3, #:upper16:1073758210
+ 399 00fe FA89     		ldrh	r2, [r7, #14]	@ movhi
+ 400 0100 1A80     		strh	r2, [r3, #0]	@ movhi
+ 231:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 CLK_DIST_LD = CYCLK_LD_DISABLE|CYCLK_LD_SYNC_EN|CYCLK_LD_LOAD;
+ 401              		.loc 1 231 0
+ 402 0102 44F20103 		movw	r3, #:lower16:1073758209
+ 403 0106 C4F20003 		movt	r3, #:upper16:1073758209
+ 404 010a 4FF00702 		mov	r2, #7
+ 405 010e 1A70     		strb	r2, [r3, #0]
+ 406              	.L20:
+ 232:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 233:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 /* Wait for clock to be disabled */
+ 234:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 while (CLK_DIST_LD & CYCLK_LD_LOAD) { }
+ 407              		.loc 1 234 0
+ 408 0110 44F20103 		movw	r3, #:lower16:1073758209
+ 409 0114 C4F20003 		movt	r3, #:upper16:1073758209
+ 410 0118 1B78     		ldrb	r3, [r3, #0]
+ 411 011a DBB2     		uxtb	r3, r3
+ 412 011c 03F00103 		and	r3, r3, #1
+ 413 0120 DBB2     		uxtb	r3, r3
+ 414 0122 002B     		cmp	r3, #0
+ 415 0124 F4D1     		bne	.L20
+ 235:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #endif
+ 236:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 237:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 ADC_DelSig_theACLK_CLKEN &= ~ADC_DelSig_theACLK_CLKEN_MASK;
+ 416              		.loc 1 237 0
+ 417 0126 44F2A133 		movw	r3, #:lower16:1073759137
+ 418 012a C4F20003 		movt	r3, #:upper16:1073759137
+ 419 012e 44F2A132 		movw	r2, #:lower16:1073759137
+ 420 0132 C4F20002 		movt	r2, #:upper16:1073759137
+ 421 0136 1278     		ldrb	r2, [r2, #0]
+ 422 0138 D2B2     		uxtb	r2, r2
+ 423 013a 02F0FD02 		and	r2, r2, #253
+ 424 013e 1A70     		strb	r2, [r3, #0]
+ 238:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 239:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #if HAS_CLKDIST_LD_DISABLE
+ 240:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 /* Clear the disable bit */
+ 241:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 CLK_DIST_LD = 0x00u;
+ 425              		.loc 1 241 0
+ 426 0140 44F20103 		movw	r3, #:lower16:1073758209
+ 427 0144 C4F20003 		movt	r3, #:upper16:1073758209
+ 428 0148 4FF00002 		mov	r2, #0
+ 429 014c 1A70     		strb	r2, [r3, #0]
+ 430              	.L19:
+ 242:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #endif
+ 243:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             }
+ 244:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 245:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             /* Load divide value. */
+ 246:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             if (ADC_DelSig_theACLK_CLKEN & ADC_DelSig_theACLK_CLKEN_MASK)
+ 431              		.loc 1 246 0
+ 432 014e 44F2A133 		movw	r3, #:lower16:1073759137
+ 433 0152 C4F20003 		movt	r3, #:upper16:1073759137
+ 434 0156 1B78     		ldrb	r3, [r3, #0]
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 13
+
+
+ 435 0158 DBB2     		uxtb	r3, r3
+ 436 015a 03F00203 		and	r3, r3, #2
+ 437 015e 002B     		cmp	r3, #0
+ 438 0160 1ED0     		beq	.L21
+ 247:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             {
+ 248:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 /* If the clock is still enabled, use the shadow registers */
+ 249:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 CY_SET_REG16(CYREG_CLKDIST_WRK0, clkDivider);
+ 439              		.loc 1 249 0
+ 440 0162 44F20203 		movw	r3, #:lower16:1073758210
+ 441 0166 C4F20003 		movt	r3, #:upper16:1073758210
+ 442 016a FA88     		ldrh	r2, [r7, #6]	@ movhi
+ 443 016c 1A80     		strh	r2, [r3, #0]	@ movhi
+ 250:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 251:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 CLK_DIST_LD = (CYCLK_LD_LOAD | (restart ? CYCLK_LD_SYNC_EN : 0x00u));
+ 444              		.loc 1 251 0
+ 445 016e 44F20103 		movw	r3, #:lower16:1073758209
+ 446 0172 C4F20003 		movt	r3, #:upper16:1073758209
+ 447 0176 7A79     		ldrb	r2, [r7, #5]	@ zero_extendqisi2
+ 448 0178 002A     		cmp	r2, #0
+ 449 017a 02D0     		beq	.L22
+ 450 017c 4FF00302 		mov	r2, #3
+ 451 0180 01E0     		b	.L23
+ 452              	.L22:
+ 453 0182 4FF00102 		mov	r2, #1
+ 454              	.L23:
+ 455 0186 1A70     		strb	r2, [r3, #0]
+ 456              	.L24:
+ 252:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 while (CLK_DIST_LD & CYCLK_LD_LOAD) { }
+ 457              		.loc 1 252 0
+ 458 0188 44F20103 		movw	r3, #:lower16:1073758209
+ 459 018c C4F20003 		movt	r3, #:upper16:1073758209
+ 460 0190 1B78     		ldrb	r3, [r3, #0]
+ 461 0192 DBB2     		uxtb	r3, r3
+ 462 0194 03F00103 		and	r3, r3, #1
+ 463 0198 DBB2     		uxtb	r3, r3
+ 464 019a 002B     		cmp	r3, #0
+ 465 019c F4D1     		bne	.L24
+ 466 019e 05E0     		b	.L25
+ 467              	.L21:
+ 253:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             }
+ 254:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             else
+ 255:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             {
+ 256:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 /* If the clock is disabled, set the divider directly */
+ 257:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****                 CY_SET_REG16(ADC_DelSig_theACLK_DIV_PTR, clkDivider);
+ 468              		.loc 1 257 0
+ 469 01a0 44F20413 		movw	r3, #:lower16:1073758468
+ 470 01a4 C4F20003 		movt	r3, #:upper16:1073758468
+ 471 01a8 FA88     		ldrh	r2, [r7, #6]	@ movhi
+ 472 01aa 1A80     		strh	r2, [r3, #0]	@ movhi
+ 473              	.L25:
+ 258:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             }
+ 259:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 260:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             ADC_DelSig_theACLK_CLKEN |= enabled;
+ 474              		.loc 1 260 0
+ 475 01ac 44F2A133 		movw	r3, #:lower16:1073759137
+ 476 01b0 C4F20003 		movt	r3, #:upper16:1073759137
+ 477 01b4 44F2A132 		movw	r2, #:lower16:1073759137
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 14
+
+
+ 478 01b8 C4F20002 		movt	r2, #:upper16:1073759137
+ 479 01bc 1278     		ldrb	r2, [r2, #0]
+ 480 01be D1B2     		uxtb	r1, r2
+ 481 01c0 3A7B     		ldrb	r2, [r7, #12]
+ 482 01c2 41EA0202 		orr	r2, r1, r2
+ 483 01c6 D2B2     		uxtb	r2, r2
+ 484 01c8 1A70     		strb	r2, [r3, #0]
+ 485              	.L26:
+ 261:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         }
+ 262:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     }
+ 263:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** }
+ 486              		.loc 1 263 0
+ 487 01ca 07F11007 		add	r7, r7, #16
+ 488 01ce BD46     		mov	sp, r7
+ 489 01d0 80BD     		pop	{r7, pc}
+ 490              		.cfi_endproc
+ 491              	.LFE4:
+ 492              		.size	ADC_DelSig_theACLK_SetDividerRegister, .-ADC_DelSig_theACLK_SetDividerRegister
+ 493 01d2 00BF     		.section	.text.ADC_DelSig_theACLK_GetDividerRegister,"ax",%progbits
+ 494              		.align	2
+ 495              		.global	ADC_DelSig_theACLK_GetDividerRegister
+ 496              		.thumb
+ 497              		.thumb_func
+ 498              		.type	ADC_DelSig_theACLK_GetDividerRegister, %function
+ 499              	ADC_DelSig_theACLK_GetDividerRegister:
+ 500              	.LFB5:
+ 264:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 265:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 266:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /*******************************************************************************
+ 267:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Function Name: ADC_DelSig_theACLK_GetDividerRegister
+ 268:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** ********************************************************************************
+ 269:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Summary:
+ 270:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Gets the clock divider register value.
+ 271:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 272:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Parameters:
+ 273:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  void
+ 274:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 275:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Returns:
+ 276:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Divide value of the clock minus 1. For example, if the clock is set to
+ 277:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  divide by 2, the return value will be 1.
+ 278:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 279:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *******************************************************************************/
+ 280:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** uint16 ADC_DelSig_theACLK_GetDividerRegister(void) 
+ 281:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** {
+ 501              		.loc 1 281 0
+ 502              		.cfi_startproc
+ 503              		@ args = 0, pretend = 0, frame = 0
+ 504              		@ frame_needed = 1, uses_anonymous_args = 0
+ 505              		@ link register save eliminated.
+ 506 0000 80B4     		push	{r7}
+ 507              	.LCFI13:
+ 508              		.cfi_def_cfa_offset 4
+ 509 0002 00AF     		add	r7, sp, #0
+ 510              		.cfi_offset 7, -4
+ 511              	.LCFI14:
+ 512              		.cfi_def_cfa_register 7
+ 282:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     return CY_GET_REG16(ADC_DelSig_theACLK_DIV_PTR);
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 15
+
+
+ 513              		.loc 1 282 0
+ 514 0004 44F20413 		movw	r3, #:lower16:1073758468
+ 515 0008 C4F20003 		movt	r3, #:upper16:1073758468
+ 516 000c 1B88     		ldrh	r3, [r3, #0]	@ movhi
+ 517 000e 9BB2     		uxth	r3, r3
+ 283:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** }
+ 518              		.loc 1 283 0
+ 519 0010 1846     		mov	r0, r3
+ 520 0012 BD46     		mov	sp, r7
+ 521 0014 80BC     		pop	{r7}
+ 522 0016 7047     		bx	lr
+ 523              		.cfi_endproc
+ 524              	.LFE5:
+ 525              		.size	ADC_DelSig_theACLK_GetDividerRegister, .-ADC_DelSig_theACLK_GetDividerRegister
+ 526              		.section	.text.ADC_DelSig_theACLK_SetModeRegister,"ax",%progbits
+ 527              		.align	2
+ 528              		.global	ADC_DelSig_theACLK_SetModeRegister
+ 529              		.thumb
+ 530              		.thumb_func
+ 531              		.type	ADC_DelSig_theACLK_SetModeRegister, %function
+ 532              	ADC_DelSig_theACLK_SetModeRegister:
+ 533              	.LFB6:
+ 284:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 285:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 286:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /*******************************************************************************
+ 287:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Function Name: ADC_DelSig_theACLK_SetModeRegister
+ 288:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** ********************************************************************************
+ 289:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Summary:
+ 290:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Sets flags that control the operating mode of the clock. This function only
+ 291:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  changes flags from 0 to 1; flags that are already 1 will remain unchanged.
+ 292:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  To clear flags, use the ClearModeRegister function. The clock must be
+ 293:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  disabled before changing the mode.
+ 294:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 295:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Parameters:
+ 296:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  clkMode: Bit mask containing the bits to set. For PSoC 3 and PSoC 5,
+ 297:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   clkMode should be a set of the following optional bits or'ed together.
+ 298:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   - CYCLK_EARLY Enable early phase mode. Rising edge of output clock will
+ 299:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *                 occur when the divider count reaches half of the divide
+ 300:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *                 value.
+ 301:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   - CYCLK_DUTY  Enable 50% duty cycle output. When enabled, the output clock
+ 302:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *                 is asserted for approximately half of its period. When
+ 303:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *                 disabled, the output clock is asserted for one period of the
+ 304:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *                 source clock.
+ 305:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   - CYCLK_SYNC  Enable output synchronization to master clock. This should
+ 306:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *                 be enabled for all synchronous clocks.
+ 307:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   See the Technical Reference Manual for details about setting the mode of
+ 308:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   the clock. Specifically, see the CLKDIST.DCFG.CFG2 register.
+ 309:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 310:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Returns:
+ 311:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  void
+ 312:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 313:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *******************************************************************************/
+ 314:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** void ADC_DelSig_theACLK_SetModeRegister(uint8 clkMode) 
+ 315:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** {
+ 534              		.loc 1 315 0
+ 535              		.cfi_startproc
+ 536              		@ args = 0, pretend = 0, frame = 8
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 16
+
+
+ 537              		@ frame_needed = 1, uses_anonymous_args = 0
+ 538              		@ link register save eliminated.
+ 539 0000 80B4     		push	{r7}
+ 540              	.LCFI15:
+ 541              		.cfi_def_cfa_offset 4
+ 542 0002 83B0     		sub	sp, sp, #12
+ 543              	.LCFI16:
+ 544              		.cfi_def_cfa_offset 16
+ 545 0004 00AF     		add	r7, sp, #0
+ 546              		.cfi_offset 7, -4
+ 547              	.LCFI17:
+ 548              		.cfi_def_cfa_register 7
+ 549 0006 0346     		mov	r3, r0
+ 550 0008 FB71     		strb	r3, [r7, #7]
+ 316:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     ADC_DelSig_theACLK_MOD_SRC |= clkMode & ADC_DelSig_theACLK_MODE_MASK;
+ 551              		.loc 1 316 0
+ 552 000a 44F20613 		movw	r3, #:lower16:1073758470
+ 553 000e C4F20003 		movt	r3, #:upper16:1073758470
+ 554 0012 44F20612 		movw	r2, #:lower16:1073758470
+ 555 0016 C4F20002 		movt	r2, #:upper16:1073758470
+ 556 001a 1278     		ldrb	r2, [r2, #0]
+ 557 001c D1B2     		uxtb	r1, r2
+ 558 001e FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 559 0020 02F0F802 		and	r2, r2, #248
+ 560 0024 41EA0202 		orr	r2, r1, r2
+ 561 0028 D2B2     		uxtb	r2, r2
+ 562 002a 1A70     		strb	r2, [r3, #0]
+ 317:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** }
+ 563              		.loc 1 317 0
+ 564 002c 07F10C07 		add	r7, r7, #12
+ 565 0030 BD46     		mov	sp, r7
+ 566 0032 80BC     		pop	{r7}
+ 567 0034 7047     		bx	lr
+ 568              		.cfi_endproc
+ 569              	.LFE6:
+ 570              		.size	ADC_DelSig_theACLK_SetModeRegister, .-ADC_DelSig_theACLK_SetModeRegister
+ 571 0036 00BF     		.section	.text.ADC_DelSig_theACLK_ClearModeRegister,"ax",%progbits
+ 572              		.align	2
+ 573              		.global	ADC_DelSig_theACLK_ClearModeRegister
+ 574              		.thumb
+ 575              		.thumb_func
+ 576              		.type	ADC_DelSig_theACLK_ClearModeRegister, %function
+ 577              	ADC_DelSig_theACLK_ClearModeRegister:
+ 578              	.LFB7:
+ 318:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 319:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 320:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /*******************************************************************************
+ 321:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Function Name: ADC_DelSig_theACLK_ClearModeRegister
+ 322:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** ********************************************************************************
+ 323:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Summary:
+ 324:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Clears flags that control the operating mode of the clock. This function
+ 325:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  only changes flags from 1 to 0; flags that are already 0 will remain
+ 326:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  unchanged. To set flags, use the SetModeRegister function. The clock must be
+ 327:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  disabled before changing the mode.
+ 328:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 329:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Parameters:
+ 330:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  clkMode: Bit mask containing the bits to clear. For PSoC 3 and PSoC 5,
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 17
+
+
+ 331:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   clkMode should be a set of the following optional bits or'ed together.
+ 332:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   - CYCLK_EARLY Enable early phase mode. Rising edge of output clock will
+ 333:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *                 occur when the divider count reaches half of the divide
+ 334:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *                 value.
+ 335:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   - CYCLK_DUTY  Enable 50% duty cycle output. When enabled, the output clock
+ 336:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *                 is asserted for approximately half of its period. When
+ 337:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *                 disabled, the output clock is asserted for one period of the
+ 338:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *                 source clock.
+ 339:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   - CYCLK_SYNC  Enable output synchronization to master clock. This should
+ 340:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *                 be enabled for all synchronous clocks.
+ 341:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   See the Technical Reference Manual for details about setting the mode of
+ 342:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   the clock. Specifically, see the CLKDIST.DCFG.CFG2 register.
+ 343:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 344:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Returns:
+ 345:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  void
+ 346:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 347:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *******************************************************************************/
+ 348:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** void ADC_DelSig_theACLK_ClearModeRegister(uint8 clkMode) 
+ 349:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** {
+ 579              		.loc 1 349 0
+ 580              		.cfi_startproc
+ 581              		@ args = 0, pretend = 0, frame = 8
+ 582              		@ frame_needed = 1, uses_anonymous_args = 0
+ 583              		@ link register save eliminated.
+ 584 0000 80B4     		push	{r7}
+ 585              	.LCFI18:
+ 586              		.cfi_def_cfa_offset 4
+ 587 0002 83B0     		sub	sp, sp, #12
+ 588              	.LCFI19:
+ 589              		.cfi_def_cfa_offset 16
+ 590 0004 00AF     		add	r7, sp, #0
+ 591              		.cfi_offset 7, -4
+ 592              	.LCFI20:
+ 593              		.cfi_def_cfa_register 7
+ 594 0006 0346     		mov	r3, r0
+ 595 0008 FB71     		strb	r3, [r7, #7]
+ 350:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     ADC_DelSig_theACLK_MOD_SRC &= ~clkMode | ~ADC_DelSig_theACLK_MODE_MASK;
+ 596              		.loc 1 350 0
+ 597 000a 44F20613 		movw	r3, #:lower16:1073758470
+ 598 000e C4F20003 		movt	r3, #:upper16:1073758470
+ 599 0012 44F20612 		movw	r2, #:lower16:1073758470
+ 600 0016 C4F20002 		movt	r2, #:upper16:1073758470
+ 601 001a 1278     		ldrb	r2, [r2, #0]
+ 602 001c D1B2     		uxtb	r1, r2
+ 603 001e FA79     		ldrb	r2, [r7, #7]
+ 604 0020 6FEA0202 		mvn	r2, r2
+ 605 0024 D2B2     		uxtb	r2, r2
+ 606 0026 42F00702 		orr	r2, r2, #7
+ 607 002a D2B2     		uxtb	r2, r2
+ 608 002c 01EA0202 		and	r2, r1, r2
+ 609 0030 D2B2     		uxtb	r2, r2
+ 610 0032 1A70     		strb	r2, [r3, #0]
+ 351:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** }
+ 611              		.loc 1 351 0
+ 612 0034 07F10C07 		add	r7, r7, #12
+ 613 0038 BD46     		mov	sp, r7
+ 614 003a 80BC     		pop	{r7}
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 18
+
+
+ 615 003c 7047     		bx	lr
+ 616              		.cfi_endproc
+ 617              	.LFE7:
+ 618              		.size	ADC_DelSig_theACLK_ClearModeRegister, .-ADC_DelSig_theACLK_ClearModeRegister
+ 619 003e 00BF     		.section	.text.ADC_DelSig_theACLK_GetModeRegister,"ax",%progbits
+ 620              		.align	2
+ 621              		.global	ADC_DelSig_theACLK_GetModeRegister
+ 622              		.thumb
+ 623              		.thumb_func
+ 624              		.type	ADC_DelSig_theACLK_GetModeRegister, %function
+ 625              	ADC_DelSig_theACLK_GetModeRegister:
+ 626              	.LFB8:
+ 352:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 353:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 354:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /*******************************************************************************
+ 355:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Function Name: ADC_DelSig_theACLK_GetModeRegister
+ 356:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** ********************************************************************************
+ 357:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Summary:
+ 358:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Gets the clock mode register value.
+ 359:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 360:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Parameters:
+ 361:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  void
+ 362:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 363:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Returns:
+ 364:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Bit mask representing the enabled mode bits. See the SetModeRegister and
+ 365:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  ClearModeRegister descriptions for details about the mode bits.
+ 366:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 367:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *******************************************************************************/
+ 368:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** uint8 ADC_DelSig_theACLK_GetModeRegister(void) 
+ 369:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** {
+ 627              		.loc 1 369 0
+ 628              		.cfi_startproc
+ 629              		@ args = 0, pretend = 0, frame = 0
+ 630              		@ frame_needed = 1, uses_anonymous_args = 0
+ 631              		@ link register save eliminated.
+ 632 0000 80B4     		push	{r7}
+ 633              	.LCFI21:
+ 634              		.cfi_def_cfa_offset 4
+ 635 0002 00AF     		add	r7, sp, #0
+ 636              		.cfi_offset 7, -4
+ 637              	.LCFI22:
+ 638              		.cfi_def_cfa_register 7
+ 370:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     return ADC_DelSig_theACLK_MOD_SRC & ADC_DelSig_theACLK_MODE_MASK;
+ 639              		.loc 1 370 0
+ 640 0004 44F20613 		movw	r3, #:lower16:1073758470
+ 641 0008 C4F20003 		movt	r3, #:upper16:1073758470
+ 642 000c 1B78     		ldrb	r3, [r3, #0]
+ 643 000e DBB2     		uxtb	r3, r3
+ 644 0010 03F0F803 		and	r3, r3, #248
+ 371:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** }
+ 645              		.loc 1 371 0
+ 646 0014 1846     		mov	r0, r3
+ 647 0016 BD46     		mov	sp, r7
+ 648 0018 80BC     		pop	{r7}
+ 649 001a 7047     		bx	lr
+ 650              		.cfi_endproc
+ 651              	.LFE8:
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 19
+
+
+ 652              		.size	ADC_DelSig_theACLK_GetModeRegister, .-ADC_DelSig_theACLK_GetModeRegister
+ 653              		.section	.text.ADC_DelSig_theACLK_SetSourceRegister,"ax",%progbits
+ 654              		.align	2
+ 655              		.global	ADC_DelSig_theACLK_SetSourceRegister
+ 656              		.thumb
+ 657              		.thumb_func
+ 658              		.type	ADC_DelSig_theACLK_SetSourceRegister, %function
+ 659              	ADC_DelSig_theACLK_SetSourceRegister:
+ 660              	.LFB9:
+ 372:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 373:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 374:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /*******************************************************************************
+ 375:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Function Name: ADC_DelSig_theACLK_SetSourceRegister
+ 376:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** ********************************************************************************
+ 377:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Summary:
+ 378:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Sets the input source of the clock. The clock must be disabled before
+ 379:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  changing the source. The old and new clock sources must be running.
+ 380:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 381:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Parameters:
+ 382:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  clkSource:  For PSoC 3 and PSoC 5 devices, clkSource should be one of the
+ 383:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   following input sources:
+ 384:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   - CYCLK_SRC_SEL_SYNC_DIG
+ 385:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   - CYCLK_SRC_SEL_IMO
+ 386:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   - CYCLK_SRC_SEL_XTALM
+ 387:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   - CYCLK_SRC_SEL_ILO
+ 388:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   - CYCLK_SRC_SEL_PLL
+ 389:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   - CYCLK_SRC_SEL_XTALK
+ 390:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   - CYCLK_SRC_SEL_DSI_G
+ 391:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   - CYCLK_SRC_SEL_DSI_D/CYCLK_SRC_SEL_DSI_A
+ 392:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   See the Technical Reference Manual for details on clock sources.
+ 393:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 394:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Returns:
+ 395:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  void
+ 396:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 397:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *******************************************************************************/
+ 398:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** void ADC_DelSig_theACLK_SetSourceRegister(uint8 clkSource) 
+ 399:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** {
+ 661              		.loc 1 399 0
+ 662              		.cfi_startproc
+ 663              		@ args = 0, pretend = 0, frame = 16
+ 664              		@ frame_needed = 1, uses_anonymous_args = 0
+ 665 0000 80B5     		push	{r7, lr}
+ 666              	.LCFI23:
+ 667              		.cfi_def_cfa_offset 8
+ 668 0002 84B0     		sub	sp, sp, #16
+ 669              	.LCFI24:
+ 670              		.cfi_def_cfa_offset 24
+ 671 0004 00AF     		add	r7, sp, #0
+ 672              		.cfi_offset 14, -4
+ 673              		.cfi_offset 7, -8
+ 674              	.LCFI25:
+ 675              		.cfi_def_cfa_register 7
+ 676 0006 0346     		mov	r3, r0
+ 677 0008 FB71     		strb	r3, [r7, #7]
+ 400:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     uint16 currDiv = ADC_DelSig_theACLK_GetDividerRegister();
+ 678              		.loc 1 400 0
+ 679 000a FFF7FEFF 		bl	ADC_DelSig_theACLK_GetDividerRegister
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 20
+
+
+ 680 000e 0346     		mov	r3, r0
+ 681 0010 BB81     		strh	r3, [r7, #12]	@ movhi
+ 401:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     uint8 oldSrc = ADC_DelSig_theACLK_GetSourceRegister();
+ 682              		.loc 1 401 0
+ 683 0012 FFF7FEFF 		bl	ADC_DelSig_theACLK_GetSourceRegister
+ 684 0016 0346     		mov	r3, r0
+ 685 0018 FB73     		strb	r3, [r7, #15]
+ 402:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 403:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     if (oldSrc != CYCLK_SRC_SEL_CLK_SYNC_D && clkSource == CYCLK_SRC_SEL_CLK_SYNC_D && currDiv == 0
+ 686              		.loc 1 403 0
+ 687 001a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 688 001c 002B     		cmp	r3, #0
+ 689 001e 25D0     		beq	.L36
+ 690 0020 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 691 0022 002B     		cmp	r3, #0
+ 692 0024 22D1     		bne	.L36
+ 693 0026 BB89     		ldrh	r3, [r7, #12]
+ 694 0028 002B     		cmp	r3, #0
+ 695 002a 1FD1     		bne	.L36
+ 404:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     {
+ 405:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         /* Switching to Master and divider is 1, set SSS, which will output master, */
+ 406:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         /* then set the source so we are consistent.                                */
+ 407:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         ADC_DelSig_theACLK_MOD_SRC |= CYCLK_SSS;
+ 696              		.loc 1 407 0
+ 697 002c 44F20613 		movw	r3, #:lower16:1073758470
+ 698 0030 C4F20003 		movt	r3, #:upper16:1073758470
+ 699 0034 44F20612 		movw	r2, #:lower16:1073758470
+ 700 0038 C4F20002 		movt	r2, #:upper16:1073758470
+ 701 003c 1278     		ldrb	r2, [r2, #0]
+ 702 003e D2B2     		uxtb	r2, r2
+ 703 0040 42F04002 		orr	r2, r2, #64
+ 704 0044 D2B2     		uxtb	r2, r2
+ 705 0046 1A70     		strb	r2, [r3, #0]
+ 408:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         ADC_DelSig_theACLK_MOD_SRC =
+ 706              		.loc 1 408 0
+ 707 0048 44F20613 		movw	r3, #:lower16:1073758470
+ 708 004c C4F20003 		movt	r3, #:upper16:1073758470
+ 409:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             (ADC_DelSig_theACLK_MOD_SRC & ~ADC_DelSig_theACLK_SRC_SEL_MSK) | clkSource;
+ 709              		.loc 1 409 0
+ 710 0050 44F20612 		movw	r2, #:lower16:1073758470
+ 711 0054 C4F20002 		movt	r2, #:upper16:1073758470
+ 712 0058 1278     		ldrb	r2, [r2, #0]
+ 713 005a D2B2     		uxtb	r2, r2
+ 714              		.loc 1 408 0
+ 715 005c 02F0F802 		and	r2, r2, #248
+ 716 0060 F979     		ldrb	r1, [r7, #7]
+ 717 0062 42EA0102 		orr	r2, r2, r1
+ 718 0066 D2B2     		uxtb	r2, r2
+ 719 0068 1A70     		strb	r2, [r3, #0]
+ 720              		.loc 1 403 0
+ 721 006a 38E0     		b	.L39
+ 722              	.L36:
+ 410:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     }
+ 411:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     else if (oldSrc == CYCLK_SRC_SEL_CLK_SYNC_D && clkSource != CYCLK_SRC_SEL_CLK_SYNC_D && currDiv
+ 723              		.loc 1 411 0
+ 724 006c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 725 006e 002B     		cmp	r3, #0
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 21
+
+
+ 726 0070 24D1     		bne	.L38
+ 727 0072 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 728 0074 002B     		cmp	r3, #0
+ 729 0076 21D0     		beq	.L38
+ 730 0078 BB89     		ldrh	r3, [r7, #12]
+ 731 007a 002B     		cmp	r3, #0
+ 732 007c 1ED1     		bne	.L38
+ 412:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     {
+ 413:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         /* Switching from Master to not and divider is 1, set source, so we don't   */
+ 414:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         /* lock when we clear SSS.                                                  */
+ 415:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         ADC_DelSig_theACLK_MOD_SRC =
+ 733              		.loc 1 415 0
+ 734 007e 44F20613 		movw	r3, #:lower16:1073758470
+ 735 0082 C4F20003 		movt	r3, #:upper16:1073758470
+ 416:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             (ADC_DelSig_theACLK_MOD_SRC & ~ADC_DelSig_theACLK_SRC_SEL_MSK) | clkSource;
+ 736              		.loc 1 416 0
+ 737 0086 44F20612 		movw	r2, #:lower16:1073758470
+ 738 008a C4F20002 		movt	r2, #:upper16:1073758470
+ 739 008e 1278     		ldrb	r2, [r2, #0]
+ 740 0090 D2B2     		uxtb	r2, r2
+ 741              		.loc 1 415 0
+ 742 0092 02F0F802 		and	r2, r2, #248
+ 743 0096 F979     		ldrb	r1, [r7, #7]
+ 744 0098 42EA0102 		orr	r2, r2, r1
+ 745 009c D2B2     		uxtb	r2, r2
+ 746 009e 1A70     		strb	r2, [r3, #0]
+ 417:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         ADC_DelSig_theACLK_MOD_SRC &= ~CYCLK_SSS;
+ 747              		.loc 1 417 0
+ 748 00a0 44F20613 		movw	r3, #:lower16:1073758470
+ 749 00a4 C4F20003 		movt	r3, #:upper16:1073758470
+ 750 00a8 44F20612 		movw	r2, #:lower16:1073758470
+ 751 00ac C4F20002 		movt	r2, #:upper16:1073758470
+ 752 00b0 1278     		ldrb	r2, [r2, #0]
+ 753 00b2 D2B2     		uxtb	r2, r2
+ 754 00b4 02F0BF02 		and	r2, r2, #191
+ 755 00b8 1A70     		strb	r2, [r3, #0]
+ 756              		.loc 1 411 0
+ 757 00ba 10E0     		b	.L39
+ 758              	.L38:
+ 418:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     }
+ 419:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     else
+ 420:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     {
+ 421:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****         ADC_DelSig_theACLK_MOD_SRC =
+ 759              		.loc 1 421 0
+ 760 00bc 44F20613 		movw	r3, #:lower16:1073758470
+ 761 00c0 C4F20003 		movt	r3, #:upper16:1073758470
+ 422:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****             (ADC_DelSig_theACLK_MOD_SRC & ~ADC_DelSig_theACLK_SRC_SEL_MSK) | clkSource;
+ 762              		.loc 1 422 0
+ 763 00c4 44F20612 		movw	r2, #:lower16:1073758470
+ 764 00c8 C4F20002 		movt	r2, #:upper16:1073758470
+ 765 00cc 1278     		ldrb	r2, [r2, #0]
+ 766 00ce D2B2     		uxtb	r2, r2
+ 767              		.loc 1 421 0
+ 768 00d0 02F0F802 		and	r2, r2, #248
+ 769 00d4 F979     		ldrb	r1, [r7, #7]
+ 770 00d6 42EA0102 		orr	r2, r2, r1
+ 771 00da D2B2     		uxtb	r2, r2
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 22
+
+
+ 772 00dc 1A70     		strb	r2, [r3, #0]
+ 773              	.L39:
+ 423:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     }
+ 424:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** }
+ 774              		.loc 1 424 0
+ 775 00de 07F11007 		add	r7, r7, #16
+ 776 00e2 BD46     		mov	sp, r7
+ 777 00e4 80BD     		pop	{r7, pc}
+ 778              		.cfi_endproc
+ 779              	.LFE9:
+ 780              		.size	ADC_DelSig_theACLK_SetSourceRegister, .-ADC_DelSig_theACLK_SetSourceRegister
+ 781 00e6 00BF     		.section	.text.ADC_DelSig_theACLK_GetSourceRegister,"ax",%progbits
+ 782              		.align	2
+ 783              		.global	ADC_DelSig_theACLK_GetSourceRegister
+ 784              		.thumb
+ 785              		.thumb_func
+ 786              		.type	ADC_DelSig_theACLK_GetSourceRegister, %function
+ 787              	ADC_DelSig_theACLK_GetSourceRegister:
+ 788              	.LFB10:
+ 425:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 426:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 427:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /*******************************************************************************
+ 428:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Function Name: ADC_DelSig_theACLK_GetSourceRegister
+ 429:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** ********************************************************************************
+ 430:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Summary:
+ 431:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Gets the input source of the clock.
+ 432:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 433:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Parameters:
+ 434:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  void
+ 435:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 436:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Returns:
+ 437:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  The input source of the clock. See SetSourceRegister for details.
+ 438:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 439:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *******************************************************************************/
+ 440:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** uint8 ADC_DelSig_theACLK_GetSourceRegister(void) 
+ 441:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** {
+ 789              		.loc 1 441 0
+ 790              		.cfi_startproc
+ 791              		@ args = 0, pretend = 0, frame = 0
+ 792              		@ frame_needed = 1, uses_anonymous_args = 0
+ 793              		@ link register save eliminated.
+ 794 0000 80B4     		push	{r7}
+ 795              	.LCFI26:
+ 796              		.cfi_def_cfa_offset 4
+ 797 0002 00AF     		add	r7, sp, #0
+ 798              		.cfi_offset 7, -4
+ 799              	.LCFI27:
+ 800              		.cfi_def_cfa_register 7
+ 442:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     return ADC_DelSig_theACLK_MOD_SRC & ADC_DelSig_theACLK_SRC_SEL_MSK;
+ 801              		.loc 1 442 0
+ 802 0004 44F20613 		movw	r3, #:lower16:1073758470
+ 803 0008 C4F20003 		movt	r3, #:upper16:1073758470
+ 804 000c 1B78     		ldrb	r3, [r3, #0]
+ 805 000e DBB2     		uxtb	r3, r3
+ 806 0010 03F00703 		and	r3, r3, #7
+ 443:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** }
+ 807              		.loc 1 443 0
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 23
+
+
+ 808 0014 1846     		mov	r0, r3
+ 809 0016 BD46     		mov	sp, r7
+ 810 0018 80BC     		pop	{r7}
+ 811 001a 7047     		bx	lr
+ 812              		.cfi_endproc
+ 813              	.LFE10:
+ 814              		.size	ADC_DelSig_theACLK_GetSourceRegister, .-ADC_DelSig_theACLK_GetSourceRegister
+ 815              		.section	.text.ADC_DelSig_theACLK_SetPhaseRegister,"ax",%progbits
+ 816              		.align	2
+ 817              		.global	ADC_DelSig_theACLK_SetPhaseRegister
+ 818              		.thumb
+ 819              		.thumb_func
+ 820              		.type	ADC_DelSig_theACLK_SetPhaseRegister, %function
+ 821              	ADC_DelSig_theACLK_SetPhaseRegister:
+ 822              	.LFB11:
+ 444:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 445:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 446:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** #if defined(ADC_DelSig_theACLK__CFG3)
+ 447:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 448:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 449:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /*******************************************************************************
+ 450:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Function Name: ADC_DelSig_theACLK_SetPhaseRegister
+ 451:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** ********************************************************************************
+ 452:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Summary:
+ 453:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Sets the phase delay of the analog clock. This function is only available
+ 454:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  for analog clocks. The clock must be disabled before changing the phase
+ 455:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  delay to avoid glitches.
+ 456:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 457:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 458:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Parameters:
+ 459:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  clkPhase: Amount to delay the phase of the clock, in 1.0ns increments.
+ 460:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   clkPhase must be from 1 to 11 inclusive. Other values, including 0,
+ 461:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   disable the clock. clkPhase = 1 produces a 0ns delay and clkPhase = 11 
+ 462:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *   produces a 10ns delay.
+ 463:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 464:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Returns:
+ 465:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  void
+ 466:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 467:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *******************************************************************************/
+ 468:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** void ADC_DelSig_theACLK_SetPhaseRegister(uint8 clkPhase) 
+ 469:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** {
+ 823              		.loc 1 469 0
+ 824              		.cfi_startproc
+ 825              		@ args = 0, pretend = 0, frame = 8
+ 826              		@ frame_needed = 1, uses_anonymous_args = 0
+ 827              		@ link register save eliminated.
+ 828 0000 80B4     		push	{r7}
+ 829              	.LCFI28:
+ 830              		.cfi_def_cfa_offset 4
+ 831 0002 83B0     		sub	sp, sp, #12
+ 832              	.LCFI29:
+ 833              		.cfi_def_cfa_offset 16
+ 834 0004 00AF     		add	r7, sp, #0
+ 835              		.cfi_offset 7, -4
+ 836              	.LCFI30:
+ 837              		.cfi_def_cfa_register 7
+ 838 0006 0346     		mov	r3, r0
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 24
+
+
+ 839 0008 FB71     		strb	r3, [r7, #7]
+ 470:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     ADC_DelSig_theACLK_PHASE = clkPhase & ADC_DelSig_theACLK_PHASE_MASK;
+ 840              		.loc 1 470 0
+ 841 000a 44F20713 		movw	r3, #:lower16:1073758471
+ 842 000e C4F20003 		movt	r3, #:upper16:1073758471
+ 843 0012 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 844 0014 02F00F02 		and	r2, r2, #15
+ 845 0018 1A70     		strb	r2, [r3, #0]
+ 471:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** }
+ 846              		.loc 1 471 0
+ 847 001a 07F10C07 		add	r7, r7, #12
+ 848 001e BD46     		mov	sp, r7
+ 849 0020 80BC     		pop	{r7}
+ 850 0022 7047     		bx	lr
+ 851              		.cfi_endproc
+ 852              	.LFE11:
+ 853              		.size	ADC_DelSig_theACLK_SetPhaseRegister, .-ADC_DelSig_theACLK_SetPhaseRegister
+ 854              		.section	.text.ADC_DelSig_theACLK_GetPhaseRegister,"ax",%progbits
+ 855              		.align	2
+ 856              		.global	ADC_DelSig_theACLK_GetPhaseRegister
+ 857              		.thumb
+ 858              		.thumb_func
+ 859              		.type	ADC_DelSig_theACLK_GetPhaseRegister, %function
+ 860              	ADC_DelSig_theACLK_GetPhaseRegister:
+ 861              	.LFB12:
+ 472:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 473:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** 
+ 474:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** /*******************************************************************************
+ 475:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Function Name: ADC_DelSig_theACLK_GetPhase
+ 476:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** ********************************************************************************
+ 477:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Summary:
+ 478:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Gets the phase delay of the analog clock. This function is only available
+ 479:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  for analog clocks.
+ 480:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 481:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Parameters:
+ 482:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  void
+ 483:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 484:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** * Returns:
+ 485:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *  Phase of the analog clock. See SetPhaseRegister for details.
+ 486:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *
+ 487:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** *******************************************************************************/
+ 488:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** uint8 ADC_DelSig_theACLK_GetPhaseRegister(void) 
+ 489:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** {
+ 862              		.loc 1 489 0
+ 863              		.cfi_startproc
+ 864              		@ args = 0, pretend = 0, frame = 0
+ 865              		@ frame_needed = 1, uses_anonymous_args = 0
+ 866              		@ link register save eliminated.
+ 867 0000 80B4     		push	{r7}
+ 868              	.LCFI31:
+ 869              		.cfi_def_cfa_offset 4
+ 870 0002 00AF     		add	r7, sp, #0
+ 871              		.cfi_offset 7, -4
+ 872              	.LCFI32:
+ 873              		.cfi_def_cfa_register 7
+ 490:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c ****     return ADC_DelSig_theACLK_PHASE & ADC_DelSig_theACLK_PHASE_MASK;
+ 874              		.loc 1 490 0
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 25
+
+
+ 875 0004 44F20713 		movw	r3, #:lower16:1073758471
+ 876 0008 C4F20003 		movt	r3, #:upper16:1073758471
+ 877 000c 1B78     		ldrb	r3, [r3, #0]
+ 878 000e DBB2     		uxtb	r3, r3
+ 879 0010 03F00F03 		and	r3, r3, #15
+ 491:.\Generated_Source\PSoC5/ADC_DelSig_theACLK.c **** }
+ 880              		.loc 1 491 0
+ 881 0014 1846     		mov	r0, r3
+ 882 0016 BD46     		mov	sp, r7
+ 883 0018 80BC     		pop	{r7}
+ 884 001a 7047     		bx	lr
+ 885              		.cfi_endproc
+ 886              	.LFE12:
+ 887              		.size	ADC_DelSig_theACLK_GetPhaseRegister, .-ADC_DelSig_theACLK_GetPhaseRegister
+ 888              		.text
+ 889              	.Letext0:
+ 890              		.section	.debug_loc,"",%progbits
+ 891              	.Ldebug_loc0:
+ 892              	.LLST0:
+ 893 0000 00000000 		.4byte	.LFB0
+ 894 0004 02000000 		.4byte	.LCFI0
+ 895 0008 0100     		.2byte	0x1
+ 896 000a 5D       		.byte	0x5d
+ 897 000b 02000000 		.4byte	.LCFI0
+ 898 000f 04000000 		.4byte	.LCFI1
+ 899 0013 0200     		.2byte	0x2
+ 900 0015 7D       		.byte	0x7d
+ 901 0016 04       		.sleb128 4
+ 902 0017 04000000 		.4byte	.LCFI1
+ 903 001b 26000000 		.4byte	.LFE0
+ 904 001f 0200     		.2byte	0x2
+ 905 0021 77       		.byte	0x77
+ 906 0022 04       		.sleb128 4
+ 907 0023 00000000 		.4byte	0x0
+ 908 0027 00000000 		.4byte	0x0
+ 909              	.LLST1:
+ 910 002b 00000000 		.4byte	.LFB1
+ 911 002f 02000000 		.4byte	.LCFI2
+ 912 0033 0100     		.2byte	0x1
+ 913 0035 5D       		.byte	0x5d
+ 914 0036 02000000 		.4byte	.LCFI2
+ 915 003a 04000000 		.4byte	.LCFI3
+ 916 003e 0200     		.2byte	0x2
+ 917 0040 7D       		.byte	0x7d
+ 918 0041 04       		.sleb128 4
+ 919 0042 04000000 		.4byte	.LCFI3
+ 920 0046 24000000 		.4byte	.LFE1
+ 921 004a 0200     		.2byte	0x2
+ 922 004c 77       		.byte	0x77
+ 923 004d 04       		.sleb128 4
+ 924 004e 00000000 		.4byte	0x0
+ 925 0052 00000000 		.4byte	0x0
+ 926              	.LLST2:
+ 927 0056 00000000 		.4byte	.LFB2
+ 928 005a 02000000 		.4byte	.LCFI4
+ 929 005e 0100     		.2byte	0x1
+ 930 0060 5D       		.byte	0x5d
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 26
+
+
+ 931 0061 02000000 		.4byte	.LCFI4
+ 932 0065 04000000 		.4byte	.LCFI5
+ 933 0069 0200     		.2byte	0x2
+ 934 006b 7D       		.byte	0x7d
+ 935 006c 04       		.sleb128 4
+ 936 006d 04000000 		.4byte	.LCFI5
+ 937 0071 06000000 		.4byte	.LCFI6
+ 938 0075 0200     		.2byte	0x2
+ 939 0077 7D       		.byte	0x7d
+ 940 0078 10       		.sleb128 16
+ 941 0079 06000000 		.4byte	.LCFI6
+ 942 007d D8000000 		.4byte	.LFE2
+ 943 0081 0200     		.2byte	0x2
+ 944 0083 77       		.byte	0x77
+ 945 0084 10       		.sleb128 16
+ 946 0085 00000000 		.4byte	0x0
+ 947 0089 00000000 		.4byte	0x0
+ 948              	.LLST3:
+ 949 008d 00000000 		.4byte	.LFB3
+ 950 0091 02000000 		.4byte	.LCFI7
+ 951 0095 0100     		.2byte	0x1
+ 952 0097 5D       		.byte	0x5d
+ 953 0098 02000000 		.4byte	.LCFI7
+ 954 009c 04000000 		.4byte	.LCFI8
+ 955 00a0 0200     		.2byte	0x2
+ 956 00a2 7D       		.byte	0x7d
+ 957 00a3 04       		.sleb128 4
+ 958 00a4 04000000 		.4byte	.LCFI8
+ 959 00a8 06000000 		.4byte	.LCFI9
+ 960 00ac 0200     		.2byte	0x2
+ 961 00ae 7D       		.byte	0x7d
+ 962 00af 10       		.sleb128 16
+ 963 00b0 06000000 		.4byte	.LCFI9
+ 964 00b4 52000000 		.4byte	.LFE3
+ 965 00b8 0200     		.2byte	0x2
+ 966 00ba 77       		.byte	0x77
+ 967 00bb 10       		.sleb128 16
+ 968 00bc 00000000 		.4byte	0x0
+ 969 00c0 00000000 		.4byte	0x0
+ 970              	.LLST4:
+ 971 00c4 00000000 		.4byte	.LFB4
+ 972 00c8 02000000 		.4byte	.LCFI10
+ 973 00cc 0100     		.2byte	0x1
+ 974 00ce 5D       		.byte	0x5d
+ 975 00cf 02000000 		.4byte	.LCFI10
+ 976 00d3 04000000 		.4byte	.LCFI11
+ 977 00d7 0200     		.2byte	0x2
+ 978 00d9 7D       		.byte	0x7d
+ 979 00da 08       		.sleb128 8
+ 980 00db 04000000 		.4byte	.LCFI11
+ 981 00df 06000000 		.4byte	.LCFI12
+ 982 00e3 0200     		.2byte	0x2
+ 983 00e5 7D       		.byte	0x7d
+ 984 00e6 18       		.sleb128 24
+ 985 00e7 06000000 		.4byte	.LCFI12
+ 986 00eb D2010000 		.4byte	.LFE4
+ 987 00ef 0200     		.2byte	0x2
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 27
+
+
+ 988 00f1 77       		.byte	0x77
+ 989 00f2 18       		.sleb128 24
+ 990 00f3 00000000 		.4byte	0x0
+ 991 00f7 00000000 		.4byte	0x0
+ 992              	.LLST5:
+ 993 00fb 00000000 		.4byte	.LFB5
+ 994 00ff 02000000 		.4byte	.LCFI13
+ 995 0103 0100     		.2byte	0x1
+ 996 0105 5D       		.byte	0x5d
+ 997 0106 02000000 		.4byte	.LCFI13
+ 998 010a 04000000 		.4byte	.LCFI14
+ 999 010e 0200     		.2byte	0x2
+ 1000 0110 7D       		.byte	0x7d
+ 1001 0111 04       		.sleb128 4
+ 1002 0112 04000000 		.4byte	.LCFI14
+ 1003 0116 18000000 		.4byte	.LFE5
+ 1004 011a 0200     		.2byte	0x2
+ 1005 011c 77       		.byte	0x77
+ 1006 011d 04       		.sleb128 4
+ 1007 011e 00000000 		.4byte	0x0
+ 1008 0122 00000000 		.4byte	0x0
+ 1009              	.LLST6:
+ 1010 0126 00000000 		.4byte	.LFB6
+ 1011 012a 02000000 		.4byte	.LCFI15
+ 1012 012e 0100     		.2byte	0x1
+ 1013 0130 5D       		.byte	0x5d
+ 1014 0131 02000000 		.4byte	.LCFI15
+ 1015 0135 04000000 		.4byte	.LCFI16
+ 1016 0139 0200     		.2byte	0x2
+ 1017 013b 7D       		.byte	0x7d
+ 1018 013c 04       		.sleb128 4
+ 1019 013d 04000000 		.4byte	.LCFI16
+ 1020 0141 06000000 		.4byte	.LCFI17
+ 1021 0145 0200     		.2byte	0x2
+ 1022 0147 7D       		.byte	0x7d
+ 1023 0148 10       		.sleb128 16
+ 1024 0149 06000000 		.4byte	.LCFI17
+ 1025 014d 36000000 		.4byte	.LFE6
+ 1026 0151 0200     		.2byte	0x2
+ 1027 0153 77       		.byte	0x77
+ 1028 0154 10       		.sleb128 16
+ 1029 0155 00000000 		.4byte	0x0
+ 1030 0159 00000000 		.4byte	0x0
+ 1031              	.LLST7:
+ 1032 015d 00000000 		.4byte	.LFB7
+ 1033 0161 02000000 		.4byte	.LCFI18
+ 1034 0165 0100     		.2byte	0x1
+ 1035 0167 5D       		.byte	0x5d
+ 1036 0168 02000000 		.4byte	.LCFI18
+ 1037 016c 04000000 		.4byte	.LCFI19
+ 1038 0170 0200     		.2byte	0x2
+ 1039 0172 7D       		.byte	0x7d
+ 1040 0173 04       		.sleb128 4
+ 1041 0174 04000000 		.4byte	.LCFI19
+ 1042 0178 06000000 		.4byte	.LCFI20
+ 1043 017c 0200     		.2byte	0x2
+ 1044 017e 7D       		.byte	0x7d
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 28
+
+
+ 1045 017f 10       		.sleb128 16
+ 1046 0180 06000000 		.4byte	.LCFI20
+ 1047 0184 3E000000 		.4byte	.LFE7
+ 1048 0188 0200     		.2byte	0x2
+ 1049 018a 77       		.byte	0x77
+ 1050 018b 10       		.sleb128 16
+ 1051 018c 00000000 		.4byte	0x0
+ 1052 0190 00000000 		.4byte	0x0
+ 1053              	.LLST8:
+ 1054 0194 00000000 		.4byte	.LFB8
+ 1055 0198 02000000 		.4byte	.LCFI21
+ 1056 019c 0100     		.2byte	0x1
+ 1057 019e 5D       		.byte	0x5d
+ 1058 019f 02000000 		.4byte	.LCFI21
+ 1059 01a3 04000000 		.4byte	.LCFI22
+ 1060 01a7 0200     		.2byte	0x2
+ 1061 01a9 7D       		.byte	0x7d
+ 1062 01aa 04       		.sleb128 4
+ 1063 01ab 04000000 		.4byte	.LCFI22
+ 1064 01af 1C000000 		.4byte	.LFE8
+ 1065 01b3 0200     		.2byte	0x2
+ 1066 01b5 77       		.byte	0x77
+ 1067 01b6 04       		.sleb128 4
+ 1068 01b7 00000000 		.4byte	0x0
+ 1069 01bb 00000000 		.4byte	0x0
+ 1070              	.LLST9:
+ 1071 01bf 00000000 		.4byte	.LFB9
+ 1072 01c3 02000000 		.4byte	.LCFI23
+ 1073 01c7 0100     		.2byte	0x1
+ 1074 01c9 5D       		.byte	0x5d
+ 1075 01ca 02000000 		.4byte	.LCFI23
+ 1076 01ce 04000000 		.4byte	.LCFI24
+ 1077 01d2 0200     		.2byte	0x2
+ 1078 01d4 7D       		.byte	0x7d
+ 1079 01d5 08       		.sleb128 8
+ 1080 01d6 04000000 		.4byte	.LCFI24
+ 1081 01da 06000000 		.4byte	.LCFI25
+ 1082 01de 0200     		.2byte	0x2
+ 1083 01e0 7D       		.byte	0x7d
+ 1084 01e1 18       		.sleb128 24
+ 1085 01e2 06000000 		.4byte	.LCFI25
+ 1086 01e6 E6000000 		.4byte	.LFE9
+ 1087 01ea 0200     		.2byte	0x2
+ 1088 01ec 77       		.byte	0x77
+ 1089 01ed 18       		.sleb128 24
+ 1090 01ee 00000000 		.4byte	0x0
+ 1091 01f2 00000000 		.4byte	0x0
+ 1092              	.LLST10:
+ 1093 01f6 00000000 		.4byte	.LFB10
+ 1094 01fa 02000000 		.4byte	.LCFI26
+ 1095 01fe 0100     		.2byte	0x1
+ 1096 0200 5D       		.byte	0x5d
+ 1097 0201 02000000 		.4byte	.LCFI26
+ 1098 0205 04000000 		.4byte	.LCFI27
+ 1099 0209 0200     		.2byte	0x2
+ 1100 020b 7D       		.byte	0x7d
+ 1101 020c 04       		.sleb128 4
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 29
+
+
+ 1102 020d 04000000 		.4byte	.LCFI27
+ 1103 0211 1C000000 		.4byte	.LFE10
+ 1104 0215 0200     		.2byte	0x2
+ 1105 0217 77       		.byte	0x77
+ 1106 0218 04       		.sleb128 4
+ 1107 0219 00000000 		.4byte	0x0
+ 1108 021d 00000000 		.4byte	0x0
+ 1109              	.LLST11:
+ 1110 0221 00000000 		.4byte	.LFB11
+ 1111 0225 02000000 		.4byte	.LCFI28
+ 1112 0229 0100     		.2byte	0x1
+ 1113 022b 5D       		.byte	0x5d
+ 1114 022c 02000000 		.4byte	.LCFI28
+ 1115 0230 04000000 		.4byte	.LCFI29
+ 1116 0234 0200     		.2byte	0x2
+ 1117 0236 7D       		.byte	0x7d
+ 1118 0237 04       		.sleb128 4
+ 1119 0238 04000000 		.4byte	.LCFI29
+ 1120 023c 06000000 		.4byte	.LCFI30
+ 1121 0240 0200     		.2byte	0x2
+ 1122 0242 7D       		.byte	0x7d
+ 1123 0243 10       		.sleb128 16
+ 1124 0244 06000000 		.4byte	.LCFI30
+ 1125 0248 24000000 		.4byte	.LFE11
+ 1126 024c 0200     		.2byte	0x2
+ 1127 024e 77       		.byte	0x77
+ 1128 024f 10       		.sleb128 16
+ 1129 0250 00000000 		.4byte	0x0
+ 1130 0254 00000000 		.4byte	0x0
+ 1131              	.LLST12:
+ 1132 0258 00000000 		.4byte	.LFB12
+ 1133 025c 02000000 		.4byte	.LCFI31
+ 1134 0260 0100     		.2byte	0x1
+ 1135 0262 5D       		.byte	0x5d
+ 1136 0263 02000000 		.4byte	.LCFI31
+ 1137 0267 04000000 		.4byte	.LCFI32
+ 1138 026b 0200     		.2byte	0x2
+ 1139 026d 7D       		.byte	0x7d
+ 1140 026e 04       		.sleb128 4
+ 1141 026f 04000000 		.4byte	.LCFI32
+ 1142 0273 1C000000 		.4byte	.LFE12
+ 1143 0277 0200     		.2byte	0x2
+ 1144 0279 77       		.byte	0x77
+ 1145 027a 04       		.sleb128 4
+ 1146 027b 00000000 		.4byte	0x0
+ 1147 027f 00000000 		.4byte	0x0
+ 1148              		.file 2 "./Generated_Source/PSoC5/cytypes.h"
+ 1149              		.section	.debug_info
+ 1150 0000 9B020000 		.4byte	0x29b
+ 1151 0004 0200     		.2byte	0x2
+ 1152 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1153 000a 04       		.byte	0x4
+ 1154 000b 01       		.uleb128 0x1
+ 1155 000c F8010000 		.4byte	.LASF36
+ 1156 0010 01       		.byte	0x1
+ 1157 0011 5A020000 		.4byte	.LASF37
+ 1158 0015 1F000000 		.4byte	.LASF38
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 30
+
+
+ 1159 0019 00000000 		.4byte	0x0
+ 1160 001d 00000000 		.4byte	0x0
+ 1161 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
+ 1162 0025 00000000 		.4byte	.Ldebug_line0
+ 1163 0029 02       		.uleb128 0x2
+ 1164 002a 01       		.byte	0x1
+ 1165 002b 06       		.byte	0x6
+ 1166 002c DF020000 		.4byte	.LASF0
+ 1167 0030 02       		.uleb128 0x2
+ 1168 0031 01       		.byte	0x1
+ 1169 0032 08       		.byte	0x8
+ 1170 0033 AD000000 		.4byte	.LASF1
+ 1171 0037 02       		.uleb128 0x2
+ 1172 0038 02       		.byte	0x2
+ 1173 0039 05       		.byte	0x5
+ 1174 003a 88020000 		.4byte	.LASF2
+ 1175 003e 02       		.uleb128 0x2
+ 1176 003f 02       		.byte	0x2
+ 1177 0040 07       		.byte	0x7
+ 1178 0041 EA000000 		.4byte	.LASF3
+ 1179 0045 02       		.uleb128 0x2
+ 1180 0046 04       		.byte	0x4
+ 1181 0047 05       		.byte	0x5
+ 1182 0048 C3020000 		.4byte	.LASF4
+ 1183 004c 02       		.uleb128 0x2
+ 1184 004d 04       		.byte	0x4
+ 1185 004e 07       		.byte	0x7
+ 1186 004f D8000000 		.4byte	.LASF5
+ 1187 0053 02       		.uleb128 0x2
+ 1188 0054 08       		.byte	0x8
+ 1189 0055 05       		.byte	0x5
+ 1190 0056 00000000 		.4byte	.LASF6
+ 1191 005a 02       		.uleb128 0x2
+ 1192 005b 08       		.byte	0x8
+ 1193 005c 07       		.byte	0x7
+ 1194 005d A3010000 		.4byte	.LASF7
+ 1195 0061 03       		.uleb128 0x3
+ 1196 0062 04       		.byte	0x4
+ 1197 0063 05       		.byte	0x5
+ 1198 0064 696E7400 		.ascii	"int\000"
+ 1199 0068 02       		.uleb128 0x2
+ 1200 0069 04       		.byte	0x4
+ 1201 006a 07       		.byte	0x7
+ 1202 006b 8E010000 		.4byte	.LASF8
+ 1203 006f 02       		.uleb128 0x2
+ 1204 0070 01       		.byte	0x1
+ 1205 0071 08       		.byte	0x8
+ 1206 0072 28020000 		.4byte	.LASF9
+ 1207 0076 04       		.uleb128 0x4
+ 1208 0077 92020000 		.4byte	.LASF10
+ 1209 007b 02       		.byte	0x2
+ 1210 007c 60       		.byte	0x60
+ 1211 007d 30000000 		.4byte	0x30
+ 1212 0081 04       		.uleb128 0x4
+ 1213 0082 5C010000 		.4byte	.LASF11
+ 1214 0086 02       		.byte	0x2
+ 1215 0087 61       		.byte	0x61
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 31
+
+
+ 1216 0088 3E000000 		.4byte	0x3e
+ 1217 008c 05       		.uleb128 0x5
+ 1218 008d 01       		.byte	0x1
+ 1219 008e 94000000 		.4byte	.LASF12
+ 1220 0092 01       		.byte	0x1
+ 1221 0093 2C       		.byte	0x2c
+ 1222 0094 01       		.byte	0x1
+ 1223 0095 00000000 		.4byte	.LFB0
+ 1224 0099 26000000 		.4byte	.LFE0
+ 1225 009d 00000000 		.4byte	.LLST0
+ 1226 00a1 05       		.uleb128 0x5
+ 1227 00a2 01       		.byte	0x1
+ 1228 00a3 E0010000 		.4byte	.LASF13
+ 1229 00a7 01       		.byte	0x1
+ 1230 00a8 44       		.byte	0x44
+ 1231 00a9 01       		.byte	0x1
+ 1232 00aa 00000000 		.4byte	.LFB1
+ 1233 00ae 24000000 		.4byte	.LFE1
+ 1234 00b2 2B000000 		.4byte	.LLST1
+ 1235 00b6 06       		.uleb128 0x6
+ 1236 00b7 01       		.byte	0x1
+ 1237 00b8 BB000000 		.4byte	.LASF14
+ 1238 00bc 01       		.byte	0x1
+ 1239 00bd 5D       		.byte	0x5d
+ 1240 00be 01       		.byte	0x1
+ 1241 00bf 00000000 		.4byte	.LFB2
+ 1242 00c3 D8000000 		.4byte	.LFE2
+ 1243 00c7 56000000 		.4byte	.LLST2
+ 1244 00cb E8000000 		.4byte	0xe8
+ 1245 00cf 07       		.uleb128 0x7
+ 1246 00d0 1A000000 		.4byte	.LBB2
+ 1247 00d4 CE000000 		.4byte	.LBE2
+ 1248 00d8 08       		.uleb128 0x8
+ 1249 00d9 14000000 		.4byte	.LASF20
+ 1250 00dd 01       		.byte	0x1
+ 1251 00de 62       		.byte	0x62
+ 1252 00df 81000000 		.4byte	0x81
+ 1253 00e3 02       		.byte	0x2
+ 1254 00e4 91       		.byte	0x91
+ 1255 00e5 76       		.sleb128 -10
+ 1256 00e6 00       		.byte	0x0
+ 1257 00e7 00       		.byte	0x0
+ 1258 00e8 06       		.uleb128 0x6
+ 1259 00e9 01       		.byte	0x1
+ 1260 00ea FD000000 		.4byte	.LASF15
+ 1261 00ee 01       		.byte	0x1
+ 1262 00ef 93       		.byte	0x93
+ 1263 00f0 01       		.byte	0x1
+ 1264 00f1 00000000 		.4byte	.LFB3
+ 1265 00f5 52000000 		.4byte	.LFE3
+ 1266 00f9 8D000000 		.4byte	.LLST3
+ 1267 00fd 10010000 		.4byte	0x110
+ 1268 0101 09       		.uleb128 0x9
+ 1269 0102 0E000000 		.4byte	.LASF17
+ 1270 0106 01       		.byte	0x1
+ 1271 0107 93       		.byte	0x93
+ 1272 0108 76000000 		.4byte	0x76
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 32
+
+
+ 1273 010c 02       		.byte	0x2
+ 1274 010d 91       		.byte	0x91
+ 1275 010e 77       		.sleb128 -9
+ 1276 010f 00       		.byte	0x0
+ 1277 0110 06       		.uleb128 0x6
+ 1278 0111 01       		.byte	0x1
+ 1279 0112 BA010000 		.4byte	.LASF16
+ 1280 0116 01       		.byte	0x1
+ 1281 0117 B6       		.byte	0xb6
+ 1282 0118 01       		.byte	0x1
+ 1283 0119 00000000 		.4byte	.LFB4
+ 1284 011d D2010000 		.4byte	.LFE4
+ 1285 0121 C4000000 		.4byte	.LLST4
+ 1286 0125 70010000 		.4byte	0x170
+ 1287 0129 09       		.uleb128 0x9
+ 1288 012a 1D010000 		.4byte	.LASF18
+ 1289 012e 01       		.byte	0x1
+ 1290 012f B6       		.byte	0xb6
+ 1291 0130 81000000 		.4byte	0x81
+ 1292 0134 02       		.byte	0x2
+ 1293 0135 91       		.byte	0x91
+ 1294 0136 6E       		.sleb128 -18
+ 1295 0137 09       		.uleb128 0x9
+ 1296 0138 2F010000 		.4byte	.LASF19
+ 1297 013c 01       		.byte	0x1
+ 1298 013d B6       		.byte	0xb6
+ 1299 013e 76000000 		.4byte	0x76
+ 1300 0142 02       		.byte	0x2
+ 1301 0143 91       		.byte	0x91
+ 1302 0144 6D       		.sleb128 -19
+ 1303 0145 08       		.uleb128 0x8
+ 1304 0146 BB020000 		.4byte	.LASF21
+ 1305 014a 01       		.byte	0x1
+ 1306 014b B8       		.byte	0xb8
+ 1307 014c 76000000 		.4byte	0x76
+ 1308 0150 02       		.byte	0x2
+ 1309 0151 91       		.byte	0x91
+ 1310 0152 74       		.sleb128 -12
+ 1311 0153 08       		.uleb128 0x8
+ 1312 0154 9B010000 		.4byte	.LASF22
+ 1313 0158 01       		.byte	0x1
+ 1314 0159 BA       		.byte	0xba
+ 1315 015a 76000000 		.4byte	0x76
+ 1316 015e 02       		.byte	0x2
+ 1317 015f 91       		.byte	0x91
+ 1318 0160 75       		.sleb128 -11
+ 1319 0161 08       		.uleb128 0x8
+ 1320 0162 14000000 		.4byte	.LASF20
+ 1321 0166 01       		.byte	0x1
+ 1322 0167 BB       		.byte	0xbb
+ 1323 0168 81000000 		.4byte	0x81
+ 1324 016c 02       		.byte	0x2
+ 1325 016d 91       		.byte	0x91
+ 1326 016e 76       		.sleb128 -10
+ 1327 016f 00       		.byte	0x0
+ 1328 0170 0A       		.uleb128 0xa
+ 1329 0171 01       		.byte	0x1
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 33
+
+
+ 1330 0172 6E000000 		.4byte	.LASF26
+ 1331 0176 01       		.byte	0x1
+ 1332 0177 1801     		.2byte	0x118
+ 1333 0179 01       		.byte	0x1
+ 1334 017a 81000000 		.4byte	0x81
+ 1335 017e 00000000 		.4byte	.LFB5
+ 1336 0182 18000000 		.4byte	.LFE5
+ 1337 0186 FB000000 		.4byte	.LLST5
+ 1338 018a 0B       		.uleb128 0xb
+ 1339 018b 01       		.byte	0x1
+ 1340 018c 98020000 		.4byte	.LASF23
+ 1341 0190 01       		.byte	0x1
+ 1342 0191 3A01     		.2byte	0x13a
+ 1343 0193 01       		.byte	0x1
+ 1344 0194 00000000 		.4byte	.LFB6
+ 1345 0198 36000000 		.4byte	.LFE6
+ 1346 019c 26010000 		.4byte	.LLST6
+ 1347 01a0 B4010000 		.4byte	0x1b4
+ 1348 01a4 0C       		.uleb128 0xc
+ 1349 01a5 63010000 		.4byte	.LASF24
+ 1350 01a9 01       		.byte	0x1
+ 1351 01aa 3A01     		.2byte	0x13a
+ 1352 01ac 76000000 		.4byte	0x76
+ 1353 01b0 02       		.byte	0x2
+ 1354 01b1 91       		.byte	0x91
+ 1355 01b2 77       		.sleb128 -9
+ 1356 01b3 00       		.byte	0x0
+ 1357 01b4 0B       		.uleb128 0xb
+ 1358 01b5 01       		.byte	0x1
+ 1359 01b6 37010000 		.4byte	.LASF25
+ 1360 01ba 01       		.byte	0x1
+ 1361 01bb 5C01     		.2byte	0x15c
+ 1362 01bd 01       		.byte	0x1
+ 1363 01be 00000000 		.4byte	.LFB7
+ 1364 01c2 3E000000 		.4byte	.LFE7
+ 1365 01c6 5D010000 		.4byte	.LLST7
+ 1366 01ca DE010000 		.4byte	0x1de
+ 1367 01ce 0C       		.uleb128 0xc
+ 1368 01cf 63010000 		.4byte	.LASF24
+ 1369 01d3 01       		.byte	0x1
+ 1370 01d4 5C01     		.2byte	0x15c
+ 1371 01d6 76000000 		.4byte	0x76
+ 1372 01da 02       		.byte	0x2
+ 1373 01db 91       		.byte	0x91
+ 1374 01dc 77       		.sleb128 -9
+ 1375 01dd 00       		.byte	0x0
+ 1376 01de 0A       		.uleb128 0xa
+ 1377 01df 01       		.byte	0x1
+ 1378 01e0 6B010000 		.4byte	.LASF27
+ 1379 01e4 01       		.byte	0x1
+ 1380 01e5 7001     		.2byte	0x170
+ 1381 01e7 01       		.byte	0x1
+ 1382 01e8 76000000 		.4byte	0x76
+ 1383 01ec 00000000 		.4byte	.LFB8
+ 1384 01f0 1C000000 		.4byte	.LFE8
+ 1385 01f4 94010000 		.4byte	.LLST8
+ 1386 01f8 0B       		.uleb128 0xb
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 34
+
+
+ 1387 01f9 01       		.byte	0x1
+ 1388 01fa 2D020000 		.4byte	.LASF28
+ 1389 01fe 01       		.byte	0x1
+ 1390 01ff 8E01     		.2byte	0x18e
+ 1391 0201 01       		.byte	0x1
+ 1392 0202 00000000 		.4byte	.LFB9
+ 1393 0206 E6000000 		.4byte	.LFE9
+ 1394 020a BF010000 		.4byte	.LLST9
+ 1395 020e 40020000 		.4byte	0x240
+ 1396 0212 0C       		.uleb128 0xc
+ 1397 0213 CC020000 		.4byte	.LASF29
+ 1398 0217 01       		.byte	0x1
+ 1399 0218 8E01     		.2byte	0x18e
+ 1400 021a 76000000 		.4byte	0x76
+ 1401 021e 02       		.byte	0x2
+ 1402 021f 91       		.byte	0x91
+ 1403 0220 6F       		.sleb128 -17
+ 1404 0221 0D       		.uleb128 0xd
+ 1405 0222 52020000 		.4byte	.LASF30
+ 1406 0226 01       		.byte	0x1
+ 1407 0227 9001     		.2byte	0x190
+ 1408 0229 81000000 		.4byte	0x81
+ 1409 022d 02       		.byte	0x2
+ 1410 022e 91       		.byte	0x91
+ 1411 022f 74       		.sleb128 -12
+ 1412 0230 0D       		.uleb128 0xd
+ 1413 0231 28010000 		.4byte	.LASF31
+ 1414 0235 01       		.byte	0x1
+ 1415 0236 9101     		.2byte	0x191
+ 1416 0238 76000000 		.4byte	0x76
+ 1417 023c 02       		.byte	0x2
+ 1418 023d 91       		.byte	0x91
+ 1419 023e 77       		.sleb128 -9
+ 1420 023f 00       		.byte	0x0
+ 1421 0240 0A       		.uleb128 0xa
+ 1422 0241 01       		.byte	0x1
+ 1423 0242 EB020000 		.4byte	.LASF32
+ 1424 0246 01       		.byte	0x1
+ 1425 0247 B801     		.2byte	0x1b8
+ 1426 0249 01       		.byte	0x1
+ 1427 024a 76000000 		.4byte	0x76
+ 1428 024e 00000000 		.4byte	.LFB10
+ 1429 0252 1C000000 		.4byte	.LFE10
+ 1430 0256 F6010000 		.4byte	.LLST10
+ 1431 025a 0B       		.uleb128 0xb
+ 1432 025b 01       		.byte	0x1
+ 1433 025c 04020000 		.4byte	.LASF33
+ 1434 0260 01       		.byte	0x1
+ 1435 0261 D401     		.2byte	0x1d4
+ 1436 0263 01       		.byte	0x1
+ 1437 0264 00000000 		.4byte	.LFB11
+ 1438 0268 24000000 		.4byte	.LFE11
+ 1439 026c 21020000 		.4byte	.LLST11
+ 1440 0270 84020000 		.4byte	0x284
+ 1441 0274 0C       		.uleb128 0xc
+ 1442 0275 D6020000 		.4byte	.LASF34
+ 1443 0279 01       		.byte	0x1
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 35
+
+
+ 1444 027a D401     		.2byte	0x1d4
+ 1445 027c 76000000 		.4byte	0x76
+ 1446 0280 02       		.byte	0x2
+ 1447 0281 91       		.byte	0x91
+ 1448 0282 77       		.sleb128 -9
+ 1449 0283 00       		.byte	0x0
+ 1450 0284 0A       		.uleb128 0xa
+ 1451 0285 01       		.byte	0x1
+ 1452 0286 10030000 		.4byte	.LASF35
+ 1453 028a 01       		.byte	0x1
+ 1454 028b E801     		.2byte	0x1e8
+ 1455 028d 01       		.byte	0x1
+ 1456 028e 76000000 		.4byte	0x76
+ 1457 0292 00000000 		.4byte	.LFB12
+ 1458 0296 1C000000 		.4byte	.LFE12
+ 1459 029a 58020000 		.4byte	.LLST12
+ 1460 029e 00       		.byte	0x0
+ 1461              		.section	.debug_abbrev
+ 1462 0000 01       		.uleb128 0x1
+ 1463 0001 11       		.uleb128 0x11
+ 1464 0002 01       		.byte	0x1
+ 1465 0003 25       		.uleb128 0x25
+ 1466 0004 0E       		.uleb128 0xe
+ 1467 0005 13       		.uleb128 0x13
+ 1468 0006 0B       		.uleb128 0xb
+ 1469 0007 03       		.uleb128 0x3
+ 1470 0008 0E       		.uleb128 0xe
+ 1471 0009 1B       		.uleb128 0x1b
+ 1472 000a 0E       		.uleb128 0xe
+ 1473 000b 11       		.uleb128 0x11
+ 1474 000c 01       		.uleb128 0x1
+ 1475 000d 52       		.uleb128 0x52
+ 1476 000e 01       		.uleb128 0x1
+ 1477 000f 55       		.uleb128 0x55
+ 1478 0010 06       		.uleb128 0x6
+ 1479 0011 10       		.uleb128 0x10
+ 1480 0012 06       		.uleb128 0x6
+ 1481 0013 00       		.byte	0x0
+ 1482 0014 00       		.byte	0x0
+ 1483 0015 02       		.uleb128 0x2
+ 1484 0016 24       		.uleb128 0x24
+ 1485 0017 00       		.byte	0x0
+ 1486 0018 0B       		.uleb128 0xb
+ 1487 0019 0B       		.uleb128 0xb
+ 1488 001a 3E       		.uleb128 0x3e
+ 1489 001b 0B       		.uleb128 0xb
+ 1490 001c 03       		.uleb128 0x3
+ 1491 001d 0E       		.uleb128 0xe
+ 1492 001e 00       		.byte	0x0
+ 1493 001f 00       		.byte	0x0
+ 1494 0020 03       		.uleb128 0x3
+ 1495 0021 24       		.uleb128 0x24
+ 1496 0022 00       		.byte	0x0
+ 1497 0023 0B       		.uleb128 0xb
+ 1498 0024 0B       		.uleb128 0xb
+ 1499 0025 3E       		.uleb128 0x3e
+ 1500 0026 0B       		.uleb128 0xb
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 36
+
+
+ 1501 0027 03       		.uleb128 0x3
+ 1502 0028 08       		.uleb128 0x8
+ 1503 0029 00       		.byte	0x0
+ 1504 002a 00       		.byte	0x0
+ 1505 002b 04       		.uleb128 0x4
+ 1506 002c 16       		.uleb128 0x16
+ 1507 002d 00       		.byte	0x0
+ 1508 002e 03       		.uleb128 0x3
+ 1509 002f 0E       		.uleb128 0xe
+ 1510 0030 3A       		.uleb128 0x3a
+ 1511 0031 0B       		.uleb128 0xb
+ 1512 0032 3B       		.uleb128 0x3b
+ 1513 0033 0B       		.uleb128 0xb
+ 1514 0034 49       		.uleb128 0x49
+ 1515 0035 13       		.uleb128 0x13
+ 1516 0036 00       		.byte	0x0
+ 1517 0037 00       		.byte	0x0
+ 1518 0038 05       		.uleb128 0x5
+ 1519 0039 2E       		.uleb128 0x2e
+ 1520 003a 00       		.byte	0x0
+ 1521 003b 3F       		.uleb128 0x3f
+ 1522 003c 0C       		.uleb128 0xc
+ 1523 003d 03       		.uleb128 0x3
+ 1524 003e 0E       		.uleb128 0xe
+ 1525 003f 3A       		.uleb128 0x3a
+ 1526 0040 0B       		.uleb128 0xb
+ 1527 0041 3B       		.uleb128 0x3b
+ 1528 0042 0B       		.uleb128 0xb
+ 1529 0043 27       		.uleb128 0x27
+ 1530 0044 0C       		.uleb128 0xc
+ 1531 0045 11       		.uleb128 0x11
+ 1532 0046 01       		.uleb128 0x1
+ 1533 0047 12       		.uleb128 0x12
+ 1534 0048 01       		.uleb128 0x1
+ 1535 0049 40       		.uleb128 0x40
+ 1536 004a 06       		.uleb128 0x6
+ 1537 004b 00       		.byte	0x0
+ 1538 004c 00       		.byte	0x0
+ 1539 004d 06       		.uleb128 0x6
+ 1540 004e 2E       		.uleb128 0x2e
+ 1541 004f 01       		.byte	0x1
+ 1542 0050 3F       		.uleb128 0x3f
+ 1543 0051 0C       		.uleb128 0xc
+ 1544 0052 03       		.uleb128 0x3
+ 1545 0053 0E       		.uleb128 0xe
+ 1546 0054 3A       		.uleb128 0x3a
+ 1547 0055 0B       		.uleb128 0xb
+ 1548 0056 3B       		.uleb128 0x3b
+ 1549 0057 0B       		.uleb128 0xb
+ 1550 0058 27       		.uleb128 0x27
+ 1551 0059 0C       		.uleb128 0xc
+ 1552 005a 11       		.uleb128 0x11
+ 1553 005b 01       		.uleb128 0x1
+ 1554 005c 12       		.uleb128 0x12
+ 1555 005d 01       		.uleb128 0x1
+ 1556 005e 40       		.uleb128 0x40
+ 1557 005f 06       		.uleb128 0x6
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 37
+
+
+ 1558 0060 01       		.uleb128 0x1
+ 1559 0061 13       		.uleb128 0x13
+ 1560 0062 00       		.byte	0x0
+ 1561 0063 00       		.byte	0x0
+ 1562 0064 07       		.uleb128 0x7
+ 1563 0065 0B       		.uleb128 0xb
+ 1564 0066 01       		.byte	0x1
+ 1565 0067 11       		.uleb128 0x11
+ 1566 0068 01       		.uleb128 0x1
+ 1567 0069 12       		.uleb128 0x12
+ 1568 006a 01       		.uleb128 0x1
+ 1569 006b 00       		.byte	0x0
+ 1570 006c 00       		.byte	0x0
+ 1571 006d 08       		.uleb128 0x8
+ 1572 006e 34       		.uleb128 0x34
+ 1573 006f 00       		.byte	0x0
+ 1574 0070 03       		.uleb128 0x3
+ 1575 0071 0E       		.uleb128 0xe
+ 1576 0072 3A       		.uleb128 0x3a
+ 1577 0073 0B       		.uleb128 0xb
+ 1578 0074 3B       		.uleb128 0x3b
+ 1579 0075 0B       		.uleb128 0xb
+ 1580 0076 49       		.uleb128 0x49
+ 1581 0077 13       		.uleb128 0x13
+ 1582 0078 02       		.uleb128 0x2
+ 1583 0079 0A       		.uleb128 0xa
+ 1584 007a 00       		.byte	0x0
+ 1585 007b 00       		.byte	0x0
+ 1586 007c 09       		.uleb128 0x9
+ 1587 007d 05       		.uleb128 0x5
+ 1588 007e 00       		.byte	0x0
+ 1589 007f 03       		.uleb128 0x3
+ 1590 0080 0E       		.uleb128 0xe
+ 1591 0081 3A       		.uleb128 0x3a
+ 1592 0082 0B       		.uleb128 0xb
+ 1593 0083 3B       		.uleb128 0x3b
+ 1594 0084 0B       		.uleb128 0xb
+ 1595 0085 49       		.uleb128 0x49
+ 1596 0086 13       		.uleb128 0x13
+ 1597 0087 02       		.uleb128 0x2
+ 1598 0088 0A       		.uleb128 0xa
+ 1599 0089 00       		.byte	0x0
+ 1600 008a 00       		.byte	0x0
+ 1601 008b 0A       		.uleb128 0xa
+ 1602 008c 2E       		.uleb128 0x2e
+ 1603 008d 00       		.byte	0x0
+ 1604 008e 3F       		.uleb128 0x3f
+ 1605 008f 0C       		.uleb128 0xc
+ 1606 0090 03       		.uleb128 0x3
+ 1607 0091 0E       		.uleb128 0xe
+ 1608 0092 3A       		.uleb128 0x3a
+ 1609 0093 0B       		.uleb128 0xb
+ 1610 0094 3B       		.uleb128 0x3b
+ 1611 0095 05       		.uleb128 0x5
+ 1612 0096 27       		.uleb128 0x27
+ 1613 0097 0C       		.uleb128 0xc
+ 1614 0098 49       		.uleb128 0x49
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 38
+
+
+ 1615 0099 13       		.uleb128 0x13
+ 1616 009a 11       		.uleb128 0x11
+ 1617 009b 01       		.uleb128 0x1
+ 1618 009c 12       		.uleb128 0x12
+ 1619 009d 01       		.uleb128 0x1
+ 1620 009e 40       		.uleb128 0x40
+ 1621 009f 06       		.uleb128 0x6
+ 1622 00a0 00       		.byte	0x0
+ 1623 00a1 00       		.byte	0x0
+ 1624 00a2 0B       		.uleb128 0xb
+ 1625 00a3 2E       		.uleb128 0x2e
+ 1626 00a4 01       		.byte	0x1
+ 1627 00a5 3F       		.uleb128 0x3f
+ 1628 00a6 0C       		.uleb128 0xc
+ 1629 00a7 03       		.uleb128 0x3
+ 1630 00a8 0E       		.uleb128 0xe
+ 1631 00a9 3A       		.uleb128 0x3a
+ 1632 00aa 0B       		.uleb128 0xb
+ 1633 00ab 3B       		.uleb128 0x3b
+ 1634 00ac 05       		.uleb128 0x5
+ 1635 00ad 27       		.uleb128 0x27
+ 1636 00ae 0C       		.uleb128 0xc
+ 1637 00af 11       		.uleb128 0x11
+ 1638 00b0 01       		.uleb128 0x1
+ 1639 00b1 12       		.uleb128 0x12
+ 1640 00b2 01       		.uleb128 0x1
+ 1641 00b3 40       		.uleb128 0x40
+ 1642 00b4 06       		.uleb128 0x6
+ 1643 00b5 01       		.uleb128 0x1
+ 1644 00b6 13       		.uleb128 0x13
+ 1645 00b7 00       		.byte	0x0
+ 1646 00b8 00       		.byte	0x0
+ 1647 00b9 0C       		.uleb128 0xc
+ 1648 00ba 05       		.uleb128 0x5
+ 1649 00bb 00       		.byte	0x0
+ 1650 00bc 03       		.uleb128 0x3
+ 1651 00bd 0E       		.uleb128 0xe
+ 1652 00be 3A       		.uleb128 0x3a
+ 1653 00bf 0B       		.uleb128 0xb
+ 1654 00c0 3B       		.uleb128 0x3b
+ 1655 00c1 05       		.uleb128 0x5
+ 1656 00c2 49       		.uleb128 0x49
+ 1657 00c3 13       		.uleb128 0x13
+ 1658 00c4 02       		.uleb128 0x2
+ 1659 00c5 0A       		.uleb128 0xa
+ 1660 00c6 00       		.byte	0x0
+ 1661 00c7 00       		.byte	0x0
+ 1662 00c8 0D       		.uleb128 0xd
+ 1663 00c9 34       		.uleb128 0x34
+ 1664 00ca 00       		.byte	0x0
+ 1665 00cb 03       		.uleb128 0x3
+ 1666 00cc 0E       		.uleb128 0xe
+ 1667 00cd 3A       		.uleb128 0x3a
+ 1668 00ce 0B       		.uleb128 0xb
+ 1669 00cf 3B       		.uleb128 0x3b
+ 1670 00d0 05       		.uleb128 0x5
+ 1671 00d1 49       		.uleb128 0x49
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 39
+
+
+ 1672 00d2 13       		.uleb128 0x13
+ 1673 00d3 02       		.uleb128 0x2
+ 1674 00d4 0A       		.uleb128 0xa
+ 1675 00d5 00       		.byte	0x0
+ 1676 00d6 00       		.byte	0x0
+ 1677 00d7 00       		.byte	0x0
+ 1678              		.section	.debug_pubnames,"",%progbits
+ 1679 0000 F9010000 		.4byte	0x1f9
+ 1680 0004 0200     		.2byte	0x2
+ 1681 0006 00000000 		.4byte	.Ldebug_info0
+ 1682 000a 9F020000 		.4byte	0x29f
+ 1683 000e 8C000000 		.4byte	0x8c
+ 1684 0012 4144435F 		.ascii	"ADC_DelSig_theACLK_Start\000"
+ 1684      44656C53 
+ 1684      69675F74 
+ 1684      68654143 
+ 1684      4C4B5F53 
+ 1685 002b A1000000 		.4byte	0xa1
+ 1686 002f 4144435F 		.ascii	"ADC_DelSig_theACLK_Stop\000"
+ 1686      44656C53 
+ 1686      69675F74 
+ 1686      68654143 
+ 1686      4C4B5F53 
+ 1687 0047 B6000000 		.4byte	0xb6
+ 1688 004b 4144435F 		.ascii	"ADC_DelSig_theACLK_StopBlock\000"
+ 1688      44656C53 
+ 1688      69675F74 
+ 1688      68654143 
+ 1688      4C4B5F53 
+ 1689 0068 E8000000 		.4byte	0xe8
+ 1690 006c 4144435F 		.ascii	"ADC_DelSig_theACLK_StandbyPower\000"
+ 1690      44656C53 
+ 1690      69675F74 
+ 1690      68654143 
+ 1690      4C4B5F53 
+ 1691 008c 10010000 		.4byte	0x110
+ 1692 0090 4144435F 		.ascii	"ADC_DelSig_theACLK_SetDividerRegister\000"
+ 1692      44656C53 
+ 1692      69675F74 
+ 1692      68654143 
+ 1692      4C4B5F53 
+ 1693 00b6 70010000 		.4byte	0x170
+ 1694 00ba 4144435F 		.ascii	"ADC_DelSig_theACLK_GetDividerRegister\000"
+ 1694      44656C53 
+ 1694      69675F74 
+ 1694      68654143 
+ 1694      4C4B5F47 
+ 1695 00e0 8A010000 		.4byte	0x18a
+ 1696 00e4 4144435F 		.ascii	"ADC_DelSig_theACLK_SetModeRegister\000"
+ 1696      44656C53 
+ 1696      69675F74 
+ 1696      68654143 
+ 1696      4C4B5F53 
+ 1697 0107 B4010000 		.4byte	0x1b4
+ 1698 010b 4144435F 		.ascii	"ADC_DelSig_theACLK_ClearModeRegister\000"
+ 1698      44656C53 
+ 1698      69675F74 
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 40
+
+
+ 1698      68654143 
+ 1698      4C4B5F43 
+ 1699 0130 DE010000 		.4byte	0x1de
+ 1700 0134 4144435F 		.ascii	"ADC_DelSig_theACLK_GetModeRegister\000"
+ 1700      44656C53 
+ 1700      69675F74 
+ 1700      68654143 
+ 1700      4C4B5F47 
+ 1701 0157 F8010000 		.4byte	0x1f8
+ 1702 015b 4144435F 		.ascii	"ADC_DelSig_theACLK_SetSourceRegister\000"
+ 1702      44656C53 
+ 1702      69675F74 
+ 1702      68654143 
+ 1702      4C4B5F53 
+ 1703 0180 40020000 		.4byte	0x240
+ 1704 0184 4144435F 		.ascii	"ADC_DelSig_theACLK_GetSourceRegister\000"
+ 1704      44656C53 
+ 1704      69675F74 
+ 1704      68654143 
+ 1704      4C4B5F47 
+ 1705 01a9 5A020000 		.4byte	0x25a
+ 1706 01ad 4144435F 		.ascii	"ADC_DelSig_theACLK_SetPhaseRegister\000"
+ 1706      44656C53 
+ 1706      69675F74 
+ 1706      68654143 
+ 1706      4C4B5F53 
+ 1707 01d1 84020000 		.4byte	0x284
+ 1708 01d5 4144435F 		.ascii	"ADC_DelSig_theACLK_GetPhaseRegister\000"
+ 1708      44656C53 
+ 1708      69675F74 
+ 1708      68654143 
+ 1708      4C4B5F47 
+ 1709 01f9 00000000 		.4byte	0x0
+ 1710              		.section	.debug_aranges,"",%progbits
+ 1711 0000 7C000000 		.4byte	0x7c
+ 1712 0004 0200     		.2byte	0x2
+ 1713 0006 00000000 		.4byte	.Ldebug_info0
+ 1714 000a 04       		.byte	0x4
+ 1715 000b 00       		.byte	0x0
+ 1716 000c 0000     		.2byte	0x0
+ 1717 000e 0000     		.2byte	0x0
+ 1718 0010 00000000 		.4byte	.LFB0
+ 1719 0014 26000000 		.4byte	.LFE0-.LFB0
+ 1720 0018 00000000 		.4byte	.LFB1
+ 1721 001c 24000000 		.4byte	.LFE1-.LFB1
+ 1722 0020 00000000 		.4byte	.LFB2
+ 1723 0024 D8000000 		.4byte	.LFE2-.LFB2
+ 1724 0028 00000000 		.4byte	.LFB3
+ 1725 002c 52000000 		.4byte	.LFE3-.LFB3
+ 1726 0030 00000000 		.4byte	.LFB4
+ 1727 0034 D2010000 		.4byte	.LFE4-.LFB4
+ 1728 0038 00000000 		.4byte	.LFB5
+ 1729 003c 18000000 		.4byte	.LFE5-.LFB5
+ 1730 0040 00000000 		.4byte	.LFB6
+ 1731 0044 36000000 		.4byte	.LFE6-.LFB6
+ 1732 0048 00000000 		.4byte	.LFB7
+ 1733 004c 3E000000 		.4byte	.LFE7-.LFB7
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 41
+
+
+ 1734 0050 00000000 		.4byte	.LFB8
+ 1735 0054 1C000000 		.4byte	.LFE8-.LFB8
+ 1736 0058 00000000 		.4byte	.LFB9
+ 1737 005c E6000000 		.4byte	.LFE9-.LFB9
+ 1738 0060 00000000 		.4byte	.LFB10
+ 1739 0064 1C000000 		.4byte	.LFE10-.LFB10
+ 1740 0068 00000000 		.4byte	.LFB11
+ 1741 006c 24000000 		.4byte	.LFE11-.LFB11
+ 1742 0070 00000000 		.4byte	.LFB12
+ 1743 0074 1C000000 		.4byte	.LFE12-.LFB12
+ 1744 0078 00000000 		.4byte	0x0
+ 1745 007c 00000000 		.4byte	0x0
+ 1746              		.section	.debug_ranges,"",%progbits
+ 1747              	.Ldebug_ranges0:
+ 1748 0000 00000000 		.4byte	.Ltext0
+ 1749 0004 00000000 		.4byte	.Letext0
+ 1750 0008 00000000 		.4byte	.LFB0
+ 1751 000c 26000000 		.4byte	.LFE0
+ 1752 0010 00000000 		.4byte	.LFB1
+ 1753 0014 24000000 		.4byte	.LFE1
+ 1754 0018 00000000 		.4byte	.LFB2
+ 1755 001c D8000000 		.4byte	.LFE2
+ 1756 0020 00000000 		.4byte	.LFB3
+ 1757 0024 52000000 		.4byte	.LFE3
+ 1758 0028 00000000 		.4byte	.LFB4
+ 1759 002c D2010000 		.4byte	.LFE4
+ 1760 0030 00000000 		.4byte	.LFB5
+ 1761 0034 18000000 		.4byte	.LFE5
+ 1762 0038 00000000 		.4byte	.LFB6
+ 1763 003c 36000000 		.4byte	.LFE6
+ 1764 0040 00000000 		.4byte	.LFB7
+ 1765 0044 3E000000 		.4byte	.LFE7
+ 1766 0048 00000000 		.4byte	.LFB8
+ 1767 004c 1C000000 		.4byte	.LFE8
+ 1768 0050 00000000 		.4byte	.LFB9
+ 1769 0054 E6000000 		.4byte	.LFE9
+ 1770 0058 00000000 		.4byte	.LFB10
+ 1771 005c 1C000000 		.4byte	.LFE10
+ 1772 0060 00000000 		.4byte	.LFB11
+ 1773 0064 24000000 		.4byte	.LFE11
+ 1774 0068 00000000 		.4byte	.LFB12
+ 1775 006c 1C000000 		.4byte	.LFE12
+ 1776 0070 00000000 		.4byte	0x0
+ 1777 0074 00000000 		.4byte	0x0
+ 1778              		.section	.debug_str,"MS",%progbits,1
+ 1779              	.LASF6:
+ 1780 0000 6C6F6E67 		.ascii	"long long int\000"
+ 1780      206C6F6E 
+ 1780      6720696E 
+ 1780      7400
+ 1781              	.LASF17:
+ 1782 000e 73746174 		.ascii	"state\000"
+ 1782      6500
+ 1783              	.LASF20:
+ 1784 0014 6F6C6444 		.ascii	"oldDivider\000"
+ 1784      69766964 
+ 1784      657200
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 42
+
+
+ 1785              	.LASF38:
+ 1786 001f 4A3A5C63 		.ascii	"J:\\c704\\C704224\\Cypress\\CY8C5868\\Laser_Schutzs"
+ 1786      3730345C 
+ 1786      43373034 
+ 1786      3232345C 
+ 1786      43797072 
+ 1787 004d 6368616C 		.ascii	"chaltung\\Design01\\Design02.cydsn\000"
+ 1787      74756E67 
+ 1787      5C446573 
+ 1787      69676E30 
+ 1787      315C4465 
+ 1788              	.LASF26:
+ 1789 006e 4144435F 		.ascii	"ADC_DelSig_theACLK_GetDividerRegister\000"
+ 1789      44656C53 
+ 1789      69675F74 
+ 1789      68654143 
+ 1789      4C4B5F47 
+ 1790              	.LASF12:
+ 1791 0094 4144435F 		.ascii	"ADC_DelSig_theACLK_Start\000"
+ 1791      44656C53 
+ 1791      69675F74 
+ 1791      68654143 
+ 1791      4C4B5F53 
+ 1792              	.LASF1:
+ 1793 00ad 756E7369 		.ascii	"unsigned char\000"
+ 1793      676E6564 
+ 1793      20636861 
+ 1793      7200
+ 1794              	.LASF14:
+ 1795 00bb 4144435F 		.ascii	"ADC_DelSig_theACLK_StopBlock\000"
+ 1795      44656C53 
+ 1795      69675F74 
+ 1795      68654143 
+ 1795      4C4B5F53 
+ 1796              	.LASF5:
+ 1797 00d8 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1797      20756E73 
+ 1797      69676E65 
+ 1797      6420696E 
+ 1797      7400
+ 1798              	.LASF3:
+ 1799 00ea 73686F72 		.ascii	"short unsigned int\000"
+ 1799      7420756E 
+ 1799      7369676E 
+ 1799      65642069 
+ 1799      6E7400
+ 1800              	.LASF15:
+ 1801 00fd 4144435F 		.ascii	"ADC_DelSig_theACLK_StandbyPower\000"
+ 1801      44656C53 
+ 1801      69675F74 
+ 1801      68654143 
+ 1801      4C4B5F53 
+ 1802              	.LASF18:
+ 1803 011d 636C6B44 		.ascii	"clkDivider\000"
+ 1803      69766964 
+ 1803      657200
+ 1804              	.LASF31:
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 43
+
+
+ 1805 0128 6F6C6453 		.ascii	"oldSrc\000"
+ 1805      726300
+ 1806              	.LASF19:
+ 1807 012f 72657374 		.ascii	"restart\000"
+ 1807      61727400 
+ 1808              	.LASF25:
+ 1809 0137 4144435F 		.ascii	"ADC_DelSig_theACLK_ClearModeRegister\000"
+ 1809      44656C53 
+ 1809      69675F74 
+ 1809      68654143 
+ 1809      4C4B5F43 
+ 1810              	.LASF11:
+ 1811 015c 75696E74 		.ascii	"uint16\000"
+ 1811      313600
+ 1812              	.LASF24:
+ 1813 0163 636C6B4D 		.ascii	"clkMode\000"
+ 1813      6F646500 
+ 1814              	.LASF27:
+ 1815 016b 4144435F 		.ascii	"ADC_DelSig_theACLK_GetModeRegister\000"
+ 1815      44656C53 
+ 1815      69675F74 
+ 1815      68654143 
+ 1815      4C4B5F47 
+ 1816              	.LASF8:
+ 1817 018e 756E7369 		.ascii	"unsigned int\000"
+ 1817      676E6564 
+ 1817      20696E74 
+ 1817      00
+ 1818              	.LASF22:
+ 1819 019b 63757272 		.ascii	"currSrc\000"
+ 1819      53726300 
+ 1820              	.LASF7:
+ 1821 01a3 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1821      206C6F6E 
+ 1821      6720756E 
+ 1821      7369676E 
+ 1821      65642069 
+ 1822              	.LASF16:
+ 1823 01ba 4144435F 		.ascii	"ADC_DelSig_theACLK_SetDividerRegister\000"
+ 1823      44656C53 
+ 1823      69675F74 
+ 1823      68654143 
+ 1823      4C4B5F53 
+ 1824              	.LASF13:
+ 1825 01e0 4144435F 		.ascii	"ADC_DelSig_theACLK_Stop\000"
+ 1825      44656C53 
+ 1825      69675F74 
+ 1825      68654143 
+ 1825      4C4B5F53 
+ 1826              	.LASF36:
+ 1827 01f8 474E5520 		.ascii	"GNU C 4.4.1\000"
+ 1827      4320342E 
+ 1827      342E3100 
+ 1828              	.LASF33:
+ 1829 0204 4144435F 		.ascii	"ADC_DelSig_theACLK_SetPhaseRegister\000"
+ 1829      44656C53 
+ 1829      69675F74 
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 44
+
+
+ 1829      68654143 
+ 1829      4C4B5F53 
+ 1830              	.LASF9:
+ 1831 0228 63686172 		.ascii	"char\000"
+ 1831      00
+ 1832              	.LASF28:
+ 1833 022d 4144435F 		.ascii	"ADC_DelSig_theACLK_SetSourceRegister\000"
+ 1833      44656C53 
+ 1833      69675F74 
+ 1833      68654143 
+ 1833      4C4B5F53 
+ 1834              	.LASF30:
+ 1835 0252 63757272 		.ascii	"currDiv\000"
+ 1835      44697600 
+ 1836              	.LASF37:
+ 1837 025a 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\ADC_DelSig_theACLK.c\000"
+ 1837      6E657261 
+ 1837      7465645F 
+ 1837      536F7572 
+ 1837      63655C50 
+ 1838              	.LASF2:
+ 1839 0288 73686F72 		.ascii	"short int\000"
+ 1839      7420696E 
+ 1839      7400
+ 1840              	.LASF10:
+ 1841 0292 75696E74 		.ascii	"uint8\000"
+ 1841      3800
+ 1842              	.LASF23:
+ 1843 0298 4144435F 		.ascii	"ADC_DelSig_theACLK_SetModeRegister\000"
+ 1843      44656C53 
+ 1843      69675F74 
+ 1843      68654143 
+ 1843      4C4B5F53 
+ 1844              	.LASF21:
+ 1845 02bb 656E6162 		.ascii	"enabled\000"
+ 1845      6C656400 
+ 1846              	.LASF4:
+ 1847 02c3 6C6F6E67 		.ascii	"long int\000"
+ 1847      20696E74 
+ 1847      00
+ 1848              	.LASF29:
+ 1849 02cc 636C6B53 		.ascii	"clkSource\000"
+ 1849      6F757263 
+ 1849      6500
+ 1850              	.LASF34:
+ 1851 02d6 636C6B50 		.ascii	"clkPhase\000"
+ 1851      68617365 
+ 1851      00
+ 1852              	.LASF0:
+ 1853 02df 7369676E 		.ascii	"signed char\000"
+ 1853      65642063 
+ 1853      68617200 
+ 1854              	.LASF32:
+ 1855 02eb 4144435F 		.ascii	"ADC_DelSig_theACLK_GetSourceRegister\000"
+ 1855      44656C53 
+ 1855      69675F74 
+ 1855      68654143 
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccpAHOnc.s 			page 45
+
+
+ 1855      4C4B5F47 
+ 1856              	.LASF35:
+ 1857 0310 4144435F 		.ascii	"ADC_DelSig_theACLK_GetPhaseRegister\000"
+ 1857      44656C53 
+ 1857      69675F74 
+ 1857      68654143 
+ 1857      4C4B5F47 
+ 1858              		.ident	"GCC: (Sourcery G++ Lite 2010q1-188) 4.4.1"

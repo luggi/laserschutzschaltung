@@ -1,0 +1,1136 @@
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Filter_PM.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.Filter_SaveConfig,"ax",%progbits
+  19              		.align	1
+  20              		.global	Filter_SaveConfig
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	Filter_SaveConfig, %function
+  24              	Filter_SaveConfig:
+  25              	.LFB0:
+  26              		.file 1 "Generated_Source\\PSoC5\\Filter_PM.c"
+   1:Generated_Source\PSoC5/Filter_PM.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/Filter_PM.c **** * File Name: Filter_PM.c
+   3:Generated_Source\PSoC5/Filter_PM.c **** * Version 2.30
+   4:Generated_Source\PSoC5/Filter_PM.c **** *
+   5:Generated_Source\PSoC5/Filter_PM.c **** * Description:
+   6:Generated_Source\PSoC5/Filter_PM.c **** *  This file provides the power managaer API source code for the FILT component.
+   7:Generated_Source\PSoC5/Filter_PM.c **** *
+   8:Generated_Source\PSoC5/Filter_PM.c **** * Note:
+   9:Generated_Source\PSoC5/Filter_PM.c **** *  
+  10:Generated_Source\PSoC5/Filter_PM.c **** *******************************************************************************
+  11:Generated_Source\PSoC5/Filter_PM.c **** * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  12:Generated_Source\PSoC5/Filter_PM.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:Generated_Source\PSoC5/Filter_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:Generated_Source\PSoC5/Filter_PM.c **** * the software package with which this file was provided.
+  15:Generated_Source\PSoC5/Filter_PM.c **** ********************************************************************************/
+  16:Generated_Source\PSoC5/Filter_PM.c **** 
+  17:Generated_Source\PSoC5/Filter_PM.c **** #include "Filter_PVT.h"
+  18:Generated_Source\PSoC5/Filter_PM.c **** 
+  19:Generated_Source\PSoC5/Filter_PM.c **** static Filter_backupStruct  Filter_backup = 
+  20:Generated_Source\PSoC5/Filter_PM.c **** {
+  21:Generated_Source\PSoC5/Filter_PM.c ****     Filter_DISABLED,
+  22:Generated_Source\PSoC5/Filter_PM.c ****     Filter_RUN_MASK,
+  23:Generated_Source\PSoC5/Filter_PM.c ****     
+  24:Generated_Source\PSoC5/Filter_PM.c **** };
+  25:Generated_Source\PSoC5/Filter_PM.c **** 
+  26:Generated_Source\PSoC5/Filter_PM.c **** 
+  27:Generated_Source\PSoC5/Filter_PM.c **** /*******************************************************************************
+  28:Generated_Source\PSoC5/Filter_PM.c **** * Function Name: Filter_SaveConfig
+  29:Generated_Source\PSoC5/Filter_PM.c **** ********************************************************************************
+  30:Generated_Source\PSoC5/Filter_PM.c **** *
+  31:Generated_Source\PSoC5/Filter_PM.c **** * Summary:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 2
+
+
+  32:Generated_Source\PSoC5/Filter_PM.c **** *  Saves the current user configuration.
+  33:Generated_Source\PSoC5/Filter_PM.c **** *  
+  34:Generated_Source\PSoC5/Filter_PM.c **** * Parameters:  
+  35:Generated_Source\PSoC5/Filter_PM.c **** *  void
+  36:Generated_Source\PSoC5/Filter_PM.c **** *
+  37:Generated_Source\PSoC5/Filter_PM.c **** * Return: 
+  38:Generated_Source\PSoC5/Filter_PM.c **** *  void
+  39:Generated_Source\PSoC5/Filter_PM.c **** *
+  40:Generated_Source\PSoC5/Filter_PM.c **** * Global variables:
+  41:Generated_Source\PSoC5/Filter_PM.c **** *  Filter_backup:  This global structure variable is used to store 
+  42:Generated_Source\PSoC5/Filter_PM.c **** *  configuration registers which are non retention whenever user wants to go 
+  43:Generated_Source\PSoC5/Filter_PM.c **** *  sleep mode by calling Sleep() API.
+  44:Generated_Source\PSoC5/Filter_PM.c **** *
+  45:Generated_Source\PSoC5/Filter_PM.c **** *******************************************************************************/
+  46:Generated_Source\PSoC5/Filter_PM.c **** void Filter_SaveConfig(void) 
+  47:Generated_Source\PSoC5/Filter_PM.c **** {
+  27              		.loc 1 47 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 70B5     		push	{r4, r5, r6, lr}
+  32              		.cfi_def_cfa_offset 16
+  33              		.cfi_offset 4, -16
+  34              		.cfi_offset 5, -12
+  35              		.cfi_offset 6, -8
+  36              		.cfi_offset 14, -4
+  48:Generated_Source\PSoC5/Filter_PM.c ****     Filter_backup.sr = Filter_SR_REG;
+  37              		.loc 1 48 0
+  38 0002 0D4B     		ldr	r3, .L5
+  49:Generated_Source\PSoC5/Filter_PM.c ****     Filter_backup.sema = Filter_SEMA_REG;
+  50:Generated_Source\PSoC5/Filter_PM.c **** 
+  51:Generated_Source\PSoC5/Filter_PM.c ****     /* Put DFB RAM on the bus */
+  52:Generated_Source\PSoC5/Filter_PM.c ****     Filter_RAM_DIR_REG = Filter_RAM_DIR_BUS;
+  39              		.loc 1 52 0
+  40 0004 3F21     		movs	r1, #63
+  48:Generated_Source\PSoC5/Filter_PM.c ****     Filter_backup.sr = Filter_SR_REG;
+  41              		.loc 1 48 0
+  42 0006 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  43 0008 0C4B     		ldr	r3, .L5+4
+  53:Generated_Source\PSoC5/Filter_PM.c **** 
+  54:Generated_Source\PSoC5/Filter_PM.c ****     /* Save the ACU RAM as this is not retension */
+  55:Generated_Source\PSoC5/Filter_PM.c ****     (void)memcpy(Filter_backup.saveAcu,
+  44              		.loc 1 55 0
+  45 000a 0D4D     		ldr	r5, .L5+8
+  48:Generated_Source\PSoC5/Filter_PM.c ****     Filter_backup.sema = Filter_SEMA_REG;
+  46              		.loc 1 48 0
+  47 000c 9A70     		strb	r2, [r3, #2]
+  49:Generated_Source\PSoC5/Filter_PM.c ****     Filter_backup.sema = Filter_SEMA_REG;
+  48              		.loc 1 49 0
+  49 000e 0D4A     		ldr	r2, .L5+12
+  50              		.loc 1 55 0
+  51 0010 0D4E     		ldr	r6, .L5+16
+  49:Generated_Source\PSoC5/Filter_PM.c ****     Filter_backup.sema = Filter_SEMA_REG;
+  52              		.loc 1 49 0
+  53 0012 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+  54              		.loc 1 55 0
+  55 0014 0433     		adds	r3, r3, #4
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 3
+
+
+  49:Generated_Source\PSoC5/Filter_PM.c ****     Filter_backup.sema = Filter_SEMA_REG;
+  56              		.loc 1 49 0
+  57 0016 03F8012C 		strb	r2, [r3, #-1]
+  52:Generated_Source\PSoC5/Filter_PM.c **** 
+  58              		.loc 1 52 0
+  59 001a 0C4A     		ldr	r2, .L5+20
+  60 001c 1446     		mov	r4, r2
+  61 001e 1170     		strb	r1, [r2]
+  62              	.L2:
+  63              		.loc 1 55 0
+  64 0020 2A46     		mov	r2, r5
+  65 0022 03CA     		ldmia	r2!, {r0, r1}
+  66 0024 B242     		cmp	r2, r6
+  67 0026 1860     		str	r0, [r3]	@ unaligned
+  68 0028 5960     		str	r1, [r3, #4]	@ unaligned
+  69 002a 1546     		mov	r5, r2
+  70 002c 03F10803 		add	r3, r3, #8
+  71 0030 F6D1     		bne	.L2
+  56:Generated_Source\PSoC5/Filter_PM.c ****         Filter_ACU_RAM, Filter_ACU_RAM_SIZE); 
+  57:Generated_Source\PSoC5/Filter_PM.c **** 
+  58:Generated_Source\PSoC5/Filter_PM.c ****     /* Take DFB RAM off the bus */
+  59:Generated_Source\PSoC5/Filter_PM.c ****     Filter_RAM_DIR_REG = Filter_RAM_DIR_DFB;
+  72              		.loc 1 59 0
+  73 0032 0023     		movs	r3, #0
+  74 0034 2370     		strb	r3, [r4]
+  75 0036 70BD     		pop	{r4, r5, r6, pc}
+  76              	.L6:
+  77              		.align	2
+  78              	.L5:
+  79 0038 84C70040 		.word	1073792900
+  80 003c 00000000 		.word	.LANCHOR0
+  81 0040 00C70040 		.word	1073792768
+  82 0044 90C70040 		.word	1073792912
+  83 0048 40C70040 		.word	1073792832
+  84 004c 8CC70040 		.word	1073792908
+  85              		.cfi_endproc
+  86              	.LFE0:
+  87              		.size	Filter_SaveConfig, .-Filter_SaveConfig
+  88              		.section	.text.Filter_RestoreConfig,"ax",%progbits
+  89              		.align	1
+  90              		.global	Filter_RestoreConfig
+  91              		.thumb
+  92              		.thumb_func
+  93              		.type	Filter_RestoreConfig, %function
+  94              	Filter_RestoreConfig:
+  95              	.LFB1:
+  60:Generated_Source\PSoC5/Filter_PM.c **** }
+  61:Generated_Source\PSoC5/Filter_PM.c **** 
+  62:Generated_Source\PSoC5/Filter_PM.c **** 
+  63:Generated_Source\PSoC5/Filter_PM.c **** /*******************************************************************************
+  64:Generated_Source\PSoC5/Filter_PM.c **** * Function Name: Filter_RestoreConfig
+  65:Generated_Source\PSoC5/Filter_PM.c **** ********************************************************************************
+  66:Generated_Source\PSoC5/Filter_PM.c **** *
+  67:Generated_Source\PSoC5/Filter_PM.c **** * Summary:
+  68:Generated_Source\PSoC5/Filter_PM.c **** *  Restores the current user configuration.
+  69:Generated_Source\PSoC5/Filter_PM.c **** *
+  70:Generated_Source\PSoC5/Filter_PM.c **** * Parameters:  
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 4
+
+
+  71:Generated_Source\PSoC5/Filter_PM.c **** *  void
+  72:Generated_Source\PSoC5/Filter_PM.c **** *
+  73:Generated_Source\PSoC5/Filter_PM.c **** * Return: 
+  74:Generated_Source\PSoC5/Filter_PM.c **** *  void
+  75:Generated_Source\PSoC5/Filter_PM.c **** *
+  76:Generated_Source\PSoC5/Filter_PM.c **** * Global variables:
+  77:Generated_Source\PSoC5/Filter_PM.c **** *  Filter_backup:  This global structure variable is used to restore 
+  78:Generated_Source\PSoC5/Filter_PM.c **** *  configuration registers which are non retention whenever user wants to switch 
+  79:Generated_Source\PSoC5/Filter_PM.c **** *  to active power mode by calling Wakeup() API.
+  80:Generated_Source\PSoC5/Filter_PM.c **** *
+  81:Generated_Source\PSoC5/Filter_PM.c **** *******************************************************************************/
+  82:Generated_Source\PSoC5/Filter_PM.c **** void Filter_RestoreConfig(void) 
+  83:Generated_Source\PSoC5/Filter_PM.c **** {
+  96              		.loc 1 83 0
+  97              		.cfi_startproc
+  98              		@ args = 0, pretend = 0, frame = 0
+  99              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100 0000 70B5     		push	{r4, r5, r6, lr}
+ 101              		.cfi_def_cfa_offset 16
+ 102              		.cfi_offset 4, -16
+ 103              		.cfi_offset 5, -12
+ 104              		.cfi_offset 6, -8
+ 105              		.cfi_offset 14, -4
+  84:Generated_Source\PSoC5/Filter_PM.c ****     Filter_SR_REG = Filter_backup.sr;
+ 106              		.loc 1 84 0
+ 107 0002 0F4B     		ldr	r3, .L10
+ 108 0004 0F4A     		ldr	r2, .L10+4
+ 109 0006 9978     		ldrb	r1, [r3, #2]	@ zero_extendqisi2
+  85:Generated_Source\PSoC5/Filter_PM.c ****     Filter_SEMA_REG = Filter_backup.sema;
+  86:Generated_Source\PSoC5/Filter_PM.c ****     
+  87:Generated_Source\PSoC5/Filter_PM.c ****     /* Power on DFB before initializing the RAMs */
+  88:Generated_Source\PSoC5/Filter_PM.c ****     Filter_PM_ACT_CFG_REG |= Filter_PM_ACT_MSK;
+  89:Generated_Source\PSoC5/Filter_PM.c **** 
+  90:Generated_Source\PSoC5/Filter_PM.c ****     /* Put DFB RAM on the bus */
+  91:Generated_Source\PSoC5/Filter_PM.c ****     Filter_RAM_DIR_REG = Filter_RAM_DIR_BUS;
+  92:Generated_Source\PSoC5/Filter_PM.c **** 
+  93:Generated_Source\PSoC5/Filter_PM.c ****     /* Restore ACU RAM as this is not retension */
+  94:Generated_Source\PSoC5/Filter_PM.c ****     (void)memcpy(Filter_ACU_RAM,
+ 110              		.loc 1 94 0
+ 111 0008 0F4E     		ldr	r6, .L10+8
+  84:Generated_Source\PSoC5/Filter_PM.c ****     Filter_SR_REG = Filter_backup.sr;
+ 112              		.loc 1 84 0
+ 113 000a 1170     		strb	r1, [r2]
+  85:Generated_Source\PSoC5/Filter_PM.c ****     Filter_SEMA_REG = Filter_backup.sema;
+ 114              		.loc 1 85 0
+ 115 000c D978     		ldrb	r1, [r3, #3]	@ zero_extendqisi2
+ 116 000e 1173     		strb	r1, [r2, #12]
+  88:Generated_Source\PSoC5/Filter_PM.c **** 
+ 117              		.loc 1 88 0
+ 118 0010 0E49     		ldr	r1, .L10+12
+ 119 0012 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
+ 120 0014 42F01002 		orr	r2, r2, #16
+ 121 0018 0A70     		strb	r2, [r1]
+  91:Generated_Source\PSoC5/Filter_PM.c **** 
+ 122              		.loc 1 91 0
+ 123 001a 01F50341 		add	r1, r1, #33536
+ 124 001e E631     		adds	r1, r1, #230
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 5
+
+
+ 125 0020 0C46     		mov	r4, r1
+ 126 0022 3F22     		movs	r2, #63
+ 127 0024 0A70     		strb	r2, [r1]
+ 128              		.loc 1 94 0
+ 129 0026 1A1D     		adds	r2, r3, #4
+ 130 0028 4433     		adds	r3, r3, #68
+ 131              	.L8:
+ 132 002a 3546     		mov	r5, r6
+ 133 002c 1068     		ldr	r0, [r2]	@ unaligned
+ 134 002e 5168     		ldr	r1, [r2, #4]	@ unaligned
+ 135 0030 0832     		adds	r2, r2, #8
+ 136 0032 03C5     		stmia	r5!, {r0, r1}
+ 137 0034 9A42     		cmp	r2, r3
+ 138 0036 2E46     		mov	r6, r5
+ 139 0038 F7D1     		bne	.L8
+  95:Generated_Source\PSoC5/Filter_PM.c ****         Filter_backup.saveAcu, Filter_ACU_RAM_SIZE); 
+  96:Generated_Source\PSoC5/Filter_PM.c **** 
+  97:Generated_Source\PSoC5/Filter_PM.c ****     /* Take DFB RAM off the bus */
+  98:Generated_Source\PSoC5/Filter_PM.c ****     Filter_RAM_DIR_REG = Filter_RAM_DIR_DFB;
+ 140              		.loc 1 98 0
+ 141 003a 0023     		movs	r3, #0
+ 142 003c 2370     		strb	r3, [r4]
+ 143 003e 70BD     		pop	{r4, r5, r6, pc}
+ 144              	.L11:
+ 145              		.align	2
+ 146              	.L10:
+ 147 0040 00000000 		.word	.LANCHOR0
+ 148 0044 84C70040 		.word	1073792900
+ 149 0048 00C70040 		.word	1073792768
+ 150 004c A6430040 		.word	1073759142
+ 151              		.cfi_endproc
+ 152              	.LFE1:
+ 153              		.size	Filter_RestoreConfig, .-Filter_RestoreConfig
+ 154              		.section	.text.Filter_Sleep,"ax",%progbits
+ 155              		.align	1
+ 156              		.global	Filter_Sleep
+ 157              		.thumb
+ 158              		.thumb_func
+ 159              		.type	Filter_Sleep, %function
+ 160              	Filter_Sleep:
+ 161              	.LFB2:
+  99:Generated_Source\PSoC5/Filter_PM.c **** }
+ 100:Generated_Source\PSoC5/Filter_PM.c **** 
+ 101:Generated_Source\PSoC5/Filter_PM.c **** 
+ 102:Generated_Source\PSoC5/Filter_PM.c **** /*******************************************************************************
+ 103:Generated_Source\PSoC5/Filter_PM.c **** * Function Name: Filter_Sleep
+ 104:Generated_Source\PSoC5/Filter_PM.c **** ********************************************************************************
+ 105:Generated_Source\PSoC5/Filter_PM.c **** *
+ 106:Generated_Source\PSoC5/Filter_PM.c **** * Summary:
+ 107:Generated_Source\PSoC5/Filter_PM.c **** *  Disables block's operation and saves its configuration. Should be called 
+ 108:Generated_Source\PSoC5/Filter_PM.c **** *  just prior to entering sleep.
+ 109:Generated_Source\PSoC5/Filter_PM.c **** *  
+ 110:Generated_Source\PSoC5/Filter_PM.c **** * Parameters:  
+ 111:Generated_Source\PSoC5/Filter_PM.c **** *  void
+ 112:Generated_Source\PSoC5/Filter_PM.c **** *
+ 113:Generated_Source\PSoC5/Filter_PM.c **** * Return: 
+ 114:Generated_Source\PSoC5/Filter_PM.c **** *  void
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 6
+
+
+ 115:Generated_Source\PSoC5/Filter_PM.c **** *
+ 116:Generated_Source\PSoC5/Filter_PM.c **** * Global variables:
+ 117:Generated_Source\PSoC5/Filter_PM.c **** *  Filter_backup:  The structure field 'enableState' is modified 
+ 118:Generated_Source\PSoC5/Filter_PM.c **** *  depending on the enable state of the block before entering to sleep mode.
+ 119:Generated_Source\PSoC5/Filter_PM.c **** *
+ 120:Generated_Source\PSoC5/Filter_PM.c **** *******************************************************************************/
+ 121:Generated_Source\PSoC5/Filter_PM.c **** void Filter_Sleep(void) 
+ 122:Generated_Source\PSoC5/Filter_PM.c **** {
+ 162              		.loc 1 122 0
+ 163              		.cfi_startproc
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166 0000 08B5     		push	{r3, lr}
+ 167              		.cfi_def_cfa_offset 8
+ 168              		.cfi_offset 3, -8
+ 169              		.cfi_offset 14, -4
+ 123:Generated_Source\PSoC5/Filter_PM.c ****     /* Save Filter enable state */
+ 124:Generated_Source\PSoC5/Filter_PM.c ****     if(Filter_PM_ACT_MSK == (Filter_PM_ACT_CFG_REG & Filter_PM_ACT_MSK))
+ 170              		.loc 1 124 0
+ 171 0002 094B     		ldr	r3, .L15
+ 172 0004 094A     		ldr	r2, .L15+4
+ 173 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 174 0008 03F01003 		and	r3, r3, #16
+ 175 000c 03F0FF01 		and	r1, r3, #255
+ 176 0010 13B1     		cbz	r3, .L13
+ 125:Generated_Source\PSoC5/Filter_PM.c ****     {
+ 126:Generated_Source\PSoC5/Filter_PM.c ****         /* Component is enabled */
+ 127:Generated_Source\PSoC5/Filter_PM.c ****         Filter_backup.enableState = Filter_ENABLED;
+ 177              		.loc 1 127 0
+ 178 0012 0123     		movs	r3, #1
+ 179 0014 1370     		strb	r3, [r2]
+ 180 0016 00E0     		b	.L14
+ 181              	.L13:
+ 128:Generated_Source\PSoC5/Filter_PM.c ****     }
+ 129:Generated_Source\PSoC5/Filter_PM.c ****     else
+ 130:Generated_Source\PSoC5/Filter_PM.c ****     {
+ 131:Generated_Source\PSoC5/Filter_PM.c ****         /* Component is disabled */
+ 132:Generated_Source\PSoC5/Filter_PM.c ****         Filter_backup.enableState = Filter_DISABLED;
+ 182              		.loc 1 132 0
+ 183 0018 1170     		strb	r1, [r2]
+ 184              	.L14:
+ 133:Generated_Source\PSoC5/Filter_PM.c ****     }
+ 134:Generated_Source\PSoC5/Filter_PM.c **** 
+ 135:Generated_Source\PSoC5/Filter_PM.c ****     /* Save the configuration */
+ 136:Generated_Source\PSoC5/Filter_PM.c ****     Filter_SaveConfig();
+ 185              		.loc 1 136 0
+ 186 001a FFF7FEFF 		bl	Filter_SaveConfig
+ 187              	.LVL0:
+ 137:Generated_Source\PSoC5/Filter_PM.c ****     
+ 138:Generated_Source\PSoC5/Filter_PM.c ****     /* Stop the component */
+ 139:Generated_Source\PSoC5/Filter_PM.c ****     Filter_Stop();
+ 140:Generated_Source\PSoC5/Filter_PM.c **** }
+ 188              		.loc 1 140 0
+ 189 001e BDE80840 		pop	{r3, lr}
+ 190              		.cfi_restore 14
+ 191              		.cfi_restore 3
+ 192              		.cfi_def_cfa_offset 0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 7
+
+
+ 139:Generated_Source\PSoC5/Filter_PM.c **** }
+ 193              		.loc 1 139 0
+ 194 0022 FFF7FEBF 		b	Filter_Stop
+ 195              	.LVL1:
+ 196              	.L16:
+ 197 0026 00BF     		.align	2
+ 198              	.L15:
+ 199 0028 A6430040 		.word	1073759142
+ 200 002c 00000000 		.word	.LANCHOR0
+ 201              		.cfi_endproc
+ 202              	.LFE2:
+ 203              		.size	Filter_Sleep, .-Filter_Sleep
+ 204              		.section	.text.Filter_Wakeup,"ax",%progbits
+ 205              		.align	1
+ 206              		.global	Filter_Wakeup
+ 207              		.thumb
+ 208              		.thumb_func
+ 209              		.type	Filter_Wakeup, %function
+ 210              	Filter_Wakeup:
+ 211              	.LFB3:
+ 141:Generated_Source\PSoC5/Filter_PM.c **** 
+ 142:Generated_Source\PSoC5/Filter_PM.c **** 
+ 143:Generated_Source\PSoC5/Filter_PM.c **** /*******************************************************************************
+ 144:Generated_Source\PSoC5/Filter_PM.c **** * Function Name: Filter_Wakeup
+ 145:Generated_Source\PSoC5/Filter_PM.c **** ********************************************************************************
+ 146:Generated_Source\PSoC5/Filter_PM.c **** *
+ 147:Generated_Source\PSoC5/Filter_PM.c **** * Summary:
+ 148:Generated_Source\PSoC5/Filter_PM.c **** *  Enables block's operation and restores its configuration. Should be called
+ 149:Generated_Source\PSoC5/Filter_PM.c **** *  just after awaking from sleep.
+ 150:Generated_Source\PSoC5/Filter_PM.c **** *  
+ 151:Generated_Source\PSoC5/Filter_PM.c **** * Parameters:  
+ 152:Generated_Source\PSoC5/Filter_PM.c **** *  void
+ 153:Generated_Source\PSoC5/Filter_PM.c **** *
+ 154:Generated_Source\PSoC5/Filter_PM.c **** * Return: 
+ 155:Generated_Source\PSoC5/Filter_PM.c **** *  void
+ 156:Generated_Source\PSoC5/Filter_PM.c **** *
+ 157:Generated_Source\PSoC5/Filter_PM.c **** * Global variables:
+ 158:Generated_Source\PSoC5/Filter_PM.c **** *  Filter_backup:  The structure field 'enableState' is used to 
+ 159:Generated_Source\PSoC5/Filter_PM.c **** *  restore the enable state of block after wakeup from sleep mode.
+ 160:Generated_Source\PSoC5/Filter_PM.c **** *
+ 161:Generated_Source\PSoC5/Filter_PM.c **** *******************************************************************************/
+ 162:Generated_Source\PSoC5/Filter_PM.c **** void Filter_Wakeup(void) 
+ 163:Generated_Source\PSoC5/Filter_PM.c **** {
+ 212              		.loc 1 163 0
+ 213              		.cfi_startproc
+ 214              		@ args = 0, pretend = 0, frame = 0
+ 215              		@ frame_needed = 0, uses_anonymous_args = 0
+ 216 0000 08B5     		push	{r3, lr}
+ 217              		.cfi_def_cfa_offset 8
+ 218              		.cfi_offset 3, -8
+ 219              		.cfi_offset 14, -4
+ 164:Generated_Source\PSoC5/Filter_PM.c ****     /* Restore the configuration */
+ 165:Generated_Source\PSoC5/Filter_PM.c ****     Filter_RestoreConfig();
+ 220              		.loc 1 165 0
+ 221 0002 FFF7FEFF 		bl	Filter_RestoreConfig
+ 222              	.LVL2:
+ 166:Generated_Source\PSoC5/Filter_PM.c ****     
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 8
+
+
+ 167:Generated_Source\PSoC5/Filter_PM.c ****     /* Enable's the component operation */
+ 168:Generated_Source\PSoC5/Filter_PM.c ****     if(Filter_backup.enableState == Filter_ENABLED)
+ 223              		.loc 1 168 0
+ 224 0006 044B     		ldr	r3, .L19
+ 225 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 226 000a 012B     		cmp	r3, #1
+ 227 000c 03D1     		bne	.L17
+ 169:Generated_Source\PSoC5/Filter_PM.c ****     {
+ 170:Generated_Source\PSoC5/Filter_PM.c ****         Filter_Enable();
+ 171:Generated_Source\PSoC5/Filter_PM.c ****     } /* Do nothing if component was disable before */
+ 172:Generated_Source\PSoC5/Filter_PM.c **** }
+ 228              		.loc 1 172 0
+ 229 000e BDE80840 		pop	{r3, lr}
+ 230              		.cfi_remember_state
+ 231              		.cfi_restore 14
+ 232              		.cfi_restore 3
+ 233              		.cfi_def_cfa_offset 0
+ 170:Generated_Source\PSoC5/Filter_PM.c ****     } /* Do nothing if component was disable before */
+ 234              		.loc 1 170 0
+ 235 0012 FFF7FEBF 		b	Filter_Enable
+ 236              	.LVL3:
+ 237              	.L17:
+ 238              		.cfi_restore_state
+ 239 0016 08BD     		pop	{r3, pc}
+ 240              	.L20:
+ 241              		.align	2
+ 242              	.L19:
+ 243 0018 00000000 		.word	.LANCHOR0
+ 244              		.cfi_endproc
+ 245              	.LFE3:
+ 246              		.size	Filter_Wakeup, .-Filter_Wakeup
+ 247              		.data
+ 248              		.set	.LANCHOR0,. + 0
+ 249              		.type	Filter_backup, %object
+ 250              		.size	Filter_backup, 68
+ 251              	Filter_backup:
+ 252 0000 00       		.byte	0
+ 253 0001 01       		.byte	1
+ 254 0002 00000000 		.space	66
+ 254      00000000 
+ 254      00000000 
+ 254      00000000 
+ 254      00000000 
+ 255              		.text
+ 256              	.Letext0:
+ 257              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 258              		.file 3 "Generated_Source\\PSoC5\\Filter.H"
+ 259              		.section	.debug_info,"",%progbits
+ 260              	.Ldebug_info0:
+ 261 0000 9C010000 		.4byte	0x19c
+ 262 0004 0400     		.2byte	0x4
+ 263 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 264 000a 04       		.byte	0x4
+ 265 000b 01       		.uleb128 0x1
+ 266 000c 96010000 		.4byte	.LASF26
+ 267 0010 01       		.byte	0x1
+ 268 0011 24020000 		.4byte	.LASF27
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 9
+
+
+ 269 0015 0A010000 		.4byte	.LASF28
+ 270 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 271 001d 00000000 		.4byte	0
+ 272 0021 00000000 		.4byte	.Ldebug_line0
+ 273 0025 02       		.uleb128 0x2
+ 274 0026 04       		.byte	0x4
+ 275 0027 05       		.byte	0x5
+ 276 0028 696E7400 		.ascii	"int\000"
+ 277 002c 03       		.uleb128 0x3
+ 278 002d 04       		.byte	0x4
+ 279 002e 07       		.byte	0x7
+ 280 002f B6000000 		.4byte	.LASF0
+ 281 0033 03       		.uleb128 0x3
+ 282 0034 01       		.byte	0x1
+ 283 0035 06       		.byte	0x6
+ 284 0036 5C020000 		.4byte	.LASF1
+ 285 003a 03       		.uleb128 0x3
+ 286 003b 01       		.byte	0x1
+ 287 003c 08       		.byte	0x8
+ 288 003d 43000000 		.4byte	.LASF2
+ 289 0041 03       		.uleb128 0x3
+ 290 0042 02       		.byte	0x2
+ 291 0043 05       		.byte	0x5
+ 292 0044 8C010000 		.4byte	.LASF3
+ 293 0048 03       		.uleb128 0x3
+ 294 0049 02       		.byte	0x2
+ 295 004a 07       		.byte	0x7
+ 296 004b 68020000 		.4byte	.LASF4
+ 297 004f 03       		.uleb128 0x3
+ 298 0050 04       		.byte	0x4
+ 299 0051 05       		.byte	0x5
+ 300 0052 47020000 		.4byte	.LASF5
+ 301 0056 03       		.uleb128 0x3
+ 302 0057 04       		.byte	0x4
+ 303 0058 07       		.byte	0x7
+ 304 0059 62000000 		.4byte	.LASF6
+ 305 005d 03       		.uleb128 0x3
+ 306 005e 08       		.byte	0x8
+ 307 005f 05       		.byte	0x5
+ 308 0060 F7000000 		.4byte	.LASF7
+ 309 0064 03       		.uleb128 0x3
+ 310 0065 08       		.byte	0x8
+ 311 0066 07       		.byte	0x7
+ 312 0067 D7000000 		.4byte	.LASF8
+ 313 006b 03       		.uleb128 0x3
+ 314 006c 04       		.byte	0x4
+ 315 006d 07       		.byte	0x7
+ 316 006e EE000000 		.4byte	.LASF9
+ 317 0072 03       		.uleb128 0x3
+ 318 0073 01       		.byte	0x1
+ 319 0074 08       		.byte	0x8
+ 320 0075 05010000 		.4byte	.LASF10
+ 321 0079 04       		.uleb128 0x4
+ 322 007a 74000000 		.4byte	.LASF11
+ 323 007e 02       		.byte	0x2
+ 324 007f 9201     		.2byte	0x192
+ 325 0081 3A000000 		.4byte	0x3a
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 10
+
+
+ 326 0085 04       		.uleb128 0x4
+ 327 0086 AF000000 		.4byte	.LASF12
+ 328 008a 02       		.byte	0x2
+ 329 008b 9301     		.2byte	0x193
+ 330 008d 48000000 		.4byte	0x48
+ 331 0091 03       		.uleb128 0x3
+ 332 0092 04       		.byte	0x4
+ 333 0093 04       		.byte	0x4
+ 334 0094 35000000 		.4byte	.LASF13
+ 335 0098 03       		.uleb128 0x3
+ 336 0099 08       		.byte	0x8
+ 337 009a 04       		.byte	0x4
+ 338 009b 88000000 		.4byte	.LASF14
+ 339 009f 04       		.uleb128 0x4
+ 340 00a0 5D000000 		.4byte	.LASF15
+ 341 00a4 02       		.byte	0x2
+ 342 00a5 3C02     		.2byte	0x23c
+ 343 00a7 AB000000 		.4byte	0xab
+ 344 00ab 05       		.uleb128 0x5
+ 345 00ac 79000000 		.4byte	0x79
+ 346 00b0 06       		.uleb128 0x6
+ 347 00b1 44       		.byte	0x44
+ 348 00b2 03       		.byte	0x3
+ 349 00b3 2E       		.byte	0x2e
+ 350 00b4 F3000000 		.4byte	0xf3
+ 351 00b8 07       		.uleb128 0x7
+ 352 00b9 50020000 		.4byte	.LASF16
+ 353 00bd 03       		.byte	0x3
+ 354 00be 30       		.byte	0x30
+ 355 00bf 79000000 		.4byte	0x79
+ 356 00c3 00       		.byte	0
+ 357 00c4 08       		.uleb128 0x8
+ 358 00c5 637200   		.ascii	"cr\000"
+ 359 00c8 03       		.byte	0x3
+ 360 00c9 31       		.byte	0x31
+ 361 00ca 79000000 		.4byte	0x79
+ 362 00ce 01       		.byte	0x1
+ 363 00cf 08       		.uleb128 0x8
+ 364 00d0 737200   		.ascii	"sr\000"
+ 365 00d3 03       		.byte	0x3
+ 366 00d4 32       		.byte	0x32
+ 367 00d5 79000000 		.4byte	0x79
+ 368 00d9 02       		.byte	0x2
+ 369 00da 07       		.uleb128 0x7
+ 370 00db 00000000 		.4byte	.LASF17
+ 371 00df 03       		.byte	0x3
+ 372 00e0 33       		.byte	0x33
+ 373 00e1 79000000 		.4byte	0x79
+ 374 00e5 03       		.byte	0x3
+ 375 00e6 07       		.uleb128 0x7
+ 376 00e7 3B000000 		.4byte	.LASF18
+ 377 00eb 03       		.byte	0x3
+ 378 00ec 34       		.byte	0x34
+ 379 00ed F3000000 		.4byte	0xf3
+ 380 00f1 04       		.byte	0x4
+ 381 00f2 00       		.byte	0
+ 382 00f3 09       		.uleb128 0x9
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 11
+
+
+ 383 00f4 79000000 		.4byte	0x79
+ 384 00f8 03010000 		.4byte	0x103
+ 385 00fc 0A       		.uleb128 0xa
+ 386 00fd 6B000000 		.4byte	0x6b
+ 387 0101 3F       		.byte	0x3f
+ 388 0102 00       		.byte	0
+ 389 0103 0B       		.uleb128 0xb
+ 390 0104 C3000000 		.4byte	.LASF19
+ 391 0108 03       		.byte	0x3
+ 392 0109 35       		.byte	0x35
+ 393 010a B0000000 		.4byte	0xb0
+ 394 010e 0C       		.uleb128 0xc
+ 395 010f 8F000000 		.4byte	.LASF20
+ 396 0113 01       		.byte	0x1
+ 397 0114 2E       		.byte	0x2e
+ 398 0115 00000000 		.4byte	.LFB0
+ 399 0119 50000000 		.4byte	.LFE0-.LFB0
+ 400 011d 01       		.uleb128 0x1
+ 401 011e 9C       		.byte	0x9c
+ 402 011f 0C       		.uleb128 0xc
+ 403 0120 20000000 		.4byte	.LASF21
+ 404 0124 01       		.byte	0x1
+ 405 0125 52       		.byte	0x52
+ 406 0126 00000000 		.4byte	.LFB1
+ 407 012a 50000000 		.4byte	.LFE1-.LFB1
+ 408 012e 01       		.uleb128 0x1
+ 409 012f 9C       		.byte	0x9c
+ 410 0130 0D       		.uleb128 0xd
+ 411 0131 05000000 		.4byte	.LASF22
+ 412 0135 01       		.byte	0x1
+ 413 0136 79       		.byte	0x79
+ 414 0137 00000000 		.4byte	.LFB2
+ 415 013b 30000000 		.4byte	.LFE2-.LFB2
+ 416 013f 01       		.uleb128 0x1
+ 417 0140 9C       		.byte	0x9c
+ 418 0141 58010000 		.4byte	0x158
+ 419 0145 0E       		.uleb128 0xe
+ 420 0146 1E000000 		.4byte	.LVL0
+ 421 014a 0E010000 		.4byte	0x10e
+ 422 014e 0F       		.uleb128 0xf
+ 423 014f 26000000 		.4byte	.LVL1
+ 424 0153 91010000 		.4byte	0x191
+ 425 0157 00       		.byte	0
+ 426 0158 0D       		.uleb128 0xd
+ 427 0159 7A000000 		.4byte	.LASF23
+ 428 015d 01       		.byte	0x1
+ 429 015e A2       		.byte	0xa2
+ 430 015f 00000000 		.4byte	.LFB3
+ 431 0163 1C000000 		.4byte	.LFE3-.LFB3
+ 432 0167 01       		.uleb128 0x1
+ 433 0168 9C       		.byte	0x9c
+ 434 0169 80010000 		.4byte	0x180
+ 435 016d 0E       		.uleb128 0xe
+ 436 016e 06000000 		.4byte	.LVL2
+ 437 0172 1F010000 		.4byte	0x11f
+ 438 0176 0F       		.uleb128 0xf
+ 439 0177 16000000 		.4byte	.LVL3
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 12
+
+
+ 440 017b 98010000 		.4byte	0x198
+ 441 017f 00       		.byte	0
+ 442 0180 10       		.uleb128 0x10
+ 443 0181 A1000000 		.4byte	.LASF29
+ 444 0185 01       		.byte	0x1
+ 445 0186 13       		.byte	0x13
+ 446 0187 03010000 		.4byte	0x103
+ 447 018b 05       		.uleb128 0x5
+ 448 018c 03       		.byte	0x3
+ 449 018d 00000000 		.4byte	Filter_backup
+ 450 0191 11       		.uleb128 0x11
+ 451 0192 51000000 		.4byte	.LASF24
+ 452 0196 03       		.byte	0x3
+ 453 0197 3D       		.byte	0x3d
+ 454 0198 11       		.uleb128 0x11
+ 455 0199 12000000 		.4byte	.LASF25
+ 456 019d 03       		.byte	0x3
+ 457 019e 49       		.byte	0x49
+ 458 019f 00       		.byte	0
+ 459              		.section	.debug_abbrev,"",%progbits
+ 460              	.Ldebug_abbrev0:
+ 461 0000 01       		.uleb128 0x1
+ 462 0001 11       		.uleb128 0x11
+ 463 0002 01       		.byte	0x1
+ 464 0003 25       		.uleb128 0x25
+ 465 0004 0E       		.uleb128 0xe
+ 466 0005 13       		.uleb128 0x13
+ 467 0006 0B       		.uleb128 0xb
+ 468 0007 03       		.uleb128 0x3
+ 469 0008 0E       		.uleb128 0xe
+ 470 0009 1B       		.uleb128 0x1b
+ 471 000a 0E       		.uleb128 0xe
+ 472 000b 55       		.uleb128 0x55
+ 473 000c 17       		.uleb128 0x17
+ 474 000d 11       		.uleb128 0x11
+ 475 000e 01       		.uleb128 0x1
+ 476 000f 10       		.uleb128 0x10
+ 477 0010 17       		.uleb128 0x17
+ 478 0011 00       		.byte	0
+ 479 0012 00       		.byte	0
+ 480 0013 02       		.uleb128 0x2
+ 481 0014 24       		.uleb128 0x24
+ 482 0015 00       		.byte	0
+ 483 0016 0B       		.uleb128 0xb
+ 484 0017 0B       		.uleb128 0xb
+ 485 0018 3E       		.uleb128 0x3e
+ 486 0019 0B       		.uleb128 0xb
+ 487 001a 03       		.uleb128 0x3
+ 488 001b 08       		.uleb128 0x8
+ 489 001c 00       		.byte	0
+ 490 001d 00       		.byte	0
+ 491 001e 03       		.uleb128 0x3
+ 492 001f 24       		.uleb128 0x24
+ 493 0020 00       		.byte	0
+ 494 0021 0B       		.uleb128 0xb
+ 495 0022 0B       		.uleb128 0xb
+ 496 0023 3E       		.uleb128 0x3e
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 13
+
+
+ 497 0024 0B       		.uleb128 0xb
+ 498 0025 03       		.uleb128 0x3
+ 499 0026 0E       		.uleb128 0xe
+ 500 0027 00       		.byte	0
+ 501 0028 00       		.byte	0
+ 502 0029 04       		.uleb128 0x4
+ 503 002a 16       		.uleb128 0x16
+ 504 002b 00       		.byte	0
+ 505 002c 03       		.uleb128 0x3
+ 506 002d 0E       		.uleb128 0xe
+ 507 002e 3A       		.uleb128 0x3a
+ 508 002f 0B       		.uleb128 0xb
+ 509 0030 3B       		.uleb128 0x3b
+ 510 0031 05       		.uleb128 0x5
+ 511 0032 49       		.uleb128 0x49
+ 512 0033 13       		.uleb128 0x13
+ 513 0034 00       		.byte	0
+ 514 0035 00       		.byte	0
+ 515 0036 05       		.uleb128 0x5
+ 516 0037 35       		.uleb128 0x35
+ 517 0038 00       		.byte	0
+ 518 0039 49       		.uleb128 0x49
+ 519 003a 13       		.uleb128 0x13
+ 520 003b 00       		.byte	0
+ 521 003c 00       		.byte	0
+ 522 003d 06       		.uleb128 0x6
+ 523 003e 13       		.uleb128 0x13
+ 524 003f 01       		.byte	0x1
+ 525 0040 0B       		.uleb128 0xb
+ 526 0041 0B       		.uleb128 0xb
+ 527 0042 3A       		.uleb128 0x3a
+ 528 0043 0B       		.uleb128 0xb
+ 529 0044 3B       		.uleb128 0x3b
+ 530 0045 0B       		.uleb128 0xb
+ 531 0046 01       		.uleb128 0x1
+ 532 0047 13       		.uleb128 0x13
+ 533 0048 00       		.byte	0
+ 534 0049 00       		.byte	0
+ 535 004a 07       		.uleb128 0x7
+ 536 004b 0D       		.uleb128 0xd
+ 537 004c 00       		.byte	0
+ 538 004d 03       		.uleb128 0x3
+ 539 004e 0E       		.uleb128 0xe
+ 540 004f 3A       		.uleb128 0x3a
+ 541 0050 0B       		.uleb128 0xb
+ 542 0051 3B       		.uleb128 0x3b
+ 543 0052 0B       		.uleb128 0xb
+ 544 0053 49       		.uleb128 0x49
+ 545 0054 13       		.uleb128 0x13
+ 546 0055 38       		.uleb128 0x38
+ 547 0056 0B       		.uleb128 0xb
+ 548 0057 00       		.byte	0
+ 549 0058 00       		.byte	0
+ 550 0059 08       		.uleb128 0x8
+ 551 005a 0D       		.uleb128 0xd
+ 552 005b 00       		.byte	0
+ 553 005c 03       		.uleb128 0x3
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 14
+
+
+ 554 005d 08       		.uleb128 0x8
+ 555 005e 3A       		.uleb128 0x3a
+ 556 005f 0B       		.uleb128 0xb
+ 557 0060 3B       		.uleb128 0x3b
+ 558 0061 0B       		.uleb128 0xb
+ 559 0062 49       		.uleb128 0x49
+ 560 0063 13       		.uleb128 0x13
+ 561 0064 38       		.uleb128 0x38
+ 562 0065 0B       		.uleb128 0xb
+ 563 0066 00       		.byte	0
+ 564 0067 00       		.byte	0
+ 565 0068 09       		.uleb128 0x9
+ 566 0069 01       		.uleb128 0x1
+ 567 006a 01       		.byte	0x1
+ 568 006b 49       		.uleb128 0x49
+ 569 006c 13       		.uleb128 0x13
+ 570 006d 01       		.uleb128 0x1
+ 571 006e 13       		.uleb128 0x13
+ 572 006f 00       		.byte	0
+ 573 0070 00       		.byte	0
+ 574 0071 0A       		.uleb128 0xa
+ 575 0072 21       		.uleb128 0x21
+ 576 0073 00       		.byte	0
+ 577 0074 49       		.uleb128 0x49
+ 578 0075 13       		.uleb128 0x13
+ 579 0076 2F       		.uleb128 0x2f
+ 580 0077 0B       		.uleb128 0xb
+ 581 0078 00       		.byte	0
+ 582 0079 00       		.byte	0
+ 583 007a 0B       		.uleb128 0xb
+ 584 007b 16       		.uleb128 0x16
+ 585 007c 00       		.byte	0
+ 586 007d 03       		.uleb128 0x3
+ 587 007e 0E       		.uleb128 0xe
+ 588 007f 3A       		.uleb128 0x3a
+ 589 0080 0B       		.uleb128 0xb
+ 590 0081 3B       		.uleb128 0x3b
+ 591 0082 0B       		.uleb128 0xb
+ 592 0083 49       		.uleb128 0x49
+ 593 0084 13       		.uleb128 0x13
+ 594 0085 00       		.byte	0
+ 595 0086 00       		.byte	0
+ 596 0087 0C       		.uleb128 0xc
+ 597 0088 2E       		.uleb128 0x2e
+ 598 0089 00       		.byte	0
+ 599 008a 3F       		.uleb128 0x3f
+ 600 008b 19       		.uleb128 0x19
+ 601 008c 03       		.uleb128 0x3
+ 602 008d 0E       		.uleb128 0xe
+ 603 008e 3A       		.uleb128 0x3a
+ 604 008f 0B       		.uleb128 0xb
+ 605 0090 3B       		.uleb128 0x3b
+ 606 0091 0B       		.uleb128 0xb
+ 607 0092 27       		.uleb128 0x27
+ 608 0093 19       		.uleb128 0x19
+ 609 0094 11       		.uleb128 0x11
+ 610 0095 01       		.uleb128 0x1
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 15
+
+
+ 611 0096 12       		.uleb128 0x12
+ 612 0097 06       		.uleb128 0x6
+ 613 0098 40       		.uleb128 0x40
+ 614 0099 18       		.uleb128 0x18
+ 615 009a 9742     		.uleb128 0x2117
+ 616 009c 19       		.uleb128 0x19
+ 617 009d 00       		.byte	0
+ 618 009e 00       		.byte	0
+ 619 009f 0D       		.uleb128 0xd
+ 620 00a0 2E       		.uleb128 0x2e
+ 621 00a1 01       		.byte	0x1
+ 622 00a2 3F       		.uleb128 0x3f
+ 623 00a3 19       		.uleb128 0x19
+ 624 00a4 03       		.uleb128 0x3
+ 625 00a5 0E       		.uleb128 0xe
+ 626 00a6 3A       		.uleb128 0x3a
+ 627 00a7 0B       		.uleb128 0xb
+ 628 00a8 3B       		.uleb128 0x3b
+ 629 00a9 0B       		.uleb128 0xb
+ 630 00aa 27       		.uleb128 0x27
+ 631 00ab 19       		.uleb128 0x19
+ 632 00ac 11       		.uleb128 0x11
+ 633 00ad 01       		.uleb128 0x1
+ 634 00ae 12       		.uleb128 0x12
+ 635 00af 06       		.uleb128 0x6
+ 636 00b0 40       		.uleb128 0x40
+ 637 00b1 18       		.uleb128 0x18
+ 638 00b2 9742     		.uleb128 0x2117
+ 639 00b4 19       		.uleb128 0x19
+ 640 00b5 01       		.uleb128 0x1
+ 641 00b6 13       		.uleb128 0x13
+ 642 00b7 00       		.byte	0
+ 643 00b8 00       		.byte	0
+ 644 00b9 0E       		.uleb128 0xe
+ 645 00ba 898201   		.uleb128 0x4109
+ 646 00bd 00       		.byte	0
+ 647 00be 11       		.uleb128 0x11
+ 648 00bf 01       		.uleb128 0x1
+ 649 00c0 31       		.uleb128 0x31
+ 650 00c1 13       		.uleb128 0x13
+ 651 00c2 00       		.byte	0
+ 652 00c3 00       		.byte	0
+ 653 00c4 0F       		.uleb128 0xf
+ 654 00c5 898201   		.uleb128 0x4109
+ 655 00c8 00       		.byte	0
+ 656 00c9 11       		.uleb128 0x11
+ 657 00ca 01       		.uleb128 0x1
+ 658 00cb 9542     		.uleb128 0x2115
+ 659 00cd 19       		.uleb128 0x19
+ 660 00ce 31       		.uleb128 0x31
+ 661 00cf 13       		.uleb128 0x13
+ 662 00d0 00       		.byte	0
+ 663 00d1 00       		.byte	0
+ 664 00d2 10       		.uleb128 0x10
+ 665 00d3 34       		.uleb128 0x34
+ 666 00d4 00       		.byte	0
+ 667 00d5 03       		.uleb128 0x3
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 16
+
+
+ 668 00d6 0E       		.uleb128 0xe
+ 669 00d7 3A       		.uleb128 0x3a
+ 670 00d8 0B       		.uleb128 0xb
+ 671 00d9 3B       		.uleb128 0x3b
+ 672 00da 0B       		.uleb128 0xb
+ 673 00db 49       		.uleb128 0x49
+ 674 00dc 13       		.uleb128 0x13
+ 675 00dd 02       		.uleb128 0x2
+ 676 00de 18       		.uleb128 0x18
+ 677 00df 00       		.byte	0
+ 678 00e0 00       		.byte	0
+ 679 00e1 11       		.uleb128 0x11
+ 680 00e2 2E       		.uleb128 0x2e
+ 681 00e3 00       		.byte	0
+ 682 00e4 3F       		.uleb128 0x3f
+ 683 00e5 19       		.uleb128 0x19
+ 684 00e6 03       		.uleb128 0x3
+ 685 00e7 0E       		.uleb128 0xe
+ 686 00e8 3A       		.uleb128 0x3a
+ 687 00e9 0B       		.uleb128 0xb
+ 688 00ea 3B       		.uleb128 0x3b
+ 689 00eb 0B       		.uleb128 0xb
+ 690 00ec 27       		.uleb128 0x27
+ 691 00ed 19       		.uleb128 0x19
+ 692 00ee 3C       		.uleb128 0x3c
+ 693 00ef 19       		.uleb128 0x19
+ 694 00f0 00       		.byte	0
+ 695 00f1 00       		.byte	0
+ 696 00f2 00       		.byte	0
+ 697              		.section	.debug_aranges,"",%progbits
+ 698 0000 34000000 		.4byte	0x34
+ 699 0004 0200     		.2byte	0x2
+ 700 0006 00000000 		.4byte	.Ldebug_info0
+ 701 000a 04       		.byte	0x4
+ 702 000b 00       		.byte	0
+ 703 000c 0000     		.2byte	0
+ 704 000e 0000     		.2byte	0
+ 705 0010 00000000 		.4byte	.LFB0
+ 706 0014 50000000 		.4byte	.LFE0-.LFB0
+ 707 0018 00000000 		.4byte	.LFB1
+ 708 001c 50000000 		.4byte	.LFE1-.LFB1
+ 709 0020 00000000 		.4byte	.LFB2
+ 710 0024 30000000 		.4byte	.LFE2-.LFB2
+ 711 0028 00000000 		.4byte	.LFB3
+ 712 002c 1C000000 		.4byte	.LFE3-.LFB3
+ 713 0030 00000000 		.4byte	0
+ 714 0034 00000000 		.4byte	0
+ 715              		.section	.debug_ranges,"",%progbits
+ 716              	.Ldebug_ranges0:
+ 717 0000 00000000 		.4byte	.LFB0
+ 718 0004 50000000 		.4byte	.LFE0
+ 719 0008 00000000 		.4byte	.LFB1
+ 720 000c 50000000 		.4byte	.LFE1
+ 721 0010 00000000 		.4byte	.LFB2
+ 722 0014 30000000 		.4byte	.LFE2
+ 723 0018 00000000 		.4byte	.LFB3
+ 724 001c 1C000000 		.4byte	.LFE3
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 17
+
+
+ 725 0020 00000000 		.4byte	0
+ 726 0024 00000000 		.4byte	0
+ 727              		.section	.debug_line,"",%progbits
+ 728              	.Ldebug_line0:
+ 729 0000 C0000000 		.section	.debug_str,"MS",%progbits,1
+ 729      02005200 
+ 729      00000201 
+ 729      FB0E0D00 
+ 729      01010101 
+ 730              	.LASF17:
+ 731 0000 73656D61 		.ascii	"sema\000"
+ 731      00
+ 732              	.LASF22:
+ 733 0005 46696C74 		.ascii	"Filter_Sleep\000"
+ 733      65725F53 
+ 733      6C656570 
+ 733      00
+ 734              	.LASF25:
+ 735 0012 46696C74 		.ascii	"Filter_Enable\000"
+ 735      65725F45 
+ 735      6E61626C 
+ 735      6500
+ 736              	.LASF21:
+ 737 0020 46696C74 		.ascii	"Filter_RestoreConfig\000"
+ 737      65725F52 
+ 737      6573746F 
+ 737      7265436F 
+ 737      6E666967 
+ 738              	.LASF13:
+ 739 0035 666C6F61 		.ascii	"float\000"
+ 739      7400
+ 740              	.LASF18:
+ 741 003b 73617665 		.ascii	"saveAcu\000"
+ 741      41637500 
+ 742              	.LASF2:
+ 743 0043 756E7369 		.ascii	"unsigned char\000"
+ 743      676E6564 
+ 743      20636861 
+ 743      7200
+ 744              	.LASF24:
+ 745 0051 46696C74 		.ascii	"Filter_Stop\000"
+ 745      65725F53 
+ 745      746F7000 
+ 746              	.LASF15:
+ 747 005d 72656738 		.ascii	"reg8\000"
+ 747      00
+ 748              	.LASF6:
+ 749 0062 6C6F6E67 		.ascii	"long unsigned int\000"
+ 749      20756E73 
+ 749      69676E65 
+ 749      6420696E 
+ 749      7400
+ 750              	.LASF11:
+ 751 0074 75696E74 		.ascii	"uint8\000"
+ 751      3800
+ 752              	.LASF23:
+ 753 007a 46696C74 		.ascii	"Filter_Wakeup\000"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 18
+
+
+ 753      65725F57 
+ 753      616B6575 
+ 753      7000
+ 754              	.LASF14:
+ 755 0088 646F7562 		.ascii	"double\000"
+ 755      6C6500
+ 756              	.LASF20:
+ 757 008f 46696C74 		.ascii	"Filter_SaveConfig\000"
+ 757      65725F53 
+ 757      61766543 
+ 757      6F6E6669 
+ 757      6700
+ 758              	.LASF29:
+ 759 00a1 46696C74 		.ascii	"Filter_backup\000"
+ 759      65725F62 
+ 759      61636B75 
+ 759      7000
+ 760              	.LASF12:
+ 761 00af 75696E74 		.ascii	"uint16\000"
+ 761      313600
+ 762              	.LASF0:
+ 763 00b6 756E7369 		.ascii	"unsigned int\000"
+ 763      676E6564 
+ 763      20696E74 
+ 763      00
+ 764              	.LASF19:
+ 765 00c3 46696C74 		.ascii	"Filter_backupStruct\000"
+ 765      65725F62 
+ 765      61636B75 
+ 765      70537472 
+ 765      75637400 
+ 766              	.LASF8:
+ 767 00d7 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 767      206C6F6E 
+ 767      6720756E 
+ 767      7369676E 
+ 767      65642069 
+ 768              	.LASF9:
+ 769 00ee 73697A65 		.ascii	"sizetype\000"
+ 769      74797065 
+ 769      00
+ 770              	.LASF7:
+ 771 00f7 6C6F6E67 		.ascii	"long long int\000"
+ 771      206C6F6E 
+ 771      6720696E 
+ 771      7400
+ 772              	.LASF10:
+ 773 0105 63686172 		.ascii	"char\000"
+ 773      00
+ 774              	.LASF28:
+ 775 010a 433A5C55 		.ascii	"C:\\Users\\Luggi\\Desktop\\Aktuelles Projekt Laser_"
+ 775      73657273 
+ 775      5C4C7567 
+ 775      67695C44 
+ 775      65736B74 
+ 776 0139 73636875 		.ascii	"schutzschaltung\\Aktuelles Projekt Laser_schutzscha"
+ 776      747A7363 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccenBbhe.s 			page 19
+
+
+ 776      68616C74 
+ 776      756E675C 
+ 776      416B7475 
+ 777 016b 6C74756E 		.ascii	"ltung\\Laserschutzschaltung.cydsn\000"
+ 777      675C4C61 
+ 777      73657273 
+ 777      63687574 
+ 777      7A736368 
+ 778              	.LASF3:
+ 779 018c 73686F72 		.ascii	"short int\000"
+ 779      7420696E 
+ 779      7400
+ 780              	.LASF26:
+ 781 0196 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 781      4320342E 
+ 781      392E3320 
+ 781      32303135 
+ 781      30333033 
+ 782 01c9 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 782      20726576 
+ 782      6973696F 
+ 782      6E203232 
+ 782      31323230 
+ 783 01fc 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 783      66756E63 
+ 783      74696F6E 
+ 783      2D736563 
+ 783      74696F6E 
+ 784              	.LASF27:
+ 785 0224 47656E65 		.ascii	"Generated_Source\\PSoC5\\Filter_PM.c\000"
+ 785      72617465 
+ 785      645F536F 
+ 785      75726365 
+ 785      5C50536F 
+ 786              	.LASF5:
+ 787 0247 6C6F6E67 		.ascii	"long int\000"
+ 787      20696E74 
+ 787      00
+ 788              	.LASF16:
+ 789 0250 656E6162 		.ascii	"enableState\000"
+ 789      6C655374 
+ 789      61746500 
+ 790              	.LASF1:
+ 791 025c 7369676E 		.ascii	"signed char\000"
+ 791      65642063 
+ 791      68617200 
+ 792              	.LASF4:
+ 793 0268 73686F72 		.ascii	"short unsigned int\000"
+ 793      7420756E 
+ 793      7369676E 
+ 793      65642069 
+ 793      6E7400
+ 794              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

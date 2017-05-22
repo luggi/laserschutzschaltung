@@ -1,0 +1,2531 @@
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Comp_3.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.Comp_3_trimAdjust,"ax",%progbits
+  19              		.align	1
+  20              		.thumb
+  21              		.thumb_func
+  22              		.type	Comp_3_trimAdjust, %function
+  23              	Comp_3_trimAdjust:
+  24              	.LFB6:
+  25              		.file 1 "Generated_Source\\PSoC5\\Comp_3.c"
+   1:Generated_Source\PSoC5/Comp_3.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/Comp_3.c **** * File Name: Comp_3.c
+   3:Generated_Source\PSoC5/Comp_3.c **** * Version 2.0
+   4:Generated_Source\PSoC5/Comp_3.c **** *
+   5:Generated_Source\PSoC5/Comp_3.c **** * Description:
+   6:Generated_Source\PSoC5/Comp_3.c **** *  This file provides the source code to the API for the Comparator component
+   7:Generated_Source\PSoC5/Comp_3.c **** *
+   8:Generated_Source\PSoC5/Comp_3.c **** * Note:
+   9:Generated_Source\PSoC5/Comp_3.c **** *  None
+  10:Generated_Source\PSoC5/Comp_3.c **** *
+  11:Generated_Source\PSoC5/Comp_3.c **** ********************************************************************************
+  12:Generated_Source\PSoC5/Comp_3.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC5/Comp_3.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:Generated_Source\PSoC5/Comp_3.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:Generated_Source\PSoC5/Comp_3.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC5/Comp_3.c **** *******************************************************************************/
+  17:Generated_Source\PSoC5/Comp_3.c **** 
+  18:Generated_Source\PSoC5/Comp_3.c **** #include "Comp_3.h"
+  19:Generated_Source\PSoC5/Comp_3.c **** 
+  20:Generated_Source\PSoC5/Comp_3.c **** uint8 Comp_3_initVar = 0u;
+  21:Generated_Source\PSoC5/Comp_3.c **** 
+  22:Generated_Source\PSoC5/Comp_3.c **** /* Internal functions definitoin */
+  23:Generated_Source\PSoC5/Comp_3.c **** static void Comp_3_trimAdjust(uint8 nibble) ;
+  24:Generated_Source\PSoC5/Comp_3.c **** 
+  25:Generated_Source\PSoC5/Comp_3.c **** /* static Comp_3_backupStruct  Comp_3_backup; */
+  26:Generated_Source\PSoC5/Comp_3.c **** #if (CY_PSOC5A)
+  27:Generated_Source\PSoC5/Comp_3.c ****     static Comp_3_LOWPOWER_BACKUP_STRUCT  Comp_3_lowPowerBackup;
+  28:Generated_Source\PSoC5/Comp_3.c **** #endif /* CY_PSOC5A */
+  29:Generated_Source\PSoC5/Comp_3.c **** 
+  30:Generated_Source\PSoC5/Comp_3.c **** /* variable to decide whether or not to restore the control register in 
+  31:Generated_Source\PSoC5/Comp_3.c ****    Enable() API for PSoC5A only */
+  32:Generated_Source\PSoC5/Comp_3.c **** #if (CY_PSOC5A)
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 2
+
+
+  33:Generated_Source\PSoC5/Comp_3.c ****     static uint8 Comp_3_restoreReg = 0u;
+  34:Generated_Source\PSoC5/Comp_3.c **** #endif /* CY_PSOC5A */
+  35:Generated_Source\PSoC5/Comp_3.c **** 
+  36:Generated_Source\PSoC5/Comp_3.c **** 
+  37:Generated_Source\PSoC5/Comp_3.c **** /*******************************************************************************
+  38:Generated_Source\PSoC5/Comp_3.c **** * Function Name: Comp_3_Init
+  39:Generated_Source\PSoC5/Comp_3.c **** ********************************************************************************
+  40:Generated_Source\PSoC5/Comp_3.c **** *
+  41:Generated_Source\PSoC5/Comp_3.c **** * Summary:
+  42:Generated_Source\PSoC5/Comp_3.c **** *  Initialize to the schematic state
+  43:Generated_Source\PSoC5/Comp_3.c **** * 
+  44:Generated_Source\PSoC5/Comp_3.c **** * Parameters:
+  45:Generated_Source\PSoC5/Comp_3.c **** *  void
+  46:Generated_Source\PSoC5/Comp_3.c **** *
+  47:Generated_Source\PSoC5/Comp_3.c **** * Return:
+  48:Generated_Source\PSoC5/Comp_3.c **** *  void
+  49:Generated_Source\PSoC5/Comp_3.c **** *
+  50:Generated_Source\PSoC5/Comp_3.c **** *******************************************************************************/
+  51:Generated_Source\PSoC5/Comp_3.c **** void Comp_3_Init(void) 
+  52:Generated_Source\PSoC5/Comp_3.c **** {
+  53:Generated_Source\PSoC5/Comp_3.c ****     /* Set default speed/power */
+  54:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_SetSpeed(Comp_3_DEFAULT_SPEED);
+  55:Generated_Source\PSoC5/Comp_3.c **** 
+  56:Generated_Source\PSoC5/Comp_3.c ****     /* Set default Hysteresis */
+  57:Generated_Source\PSoC5/Comp_3.c ****     #if ( Comp_3_DEFAULT_HYSTERESIS == 0u )
+  58:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_CR |= Comp_3_HYST_OFF;
+  59:Generated_Source\PSoC5/Comp_3.c ****     #else
+  60:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_CR &= (uint8)(~Comp_3_HYST_OFF);
+  61:Generated_Source\PSoC5/Comp_3.c ****     #endif /* Comp_3_DEFAULT_HYSTERESIS == 0u */
+  62:Generated_Source\PSoC5/Comp_3.c ****     /* Power down override feature is not supported for PSoC5A. */
+  63:Generated_Source\PSoC5/Comp_3.c ****     #if (CY_PSOC3 || CY_PSOC5LP)
+  64:Generated_Source\PSoC5/Comp_3.c ****         /* Set default Power Down Override */
+  65:Generated_Source\PSoC5/Comp_3.c ****         #if ( Comp_3_DEFAULT_PWRDWN_OVRD == 0u )
+  66:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_CR &= (uint8)(~Comp_3_PWRDWN_OVRD);
+  67:Generated_Source\PSoC5/Comp_3.c ****         #else 
+  68:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_CR |= Comp_3_PWRDWN_OVRD;
+  69:Generated_Source\PSoC5/Comp_3.c ****         #endif /* Comp_3_DEFAULT_PWRDWN_OVRD == 0u */
+  70:Generated_Source\PSoC5/Comp_3.c ****     #endif /* CY_PSOC3 || CY_PSOC5LP */
+  71:Generated_Source\PSoC5/Comp_3.c ****     
+  72:Generated_Source\PSoC5/Comp_3.c ****     /* Set mux always on logic */
+  73:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_CR |= Comp_3_MX_AO;
+  74:Generated_Source\PSoC5/Comp_3.c **** 
+  75:Generated_Source\PSoC5/Comp_3.c ****     /* Set default sync */
+  76:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_CLK &= (uint8)(~Comp_3_SYNCCLK_MASK);
+  77:Generated_Source\PSoC5/Comp_3.c ****     #if ( Comp_3_DEFAULT_BYPASS_SYNC == 0u )
+  78:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_CLK |= Comp_3_SYNC_CLK_EN;
+  79:Generated_Source\PSoC5/Comp_3.c ****     #else
+  80:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_CLK |= Comp_3_BYPASS_SYNC;
+  81:Generated_Source\PSoC5/Comp_3.c ****     #endif /* Comp_3_DEFAULT_BYPASS_SYNC == 0u */
+  82:Generated_Source\PSoC5/Comp_3.c **** }
+  83:Generated_Source\PSoC5/Comp_3.c **** 
+  84:Generated_Source\PSoC5/Comp_3.c **** 
+  85:Generated_Source\PSoC5/Comp_3.c **** /*******************************************************************************
+  86:Generated_Source\PSoC5/Comp_3.c **** * Function Name: Comp_3_Enable
+  87:Generated_Source\PSoC5/Comp_3.c **** ********************************************************************************
+  88:Generated_Source\PSoC5/Comp_3.c **** *
+  89:Generated_Source\PSoC5/Comp_3.c **** * Summary:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 3
+
+
+  90:Generated_Source\PSoC5/Comp_3.c **** *  Enable the Comparator
+  91:Generated_Source\PSoC5/Comp_3.c **** * 
+  92:Generated_Source\PSoC5/Comp_3.c **** * Parameters:
+  93:Generated_Source\PSoC5/Comp_3.c **** *  void
+  94:Generated_Source\PSoC5/Comp_3.c **** *
+  95:Generated_Source\PSoC5/Comp_3.c **** * Return:
+  96:Generated_Source\PSoC5/Comp_3.c **** *  void
+  97:Generated_Source\PSoC5/Comp_3.c **** *
+  98:Generated_Source\PSoC5/Comp_3.c **** *******************************************************************************/
+  99:Generated_Source\PSoC5/Comp_3.c **** void Comp_3_Enable(void) 
+ 100:Generated_Source\PSoC5/Comp_3.c **** {
+ 101:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_PWRMGR |= Comp_3_ACT_PWR_EN;
+ 102:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_STBY_PWRMGR |= Comp_3_STBY_PWR_EN;
+ 103:Generated_Source\PSoC5/Comp_3.c ****      
+ 104:Generated_Source\PSoC5/Comp_3.c ****      /* This is to restore the value of register CR which is saved 
+ 105:Generated_Source\PSoC5/Comp_3.c ****     in prior to the modification in stop() API */
+ 106:Generated_Source\PSoC5/Comp_3.c ****     #if (CY_PSOC5A)
+ 107:Generated_Source\PSoC5/Comp_3.c ****         if(Comp_3_restoreReg == 1u)
+ 108:Generated_Source\PSoC5/Comp_3.c ****         {
+ 109:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_CR = Comp_3_lowPowerBackup.compCRReg;
+ 110:Generated_Source\PSoC5/Comp_3.c **** 
+ 111:Generated_Source\PSoC5/Comp_3.c ****             /* Clear the flag */
+ 112:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_restoreReg = 0u;
+ 113:Generated_Source\PSoC5/Comp_3.c ****         }
+ 114:Generated_Source\PSoC5/Comp_3.c ****     #endif /* CY_PSOC5A */
+ 115:Generated_Source\PSoC5/Comp_3.c **** }
+ 116:Generated_Source\PSoC5/Comp_3.c **** 
+ 117:Generated_Source\PSoC5/Comp_3.c **** 
+ 118:Generated_Source\PSoC5/Comp_3.c **** /*******************************************************************************
+ 119:Generated_Source\PSoC5/Comp_3.c **** * Function Name: Comp_3_Start
+ 120:Generated_Source\PSoC5/Comp_3.c **** ********************************************************************************
+ 121:Generated_Source\PSoC5/Comp_3.c **** *
+ 122:Generated_Source\PSoC5/Comp_3.c **** * Summary:
+ 123:Generated_Source\PSoC5/Comp_3.c **** *  The start function initializes the Analog Comparator with the default values.
+ 124:Generated_Source\PSoC5/Comp_3.c **** *
+ 125:Generated_Source\PSoC5/Comp_3.c **** * Parameters:
+ 126:Generated_Source\PSoC5/Comp_3.c **** *  void
+ 127:Generated_Source\PSoC5/Comp_3.c **** *
+ 128:Generated_Source\PSoC5/Comp_3.c **** * Return:
+ 129:Generated_Source\PSoC5/Comp_3.c **** *  void 
+ 130:Generated_Source\PSoC5/Comp_3.c **** *
+ 131:Generated_Source\PSoC5/Comp_3.c **** * Global variables:
+ 132:Generated_Source\PSoC5/Comp_3.c **** *  Comp_3_initVar: Is modified when this function is called for the 
+ 133:Generated_Source\PSoC5/Comp_3.c **** *   first time. Is used to ensure that initialization happens only once.
+ 134:Generated_Source\PSoC5/Comp_3.c **** *  
+ 135:Generated_Source\PSoC5/Comp_3.c **** *******************************************************************************/
+ 136:Generated_Source\PSoC5/Comp_3.c **** void Comp_3_Start(void) 
+ 137:Generated_Source\PSoC5/Comp_3.c **** {
+ 138:Generated_Source\PSoC5/Comp_3.c **** 
+ 139:Generated_Source\PSoC5/Comp_3.c ****     if ( Comp_3_initVar == 0u )
+ 140:Generated_Source\PSoC5/Comp_3.c ****     {
+ 141:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_Init();
+ 142:Generated_Source\PSoC5/Comp_3.c ****         
+ 143:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_initVar = 1u;
+ 144:Generated_Source\PSoC5/Comp_3.c ****     }   
+ 145:Generated_Source\PSoC5/Comp_3.c **** 
+ 146:Generated_Source\PSoC5/Comp_3.c ****     /* Enable power to comparator */
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 4
+
+
+ 147:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_Enable();    
+ 148:Generated_Source\PSoC5/Comp_3.c **** }
+ 149:Generated_Source\PSoC5/Comp_3.c **** 
+ 150:Generated_Source\PSoC5/Comp_3.c **** 
+ 151:Generated_Source\PSoC5/Comp_3.c **** /*******************************************************************************
+ 152:Generated_Source\PSoC5/Comp_3.c **** * Function Name: Comp_3_Stop
+ 153:Generated_Source\PSoC5/Comp_3.c **** ********************************************************************************
+ 154:Generated_Source\PSoC5/Comp_3.c **** *
+ 155:Generated_Source\PSoC5/Comp_3.c **** * Summary:
+ 156:Generated_Source\PSoC5/Comp_3.c **** *  Powers down amplifier to lowest power state.
+ 157:Generated_Source\PSoC5/Comp_3.c **** *
+ 158:Generated_Source\PSoC5/Comp_3.c **** * Parameters:
+ 159:Generated_Source\PSoC5/Comp_3.c **** *  void
+ 160:Generated_Source\PSoC5/Comp_3.c **** *
+ 161:Generated_Source\PSoC5/Comp_3.c **** * Return:
+ 162:Generated_Source\PSoC5/Comp_3.c **** *  void
+ 163:Generated_Source\PSoC5/Comp_3.c **** *
+ 164:Generated_Source\PSoC5/Comp_3.c **** *******************************************************************************/
+ 165:Generated_Source\PSoC5/Comp_3.c **** void Comp_3_Stop(void) 
+ 166:Generated_Source\PSoC5/Comp_3.c **** {
+ 167:Generated_Source\PSoC5/Comp_3.c ****     /* Disable power to comparator */
+ 168:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_PWRMGR &= (uint8)(~Comp_3_ACT_PWR_EN);
+ 169:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_STBY_PWRMGR &= (uint8)(~Comp_3_STBY_PWR_EN);
+ 170:Generated_Source\PSoC5/Comp_3.c ****     
+ 171:Generated_Source\PSoC5/Comp_3.c ****     #if (CY_PSOC5A)
+ 172:Generated_Source\PSoC5/Comp_3.c ****         /* Enable the variable */
+ 173:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_restoreReg = 1u;
+ 174:Generated_Source\PSoC5/Comp_3.c **** 
+ 175:Generated_Source\PSoC5/Comp_3.c ****         /* Save the control register before clearing it */
+ 176:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_lowPowerBackup.compCRReg = Comp_3_CR;
+ 177:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_CR = Comp_3_COMP_REG_CLR;
+ 178:Generated_Source\PSoC5/Comp_3.c ****     #endif /* CY_PSOC5A */
+ 179:Generated_Source\PSoC5/Comp_3.c **** }
+ 180:Generated_Source\PSoC5/Comp_3.c **** 
+ 181:Generated_Source\PSoC5/Comp_3.c **** 
+ 182:Generated_Source\PSoC5/Comp_3.c **** /*******************************************************************************
+ 183:Generated_Source\PSoC5/Comp_3.c **** * Function Name: Comp_3_SetSpeed
+ 184:Generated_Source\PSoC5/Comp_3.c **** ********************************************************************************
+ 185:Generated_Source\PSoC5/Comp_3.c **** *
+ 186:Generated_Source\PSoC5/Comp_3.c **** * Summary:
+ 187:Generated_Source\PSoC5/Comp_3.c **** *  This function sets the speed of the Analog Comparator. The faster the speed
+ 188:Generated_Source\PSoC5/Comp_3.c **** *  the more power that is used.
+ 189:Generated_Source\PSoC5/Comp_3.c **** *
+ 190:Generated_Source\PSoC5/Comp_3.c **** * Parameters:
+ 191:Generated_Source\PSoC5/Comp_3.c **** *  speed: (uint8) Sets operation mode of Comparator
+ 192:Generated_Source\PSoC5/Comp_3.c **** *
+ 193:Generated_Source\PSoC5/Comp_3.c **** * Return:
+ 194:Generated_Source\PSoC5/Comp_3.c **** *  void
+ 195:Generated_Source\PSoC5/Comp_3.c **** *
+ 196:Generated_Source\PSoC5/Comp_3.c **** *******************************************************************************/
+ 197:Generated_Source\PSoC5/Comp_3.c **** void Comp_3_SetSpeed(uint8 speed) 
+ 198:Generated_Source\PSoC5/Comp_3.c **** {
+ 199:Generated_Source\PSoC5/Comp_3.c ****     /* Clear and Set power level */    
+ 200:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_CR = (Comp_3_CR & (uint8)(~Comp_3_PWR_MODE_MASK)) |
+ 201:Generated_Source\PSoC5/Comp_3.c ****                            (speed & Comp_3_PWR_MODE_MASK);
+ 202:Generated_Source\PSoC5/Comp_3.c **** 
+ 203:Generated_Source\PSoC5/Comp_3.c ****     /* Set trim value for high speed comparator */
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 5
+
+
+ 204:Generated_Source\PSoC5/Comp_3.c ****     if(speed == Comp_3_HIGHSPEED)
+ 205:Generated_Source\PSoC5/Comp_3.c ****     {
+ 206:Generated_Source\PSoC5/Comp_3.c ****         /* PSoC5A */
+ 207:Generated_Source\PSoC5/Comp_3.c ****         #if (CY_PSOC5A)
+ 208:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_TR = Comp_3_HS_TRIM_TR0;
+ 209:Generated_Source\PSoC5/Comp_3.c ****         #endif /* CY_PSOC5A */
+ 210:Generated_Source\PSoC5/Comp_3.c ****         
+ 211:Generated_Source\PSoC5/Comp_3.c ****         /* PSoC3, PSoC5LP or later */
+ 212:Generated_Source\PSoC5/Comp_3.c ****         #if (CY_PSOC3 || CY_PSOC5LP) 
+ 213:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_TR0 = Comp_3_HS_TRIM_TR0;
+ 214:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_TR1 = Comp_3_HS_TRIM_TR1;
+ 215:Generated_Source\PSoC5/Comp_3.c ****         #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 216:Generated_Source\PSoC5/Comp_3.c ****     }
+ 217:Generated_Source\PSoC5/Comp_3.c ****     else
+ 218:Generated_Source\PSoC5/Comp_3.c ****     {
+ 219:Generated_Source\PSoC5/Comp_3.c ****     /* PSoC5A */
+ 220:Generated_Source\PSoC5/Comp_3.c ****         #if (CY_PSOC5A)
+ 221:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_TR = Comp_3_LS_TRIM_TR0;
+ 222:Generated_Source\PSoC5/Comp_3.c ****         #endif /* CY_PSOC5A */
+ 223:Generated_Source\PSoC5/Comp_3.c ****         
+ 224:Generated_Source\PSoC5/Comp_3.c ****         /* PSoC3, PSoC5LP or later */
+ 225:Generated_Source\PSoC5/Comp_3.c ****         #if (CY_PSOC3 || CY_PSOC5LP) 
+ 226:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_TR0 = Comp_3_LS_TRIM_TR0;
+ 227:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_TR1 = Comp_3_LS_TRIM_TR1;
+ 228:Generated_Source\PSoC5/Comp_3.c ****         #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 229:Generated_Source\PSoC5/Comp_3.c ****     }
+ 230:Generated_Source\PSoC5/Comp_3.c **** 
+ 231:Generated_Source\PSoC5/Comp_3.c **** }
+ 232:Generated_Source\PSoC5/Comp_3.c **** 
+ 233:Generated_Source\PSoC5/Comp_3.c **** 
+ 234:Generated_Source\PSoC5/Comp_3.c **** /*******************************************************************************
+ 235:Generated_Source\PSoC5/Comp_3.c **** * Function Name: Comp_3_GetCompare
+ 236:Generated_Source\PSoC5/Comp_3.c **** ********************************************************************************
+ 237:Generated_Source\PSoC5/Comp_3.c **** *
+ 238:Generated_Source\PSoC5/Comp_3.c **** * Summary:
+ 239:Generated_Source\PSoC5/Comp_3.c **** *  This function returns the comparator output value.
+ 240:Generated_Source\PSoC5/Comp_3.c **** *  This value is not affected by the Polarity parameter.
+ 241:Generated_Source\PSoC5/Comp_3.c **** *  This valuea lways reflects a noninverted state.
+ 242:Generated_Source\PSoC5/Comp_3.c **** *
+ 243:Generated_Source\PSoC5/Comp_3.c **** * Parameters:
+ 244:Generated_Source\PSoC5/Comp_3.c **** *   None
+ 245:Generated_Source\PSoC5/Comp_3.c **** *
+ 246:Generated_Source\PSoC5/Comp_3.c **** * Return:
+ 247:Generated_Source\PSoC5/Comp_3.c **** *  (uint8)  0     - if Pos_Input less than Neg_input
+ 248:Generated_Source\PSoC5/Comp_3.c **** *           non 0 - if Pos_Input greater than Neg_input.
+ 249:Generated_Source\PSoC5/Comp_3.c **** *
+ 250:Generated_Source\PSoC5/Comp_3.c **** *******************************************************************************/
+ 251:Generated_Source\PSoC5/Comp_3.c **** uint8 Comp_3_GetCompare(void) 
+ 252:Generated_Source\PSoC5/Comp_3.c **** {
+ 253:Generated_Source\PSoC5/Comp_3.c ****     return( Comp_3_WRK & Comp_3_CMP_OUT_MASK);
+ 254:Generated_Source\PSoC5/Comp_3.c **** }
+ 255:Generated_Source\PSoC5/Comp_3.c **** 
+ 256:Generated_Source\PSoC5/Comp_3.c **** 
+ 257:Generated_Source\PSoC5/Comp_3.c **** /*******************************************************************************
+ 258:Generated_Source\PSoC5/Comp_3.c **** * Function Name: Comp_3_trimAdjust
+ 259:Generated_Source\PSoC5/Comp_3.c **** ********************************************************************************
+ 260:Generated_Source\PSoC5/Comp_3.c **** *
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 6
+
+
+ 261:Generated_Source\PSoC5/Comp_3.c **** * Summary:
+ 262:Generated_Source\PSoC5/Comp_3.c **** *  This function adjusts the value in the low nibble/high nibble of the Analog 
+ 263:Generated_Source\PSoC5/Comp_3.c **** *  Comparator trim register
+ 264:Generated_Source\PSoC5/Comp_3.c **** *
+ 265:Generated_Source\PSoC5/Comp_3.c **** * Parameters:  
+ 266:Generated_Source\PSoC5/Comp_3.c **** *  nibble:
+ 267:Generated_Source\PSoC5/Comp_3.c **** *      0 -- adjusts the value in the low nibble
+ 268:Generated_Source\PSoC5/Comp_3.c **** *      1 -- adjusts the value in the high nibble
+ 269:Generated_Source\PSoC5/Comp_3.c **** *
+ 270:Generated_Source\PSoC5/Comp_3.c **** * Return:
+ 271:Generated_Source\PSoC5/Comp_3.c **** *  None
+ 272:Generated_Source\PSoC5/Comp_3.c **** *
+ 273:Generated_Source\PSoC5/Comp_3.c **** * Theory: 
+ 274:Generated_Source\PSoC5/Comp_3.c **** *  Function assumes comparator block is setup for trim adjust.
+ 275:Generated_Source\PSoC5/Comp_3.c **** *  Intended to be called from Comp_ZeroCal()
+ 276:Generated_Source\PSoC5/Comp_3.c **** * 
+ 277:Generated_Source\PSoC5/Comp_3.c **** * Side Effects:
+ 278:Generated_Source\PSoC5/Comp_3.c **** *  Routine uses a course 1ms delay following each trim adjustment to allow 
+ 279:Generated_Source\PSoC5/Comp_3.c **** *  the comparator output to respond.
+ 280:Generated_Source\PSoC5/Comp_3.c **** *
+ 281:Generated_Source\PSoC5/Comp_3.c **** *******************************************************************************/
+ 282:Generated_Source\PSoC5/Comp_3.c **** static void Comp_3_trimAdjust(uint8 nibble) 
+ 283:Generated_Source\PSoC5/Comp_3.c **** {
+  26              		.loc 1 283 0
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30              	.LVL0:
+  31 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  32              		.cfi_def_cfa_offset 24
+  33              		.cfi_offset 4, -24
+  34              		.cfi_offset 5, -20
+  35              		.cfi_offset 6, -16
+  36              		.cfi_offset 7, -12
+  37              		.cfi_offset 8, -8
+  38              		.cfi_offset 14, -4
+ 284:Generated_Source\PSoC5/Comp_3.c ****     uint8 trimCnt, trimCntMax;
+ 285:Generated_Source\PSoC5/Comp_3.c ****     uint8 cmpState;   
+ 286:Generated_Source\PSoC5/Comp_3.c **** 
+ 287:Generated_Source\PSoC5/Comp_3.c ****     /* get current state of comparator output */
+ 288:Generated_Source\PSoC5/Comp_3.c ****     cmpState = Comp_3_WRK & Comp_3_CMP_OUT_MASK;
+  39              		.loc 1 288 0
+  40 0004 184D     		ldr	r5, .L16
+ 289:Generated_Source\PSoC5/Comp_3.c ****     
+ 290:Generated_Source\PSoC5/Comp_3.c ****     if (nibble == 0u)
+  41              		.loc 1 290 0
+  42 0006 8046     		mov	r8, r0
+ 288:Generated_Source\PSoC5/Comp_3.c ****     
+  43              		.loc 1 288 0
+  44 0008 2C78     		ldrb	r4, [r5]	@ zero_extendqisi2
+  45 000a 04F00104 		and	r4, r4, #1
+  46              	.LVL1:
+  47              		.loc 1 290 0
+  48 000e 30B9     		cbnz	r0, .L2
+ 291:Generated_Source\PSoC5/Comp_3.c ****     {    
+ 292:Generated_Source\PSoC5/Comp_3.c ****         /* if comparator output is high, negative offset adjust is required */
+ 293:Generated_Source\PSoC5/Comp_3.c ****         if ( cmpState != 0u )
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 7
+
+
+  49              		.loc 1 293 0
+  50 0010 2CB3     		cbz	r4, .L3
+ 294:Generated_Source\PSoC5/Comp_3.c ****         {
+ 295:Generated_Source\PSoC5/Comp_3.c ****             /* PSoC5A */
+ 296:Generated_Source\PSoC5/Comp_3.c ****             #if (CY_PSOC5A)
+ 297:Generated_Source\PSoC5/Comp_3.c ****                 Comp_3_TR |= Comp_3_CMP_TRIM1_DIR;
+ 298:Generated_Source\PSoC5/Comp_3.c ****             #endif /* CY_PSOC5A */
+ 299:Generated_Source\PSoC5/Comp_3.c ****             
+ 300:Generated_Source\PSoC5/Comp_3.c ****             /* PSoC3, PSoC5LP or later */
+ 301:Generated_Source\PSoC5/Comp_3.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+ 302:Generated_Source\PSoC5/Comp_3.c ****                 Comp_3_TR0 |= Comp_3_CMP_TR0_DIR;
+  51              		.loc 1 302 0
+  52 0012 164A     		ldr	r2, .L16+4
+  53 0014 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  54 0016 43F01003 		orr	r3, r3, #16
+  55 001a 1370     		strb	r3, [r2]
+  56 001c 1FE0     		b	.L3
+  57              	.L2:
+ 303:Generated_Source\PSoC5/Comp_3.c ****             #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 304:Generated_Source\PSoC5/Comp_3.c ****         }
+ 305:Generated_Source\PSoC5/Comp_3.c ****     }
+ 306:Generated_Source\PSoC5/Comp_3.c ****     else
+ 307:Generated_Source\PSoC5/Comp_3.c ****     {
+ 308:Generated_Source\PSoC5/Comp_3.c ****         /* if comparator output is low, positive offset adjust is required */
+ 309:Generated_Source\PSoC5/Comp_3.c ****         if ( cmpState == 0u )
+  58              		.loc 1 309 0
+  59 001e 24B9     		cbnz	r4, .L4
+ 310:Generated_Source\PSoC5/Comp_3.c ****         {
+ 311:Generated_Source\PSoC5/Comp_3.c ****             /* PSoC5A */
+ 312:Generated_Source\PSoC5/Comp_3.c ****             #if (CY_PSOC5A)
+ 313:Generated_Source\PSoC5/Comp_3.c ****                 Comp_3_TR |= Comp_3_CMP_TRIM2_DIR; 
+ 314:Generated_Source\PSoC5/Comp_3.c ****             #endif /* CY_PSOC5A */
+ 315:Generated_Source\PSoC5/Comp_3.c ****             
+ 316:Generated_Source\PSoC5/Comp_3.c ****             /* PSoC3, PSoC5LP or later */
+ 317:Generated_Source\PSoC5/Comp_3.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+ 318:Generated_Source\PSoC5/Comp_3.c ****                 Comp_3_TR1 |= Comp_3_CMP_TR1_DIR;
+  60              		.loc 1 318 0
+  61 0020 134A     		ldr	r2, .L16+8
+  62 0022 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  63 0024 43F01003 		orr	r3, r3, #16
+  64 0028 1370     		strb	r3, [r2]
+  65              	.L4:
+ 319:Generated_Source\PSoC5/Comp_3.c ****             #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 320:Generated_Source\PSoC5/Comp_3.c ****         }
+ 321:Generated_Source\PSoC5/Comp_3.c ****     }
+ 322:Generated_Source\PSoC5/Comp_3.c **** 
+ 323:Generated_Source\PSoC5/Comp_3.c ****     /* Increment trim value until compare output changes state */
+ 324:Generated_Source\PSoC5/Comp_3.c **** 	
+ 325:Generated_Source\PSoC5/Comp_3.c ****     /* PSoC5A */
+ 326:Generated_Source\PSoC5/Comp_3.c **** 	#if (CY_PSOC5A)
+ 327:Generated_Source\PSoC5/Comp_3.c **** 	    trimCntMax = 7u;
+ 328:Generated_Source\PSoC5/Comp_3.c ****     #endif
+ 329:Generated_Source\PSoC5/Comp_3.c **** 	
+ 330:Generated_Source\PSoC5/Comp_3.c **** 	/* PSoC3, PSoC5LP or later */
+ 331:Generated_Source\PSoC5/Comp_3.c **** 	#if (CY_PSOC3 || CY_PSOC5LP)
+ 332:Generated_Source\PSoC5/Comp_3.c ****     	if(nibble == 0u)
+ 333:Generated_Source\PSoC5/Comp_3.c ****     	{
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 8
+
+
+ 334:Generated_Source\PSoC5/Comp_3.c ****     		trimCntMax = 15u;
+ 335:Generated_Source\PSoC5/Comp_3.c ****     	}
+ 336:Generated_Source\PSoC5/Comp_3.c ****     	else
+ 337:Generated_Source\PSoC5/Comp_3.c ****     	{
+ 338:Generated_Source\PSoC5/Comp_3.c ****     		trimCntMax = 7u;
+  66              		.loc 1 338 0
+  67 002a 0727     		movs	r7, #7
+  68              	.L9:
+  69              	.LVL2:
+  70 002c 0026     		movs	r6, #0
+  71              	.LVL3:
+  72              	.L8:
+ 339:Generated_Source\PSoC5/Comp_3.c ****     	}
+ 340:Generated_Source\PSoC5/Comp_3.c **** 	#endif
+ 341:Generated_Source\PSoC5/Comp_3.c **** 	
+ 342:Generated_Source\PSoC5/Comp_3.c ****     for ( trimCnt = 0u; trimCnt < trimCntMax; trimCnt++ )
+ 343:Generated_Source\PSoC5/Comp_3.c **** 	{
+ 344:Generated_Source\PSoC5/Comp_3.c ****         if (nibble == 0u)
+  73              		.loc 1 344 0
+  74 002e B8F1000F 		cmp	r8, #0
+  75 0032 01D1     		bne	.L5
+ 345:Generated_Source\PSoC5/Comp_3.c ****         {
+ 346:Generated_Source\PSoC5/Comp_3.c ****             /* PSoC5A */
+ 347:Generated_Source\PSoC5/Comp_3.c ****             #if (CY_PSOC5A)
+ 348:Generated_Source\PSoC5/Comp_3.c ****                 Comp_3_TR += 1u;
+ 349:Generated_Source\PSoC5/Comp_3.c ****             #endif /* CY_PSOC5A */
+ 350:Generated_Source\PSoC5/Comp_3.c ****             
+ 351:Generated_Source\PSoC5/Comp_3.c ****             /* PSoC3, PSoC5LP or later */
+ 352:Generated_Source\PSoC5/Comp_3.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+ 353:Generated_Source\PSoC5/Comp_3.c ****                 Comp_3_TR0 += 1u;
+  76              		.loc 1 353 0
+  77 0034 0D4A     		ldr	r2, .L16+4
+  78 0036 00E0     		b	.L14
+  79              	.L5:
+ 354:Generated_Source\PSoC5/Comp_3.c ****             #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 355:Generated_Source\PSoC5/Comp_3.c ****         }
+ 356:Generated_Source\PSoC5/Comp_3.c ****         else
+ 357:Generated_Source\PSoC5/Comp_3.c ****         {
+ 358:Generated_Source\PSoC5/Comp_3.c ****             /* PSoC5A */
+ 359:Generated_Source\PSoC5/Comp_3.c ****             #if (CY_PSOC5A)
+ 360:Generated_Source\PSoC5/Comp_3.c ****                 Comp_3_TR += 0x10u;
+ 361:Generated_Source\PSoC5/Comp_3.c ****             #endif /* CY_PSOC5A */
+ 362:Generated_Source\PSoC5/Comp_3.c ****             
+ 363:Generated_Source\PSoC5/Comp_3.c ****             /* PSoC3, PSoC5LP or later */
+ 364:Generated_Source\PSoC5/Comp_3.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+ 365:Generated_Source\PSoC5/Comp_3.c ****                 Comp_3_TR1 += 1u;
+  80              		.loc 1 365 0
+  81 0038 0D4A     		ldr	r2, .L16+8
+  82              	.L14:
+  83 003a 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 366:Generated_Source\PSoC5/Comp_3.c ****             #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 367:Generated_Source\PSoC5/Comp_3.c ****         }
+ 368:Generated_Source\PSoC5/Comp_3.c ****         
+ 369:Generated_Source\PSoC5/Comp_3.c ****         CyDelayUs(10u);
+  84              		.loc 1 369 0
+  85 003c 0A20     		movs	r0, #10
+ 365:Generated_Source\PSoC5/Comp_3.c ****             #endif /* CY_PSOC3 || CY_PSOC5LP */
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 9
+
+
+  86              		.loc 1 365 0
+  87 003e 0133     		adds	r3, r3, #1
+  88 0040 DBB2     		uxtb	r3, r3
+  89 0042 1370     		strb	r3, [r2]
+  90              		.loc 1 369 0
+  91 0044 FFF7FEFF 		bl	CyDelayUs
+  92              	.LVL4:
+ 370:Generated_Source\PSoC5/Comp_3.c ****         
+ 371:Generated_Source\PSoC5/Comp_3.c ****         /* Check for change in comparator output */
+ 372:Generated_Source\PSoC5/Comp_3.c ****         if ((Comp_3_WRK & Comp_3_CMP_OUT_MASK) != cmpState)
+  93              		.loc 1 372 0
+  94 0048 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+  95 004a 03F00103 		and	r3, r3, #1
+  96 004e A342     		cmp	r3, r4
+  97 0050 07D1     		bne	.L1
+  98              	.LVL5:
+  99 0052 0136     		adds	r6, r6, #1
+ 100              	.LVL6:
+ 342:Generated_Source\PSoC5/Comp_3.c **** 	{
+ 101              		.loc 1 342 0 discriminator 2
+ 102 0054 F3B2     		uxtb	r3, r6
+ 103 0056 BB42     		cmp	r3, r7
+ 104 0058 E9D3     		bcc	.L8
+ 105 005a BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 106              	.LVL7:
+ 107              	.L3:
+ 334:Generated_Source\PSoC5/Comp_3.c ****     	}
+ 108              		.loc 1 334 0
+ 109 005e 0F27     		movs	r7, #15
+ 110 0060 E4E7     		b	.L9
+ 111              	.LVL8:
+ 112              	.L1:
+ 113 0062 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 114              	.LVL9:
+ 115              	.L17:
+ 116 0066 00BF     		.align	2
+ 117              	.L16:
+ 118 0068 965B0040 		.word	1073765270
+ 119 006c 30460040 		.word	1073759792
+ 120 0070 31460040 		.word	1073759793
+ 121              		.cfi_endproc
+ 122              	.LFE6:
+ 123              		.size	Comp_3_trimAdjust, .-Comp_3_trimAdjust
+ 124              		.section	.text.Comp_3_Enable,"ax",%progbits
+ 125              		.align	1
+ 126              		.global	Comp_3_Enable
+ 127              		.thumb
+ 128              		.thumb_func
+ 129              		.type	Comp_3_Enable, %function
+ 130              	Comp_3_Enable:
+ 131              	.LFB1:
+ 100:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_PWRMGR |= Comp_3_ACT_PWR_EN;
+ 132              		.loc 1 100 0
+ 133              		.cfi_startproc
+ 134              		@ args = 0, pretend = 0, frame = 0
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136              		@ link register save eliminated.
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 10
+
+
+ 101:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_STBY_PWRMGR |= Comp_3_STBY_PWR_EN;
+ 137              		.loc 1 101 0
+ 138 0000 044A     		ldr	r2, .L19
+ 139 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 140 0004 43F00103 		orr	r3, r3, #1
+ 141 0008 1370     		strb	r3, [r2]
+ 102:Generated_Source\PSoC5/Comp_3.c ****      
+ 142              		.loc 1 102 0
+ 143 000a 137C     		ldrb	r3, [r2, #16]	@ zero_extendqisi2
+ 144 000c 43F00103 		orr	r3, r3, #1
+ 145 0010 1374     		strb	r3, [r2, #16]
+ 146 0012 7047     		bx	lr
+ 147              	.L20:
+ 148              		.align	2
+ 149              	.L19:
+ 150 0014 A7430040 		.word	1073759143
+ 151              		.cfi_endproc
+ 152              	.LFE1:
+ 153              		.size	Comp_3_Enable, .-Comp_3_Enable
+ 154              		.section	.text.Comp_3_Stop,"ax",%progbits
+ 155              		.align	1
+ 156              		.global	Comp_3_Stop
+ 157              		.thumb
+ 158              		.thumb_func
+ 159              		.type	Comp_3_Stop, %function
+ 160              	Comp_3_Stop:
+ 161              	.LFB3:
+ 166:Generated_Source\PSoC5/Comp_3.c ****     /* Disable power to comparator */
+ 162              		.loc 1 166 0
+ 163              		.cfi_startproc
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166              		@ link register save eliminated.
+ 168:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_STBY_PWRMGR &= (uint8)(~Comp_3_STBY_PWR_EN);
+ 167              		.loc 1 168 0
+ 168 0000 044A     		ldr	r2, .L22
+ 169 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 170 0004 03F0FE03 		and	r3, r3, #254
+ 171 0008 1370     		strb	r3, [r2]
+ 169:Generated_Source\PSoC5/Comp_3.c ****     
+ 172              		.loc 1 169 0
+ 173 000a 137C     		ldrb	r3, [r2, #16]	@ zero_extendqisi2
+ 174 000c 03F0FE03 		and	r3, r3, #254
+ 175 0010 1374     		strb	r3, [r2, #16]
+ 176 0012 7047     		bx	lr
+ 177              	.L23:
+ 178              		.align	2
+ 179              	.L22:
+ 180 0014 A7430040 		.word	1073759143
+ 181              		.cfi_endproc
+ 182              	.LFE3:
+ 183              		.size	Comp_3_Stop, .-Comp_3_Stop
+ 184              		.section	.text.Comp_3_SetSpeed,"ax",%progbits
+ 185              		.align	1
+ 186              		.global	Comp_3_SetSpeed
+ 187              		.thumb
+ 188              		.thumb_func
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 11
+
+
+ 189              		.type	Comp_3_SetSpeed, %function
+ 190              	Comp_3_SetSpeed:
+ 191              	.LFB4:
+ 198:Generated_Source\PSoC5/Comp_3.c ****     /* Clear and Set power level */    
+ 192              		.loc 1 198 0
+ 193              		.cfi_startproc
+ 194              		@ args = 0, pretend = 0, frame = 0
+ 195              		@ frame_needed = 0, uses_anonymous_args = 0
+ 196              		@ link register save eliminated.
+ 197              	.LVL10:
+ 200:Generated_Source\PSoC5/Comp_3.c ****                            (speed & Comp_3_PWR_MODE_MASK);
+ 198              		.loc 1 200 0
+ 199 0000 0F4A     		ldr	r2, .L28
+ 200 0002 00F00301 		and	r1, r0, #3
+ 201 0006 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 204:Generated_Source\PSoC5/Comp_3.c ****     {
+ 202              		.loc 1 204 0
+ 203 0008 0128     		cmp	r0, #1
+ 200:Generated_Source\PSoC5/Comp_3.c ****                            (speed & Comp_3_PWR_MODE_MASK);
+ 204              		.loc 1 200 0
+ 205 000a 03F0FC03 		and	r3, r3, #252
+ 206 000e 43EA0103 		orr	r3, r3, r1
+ 207 0012 1370     		strb	r3, [r2]
+ 208              	.LBB4:
+ 209              	.LBB5:
+ 213:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_TR1 = Comp_3_HS_TRIM_TR1;
+ 210              		.loc 1 213 0
+ 211 0014 0BBF     		itete	eq
+ 212 0016 0B4B     		ldreq	r3, .L28+4
+ 213              	.LBE5:
+ 214              	.LBE4:
+ 226:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_TR1 = Comp_3_LS_TRIM_TR1;
+ 215              		.loc 1 226 0
+ 216 0018 0B4B     		ldrne	r3, .L28+8
+ 217              	.LBB10:
+ 218              	.LBB6:
+ 213:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_TR1 = Comp_3_HS_TRIM_TR1;
+ 219              		.loc 1 213 0
+ 220 001a 1B78     		ldrbeq	r3, [r3]	@ zero_extendqisi2
+ 221              	.LBE6:
+ 222              	.LBE10:
+ 226:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_TR1 = Comp_3_LS_TRIM_TR1;
+ 223              		.loc 1 226 0
+ 224 001c 1B78     		ldrbne	r3, [r3]	@ zero_extendqisi2
+ 225 001e 0B49     		ldr	r1, .L28+12
+ 226              	.LBB11:
+ 227              	.LBB7:
+ 213:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_TR1 = Comp_3_HS_TRIM_TR1;
+ 228              		.loc 1 213 0
+ 229 0020 0BBF     		itete	eq
+ 230 0022 DBB2     		uxtbeq	r3, r3
+ 231              	.LBE7:
+ 232              	.LBE11:
+ 226:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_TR1 = Comp_3_LS_TRIM_TR1;
+ 233              		.loc 1 226 0
+ 234 0024 DBB2     		uxtbne	r3, r3
+ 235              	.LBB12:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 12
+
+
+ 236              	.LBB8:
+ 213:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_TR1 = Comp_3_HS_TRIM_TR1;
+ 237              		.loc 1 213 0
+ 238 0026 0B70     		strbeq	r3, [r1]
+ 239              	.LBE8:
+ 240              	.LBE12:
+ 226:Generated_Source\PSoC5/Comp_3.c ****             Comp_3_TR1 = Comp_3_LS_TRIM_TR1;
+ 241              		.loc 1 226 0
+ 242 0028 0B70     		strbne	r3, [r1]
+ 243              	.LBB13:
+ 244              	.LBB9:
+ 214:Generated_Source\PSoC5/Comp_3.c ****         #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 245              		.loc 1 214 0
+ 246 002a 0CBF     		ite	eq
+ 247 002c 084B     		ldreq	r3, .L28+16
+ 248              	.LBE9:
+ 249              	.LBE13:
+ 227:Generated_Source\PSoC5/Comp_3.c ****         #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 250              		.loc 1 227 0
+ 251 002e 094B     		ldrne	r3, .L28+20
+ 252 0030 A2F59052 		sub	r2, r2, #4608
+ 253 0034 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 254 0036 0F3A     		subs	r2, r2, #15
+ 255              	.LVL11:
+ 256 0038 DBB2     		uxtb	r3, r3
+ 257 003a 1370     		strb	r3, [r2]
+ 258 003c 7047     		bx	lr
+ 259              	.L29:
+ 260 003e 00BF     		.align	2
+ 261              	.L28:
+ 262 0040 40580040 		.word	1073764416
+ 263 0044 10010049 		.word	1224737040
+ 264 0048 AD010049 		.word	1224737197
+ 265 004c 30460040 		.word	1073759792
+ 266 0050 14010049 		.word	1224737044
+ 267 0054 B5010049 		.word	1224737205
+ 268              		.cfi_endproc
+ 269              	.LFE4:
+ 270              		.size	Comp_3_SetSpeed, .-Comp_3_SetSpeed
+ 271              		.section	.text.Comp_3_Init,"ax",%progbits
+ 272              		.align	1
+ 273              		.global	Comp_3_Init
+ 274              		.thumb
+ 275              		.thumb_func
+ 276              		.type	Comp_3_Init, %function
+ 277              	Comp_3_Init:
+ 278              	.LFB0:
+  52:Generated_Source\PSoC5/Comp_3.c ****     /* Set default speed/power */
+ 279              		.loc 1 52 0
+ 280              		.cfi_startproc
+ 281              		@ args = 0, pretend = 0, frame = 0
+ 282              		@ frame_needed = 0, uses_anonymous_args = 0
+ 283 0000 08B5     		push	{r3, lr}
+ 284              		.cfi_def_cfa_offset 8
+ 285              		.cfi_offset 3, -8
+ 286              		.cfi_offset 14, -4
+  54:Generated_Source\PSoC5/Comp_3.c **** 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 13
+
+
+ 287              		.loc 1 54 0
+ 288 0002 0120     		movs	r0, #1
+ 289 0004 FFF7FEFF 		bl	Comp_3_SetSpeed
+ 290              	.LVL12:
+  60:Generated_Source\PSoC5/Comp_3.c ****     #endif /* Comp_3_DEFAULT_HYSTERESIS == 0u */
+ 291              		.loc 1 60 0
+ 292 0008 0C4B     		ldr	r3, .L31
+ 293 000a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 294 000c 02F0DF02 		and	r2, r2, #223
+ 295 0010 1A70     		strb	r2, [r3]
+  66:Generated_Source\PSoC5/Comp_3.c ****         #else 
+ 296              		.loc 1 66 0
+ 297 0012 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 298 0014 02F0FB02 		and	r2, r2, #251
+ 299 0018 1A70     		strb	r2, [r3]
+  73:Generated_Source\PSoC5/Comp_3.c **** 
+ 300              		.loc 1 73 0
+ 301 001a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 302 001c 42F00802 		orr	r2, r2, #8
+ 303 0020 1A70     		strb	r2, [r3]
+  76:Generated_Source\PSoC5/Comp_3.c ****     #if ( Comp_3_DEFAULT_BYPASS_SYNC == 0u )
+ 304              		.loc 1 76 0
+ 305 0022 93F88722 		ldrb	r2, [r3, #647]	@ zero_extendqisi2
+ 306 0026 02F0E702 		and	r2, r2, #231
+ 307 002a 83F88722 		strb	r2, [r3, #647]
+  78:Generated_Source\PSoC5/Comp_3.c ****     #else
+ 308              		.loc 1 78 0
+ 309 002e 93F88722 		ldrb	r2, [r3, #647]	@ zero_extendqisi2
+ 310 0032 42F00802 		orr	r2, r2, #8
+ 311 0036 83F88722 		strb	r2, [r3, #647]
+  76:Generated_Source\PSoC5/Comp_3.c ****     #if ( Comp_3_DEFAULT_BYPASS_SYNC == 0u )
+ 312              		.loc 1 76 0
+ 313 003a 08BD     		pop	{r3, pc}
+ 314              	.L32:
+ 315              		.align	2
+ 316              	.L31:
+ 317 003c 40580040 		.word	1073764416
+ 318              		.cfi_endproc
+ 319              	.LFE0:
+ 320              		.size	Comp_3_Init, .-Comp_3_Init
+ 321              		.section	.text.Comp_3_Start,"ax",%progbits
+ 322              		.align	1
+ 323              		.global	Comp_3_Start
+ 324              		.thumb
+ 325              		.thumb_func
+ 326              		.type	Comp_3_Start, %function
+ 327              	Comp_3_Start:
+ 328              	.LFB2:
+ 137:Generated_Source\PSoC5/Comp_3.c **** 
+ 329              		.loc 1 137 0
+ 330              		.cfi_startproc
+ 331              		@ args = 0, pretend = 0, frame = 0
+ 332              		@ frame_needed = 0, uses_anonymous_args = 0
+ 333 0000 10B5     		push	{r4, lr}
+ 334              		.cfi_def_cfa_offset 8
+ 335              		.cfi_offset 4, -8
+ 336              		.cfi_offset 14, -4
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 14
+
+
+ 139:Generated_Source\PSoC5/Comp_3.c ****     {
+ 337              		.loc 1 139 0
+ 338 0002 054C     		ldr	r4, .L35
+ 339 0004 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 340 0006 1BB9     		cbnz	r3, .L34
+ 141:Generated_Source\PSoC5/Comp_3.c ****         
+ 341              		.loc 1 141 0
+ 342 0008 FFF7FEFF 		bl	Comp_3_Init
+ 343              	.LVL13:
+ 143:Generated_Source\PSoC5/Comp_3.c ****     }   
+ 344              		.loc 1 143 0
+ 345 000c 0123     		movs	r3, #1
+ 346 000e 2370     		strb	r3, [r4]
+ 347              	.L34:
+ 148:Generated_Source\PSoC5/Comp_3.c **** 
+ 348              		.loc 1 148 0
+ 349 0010 BDE81040 		pop	{r4, lr}
+ 350              		.cfi_restore 14
+ 351              		.cfi_restore 4
+ 352              		.cfi_def_cfa_offset 0
+ 147:Generated_Source\PSoC5/Comp_3.c **** }
+ 353              		.loc 1 147 0
+ 354 0014 FFF7FEBF 		b	Comp_3_Enable
+ 355              	.LVL14:
+ 356              	.L36:
+ 357              		.align	2
+ 358              	.L35:
+ 359 0018 00000000 		.word	.LANCHOR0
+ 360              		.cfi_endproc
+ 361              	.LFE2:
+ 362              		.size	Comp_3_Start, .-Comp_3_Start
+ 363              		.section	.text.Comp_3_GetCompare,"ax",%progbits
+ 364              		.align	1
+ 365              		.global	Comp_3_GetCompare
+ 366              		.thumb
+ 367              		.thumb_func
+ 368              		.type	Comp_3_GetCompare, %function
+ 369              	Comp_3_GetCompare:
+ 370              	.LFB5:
+ 252:Generated_Source\PSoC5/Comp_3.c ****     return( Comp_3_WRK & Comp_3_CMP_OUT_MASK);
+ 371              		.loc 1 252 0
+ 372              		.cfi_startproc
+ 373              		@ args = 0, pretend = 0, frame = 0
+ 374              		@ frame_needed = 0, uses_anonymous_args = 0
+ 375              		@ link register save eliminated.
+ 253:Generated_Source\PSoC5/Comp_3.c **** }
+ 376              		.loc 1 253 0
+ 377 0000 024B     		ldr	r3, .L38
+ 378 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 254:Generated_Source\PSoC5/Comp_3.c **** 
+ 379              		.loc 1 254 0
+ 380 0004 00F00100 		and	r0, r0, #1
+ 381 0008 7047     		bx	lr
+ 382              	.L39:
+ 383 000a 00BF     		.align	2
+ 384              	.L38:
+ 385 000c 965B0040 		.word	1073765270
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 15
+
+
+ 386              		.cfi_endproc
+ 387              	.LFE5:
+ 388              		.size	Comp_3_GetCompare, .-Comp_3_GetCompare
+ 389              		.section	.text.Comp_3_ZeroCal,"ax",%progbits
+ 390              		.align	1
+ 391              		.global	Comp_3_ZeroCal
+ 392              		.thumb
+ 393              		.thumb_func
+ 394              		.type	Comp_3_ZeroCal, %function
+ 395              	Comp_3_ZeroCal:
+ 396              	.LFB7:
+ 373:Generated_Source\PSoC5/Comp_3.c ****         {
+ 374:Generated_Source\PSoC5/Comp_3.c ****             break;      /* output changed state, trim phase is complete */
+ 375:Generated_Source\PSoC5/Comp_3.c ****         }        
+ 376:Generated_Source\PSoC5/Comp_3.c ****     }    
+ 377:Generated_Source\PSoC5/Comp_3.c **** }
+ 378:Generated_Source\PSoC5/Comp_3.c **** 
+ 379:Generated_Source\PSoC5/Comp_3.c **** 
+ 380:Generated_Source\PSoC5/Comp_3.c **** /*******************************************************************************
+ 381:Generated_Source\PSoC5/Comp_3.c **** * Function Name: Comp_3_ZeroCal
+ 382:Generated_Source\PSoC5/Comp_3.c **** ********************************************************************************
+ 383:Generated_Source\PSoC5/Comp_3.c **** *
+ 384:Generated_Source\PSoC5/Comp_3.c **** * Summary:
+ 385:Generated_Source\PSoC5/Comp_3.c **** *  This function calibrates the offset of the Analog Comparator.
+ 386:Generated_Source\PSoC5/Comp_3.c **** *
+ 387:Generated_Source\PSoC5/Comp_3.c **** * Parameters:
+ 388:Generated_Source\PSoC5/Comp_3.c **** *  None
+ 389:Generated_Source\PSoC5/Comp_3.c **** *
+ 390:Generated_Source\PSoC5/Comp_3.c **** * Return:
+ 391:Generated_Source\PSoC5/Comp_3.c **** *  (uint16)  value written in trim register when calibration complete.
+ 392:Generated_Source\PSoC5/Comp_3.c **** *
+ 393:Generated_Source\PSoC5/Comp_3.c **** * Theory: 
+ 394:Generated_Source\PSoC5/Comp_3.c **** *  This function is used to optimize the calibration for user specific voltage
+ 395:Generated_Source\PSoC5/Comp_3.c **** *  range.  The comparator trim is adjusted to counter transistor offsets
+ 396:Generated_Source\PSoC5/Comp_3.c **** *   - offset is defined as positive if the output transitions to high before inP
+ 397:Generated_Source\PSoC5/Comp_3.c **** *     is greater than inN
+ 398:Generated_Source\PSoC5/Comp_3.c **** *   - offset is defined as negative if the output transitions to high after inP
+ 399:Generated_Source\PSoC5/Comp_3.c **** *     is greater than inP
+ 400:Generated_Source\PSoC5/Comp_3.c **** *
+ 401:Generated_Source\PSoC5/Comp_3.c **** *  PSoC5A
+ 402:Generated_Source\PSoC5/Comp_3.c **** *  The Analog Comparator provides 1 byte for offset trim.  The byte contains two
+ 403:Generated_Source\PSoC5/Comp_3.c **** *  4 bit trim fields - one is a course trim and the other allows smaller
+ 404:Generated_Source\PSoC5/Comp_3.c **** *  offset adjustments only for slow modes.
+ 405:Generated_Source\PSoC5/Comp_3.c **** *  - low nibble - fine trim
+ 406:Generated_Source\PSoC5/Comp_3.c **** *  - high nibble - course trim
+ 407:Generated_Source\PSoC5/Comp_3.c **** *  PSoC3, PSoC5LP or later
+ 408:Generated_Source\PSoC5/Comp_3.c **** *  The Analog Comparator provides 2 bytes for offset trim.  The bytes contain two
+ 409:Generated_Source\PSoC5/Comp_3.c **** *  5 bit trim fields - one is a course trim and the other allows smaller
+ 410:Generated_Source\PSoC5/Comp_3.c **** *  offset adjustments only for slow modes.
+ 411:Generated_Source\PSoC5/Comp_3.c **** *  - TR0 - fine trim
+ 412:Generated_Source\PSoC5/Comp_3.c **** *  - TR1 - course trim
+ 413:Generated_Source\PSoC5/Comp_3.c **** *
+ 414:Generated_Source\PSoC5/Comp_3.c **** *  Trim algorithm is a two phase process
+ 415:Generated_Source\PSoC5/Comp_3.c **** *  The first phase performs course offset adjustment
+ 416:Generated_Source\PSoC5/Comp_3.c **** *  The second phase serves one of two purposes depending on the outcome of the
+ 417:Generated_Source\PSoC5/Comp_3.c **** *  first phase
+ 418:Generated_Source\PSoC5/Comp_3.c **** *  - if the first trim value was maxed out without a comparator output 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 16
+
+
+ 419:Generated_Source\PSoC5/Comp_3.c **** *    transition, more offset will be added by adjusting the second trim value.
+ 420:Generated_Source\PSoC5/Comp_3.c **** *  - if the first trim phase resulted in a comparator output transition, the
+ 421:Generated_Source\PSoC5/Comp_3.c **** *    second trim value will serve as fine trim (in the opposite direction)to
+ 422:Generated_Source\PSoC5/Comp_3.c **** *    ensure the offset is < 1 mV.
+ 423:Generated_Source\PSoC5/Comp_3.c **** *
+ 424:Generated_Source\PSoC5/Comp_3.c **** * Trim Process:   
+ 425:Generated_Source\PSoC5/Comp_3.c **** *  1) User applies a voltage to the negative input.  Voltage should be in the
+ 426:Generated_Source\PSoC5/Comp_3.c **** *     comparator operating range or an average of the operating voltage range.
+ 427:Generated_Source\PSoC5/Comp_3.c **** *  2) Clear registers associated with analog routing to the positive input.
+ 428:Generated_Source\PSoC5/Comp_3.c **** *  3) Disable Hysteresis
+ 429:Generated_Source\PSoC5/Comp_3.c **** *  4) Set the calibration bit to short the negative and positive inputs to
+ 430:Generated_Source\PSoC5/Comp_3.c **** *     the users calibration voltage.
+ 431:Generated_Source\PSoC5/Comp_3.c **** *  5) Clear the TR register  ( TR = 0x00 )
+ 432:Generated_Source\PSoC5/Comp_3.c **** *  ** LOW MODES
+ 433:Generated_Source\PSoC5/Comp_3.c **** *  6) Check if compare output is high, if so, set the MSb of course trim field 
+ 434:Generated_Source\PSoC5/Comp_3.c **** *     to a 1.
+ 435:Generated_Source\PSoC5/Comp_3.c **** *  7) Increment the course trim field until the compare output changes
+ 436:Generated_Source\PSoC5/Comp_3.c **** *  8) Check if compare output is low, if so, set the MSb of fine trim field
+ 437:Generated_Source\PSoC5/Comp_3.c **** *     to a 1.
+ 438:Generated_Source\PSoC5/Comp_3.c **** *  9) Increment the fine trim field until the compare output changes
+ 439:Generated_Source\PSoC5/Comp_3.c **** *  ** FAST MODE - skip the steps 8,9
+ 440:Generated_Source\PSoC5/Comp_3.c **** *
+ 441:Generated_Source\PSoC5/Comp_3.c **** * Side Effects:
+ 442:Generated_Source\PSoC5/Comp_3.c **** *  Routine clears analog routing associated with the comparator positive input.  
+ 443:Generated_Source\PSoC5/Comp_3.c **** *  This may affect routing of signals from other components that are connected
+ 444:Generated_Source\PSoC5/Comp_3.c **** *  to the positive input of the comparator.
+ 445:Generated_Source\PSoC5/Comp_3.c **** *
+ 446:Generated_Source\PSoC5/Comp_3.c **** *******************************************************************************/
+ 447:Generated_Source\PSoC5/Comp_3.c **** uint16 Comp_3_ZeroCal(void) 
+ 448:Generated_Source\PSoC5/Comp_3.c **** {
+ 397              		.loc 1 448 0
+ 398              		.cfi_startproc
+ 399              		@ args = 0, pretend = 0, frame = 16
+ 400              		@ frame_needed = 0, uses_anonymous_args = 0
+ 401 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 402              		.cfi_def_cfa_offset 36
+ 403              		.cfi_offset 4, -36
+ 404              		.cfi_offset 5, -32
+ 405              		.cfi_offset 6, -28
+ 406              		.cfi_offset 7, -24
+ 407              		.cfi_offset 8, -20
+ 408              		.cfi_offset 9, -16
+ 409              		.cfi_offset 10, -12
+ 410              		.cfi_offset 11, -8
+ 411              		.cfi_offset 14, -4
+ 449:Generated_Source\PSoC5/Comp_3.c ****     uint8 tmpSW0;
+ 450:Generated_Source\PSoC5/Comp_3.c ****     uint8 tmpSW2;
+ 451:Generated_Source\PSoC5/Comp_3.c ****     uint8 tmpSW3;
+ 452:Generated_Source\PSoC5/Comp_3.c ****     uint8 tmpCR;
+ 453:Generated_Source\PSoC5/Comp_3.c **** 
+ 454:Generated_Source\PSoC5/Comp_3.c ****     /* Save a copy of routing registers associated with inP */
+ 455:Generated_Source\PSoC5/Comp_3.c ****     tmpSW0 = Comp_3_SW0;
+ 456:Generated_Source\PSoC5/Comp_3.c ****     tmpSW2 = Comp_3_SW2;
+ 457:Generated_Source\PSoC5/Comp_3.c ****     tmpSW3 = Comp_3_SW3;
+ 412              		.loc 1 457 0
+ 413 0004 214A     		ldr	r2, .L44
+ 455:Generated_Source\PSoC5/Comp_3.c ****     tmpSW2 = Comp_3_SW2;
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 17
+
+
+ 414              		.loc 1 455 0
+ 415 0006 224E     		ldr	r6, .L44+4
+ 456:Generated_Source\PSoC5/Comp_3.c ****     tmpSW3 = Comp_3_SW3;
+ 416              		.loc 1 456 0
+ 417 0008 224D     		ldr	r5, .L44+8
+ 455:Generated_Source\PSoC5/Comp_3.c ****     tmpSW2 = Comp_3_SW2;
+ 418              		.loc 1 455 0
+ 419 000a 96F800A0 		ldrb	r10, [r6]	@ zero_extendqisi2
+ 456:Generated_Source\PSoC5/Comp_3.c ****     tmpSW3 = Comp_3_SW3;
+ 420              		.loc 1 456 0
+ 421 000e 95F80090 		ldrb	r9, [r5]	@ zero_extendqisi2
+ 422              		.loc 1 457 0
+ 423 0012 92F80080 		ldrb	r8, [r2]	@ zero_extendqisi2
+ 458:Generated_Source\PSoC5/Comp_3.c **** 
+ 459:Generated_Source\PSoC5/Comp_3.c ****      /* Clear routing for inP, retain routing for inN */
+ 460:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_SW0 = 0x00u;
+ 424              		.loc 1 460 0
+ 425 0016 0023     		movs	r3, #0
+ 457:Generated_Source\PSoC5/Comp_3.c **** 
+ 426              		.loc 1 457 0
+ 427 0018 5FFA88F8 		uxtb	r8, r8
+ 461:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_SW2 = 0x00u;
+ 462:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_SW3 = tmpSW3 & (uint8)(~Comp_3_CMP_SW3_INPCTL_MASK);
+ 463:Generated_Source\PSoC5/Comp_3.c **** 
+ 464:Generated_Source\PSoC5/Comp_3.c ****     /* Preserve original configuration
+ 465:Generated_Source\PSoC5/Comp_3.c ****      * - turn off Hysteresis
+ 466:Generated_Source\PSoC5/Comp_3.c ****      * - set calibration bit - shorts inN to inP
+ 467:Generated_Source\PSoC5/Comp_3.c ****     */
+ 468:Generated_Source\PSoC5/Comp_3.c ****     tmpCR = Comp_3_CR;
+ 428              		.loc 1 468 0
+ 429 001c 1E4C     		ldr	r4, .L44+12
+ 462:Generated_Source\PSoC5/Comp_3.c **** 
+ 430              		.loc 1 462 0
+ 431 001e 08F0F601 		and	r1, r8, #246
+ 460:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_SW2 = 0x00u;
+ 432              		.loc 1 460 0
+ 433 0022 3370     		strb	r3, [r6]
+ 461:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_SW2 = 0x00u;
+ 434              		.loc 1 461 0
+ 435 0024 2B70     		strb	r3, [r5]
+ 462:Generated_Source\PSoC5/Comp_3.c **** 
+ 436              		.loc 1 462 0
+ 437 0026 1170     		strb	r1, [r2]
+ 438              		.loc 1 468 0
+ 439 0028 94F800B0 		ldrb	fp, [r4]	@ zero_extendqisi2
+ 469:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_CR |= (Comp_3_CAL_ON | Comp_3_HYST_OFF);
+ 440              		.loc 1 469 0
+ 441 002c 2178     		ldrb	r1, [r4]	@ zero_extendqisi2
+ 470:Generated_Source\PSoC5/Comp_3.c ****     
+ 471:Generated_Source\PSoC5/Comp_3.c ****     /* Write default low values to trim register - no offset adjust */
+ 472:Generated_Source\PSoC5/Comp_3.c ****     /* PSoC5A */
+ 473:Generated_Source\PSoC5/Comp_3.c ****     #if (CY_PSOC5A)
+ 474:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_TR = Comp_3_DEFAULT_CMP_TRIM;
+ 475:Generated_Source\PSoC5/Comp_3.c ****     #endif /* CY_PSOC5A */
+ 476:Generated_Source\PSoC5/Comp_3.c ****     
+ 477:Generated_Source\PSoC5/Comp_3.c ****     /* PSoC3, PSoC5LP or later */
+ 478:Generated_Source\PSoC5/Comp_3.c ****     #if (CY_PSOC3 || CY_PSOC5LP)
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 18
+
+
+ 479:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_TR0 = Comp_3_DEFAULT_CMP_TRIM;
+ 480:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_TR1 = Comp_3_DEFAULT_CMP_TRIM;
+ 442              		.loc 1 480 0
+ 443 002e 1B4F     		ldr	r7, .L44+16
+ 469:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_CR |= (Comp_3_CAL_ON | Comp_3_HYST_OFF);
+ 444              		.loc 1 469 0
+ 445 0030 41F03001 		orr	r1, r1, #48
+ 446 0034 2170     		strb	r1, [r4]
+ 479:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_TR1 = Comp_3_DEFAULT_CMP_TRIM;
+ 447              		.loc 1 479 0
+ 448 0036 1A49     		ldr	r1, .L44+20
+ 448:Generated_Source\PSoC5/Comp_3.c ****     uint8 tmpSW0;
+ 449              		.loc 1 448 0
+ 450 0038 85B0     		sub	sp, sp, #20
+ 451              		.cfi_def_cfa_offset 56
+ 479:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_TR1 = Comp_3_DEFAULT_CMP_TRIM;
+ 452              		.loc 1 479 0
+ 453 003a 0B70     		strb	r3, [r1]
+ 454              		.loc 1 480 0
+ 455 003c 3B70     		strb	r3, [r7]
+ 481:Generated_Source\PSoC5/Comp_3.c ****     #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 482:Generated_Source\PSoC5/Comp_3.c **** 	
+ 483:Generated_Source\PSoC5/Comp_3.c **** 	/* Two phase trim - slow modes, one phase trim - for fast */ 
+ 484:Generated_Source\PSoC5/Comp_3.c ****     if ( (Comp_3_CR & Comp_3_PWR_MODE_MASK) == Comp_3_PWR_MODE_FAST)
+ 456              		.loc 1 484 0
+ 457 003e 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+ 455:Generated_Source\PSoC5/Comp_3.c ****     tmpSW2 = Comp_3_SW2;
+ 458              		.loc 1 455 0
+ 459 0040 5FFA8AFA 		uxtb	r10, r10
+ 460              	.LVL15:
+ 461              		.loc 1 484 0
+ 462 0044 00F00300 		and	r0, r0, #3
+ 463 0048 0128     		cmp	r0, #1
+ 456:Generated_Source\PSoC5/Comp_3.c ****     tmpSW3 = Comp_3_SW3;
+ 464              		.loc 1 456 0
+ 465 004a 5FFA89F9 		uxtb	r9, r9
+ 466              	.LVL16:
+ 468:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_CR |= (Comp_3_CAL_ON | Comp_3_HYST_OFF);
+ 467              		.loc 1 468 0
+ 468 004e 5FFA8BFB 		uxtb	fp, fp
+ 469              	.LVL17:
+ 470 0052 0192     		str	r2, [sp, #4]
+ 471 0054 0291     		str	r1, [sp, #8]
+ 472              		.loc 1 484 0
+ 473 0056 04D0     		beq	.L43
+ 485:Generated_Source\PSoC5/Comp_3.c ****     {
+ 486:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_trimAdjust(0u);
+ 487:Generated_Source\PSoC5/Comp_3.c ****     }
+ 488:Generated_Source\PSoC5/Comp_3.c ****     else /* default to trim for fast modes */
+ 489:Generated_Source\PSoC5/Comp_3.c ****     {
+ 490:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_trimAdjust(1u);
+ 474              		.loc 1 490 0
+ 475 0058 0120     		movs	r0, #1
+ 476 005a 0393     		str	r3, [sp, #12]
+ 477 005c FFF7FEFF 		bl	Comp_3_trimAdjust
+ 478              	.LVL18:
+ 491:Generated_Source\PSoC5/Comp_3.c **** 		Comp_3_trimAdjust(0u);
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 19
+
+
+ 479              		.loc 1 491 0
+ 480 0060 039B     		ldr	r3, [sp, #12]
+ 481              	.L43:
+ 482 0062 1846     		mov	r0, r3
+ 483 0064 FFF7FEFF 		bl	Comp_3_trimAdjust
+ 484              	.LVL19:
+ 492:Generated_Source\PSoC5/Comp_3.c ****     }
+ 493:Generated_Source\PSoC5/Comp_3.c ****    
+ 494:Generated_Source\PSoC5/Comp_3.c ****     /* Restore Config Register */
+ 495:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_CR = tmpCR;
+ 485              		.loc 1 495 0
+ 486 0068 84F800B0 		strb	fp, [r4]
+ 496:Generated_Source\PSoC5/Comp_3.c ****     
+ 497:Generated_Source\PSoC5/Comp_3.c ****     /* Restore routing registers for inP */
+ 498:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_SW0 = tmpSW0;
+ 487              		.loc 1 498 0
+ 488 006c 86F800A0 		strb	r10, [r6]
+ 499:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_SW2 = tmpSW2;
+ 489              		.loc 1 499 0
+ 490 0070 85F80090 		strb	r9, [r5]
+ 500:Generated_Source\PSoC5/Comp_3.c ****     Comp_3_SW3 = tmpSW3;
+ 491              		.loc 1 500 0
+ 492 0074 019B     		ldr	r3, [sp, #4]
+ 493 0076 83F80080 		strb	r8, [r3]
+ 501:Generated_Source\PSoC5/Comp_3.c ****     
+ 502:Generated_Source\PSoC5/Comp_3.c ****     /* PSoC5A */
+ 503:Generated_Source\PSoC5/Comp_3.c ****     #if (CY_PSOC5A)
+ 504:Generated_Source\PSoC5/Comp_3.c ****         return (uint16) Comp_3_TR;
+ 505:Generated_Source\PSoC5/Comp_3.c ****     #endif /* CY_PSOC5A */
+ 506:Generated_Source\PSoC5/Comp_3.c ****     
+ 507:Generated_Source\PSoC5/Comp_3.c ****     /* PSoC3, PSoC5LP or later */
+ 508:Generated_Source\PSoC5/Comp_3.c ****     #if (CY_PSOC3 || CY_PSOC5LP)
+ 509:Generated_Source\PSoC5/Comp_3.c ****         return ((uint16)((uint16)Comp_3_TR1 << 8u) | (Comp_3_TR0));        
+ 494              		.loc 1 509 0
+ 495 007a 029B     		ldr	r3, [sp, #8]
+ 496 007c 3878     		ldrb	r0, [r7]	@ zero_extendqisi2
+ 497 007e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 510:Generated_Source\PSoC5/Comp_3.c ****     #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 511:Generated_Source\PSoC5/Comp_3.c **** }
+ 498              		.loc 1 511 0
+ 499 0080 43EA0020 		orr	r0, r3, r0, lsl #8
+ 500 0084 05B0     		add	sp, sp, #20
+ 501              		.cfi_def_cfa_offset 36
+ 502              		@ sp needed
+ 503 0086 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 504              	.LVL20:
+ 505              	.L45:
+ 506 008a 00BF     		.align	2
+ 507              	.L44:
+ 508 008c C35A0040 		.word	1073765059
+ 509 0090 C05A0040 		.word	1073765056
+ 510 0094 C25A0040 		.word	1073765058
+ 511 0098 40580040 		.word	1073764416
+ 512 009c 31460040 		.word	1073759793
+ 513 00a0 30460040 		.word	1073759792
+ 514              		.cfi_endproc
+ 515              	.LFE7:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 20
+
+
+ 516              		.size	Comp_3_ZeroCal, .-Comp_3_ZeroCal
+ 517              		.section	.text.Comp_3_LoadTrim,"ax",%progbits
+ 518              		.align	1
+ 519              		.global	Comp_3_LoadTrim
+ 520              		.thumb
+ 521              		.thumb_func
+ 522              		.type	Comp_3_LoadTrim, %function
+ 523              	Comp_3_LoadTrim:
+ 524              	.LFB8:
+ 512:Generated_Source\PSoC5/Comp_3.c **** 
+ 513:Generated_Source\PSoC5/Comp_3.c **** 
+ 514:Generated_Source\PSoC5/Comp_3.c **** /*******************************************************************************
+ 515:Generated_Source\PSoC5/Comp_3.c **** * Function Name: Comp_3_LoadTrim
+ 516:Generated_Source\PSoC5/Comp_3.c **** ********************************************************************************
+ 517:Generated_Source\PSoC5/Comp_3.c **** *
+ 518:Generated_Source\PSoC5/Comp_3.c **** * Summary:
+ 519:Generated_Source\PSoC5/Comp_3.c **** *  This function stores a value in the Analog Comparator trim register.
+ 520:Generated_Source\PSoC5/Comp_3.c **** *
+ 521:Generated_Source\PSoC5/Comp_3.c **** * Parameters:  
+ 522:Generated_Source\PSoC5/Comp_3.c **** *  uint8 trimVal - trim value.  This value is the same format as the value 
+ 523:Generated_Source\PSoC5/Comp_3.c **** *  returned by the _ZeroCal routine.
+ 524:Generated_Source\PSoC5/Comp_3.c **** *
+ 525:Generated_Source\PSoC5/Comp_3.c **** * Return:
+ 526:Generated_Source\PSoC5/Comp_3.c **** *  None
+ 527:Generated_Source\PSoC5/Comp_3.c **** *
+ 528:Generated_Source\PSoC5/Comp_3.c **** *******************************************************************************/
+ 529:Generated_Source\PSoC5/Comp_3.c **** void Comp_3_LoadTrim(uint16 trimVal) 
+ 530:Generated_Source\PSoC5/Comp_3.c **** {
+ 525              		.loc 1 530 0
+ 526              		.cfi_startproc
+ 527              		@ args = 0, pretend = 0, frame = 0
+ 528              		@ frame_needed = 0, uses_anonymous_args = 0
+ 529              		@ link register save eliminated.
+ 530              	.LVL21:
+ 531:Generated_Source\PSoC5/Comp_3.c ****     /* Stores value in the Analog Comparator trim register */
+ 532:Generated_Source\PSoC5/Comp_3.c ****     /* PSoC5A */
+ 533:Generated_Source\PSoC5/Comp_3.c ****     #if (CY_PSOC5A)
+ 534:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_TR = (uint8) trimVal;
+ 535:Generated_Source\PSoC5/Comp_3.c ****     #endif /* CY_PSOC5A */
+ 536:Generated_Source\PSoC5/Comp_3.c ****     
+ 537:Generated_Source\PSoC5/Comp_3.c ****     /* PSoC3, PSoC5LP or later */
+ 538:Generated_Source\PSoC5/Comp_3.c ****     #if (CY_PSOC3 || CY_PSOC5LP)
+ 539:Generated_Source\PSoC5/Comp_3.c ****         /* Stores value in the Analog Comparator trim register for P-type load */
+ 540:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_TR0 = (uint8) trimVal;
+ 531              		.loc 1 540 0
+ 532 0000 024B     		ldr	r3, .L47
+ 533 0002 C2B2     		uxtb	r2, r0
+ 541:Generated_Source\PSoC5/Comp_3.c ****         
+ 542:Generated_Source\PSoC5/Comp_3.c ****         /* Stores value in the Analog Comparator trim register for N-type load */
+ 543:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_TR1 = (uint8) (trimVal >> 8); 
+ 534              		.loc 1 543 0
+ 535 0004 000A     		lsrs	r0, r0, #8
+ 536              	.LVL22:
+ 540:Generated_Source\PSoC5/Comp_3.c ****         
+ 537              		.loc 1 540 0
+ 538 0006 1A70     		strb	r2, [r3]
+ 539              		.loc 1 543 0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 21
+
+
+ 540 0008 5870     		strb	r0, [r3, #1]
+ 541 000a 7047     		bx	lr
+ 542              	.L48:
+ 543              		.align	2
+ 544              	.L47:
+ 545 000c 30460040 		.word	1073759792
+ 546              		.cfi_endproc
+ 547              	.LFE8:
+ 548              		.size	Comp_3_LoadTrim, .-Comp_3_LoadTrim
+ 549              		.section	.text.Comp_3_PwrDwnOverrideEnable,"ax",%progbits
+ 550              		.align	1
+ 551              		.global	Comp_3_PwrDwnOverrideEnable
+ 552              		.thumb
+ 553              		.thumb_func
+ 554              		.type	Comp_3_PwrDwnOverrideEnable, %function
+ 555              	Comp_3_PwrDwnOverrideEnable:
+ 556              	.LFB9:
+ 544:Generated_Source\PSoC5/Comp_3.c ****     #endif /* CY_PSOC3 || CY_PSOC5LP */
+ 545:Generated_Source\PSoC5/Comp_3.c **** }
+ 546:Generated_Source\PSoC5/Comp_3.c **** 
+ 547:Generated_Source\PSoC5/Comp_3.c **** 
+ 548:Generated_Source\PSoC5/Comp_3.c **** #if (CY_PSOC3 || CY_PSOC5LP)
+ 549:Generated_Source\PSoC5/Comp_3.c **** 
+ 550:Generated_Source\PSoC5/Comp_3.c ****     /*******************************************************************************
+ 551:Generated_Source\PSoC5/Comp_3.c ****     * Function Name: Comp_3_PwrDwnOverrideEnable
+ 552:Generated_Source\PSoC5/Comp_3.c ****     ********************************************************************************
+ 553:Generated_Source\PSoC5/Comp_3.c ****     *
+ 554:Generated_Source\PSoC5/Comp_3.c ****     * Summary:
+ 555:Generated_Source\PSoC5/Comp_3.c ****     *  This is the power down over-ride feature. This function ignores sleep 
+ 556:Generated_Source\PSoC5/Comp_3.c ****     *  parameter and allows the component to stay active during sleep mode.
+ 557:Generated_Source\PSoC5/Comp_3.c ****     *
+ 558:Generated_Source\PSoC5/Comp_3.c ****     * Parameters:
+ 559:Generated_Source\PSoC5/Comp_3.c ****     *  None
+ 560:Generated_Source\PSoC5/Comp_3.c ****     *
+ 561:Generated_Source\PSoC5/Comp_3.c ****     * Return:
+ 562:Generated_Source\PSoC5/Comp_3.c ****     *  None
+ 563:Generated_Source\PSoC5/Comp_3.c ****     *
+ 564:Generated_Source\PSoC5/Comp_3.c ****     *******************************************************************************/
+ 565:Generated_Source\PSoC5/Comp_3.c ****     void Comp_3_PwrDwnOverrideEnable(void) 
+ 566:Generated_Source\PSoC5/Comp_3.c ****     {
+ 557              		.loc 1 566 0
+ 558              		.cfi_startproc
+ 559              		@ args = 0, pretend = 0, frame = 0
+ 560              		@ frame_needed = 0, uses_anonymous_args = 0
+ 561              		@ link register save eliminated.
+ 567:Generated_Source\PSoC5/Comp_3.c ****         /* Set the pd_override bit in CMP_CR register */
+ 568:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_CR |= Comp_3_PWRDWN_OVRD;
+ 562              		.loc 1 568 0
+ 563 0000 024A     		ldr	r2, .L50
+ 564 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 565 0004 43F00403 		orr	r3, r3, #4
+ 566 0008 1370     		strb	r3, [r2]
+ 567 000a 7047     		bx	lr
+ 568              	.L51:
+ 569              		.align	2
+ 570              	.L50:
+ 571 000c 40580040 		.word	1073764416
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 22
+
+
+ 572              		.cfi_endproc
+ 573              	.LFE9:
+ 574              		.size	Comp_3_PwrDwnOverrideEnable, .-Comp_3_PwrDwnOverrideEnable
+ 575              		.section	.text.Comp_3_PwrDwnOverrideDisable,"ax",%progbits
+ 576              		.align	1
+ 577              		.global	Comp_3_PwrDwnOverrideDisable
+ 578              		.thumb
+ 579              		.thumb_func
+ 580              		.type	Comp_3_PwrDwnOverrideDisable, %function
+ 581              	Comp_3_PwrDwnOverrideDisable:
+ 582              	.LFB10:
+ 569:Generated_Source\PSoC5/Comp_3.c ****     }
+ 570:Generated_Source\PSoC5/Comp_3.c **** 
+ 571:Generated_Source\PSoC5/Comp_3.c **** 
+ 572:Generated_Source\PSoC5/Comp_3.c ****     /*******************************************************************************
+ 573:Generated_Source\PSoC5/Comp_3.c ****     * Function Name: Comp_3_PwrDwnOverrideDisable
+ 574:Generated_Source\PSoC5/Comp_3.c ****     ********************************************************************************
+ 575:Generated_Source\PSoC5/Comp_3.c ****     *
+ 576:Generated_Source\PSoC5/Comp_3.c ****     * Summary:
+ 577:Generated_Source\PSoC5/Comp_3.c ****     *  This is the power down over-ride feature. This allows the component to stay
+ 578:Generated_Source\PSoC5/Comp_3.c ****     *  inactive during sleep.
+ 579:Generated_Source\PSoC5/Comp_3.c ****     *
+ 580:Generated_Source\PSoC5/Comp_3.c ****     * Parameters:
+ 581:Generated_Source\PSoC5/Comp_3.c ****     *  None
+ 582:Generated_Source\PSoC5/Comp_3.c ****     *
+ 583:Generated_Source\PSoC5/Comp_3.c ****     * Return:
+ 584:Generated_Source\PSoC5/Comp_3.c ****     *  None
+ 585:Generated_Source\PSoC5/Comp_3.c ****     *
+ 586:Generated_Source\PSoC5/Comp_3.c ****     *******************************************************************************/
+ 587:Generated_Source\PSoC5/Comp_3.c ****     void Comp_3_PwrDwnOverrideDisable(void) 
+ 588:Generated_Source\PSoC5/Comp_3.c ****     {
+ 583              		.loc 1 588 0
+ 584              		.cfi_startproc
+ 585              		@ args = 0, pretend = 0, frame = 0
+ 586              		@ frame_needed = 0, uses_anonymous_args = 0
+ 587              		@ link register save eliminated.
+ 589:Generated_Source\PSoC5/Comp_3.c ****         /* Reset the pd_override bit in CMP_CR register */
+ 590:Generated_Source\PSoC5/Comp_3.c ****         Comp_3_CR &= (uint8)(~Comp_3_PWRDWN_OVRD);
+ 588              		.loc 1 590 0
+ 589 0000 024A     		ldr	r2, .L53
+ 590 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 591 0004 03F0FB03 		and	r3, r3, #251
+ 592 0008 1370     		strb	r3, [r2]
+ 593 000a 7047     		bx	lr
+ 594              	.L54:
+ 595              		.align	2
+ 596              	.L53:
+ 597 000c 40580040 		.word	1073764416
+ 598              		.cfi_endproc
+ 599              	.LFE10:
+ 600              		.size	Comp_3_PwrDwnOverrideDisable, .-Comp_3_PwrDwnOverrideDisable
+ 601              		.global	Comp_3_initVar
+ 602              		.bss
+ 603              		.set	.LANCHOR0,. + 0
+ 604              		.type	Comp_3_initVar, %object
+ 605              		.size	Comp_3_initVar, 1
+ 606              	Comp_3_initVar:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 23
+
+
+ 607 0000 00       		.space	1
+ 608              		.text
+ 609              	.Letext0:
+ 610              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 611              		.file 3 "Generated_Source\\PSoC5\\CyLib.h"
+ 612              		.section	.debug_info,"",%progbits
+ 613              	.Ldebug_info0:
+ 614 0000 C2020000 		.4byte	0x2c2
+ 615 0004 0400     		.2byte	0x4
+ 616 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 617 000a 04       		.byte	0x4
+ 618 000b 01       		.uleb128 0x1
+ 619 000c 15020000 		.4byte	.LASF33
+ 620 0010 01       		.byte	0x1
+ 621 0011 AF020000 		.4byte	.LASF34
+ 622 0015 89010000 		.4byte	.LASF35
+ 623 0019 30000000 		.4byte	.Ldebug_ranges0+0x30
+ 624 001d 00000000 		.4byte	0
+ 625 0021 00000000 		.4byte	.Ldebug_line0
+ 626 0025 02       		.uleb128 0x2
+ 627 0026 01       		.byte	0x1
+ 628 0027 06       		.byte	0x6
+ 629 0028 DD020000 		.4byte	.LASF0
+ 630 002c 02       		.uleb128 0x2
+ 631 002d 01       		.byte	0x1
+ 632 002e 08       		.byte	0x8
+ 633 002f A7000000 		.4byte	.LASF1
+ 634 0033 02       		.uleb128 0x2
+ 635 0034 02       		.byte	0x2
+ 636 0035 05       		.byte	0x5
+ 637 0036 0B020000 		.4byte	.LASF2
+ 638 003a 02       		.uleb128 0x2
+ 639 003b 02       		.byte	0x2
+ 640 003c 07       		.byte	0x7
+ 641 003d 52000000 		.4byte	.LASF3
+ 642 0041 02       		.uleb128 0x2
+ 643 0042 04       		.byte	0x4
+ 644 0043 05       		.byte	0x5
+ 645 0044 CF020000 		.4byte	.LASF4
+ 646 0048 02       		.uleb128 0x2
+ 647 0049 04       		.byte	0x4
+ 648 004a 07       		.byte	0x7
+ 649 004b C2000000 		.4byte	.LASF5
+ 650 004f 02       		.uleb128 0x2
+ 651 0050 08       		.byte	0x8
+ 652 0051 05       		.byte	0x5
+ 653 0052 54010000 		.4byte	.LASF6
+ 654 0056 02       		.uleb128 0x2
+ 655 0057 08       		.byte	0x8
+ 656 0058 07       		.byte	0x7
+ 657 0059 23010000 		.4byte	.LASF7
+ 658 005d 03       		.uleb128 0x3
+ 659 005e 04       		.byte	0x4
+ 660 005f 05       		.byte	0x5
+ 661 0060 696E7400 		.ascii	"int\000"
+ 662 0064 02       		.uleb128 0x2
+ 663 0065 04       		.byte	0x4
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 24
+
+
+ 664 0066 07       		.byte	0x7
+ 665 0067 0D010000 		.4byte	.LASF8
+ 666 006b 04       		.uleb128 0x4
+ 667 006c E4000000 		.4byte	.LASF9
+ 668 0070 02       		.byte	0x2
+ 669 0071 9201     		.2byte	0x192
+ 670 0073 2C000000 		.4byte	0x2c
+ 671 0077 04       		.uleb128 0x4
+ 672 0078 F1000000 		.4byte	.LASF10
+ 673 007c 02       		.byte	0x2
+ 674 007d 9301     		.2byte	0x193
+ 675 007f 3A000000 		.4byte	0x3a
+ 676 0083 04       		.uleb128 0x4
+ 677 0084 F8000000 		.4byte	.LASF11
+ 678 0088 02       		.byte	0x2
+ 679 0089 9401     		.2byte	0x194
+ 680 008b 48000000 		.4byte	0x48
+ 681 008f 02       		.uleb128 0x2
+ 682 0090 04       		.byte	0x4
+ 683 0091 04       		.byte	0x4
+ 684 0092 8A000000 		.4byte	.LASF12
+ 685 0096 02       		.uleb128 0x2
+ 686 0097 08       		.byte	0x8
+ 687 0098 04       		.byte	0x4
+ 688 0099 EA000000 		.4byte	.LASF13
+ 689 009d 02       		.uleb128 0x2
+ 690 009e 01       		.byte	0x1
+ 691 009f 08       		.byte	0x8
+ 692 00a0 D8020000 		.4byte	.LASF14
+ 693 00a4 04       		.uleb128 0x4
+ 694 00a5 B5000000 		.4byte	.LASF15
+ 695 00a9 02       		.byte	0x2
+ 696 00aa 3C02     		.2byte	0x23c
+ 697 00ac B0000000 		.4byte	0xb0
+ 698 00b0 05       		.uleb128 0x5
+ 699 00b1 6B000000 		.4byte	0x6b
+ 700 00b5 02       		.uleb128 0x2
+ 701 00b6 04       		.byte	0x4
+ 702 00b7 07       		.byte	0x7
+ 703 00b8 40010000 		.4byte	.LASF16
+ 704 00bc 06       		.uleb128 0x6
+ 705 00bd 97000000 		.4byte	.LASF36
+ 706 00c1 01       		.byte	0x1
+ 707 00c2 C5       		.byte	0xc5
+ 708 00c3 01       		.byte	0x1
+ 709 00c4 D4000000 		.4byte	0xd4
+ 710 00c8 07       		.uleb128 0x7
+ 711 00c9 3A010000 		.4byte	.LASF37
+ 712 00cd 01       		.byte	0x1
+ 713 00ce C5       		.byte	0xc5
+ 714 00cf 6B000000 		.4byte	0x6b
+ 715 00d3 00       		.byte	0
+ 716 00d4 08       		.uleb128 0x8
+ 717 00d5 71000000 		.4byte	.LASF38
+ 718 00d9 01       		.byte	0x1
+ 719 00da 1A01     		.2byte	0x11a
+ 720 00dc 00000000 		.4byte	.LFB6
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 25
+
+
+ 721 00e0 74000000 		.4byte	.LFE6-.LFB6
+ 722 00e4 01       		.uleb128 0x1
+ 723 00e5 9C       		.byte	0x9c
+ 724 00e6 3A010000 		.4byte	0x13a
+ 725 00ea 09       		.uleb128 0x9
+ 726 00eb 05030000 		.4byte	.LASF29
+ 727 00ef 01       		.byte	0x1
+ 728 00f0 1A01     		.2byte	0x11a
+ 729 00f2 6B000000 		.4byte	0x6b
+ 730 00f6 00000000 		.4byte	.LLST0
+ 731 00fa 0A       		.uleb128 0xa
+ 732 00fb BA000000 		.4byte	.LASF17
+ 733 00ff 01       		.byte	0x1
+ 734 0100 1C01     		.2byte	0x11c
+ 735 0102 6B000000 		.4byte	0x6b
+ 736 0106 3A000000 		.4byte	.LLST1
+ 737 010a 0A       		.uleb128 0xa
+ 738 010b 49010000 		.4byte	.LASF18
+ 739 010f 01       		.byte	0x1
+ 740 0110 1C01     		.2byte	0x11c
+ 741 0112 6B000000 		.4byte	0x6b
+ 742 0116 71000000 		.4byte	.LLST2
+ 743 011a 0A       		.uleb128 0xa
+ 744 011b 1A010000 		.4byte	.LASF19
+ 745 011f 01       		.byte	0x1
+ 746 0120 1D01     		.2byte	0x11d
+ 747 0122 6B000000 		.4byte	0x6b
+ 748 0126 8F000000 		.4byte	.LLST3
+ 749 012a 0B       		.uleb128 0xb
+ 750 012b 48000000 		.4byte	.LVL4
+ 751 012f B8020000 		.4byte	0x2b8
+ 752 0133 0C       		.uleb128 0xc
+ 753 0134 01       		.uleb128 0x1
+ 754 0135 50       		.byte	0x50
+ 755 0136 01       		.uleb128 0x1
+ 756 0137 3A       		.byte	0x3a
+ 757 0138 00       		.byte	0
+ 758 0139 00       		.byte	0
+ 759 013a 0D       		.uleb128 0xd
+ 760 013b FF000000 		.4byte	.LASF20
+ 761 013f 01       		.byte	0x1
+ 762 0140 63       		.byte	0x63
+ 763 0141 00000000 		.4byte	.LFB1
+ 764 0145 18000000 		.4byte	.LFE1-.LFB1
+ 765 0149 01       		.uleb128 0x1
+ 766 014a 9C       		.byte	0x9c
+ 767 014b 0D       		.uleb128 0xd
+ 768 014c 65000000 		.4byte	.LASF21
+ 769 0150 01       		.byte	0x1
+ 770 0151 A5       		.byte	0xa5
+ 771 0152 00000000 		.4byte	.LFB3
+ 772 0156 18000000 		.4byte	.LFE3-.LFB3
+ 773 015a 01       		.uleb128 0x1
+ 774 015b 9C       		.byte	0x9c
+ 775 015c 0E       		.uleb128 0xe
+ 776 015d BC000000 		.4byte	0xbc
+ 777 0161 00000000 		.4byte	.LFB4
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 26
+
+
+ 778 0165 58000000 		.4byte	.LFE4-.LFB4
+ 779 0169 01       		.uleb128 0x1
+ 780 016a 9C       		.byte	0x9c
+ 781 016b 83010000 		.4byte	0x183
+ 782 016f 0F       		.uleb128 0xf
+ 783 0170 C8000000 		.4byte	0xc8
+ 784 0174 01       		.uleb128 0x1
+ 785 0175 50       		.byte	0x50
+ 786 0176 10       		.uleb128 0x10
+ 787 0177 00000000 		.4byte	.Ldebug_ranges0+0
+ 788 017b 11       		.uleb128 0x11
+ 789 017c C8000000 		.4byte	0xc8
+ 790 0180 01       		.byte	0x1
+ 791 0181 00       		.byte	0
+ 792 0182 00       		.byte	0
+ 793 0183 12       		.uleb128 0x12
+ 794 0184 A3020000 		.4byte	.LASF22
+ 795 0188 01       		.byte	0x1
+ 796 0189 33       		.byte	0x33
+ 797 018a 00000000 		.4byte	.LFB0
+ 798 018e 40000000 		.4byte	.LFE0-.LFB0
+ 799 0192 01       		.uleb128 0x1
+ 800 0193 9C       		.byte	0x9c
+ 801 0194 A8010000 		.4byte	0x1a8
+ 802 0198 0B       		.uleb128 0xb
+ 803 0199 08000000 		.4byte	.LVL12
+ 804 019d BC000000 		.4byte	0xbc
+ 805 01a1 0C       		.uleb128 0xc
+ 806 01a2 01       		.uleb128 0x1
+ 807 01a3 50       		.byte	0x50
+ 808 01a4 01       		.uleb128 0x1
+ 809 01a5 31       		.byte	0x31
+ 810 01a6 00       		.byte	0
+ 811 01a7 00       		.byte	0
+ 812 01a8 12       		.uleb128 0x12
+ 813 01a9 45000000 		.4byte	.LASF23
+ 814 01ad 01       		.byte	0x1
+ 815 01ae 88       		.byte	0x88
+ 816 01af 00000000 		.4byte	.LFB2
+ 817 01b3 1C000000 		.4byte	.LFE2-.LFB2
+ 818 01b7 01       		.uleb128 0x1
+ 819 01b8 9C       		.byte	0x9c
+ 820 01b9 D0010000 		.4byte	0x1d0
+ 821 01bd 13       		.uleb128 0x13
+ 822 01be 0C000000 		.4byte	.LVL13
+ 823 01c2 83010000 		.4byte	0x183
+ 824 01c6 14       		.uleb128 0x14
+ 825 01c7 18000000 		.4byte	.LVL14
+ 826 01cb 3A010000 		.4byte	0x13a
+ 827 01cf 00       		.byte	0
+ 828 01d0 15       		.uleb128 0x15
+ 829 01d1 33000000 		.4byte	.LASF39
+ 830 01d5 01       		.byte	0x1
+ 831 01d6 FB       		.byte	0xfb
+ 832 01d7 6B000000 		.4byte	0x6b
+ 833 01db 00000000 		.4byte	.LFB5
+ 834 01df 10000000 		.4byte	.LFE5-.LFB5
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 27
+
+
+ 835 01e3 01       		.uleb128 0x1
+ 836 01e4 9C       		.byte	0x9c
+ 837 01e5 16       		.uleb128 0x16
+ 838 01e6 24000000 		.4byte	.LASF40
+ 839 01ea 01       		.byte	0x1
+ 840 01eb BF01     		.2byte	0x1bf
+ 841 01ed 77000000 		.4byte	0x77
+ 842 01f1 00000000 		.4byte	.LFB7
+ 843 01f5 A4000000 		.4byte	.LFE7-.LFB7
+ 844 01f9 01       		.uleb128 0x1
+ 845 01fa 9C       		.byte	0x9c
+ 846 01fb 5C020000 		.4byte	0x25c
+ 847 01ff 0A       		.uleb128 0xa
+ 848 0200 83000000 		.4byte	.LASF24
+ 849 0204 01       		.byte	0x1
+ 850 0205 C101     		.2byte	0x1c1
+ 851 0207 6B000000 		.4byte	0x6b
+ 852 020b A2000000 		.4byte	.LLST4
+ 853 020f 0A       		.uleb128 0xa
+ 854 0210 0E000000 		.4byte	.LASF25
+ 855 0214 01       		.byte	0x1
+ 856 0215 C201     		.2byte	0x1c2
+ 857 0217 6B000000 		.4byte	0x6b
+ 858 021b B5000000 		.4byte	.LLST5
+ 859 021f 0A       		.uleb128 0xa
+ 860 0220 90000000 		.4byte	.LASF26
+ 861 0224 01       		.byte	0x1
+ 862 0225 C301     		.2byte	0x1c3
+ 863 0227 6B000000 		.4byte	0x6b
+ 864 022b C8000000 		.4byte	.LLST6
+ 865 022f 0A       		.uleb128 0xa
+ 866 0230 08000000 		.4byte	.LASF27
+ 867 0234 01       		.byte	0x1
+ 868 0235 C401     		.2byte	0x1c4
+ 869 0237 6B000000 		.4byte	0x6b
+ 870 023b DB000000 		.4byte	.LLST7
+ 871 023f 17       		.uleb128 0x17
+ 872 0240 60000000 		.4byte	.LVL18
+ 873 0244 D4000000 		.4byte	0xd4
+ 874 0248 52020000 		.4byte	0x252
+ 875 024c 0C       		.uleb128 0xc
+ 876 024d 01       		.uleb128 0x1
+ 877 024e 50       		.byte	0x50
+ 878 024f 01       		.uleb128 0x1
+ 879 0250 31       		.byte	0x31
+ 880 0251 00       		.byte	0
+ 881 0252 13       		.uleb128 0x13
+ 882 0253 68000000 		.4byte	.LVL19
+ 883 0257 D4000000 		.4byte	0xd4
+ 884 025b 00       		.byte	0
+ 885 025c 18       		.uleb128 0x18
+ 886 025d D4000000 		.4byte	.LASF28
+ 887 0261 01       		.byte	0x1
+ 888 0262 1102     		.2byte	0x211
+ 889 0264 00000000 		.4byte	.LFB8
+ 890 0268 10000000 		.4byte	.LFE8-.LFB8
+ 891 026c 01       		.uleb128 0x1
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 28
+
+
+ 892 026d 9C       		.byte	0x9c
+ 893 026e 83020000 		.4byte	0x283
+ 894 0272 09       		.uleb128 0x9
+ 895 0273 00000000 		.4byte	.LASF30
+ 896 0277 01       		.byte	0x1
+ 897 0278 1102     		.2byte	0x211
+ 898 027a 77000000 		.4byte	0x77
+ 899 027e EE000000 		.4byte	.LLST8
+ 900 0282 00       		.byte	0
+ 901 0283 19       		.uleb128 0x19
+ 902 0284 E9020000 		.4byte	.LASF31
+ 903 0288 01       		.byte	0x1
+ 904 0289 3502     		.2byte	0x235
+ 905 028b 00000000 		.4byte	.LFB9
+ 906 028f 10000000 		.4byte	.LFE9-.LFB9
+ 907 0293 01       		.uleb128 0x1
+ 908 0294 9C       		.byte	0x9c
+ 909 0295 19       		.uleb128 0x19
+ 910 0296 6C010000 		.4byte	.LASF32
+ 911 029a 01       		.byte	0x1
+ 912 029b 4B02     		.2byte	0x24b
+ 913 029d 00000000 		.4byte	.LFB10
+ 914 02a1 10000000 		.4byte	.LFE10-.LFB10
+ 915 02a5 01       		.uleb128 0x1
+ 916 02a6 9C       		.byte	0x9c
+ 917 02a7 1A       		.uleb128 0x1a
+ 918 02a8 15000000 		.4byte	.LASF41
+ 919 02ac 01       		.byte	0x1
+ 920 02ad 14       		.byte	0x14
+ 921 02ae 6B000000 		.4byte	0x6b
+ 922 02b2 05       		.uleb128 0x5
+ 923 02b3 03       		.byte	0x3
+ 924 02b4 00000000 		.4byte	Comp_3_initVar
+ 925 02b8 1B       		.uleb128 0x1b
+ 926 02b9 62010000 		.4byte	.LASF42
+ 927 02bd 03       		.byte	0x3
+ 928 02be 77       		.byte	0x77
+ 929 02bf 1C       		.uleb128 0x1c
+ 930 02c0 77000000 		.4byte	0x77
+ 931 02c4 00       		.byte	0
+ 932 02c5 00       		.byte	0
+ 933              		.section	.debug_abbrev,"",%progbits
+ 934              	.Ldebug_abbrev0:
+ 935 0000 01       		.uleb128 0x1
+ 936 0001 11       		.uleb128 0x11
+ 937 0002 01       		.byte	0x1
+ 938 0003 25       		.uleb128 0x25
+ 939 0004 0E       		.uleb128 0xe
+ 940 0005 13       		.uleb128 0x13
+ 941 0006 0B       		.uleb128 0xb
+ 942 0007 03       		.uleb128 0x3
+ 943 0008 0E       		.uleb128 0xe
+ 944 0009 1B       		.uleb128 0x1b
+ 945 000a 0E       		.uleb128 0xe
+ 946 000b 55       		.uleb128 0x55
+ 947 000c 17       		.uleb128 0x17
+ 948 000d 11       		.uleb128 0x11
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 29
+
+
+ 949 000e 01       		.uleb128 0x1
+ 950 000f 10       		.uleb128 0x10
+ 951 0010 17       		.uleb128 0x17
+ 952 0011 00       		.byte	0
+ 953 0012 00       		.byte	0
+ 954 0013 02       		.uleb128 0x2
+ 955 0014 24       		.uleb128 0x24
+ 956 0015 00       		.byte	0
+ 957 0016 0B       		.uleb128 0xb
+ 958 0017 0B       		.uleb128 0xb
+ 959 0018 3E       		.uleb128 0x3e
+ 960 0019 0B       		.uleb128 0xb
+ 961 001a 03       		.uleb128 0x3
+ 962 001b 0E       		.uleb128 0xe
+ 963 001c 00       		.byte	0
+ 964 001d 00       		.byte	0
+ 965 001e 03       		.uleb128 0x3
+ 966 001f 24       		.uleb128 0x24
+ 967 0020 00       		.byte	0
+ 968 0021 0B       		.uleb128 0xb
+ 969 0022 0B       		.uleb128 0xb
+ 970 0023 3E       		.uleb128 0x3e
+ 971 0024 0B       		.uleb128 0xb
+ 972 0025 03       		.uleb128 0x3
+ 973 0026 08       		.uleb128 0x8
+ 974 0027 00       		.byte	0
+ 975 0028 00       		.byte	0
+ 976 0029 04       		.uleb128 0x4
+ 977 002a 16       		.uleb128 0x16
+ 978 002b 00       		.byte	0
+ 979 002c 03       		.uleb128 0x3
+ 980 002d 0E       		.uleb128 0xe
+ 981 002e 3A       		.uleb128 0x3a
+ 982 002f 0B       		.uleb128 0xb
+ 983 0030 3B       		.uleb128 0x3b
+ 984 0031 05       		.uleb128 0x5
+ 985 0032 49       		.uleb128 0x49
+ 986 0033 13       		.uleb128 0x13
+ 987 0034 00       		.byte	0
+ 988 0035 00       		.byte	0
+ 989 0036 05       		.uleb128 0x5
+ 990 0037 35       		.uleb128 0x35
+ 991 0038 00       		.byte	0
+ 992 0039 49       		.uleb128 0x49
+ 993 003a 13       		.uleb128 0x13
+ 994 003b 00       		.byte	0
+ 995 003c 00       		.byte	0
+ 996 003d 06       		.uleb128 0x6
+ 997 003e 2E       		.uleb128 0x2e
+ 998 003f 01       		.byte	0x1
+ 999 0040 3F       		.uleb128 0x3f
+ 1000 0041 19       		.uleb128 0x19
+ 1001 0042 03       		.uleb128 0x3
+ 1002 0043 0E       		.uleb128 0xe
+ 1003 0044 3A       		.uleb128 0x3a
+ 1004 0045 0B       		.uleb128 0xb
+ 1005 0046 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 30
+
+
+ 1006 0047 0B       		.uleb128 0xb
+ 1007 0048 27       		.uleb128 0x27
+ 1008 0049 19       		.uleb128 0x19
+ 1009 004a 20       		.uleb128 0x20
+ 1010 004b 0B       		.uleb128 0xb
+ 1011 004c 01       		.uleb128 0x1
+ 1012 004d 13       		.uleb128 0x13
+ 1013 004e 00       		.byte	0
+ 1014 004f 00       		.byte	0
+ 1015 0050 07       		.uleb128 0x7
+ 1016 0051 05       		.uleb128 0x5
+ 1017 0052 00       		.byte	0
+ 1018 0053 03       		.uleb128 0x3
+ 1019 0054 0E       		.uleb128 0xe
+ 1020 0055 3A       		.uleb128 0x3a
+ 1021 0056 0B       		.uleb128 0xb
+ 1022 0057 3B       		.uleb128 0x3b
+ 1023 0058 0B       		.uleb128 0xb
+ 1024 0059 49       		.uleb128 0x49
+ 1025 005a 13       		.uleb128 0x13
+ 1026 005b 00       		.byte	0
+ 1027 005c 00       		.byte	0
+ 1028 005d 08       		.uleb128 0x8
+ 1029 005e 2E       		.uleb128 0x2e
+ 1030 005f 01       		.byte	0x1
+ 1031 0060 03       		.uleb128 0x3
+ 1032 0061 0E       		.uleb128 0xe
+ 1033 0062 3A       		.uleb128 0x3a
+ 1034 0063 0B       		.uleb128 0xb
+ 1035 0064 3B       		.uleb128 0x3b
+ 1036 0065 05       		.uleb128 0x5
+ 1037 0066 27       		.uleb128 0x27
+ 1038 0067 19       		.uleb128 0x19
+ 1039 0068 11       		.uleb128 0x11
+ 1040 0069 01       		.uleb128 0x1
+ 1041 006a 12       		.uleb128 0x12
+ 1042 006b 06       		.uleb128 0x6
+ 1043 006c 40       		.uleb128 0x40
+ 1044 006d 18       		.uleb128 0x18
+ 1045 006e 9742     		.uleb128 0x2117
+ 1046 0070 19       		.uleb128 0x19
+ 1047 0071 01       		.uleb128 0x1
+ 1048 0072 13       		.uleb128 0x13
+ 1049 0073 00       		.byte	0
+ 1050 0074 00       		.byte	0
+ 1051 0075 09       		.uleb128 0x9
+ 1052 0076 05       		.uleb128 0x5
+ 1053 0077 00       		.byte	0
+ 1054 0078 03       		.uleb128 0x3
+ 1055 0079 0E       		.uleb128 0xe
+ 1056 007a 3A       		.uleb128 0x3a
+ 1057 007b 0B       		.uleb128 0xb
+ 1058 007c 3B       		.uleb128 0x3b
+ 1059 007d 05       		.uleb128 0x5
+ 1060 007e 49       		.uleb128 0x49
+ 1061 007f 13       		.uleb128 0x13
+ 1062 0080 02       		.uleb128 0x2
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 31
+
+
+ 1063 0081 17       		.uleb128 0x17
+ 1064 0082 00       		.byte	0
+ 1065 0083 00       		.byte	0
+ 1066 0084 0A       		.uleb128 0xa
+ 1067 0085 34       		.uleb128 0x34
+ 1068 0086 00       		.byte	0
+ 1069 0087 03       		.uleb128 0x3
+ 1070 0088 0E       		.uleb128 0xe
+ 1071 0089 3A       		.uleb128 0x3a
+ 1072 008a 0B       		.uleb128 0xb
+ 1073 008b 3B       		.uleb128 0x3b
+ 1074 008c 05       		.uleb128 0x5
+ 1075 008d 49       		.uleb128 0x49
+ 1076 008e 13       		.uleb128 0x13
+ 1077 008f 02       		.uleb128 0x2
+ 1078 0090 17       		.uleb128 0x17
+ 1079 0091 00       		.byte	0
+ 1080 0092 00       		.byte	0
+ 1081 0093 0B       		.uleb128 0xb
+ 1082 0094 898201   		.uleb128 0x4109
+ 1083 0097 01       		.byte	0x1
+ 1084 0098 11       		.uleb128 0x11
+ 1085 0099 01       		.uleb128 0x1
+ 1086 009a 31       		.uleb128 0x31
+ 1087 009b 13       		.uleb128 0x13
+ 1088 009c 00       		.byte	0
+ 1089 009d 00       		.byte	0
+ 1090 009e 0C       		.uleb128 0xc
+ 1091 009f 8A8201   		.uleb128 0x410a
+ 1092 00a2 00       		.byte	0
+ 1093 00a3 02       		.uleb128 0x2
+ 1094 00a4 18       		.uleb128 0x18
+ 1095 00a5 9142     		.uleb128 0x2111
+ 1096 00a7 18       		.uleb128 0x18
+ 1097 00a8 00       		.byte	0
+ 1098 00a9 00       		.byte	0
+ 1099 00aa 0D       		.uleb128 0xd
+ 1100 00ab 2E       		.uleb128 0x2e
+ 1101 00ac 00       		.byte	0
+ 1102 00ad 3F       		.uleb128 0x3f
+ 1103 00ae 19       		.uleb128 0x19
+ 1104 00af 03       		.uleb128 0x3
+ 1105 00b0 0E       		.uleb128 0xe
+ 1106 00b1 3A       		.uleb128 0x3a
+ 1107 00b2 0B       		.uleb128 0xb
+ 1108 00b3 3B       		.uleb128 0x3b
+ 1109 00b4 0B       		.uleb128 0xb
+ 1110 00b5 27       		.uleb128 0x27
+ 1111 00b6 19       		.uleb128 0x19
+ 1112 00b7 11       		.uleb128 0x11
+ 1113 00b8 01       		.uleb128 0x1
+ 1114 00b9 12       		.uleb128 0x12
+ 1115 00ba 06       		.uleb128 0x6
+ 1116 00bb 40       		.uleb128 0x40
+ 1117 00bc 18       		.uleb128 0x18
+ 1118 00bd 9742     		.uleb128 0x2117
+ 1119 00bf 19       		.uleb128 0x19
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 32
+
+
+ 1120 00c0 00       		.byte	0
+ 1121 00c1 00       		.byte	0
+ 1122 00c2 0E       		.uleb128 0xe
+ 1123 00c3 2E       		.uleb128 0x2e
+ 1124 00c4 01       		.byte	0x1
+ 1125 00c5 31       		.uleb128 0x31
+ 1126 00c6 13       		.uleb128 0x13
+ 1127 00c7 11       		.uleb128 0x11
+ 1128 00c8 01       		.uleb128 0x1
+ 1129 00c9 12       		.uleb128 0x12
+ 1130 00ca 06       		.uleb128 0x6
+ 1131 00cb 40       		.uleb128 0x40
+ 1132 00cc 18       		.uleb128 0x18
+ 1133 00cd 9742     		.uleb128 0x2117
+ 1134 00cf 19       		.uleb128 0x19
+ 1135 00d0 01       		.uleb128 0x1
+ 1136 00d1 13       		.uleb128 0x13
+ 1137 00d2 00       		.byte	0
+ 1138 00d3 00       		.byte	0
+ 1139 00d4 0F       		.uleb128 0xf
+ 1140 00d5 05       		.uleb128 0x5
+ 1141 00d6 00       		.byte	0
+ 1142 00d7 31       		.uleb128 0x31
+ 1143 00d8 13       		.uleb128 0x13
+ 1144 00d9 02       		.uleb128 0x2
+ 1145 00da 18       		.uleb128 0x18
+ 1146 00db 00       		.byte	0
+ 1147 00dc 00       		.byte	0
+ 1148 00dd 10       		.uleb128 0x10
+ 1149 00de 0B       		.uleb128 0xb
+ 1150 00df 01       		.byte	0x1
+ 1151 00e0 55       		.uleb128 0x55
+ 1152 00e1 17       		.uleb128 0x17
+ 1153 00e2 00       		.byte	0
+ 1154 00e3 00       		.byte	0
+ 1155 00e4 11       		.uleb128 0x11
+ 1156 00e5 05       		.uleb128 0x5
+ 1157 00e6 00       		.byte	0
+ 1158 00e7 31       		.uleb128 0x31
+ 1159 00e8 13       		.uleb128 0x13
+ 1160 00e9 1C       		.uleb128 0x1c
+ 1161 00ea 0B       		.uleb128 0xb
+ 1162 00eb 00       		.byte	0
+ 1163 00ec 00       		.byte	0
+ 1164 00ed 12       		.uleb128 0x12
+ 1165 00ee 2E       		.uleb128 0x2e
+ 1166 00ef 01       		.byte	0x1
+ 1167 00f0 3F       		.uleb128 0x3f
+ 1168 00f1 19       		.uleb128 0x19
+ 1169 00f2 03       		.uleb128 0x3
+ 1170 00f3 0E       		.uleb128 0xe
+ 1171 00f4 3A       		.uleb128 0x3a
+ 1172 00f5 0B       		.uleb128 0xb
+ 1173 00f6 3B       		.uleb128 0x3b
+ 1174 00f7 0B       		.uleb128 0xb
+ 1175 00f8 27       		.uleb128 0x27
+ 1176 00f9 19       		.uleb128 0x19
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 33
+
+
+ 1177 00fa 11       		.uleb128 0x11
+ 1178 00fb 01       		.uleb128 0x1
+ 1179 00fc 12       		.uleb128 0x12
+ 1180 00fd 06       		.uleb128 0x6
+ 1181 00fe 40       		.uleb128 0x40
+ 1182 00ff 18       		.uleb128 0x18
+ 1183 0100 9742     		.uleb128 0x2117
+ 1184 0102 19       		.uleb128 0x19
+ 1185 0103 01       		.uleb128 0x1
+ 1186 0104 13       		.uleb128 0x13
+ 1187 0105 00       		.byte	0
+ 1188 0106 00       		.byte	0
+ 1189 0107 13       		.uleb128 0x13
+ 1190 0108 898201   		.uleb128 0x4109
+ 1191 010b 00       		.byte	0
+ 1192 010c 11       		.uleb128 0x11
+ 1193 010d 01       		.uleb128 0x1
+ 1194 010e 31       		.uleb128 0x31
+ 1195 010f 13       		.uleb128 0x13
+ 1196 0110 00       		.byte	0
+ 1197 0111 00       		.byte	0
+ 1198 0112 14       		.uleb128 0x14
+ 1199 0113 898201   		.uleb128 0x4109
+ 1200 0116 00       		.byte	0
+ 1201 0117 11       		.uleb128 0x11
+ 1202 0118 01       		.uleb128 0x1
+ 1203 0119 9542     		.uleb128 0x2115
+ 1204 011b 19       		.uleb128 0x19
+ 1205 011c 31       		.uleb128 0x31
+ 1206 011d 13       		.uleb128 0x13
+ 1207 011e 00       		.byte	0
+ 1208 011f 00       		.byte	0
+ 1209 0120 15       		.uleb128 0x15
+ 1210 0121 2E       		.uleb128 0x2e
+ 1211 0122 00       		.byte	0
+ 1212 0123 3F       		.uleb128 0x3f
+ 1213 0124 19       		.uleb128 0x19
+ 1214 0125 03       		.uleb128 0x3
+ 1215 0126 0E       		.uleb128 0xe
+ 1216 0127 3A       		.uleb128 0x3a
+ 1217 0128 0B       		.uleb128 0xb
+ 1218 0129 3B       		.uleb128 0x3b
+ 1219 012a 0B       		.uleb128 0xb
+ 1220 012b 27       		.uleb128 0x27
+ 1221 012c 19       		.uleb128 0x19
+ 1222 012d 49       		.uleb128 0x49
+ 1223 012e 13       		.uleb128 0x13
+ 1224 012f 11       		.uleb128 0x11
+ 1225 0130 01       		.uleb128 0x1
+ 1226 0131 12       		.uleb128 0x12
+ 1227 0132 06       		.uleb128 0x6
+ 1228 0133 40       		.uleb128 0x40
+ 1229 0134 18       		.uleb128 0x18
+ 1230 0135 9742     		.uleb128 0x2117
+ 1231 0137 19       		.uleb128 0x19
+ 1232 0138 00       		.byte	0
+ 1233 0139 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 34
+
+
+ 1234 013a 16       		.uleb128 0x16
+ 1235 013b 2E       		.uleb128 0x2e
+ 1236 013c 01       		.byte	0x1
+ 1237 013d 3F       		.uleb128 0x3f
+ 1238 013e 19       		.uleb128 0x19
+ 1239 013f 03       		.uleb128 0x3
+ 1240 0140 0E       		.uleb128 0xe
+ 1241 0141 3A       		.uleb128 0x3a
+ 1242 0142 0B       		.uleb128 0xb
+ 1243 0143 3B       		.uleb128 0x3b
+ 1244 0144 05       		.uleb128 0x5
+ 1245 0145 27       		.uleb128 0x27
+ 1246 0146 19       		.uleb128 0x19
+ 1247 0147 49       		.uleb128 0x49
+ 1248 0148 13       		.uleb128 0x13
+ 1249 0149 11       		.uleb128 0x11
+ 1250 014a 01       		.uleb128 0x1
+ 1251 014b 12       		.uleb128 0x12
+ 1252 014c 06       		.uleb128 0x6
+ 1253 014d 40       		.uleb128 0x40
+ 1254 014e 18       		.uleb128 0x18
+ 1255 014f 9742     		.uleb128 0x2117
+ 1256 0151 19       		.uleb128 0x19
+ 1257 0152 01       		.uleb128 0x1
+ 1258 0153 13       		.uleb128 0x13
+ 1259 0154 00       		.byte	0
+ 1260 0155 00       		.byte	0
+ 1261 0156 17       		.uleb128 0x17
+ 1262 0157 898201   		.uleb128 0x4109
+ 1263 015a 01       		.byte	0x1
+ 1264 015b 11       		.uleb128 0x11
+ 1265 015c 01       		.uleb128 0x1
+ 1266 015d 31       		.uleb128 0x31
+ 1267 015e 13       		.uleb128 0x13
+ 1268 015f 01       		.uleb128 0x1
+ 1269 0160 13       		.uleb128 0x13
+ 1270 0161 00       		.byte	0
+ 1271 0162 00       		.byte	0
+ 1272 0163 18       		.uleb128 0x18
+ 1273 0164 2E       		.uleb128 0x2e
+ 1274 0165 01       		.byte	0x1
+ 1275 0166 3F       		.uleb128 0x3f
+ 1276 0167 19       		.uleb128 0x19
+ 1277 0168 03       		.uleb128 0x3
+ 1278 0169 0E       		.uleb128 0xe
+ 1279 016a 3A       		.uleb128 0x3a
+ 1280 016b 0B       		.uleb128 0xb
+ 1281 016c 3B       		.uleb128 0x3b
+ 1282 016d 05       		.uleb128 0x5
+ 1283 016e 27       		.uleb128 0x27
+ 1284 016f 19       		.uleb128 0x19
+ 1285 0170 11       		.uleb128 0x11
+ 1286 0171 01       		.uleb128 0x1
+ 1287 0172 12       		.uleb128 0x12
+ 1288 0173 06       		.uleb128 0x6
+ 1289 0174 40       		.uleb128 0x40
+ 1290 0175 18       		.uleb128 0x18
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 35
+
+
+ 1291 0176 9742     		.uleb128 0x2117
+ 1292 0178 19       		.uleb128 0x19
+ 1293 0179 01       		.uleb128 0x1
+ 1294 017a 13       		.uleb128 0x13
+ 1295 017b 00       		.byte	0
+ 1296 017c 00       		.byte	0
+ 1297 017d 19       		.uleb128 0x19
+ 1298 017e 2E       		.uleb128 0x2e
+ 1299 017f 00       		.byte	0
+ 1300 0180 3F       		.uleb128 0x3f
+ 1301 0181 19       		.uleb128 0x19
+ 1302 0182 03       		.uleb128 0x3
+ 1303 0183 0E       		.uleb128 0xe
+ 1304 0184 3A       		.uleb128 0x3a
+ 1305 0185 0B       		.uleb128 0xb
+ 1306 0186 3B       		.uleb128 0x3b
+ 1307 0187 05       		.uleb128 0x5
+ 1308 0188 27       		.uleb128 0x27
+ 1309 0189 19       		.uleb128 0x19
+ 1310 018a 11       		.uleb128 0x11
+ 1311 018b 01       		.uleb128 0x1
+ 1312 018c 12       		.uleb128 0x12
+ 1313 018d 06       		.uleb128 0x6
+ 1314 018e 40       		.uleb128 0x40
+ 1315 018f 18       		.uleb128 0x18
+ 1316 0190 9742     		.uleb128 0x2117
+ 1317 0192 19       		.uleb128 0x19
+ 1318 0193 00       		.byte	0
+ 1319 0194 00       		.byte	0
+ 1320 0195 1A       		.uleb128 0x1a
+ 1321 0196 34       		.uleb128 0x34
+ 1322 0197 00       		.byte	0
+ 1323 0198 03       		.uleb128 0x3
+ 1324 0199 0E       		.uleb128 0xe
+ 1325 019a 3A       		.uleb128 0x3a
+ 1326 019b 0B       		.uleb128 0xb
+ 1327 019c 3B       		.uleb128 0x3b
+ 1328 019d 0B       		.uleb128 0xb
+ 1329 019e 49       		.uleb128 0x49
+ 1330 019f 13       		.uleb128 0x13
+ 1331 01a0 3F       		.uleb128 0x3f
+ 1332 01a1 19       		.uleb128 0x19
+ 1333 01a2 02       		.uleb128 0x2
+ 1334 01a3 18       		.uleb128 0x18
+ 1335 01a4 00       		.byte	0
+ 1336 01a5 00       		.byte	0
+ 1337 01a6 1B       		.uleb128 0x1b
+ 1338 01a7 2E       		.uleb128 0x2e
+ 1339 01a8 01       		.byte	0x1
+ 1340 01a9 3F       		.uleb128 0x3f
+ 1341 01aa 19       		.uleb128 0x19
+ 1342 01ab 03       		.uleb128 0x3
+ 1343 01ac 0E       		.uleb128 0xe
+ 1344 01ad 3A       		.uleb128 0x3a
+ 1345 01ae 0B       		.uleb128 0xb
+ 1346 01af 3B       		.uleb128 0x3b
+ 1347 01b0 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 36
+
+
+ 1348 01b1 27       		.uleb128 0x27
+ 1349 01b2 19       		.uleb128 0x19
+ 1350 01b3 3C       		.uleb128 0x3c
+ 1351 01b4 19       		.uleb128 0x19
+ 1352 01b5 00       		.byte	0
+ 1353 01b6 00       		.byte	0
+ 1354 01b7 1C       		.uleb128 0x1c
+ 1355 01b8 05       		.uleb128 0x5
+ 1356 01b9 00       		.byte	0
+ 1357 01ba 49       		.uleb128 0x49
+ 1358 01bb 13       		.uleb128 0x13
+ 1359 01bc 00       		.byte	0
+ 1360 01bd 00       		.byte	0
+ 1361 01be 00       		.byte	0
+ 1362              		.section	.debug_loc,"",%progbits
+ 1363              	.Ldebug_loc0:
+ 1364              	.LLST0:
+ 1365 0000 00000000 		.4byte	.LVL0
+ 1366 0004 2E000000 		.4byte	.LVL3
+ 1367 0008 0100     		.2byte	0x1
+ 1368 000a 50       		.byte	0x50
+ 1369 000b 2E000000 		.4byte	.LVL3
+ 1370 000f 5E000000 		.4byte	.LVL7
+ 1371 0013 0400     		.2byte	0x4
+ 1372 0015 F3       		.byte	0xf3
+ 1373 0016 01       		.uleb128 0x1
+ 1374 0017 50       		.byte	0x50
+ 1375 0018 9F       		.byte	0x9f
+ 1376 0019 5E000000 		.4byte	.LVL7
+ 1377 001d 62000000 		.4byte	.LVL8
+ 1378 0021 0100     		.2byte	0x1
+ 1379 0023 50       		.byte	0x50
+ 1380 0024 62000000 		.4byte	.LVL8
+ 1381 0028 74000000 		.4byte	.LFE6
+ 1382 002c 0400     		.2byte	0x4
+ 1383 002e F3       		.byte	0xf3
+ 1384 002f 01       		.uleb128 0x1
+ 1385 0030 50       		.byte	0x50
+ 1386 0031 9F       		.byte	0x9f
+ 1387 0032 00000000 		.4byte	0
+ 1388 0036 00000000 		.4byte	0
+ 1389              	.LLST1:
+ 1390 003a 2C000000 		.4byte	.LVL2
+ 1391 003e 2E000000 		.4byte	.LVL3
+ 1392 0042 0200     		.2byte	0x2
+ 1393 0044 30       		.byte	0x30
+ 1394 0045 9F       		.byte	0x9f
+ 1395 0046 2E000000 		.4byte	.LVL3
+ 1396 004a 52000000 		.4byte	.LVL5
+ 1397 004e 0100     		.2byte	0x1
+ 1398 0050 56       		.byte	0x56
+ 1399 0051 52000000 		.4byte	.LVL5
+ 1400 0055 54000000 		.4byte	.LVL6
+ 1401 0059 0300     		.2byte	0x3
+ 1402 005b 76       		.byte	0x76
+ 1403 005c 01       		.sleb128 1
+ 1404 005d 9F       		.byte	0x9f
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 37
+
+
+ 1405 005e 62000000 		.4byte	.LVL8
+ 1406 0062 66000000 		.4byte	.LVL9
+ 1407 0066 0100     		.2byte	0x1
+ 1408 0068 56       		.byte	0x56
+ 1409 0069 00000000 		.4byte	0
+ 1410 006d 00000000 		.4byte	0
+ 1411              	.LLST2:
+ 1412 0071 2C000000 		.4byte	.LVL2
+ 1413 0075 5E000000 		.4byte	.LVL7
+ 1414 0079 0100     		.2byte	0x1
+ 1415 007b 57       		.byte	0x57
+ 1416 007c 62000000 		.4byte	.LVL8
+ 1417 0080 66000000 		.4byte	.LVL9
+ 1418 0084 0100     		.2byte	0x1
+ 1419 0086 57       		.byte	0x57
+ 1420 0087 00000000 		.4byte	0
+ 1421 008b 00000000 		.4byte	0
+ 1422              	.LLST3:
+ 1423 008f 0E000000 		.4byte	.LVL1
+ 1424 0093 66000000 		.4byte	.LVL9
+ 1425 0097 0100     		.2byte	0x1
+ 1426 0099 54       		.byte	0x54
+ 1427 009a 00000000 		.4byte	0
+ 1428 009e 00000000 		.4byte	0
+ 1429              	.LLST4:
+ 1430 00a2 44000000 		.4byte	.LVL15
+ 1431 00a6 8A000000 		.4byte	.LVL20
+ 1432 00aa 0100     		.2byte	0x1
+ 1433 00ac 5A       		.byte	0x5a
+ 1434 00ad 00000000 		.4byte	0
+ 1435 00b1 00000000 		.4byte	0
+ 1436              	.LLST5:
+ 1437 00b5 4E000000 		.4byte	.LVL16
+ 1438 00b9 8A000000 		.4byte	.LVL20
+ 1439 00bd 0100     		.2byte	0x1
+ 1440 00bf 59       		.byte	0x59
+ 1441 00c0 00000000 		.4byte	0
+ 1442 00c4 00000000 		.4byte	0
+ 1443              	.LLST6:
+ 1444 00c8 4E000000 		.4byte	.LVL16
+ 1445 00cc 8A000000 		.4byte	.LVL20
+ 1446 00d0 0100     		.2byte	0x1
+ 1447 00d2 58       		.byte	0x58
+ 1448 00d3 00000000 		.4byte	0
+ 1449 00d7 00000000 		.4byte	0
+ 1450              	.LLST7:
+ 1451 00db 52000000 		.4byte	.LVL17
+ 1452 00df 8A000000 		.4byte	.LVL20
+ 1453 00e3 0100     		.2byte	0x1
+ 1454 00e5 5B       		.byte	0x5b
+ 1455 00e6 00000000 		.4byte	0
+ 1456 00ea 00000000 		.4byte	0
+ 1457              	.LLST8:
+ 1458 00ee 00000000 		.4byte	.LVL21
+ 1459 00f2 06000000 		.4byte	.LVL22
+ 1460 00f6 0100     		.2byte	0x1
+ 1461 00f8 50       		.byte	0x50
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 38
+
+
+ 1462 00f9 06000000 		.4byte	.LVL22
+ 1463 00fd 10000000 		.4byte	.LFE8
+ 1464 0101 0400     		.2byte	0x4
+ 1465 0103 F3       		.byte	0xf3
+ 1466 0104 01       		.uleb128 0x1
+ 1467 0105 50       		.byte	0x50
+ 1468 0106 9F       		.byte	0x9f
+ 1469 0107 00000000 		.4byte	0
+ 1470 010b 00000000 		.4byte	0
+ 1471              		.section	.debug_aranges,"",%progbits
+ 1472 0000 6C000000 		.4byte	0x6c
+ 1473 0004 0200     		.2byte	0x2
+ 1474 0006 00000000 		.4byte	.Ldebug_info0
+ 1475 000a 04       		.byte	0x4
+ 1476 000b 00       		.byte	0
+ 1477 000c 0000     		.2byte	0
+ 1478 000e 0000     		.2byte	0
+ 1479 0010 00000000 		.4byte	.LFB6
+ 1480 0014 74000000 		.4byte	.LFE6-.LFB6
+ 1481 0018 00000000 		.4byte	.LFB1
+ 1482 001c 18000000 		.4byte	.LFE1-.LFB1
+ 1483 0020 00000000 		.4byte	.LFB3
+ 1484 0024 18000000 		.4byte	.LFE3-.LFB3
+ 1485 0028 00000000 		.4byte	.LFB4
+ 1486 002c 58000000 		.4byte	.LFE4-.LFB4
+ 1487 0030 00000000 		.4byte	.LFB0
+ 1488 0034 40000000 		.4byte	.LFE0-.LFB0
+ 1489 0038 00000000 		.4byte	.LFB2
+ 1490 003c 1C000000 		.4byte	.LFE2-.LFB2
+ 1491 0040 00000000 		.4byte	.LFB5
+ 1492 0044 10000000 		.4byte	.LFE5-.LFB5
+ 1493 0048 00000000 		.4byte	.LFB7
+ 1494 004c A4000000 		.4byte	.LFE7-.LFB7
+ 1495 0050 00000000 		.4byte	.LFB8
+ 1496 0054 10000000 		.4byte	.LFE8-.LFB8
+ 1497 0058 00000000 		.4byte	.LFB9
+ 1498 005c 10000000 		.4byte	.LFE9-.LFB9
+ 1499 0060 00000000 		.4byte	.LFB10
+ 1500 0064 10000000 		.4byte	.LFE10-.LFB10
+ 1501 0068 00000000 		.4byte	0
+ 1502 006c 00000000 		.4byte	0
+ 1503              		.section	.debug_ranges,"",%progbits
+ 1504              	.Ldebug_ranges0:
+ 1505 0000 14000000 		.4byte	.LBB4
+ 1506 0004 18000000 		.4byte	.LBE4
+ 1507 0008 1A000000 		.4byte	.LBB10
+ 1508 000c 1C000000 		.4byte	.LBE10
+ 1509 0010 20000000 		.4byte	.LBB11
+ 1510 0014 24000000 		.4byte	.LBE11
+ 1511 0018 26000000 		.4byte	.LBB12
+ 1512 001c 28000000 		.4byte	.LBE12
+ 1513 0020 2A000000 		.4byte	.LBB13
+ 1514 0024 2E000000 		.4byte	.LBE13
+ 1515 0028 00000000 		.4byte	0
+ 1516 002c 00000000 		.4byte	0
+ 1517 0030 00000000 		.4byte	.LFB6
+ 1518 0034 74000000 		.4byte	.LFE6
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 39
+
+
+ 1519 0038 00000000 		.4byte	.LFB1
+ 1520 003c 18000000 		.4byte	.LFE1
+ 1521 0040 00000000 		.4byte	.LFB3
+ 1522 0044 18000000 		.4byte	.LFE3
+ 1523 0048 00000000 		.4byte	.LFB4
+ 1524 004c 58000000 		.4byte	.LFE4
+ 1525 0050 00000000 		.4byte	.LFB0
+ 1526 0054 40000000 		.4byte	.LFE0
+ 1527 0058 00000000 		.4byte	.LFB2
+ 1528 005c 1C000000 		.4byte	.LFE2
+ 1529 0060 00000000 		.4byte	.LFB5
+ 1530 0064 10000000 		.4byte	.LFE5
+ 1531 0068 00000000 		.4byte	.LFB7
+ 1532 006c A4000000 		.4byte	.LFE7
+ 1533 0070 00000000 		.4byte	.LFB8
+ 1534 0074 10000000 		.4byte	.LFE8
+ 1535 0078 00000000 		.4byte	.LFB9
+ 1536 007c 10000000 		.4byte	.LFE9
+ 1537 0080 00000000 		.4byte	.LFB10
+ 1538 0084 10000000 		.4byte	.LFE10
+ 1539 0088 00000000 		.4byte	0
+ 1540 008c 00000000 		.4byte	0
+ 1541              		.section	.debug_line,"",%progbits
+ 1542              	.Ldebug_line0:
+ 1543 0000 A1010000 		.section	.debug_str,"MS",%progbits,1
+ 1543      02004E00 
+ 1543      00000201 
+ 1543      FB0E0D00 
+ 1543      01010101 
+ 1544              	.LASF30:
+ 1545 0000 7472696D 		.ascii	"trimVal\000"
+ 1545      56616C00 
+ 1546              	.LASF27:
+ 1547 0008 746D7043 		.ascii	"tmpCR\000"
+ 1547      5200
+ 1548              	.LASF25:
+ 1549 000e 746D7053 		.ascii	"tmpSW2\000"
+ 1549      573200
+ 1550              	.LASF41:
+ 1551 0015 436F6D70 		.ascii	"Comp_3_initVar\000"
+ 1551      5F335F69 
+ 1551      6E697456 
+ 1551      617200
+ 1552              	.LASF40:
+ 1553 0024 436F6D70 		.ascii	"Comp_3_ZeroCal\000"
+ 1553      5F335F5A 
+ 1553      65726F43 
+ 1553      616C00
+ 1554              	.LASF39:
+ 1555 0033 436F6D70 		.ascii	"Comp_3_GetCompare\000"
+ 1555      5F335F47 
+ 1555      6574436F 
+ 1555      6D706172 
+ 1555      6500
+ 1556              	.LASF23:
+ 1557 0045 436F6D70 		.ascii	"Comp_3_Start\000"
+ 1557      5F335F53 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 40
+
+
+ 1557      74617274 
+ 1557      00
+ 1558              	.LASF3:
+ 1559 0052 73686F72 		.ascii	"short unsigned int\000"
+ 1559      7420756E 
+ 1559      7369676E 
+ 1559      65642069 
+ 1559      6E7400
+ 1560              	.LASF21:
+ 1561 0065 436F6D70 		.ascii	"Comp_3_Stop\000"
+ 1561      5F335F53 
+ 1561      746F7000 
+ 1562              	.LASF38:
+ 1563 0071 436F6D70 		.ascii	"Comp_3_trimAdjust\000"
+ 1563      5F335F74 
+ 1563      72696D41 
+ 1563      646A7573 
+ 1563      7400
+ 1564              	.LASF24:
+ 1565 0083 746D7053 		.ascii	"tmpSW0\000"
+ 1565      573000
+ 1566              	.LASF12:
+ 1567 008a 666C6F61 		.ascii	"float\000"
+ 1567      7400
+ 1568              	.LASF26:
+ 1569 0090 746D7053 		.ascii	"tmpSW3\000"
+ 1569      573300
+ 1570              	.LASF36:
+ 1571 0097 436F6D70 		.ascii	"Comp_3_SetSpeed\000"
+ 1571      5F335F53 
+ 1571      65745370 
+ 1571      65656400 
+ 1572              	.LASF1:
+ 1573 00a7 756E7369 		.ascii	"unsigned char\000"
+ 1573      676E6564 
+ 1573      20636861 
+ 1573      7200
+ 1574              	.LASF15:
+ 1575 00b5 72656738 		.ascii	"reg8\000"
+ 1575      00
+ 1576              	.LASF17:
+ 1577 00ba 7472696D 		.ascii	"trimCnt\000"
+ 1577      436E7400 
+ 1578              	.LASF5:
+ 1579 00c2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1579      20756E73 
+ 1579      69676E65 
+ 1579      6420696E 
+ 1579      7400
+ 1580              	.LASF28:
+ 1581 00d4 436F6D70 		.ascii	"Comp_3_LoadTrim\000"
+ 1581      5F335F4C 
+ 1581      6F616454 
+ 1581      72696D00 
+ 1582              	.LASF9:
+ 1583 00e4 75696E74 		.ascii	"uint8\000"
+ 1583      3800
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 41
+
+
+ 1584              	.LASF13:
+ 1585 00ea 646F7562 		.ascii	"double\000"
+ 1585      6C6500
+ 1586              	.LASF10:
+ 1587 00f1 75696E74 		.ascii	"uint16\000"
+ 1587      313600
+ 1588              	.LASF11:
+ 1589 00f8 75696E74 		.ascii	"uint32\000"
+ 1589      333200
+ 1590              	.LASF20:
+ 1591 00ff 436F6D70 		.ascii	"Comp_3_Enable\000"
+ 1591      5F335F45 
+ 1591      6E61626C 
+ 1591      6500
+ 1592              	.LASF8:
+ 1593 010d 756E7369 		.ascii	"unsigned int\000"
+ 1593      676E6564 
+ 1593      20696E74 
+ 1593      00
+ 1594              	.LASF19:
+ 1595 011a 636D7053 		.ascii	"cmpState\000"
+ 1595      74617465 
+ 1595      00
+ 1596              	.LASF7:
+ 1597 0123 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1597      206C6F6E 
+ 1597      6720756E 
+ 1597      7369676E 
+ 1597      65642069 
+ 1598              	.LASF37:
+ 1599 013a 73706565 		.ascii	"speed\000"
+ 1599      6400
+ 1600              	.LASF16:
+ 1601 0140 73697A65 		.ascii	"sizetype\000"
+ 1601      74797065 
+ 1601      00
+ 1602              	.LASF18:
+ 1603 0149 7472696D 		.ascii	"trimCntMax\000"
+ 1603      436E744D 
+ 1603      617800
+ 1604              	.LASF6:
+ 1605 0154 6C6F6E67 		.ascii	"long long int\000"
+ 1605      206C6F6E 
+ 1605      6720696E 
+ 1605      7400
+ 1606              	.LASF42:
+ 1607 0162 43794465 		.ascii	"CyDelayUs\000"
+ 1607      6C617955 
+ 1607      7300
+ 1608              	.LASF32:
+ 1609 016c 436F6D70 		.ascii	"Comp_3_PwrDwnOverrideDisable\000"
+ 1609      5F335F50 
+ 1609      77724477 
+ 1609      6E4F7665 
+ 1609      72726964 
+ 1610              	.LASF35:
+ 1611 0189 433A5C55 		.ascii	"C:\\Users\\Luggi\\Desktop\\Aktuelles Projekt Laser_"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 42
+
+
+ 1611      73657273 
+ 1611      5C4C7567 
+ 1611      67695C44 
+ 1611      65736B74 
+ 1612 01b8 73636875 		.ascii	"schutzschaltung\\Aktuelles Projekt Laser_schutzscha"
+ 1612      747A7363 
+ 1612      68616C74 
+ 1612      756E675C 
+ 1612      416B7475 
+ 1613 01ea 6C74756E 		.ascii	"ltung\\Laserschutzschaltung.cydsn\000"
+ 1613      675C4C61 
+ 1613      73657273 
+ 1613      63687574 
+ 1613      7A736368 
+ 1614              	.LASF2:
+ 1615 020b 73686F72 		.ascii	"short int\000"
+ 1615      7420696E 
+ 1615      7400
+ 1616              	.LASF33:
+ 1617 0215 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1617      4320342E 
+ 1617      392E3320 
+ 1617      32303135 
+ 1617      30333033 
+ 1618 0248 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1618      20726576 
+ 1618      6973696F 
+ 1618      6E203232 
+ 1618      31323230 
+ 1619 027b 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 1619      66756E63 
+ 1619      74696F6E 
+ 1619      2D736563 
+ 1619      74696F6E 
+ 1620              	.LASF22:
+ 1621 02a3 436F6D70 		.ascii	"Comp_3_Init\000"
+ 1621      5F335F49 
+ 1621      6E697400 
+ 1622              	.LASF34:
+ 1623 02af 47656E65 		.ascii	"Generated_Source\\PSoC5\\Comp_3.c\000"
+ 1623      72617465 
+ 1623      645F536F 
+ 1623      75726365 
+ 1623      5C50536F 
+ 1624              	.LASF4:
+ 1625 02cf 6C6F6E67 		.ascii	"long int\000"
+ 1625      20696E74 
+ 1625      00
+ 1626              	.LASF14:
+ 1627 02d8 63686172 		.ascii	"char\000"
+ 1627      00
+ 1628              	.LASF0:
+ 1629 02dd 7369676E 		.ascii	"signed char\000"
+ 1629      65642063 
+ 1629      68617200 
+ 1630              	.LASF31:
+ 1631 02e9 436F6D70 		.ascii	"Comp_3_PwrDwnOverrideEnable\000"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccBFr5Ou.s 			page 43
+
+
+ 1631      5F335F50 
+ 1631      77724477 
+ 1631      6E4F7665 
+ 1631      72726964 
+ 1632              	.LASF29:
+ 1633 0305 6E696262 		.ascii	"nibble\000"
+ 1633      6C6500
+ 1634              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

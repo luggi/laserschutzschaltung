@@ -1,0 +1,1046 @@
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"IDAC8_2_PM.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.IDAC8_2_SaveConfig,"ax",%progbits
+  19              		.align	1
+  20              		.global	IDAC8_2_SaveConfig
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	IDAC8_2_SaveConfig, %function
+  24              	IDAC8_2_SaveConfig:
+  25              	.LFB0:
+  26              		.file 1 "Generated_Source\\PSoC5\\IDAC8_2_PM.c"
+   1:Generated_Source\PSoC5/IDAC8_2_PM.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/IDAC8_2_PM.c **** * File Name: IDAC8_2.c
+   3:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Version 2.0
+   4:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+   5:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Description:
+   6:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  This file provides the power management source code to API for the
+   7:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  IDAC8.
+   8:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+   9:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Note:
+  10:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  None
+  11:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+  12:Generated_Source\PSoC5/IDAC8_2_PM.c **** ********************************************************************************
+  13:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14:Generated_Source\PSoC5/IDAC8_2_PM.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  15:Generated_Source\PSoC5/IDAC8_2_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  16:Generated_Source\PSoC5/IDAC8_2_PM.c **** * the software package with which this file was provided.
+  17:Generated_Source\PSoC5/IDAC8_2_PM.c **** *******************************************************************************/
+  18:Generated_Source\PSoC5/IDAC8_2_PM.c **** 
+  19:Generated_Source\PSoC5/IDAC8_2_PM.c **** 
+  20:Generated_Source\PSoC5/IDAC8_2_PM.c **** #include "IDAC8_2.h"
+  21:Generated_Source\PSoC5/IDAC8_2_PM.c **** 
+  22:Generated_Source\PSoC5/IDAC8_2_PM.c **** static IDAC8_2_backupStruct IDAC8_2_backup;
+  23:Generated_Source\PSoC5/IDAC8_2_PM.c **** 
+  24:Generated_Source\PSoC5/IDAC8_2_PM.c **** 
+  25:Generated_Source\PSoC5/IDAC8_2_PM.c **** /*******************************************************************************
+  26:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Function Name: IDAC8_2_SaveConfig
+  27:Generated_Source\PSoC5/IDAC8_2_PM.c **** ********************************************************************************
+  28:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Summary:
+  29:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  Save the current user configuration
+  30:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+  31:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Parameters:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 2
+
+
+  32:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  void
+  33:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+  34:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Return:
+  35:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  void
+  36:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+  37:Generated_Source\PSoC5/IDAC8_2_PM.c **** *******************************************************************************/
+  38:Generated_Source\PSoC5/IDAC8_2_PM.c **** void IDAC8_2_SaveConfig(void) 
+  39:Generated_Source\PSoC5/IDAC8_2_PM.c **** {
+  27              		.loc 1 39 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  40:Generated_Source\PSoC5/IDAC8_2_PM.c ****     if (!((IDAC8_2_CR1 & IDAC8_2_SRC_MASK) == IDAC8_2_SRC_UDB))
+  32              		.loc 1 40 0
+  33 0000 044B     		ldr	r3, .L3
+  34 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  35 0004 9B06     		lsls	r3, r3, #26
+  41:Generated_Source\PSoC5/IDAC8_2_PM.c ****     {
+  42:Generated_Source\PSoC5/IDAC8_2_PM.c ****         IDAC8_2_backup.data_value = IDAC8_2_Data;
+  36              		.loc 1 42 0
+  37 0006 5FBF     		itttt	pl
+  38 0008 034B     		ldrpl	r3, .L3+4
+  39 000a 1A78     		ldrbpl	r2, [r3]	@ zero_extendqisi2
+  40 000c 034B     		ldrpl	r3, .L3+8
+  41 000e 5A70     		strbpl	r2, [r3, #1]
+  42 0010 7047     		bx	lr
+  43              	.L4:
+  44 0012 00BF     		.align	2
+  45              	.L3:
+  46 0014 21580040 		.word	1073764385
+  47 0018 805B0040 		.word	1073765248
+  48 001c 00000000 		.word	.LANCHOR0
+  49              		.cfi_endproc
+  50              	.LFE0:
+  51              		.size	IDAC8_2_SaveConfig, .-IDAC8_2_SaveConfig
+  52              		.section	.text.IDAC8_2_RestoreConfig,"ax",%progbits
+  53              		.align	1
+  54              		.global	IDAC8_2_RestoreConfig
+  55              		.thumb
+  56              		.thumb_func
+  57              		.type	IDAC8_2_RestoreConfig, %function
+  58              	IDAC8_2_RestoreConfig:
+  59              	.LFB1:
+  43:Generated_Source\PSoC5/IDAC8_2_PM.c ****     }
+  44:Generated_Source\PSoC5/IDAC8_2_PM.c **** }
+  45:Generated_Source\PSoC5/IDAC8_2_PM.c **** 
+  46:Generated_Source\PSoC5/IDAC8_2_PM.c **** 
+  47:Generated_Source\PSoC5/IDAC8_2_PM.c **** /*******************************************************************************
+  48:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Function Name: IDAC8_2_RestoreConfig
+  49:Generated_Source\PSoC5/IDAC8_2_PM.c **** ********************************************************************************
+  50:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+  51:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Summary:
+  52:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  Restores the current user configuration.
+  53:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+  54:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Parameters:
+  55:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  void
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 3
+
+
+  56:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+  57:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Return:
+  58:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  void
+  59:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+  60:Generated_Source\PSoC5/IDAC8_2_PM.c **** *******************************************************************************/
+  61:Generated_Source\PSoC5/IDAC8_2_PM.c **** void IDAC8_2_RestoreConfig(void) 
+  62:Generated_Source\PSoC5/IDAC8_2_PM.c **** {
+  60              		.loc 1 62 0
+  61              		.cfi_startproc
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64              		@ link register save eliminated.
+  63:Generated_Source\PSoC5/IDAC8_2_PM.c ****     if (!((IDAC8_2_CR1 & IDAC8_2_SRC_MASK) == IDAC8_2_SRC_UDB))
+  65              		.loc 1 63 0
+  66 0000 0C4B     		ldr	r3, .L9
+  67 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  68 0004 9B06     		lsls	r3, r3, #26
+  69 0006 13D4     		bmi	.L5
+  64:Generated_Source\PSoC5/IDAC8_2_PM.c ****     {
+  65:Generated_Source\PSoC5/IDAC8_2_PM.c ****         if((IDAC8_2_Strobe & IDAC8_2_STRB_MASK) == IDAC8_2_STRB_EN)
+  70              		.loc 1 65 0
+  71 0008 0B4B     		ldr	r3, .L9+4
+  72 000a 0C48     		ldr	r0, .L9+8
+  73 000c 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  74 000e 0C49     		ldr	r1, .L9+12
+  75 0010 12F0080F 		tst	r2, #8
+  76 0014 0AD0     		beq	.L7
+  77              	.LBB4:
+  78              	.LBB5:
+  66:Generated_Source\PSoC5/IDAC8_2_PM.c ****         {
+  67:Generated_Source\PSoC5/IDAC8_2_PM.c ****             IDAC8_2_Strobe &= (uint8)(~IDAC8_2_STRB_MASK);
+  79              		.loc 1 67 0
+  80 0016 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  81 0018 02F0F702 		and	r2, r2, #247
+  82 001c 1A70     		strb	r2, [r3]
+  68:Generated_Source\PSoC5/IDAC8_2_PM.c ****             IDAC8_2_Data = IDAC8_2_backup.data_value;
+  83              		.loc 1 68 0
+  84 001e 4278     		ldrb	r2, [r0, #1]	@ zero_extendqisi2
+  85 0020 0A70     		strb	r2, [r1]
+  69:Generated_Source\PSoC5/IDAC8_2_PM.c ****             IDAC8_2_Strobe |= IDAC8_2_STRB_EN;
+  86              		.loc 1 69 0
+  87 0022 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+  88 0024 42F00802 		orr	r2, r2, #8
+  89 0028 1A70     		strb	r2, [r3]
+  90 002a 7047     		bx	lr
+  91              	.L7:
+  92              	.LBE5:
+  93              	.LBE4:
+  70:Generated_Source\PSoC5/IDAC8_2_PM.c ****         }
+  71:Generated_Source\PSoC5/IDAC8_2_PM.c ****         else
+  72:Generated_Source\PSoC5/IDAC8_2_PM.c ****         {
+  73:Generated_Source\PSoC5/IDAC8_2_PM.c ****             IDAC8_2_Data = IDAC8_2_backup.data_value;
+  94              		.loc 1 73 0
+  95 002c 4378     		ldrb	r3, [r0, #1]	@ zero_extendqisi2
+  96 002e 0B70     		strb	r3, [r1]
+  97              	.L5:
+  98 0030 7047     		bx	lr
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 4
+
+
+  99              	.L10:
+ 100 0032 00BF     		.align	2
+ 101              	.L9:
+ 102 0034 21580040 		.word	1073764385
+ 103 0038 875A0040 		.word	1073764999
+ 104 003c 00000000 		.word	.LANCHOR0
+ 105 0040 805B0040 		.word	1073765248
+ 106              		.cfi_endproc
+ 107              	.LFE1:
+ 108              		.size	IDAC8_2_RestoreConfig, .-IDAC8_2_RestoreConfig
+ 109              		.section	.text.IDAC8_2_Sleep,"ax",%progbits
+ 110              		.align	1
+ 111              		.global	IDAC8_2_Sleep
+ 112              		.thumb
+ 113              		.thumb_func
+ 114              		.type	IDAC8_2_Sleep, %function
+ 115              	IDAC8_2_Sleep:
+ 116              	.LFB2:
+  74:Generated_Source\PSoC5/IDAC8_2_PM.c ****         }
+  75:Generated_Source\PSoC5/IDAC8_2_PM.c ****     }
+  76:Generated_Source\PSoC5/IDAC8_2_PM.c **** }
+  77:Generated_Source\PSoC5/IDAC8_2_PM.c **** 
+  78:Generated_Source\PSoC5/IDAC8_2_PM.c **** 
+  79:Generated_Source\PSoC5/IDAC8_2_PM.c **** /*******************************************************************************
+  80:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Function Name: IDAC8_2_Sleep
+  81:Generated_Source\PSoC5/IDAC8_2_PM.c **** ********************************************************************************
+  82:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Summary:
+  83:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  Stop and Save the user configuration
+  84:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+  85:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Parameters:
+  86:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  void:
+  87:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+  88:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Return:
+  89:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  void
+  90:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+  91:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Global variables:
+  92:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  IDAC8_2_backup.enableState: Is modified depending on the enable 
+  93:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  state of the block before entering sleep mode.
+  94:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+  95:Generated_Source\PSoC5/IDAC8_2_PM.c **** *******************************************************************************/
+  96:Generated_Source\PSoC5/IDAC8_2_PM.c **** void IDAC8_2_Sleep(void) 
+  97:Generated_Source\PSoC5/IDAC8_2_PM.c **** {
+ 117              		.loc 1 97 0
+ 118              		.cfi_startproc
+ 119              		@ args = 0, pretend = 0, frame = 0
+ 120              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121 0000 08B5     		push	{r3, lr}
+ 122              		.cfi_def_cfa_offset 8
+ 123              		.cfi_offset 3, -8
+ 124              		.cfi_offset 14, -4
+  98:Generated_Source\PSoC5/IDAC8_2_PM.c ****     if(IDAC8_2_ACT_PWR_EN == (IDAC8_2_PWRMGR & IDAC8_2_ACT_PWR_EN))
+ 125              		.loc 1 98 0
+ 126 0002 074B     		ldr	r3, .L14
+ 127 0004 074A     		ldr	r2, .L14+4
+ 128 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 129 0008 13F00103 		ands	r3, r3, #1
+  99:Generated_Source\PSoC5/IDAC8_2_PM.c ****     {
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 5
+
+
+ 100:Generated_Source\PSoC5/IDAC8_2_PM.c ****         /* IDAC8 is enabled */
+ 101:Generated_Source\PSoC5/IDAC8_2_PM.c ****         IDAC8_2_backup.enableState = 1u;
+ 130              		.loc 1 101 0
+ 131 000c 18BF     		it	ne
+ 132 000e 0123     		movne	r3, #1
+ 102:Generated_Source\PSoC5/IDAC8_2_PM.c ****     }
+ 103:Generated_Source\PSoC5/IDAC8_2_PM.c ****     else
+ 104:Generated_Source\PSoC5/IDAC8_2_PM.c ****     {
+ 105:Generated_Source\PSoC5/IDAC8_2_PM.c ****         /* IDAC8 is disabled */
+ 106:Generated_Source\PSoC5/IDAC8_2_PM.c ****         IDAC8_2_backup.enableState = 0u;
+ 133              		.loc 1 106 0
+ 134 0010 1370     		strb	r3, [r2]
+ 107:Generated_Source\PSoC5/IDAC8_2_PM.c ****     }
+ 108:Generated_Source\PSoC5/IDAC8_2_PM.c **** 
+ 109:Generated_Source\PSoC5/IDAC8_2_PM.c ****     IDAC8_2_Stop();
+ 135              		.loc 1 109 0
+ 136 0012 FFF7FEFF 		bl	IDAC8_2_Stop
+ 137              	.LVL0:
+ 110:Generated_Source\PSoC5/IDAC8_2_PM.c ****     IDAC8_2_SaveConfig();
+ 111:Generated_Source\PSoC5/IDAC8_2_PM.c **** }
+ 138              		.loc 1 111 0
+ 139 0016 BDE80840 		pop	{r3, lr}
+ 140              		.cfi_restore 14
+ 141              		.cfi_restore 3
+ 142              		.cfi_def_cfa_offset 0
+ 110:Generated_Source\PSoC5/IDAC8_2_PM.c ****     IDAC8_2_SaveConfig();
+ 143              		.loc 1 110 0
+ 144 001a FFF7FEBF 		b	IDAC8_2_SaveConfig
+ 145              	.LVL1:
+ 146              	.L15:
+ 147 001e 00BF     		.align	2
+ 148              	.L14:
+ 149 0020 A8430040 		.word	1073759144
+ 150 0024 00000000 		.word	.LANCHOR0
+ 151              		.cfi_endproc
+ 152              	.LFE2:
+ 153              		.size	IDAC8_2_Sleep, .-IDAC8_2_Sleep
+ 154              		.section	.text.IDAC8_2_Wakeup,"ax",%progbits
+ 155              		.align	1
+ 156              		.global	IDAC8_2_Wakeup
+ 157              		.thumb
+ 158              		.thumb_func
+ 159              		.type	IDAC8_2_Wakeup, %function
+ 160              	IDAC8_2_Wakeup:
+ 161              	.LFB3:
+ 112:Generated_Source\PSoC5/IDAC8_2_PM.c **** 
+ 113:Generated_Source\PSoC5/IDAC8_2_PM.c **** 
+ 114:Generated_Source\PSoC5/IDAC8_2_PM.c **** /*******************************************************************************
+ 115:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Function Name: IDAC8_2_Wakeup
+ 116:Generated_Source\PSoC5/IDAC8_2_PM.c **** ********************************************************************************
+ 117:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+ 118:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Summary:
+ 119:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  Restores and enables the user configuration
+ 120:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  
+ 121:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Parameters:
+ 122:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  void
+ 123:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 6
+
+
+ 124:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Return:
+ 125:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  void
+ 126:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+ 127:Generated_Source\PSoC5/IDAC8_2_PM.c **** * Global variables:
+ 128:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  IDAC8_2_backup.enableState: Is used to restore the enable state of 
+ 129:Generated_Source\PSoC5/IDAC8_2_PM.c **** *  block on wakeup from sleep mode.
+ 130:Generated_Source\PSoC5/IDAC8_2_PM.c **** *
+ 131:Generated_Source\PSoC5/IDAC8_2_PM.c **** *******************************************************************************/
+ 132:Generated_Source\PSoC5/IDAC8_2_PM.c **** void IDAC8_2_Wakeup(void) 
+ 133:Generated_Source\PSoC5/IDAC8_2_PM.c **** {
+ 162              		.loc 1 133 0
+ 163              		.cfi_startproc
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166 0000 08B5     		push	{r3, lr}
+ 167              		.cfi_def_cfa_offset 8
+ 168              		.cfi_offset 3, -8
+ 169              		.cfi_offset 14, -4
+ 134:Generated_Source\PSoC5/IDAC8_2_PM.c ****     IDAC8_2_RestoreConfig();
+ 170              		.loc 1 134 0
+ 171 0002 FFF7FEFF 		bl	IDAC8_2_RestoreConfig
+ 172              	.LVL2:
+ 135:Generated_Source\PSoC5/IDAC8_2_PM.c ****     
+ 136:Generated_Source\PSoC5/IDAC8_2_PM.c ****     if(IDAC8_2_backup.enableState == 1u)
+ 173              		.loc 1 136 0
+ 174 0006 064B     		ldr	r3, .L18
+ 175 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 176 000a 012B     		cmp	r3, #1
+ 177 000c 07D1     		bne	.L16
+ 137:Generated_Source\PSoC5/IDAC8_2_PM.c ****     {
+ 138:Generated_Source\PSoC5/IDAC8_2_PM.c ****         /* Enable IDAC8's operation */
+ 139:Generated_Source\PSoC5/IDAC8_2_PM.c ****         IDAC8_2_Enable();
+ 178              		.loc 1 139 0
+ 179 000e FFF7FEFF 		bl	IDAC8_2_Enable
+ 180              	.LVL3:
+ 140:Generated_Source\PSoC5/IDAC8_2_PM.c ****         
+ 141:Generated_Source\PSoC5/IDAC8_2_PM.c ****         /* Set the data register */
+ 142:Generated_Source\PSoC5/IDAC8_2_PM.c ****         IDAC8_2_SetValue(IDAC8_2_Data);
+ 181              		.loc 1 142 0
+ 182 0012 044B     		ldr	r3, .L18+4
+ 183 0014 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 143:Generated_Source\PSoC5/IDAC8_2_PM.c ****     } /* Do nothing if IDAC8 was disabled before */    
+ 144:Generated_Source\PSoC5/IDAC8_2_PM.c **** }
+ 184              		.loc 1 144 0
+ 185 0016 BDE80840 		pop	{r3, lr}
+ 186              		.cfi_remember_state
+ 187              		.cfi_restore 14
+ 188              		.cfi_restore 3
+ 189              		.cfi_def_cfa_offset 0
+ 142:Generated_Source\PSoC5/IDAC8_2_PM.c ****     } /* Do nothing if IDAC8 was disabled before */    
+ 190              		.loc 1 142 0
+ 191 001a FFF7FEBF 		b	IDAC8_2_SetValue
+ 192              	.LVL4:
+ 193              	.L16:
+ 194              		.cfi_restore_state
+ 195 001e 08BD     		pop	{r3, pc}
+ 196              	.L19:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 7
+
+
+ 197              		.align	2
+ 198              	.L18:
+ 199 0020 00000000 		.word	.LANCHOR0
+ 200 0024 805B0040 		.word	1073765248
+ 201              		.cfi_endproc
+ 202              	.LFE3:
+ 203              		.size	IDAC8_2_Wakeup, .-IDAC8_2_Wakeup
+ 204              		.bss
+ 205              		.set	.LANCHOR0,. + 0
+ 206              		.type	IDAC8_2_backup, %object
+ 207              		.size	IDAC8_2_backup, 2
+ 208              	IDAC8_2_backup:
+ 209 0000 0000     		.space	2
+ 210              		.text
+ 211              	.Letext0:
+ 212              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 213              		.file 3 "Generated_Source\\PSoC5\\IDAC8_2.h"
+ 214              		.section	.debug_info,"",%progbits
+ 215              	.Ldebug_info0:
+ 216 0000 73010000 		.4byte	0x173
+ 217 0004 0400     		.2byte	0x4
+ 218 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 219 000a 04       		.byte	0x4
+ 220 000b 01       		.uleb128 0x1
+ 221 000c B0010000 		.4byte	.LASF22
+ 222 0010 01       		.byte	0x1
+ 223 0011 5F020000 		.4byte	.LASF23
+ 224 0015 24010000 		.4byte	.LASF24
+ 225 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 226 001d 00000000 		.4byte	0
+ 227 0021 00000000 		.4byte	.Ldebug_line0
+ 228 0025 02       		.uleb128 0x2
+ 229 0026 01       		.byte	0x1
+ 230 0027 06       		.byte	0x6
+ 231 0028 53020000 		.4byte	.LASF0
+ 232 002c 02       		.uleb128 0x2
+ 233 002d 01       		.byte	0x1
+ 234 002e 08       		.byte	0x8
+ 235 002f 26000000 		.4byte	.LASF1
+ 236 0033 02       		.uleb128 0x2
+ 237 0034 02       		.byte	0x2
+ 238 0035 05       		.byte	0x5
+ 239 0036 A6010000 		.4byte	.LASF2
+ 240 003a 02       		.uleb128 0x2
+ 241 003b 02       		.byte	0x2
+ 242 003c 07       		.byte	0x7
+ 243 003d 4B000000 		.4byte	.LASF3
+ 244 0041 02       		.uleb128 0x2
+ 245 0042 04       		.byte	0x4
+ 246 0043 05       		.byte	0x5
+ 247 0044 3E020000 		.4byte	.LASF4
+ 248 0048 02       		.uleb128 0x2
+ 249 0049 04       		.byte	0x4
+ 250 004a 07       		.byte	0x7
+ 251 004b 39000000 		.4byte	.LASF5
+ 252 004f 02       		.uleb128 0x2
+ 253 0050 08       		.byte	0x8
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 8
+
+
+ 254 0051 05       		.byte	0x5
+ 255 0052 11010000 		.4byte	.LASF6
+ 256 0056 02       		.uleb128 0x2
+ 257 0057 08       		.byte	0x8
+ 258 0058 07       		.byte	0x7
+ 259 0059 CB000000 		.4byte	.LASF7
+ 260 005d 03       		.uleb128 0x3
+ 261 005e 04       		.byte	0x4
+ 262 005f 05       		.byte	0x5
+ 263 0060 696E7400 		.ascii	"int\000"
+ 264 0064 02       		.uleb128 0x2
+ 265 0065 04       		.byte	0x4
+ 266 0066 07       		.byte	0x7
+ 267 0067 BE000000 		.4byte	.LASF8
+ 268 006b 04       		.uleb128 0x4
+ 269 006c 20000000 		.4byte	.LASF12
+ 270 0070 02       		.byte	0x2
+ 271 0071 9201     		.2byte	0x192
+ 272 0073 2C000000 		.4byte	0x2c
+ 273 0077 02       		.uleb128 0x2
+ 274 0078 04       		.byte	0x4
+ 275 0079 04       		.byte	0x4
+ 276 007a 1A000000 		.4byte	.LASF9
+ 277 007e 02       		.uleb128 0x2
+ 278 007f 08       		.byte	0x8
+ 279 0080 04       		.byte	0x4
+ 280 0081 93000000 		.4byte	.LASF10
+ 281 0085 02       		.uleb128 0x2
+ 282 0086 01       		.byte	0x1
+ 283 0087 08       		.byte	0x8
+ 284 0088 1F010000 		.4byte	.LASF11
+ 285 008c 04       		.uleb128 0x4
+ 286 008d 34000000 		.4byte	.LASF13
+ 287 0091 02       		.byte	0x2
+ 288 0092 3C02     		.2byte	0x23c
+ 289 0094 98000000 		.4byte	0x98
+ 290 0098 05       		.uleb128 0x5
+ 291 0099 6B000000 		.4byte	0x6b
+ 292 009d 06       		.uleb128 0x6
+ 293 009e 02       		.byte	0x2
+ 294 009f 03       		.byte	0x3
+ 295 00a0 25       		.byte	0x25
+ 296 00a1 BE000000 		.4byte	0xbe
+ 297 00a5 07       		.uleb128 0x7
+ 298 00a6 47020000 		.4byte	.LASF14
+ 299 00aa 03       		.byte	0x3
+ 300 00ab 27       		.byte	0x27
+ 301 00ac 6B000000 		.4byte	0x6b
+ 302 00b0 00       		.byte	0
+ 303 00b1 07       		.uleb128 0x7
+ 304 00b2 0F000000 		.4byte	.LASF15
+ 305 00b6 03       		.byte	0x3
+ 306 00b7 28       		.byte	0x28
+ 307 00b8 6B000000 		.4byte	0x6b
+ 308 00bc 01       		.byte	0x1
+ 309 00bd 00       		.byte	0
+ 310 00be 08       		.uleb128 0x8
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 9
+
+
+ 311 00bf 9A000000 		.4byte	.LASF16
+ 312 00c3 03       		.byte	0x3
+ 313 00c4 29       		.byte	0x29
+ 314 00c5 9D000000 		.4byte	0x9d
+ 315 00c9 09       		.uleb128 0x9
+ 316 00ca 6C000000 		.4byte	.LASF19
+ 317 00ce 01       		.byte	0x1
+ 318 00cf 3D       		.byte	0x3d
+ 319 00d0 01       		.byte	0x1
+ 320 00d1 0A       		.uleb128 0xa
+ 321 00d2 EF000000 		.4byte	.LASF25
+ 322 00d6 01       		.byte	0x1
+ 323 00d7 26       		.byte	0x26
+ 324 00d8 00000000 		.4byte	.LFB0
+ 325 00dc 20000000 		.4byte	.LFE0-.LFB0
+ 326 00e0 01       		.uleb128 0x1
+ 327 00e1 9C       		.byte	0x9c
+ 328 00e2 0B       		.uleb128 0xb
+ 329 00e3 C9000000 		.4byte	0xc9
+ 330 00e7 00000000 		.4byte	.LFB1
+ 331 00eb 44000000 		.4byte	.LFE1-.LFB1
+ 332 00ef 01       		.uleb128 0x1
+ 333 00f0 9C       		.byte	0x9c
+ 334 00f1 0C       		.uleb128 0xc
+ 335 00f2 5E000000 		.4byte	.LASF17
+ 336 00f6 01       		.byte	0x1
+ 337 00f7 60       		.byte	0x60
+ 338 00f8 00000000 		.4byte	.LFB2
+ 339 00fc 28000000 		.4byte	.LFE2-.LFB2
+ 340 0100 01       		.uleb128 0x1
+ 341 0101 9C       		.byte	0x9c
+ 342 0102 19010000 		.4byte	0x119
+ 343 0106 0D       		.uleb128 0xd
+ 344 0107 16000000 		.4byte	.LVL0
+ 345 010b 5B010000 		.4byte	0x15b
+ 346 010f 0E       		.uleb128 0xe
+ 347 0110 1E000000 		.4byte	.LVL1
+ 348 0114 D1000000 		.4byte	0xd1
+ 349 0118 00       		.byte	0
+ 350 0119 0C       		.uleb128 0xc
+ 351 011a 02010000 		.4byte	.LASF18
+ 352 011e 01       		.byte	0x1
+ 353 011f 84       		.byte	0x84
+ 354 0120 00000000 		.4byte	.LFB3
+ 355 0124 28000000 		.4byte	.LFE3-.LFB3
+ 356 0128 01       		.uleb128 0x1
+ 357 0129 9C       		.byte	0x9c
+ 358 012a 4A010000 		.4byte	0x14a
+ 359 012e 0D       		.uleb128 0xd
+ 360 012f 06000000 		.4byte	.LVL2
+ 361 0133 C9000000 		.4byte	0xc9
+ 362 0137 0D       		.uleb128 0xd
+ 363 0138 12000000 		.4byte	.LVL3
+ 364 013c 62010000 		.4byte	0x162
+ 365 0140 0E       		.uleb128 0xe
+ 366 0141 1E000000 		.4byte	.LVL4
+ 367 0145 69010000 		.4byte	0x169
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 10
+
+
+ 368 0149 00       		.byte	0
+ 369 014a 0F       		.uleb128 0xf
+ 370 014b AF000000 		.4byte	.LASF26
+ 371 014f 01       		.byte	0x1
+ 372 0150 16       		.byte	0x16
+ 373 0151 BE000000 		.4byte	0xbe
+ 374 0155 05       		.uleb128 0x5
+ 375 0156 03       		.byte	0x3
+ 376 0157 00000000 		.4byte	IDAC8_2_backup
+ 377 015b 10       		.uleb128 0x10
+ 378 015c E2000000 		.4byte	.LASF20
+ 379 0160 03       		.byte	0x3
+ 380 0161 3D       		.byte	0x3d
+ 381 0162 10       		.uleb128 0x10
+ 382 0163 00000000 		.4byte	.LASF21
+ 383 0167 03       		.byte	0x3
+ 384 0168 46       		.byte	0x46
+ 385 0169 11       		.uleb128 0x11
+ 386 016a 82000000 		.4byte	.LASF27
+ 387 016e 03       		.byte	0x3
+ 388 016f 41       		.byte	0x41
+ 389 0170 12       		.uleb128 0x12
+ 390 0171 6B000000 		.4byte	0x6b
+ 391 0175 00       		.byte	0
+ 392 0176 00       		.byte	0
+ 393              		.section	.debug_abbrev,"",%progbits
+ 394              	.Ldebug_abbrev0:
+ 395 0000 01       		.uleb128 0x1
+ 396 0001 11       		.uleb128 0x11
+ 397 0002 01       		.byte	0x1
+ 398 0003 25       		.uleb128 0x25
+ 399 0004 0E       		.uleb128 0xe
+ 400 0005 13       		.uleb128 0x13
+ 401 0006 0B       		.uleb128 0xb
+ 402 0007 03       		.uleb128 0x3
+ 403 0008 0E       		.uleb128 0xe
+ 404 0009 1B       		.uleb128 0x1b
+ 405 000a 0E       		.uleb128 0xe
+ 406 000b 55       		.uleb128 0x55
+ 407 000c 17       		.uleb128 0x17
+ 408 000d 11       		.uleb128 0x11
+ 409 000e 01       		.uleb128 0x1
+ 410 000f 10       		.uleb128 0x10
+ 411 0010 17       		.uleb128 0x17
+ 412 0011 00       		.byte	0
+ 413 0012 00       		.byte	0
+ 414 0013 02       		.uleb128 0x2
+ 415 0014 24       		.uleb128 0x24
+ 416 0015 00       		.byte	0
+ 417 0016 0B       		.uleb128 0xb
+ 418 0017 0B       		.uleb128 0xb
+ 419 0018 3E       		.uleb128 0x3e
+ 420 0019 0B       		.uleb128 0xb
+ 421 001a 03       		.uleb128 0x3
+ 422 001b 0E       		.uleb128 0xe
+ 423 001c 00       		.byte	0
+ 424 001d 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 11
+
+
+ 425 001e 03       		.uleb128 0x3
+ 426 001f 24       		.uleb128 0x24
+ 427 0020 00       		.byte	0
+ 428 0021 0B       		.uleb128 0xb
+ 429 0022 0B       		.uleb128 0xb
+ 430 0023 3E       		.uleb128 0x3e
+ 431 0024 0B       		.uleb128 0xb
+ 432 0025 03       		.uleb128 0x3
+ 433 0026 08       		.uleb128 0x8
+ 434 0027 00       		.byte	0
+ 435 0028 00       		.byte	0
+ 436 0029 04       		.uleb128 0x4
+ 437 002a 16       		.uleb128 0x16
+ 438 002b 00       		.byte	0
+ 439 002c 03       		.uleb128 0x3
+ 440 002d 0E       		.uleb128 0xe
+ 441 002e 3A       		.uleb128 0x3a
+ 442 002f 0B       		.uleb128 0xb
+ 443 0030 3B       		.uleb128 0x3b
+ 444 0031 05       		.uleb128 0x5
+ 445 0032 49       		.uleb128 0x49
+ 446 0033 13       		.uleb128 0x13
+ 447 0034 00       		.byte	0
+ 448 0035 00       		.byte	0
+ 449 0036 05       		.uleb128 0x5
+ 450 0037 35       		.uleb128 0x35
+ 451 0038 00       		.byte	0
+ 452 0039 49       		.uleb128 0x49
+ 453 003a 13       		.uleb128 0x13
+ 454 003b 00       		.byte	0
+ 455 003c 00       		.byte	0
+ 456 003d 06       		.uleb128 0x6
+ 457 003e 13       		.uleb128 0x13
+ 458 003f 01       		.byte	0x1
+ 459 0040 0B       		.uleb128 0xb
+ 460 0041 0B       		.uleb128 0xb
+ 461 0042 3A       		.uleb128 0x3a
+ 462 0043 0B       		.uleb128 0xb
+ 463 0044 3B       		.uleb128 0x3b
+ 464 0045 0B       		.uleb128 0xb
+ 465 0046 01       		.uleb128 0x1
+ 466 0047 13       		.uleb128 0x13
+ 467 0048 00       		.byte	0
+ 468 0049 00       		.byte	0
+ 469 004a 07       		.uleb128 0x7
+ 470 004b 0D       		.uleb128 0xd
+ 471 004c 00       		.byte	0
+ 472 004d 03       		.uleb128 0x3
+ 473 004e 0E       		.uleb128 0xe
+ 474 004f 3A       		.uleb128 0x3a
+ 475 0050 0B       		.uleb128 0xb
+ 476 0051 3B       		.uleb128 0x3b
+ 477 0052 0B       		.uleb128 0xb
+ 478 0053 49       		.uleb128 0x49
+ 479 0054 13       		.uleb128 0x13
+ 480 0055 38       		.uleb128 0x38
+ 481 0056 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 12
+
+
+ 482 0057 00       		.byte	0
+ 483 0058 00       		.byte	0
+ 484 0059 08       		.uleb128 0x8
+ 485 005a 16       		.uleb128 0x16
+ 486 005b 00       		.byte	0
+ 487 005c 03       		.uleb128 0x3
+ 488 005d 0E       		.uleb128 0xe
+ 489 005e 3A       		.uleb128 0x3a
+ 490 005f 0B       		.uleb128 0xb
+ 491 0060 3B       		.uleb128 0x3b
+ 492 0061 0B       		.uleb128 0xb
+ 493 0062 49       		.uleb128 0x49
+ 494 0063 13       		.uleb128 0x13
+ 495 0064 00       		.byte	0
+ 496 0065 00       		.byte	0
+ 497 0066 09       		.uleb128 0x9
+ 498 0067 2E       		.uleb128 0x2e
+ 499 0068 00       		.byte	0
+ 500 0069 3F       		.uleb128 0x3f
+ 501 006a 19       		.uleb128 0x19
+ 502 006b 03       		.uleb128 0x3
+ 503 006c 0E       		.uleb128 0xe
+ 504 006d 3A       		.uleb128 0x3a
+ 505 006e 0B       		.uleb128 0xb
+ 506 006f 3B       		.uleb128 0x3b
+ 507 0070 0B       		.uleb128 0xb
+ 508 0071 27       		.uleb128 0x27
+ 509 0072 19       		.uleb128 0x19
+ 510 0073 20       		.uleb128 0x20
+ 511 0074 0B       		.uleb128 0xb
+ 512 0075 00       		.byte	0
+ 513 0076 00       		.byte	0
+ 514 0077 0A       		.uleb128 0xa
+ 515 0078 2E       		.uleb128 0x2e
+ 516 0079 00       		.byte	0
+ 517 007a 3F       		.uleb128 0x3f
+ 518 007b 19       		.uleb128 0x19
+ 519 007c 03       		.uleb128 0x3
+ 520 007d 0E       		.uleb128 0xe
+ 521 007e 3A       		.uleb128 0x3a
+ 522 007f 0B       		.uleb128 0xb
+ 523 0080 3B       		.uleb128 0x3b
+ 524 0081 0B       		.uleb128 0xb
+ 525 0082 27       		.uleb128 0x27
+ 526 0083 19       		.uleb128 0x19
+ 527 0084 11       		.uleb128 0x11
+ 528 0085 01       		.uleb128 0x1
+ 529 0086 12       		.uleb128 0x12
+ 530 0087 06       		.uleb128 0x6
+ 531 0088 40       		.uleb128 0x40
+ 532 0089 18       		.uleb128 0x18
+ 533 008a 9742     		.uleb128 0x2117
+ 534 008c 19       		.uleb128 0x19
+ 535 008d 00       		.byte	0
+ 536 008e 00       		.byte	0
+ 537 008f 0B       		.uleb128 0xb
+ 538 0090 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 13
+
+
+ 539 0091 00       		.byte	0
+ 540 0092 31       		.uleb128 0x31
+ 541 0093 13       		.uleb128 0x13
+ 542 0094 11       		.uleb128 0x11
+ 543 0095 01       		.uleb128 0x1
+ 544 0096 12       		.uleb128 0x12
+ 545 0097 06       		.uleb128 0x6
+ 546 0098 40       		.uleb128 0x40
+ 547 0099 18       		.uleb128 0x18
+ 548 009a 9742     		.uleb128 0x2117
+ 549 009c 19       		.uleb128 0x19
+ 550 009d 00       		.byte	0
+ 551 009e 00       		.byte	0
+ 552 009f 0C       		.uleb128 0xc
+ 553 00a0 2E       		.uleb128 0x2e
+ 554 00a1 01       		.byte	0x1
+ 555 00a2 3F       		.uleb128 0x3f
+ 556 00a3 19       		.uleb128 0x19
+ 557 00a4 03       		.uleb128 0x3
+ 558 00a5 0E       		.uleb128 0xe
+ 559 00a6 3A       		.uleb128 0x3a
+ 560 00a7 0B       		.uleb128 0xb
+ 561 00a8 3B       		.uleb128 0x3b
+ 562 00a9 0B       		.uleb128 0xb
+ 563 00aa 27       		.uleb128 0x27
+ 564 00ab 19       		.uleb128 0x19
+ 565 00ac 11       		.uleb128 0x11
+ 566 00ad 01       		.uleb128 0x1
+ 567 00ae 12       		.uleb128 0x12
+ 568 00af 06       		.uleb128 0x6
+ 569 00b0 40       		.uleb128 0x40
+ 570 00b1 18       		.uleb128 0x18
+ 571 00b2 9742     		.uleb128 0x2117
+ 572 00b4 19       		.uleb128 0x19
+ 573 00b5 01       		.uleb128 0x1
+ 574 00b6 13       		.uleb128 0x13
+ 575 00b7 00       		.byte	0
+ 576 00b8 00       		.byte	0
+ 577 00b9 0D       		.uleb128 0xd
+ 578 00ba 898201   		.uleb128 0x4109
+ 579 00bd 00       		.byte	0
+ 580 00be 11       		.uleb128 0x11
+ 581 00bf 01       		.uleb128 0x1
+ 582 00c0 31       		.uleb128 0x31
+ 583 00c1 13       		.uleb128 0x13
+ 584 00c2 00       		.byte	0
+ 585 00c3 00       		.byte	0
+ 586 00c4 0E       		.uleb128 0xe
+ 587 00c5 898201   		.uleb128 0x4109
+ 588 00c8 00       		.byte	0
+ 589 00c9 11       		.uleb128 0x11
+ 590 00ca 01       		.uleb128 0x1
+ 591 00cb 9542     		.uleb128 0x2115
+ 592 00cd 19       		.uleb128 0x19
+ 593 00ce 31       		.uleb128 0x31
+ 594 00cf 13       		.uleb128 0x13
+ 595 00d0 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 14
+
+
+ 596 00d1 00       		.byte	0
+ 597 00d2 0F       		.uleb128 0xf
+ 598 00d3 34       		.uleb128 0x34
+ 599 00d4 00       		.byte	0
+ 600 00d5 03       		.uleb128 0x3
+ 601 00d6 0E       		.uleb128 0xe
+ 602 00d7 3A       		.uleb128 0x3a
+ 603 00d8 0B       		.uleb128 0xb
+ 604 00d9 3B       		.uleb128 0x3b
+ 605 00da 0B       		.uleb128 0xb
+ 606 00db 49       		.uleb128 0x49
+ 607 00dc 13       		.uleb128 0x13
+ 608 00dd 02       		.uleb128 0x2
+ 609 00de 18       		.uleb128 0x18
+ 610 00df 00       		.byte	0
+ 611 00e0 00       		.byte	0
+ 612 00e1 10       		.uleb128 0x10
+ 613 00e2 2E       		.uleb128 0x2e
+ 614 00e3 00       		.byte	0
+ 615 00e4 3F       		.uleb128 0x3f
+ 616 00e5 19       		.uleb128 0x19
+ 617 00e6 03       		.uleb128 0x3
+ 618 00e7 0E       		.uleb128 0xe
+ 619 00e8 3A       		.uleb128 0x3a
+ 620 00e9 0B       		.uleb128 0xb
+ 621 00ea 3B       		.uleb128 0x3b
+ 622 00eb 0B       		.uleb128 0xb
+ 623 00ec 27       		.uleb128 0x27
+ 624 00ed 19       		.uleb128 0x19
+ 625 00ee 3C       		.uleb128 0x3c
+ 626 00ef 19       		.uleb128 0x19
+ 627 00f0 00       		.byte	0
+ 628 00f1 00       		.byte	0
+ 629 00f2 11       		.uleb128 0x11
+ 630 00f3 2E       		.uleb128 0x2e
+ 631 00f4 01       		.byte	0x1
+ 632 00f5 3F       		.uleb128 0x3f
+ 633 00f6 19       		.uleb128 0x19
+ 634 00f7 03       		.uleb128 0x3
+ 635 00f8 0E       		.uleb128 0xe
+ 636 00f9 3A       		.uleb128 0x3a
+ 637 00fa 0B       		.uleb128 0xb
+ 638 00fb 3B       		.uleb128 0x3b
+ 639 00fc 0B       		.uleb128 0xb
+ 640 00fd 27       		.uleb128 0x27
+ 641 00fe 19       		.uleb128 0x19
+ 642 00ff 3C       		.uleb128 0x3c
+ 643 0100 19       		.uleb128 0x19
+ 644 0101 00       		.byte	0
+ 645 0102 00       		.byte	0
+ 646 0103 12       		.uleb128 0x12
+ 647 0104 05       		.uleb128 0x5
+ 648 0105 00       		.byte	0
+ 649 0106 49       		.uleb128 0x49
+ 650 0107 13       		.uleb128 0x13
+ 651 0108 00       		.byte	0
+ 652 0109 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 15
+
+
+ 653 010a 00       		.byte	0
+ 654              		.section	.debug_aranges,"",%progbits
+ 655 0000 34000000 		.4byte	0x34
+ 656 0004 0200     		.2byte	0x2
+ 657 0006 00000000 		.4byte	.Ldebug_info0
+ 658 000a 04       		.byte	0x4
+ 659 000b 00       		.byte	0
+ 660 000c 0000     		.2byte	0
+ 661 000e 0000     		.2byte	0
+ 662 0010 00000000 		.4byte	.LFB0
+ 663 0014 20000000 		.4byte	.LFE0-.LFB0
+ 664 0018 00000000 		.4byte	.LFB1
+ 665 001c 44000000 		.4byte	.LFE1-.LFB1
+ 666 0020 00000000 		.4byte	.LFB2
+ 667 0024 28000000 		.4byte	.LFE2-.LFB2
+ 668 0028 00000000 		.4byte	.LFB3
+ 669 002c 28000000 		.4byte	.LFE3-.LFB3
+ 670 0030 00000000 		.4byte	0
+ 671 0034 00000000 		.4byte	0
+ 672              		.section	.debug_ranges,"",%progbits
+ 673              	.Ldebug_ranges0:
+ 674 0000 00000000 		.4byte	.LFB0
+ 675 0004 20000000 		.4byte	.LFE0
+ 676 0008 00000000 		.4byte	.LFB1
+ 677 000c 44000000 		.4byte	.LFE1
+ 678 0010 00000000 		.4byte	.LFB2
+ 679 0014 28000000 		.4byte	.LFE2
+ 680 0018 00000000 		.4byte	.LFB3
+ 681 001c 28000000 		.4byte	.LFE3
+ 682 0020 00000000 		.4byte	0
+ 683 0024 00000000 		.4byte	0
+ 684              		.section	.debug_line,"",%progbits
+ 685              	.Ldebug_line0:
+ 686 0000 AC000000 		.section	.debug_str,"MS",%progbits,1
+ 686      02005400 
+ 686      00000201 
+ 686      FB0E0D00 
+ 686      01010101 
+ 687              	.LASF21:
+ 688 0000 49444143 		.ascii	"IDAC8_2_Enable\000"
+ 688      385F325F 
+ 688      456E6162 
+ 688      6C6500
+ 689              	.LASF15:
+ 690 000f 64617461 		.ascii	"data_value\000"
+ 690      5F76616C 
+ 690      756500
+ 691              	.LASF9:
+ 692 001a 666C6F61 		.ascii	"float\000"
+ 692      7400
+ 693              	.LASF12:
+ 694 0020 75696E74 		.ascii	"uint8\000"
+ 694      3800
+ 695              	.LASF1:
+ 696 0026 756E7369 		.ascii	"unsigned char\000"
+ 696      676E6564 
+ 696      20636861 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 16
+
+
+ 696      7200
+ 697              	.LASF13:
+ 698 0034 72656738 		.ascii	"reg8\000"
+ 698      00
+ 699              	.LASF5:
+ 700 0039 6C6F6E67 		.ascii	"long unsigned int\000"
+ 700      20756E73 
+ 700      69676E65 
+ 700      6420696E 
+ 700      7400
+ 701              	.LASF3:
+ 702 004b 73686F72 		.ascii	"short unsigned int\000"
+ 702      7420756E 
+ 702      7369676E 
+ 702      65642069 
+ 702      6E7400
+ 703              	.LASF17:
+ 704 005e 49444143 		.ascii	"IDAC8_2_Sleep\000"
+ 704      385F325F 
+ 704      536C6565 
+ 704      7000
+ 705              	.LASF19:
+ 706 006c 49444143 		.ascii	"IDAC8_2_RestoreConfig\000"
+ 706      385F325F 
+ 706      52657374 
+ 706      6F726543 
+ 706      6F6E6669 
+ 707              	.LASF27:
+ 708 0082 49444143 		.ascii	"IDAC8_2_SetValue\000"
+ 708      385F325F 
+ 708      53657456 
+ 708      616C7565 
+ 708      00
+ 709              	.LASF10:
+ 710 0093 646F7562 		.ascii	"double\000"
+ 710      6C6500
+ 711              	.LASF16:
+ 712 009a 49444143 		.ascii	"IDAC8_2_backupStruct\000"
+ 712      385F325F 
+ 712      6261636B 
+ 712      75705374 
+ 712      72756374 
+ 713              	.LASF26:
+ 714 00af 49444143 		.ascii	"IDAC8_2_backup\000"
+ 714      385F325F 
+ 714      6261636B 
+ 714      757000
+ 715              	.LASF8:
+ 716 00be 756E7369 		.ascii	"unsigned int\000"
+ 716      676E6564 
+ 716      20696E74 
+ 716      00
+ 717              	.LASF7:
+ 718 00cb 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 718      206C6F6E 
+ 718      6720756E 
+ 718      7369676E 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 17
+
+
+ 718      65642069 
+ 719              	.LASF20:
+ 720 00e2 49444143 		.ascii	"IDAC8_2_Stop\000"
+ 720      385F325F 
+ 720      53746F70 
+ 720      00
+ 721              	.LASF25:
+ 722 00ef 49444143 		.ascii	"IDAC8_2_SaveConfig\000"
+ 722      385F325F 
+ 722      53617665 
+ 722      436F6E66 
+ 722      696700
+ 723              	.LASF18:
+ 724 0102 49444143 		.ascii	"IDAC8_2_Wakeup\000"
+ 724      385F325F 
+ 724      57616B65 
+ 724      757000
+ 725              	.LASF6:
+ 726 0111 6C6F6E67 		.ascii	"long long int\000"
+ 726      206C6F6E 
+ 726      6720696E 
+ 726      7400
+ 727              	.LASF11:
+ 728 011f 63686172 		.ascii	"char\000"
+ 728      00
+ 729              	.LASF24:
+ 730 0124 433A5C55 		.ascii	"C:\\Users\\Luggi\\Desktop\\Aktuelles Projekt Laser_"
+ 730      73657273 
+ 730      5C4C7567 
+ 730      67695C44 
+ 730      65736B74 
+ 731 0153 73636875 		.ascii	"schutzschaltung\\Aktuelles Projekt Laser_schutzscha"
+ 731      747A7363 
+ 731      68616C74 
+ 731      756E675C 
+ 731      416B7475 
+ 732 0185 6C74756E 		.ascii	"ltung\\Laserschutzschaltung.cydsn\000"
+ 732      675C4C61 
+ 732      73657273 
+ 732      63687574 
+ 732      7A736368 
+ 733              	.LASF2:
+ 734 01a6 73686F72 		.ascii	"short int\000"
+ 734      7420696E 
+ 734      7400
+ 735              	.LASF22:
+ 736 01b0 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 736      4320342E 
+ 736      392E3320 
+ 736      32303135 
+ 736      30333033 
+ 737 01e3 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 737      20726576 
+ 737      6973696F 
+ 737      6E203232 
+ 737      31323230 
+ 738 0216 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccbZYjnl.s 			page 18
+
+
+ 738      66756E63 
+ 738      74696F6E 
+ 738      2D736563 
+ 738      74696F6E 
+ 739              	.LASF4:
+ 740 023e 6C6F6E67 		.ascii	"long int\000"
+ 740      20696E74 
+ 740      00
+ 741              	.LASF14:
+ 742 0247 656E6162 		.ascii	"enableState\000"
+ 742      6C655374 
+ 742      61746500 
+ 743              	.LASF0:
+ 744 0253 7369676E 		.ascii	"signed char\000"
+ 744      65642063 
+ 744      68617200 
+ 745              	.LASF23:
+ 746 025f 47656E65 		.ascii	"Generated_Source\\PSoC5\\IDAC8_2_PM.c\000"
+ 746      72617465 
+ 746      645F536F 
+ 746      75726365 
+ 746      5C50536F 
+ 747              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

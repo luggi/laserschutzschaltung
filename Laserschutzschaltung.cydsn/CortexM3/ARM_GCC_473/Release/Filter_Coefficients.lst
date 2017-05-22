@@ -1,0 +1,883 @@
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccowNAj1.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Filter_Coefficients.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	Filter_ChannelAFirCoefficients
+  19              		.section	.rodata
+  20              		.type	Filter_ChannelAFirCoefficients, %object
+  21              		.size	Filter_ChannelAFirCoefficients, 512
+  22              	Filter_ChannelAFirCoefficients:
+  23 0000 69       		.byte	105
+  24 0001 12       		.byte	18
+  25 0002 00       		.byte	0
+  26 0003 00       		.byte	0
+  27 0004 3C       		.byte	60
+  28 0005 13       		.byte	19
+  29 0006 00       		.byte	0
+  30 0007 00       		.byte	0
+  31 0008 5B       		.byte	91
+  32 0009 14       		.byte	20
+  33 000a 00       		.byte	0
+  34 000b 00       		.byte	0
+  35 000c CC       		.byte	-52
+  36 000d 15       		.byte	21
+  37 000e 00       		.byte	0
+  38 000f 00       		.byte	0
+  39 0010 93       		.byte	-109
+  40 0011 17       		.byte	23
+  41 0012 00       		.byte	0
+  42 0013 00       		.byte	0
+  43 0014 B6       		.byte	-74
+  44 0015 19       		.byte	25
+  45 0016 00       		.byte	0
+  46 0017 00       		.byte	0
+  47 0018 3A       		.byte	58
+  48 0019 1C       		.byte	28
+  49 001a 00       		.byte	0
+  50 001b 00       		.byte	0
+  51 001c 23       		.byte	35
+  52 001d 1F       		.byte	31
+  53 001e 00       		.byte	0
+  54 001f 00       		.byte	0
+  55 0020 75       		.byte	117
+  56 0021 22       		.byte	34
+  57 0022 00       		.byte	0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccowNAj1.s 			page 2
+
+
+  58 0023 00       		.byte	0
+  59 0024 34       		.byte	52
+  60 0025 26       		.byte	38
+  61 0026 00       		.byte	0
+  62 0027 00       		.byte	0
+  63 0028 62       		.byte	98
+  64 0029 2A       		.byte	42
+  65 002a 00       		.byte	0
+  66 002b 00       		.byte	0
+  67 002c 02       		.byte	2
+  68 002d 2F       		.byte	47
+  69 002e 00       		.byte	0
+  70 002f 00       		.byte	0
+  71 0030 17       		.byte	23
+  72 0031 34       		.byte	52
+  73 0032 00       		.byte	0
+  74 0033 00       		.byte	0
+  75 0034 A3       		.byte	-93
+  76 0035 39       		.byte	57
+  77 0036 00       		.byte	0
+  78 0037 00       		.byte	0
+  79 0038 A5       		.byte	-91
+  80 0039 3F       		.byte	63
+  81 003a 00       		.byte	0
+  82 003b 00       		.byte	0
+  83 003c 20       		.byte	32
+  84 003d 46       		.byte	70
+  85 003e 00       		.byte	0
+  86 003f 00       		.byte	0
+  87 0040 12       		.byte	18
+  88 0041 4D       		.byte	77
+  89 0042 00       		.byte	0
+  90 0043 00       		.byte	0
+  91 0044 7C       		.byte	124
+  92 0045 54       		.byte	84
+  93 0046 00       		.byte	0
+  94 0047 00       		.byte	0
+  95 0048 5C       		.byte	92
+  96 0049 5C       		.byte	92
+  97 004a 00       		.byte	0
+  98 004b 00       		.byte	0
+  99 004c B0       		.byte	-80
+ 100 004d 64       		.byte	100
+ 101 004e 00       		.byte	0
+ 102 004f 00       		.byte	0
+ 103 0050 77       		.byte	119
+ 104 0051 6D       		.byte	109
+ 105 0052 00       		.byte	0
+ 106 0053 00       		.byte	0
+ 107 0054 AE       		.byte	-82
+ 108 0055 76       		.byte	118
+ 109 0056 00       		.byte	0
+ 110 0057 00       		.byte	0
+ 111 0058 50       		.byte	80
+ 112 0059 80       		.byte	-128
+ 113 005a 00       		.byte	0
+ 114 005b 00       		.byte	0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccowNAj1.s 			page 3
+
+
+ 115 005c 5A       		.byte	90
+ 116 005d 8A       		.byte	-118
+ 117 005e 00       		.byte	0
+ 118 005f 00       		.byte	0
+ 119 0060 C8       		.byte	-56
+ 120 0061 94       		.byte	-108
+ 121 0062 00       		.byte	0
+ 122 0063 00       		.byte	0
+ 123 0064 95       		.byte	-107
+ 124 0065 9F       		.byte	-97
+ 125 0066 00       		.byte	0
+ 126 0067 00       		.byte	0
+ 127 0068 BA       		.byte	-70
+ 128 0069 AA       		.byte	-86
+ 129 006a 00       		.byte	0
+ 130 006b 00       		.byte	0
+ 131 006c 31       		.byte	49
+ 132 006d B6       		.byte	-74
+ 133 006e 00       		.byte	0
+ 134 006f 00       		.byte	0
+ 135 0070 F5       		.byte	-11
+ 136 0071 C1       		.byte	-63
+ 137 0072 00       		.byte	0
+ 138 0073 00       		.byte	0
+ 139 0074 FE       		.byte	-2
+ 140 0075 CD       		.byte	-51
+ 141 0076 00       		.byte	0
+ 142 0077 00       		.byte	0
+ 143 0078 44       		.byte	68
+ 144 0079 DA       		.byte	-38
+ 145 007a 00       		.byte	0
+ 146 007b 00       		.byte	0
+ 147 007c C0       		.byte	-64
+ 148 007d E6       		.byte	-26
+ 149 007e 00       		.byte	0
+ 150 007f 00       		.byte	0
+ 151 0080 68       		.byte	104
+ 152 0081 F3       		.byte	-13
+ 153 0082 00       		.byte	0
+ 154 0083 00       		.byte	0
+ 155 0084 35       		.byte	53
+ 156 0085 00       		.byte	0
+ 157 0086 01       		.byte	1
+ 158 0087 00       		.byte	0
+ 159 0088 1E       		.byte	30
+ 160 0089 0D       		.byte	13
+ 161 008a 01       		.byte	1
+ 162 008b 00       		.byte	0
+ 163 008c 18       		.byte	24
+ 164 008d 1A       		.byte	26
+ 165 008e 01       		.byte	1
+ 166 008f 00       		.byte	0
+ 167 0090 1B       		.byte	27
+ 168 0091 27       		.byte	39
+ 169 0092 01       		.byte	1
+ 170 0093 00       		.byte	0
+ 171 0094 1D       		.byte	29
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccowNAj1.s 			page 4
+
+
+ 172 0095 34       		.byte	52
+ 173 0096 01       		.byte	1
+ 174 0097 00       		.byte	0
+ 175 0098 14       		.byte	20
+ 176 0099 41       		.byte	65
+ 177 009a 01       		.byte	1
+ 178 009b 00       		.byte	0
+ 179 009c F5       		.byte	-11
+ 180 009d 4D       		.byte	77
+ 181 009e 01       		.byte	1
+ 182 009f 00       		.byte	0
+ 183 00a0 B7       		.byte	-73
+ 184 00a1 5A       		.byte	90
+ 185 00a2 01       		.byte	1
+ 186 00a3 00       		.byte	0
+ 187 00a4 50       		.byte	80
+ 188 00a5 67       		.byte	103
+ 189 00a6 01       		.byte	1
+ 190 00a7 00       		.byte	0
+ 191 00a8 B6       		.byte	-74
+ 192 00a9 73       		.byte	115
+ 193 00aa 01       		.byte	1
+ 194 00ab 00       		.byte	0
+ 195 00ac DD       		.byte	-35
+ 196 00ad 7F       		.byte	127
+ 197 00ae 01       		.byte	1
+ 198 00af 00       		.byte	0
+ 199 00b0 BD       		.byte	-67
+ 200 00b1 8B       		.byte	-117
+ 201 00b2 01       		.byte	1
+ 202 00b3 00       		.byte	0
+ 203 00b4 4B       		.byte	75
+ 204 00b5 97       		.byte	-105
+ 205 00b6 01       		.byte	1
+ 206 00b7 00       		.byte	0
+ 207 00b8 7F       		.byte	127
+ 208 00b9 A2       		.byte	-94
+ 209 00ba 01       		.byte	1
+ 210 00bb 00       		.byte	0
+ 211 00bc 4D       		.byte	77
+ 212 00bd AD       		.byte	-83
+ 213 00be 01       		.byte	1
+ 214 00bf 00       		.byte	0
+ 215 00c0 AE       		.byte	-82
+ 216 00c1 B7       		.byte	-73
+ 217 00c2 01       		.byte	1
+ 218 00c3 00       		.byte	0
+ 219 00c4 97       		.byte	-105
+ 220 00c5 C1       		.byte	-63
+ 221 00c6 01       		.byte	1
+ 222 00c7 00       		.byte	0
+ 223 00c8 02       		.byte	2
+ 224 00c9 CB       		.byte	-53
+ 225 00ca 01       		.byte	1
+ 226 00cb 00       		.byte	0
+ 227 00cc E4       		.byte	-28
+ 228 00cd D3       		.byte	-45
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccowNAj1.s 			page 5
+
+
+ 229 00ce 01       		.byte	1
+ 230 00cf 00       		.byte	0
+ 231 00d0 38       		.byte	56
+ 232 00d1 DC       		.byte	-36
+ 233 00d2 01       		.byte	1
+ 234 00d3 00       		.byte	0
+ 235 00d4 F5       		.byte	-11
+ 236 00d5 E3       		.byte	-29
+ 237 00d6 01       		.byte	1
+ 238 00d7 00       		.byte	0
+ 239 00d8 14       		.byte	20
+ 240 00d9 EB       		.byte	-21
+ 241 00da 01       		.byte	1
+ 242 00db 00       		.byte	0
+ 243 00dc 90       		.byte	-112
+ 244 00dd F1       		.byte	-15
+ 245 00de 01       		.byte	1
+ 246 00df 00       		.byte	0
+ 247 00e0 62       		.byte	98
+ 248 00e1 F7       		.byte	-9
+ 249 00e2 01       		.byte	1
+ 250 00e3 00       		.byte	0
+ 251 00e4 85       		.byte	-123
+ 252 00e5 FC       		.byte	-4
+ 253 00e6 01       		.byte	1
+ 254 00e7 00       		.byte	0
+ 255 00e8 F6       		.byte	-10
+ 256 00e9 00       		.byte	0
+ 257 00ea 02       		.byte	2
+ 258 00eb 00       		.byte	0
+ 259 00ec AF       		.byte	-81
+ 260 00ed 04       		.byte	4
+ 261 00ee 02       		.byte	2
+ 262 00ef 00       		.byte	0
+ 263 00f0 AD       		.byte	-83
+ 264 00f1 07       		.byte	7
+ 265 00f2 02       		.byte	2
+ 266 00f3 00       		.byte	0
+ 267 00f4 EE       		.byte	-18
+ 268 00f5 09       		.byte	9
+ 269 00f6 02       		.byte	2
+ 270 00f7 00       		.byte	0
+ 271 00f8 70       		.byte	112
+ 272 00f9 0B       		.byte	11
+ 273 00fa 02       		.byte	2
+ 274 00fb 00       		.byte	0
+ 275 00fc 32       		.byte	50
+ 276 00fd 0C       		.byte	12
+ 277 00fe 02       		.byte	2
+ 278 00ff 00       		.byte	0
+ 279 0100 32       		.byte	50
+ 280 0101 0C       		.byte	12
+ 281 0102 02       		.byte	2
+ 282 0103 00       		.byte	0
+ 283 0104 70       		.byte	112
+ 284 0105 0B       		.byte	11
+ 285 0106 02       		.byte	2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccowNAj1.s 			page 6
+
+
+ 286 0107 00       		.byte	0
+ 287 0108 EE       		.byte	-18
+ 288 0109 09       		.byte	9
+ 289 010a 02       		.byte	2
+ 290 010b 00       		.byte	0
+ 291 010c AD       		.byte	-83
+ 292 010d 07       		.byte	7
+ 293 010e 02       		.byte	2
+ 294 010f 00       		.byte	0
+ 295 0110 AF       		.byte	-81
+ 296 0111 04       		.byte	4
+ 297 0112 02       		.byte	2
+ 298 0113 00       		.byte	0
+ 299 0114 F6       		.byte	-10
+ 300 0115 00       		.byte	0
+ 301 0116 02       		.byte	2
+ 302 0117 00       		.byte	0
+ 303 0118 85       		.byte	-123
+ 304 0119 FC       		.byte	-4
+ 305 011a 01       		.byte	1
+ 306 011b 00       		.byte	0
+ 307 011c 62       		.byte	98
+ 308 011d F7       		.byte	-9
+ 309 011e 01       		.byte	1
+ 310 011f 00       		.byte	0
+ 311 0120 90       		.byte	-112
+ 312 0121 F1       		.byte	-15
+ 313 0122 01       		.byte	1
+ 314 0123 00       		.byte	0
+ 315 0124 14       		.byte	20
+ 316 0125 EB       		.byte	-21
+ 317 0126 01       		.byte	1
+ 318 0127 00       		.byte	0
+ 319 0128 F5       		.byte	-11
+ 320 0129 E3       		.byte	-29
+ 321 012a 01       		.byte	1
+ 322 012b 00       		.byte	0
+ 323 012c 38       		.byte	56
+ 324 012d DC       		.byte	-36
+ 325 012e 01       		.byte	1
+ 326 012f 00       		.byte	0
+ 327 0130 E4       		.byte	-28
+ 328 0131 D3       		.byte	-45
+ 329 0132 01       		.byte	1
+ 330 0133 00       		.byte	0
+ 331 0134 02       		.byte	2
+ 332 0135 CB       		.byte	-53
+ 333 0136 01       		.byte	1
+ 334 0137 00       		.byte	0
+ 335 0138 97       		.byte	-105
+ 336 0139 C1       		.byte	-63
+ 337 013a 01       		.byte	1
+ 338 013b 00       		.byte	0
+ 339 013c AE       		.byte	-82
+ 340 013d B7       		.byte	-73
+ 341 013e 01       		.byte	1
+ 342 013f 00       		.byte	0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccowNAj1.s 			page 7
+
+
+ 343 0140 4D       		.byte	77
+ 344 0141 AD       		.byte	-83
+ 345 0142 01       		.byte	1
+ 346 0143 00       		.byte	0
+ 347 0144 7F       		.byte	127
+ 348 0145 A2       		.byte	-94
+ 349 0146 01       		.byte	1
+ 350 0147 00       		.byte	0
+ 351 0148 4B       		.byte	75
+ 352 0149 97       		.byte	-105
+ 353 014a 01       		.byte	1
+ 354 014b 00       		.byte	0
+ 355 014c BD       		.byte	-67
+ 356 014d 8B       		.byte	-117
+ 357 014e 01       		.byte	1
+ 358 014f 00       		.byte	0
+ 359 0150 DD       		.byte	-35
+ 360 0151 7F       		.byte	127
+ 361 0152 01       		.byte	1
+ 362 0153 00       		.byte	0
+ 363 0154 B6       		.byte	-74
+ 364 0155 73       		.byte	115
+ 365 0156 01       		.byte	1
+ 366 0157 00       		.byte	0
+ 367 0158 50       		.byte	80
+ 368 0159 67       		.byte	103
+ 369 015a 01       		.byte	1
+ 370 015b 00       		.byte	0
+ 371 015c B7       		.byte	-73
+ 372 015d 5A       		.byte	90
+ 373 015e 01       		.byte	1
+ 374 015f 00       		.byte	0
+ 375 0160 F5       		.byte	-11
+ 376 0161 4D       		.byte	77
+ 377 0162 01       		.byte	1
+ 378 0163 00       		.byte	0
+ 379 0164 14       		.byte	20
+ 380 0165 41       		.byte	65
+ 381 0166 01       		.byte	1
+ 382 0167 00       		.byte	0
+ 383 0168 1D       		.byte	29
+ 384 0169 34       		.byte	52
+ 385 016a 01       		.byte	1
+ 386 016b 00       		.byte	0
+ 387 016c 1B       		.byte	27
+ 388 016d 27       		.byte	39
+ 389 016e 01       		.byte	1
+ 390 016f 00       		.byte	0
+ 391 0170 18       		.byte	24
+ 392 0171 1A       		.byte	26
+ 393 0172 01       		.byte	1
+ 394 0173 00       		.byte	0
+ 395 0174 1E       		.byte	30
+ 396 0175 0D       		.byte	13
+ 397 0176 01       		.byte	1
+ 398 0177 00       		.byte	0
+ 399 0178 35       		.byte	53
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccowNAj1.s 			page 8
+
+
+ 400 0179 00       		.byte	0
+ 401 017a 01       		.byte	1
+ 402 017b 00       		.byte	0
+ 403 017c 68       		.byte	104
+ 404 017d F3       		.byte	-13
+ 405 017e 00       		.byte	0
+ 406 017f 00       		.byte	0
+ 407 0180 C0       		.byte	-64
+ 408 0181 E6       		.byte	-26
+ 409 0182 00       		.byte	0
+ 410 0183 00       		.byte	0
+ 411 0184 44       		.byte	68
+ 412 0185 DA       		.byte	-38
+ 413 0186 00       		.byte	0
+ 414 0187 00       		.byte	0
+ 415 0188 FE       		.byte	-2
+ 416 0189 CD       		.byte	-51
+ 417 018a 00       		.byte	0
+ 418 018b 00       		.byte	0
+ 419 018c F5       		.byte	-11
+ 420 018d C1       		.byte	-63
+ 421 018e 00       		.byte	0
+ 422 018f 00       		.byte	0
+ 423 0190 31       		.byte	49
+ 424 0191 B6       		.byte	-74
+ 425 0192 00       		.byte	0
+ 426 0193 00       		.byte	0
+ 427 0194 BA       		.byte	-70
+ 428 0195 AA       		.byte	-86
+ 429 0196 00       		.byte	0
+ 430 0197 00       		.byte	0
+ 431 0198 95       		.byte	-107
+ 432 0199 9F       		.byte	-97
+ 433 019a 00       		.byte	0
+ 434 019b 00       		.byte	0
+ 435 019c C8       		.byte	-56
+ 436 019d 94       		.byte	-108
+ 437 019e 00       		.byte	0
+ 438 019f 00       		.byte	0
+ 439 01a0 5A       		.byte	90
+ 440 01a1 8A       		.byte	-118
+ 441 01a2 00       		.byte	0
+ 442 01a3 00       		.byte	0
+ 443 01a4 50       		.byte	80
+ 444 01a5 80       		.byte	-128
+ 445 01a6 00       		.byte	0
+ 446 01a7 00       		.byte	0
+ 447 01a8 AE       		.byte	-82
+ 448 01a9 76       		.byte	118
+ 449 01aa 00       		.byte	0
+ 450 01ab 00       		.byte	0
+ 451 01ac 77       		.byte	119
+ 452 01ad 6D       		.byte	109
+ 453 01ae 00       		.byte	0
+ 454 01af 00       		.byte	0
+ 455 01b0 B0       		.byte	-80
+ 456 01b1 64       		.byte	100
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccowNAj1.s 			page 9
+
+
+ 457 01b2 00       		.byte	0
+ 458 01b3 00       		.byte	0
+ 459 01b4 5C       		.byte	92
+ 460 01b5 5C       		.byte	92
+ 461 01b6 00       		.byte	0
+ 462 01b7 00       		.byte	0
+ 463 01b8 7C       		.byte	124
+ 464 01b9 54       		.byte	84
+ 465 01ba 00       		.byte	0
+ 466 01bb 00       		.byte	0
+ 467 01bc 12       		.byte	18
+ 468 01bd 4D       		.byte	77
+ 469 01be 00       		.byte	0
+ 470 01bf 00       		.byte	0
+ 471 01c0 20       		.byte	32
+ 472 01c1 46       		.byte	70
+ 473 01c2 00       		.byte	0
+ 474 01c3 00       		.byte	0
+ 475 01c4 A5       		.byte	-91
+ 476 01c5 3F       		.byte	63
+ 477 01c6 00       		.byte	0
+ 478 01c7 00       		.byte	0
+ 479 01c8 A3       		.byte	-93
+ 480 01c9 39       		.byte	57
+ 481 01ca 00       		.byte	0
+ 482 01cb 00       		.byte	0
+ 483 01cc 17       		.byte	23
+ 484 01cd 34       		.byte	52
+ 485 01ce 00       		.byte	0
+ 486 01cf 00       		.byte	0
+ 487 01d0 02       		.byte	2
+ 488 01d1 2F       		.byte	47
+ 489 01d2 00       		.byte	0
+ 490 01d3 00       		.byte	0
+ 491 01d4 62       		.byte	98
+ 492 01d5 2A       		.byte	42
+ 493 01d6 00       		.byte	0
+ 494 01d7 00       		.byte	0
+ 495 01d8 34       		.byte	52
+ 496 01d9 26       		.byte	38
+ 497 01da 00       		.byte	0
+ 498 01db 00       		.byte	0
+ 499 01dc 75       		.byte	117
+ 500 01dd 22       		.byte	34
+ 501 01de 00       		.byte	0
+ 502 01df 00       		.byte	0
+ 503 01e0 23       		.byte	35
+ 504 01e1 1F       		.byte	31
+ 505 01e2 00       		.byte	0
+ 506 01e3 00       		.byte	0
+ 507 01e4 3A       		.byte	58
+ 508 01e5 1C       		.byte	28
+ 509 01e6 00       		.byte	0
+ 510 01e7 00       		.byte	0
+ 511 01e8 B6       		.byte	-74
+ 512 01e9 19       		.byte	25
+ 513 01ea 00       		.byte	0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccowNAj1.s 			page 10
+
+
+ 514 01eb 00       		.byte	0
+ 515 01ec 93       		.byte	-109
+ 516 01ed 17       		.byte	23
+ 517 01ee 00       		.byte	0
+ 518 01ef 00       		.byte	0
+ 519 01f0 CC       		.byte	-52
+ 520 01f1 15       		.byte	21
+ 521 01f2 00       		.byte	0
+ 522 01f3 00       		.byte	0
+ 523 01f4 5B       		.byte	91
+ 524 01f5 14       		.byte	20
+ 525 01f6 00       		.byte	0
+ 526 01f7 00       		.byte	0
+ 527 01f8 3C       		.byte	60
+ 528 01f9 13       		.byte	19
+ 529 01fa 00       		.byte	0
+ 530 01fb 00       		.byte	0
+ 531 01fc 69       		.byte	105
+ 532 01fd 12       		.byte	18
+ 533 01fe 00       		.byte	0
+ 534 01ff 00       		.byte	0
+ 535              		.text
+ 536              	.Letext0:
+ 537              		.file 1 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 538              		.file 2 ".\\Generated_Source\\PSoC5\\Filter_Coefficients.c"
+ 539              		.section	.debug_info,"",%progbits
+ 540              	.Ldebug_info0:
+ 541 0000 AF000000 		.4byte	0xaf
+ 542 0004 0200     		.2byte	0x2
+ 543 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 544 000a 04       		.byte	0x4
+ 545 000b 01       		.uleb128 0x1
+ 546 000c 1B000000 		.4byte	.LASF13
+ 547 0010 01       		.byte	0x1
+ 548 0011 D5000000 		.4byte	.LASF14
+ 549 0015 3C010000 		.4byte	.LASF15
+ 550 0019 00000000 		.4byte	.Ldebug_line0
+ 551 001d 02       		.uleb128 0x2
+ 552 001e 01       		.byte	0x1
+ 553 001f 06       		.byte	0x6
+ 554 0020 C9000000 		.4byte	.LASF0
+ 555 0024 02       		.uleb128 0x2
+ 556 0025 01       		.byte	0x1
+ 557 0026 08       		.byte	0x8
+ 558 0027 93000000 		.4byte	.LASF1
+ 559 002b 02       		.uleb128 0x2
+ 560 002c 02       		.byte	0x2
+ 561 002d 05       		.byte	0x5
+ 562 002e 0A010000 		.4byte	.LASF2
+ 563 0032 02       		.uleb128 0x2
+ 564 0033 02       		.byte	0x2
+ 565 0034 07       		.byte	0x7
+ 566 0035 B6000000 		.4byte	.LASF3
+ 567 0039 03       		.uleb128 0x3
+ 568 003a 04       		.byte	0x4
+ 569 003b 05       		.byte	0x5
+ 570 003c 696E7400 		.ascii	"int\000"
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccowNAj1.s 			page 11
+
+
+ 571 0040 02       		.uleb128 0x2
+ 572 0041 04       		.byte	0x4
+ 573 0042 07       		.byte	0x7
+ 574 0043 0E000000 		.4byte	.LASF4
+ 575 0047 02       		.uleb128 0x2
+ 576 0048 08       		.byte	0x8
+ 577 0049 05       		.byte	0x5
+ 578 004a 00000000 		.4byte	.LASF5
+ 579 004e 02       		.uleb128 0x2
+ 580 004f 08       		.byte	0x8
+ 581 0050 07       		.byte	0x7
+ 582 0051 7C000000 		.4byte	.LASF6
+ 583 0055 02       		.uleb128 0x2
+ 584 0056 04       		.byte	0x4
+ 585 0057 05       		.byte	0x5
+ 586 0058 A6000000 		.4byte	.LASF7
+ 587 005c 02       		.uleb128 0x2
+ 588 005d 04       		.byte	0x4
+ 589 005e 07       		.byte	0x7
+ 590 005f 33010000 		.4byte	.LASF8
+ 591 0063 02       		.uleb128 0x2
+ 592 0064 04       		.byte	0x4
+ 593 0065 07       		.byte	0x7
+ 594 0066 6A000000 		.4byte	.LASF9
+ 595 006a 02       		.uleb128 0x2
+ 596 006b 01       		.byte	0x1
+ 597 006c 08       		.byte	0x8
+ 598 006d A1000000 		.4byte	.LASF10
+ 599 0071 04       		.uleb128 0x4
+ 600 0072 64000000 		.4byte	.LASF16
+ 601 0076 01       		.byte	0x1
+ 602 0077 5B       		.byte	0x5b
+ 603 0078 24000000 		.4byte	0x24
+ 604 007c 02       		.uleb128 0x2
+ 605 007d 04       		.byte	0x4
+ 606 007e 04       		.byte	0x4
+ 607 007f 04010000 		.4byte	.LASF11
+ 608 0083 02       		.uleb128 0x2
+ 609 0084 08       		.byte	0x8
+ 610 0085 04       		.byte	0x4
+ 611 0086 AF000000 		.4byte	.LASF12
+ 612 008a 05       		.uleb128 0x5
+ 613 008b 71000000 		.4byte	0x71
+ 614 008f 9B000000 		.4byte	0x9b
+ 615 0093 06       		.uleb128 0x6
+ 616 0094 5C000000 		.4byte	0x5c
+ 617 0098 FF01     		.2byte	0x1ff
+ 618 009a 00       		.byte	0
+ 619 009b 07       		.uleb128 0x7
+ 620 009c 14010000 		.4byte	.LASF17
+ 621 00a0 02       		.byte	0x2
+ 622 00a1 11       		.byte	0x11
+ 623 00a2 AD000000 		.4byte	0xad
+ 624 00a6 01       		.byte	0x1
+ 625 00a7 05       		.byte	0x5
+ 626 00a8 03       		.byte	0x3
+ 627 00a9 00000000 		.4byte	Filter_ChannelAFirCoefficients
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccowNAj1.s 			page 12
+
+
+ 628 00ad 08       		.uleb128 0x8
+ 629 00ae 8A000000 		.4byte	0x8a
+ 630 00b2 00       		.byte	0
+ 631              		.section	.debug_abbrev,"",%progbits
+ 632              	.Ldebug_abbrev0:
+ 633 0000 01       		.uleb128 0x1
+ 634 0001 11       		.uleb128 0x11
+ 635 0002 01       		.byte	0x1
+ 636 0003 25       		.uleb128 0x25
+ 637 0004 0E       		.uleb128 0xe
+ 638 0005 13       		.uleb128 0x13
+ 639 0006 0B       		.uleb128 0xb
+ 640 0007 03       		.uleb128 0x3
+ 641 0008 0E       		.uleb128 0xe
+ 642 0009 1B       		.uleb128 0x1b
+ 643 000a 0E       		.uleb128 0xe
+ 644 000b 10       		.uleb128 0x10
+ 645 000c 06       		.uleb128 0x6
+ 646 000d 00       		.byte	0
+ 647 000e 00       		.byte	0
+ 648 000f 02       		.uleb128 0x2
+ 649 0010 24       		.uleb128 0x24
+ 650 0011 00       		.byte	0
+ 651 0012 0B       		.uleb128 0xb
+ 652 0013 0B       		.uleb128 0xb
+ 653 0014 3E       		.uleb128 0x3e
+ 654 0015 0B       		.uleb128 0xb
+ 655 0016 03       		.uleb128 0x3
+ 656 0017 0E       		.uleb128 0xe
+ 657 0018 00       		.byte	0
+ 658 0019 00       		.byte	0
+ 659 001a 03       		.uleb128 0x3
+ 660 001b 24       		.uleb128 0x24
+ 661 001c 00       		.byte	0
+ 662 001d 0B       		.uleb128 0xb
+ 663 001e 0B       		.uleb128 0xb
+ 664 001f 3E       		.uleb128 0x3e
+ 665 0020 0B       		.uleb128 0xb
+ 666 0021 03       		.uleb128 0x3
+ 667 0022 08       		.uleb128 0x8
+ 668 0023 00       		.byte	0
+ 669 0024 00       		.byte	0
+ 670 0025 04       		.uleb128 0x4
+ 671 0026 16       		.uleb128 0x16
+ 672 0027 00       		.byte	0
+ 673 0028 03       		.uleb128 0x3
+ 674 0029 0E       		.uleb128 0xe
+ 675 002a 3A       		.uleb128 0x3a
+ 676 002b 0B       		.uleb128 0xb
+ 677 002c 3B       		.uleb128 0x3b
+ 678 002d 0B       		.uleb128 0xb
+ 679 002e 49       		.uleb128 0x49
+ 680 002f 13       		.uleb128 0x13
+ 681 0030 00       		.byte	0
+ 682 0031 00       		.byte	0
+ 683 0032 05       		.uleb128 0x5
+ 684 0033 01       		.uleb128 0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccowNAj1.s 			page 13
+
+
+ 685 0034 01       		.byte	0x1
+ 686 0035 49       		.uleb128 0x49
+ 687 0036 13       		.uleb128 0x13
+ 688 0037 01       		.uleb128 0x1
+ 689 0038 13       		.uleb128 0x13
+ 690 0039 00       		.byte	0
+ 691 003a 00       		.byte	0
+ 692 003b 06       		.uleb128 0x6
+ 693 003c 21       		.uleb128 0x21
+ 694 003d 00       		.byte	0
+ 695 003e 49       		.uleb128 0x49
+ 696 003f 13       		.uleb128 0x13
+ 697 0040 2F       		.uleb128 0x2f
+ 698 0041 05       		.uleb128 0x5
+ 699 0042 00       		.byte	0
+ 700 0043 00       		.byte	0
+ 701 0044 07       		.uleb128 0x7
+ 702 0045 34       		.uleb128 0x34
+ 703 0046 00       		.byte	0
+ 704 0047 03       		.uleb128 0x3
+ 705 0048 0E       		.uleb128 0xe
+ 706 0049 3A       		.uleb128 0x3a
+ 707 004a 0B       		.uleb128 0xb
+ 708 004b 3B       		.uleb128 0x3b
+ 709 004c 0B       		.uleb128 0xb
+ 710 004d 49       		.uleb128 0x49
+ 711 004e 13       		.uleb128 0x13
+ 712 004f 3F       		.uleb128 0x3f
+ 713 0050 0C       		.uleb128 0xc
+ 714 0051 02       		.uleb128 0x2
+ 715 0052 0A       		.uleb128 0xa
+ 716 0053 00       		.byte	0
+ 717 0054 00       		.byte	0
+ 718 0055 08       		.uleb128 0x8
+ 719 0056 26       		.uleb128 0x26
+ 720 0057 00       		.byte	0
+ 721 0058 49       		.uleb128 0x49
+ 722 0059 13       		.uleb128 0x13
+ 723 005a 00       		.byte	0
+ 724 005b 00       		.byte	0
+ 725 005c 00       		.byte	0
+ 726              		.section	.debug_aranges,"",%progbits
+ 727 0000 14000000 		.4byte	0x14
+ 728 0004 0200     		.2byte	0x2
+ 729 0006 00000000 		.4byte	.Ldebug_info0
+ 730 000a 04       		.byte	0x4
+ 731 000b 00       		.byte	0
+ 732 000c 0000     		.2byte	0
+ 733 000e 0000     		.2byte	0
+ 734 0010 00000000 		.4byte	0
+ 735 0014 00000000 		.4byte	0
+ 736              		.section	.debug_line,"",%progbits
+ 737              	.Ldebug_line0:
+ 738 0000 58000000 		.section	.debug_str,"MS",%progbits,1
+ 738      02005200 
+ 738      00000201 
+ 738      FB0E0D00 
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccowNAj1.s 			page 14
+
+
+ 738      01010101 
+ 739              	.LASF5:
+ 740 0000 6C6F6E67 		.ascii	"long long int\000"
+ 740      206C6F6E 
+ 740      6720696E 
+ 740      7400
+ 741              	.LASF4:
+ 742 000e 756E7369 		.ascii	"unsigned int\000"
+ 742      676E6564 
+ 742      20696E74 
+ 742      00
+ 743              	.LASF13:
+ 744 001b 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 744      4320342E 
+ 744      372E3320 
+ 744      32303133 
+ 744      30333132 
+ 745 004e 616E6368 		.ascii	"anch revision 196615]\000"
+ 745      20726576 
+ 745      6973696F 
+ 745      6E203139 
+ 745      36363135 
+ 746              	.LASF16:
+ 747 0064 75696E74 		.ascii	"uint8\000"
+ 747      3800
+ 748              	.LASF9:
+ 749 006a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 749      20756E73 
+ 749      69676E65 
+ 749      6420696E 
+ 749      7400
+ 750              	.LASF6:
+ 751 007c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 751      206C6F6E 
+ 751      6720756E 
+ 751      7369676E 
+ 751      65642069 
+ 752              	.LASF1:
+ 753 0093 756E7369 		.ascii	"unsigned char\000"
+ 753      676E6564 
+ 753      20636861 
+ 753      7200
+ 754              	.LASF10:
+ 755 00a1 63686172 		.ascii	"char\000"
+ 755      00
+ 756              	.LASF7:
+ 757 00a6 6C6F6E67 		.ascii	"long int\000"
+ 757      20696E74 
+ 757      00
+ 758              	.LASF12:
+ 759 00af 646F7562 		.ascii	"double\000"
+ 759      6C6500
+ 760              	.LASF3:
+ 761 00b6 73686F72 		.ascii	"short unsigned int\000"
+ 761      7420756E 
+ 761      7369676E 
+ 761      65642069 
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccowNAj1.s 			page 15
+
+
+ 761      6E7400
+ 762              	.LASF0:
+ 763 00c9 7369676E 		.ascii	"signed char\000"
+ 763      65642063 
+ 763      68617200 
+ 764              	.LASF14:
+ 765 00d5 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Filter_Coefficients.c\000"
+ 765      6E657261 
+ 765      7465645F 
+ 765      536F7572 
+ 765      63655C50 
+ 766              	.LASF11:
+ 767 0104 666C6F61 		.ascii	"float\000"
+ 767      7400
+ 768              	.LASF2:
+ 769 010a 73686F72 		.ascii	"short int\000"
+ 769      7420696E 
+ 769      7400
+ 770              	.LASF17:
+ 771 0114 46696C74 		.ascii	"Filter_ChannelAFirCoefficients\000"
+ 771      65725F43 
+ 771      68616E6E 
+ 771      656C4146 
+ 771      6972436F 
+ 772              	.LASF8:
+ 773 0133 73697A65 		.ascii	"sizetype\000"
+ 773      74797065 
+ 773      00
+ 774              	.LASF15:
+ 775 013c 433A5C55 		.ascii	"C:\\Users\\Luke\\Desktop\\Laserschutzschaltung.cyds"
+ 775      73657273 
+ 775      5C4C756B 
+ 775      655C4465 
+ 775      736B746F 
+ 776 016b 6E5C4C61 		.ascii	"n\\Laserschutzschaltung.cydsn\000"
+ 776      73657273 
+ 776      63687574 
+ 776      7A736368 
+ 776      616C7475 
+ 777              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

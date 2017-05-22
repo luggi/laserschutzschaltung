@@ -1,0 +1,1874 @@
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"USBUART_1_Vbus_ps.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.section	.gnu.lto_.profile.d2362e9,"",%progbits
+  18 0000 789C6366 		.ascii	"x\234cf```a\200\000F\006\007q\000\001\013\000`"
+  18      60606061 
+  18      80004606 
+  18      07710001 
+  18      0B0060
+  19              		.text
+  20              		.section	.gnu.lto_.inline.d2362e9,"",%progbits
+  21 0000 789C6366 		.ascii	"x\234cf\300\016\232\2404+\003\003\0133#\003\023\323"
+  21      C00E9AA0 
+  21      342B0303 
+  21      0B332303 
+  21      13D3
+  22 0012 057E06B6 		.ascii	"\005~\006\266\005\362L 1F\006.i\240\020\333\007=\270"
+  22      05F24C20 
+  22      3146062E 
+  22      69A010DB 
+  22      073DB8
+  23 0025 10133750 		.ascii	"\020\0237Px\202\037\210b`\302/\315\314\300\312\302\310"
+  23      78821F88 
+  23      6260C22F 
+  23      CDCCC0CA 
+  23      C2C8
+  24 0037 08348481 		.ascii	"\0104\204\201\031n(\220\301\002R\307\202i\031\003\000"
+  24      196E2890 
+  24      C10252C7 
+  24      82691903 
+  24      00
+  25 0048 65DB0CAD 		.ascii	"e\333\014\255"
+  26              		.text
+  27              		.section	.gnu.lto_.jmpfuncs.d2362e9,"",%progbits
+  28 0000 789C6366 		.ascii	"x\234cf\300\016\244\2414+\0203\202\021\003\023\204b"
+  28      C00EA4A1 
+  28      342B1033 
+  28      82110313 
+  28      8462
+  29 0012 666464AC 		.ascii	"fdd\254g\0012\000\0107\000\262"
+  29      67013200 
+  29      083700B2 
+  30              		.text
+  31              		.section	.gnu.lto_.pureconst.d2362e9,"",%progbits
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 2
+
+
+  32 0000 789C6366 		.ascii	"x\234cf``\340f\200\000V\006)F)&)f)\026)\000\004\026"
+  32      6060E066 
+  32      80005606 
+  32      29462926 
+  32      29662916 
+  33 0018 00A0     		.ascii	"\000\240"
+  34              		.text
+  35              		.section	.gnu.lto_USBUART_1_Vbus_ps_Read.d2362e9,"",%progbits
+  36 0000 789C6366 		.ascii	"x\234cf\300\004R@|\025\210u\201\230\221\231\201\221"
+  36      C0045240 
+  36      7C158875 
+  36      81989199 
+  36      8191
+  37 0012 69C23906 		.ascii	"i\3029\006\206F\016&FF\020\203\201\221\241\236\211\261"
+  37      86460E26 
+  37      46461083 
+  37      8191A19E 
+  37      89B1
+  38 0024 9EF125D3 		.ascii	"\236\361%\323G&\3063;\377]fT_\332\320\320\364\341\322"
+  38      4726C633 
+  38      3BFF5D66 
+  38      545FDAD0 
+  38      D0F4E1D2 
+  39 0038 CBBB0107 		.ascii	"\313\273\001\007\030\177210|fb`\324\221b\324\004\231"
+  39      187F3231 
+  39      307C6662 
+  39      60D49162 
+  39      D40499
+  40 004b C3B89C51 		.ascii	"\303\270\234Q\235\001\250\360c\313\337\353\334l-\015"
+  40      9D01A8F0 
+  40      63CBDFEB 
+  40      DC6C2D0D 
+  41 005b 0D0D0220 		.ascii	"\015\015\002 y\240\304\012F6F \275^\350@\303\377\377"
+  41      79A0C40A 
+  41      46364620 
+  41      BD5EE840 
+  41      C3FFFF
+  42 006e 9B971FDC 		.ascii	"\233\227\037\334\300\310\314\304\000\322\316\360\004"
+  42      C0C8CCC4 
+  42      00D2CEF0 
+  42      04
+  43 007b 48806C7A 		.ascii	"H\200lz\312\304\004\242\231o1\036\372\326\365/\004\244"
+  43      CAC404A2 
+  43      996F311E 
+  43      FAD6F52F 
+  43      04A4
+  44 008d E33B13C8 		.ascii	"\343;\023\310\326\275m\375S\330_0\375db|s\242\261\201"
+  44      D6BD6DFD 
+  44      53D85F30 
+  44      FD64627C 
+  44      73A2B181 
+  45 00a1 0564FEFD 		.ascii	"\005d\376\375'\347/r\200\205\030@\334\346E\247w0\315"
+  45      27E72F72 
+  45      80851840 
+  45      DCE645A7 
+  45      7730CD
+  46 00b4 659CDDD8 		.ascii	"e\234\335\330\322x@\346'\023\023\343JF)\306U\214@\027"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 3
+
+
+  46      D27840E6 
+  46      271313E3 
+  46      4A4629C6 
+  46      558C4017 
+  47 00c8 31AE669C 		.ascii	"1\256f\234\313\310p\217\261\261\201\033j \330FF\220"
+  47      CBC8708F 
+  47      B1B1811B 
+  47      6A20D846 
+  47      4690
+  48 00da 4D40A6B6 		.ascii	"M@\246\266{j^jQbIjJ|p~iQrjL@p\276\263iLh\260S\250cP"
+  48      7B6A5E6A 
+  48      5162496A 
+  48      4A7C707E 
+  48      6951726A 
+  49 00fb 48BC617C 		.ascii	"H\274a|XRiq|A\261^2\003\000f\245]\330"
+  49      58526971 
+  49      7C41B15E 
+  49      32030066 
+  49      A55DD8
+  50              		.text
+  51              		.section	.gnu.lto_USBUART_1_Vbus_ps_InterruptEnable.d2362e9,"",%progbits
+  52 0000 789C7D90 		.ascii	"x\234}\220?H\033a\030\306\337\347\275\\zb\021)\270d"
+  52      3F481B61 
+  52      18C6DFE7 
+  52      BD5C7A62 
+  52      1129B864 
+  53 0014 75105184 		.ascii	"u\020Q\204\016\335\272\250CWi\214S T\275\301E%&\243"
+  53      0EDDBAA8 
+  53      4357698C 
+  53      532054BD 
+  53      C1452526 
+  54 0029 F89D4690 		.ascii	"\370\235F\220\016\"\241\203\240\221v(\266j\325\220\340"
+  54      0E22A183 
+  54      A0917628 
+  54      B66AD590 
+  54      E0
+  55 003a 269C6E41 		.ascii	"&\234nAQJ\241\001\221\266\024\205\272\210\022\251\275"
+  55      514AA101 
+  55      91B61485 
+  55      BA8812A9 
+  55      BD
+  56 004b 8A5EDFEF 		.ascii	"\212^\337\357\256S\205\036|\367\375\341y~\357\363\276"
+  56      AE53851E 
+  56      7CF7FDE1 
+  56      797EEFF3 
+  56      BE
+  57 005c 06DDFF62 		.ascii	"\006\335\377b\262\252 z*;\014\002\317\035\0209\026\003"
+  57      B2AA207A 
+  57      2A3B0C02 
+  57      CF1D1039 
+  57      1603
+  58 006e FA40A009 		.ascii	"\372@\240\011\306\004\316\370\2221\347\256\316\327\267"
+  58      C604CEF8 
+  58      9231E7AE 
+  58      CED7B7
+  59 007d BC554A5D 		.ascii	"\274UJ]\344\017\235\036\027\036\023\3258\344`\031-$"
+  59      E40F9D1E 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 4
+
+
+  59      171E13D5 
+  59      38E46019 
+  59      2D24
+  60 008f A2EAD9EF 		.ascii	"\242\352\331\357#\323\350\200>\237V\312\257\214\346"
+  60      23D3E880 
+  60      3E9F56CA 
+  60      AF8CE6
+  61 009e 374A4D7E 		.ascii	"7JM~\273\331J\272\316ku\347\373\342\002\336\301\020"
+  61      BBD94ABA 
+  61      CE6B75E7 
+  61      FBE202DE 
+  61      C110
+  62 00b0 23DA6368 		.ascii	"#\332ch\215\375\015\"\372\313\334m\265>\232\223\002"
+  62      8DFD0D22 
+  62      FACBDC6D 
+  62      B53E9A93 
+  62      02
+  63 00c1 8D788FE6 		.ascii	"\215x\217\346\220\215\025D%\037\364\313\306#W\371~i"
+  63      908D1544 
+  63      251FF4CB 
+  63      C62357F9 
+  63      7E69
+  64 00d3 7BE70E96 		.ascii	"{\347\016\226d\225\227\010y\314\246\376\021\235\310"
+  64      64959708 
+  64      79CCA6FE 
+  64      119DC8
+  65 00e2 D2A14FE5 		.ascii	"\322\241O\345\"\273q\214)\327+B\003\256\331\020\376"
+  65      22BB718C 
+  65      29D72B42 
+  65      03AED910 
+  65      FE
+  66 00f3 D2A7D975 		.ascii	"\322\247\331u\036\277Q3\312\362X\002h\354*\306\305\035"
+  66      1EBF5133 
+  66      CAF25802 
+  66      68EC2AC6 
+  66      C51D
+  67 0105 A1CFE0A0 		.ascii	"\241\317\340\240\2220ELG\330\375\371\362\374\272.4G"
+  67      9230454C 
+  67      47D8FDF9 
+  67      F2FCBA2E 
+  67      3447
+  68 0117 C43C5D29 		.ascii	"\304<])\227\353~\260\307\346b\305Q\021\235\367\353\311"
+  68      97EB7EB0 
+  68      C7E662C5 
+  68      51119DF7 
+  68      EBC9
+  69 0129 E1472B78 		.ascii	"\341G+x\012\342\237\317\224\366\255\002\026\234\234"
+  69      0AE29FCF 
+  69      94F6AD02 
+  69      169C9C
+  70 0138 F418C51A 		.ascii	"\364\030\305\032b\370\000i\017\353(@\210SW\321\020g"
+  70      62F80069 
+  70      0FEB2840 
+  70      885357D1 
+  70      1067
+  71 014a 86C4BDEF 		.ascii	"\206\304\275\357\277j\017\265\235\033\011\033\242\224"
+  71      BF6A0FB5 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 5
+
+
+  71      9D1B091B 
+  71      A294
+  72 0158 A2F920EE 		.ascii	"\242\371 \356\377`\233\002\023\004\035#\347\3366i5\375"
+  72      FF609B02 
+  72      13041D23 
+  72      E7DE3669 
+  72      35FD
+  73 016a DBDA839A 		.ascii	"\333\332\203\232\036\007\212\322\232\364\342\261E_\340"
+  73      1E078AD2 
+  73      9AF4E2B1 
+  73      455FE0
+  74 0179 B8BE1988 		.ascii	"\270\276\031\210I\017\012z@\242i{f\017\333\351\027\031"
+  74      490F0A7A 
+  74      40A2697B 
+  74      660FDBE9 
+  74      1719
+  75 018b 7B30151F 		.ascii	"{0\025\037\311\246\007\354dO|\244\373I2\021\357Jt>\357"
+  75      C9A607EC 
+  75      644F7CA4 
+  75      FB493211 
+  75      EF4A743E 
+  76 01a0 4D3D4EF5 		.ascii	"M=N\365\365g\307R\243c\035\003\32404\234\261\323\351"
+  76      F567C752 
+  76      A3631D03 
+  76      D430349C 
+  76      B1D3E9
+  77 01b3 EC68269E 		.ascii	"\354h&\236\021\307\037\010@\271\275"
+  77      11C71F08 
+  77      40B9BD
+  78              		.text
+  79              		.section	.gnu.lto_USBUART_1_Vbus_ps_InterruptDisable.d2362e9,"",%progbits
+  80 0000 789C7D90 		.ascii	"x\234}\220MHTa\024\206\317{\356\314\355\306\200H\013"
+  80      4D485461 
+  80      1486CF7B 
+  80      EECCEDC6 
+  80      80480B
+  81 0013 1966D362 		.ascii	"\031f\323b\026\022\212\340\302\235\033\013t+M\323J\030"
+  81      16128AE0 
+  81      C29D1B0B 
+  81      742B4DD3 
+  81      4A18
+  82 0025 D2EEA28D 		.ascii	"\322\356\242\215\3128\263\024\277\321\253\210\013Qq"
+  82      CA38B314 
+  82      BFD1AB88 
+  82      0B5171
+  83 0034 31E40FB4 		.ascii	"1\344\017\264\210\374K\215\246\375\245\2058\020\206"
+  83      88FC4B8D 
+  83      A6FDA585 
+  83      381086
+  84 0043 180DA895 		.ascii	"\030\015\250\225\220\206\266\250d \273\211\214\347\273"
+  84      9086B6A8 
+  84      6420BB89 
+  84      8CE7BB
+  85 0052 D795411F 		.ascii	"\327\225A\037|\177\207\363>\347=\307\240\177WL\366\036"
+  85      7C7F87F3 
+  85      3EE73DC7 
+  85      A07F574C 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 6
+
+
+  85      F61E
+  86 0064 889AE586 		.ascii	"\210\232\345\206A\340\211-\242\234\305\200~\020h\200"
+  86      41E0892D 
+  86      A29CC580 
+  86      7E106880 
+  87 0074 3180133E 		.ascii	"1\200\023>eL\270\313\371H\355s\245\324\257\3017\321"
+  87      654CB8CB 
+  87      F948ED73 
+  87      A5D4AFC1 
+  87      37D1
+  88 0086 E1A8C744 		.ascii	"\341\250\307De\0160x\201Z\222\234\322\311\337\335\260"
+  88      650E3078 
+  88      815A929C 
+  88      D2C9DFDD 
+  88      B0
+  89 0097 D100FD3E 		.ascii	"\321\000\375>*\026\246\215\3703\245\006\017\226\276"
+  89      2A16A68D 
+  89      F833A506 
+  89      0F96BE
+  90 00a6 6E44545E 		.ascii	"nDT^9\007\225\312mO\330\0130D\211\372\030\356\304\256"
+  90      390795CA 
+  90      6D4FD80B 
+  90      304489FA 
+  90      18EEC4AE 
+  91 00ba 8C88E0D4 		.ascii	"\214\210\340\324\271(ELG\012Tc\021\361\000\216%\230"
+  91      B928454C 
+  91      470A5463 
+  91      11F1008E 
+  91      2598
+  92 00cc E20F3AB2 		.ascii	"\342\017:\262v\313U\225J\371\303\344f\035,1+\241\020"
+  92      76CB5595 
+  92      4AF9C3E4 
+  92      661D2C31 
+  92      2BA110
+  93 00df 79CC617D 		.ascii	"y\314a}\020\035\312\326\256\217\344#\267\261\217!\267"
+  93      101DCAD6 
+  93      AE8FE423 
+  93      B7B18F21 
+  93      B7
+  94 00f0 3452A309 		.ascii	"4R\243\011glH\201\371\235\361U\356?W\243\312\362X\034"
+  94      676C4881 
+  94      F99DF155 
+  94      EE3F57A3 
+  94      CAF2581C 
+  95 0104 68EE32FA 		.ascii	"h\3562\372E\035\242\217`\277\2240%\231v\361\366\367"
+  95      451DA28F 
+  95      60BF9430 
+  95      259976F1 
+  95      F6F7
+  96 0116 D8B7A7F3 		.ascii	"\330\267\247\363\010\324!Q\017\027\013\205\233\307\354"
+  96      08D42151 
+  96      0F170B85 
+  96      9BC7EC
+  97 0125 7178B698 		.ascii	"qx\266\230S!\355\370\313\341\373m\313\017\371\015\374"
+  97      5321EDF8 
+  97      CBE1FB6D 
+  97      CB0FF90D 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 7
+
+
+  97      FC
+  98 0136 187DFDCE 		.ascii	"\030}\375\316\232\303L\316\201\307&V\020\303KH\203X"
+  98      9AC34CCE 
+  98      81C72656 
+  98      10C34B48 
+  98      8358
+  99 0148 C51C0439 		.ascii	"\305\034\0049\364\307\014p\341\200\270\270\225\377^"
+  99      F4C70C70 
+  99      E180B8B8 
+  99      95FF5E
+ 100 0157 A5E5E64F 		.ascii	"\245\345\346O\020\326$U\312N\371%\377G[\027\2320h\037"
+ 100      10D62455 
+ 100      CA4EF925 
+ 100      FF475B17 
+ 100      9A30681F 
+ 101 016b 8EBBB7E1 		.ascii	"\216\273\267\341\333\246\353\335\335(\353\211\340\225"
+ 101      DBA6EBDD 
+ 101      DD28EB89 
+ 101      E095
+ 102 0179 7427ED78 		.ascii	"t'\355xl\321g\344\334O\255~2\351YA\317Hr\352\332\354"
+ 102      6CD167E4 
+ 102      DC4FAD7E 
+ 102      32E95941 
+ 102      CF4872EA 
+ 103 018f 6E3BFD28 		.ascii	"n;\375(c?N%z\262\351.\273\243=\321s\257\251#\231\270"
+ 103      633F4E25 
+ 103      7AB2E92E 
+ 103      BBA33DD1 
+ 103      73AFA923 
+ 104 01a5 9B6CB9FF 		.ascii	"\233l\271\377 \325\230z\330\231\355K\365\3665tQ\325"
+ 104      20D5987A 
+ 104      D899ED4B 
+ 104      F5F63574 
+ 104      51D5
+ 105 01b7 93EE8C9D 		.ascii	"\223\356\214\235Ng{3\211\214(.\001`\215\271\326"
+ 105      4E677B33 
+ 105      898C282E 
+ 105      01608DB9 
+ 105      D6
+ 106              		.text
+ 107              		.section	.gnu.lto_USBUART_1_Vbus_ps_WriteMask.d2362e9,"",%progbits
+ 108 0000 789C6590 		.ascii	"x\234e\220K(\204Q\024\307\317\377|f2\021\262\232\276"
+ 108      4B288451 
+ 108      14C7CFFF 
+ 108      7C663211 
+ 108      B29ABE
+ 109 0013 BD245214 		.ascii	"\275$R\024\266\036\311V\306X\251i\214Y\211\221a\355"
+ 109      B61EC956 
+ 109      C658A969 
+ 109      8C598991 
+ 109      61ED
+ 110 0025 FB185616 		.ascii	"\373\030V\026\224\344\321\244\274\237\243\311Bb\361"
+ 110      94E4D1A4 
+ 110      BC9FA3C9 
+ 110      4262F1
+ 111 0034 6567631A 		.ascii	"egc\032iH\343\261\030EI\036\2131\013\215s\315\322\255"
+ 111      6948E3B1 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 8
+
+
+ 111      1845491E 
+ 111      8B310B8D 
+ 111      73CDD2AD 
+ 112 0048 DB39F7F4 		.ascii	"\3339\367\364\377\377\356\377^\215\376/]v+\210j\245"
+ 112      FFFFEEFF 
+ 112      5E8DFE2F 
+ 112      5D762B88 
+ 112      6AA5
+ 113 005a 4223F0F4 		.ascii	"B#\360\364\005\221\231\317\200j\0104\312\030\305\013"
+ 113      059199CF 
+ 113      806A0834 
+ 113      CA18C50B 
+ 114 006a 7F30A6AD 		.ascii	"\1770\246\255\335\371\202\362u\3030\336?\217\235\023"
+ 114      DDF982F2 
+ 114      75C330DE 
+ 114      3F8F9D13 
+ 115 007a CE0C137D 		.ascii	"\316\014\023}q\016\203M\224\213d%\371\224\326\264j\220"
+ 115      710E834D 
+ 115      948B6425 
+ 115      F994D6B4 
+ 115      6A90
+ 116 008c F457B38F 		.ascii	"\364W\263\217w\216\262U\303\030\263n\"F#2\302\334\202"
+ 116      778EB255 
+ 116      C318B36E 
+ 116      22462332 
+ 116      C2DC82
+ 117 009f 260E54E9 		.ascii	"&\016T\351\250\320I\006\204m\224)\361G\350\347\272\300"
+ 117      A8D04906 
+ 117      846D9429 
+ 117      F147E8E7 
+ 117      BAC0
+ 118 00b1 1E127649 		.ascii	"\036\022vI\216\211\035\330%\026\035\224ZF6{\370:\263"
+ 118      8E891DD8 
+ 118      25161D94 
+ 118      5A46367B 
+ 118      F83AB3
+ 119 00c4 D5001BA0 		.ascii	"\325\000\033\240\364\234sQJt*\344\023\263\252\332-\306"
+ 119      F49C7351 
+ 119      4A742AE4 
+ 119      13B3AADA 
+ 119      2DC6
+ 120 00d6 BF2713E1 		.ascii	"\277'\023\341zeM3\247\205\312\210/n\214\027?\263\272"
+ 120      7A654D33 
+ 120      A785CA88 
+ 120      2F6E8C17 
+ 120      3FB3BA
+ 121 00e9 9CB00B9D 		.ascii	"\234\260\013\235\022\340?\266 DD\2678\233\213\276E\035"
+ 121      12E03FB6 
+ 121      204444B7 
+ 121      389B8BBE 
+ 121      451D
+ 122 00fb 6A26F2E5 		.ascii	"j&\362\345\265\243\323B%\347\251s\323\310S\321\036R"
+ 122      B5A3D342 
+ 122      25E7A973 
+ 122      D3C853D1 
+ 122      1E52
+ 123 010d B178FEDF 		.ascii	"\261x\376\337\210\324\3612\226\\(\012c\311\014\231\226"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 9
+
+
+ 123      88D4F132 
+ 123      965C280A 
+ 123      63C90C99 
+ 123      96
+ 124 011e 2DC31AF6 		.ascii	"-\303\032\366\240c_\300\204\010\302P\314{\230\326I\233"
+ 124      A0635FC0 
+ 124      8408C250 
+ 124      CC7B98D6 
+ 124      499B
+ 125 0130 22AAAF49 		.ascii	"\"\252\257I\3113%\236\270+\333\374\003\376!\357\260"
+ 125      C933259E 
+ 125      B82BDBFC 
+ 125      03FE21EF 
+ 125      B0
+ 126 0141 BFD7E30A 		.ascii	"\277\327\343\012\214\014\371\374\335\355\256@K]\267"
+ 126      8C0CF9FC 
+ 126      DDEDAE40 
+ 126      4B5DB7
+ 127 0150 DBD5EC6E 		.ascii	"\333\325\354n\352\350\364\324x\272zF\202\236\301`\265"
+ 127      EAE8F4D4 
+ 127      78BA7A46 
+ 127      829EC160 
+ 127      B5
+ 128 0161 8FF2FABD 		.ascii	"\217\362\372\275\301\276_\204\354\201\322"
+ 128      C1BE5F84 
+ 128      EC81D2
+ 129              		.text
+ 130              		.section	.gnu.lto_USBUART_1_Vbus_ps_ReadMask.d2362e9,"",%progbits
+ 131 0000 789C6366 		.ascii	"x\234cf\300\004R@|\035\210u\201\230\221\231\201\221"
+ 131      C0045240 
+ 131      7C1D8875 
+ 131      81989199 
+ 131      8191
+ 132 0012 69C23906 		.ascii	"i\3029\006\206F\016&FF\020\203\201\221\241\236\211\261"
+ 132      86460E26 
+ 132      46461083 
+ 132      8191A19E 
+ 132      89B1
+ 133 0024 9EF125D3 		.ascii	"\236\361%\323G&\3063;\377]fT_\332\320\320\364\341\321"
+ 133      4726C633 
+ 133      3BFF5D66 
+ 133      545FDAD0 
+ 133      D0F4E1D1 
+ 134 0038 FE3BDCAD 		.ascii	"\376;\334\255\022?\231\030\030>310\352H1j\202\314a\\"
+ 134      123F9918 
+ 134      183E3331 
+ 134      30EA4831 
+ 134      6A82CC61 
+ 135 004d CEA8CE00 		.ascii	"\316\250\316\000T\370\261\345\357un\266\226\206\206"
+ 135      54F8B1E5 
+ 135      EF756EB6 
+ 135      968686
+ 136 005c 0601903C 		.ascii	"\006\001\220<Pb\005#\033#\220^/t\240\341\377\377\317"
+ 136      50620523 
+ 136      1B23905E 
+ 136      2F74A0E1 
+ 136      FFFFCF
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 10
+
+
+ 137 006f FF27AE50 		.ascii	"\377'\256Pbbfb\000\351gx\002$@V=eb\002\321\314\267\030"
+ 137      62626662 
+ 137      00E96778 
+ 137      02244056 
+ 137      3D656202 
+ 138 0087 0F7DEB3A 		.ascii	"\017}\353:\266\202\013\244\347;\023\310\336\371K\266"
+ 138      B6820BA4 
+ 138      E73B13C8 
+ 138      DEF94BB6 
+ 139 0097 EFE179C1 		.ascii	"\357\341y\301\364\223\211\261\347dc\003\013\310\206"
+ 139      F49389B1 
+ 139      E7646303 
+ 139      0BC886
+ 140 00a6 FB4FCE5F 		.ascii	"\373O\316_\344\000\0131\200\270\227\316\337\231\311"
+ 140      E4000B31 
+ 140      80B897CE 
+ 140      DF99C9
+ 141 00b5 37977176 		.ascii	"7\227qvcK\343\001\231\237LL\214+\031\245\030W1\002\335"
+ 141      634BE301 
+ 141      999F4C4C 
+ 141      8C2B19A5 
+ 141      18573102 
+ 142 00ca C4B89A71 		.ascii	"\304\270\232q.#\303=\306\306\006n\250\201`+\031AV\001"
+ 142      2E23C33D 
+ 142      C6C6066E 
+ 142      A881602B 
+ 142      19415601 
+ 143 00de 99DAEEA9 		.ascii	"\231\332\356\251y\251E\211%\251)\361\301\371\245E\311"
+ 143      79A94589 
+ 143      25A929F1 
+ 143      C1F9A545 
+ 143      C9
+ 144 00ef A93101C1 		.ascii	"\2511\001\301\371\316\2461\241\301N\241\216A!\361\206"
+ 144      F9CEA631 
+ 144      A1C14EA1 
+ 144      8E4121F1 
+ 144      86
+ 145 0100 F16149A5 		.ascii	"\361aI\245\305\361\005\305z\311\014\000\336*^o"
+ 145      C5F105C5 
+ 145      7AC90C00 
+ 145      DE2A5E6F 
+ 146              		.text
+ 147              		.section	.gnu.lto_.symbol_nodes.d2362e9,"",%progbits
+ 148 0000 789C55C7 		.ascii	"x\234U\307\261\015\2000\014\005\321\263\235Dl\3753\002"
+ 148      B10D8030 
+ 148      0C05D1B3 
+ 148      9D446CFD 
+ 148      3302
+ 149 0012 153505A3 		.ascii	"\0255\005\243P3\003,\202\210\224\024\344\232\323\013"
+ 149      5033032C 
+ 149      82889414 
+ 149      E49AD30B 
+ 150 0022 6065E4A8 		.ascii	"`e\344\250\351\002\211m_p\223Mv\371\344PLNJ\177[Q\356"
+ 150      E902896D 
+ 150      5F70934D 
+ 150      76F9E450 
+ 150      4C4E4A7F 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 11
+
+
+ 151 0039 A6D6C6AC 		.ascii	"\246\326\306\254\362cX\341\270_\013\313\234O\273\017"
+ 151      F26358E1 
+ 151      B85F0BCB 
+ 151      9C4FBB0F 
+ 152 0049 7B371F8F 		.ascii	"{7\037\217(&\205"
+ 152      282685
+ 153              		.text
+ 154              		.section	.gnu.lto_.refs.d2362e9,"",%progbits
+ 155 0000 789C6366 		.ascii	"x\234cf```d\200\002\000\000=\000\005"
+ 155      60606064 
+ 155      80020000 
+ 155      3D0005
+ 156              		.text
+ 157              		.section	.gnu.lto_.decls.d2362e9,"",%progbits
+ 158 0000 789C9D93 		.ascii	"x\234\235\223]L\023Y\024\307\357\351\235-0\324u_DSM"
+ 158      5D4C1359 
+ 158      14C7EFE9 
+ 158      9D2D30D4 
+ 158      755F4453 
+ 159 0015 847D3031 		.ascii	"\204}01KL|\330\304\354\213\037\225\250\311j\210\310"
+ 159      4B4C7CD8 
+ 159      C4EC8B1F 
+ 159      95A8C96A 
+ 159      88C8
+ 160 0027 EE83264D 		.ascii	"\356\203&M\251\023m$\205\264C\"oW\304\025PI5\256\242"
+ 160      A9136D24 
+ 160      85B44322 
+ 160      6F57C415 
+ 160      504935AE 
+ 161 003c 466417C1 		.ascii	"Fd\027\301\017T\212\010R(R@+\033\343W\254&\352\203("
+ 161      0F548A08 
+ 161      52285240 
+ 161      2B1BE357 
+ 161      AC26EA83 
+ 162 0051 8931C68D 		.ascii	"\2111\306\2155*\221\3701\236{gj\307\362\021\343M\316"
+ 162      352A91F8 
+ 162      319E7B67 
+ 162      6AC7F211 
+ 162      E34DCE
+ 163 0064 CCDC99FF 		.ascii	"\314\334\231\377\371\375\317\271w.%\204\250@\210\206"
+ 163      F9FDCFB9 
+ 163      772E2584 
+ 163      A8408886 
+ 164 0074 E3378990 		.ascii	"\3437\211\220\245\370l\305w\371$9\3220\3320.`tbtc\204"
+ 164      A5F86CC5 
+ 164      77F92439 
+ 164      D230DA30 
+ 164      2E607462 
+ 165 008b 312E6144 		.ascii	"1.aD\310\370\301\265\024\243\005\343\012\306\240\361"
+ 165      C8F8C1B5 
+ 165      14A305E3 
+ 165      0AC6A0F1 
+ 166 009b 1E8C6FA9 		.ascii	"\036\214o\251\203s3\014O\236\223\205\021\305h5\345_"
+ 166      8373330C 
+ 166      4F9E9385 
+ 166      11C56835 
+ 166      E55F
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 12
+
+
+ 167 00ad C5E832F4 		.ascii	"\305\3502\364\324\310\211\0305\244\216\316\357\340u"
+ 167      D4C88918 
+ 167      35A48ECE 
+ 167      EFE075
+ 168 00bc 4EC1E3FD 		.ascii	"N\301\343\375J&^jO\335\023\344\204\247X\203\360\004"
+ 168      4A265E6A 
+ 168      4FDD13E4 
+ 168      84A75883 
+ 168      F004
+ 169 00ce FA5716B8 		.ascii	"\372W\026\270\327\267sg:\265\000\177n\254{\034\223s"
+ 169      D7B77367 
+ 169      3AB5007F 
+ 169      6EAC7B1C 
+ 169      9373
+ 170 00e0 4F33C6AA 		.ascii	"O3\306\252X$\002I\321\266\346\236\335i\317,\220%\213"
+ 170      58240249 
+ 170      D1B6E69E 
+ 170      DD69CF2C 
+ 170      90258B
+ 171 00f3 69EDB5C3 		.ascii	"i\355\265\303\375TL5\236g\271\177\177\377\030\005y^"
+ 171      FD544C35 
+ 171      9E67B97F 
+ 171      7FFF1805 
+ 171      795E
+ 172 0105 1563152C 		.ascii	"\025c\025,\276\217\321Y\004r\3550\337N\340\014\314C"
+ 172      BE8FD159 
+ 172      0472ED30 
+ 172      DF4EE00C 
+ 172      CC43
+ 173 0117 199C845C 		.ascii	"\031\234\204\\\002\247\300\016\247\301N\216\243A\374"
+ 173      02A7C00E 
+ 173      A7C14E8E 
+ 173      A341FC
+ 174 0126 58ECC11C 		.ascii	"X\354\301\034\306$h\001\031N\000\025\012,\224;\030\246"
+ 174      C6246801 
+ 174      194E0015 
+ 174      0A2C943B 
+ 174      18A6
+ 175 0138 A1736FAE 		.ascii	"\241so\256g\242\313\217r6\237v\357\033\252\263\342\324"
+ 175      67A2CB8F 
+ 175      72369F76 
+ 175      EF1BAAB3 
+ 175      E2D4
+ 176 014a 264B7C5A 		.ascii	"&K|Z]\031\2443\377F\022\013lg?\351\234\263hp\016\015"
+ 176      5D19A433 
+ 176      FF46120B 
+ 176      6C673FE9 
+ 176      9CB36870 
+ 177 0160 08B4C24C 		.ascii	"\010\264\302L\274\256\227tR\355\320\345\027\224.\024"
+ 177      BCAE9774 
+ 177      52EDD0E5 
+ 177      17942E14 
+ 178 0170 3DFE13AD 		.ascii	"=\376\023\255\036\223\263\353YC0^\327x\207\036b\015"
+ 178      1E93B3EB 
+ 178      5943305E 
+ 178      D778871E 
+ 178      620D
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 13
+
+
+ 179 0182 15EC9386 		.ascii	"\025\354\223\206}\360\034\010~\251\204\360g}\361\332"
+ 179      7DF01C08 
+ 179      7EA984F0 
+ 179      677DF1DA 
+ 180 0192 201B137B 		.ascii	" \033\023{\336?\211If\307\374,\223\341\371\257\014\217"
+ 180      DE3F8949 
+ 180      66C7FC2C 
+ 180      93E1F9AF 
+ 180      0C8F
+ 181 01a4 9C08DCB2 		.ascii	"\234\010\334\262QU\030\016j{\377\002a8<v\306:\304\""
+ 181      5155180E 
+ 181      6A7BFF02 
+ 181      61383C76 
+ 181      C63AC422 
+ 182 01b8 9AB698CB 		.ascii	"\232\266\230\313\241\335\344\325\236\360\272 \274B\333"
+ 182      A1DDE4D5 
+ 182      9EF0BA20 
+ 182      BC42DB
+ 183 01c7 DEBD4EA7 		.ascii	"\336\275N\247\007@\000\352\366\334\256\234.\000\015"
+ 183      074000EA 
+ 183      F6DCAE9C 
+ 183      2E000D
+ 184 01d6 271BCD80 		.ascii	"'\033\315\200\016\023\240#\001\350\024\200\300\216\376"
+ 184      0E13A023 
+ 184      01E81480 
+ 184      C08EFE
+ 185 01e5 80245970 		.ascii	"\200$Yp\316\327e\275X\261\267\332\343&\313\244\015t"
+ 185      CED765BD 
+ 185      58B1B7DA 
+ 185      E326CBA4 
+ 185      0D74
+ 186 01f7 89062E82 		.ascii	"\211\006.\202\321A\375\377\373\237\332hH\257\340e\323"
+ 186      D141FDFF 
+ 186      FB9FDA68 
+ 186      48AFE065 
+ 186      D3
+ 187 0208 40344DAF 		.ascii	"@4M\257\340\346\227\0120\001B\246\012B\211\012\272E"
+ 187      E0E6970A 
+ 187      300142A6 
+ 187      0A42890A 
+ 187      BA45
+ 188 021a 05C7BA5A 		.ascii	"\005\307\272Z;l\364\256\016x\366tw\263\276\350\303\237"
+ 188      3B6CF4AE 
+ 188      0E78F674 
+ 188      77B3BEE8 
+ 188      C39F
+ 189 022c 46944825 		.ascii	"F\224H%\373\240iT_\361\036\023\242'\201\010\013\304"
+ 189      FBA06954 
+ 189      5FF11E13 
+ 189      A2278108 
+ 189      0BC4
+ 190 023e 8BB36DC1 		.ascii	"\213\263m\301L\032\327\021\215\201\360C+\"\206\331\255"
+ 190      4C1AD711 
+ 190      8D81F043 
+ 190      2B2286D9 
+ 190      AD
+ 191 024f DAFF9481 		.ascii	"\332\377\224\201\004\202W\321kB\364&\020\227\004\342"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 14
+
+
+ 191      048257D1 
+ 191      6B42F426 
+ 191      109704E2 
+ 192 025f E6F3D143 		.ascii	"\346\363\321C2m\326\177\357G-M\305\2020\374q$I\340E"
+ 192      326DD67F 
+ 192      EF472D4D 
+ 192      C58230FC 
+ 192      712449E0 
+ 193 0274 F499087D 		.ascii	"\364\231\010}\011BD\020\330\301]\307\323i\257N\350\030"
+ 193      09424410 
+ 193      D8C15DC7 
+ 193      D369AF4E 
+ 193      E818
+ 194 0286 AD094D93 		.ascii	"\255\011M\223\3617\337\376\015\2779\036\214\330\215"
+ 194      F137DFFE 
+ 194      0DBF391E 
+ 194      8CD88D
+ 195 0295 9A7B19FA 		.ascii	"\232{\031\372\301H\315\270<\351\301x7\262\262\222-\201"
+ 195      C148CDB8 
+ 195      3CE9C178 
+ 195      37B2B292 
+ 195      2D81
+ 196 02a7 41DCB8FE 		.ascii	"A\334\270\376\344\301\030\200\344\311\210]\253xHm5\374"
+ 196      E4C11880 
+ 196      E4C9885D 
+ 196      AB78486D 
+ 196      35FC
+ 197 02b9 B4E14E66 		.ascii	"\264\341Nf\254\024\332\344V^\001\233h\000\357(>\372"
+ 197      AC14DAE4 
+ 197      565E019B 
+ 197      6800EF28 
+ 197      3EFA
+ 198 02cb 6F7C28D3 		.ascii	"o|(\323,\346\015'\305QC\034\025\342\372\340\203\034"
+ 198      2CE60D27 
+ 198      C551431C 
+ 198      15E2FAE0 
+ 198      831C
+ 199 02dd B3B6EB2B 		.ascii	"\263\266\353+\355UC\313\357?\224y\274\352\"\353\212"
+ 199      ED5543CB 
+ 199      EF3F9479 
+ 199      BCEA22EB 
+ 199      8A
+ 200 02ee 3585D90E 		.ascii	"5\205\331\016\222\263B\361*>\227\252lt\026\224\224\371"
+ 200      92B342F1 
+ 200      2A3E97AA 
+ 200      6C741694 
+ 200      94F9
+ 201 0300 DCCA86FC 		.ascii	"\334\312\206\374\202\022\307\257\033\334\345jy\251\342"
+ 201      8212C7AF 
+ 201      1BDCE56A 
+ 201      79A9E2
+ 202 030f 5FB09964 		.ascii	"_\260\231d\025\026,+\\\272v\235s\241\363\217\2422\277"
+ 202      15162C2B 
+ 202      5CBA769D 
+ 202      73A1F38F 
+ 202      A232BF
+ 203 0322 B3D4EF5C 		.ascii	"\263\324\357\\\253\2706\3762I\3428\365\0027\311\031"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 15
+
+
+ 203      ABB836FE 
+ 203      3249E238 
+ 203      F50237C9 
+ 203      19
+ 204 0333 8F58E555 		.ascii	"\217X\345U\025\237\257\254T\315\363\272\212\212\225"
+ 204      159FAFAC 
+ 204      54CDF3BA 
+ 204      8A8A95
+ 205 0342 9FA7502C 		.ascii	"\237\247P,\367\370\271d\366x\311\237>\217\252\254v\371"
+ 205      F7F8B964 
+ 205      F678C99F 
+ 205      3E8FAAAC 
+ 205      76F9
+ 206 0354 B7D827AE 		.ascii	"\267\330'\256\221\177\232\341(\317\333\352Q\035(\365"
+ 206      917F9AE1 
+ 206      28CFDBEA 
+ 206      511D28F5 
+ 207 0364 B85DC505 		.ascii	"\270]\305\005\212[\365\224x\347NR\275\243\374wO\021"
+ 207      8A5BF594 
+ 207      78E74E52 
+ 207      BDA3FC77 
+ 207      4F11
+ 208 0376 6F1AB3B8 		.ascii	"o\032\263\270\177J\232\344S6-\372\014\2627\3366"
+ 208      7F4A9AE4 
+ 208      53362DFA 
+ 208      0CB237DE 
+ 208      36
+ 209              		.text
+ 210              		.section	.gnu.lto_.symtab.d2362e9,"",%progbits
+ 211 0000 55534255 		.ascii	"USBUART_1_Vbus_ps_Read\000\000\000\000\000\000\000\000"
+ 211      4152545F 
+ 211      315F5662 
+ 211      75735F70 
+ 211      735F5265 
+ 212 001e 00000000 		.ascii	"\000\000\000\000\261\000\000\000USBUART_1_Vbus_ps_I"
+ 212      B1000000 
+ 212      55534255 
+ 212      4152545F 
+ 212      315F5662 
+ 213 0039 6E746572 		.ascii	"nterruptEnable\000\000\000\000\000\000\000\000\000\000"
+ 213      72757074 
+ 213      456E6162 
+ 213      6C650000 
+ 213      00000000 
+ 214 0051 0000B400 		.ascii	"\000\000\264\000\000\000USBUART_1_Vbus_ps_Interrupt"
+ 214      00005553 
+ 214      42554152 
+ 214      545F315F 
+ 214      56627573 
+ 215 0072 44697361 		.ascii	"Disable\000\000\000\000\000\000\000\000\000\000\000"
+ 215      626C6500 
+ 215      00000000 
+ 215      00000000 
+ 215      0000
+ 216 0084 00B60000 		.ascii	"\000\266\000\000\000USBUART_1_Vbus_ps_WriteMask\000"
+ 216      00555342 
+ 216      55415254 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 16
+
+
+ 216      5F315F56 
+ 216      6275735F 
+ 217 00a5 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\272\000"
+ 217      00000000 
+ 217      000000BA 
+ 217      00
+ 218 00b2 00005553 		.ascii	"\000\000USBUART_1_Vbus_ps_ReadMask\000\000\000\000\000"
+ 218      42554152 
+ 218      545F315F 
+ 218      56627573 
+ 218      5F70735F 
+ 219 00d3 00000000 		.ascii	"\000\000\000\000\000\000\000\274\000\000\000CyExitC"
+ 219      000000BC 
+ 219      00000043 
+ 219      79457869 
+ 219      7443
+ 220 00e5 72697469 		.ascii	"riticalSection\000\000\002\000\000\000\000\000\000\000"
+ 220      63616C53 
+ 220      65637469 
+ 220      6F6E0000 
+ 220      02000000 
+ 221 00fd 0000BE00 		.ascii	"\000\000\276\000\000\000CyEnterCriticalSection\000\000"
+ 221      00004379 
+ 221      456E7465 
+ 221      72437269 
+ 221      74696361 
+ 222 011b 02000000 		.ascii	"\002\000\000\000\000\000\000\000\000\000\300\000\000"
+ 222      00000000 
+ 222      0000C000 
+ 222      00
+ 223 0128 00       		.ascii	"\000"
+ 224              		.text
+ 225              		.section	.gnu.lto_.opts,"",%progbits
+ 226 0000 272D666E 		.ascii	"'-fno-trapv' '-fno-strict-overflow' '-mcpu=cortex-m"
+ 226      6F2D7472 
+ 226      61707627 
+ 226      20272D66 
+ 226      6E6F2D73 
+ 227 0033 33272027 		.ascii	"3' '-mthumb' '-g' '-Og' '-ffunction-sections' '-flt"
+ 227      2D6D7468 
+ 227      756D6227 
+ 227      20272D67 
+ 227      2720272D 
+ 228 0066 6F272027 		.ascii	"o' '-ffat-lto-objects'\000"
+ 228      2D666661 
+ 228      742D6C74 
+ 228      6F2D6F62 
+ 228      6A656374 
+ 229              		.text
+ 230              		.cfi_sections	.debug_frame
+ 231              		.section	.text.USBUART_1_Vbus_ps_Read,"ax",%progbits
+ 232              		.align	2
+ 233              		.global	USBUART_1_Vbus_ps_Read
+ 234              		.thumb
+ 235              		.thumb_func
+ 236              		.type	USBUART_1_Vbus_ps_Read, %function
+ 237              	USBUART_1_Vbus_ps_Read:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 17
+
+
+ 238              	.LFB0:
+ 239              		.file 1 "Generated_Source\\PSoC5\\USBUART_1_Vbus_ps.c"
+   1:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * File Name: USBUART_1_Vbus_ps.c  
+   3:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Version 1.90
+   4:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+   5:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Description:
+   6:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  This file contains API to enable firmware to read the value of a Status 
+   7:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  Register.
+   8:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+   9:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Note:
+  10:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+  11:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** ********************************************************************************
+  12:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *******************************************************************************/
+  17:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** 
+  18:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** #include "USBUART_1_Vbus_ps.h"
+  19:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** 
+  20:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** #if !defined(USBUART_1_Vbus_ps_sts_sts_reg__REMOVED) /* Check for removal by optimization */
+  21:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** 
+  22:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** 
+  23:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** /*******************************************************************************
+  24:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Function Name: USBUART_1_Vbus_ps_Read
+  25:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** ********************************************************************************
+  26:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+  27:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Summary:
+  28:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  Reads the current value assigned to the Status Register.
+  29:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+  30:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Parameters:
+  31:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  None.
+  32:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+  33:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Return:
+  34:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  The current value in the Status Register.
+  35:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+  36:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *******************************************************************************/
+  37:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** uint8 USBUART_1_Vbus_ps_Read(void) 
+  38:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** { 
+ 240              		.loc 1 38 0
+ 241              		.cfi_startproc
+ 242              		@ args = 0, pretend = 0, frame = 0
+ 243              		@ frame_needed = 0, uses_anonymous_args = 0
+ 244              		@ link register save eliminated.
+  39:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c ****     return USBUART_1_Vbus_ps_Status;
+ 245              		.loc 1 39 0
+ 246 0000 014B     		ldr	r3, .L2
+ 247 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+  40:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** }
+ 248              		.loc 1 40 0
+ 249 0004 7047     		bx	lr
+ 250              	.L3:
+ 251 0006 00BF     		.align	2
+ 252              	.L2:
+ 253 0008 6C640040 		.word	1073767532
+ 254              		.cfi_endproc
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 18
+
+
+ 255              	.LFE0:
+ 256              		.size	USBUART_1_Vbus_ps_Read, .-USBUART_1_Vbus_ps_Read
+ 257              		.section	.text.USBUART_1_Vbus_ps_InterruptEnable,"ax",%progbits
+ 258              		.align	2
+ 259              		.global	USBUART_1_Vbus_ps_InterruptEnable
+ 260              		.thumb
+ 261              		.thumb_func
+ 262              		.type	USBUART_1_Vbus_ps_InterruptEnable, %function
+ 263              	USBUART_1_Vbus_ps_InterruptEnable:
+ 264              	.LFB1:
+  41:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** 
+  42:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** 
+  43:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** /*******************************************************************************
+  44:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Function Name: USBUART_1_Vbus_ps_InterruptEnable
+  45:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** ********************************************************************************
+  46:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+  47:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Summary:
+  48:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  Enables the Status Register interrupt.
+  49:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+  50:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Parameters:
+  51:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  None.
+  52:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+  53:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Return:
+  54:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  None.
+  55:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+  56:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *******************************************************************************/
+  57:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** void USBUART_1_Vbus_ps_InterruptEnable(void) 
+  58:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** {
+ 265              		.loc 1 58 0
+ 266              		.cfi_startproc
+ 267              		@ args = 0, pretend = 0, frame = 0
+ 268              		@ frame_needed = 0, uses_anonymous_args = 0
+ 269 0000 08B5     		push	{r3, lr}
+ 270              		.cfi_def_cfa_offset 8
+ 271              		.cfi_offset 3, -8
+ 272              		.cfi_offset 14, -4
+  59:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c ****     uint8 interruptState;
+  60:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c ****     interruptState = CyEnterCriticalSection();
+ 273              		.loc 1 60 0
+ 274 0002 FFF7FEFF 		bl	CyEnterCriticalSection
+ 275              	.LVL0:
+  61:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c ****     USBUART_1_Vbus_ps_Status_Aux_Ctrl |= USBUART_1_Vbus_ps_STATUS_INTR_ENBL;
+ 276              		.loc 1 61 0
+ 277 0006 044A     		ldr	r2, .L6
+ 278 0008 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 279 000a 43F01003 		orr	r3, r3, #16
+ 280 000e 1370     		strb	r3, [r2]
+  62:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c ****     CyExitCriticalSection(interruptState);
+ 281              		.loc 1 62 0
+ 282 0010 FFF7FEFF 		bl	CyExitCriticalSection
+ 283              	.LVL1:
+ 284 0014 08BD     		pop	{r3, pc}
+ 285              	.L7:
+ 286 0016 00BF     		.align	2
+ 287              	.L6:
+ 288 0018 9C640040 		.word	1073767580
+ 289              		.cfi_endproc
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 19
+
+
+ 290              	.LFE1:
+ 291              		.size	USBUART_1_Vbus_ps_InterruptEnable, .-USBUART_1_Vbus_ps_InterruptEnable
+ 292              		.section	.text.USBUART_1_Vbus_ps_InterruptDisable,"ax",%progbits
+ 293              		.align	2
+ 294              		.global	USBUART_1_Vbus_ps_InterruptDisable
+ 295              		.thumb
+ 296              		.thumb_func
+ 297              		.type	USBUART_1_Vbus_ps_InterruptDisable, %function
+ 298              	USBUART_1_Vbus_ps_InterruptDisable:
+ 299              	.LFB2:
+  63:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** }
+  64:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** 
+  65:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** 
+  66:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** /*******************************************************************************
+  67:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Function Name: USBUART_1_Vbus_ps_InterruptDisable
+  68:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** ********************************************************************************
+  69:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+  70:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Summary:
+  71:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  Disables the Status Register interrupt.
+  72:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+  73:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Parameters:
+  74:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  None.
+  75:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+  76:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Return:
+  77:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  None.
+  78:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+  79:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *******************************************************************************/
+  80:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** void USBUART_1_Vbus_ps_InterruptDisable(void) 
+  81:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** {
+ 300              		.loc 1 81 0
+ 301              		.cfi_startproc
+ 302              		@ args = 0, pretend = 0, frame = 0
+ 303              		@ frame_needed = 0, uses_anonymous_args = 0
+ 304 0000 08B5     		push	{r3, lr}
+ 305              		.cfi_def_cfa_offset 8
+ 306              		.cfi_offset 3, -8
+ 307              		.cfi_offset 14, -4
+  82:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c ****     uint8 interruptState;
+  83:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c ****     interruptState = CyEnterCriticalSection();
+ 308              		.loc 1 83 0
+ 309 0002 FFF7FEFF 		bl	CyEnterCriticalSection
+ 310              	.LVL2:
+  84:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c ****     USBUART_1_Vbus_ps_Status_Aux_Ctrl &= (uint8)(~USBUART_1_Vbus_ps_STATUS_INTR_ENBL);
+ 311              		.loc 1 84 0
+ 312 0006 044A     		ldr	r2, .L10
+ 313 0008 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 314 000a 03F0EF03 		and	r3, r3, #239
+ 315 000e 1370     		strb	r3, [r2]
+  85:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c ****     CyExitCriticalSection(interruptState);
+ 316              		.loc 1 85 0
+ 317 0010 FFF7FEFF 		bl	CyExitCriticalSection
+ 318              	.LVL3:
+ 319 0014 08BD     		pop	{r3, pc}
+ 320              	.L11:
+ 321 0016 00BF     		.align	2
+ 322              	.L10:
+ 323 0018 9C640040 		.word	1073767580
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 20
+
+
+ 324              		.cfi_endproc
+ 325              	.LFE2:
+ 326              		.size	USBUART_1_Vbus_ps_InterruptDisable, .-USBUART_1_Vbus_ps_InterruptDisable
+ 327              		.section	.text.USBUART_1_Vbus_ps_WriteMask,"ax",%progbits
+ 328              		.align	2
+ 329              		.global	USBUART_1_Vbus_ps_WriteMask
+ 330              		.thumb
+ 331              		.thumb_func
+ 332              		.type	USBUART_1_Vbus_ps_WriteMask, %function
+ 333              	USBUART_1_Vbus_ps_WriteMask:
+ 334              	.LFB3:
+  86:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** }
+  87:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** 
+  88:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** 
+  89:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** /*******************************************************************************
+  90:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Function Name: USBUART_1_Vbus_ps_WriteMask
+  91:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** ********************************************************************************
+  92:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+  93:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Summary:
+  94:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  Writes the current mask value assigned to the Status Register.
+  95:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+  96:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Parameters:
+  97:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  mask:  Value to write into the mask register.
+  98:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+  99:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Return:
+ 100:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  None.
+ 101:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+ 102:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *******************************************************************************/
+ 103:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** void USBUART_1_Vbus_ps_WriteMask(uint8 mask) 
+ 104:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** {
+ 335              		.loc 1 104 0
+ 336              		.cfi_startproc
+ 337              		@ args = 0, pretend = 0, frame = 0
+ 338              		@ frame_needed = 0, uses_anonymous_args = 0
+ 339              		@ link register save eliminated.
+ 340              	.LVL4:
+ 105:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c ****     #if(USBUART_1_Vbus_ps_INPUTS < 8u)
+ 106:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c ****     	mask &= ((uint8)(1u << USBUART_1_Vbus_ps_INPUTS) - 1u);
+ 341              		.loc 1 106 0
+ 342 0000 00F00100 		and	r0, r0, #1
+ 343              	.LVL5:
+ 107:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** 	#endif /* End USBUART_1_Vbus_ps_INPUTS < 8u */
+ 108:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c ****     USBUART_1_Vbus_ps_Status_Mask = mask;
+ 344              		.loc 1 108 0
+ 345 0004 014B     		ldr	r3, .L13
+ 346 0006 1870     		strb	r0, [r3]
+ 347 0008 7047     		bx	lr
+ 348              	.L14:
+ 349 000a 00BF     		.align	2
+ 350              	.L13:
+ 351 000c 8C640040 		.word	1073767564
+ 352              		.cfi_endproc
+ 353              	.LFE3:
+ 354              		.size	USBUART_1_Vbus_ps_WriteMask, .-USBUART_1_Vbus_ps_WriteMask
+ 355              		.section	.text.USBUART_1_Vbus_ps_ReadMask,"ax",%progbits
+ 356              		.align	2
+ 357              		.global	USBUART_1_Vbus_ps_ReadMask
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 21
+
+
+ 358              		.thumb
+ 359              		.thumb_func
+ 360              		.type	USBUART_1_Vbus_ps_ReadMask, %function
+ 361              	USBUART_1_Vbus_ps_ReadMask:
+ 362              	.LFB4:
+ 109:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** }
+ 110:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** 
+ 111:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** 
+ 112:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** /*******************************************************************************
+ 113:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Function Name: USBUART_1_Vbus_ps_ReadMask
+ 114:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** ********************************************************************************
+ 115:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+ 116:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Summary:
+ 117:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  Reads the current interrupt mask assigned to the Status Register.
+ 118:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+ 119:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Parameters:
+ 120:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  None.
+ 121:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+ 122:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** * Return:
+ 123:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *  The value of the interrupt mask of the Status Register.
+ 124:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *
+ 125:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** *******************************************************************************/
+ 126:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** uint8 USBUART_1_Vbus_ps_ReadMask(void) 
+ 127:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** {
+ 363              		.loc 1 127 0
+ 364              		.cfi_startproc
+ 365              		@ args = 0, pretend = 0, frame = 0
+ 366              		@ frame_needed = 0, uses_anonymous_args = 0
+ 367              		@ link register save eliminated.
+ 128:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c ****     return USBUART_1_Vbus_ps_Status_Mask;
+ 368              		.loc 1 128 0
+ 369 0000 014B     		ldr	r3, .L16
+ 370 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 129:Generated_Source\PSoC5/USBUART_1_Vbus_ps.c **** }
+ 371              		.loc 1 129 0
+ 372 0004 7047     		bx	lr
+ 373              	.L17:
+ 374 0006 00BF     		.align	2
+ 375              	.L16:
+ 376 0008 8C640040 		.word	1073767564
+ 377              		.cfi_endproc
+ 378              	.LFE4:
+ 379              		.size	USBUART_1_Vbus_ps_ReadMask, .-USBUART_1_Vbus_ps_ReadMask
+ 380              		.text
+ 381              	.Letext0:
+ 382              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 383              		.file 3 "Generated_Source\\PSoC5\\CyLib.h"
+ 384              		.section	.debug_info,"",%progbits
+ 385              	.Ldebug_info0:
+ 386 0000 76010000 		.4byte	0x176
+ 387 0004 0400     		.2byte	0x4
+ 388 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 389 000a 04       		.byte	0x4
+ 390 000b 01       		.uleb128 0x1
+ 391 000c 2B020000 		.4byte	.LASF21
+ 392 0010 01       		.byte	0x1
+ 393 0011 60010000 		.4byte	.LASF22
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 22
+
+
+ 394 0015 1B000000 		.4byte	.LASF23
+ 395 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 396 001d 00000000 		.4byte	0
+ 397 0021 00000000 		.4byte	.Ldebug_line0
+ 398 0025 02       		.uleb128 0x2
+ 399 0026 01       		.byte	0x1
+ 400 0027 06       		.byte	0x6
+ 401 0028 A5010000 		.4byte	.LASF0
+ 402 002c 02       		.uleb128 0x2
+ 403 002d 01       		.byte	0x1
+ 404 002e 08       		.byte	0x8
+ 405 002f 44010000 		.4byte	.LASF1
+ 406 0033 02       		.uleb128 0x2
+ 407 0034 02       		.byte	0x2
+ 408 0035 05       		.byte	0x5
+ 409 0036 E9010000 		.4byte	.LASF2
+ 410 003a 02       		.uleb128 0x2
+ 411 003b 02       		.byte	0x2
+ 412 003c 07       		.byte	0x7
+ 413 003d 92010000 		.4byte	.LASF3
+ 414 0041 02       		.uleb128 0x2
+ 415 0042 04       		.byte	0x4
+ 416 0043 05       		.byte	0x5
+ 417 0044 57010000 		.4byte	.LASF4
+ 418 0048 02       		.uleb128 0x2
+ 419 0049 04       		.byte	0x4
+ 420 004a 07       		.byte	0x7
+ 421 004b D1000000 		.4byte	.LASF5
+ 422 004f 02       		.uleb128 0x2
+ 423 0050 08       		.byte	0x8
+ 424 0051 05       		.byte	0x5
+ 425 0052 00000000 		.4byte	.LASF6
+ 426 0056 02       		.uleb128 0x2
+ 427 0057 08       		.byte	0x8
+ 428 0058 07       		.byte	0x7
+ 429 0059 E3000000 		.4byte	.LASF7
+ 430 005d 03       		.uleb128 0x3
+ 431 005e 04       		.byte	0x4
+ 432 005f 05       		.byte	0x5
+ 433 0060 696E7400 		.ascii	"int\000"
+ 434 0064 02       		.uleb128 0x2
+ 435 0065 04       		.byte	0x4
+ 436 0066 07       		.byte	0x7
+ 437 0067 0E000000 		.4byte	.LASF8
+ 438 006b 04       		.uleb128 0x4
+ 439 006c CB000000 		.4byte	.LASF12
+ 440 0070 02       		.byte	0x2
+ 441 0071 9201     		.2byte	0x192
+ 442 0073 2C000000 		.4byte	0x2c
+ 443 0077 02       		.uleb128 0x2
+ 444 0078 04       		.byte	0x4
+ 445 0079 04       		.byte	0x4
+ 446 007a C7010000 		.4byte	.LASF9
+ 447 007e 02       		.uleb128 0x2
+ 448 007f 08       		.byte	0x8
+ 449 0080 04       		.byte	0x4
+ 450 0081 8B010000 		.4byte	.LASF10
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 23
+
+
+ 451 0085 02       		.uleb128 0x2
+ 452 0086 01       		.byte	0x1
+ 453 0087 08       		.byte	0x8
+ 454 0088 52010000 		.4byte	.LASF11
+ 455 008c 04       		.uleb128 0x4
+ 456 008d F3010000 		.4byte	.LASF13
+ 457 0091 02       		.byte	0x2
+ 458 0092 3C02     		.2byte	0x23c
+ 459 0094 98000000 		.4byte	0x98
+ 460 0098 05       		.uleb128 0x5
+ 461 0099 6B000000 		.4byte	0x6b
+ 462 009d 02       		.uleb128 0x2
+ 463 009e 04       		.byte	0x4
+ 464 009f 07       		.byte	0x7
+ 465 00a0 13020000 		.4byte	.LASF14
+ 466 00a4 06       		.uleb128 0x6
+ 467 00a5 9D000000 		.4byte	.LASF19
+ 468 00a9 01       		.byte	0x1
+ 469 00aa 25       		.byte	0x25
+ 470 00ab 6B000000 		.4byte	0x6b
+ 471 00af 00000000 		.4byte	.LFB0
+ 472 00b3 0C000000 		.4byte	.LFE0-.LFB0
+ 473 00b7 01       		.uleb128 0x1
+ 474 00b8 9C       		.byte	0x9c
+ 475 00b9 07       		.uleb128 0x7
+ 476 00ba 1D010000 		.4byte	.LASF15
+ 477 00be 01       		.byte	0x1
+ 478 00bf 39       		.byte	0x39
+ 479 00c0 00000000 		.4byte	.LFB1
+ 480 00c4 1C000000 		.4byte	.LFE1-.LFB1
+ 481 00c8 01       		.uleb128 0x1
+ 482 00c9 9C       		.byte	0x9c
+ 483 00ca F0000000 		.4byte	0xf0
+ 484 00ce 08       		.uleb128 0x8
+ 485 00cf 1C020000 		.4byte	.LASF17
+ 486 00d3 01       		.byte	0x1
+ 487 00d4 3B       		.byte	0x3b
+ 488 00d5 6B000000 		.4byte	0x6b
+ 489 00d9 00000000 		.4byte	.LLST0
+ 490 00dd 09       		.uleb128 0x9
+ 491 00de 06000000 		.4byte	.LVL0
+ 492 00e2 61010000 		.4byte	0x161
+ 493 00e6 09       		.uleb128 0x9
+ 494 00e7 14000000 		.4byte	.LVL1
+ 495 00eb 6C010000 		.4byte	0x16c
+ 496 00ef 00       		.byte	0
+ 497 00f0 07       		.uleb128 0x7
+ 498 00f1 FA000000 		.4byte	.LASF16
+ 499 00f5 01       		.byte	0x1
+ 500 00f6 50       		.byte	0x50
+ 501 00f7 00000000 		.4byte	.LFB2
+ 502 00fb 1C000000 		.4byte	.LFE2-.LFB2
+ 503 00ff 01       		.uleb128 0x1
+ 504 0100 9C       		.byte	0x9c
+ 505 0101 27010000 		.4byte	0x127
+ 506 0105 08       		.uleb128 0x8
+ 507 0106 1C020000 		.4byte	.LASF17
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 24
+
+
+ 508 010a 01       		.byte	0x1
+ 509 010b 52       		.byte	0x52
+ 510 010c 6B000000 		.4byte	0x6b
+ 511 0110 13000000 		.4byte	.LLST1
+ 512 0114 09       		.uleb128 0x9
+ 513 0115 06000000 		.4byte	.LVL2
+ 514 0119 61010000 		.4byte	0x161
+ 515 011d 09       		.uleb128 0x9
+ 516 011e 14000000 		.4byte	.LVL3
+ 517 0122 6C010000 		.4byte	0x16c
+ 518 0126 00       		.byte	0
+ 519 0127 07       		.uleb128 0x7
+ 520 0128 CD010000 		.4byte	.LASF18
+ 521 012c 01       		.byte	0x1
+ 522 012d 67       		.byte	0x67
+ 523 012e 00000000 		.4byte	.LFB3
+ 524 0132 10000000 		.4byte	.LFE3-.LFB3
+ 525 0136 01       		.uleb128 0x1
+ 526 0137 9C       		.byte	0x9c
+ 527 0138 4C010000 		.4byte	0x14c
+ 528 013c 0A       		.uleb128 0xa
+ 529 013d 3F010000 		.4byte	.LASF24
+ 530 0141 01       		.byte	0x1
+ 531 0142 67       		.byte	0x67
+ 532 0143 6B000000 		.4byte	0x6b
+ 533 0147 26000000 		.4byte	.LLST2
+ 534 014b 00       		.byte	0
+ 535 014c 06       		.uleb128 0x6
+ 536 014d F8010000 		.4byte	.LASF20
+ 537 0151 01       		.byte	0x1
+ 538 0152 7E       		.byte	0x7e
+ 539 0153 6B000000 		.4byte	0x6b
+ 540 0157 00000000 		.4byte	.LFB4
+ 541 015b 0C000000 		.4byte	.LFE4-.LFB4
+ 542 015f 01       		.uleb128 0x1
+ 543 0160 9C       		.byte	0x9c
+ 544 0161 0B       		.uleb128 0xb
+ 545 0162 B4000000 		.4byte	.LASF25
+ 546 0166 03       		.byte	0x3
+ 547 0167 7D       		.byte	0x7d
+ 548 0168 6B000000 		.4byte	0x6b
+ 549 016c 0C       		.uleb128 0xc
+ 550 016d B1010000 		.4byte	.LASF26
+ 551 0171 03       		.byte	0x3
+ 552 0172 7E       		.byte	0x7e
+ 553 0173 0D       		.uleb128 0xd
+ 554 0174 6B000000 		.4byte	0x6b
+ 555 0178 00       		.byte	0
+ 556 0179 00       		.byte	0
+ 557              		.section	.debug_abbrev,"",%progbits
+ 558              	.Ldebug_abbrev0:
+ 559 0000 01       		.uleb128 0x1
+ 560 0001 11       		.uleb128 0x11
+ 561 0002 01       		.byte	0x1
+ 562 0003 25       		.uleb128 0x25
+ 563 0004 0E       		.uleb128 0xe
+ 564 0005 13       		.uleb128 0x13
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 25
+
+
+ 565 0006 0B       		.uleb128 0xb
+ 566 0007 03       		.uleb128 0x3
+ 567 0008 0E       		.uleb128 0xe
+ 568 0009 1B       		.uleb128 0x1b
+ 569 000a 0E       		.uleb128 0xe
+ 570 000b 55       		.uleb128 0x55
+ 571 000c 17       		.uleb128 0x17
+ 572 000d 11       		.uleb128 0x11
+ 573 000e 01       		.uleb128 0x1
+ 574 000f 10       		.uleb128 0x10
+ 575 0010 17       		.uleb128 0x17
+ 576 0011 00       		.byte	0
+ 577 0012 00       		.byte	0
+ 578 0013 02       		.uleb128 0x2
+ 579 0014 24       		.uleb128 0x24
+ 580 0015 00       		.byte	0
+ 581 0016 0B       		.uleb128 0xb
+ 582 0017 0B       		.uleb128 0xb
+ 583 0018 3E       		.uleb128 0x3e
+ 584 0019 0B       		.uleb128 0xb
+ 585 001a 03       		.uleb128 0x3
+ 586 001b 0E       		.uleb128 0xe
+ 587 001c 00       		.byte	0
+ 588 001d 00       		.byte	0
+ 589 001e 03       		.uleb128 0x3
+ 590 001f 24       		.uleb128 0x24
+ 591 0020 00       		.byte	0
+ 592 0021 0B       		.uleb128 0xb
+ 593 0022 0B       		.uleb128 0xb
+ 594 0023 3E       		.uleb128 0x3e
+ 595 0024 0B       		.uleb128 0xb
+ 596 0025 03       		.uleb128 0x3
+ 597 0026 08       		.uleb128 0x8
+ 598 0027 00       		.byte	0
+ 599 0028 00       		.byte	0
+ 600 0029 04       		.uleb128 0x4
+ 601 002a 16       		.uleb128 0x16
+ 602 002b 00       		.byte	0
+ 603 002c 03       		.uleb128 0x3
+ 604 002d 0E       		.uleb128 0xe
+ 605 002e 3A       		.uleb128 0x3a
+ 606 002f 0B       		.uleb128 0xb
+ 607 0030 3B       		.uleb128 0x3b
+ 608 0031 05       		.uleb128 0x5
+ 609 0032 49       		.uleb128 0x49
+ 610 0033 13       		.uleb128 0x13
+ 611 0034 00       		.byte	0
+ 612 0035 00       		.byte	0
+ 613 0036 05       		.uleb128 0x5
+ 614 0037 35       		.uleb128 0x35
+ 615 0038 00       		.byte	0
+ 616 0039 49       		.uleb128 0x49
+ 617 003a 13       		.uleb128 0x13
+ 618 003b 00       		.byte	0
+ 619 003c 00       		.byte	0
+ 620 003d 06       		.uleb128 0x6
+ 621 003e 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 26
+
+
+ 622 003f 00       		.byte	0
+ 623 0040 3F       		.uleb128 0x3f
+ 624 0041 19       		.uleb128 0x19
+ 625 0042 03       		.uleb128 0x3
+ 626 0043 0E       		.uleb128 0xe
+ 627 0044 3A       		.uleb128 0x3a
+ 628 0045 0B       		.uleb128 0xb
+ 629 0046 3B       		.uleb128 0x3b
+ 630 0047 0B       		.uleb128 0xb
+ 631 0048 27       		.uleb128 0x27
+ 632 0049 19       		.uleb128 0x19
+ 633 004a 49       		.uleb128 0x49
+ 634 004b 13       		.uleb128 0x13
+ 635 004c 11       		.uleb128 0x11
+ 636 004d 01       		.uleb128 0x1
+ 637 004e 12       		.uleb128 0x12
+ 638 004f 06       		.uleb128 0x6
+ 639 0050 40       		.uleb128 0x40
+ 640 0051 18       		.uleb128 0x18
+ 641 0052 9742     		.uleb128 0x2117
+ 642 0054 19       		.uleb128 0x19
+ 643 0055 00       		.byte	0
+ 644 0056 00       		.byte	0
+ 645 0057 07       		.uleb128 0x7
+ 646 0058 2E       		.uleb128 0x2e
+ 647 0059 01       		.byte	0x1
+ 648 005a 3F       		.uleb128 0x3f
+ 649 005b 19       		.uleb128 0x19
+ 650 005c 03       		.uleb128 0x3
+ 651 005d 0E       		.uleb128 0xe
+ 652 005e 3A       		.uleb128 0x3a
+ 653 005f 0B       		.uleb128 0xb
+ 654 0060 3B       		.uleb128 0x3b
+ 655 0061 0B       		.uleb128 0xb
+ 656 0062 27       		.uleb128 0x27
+ 657 0063 19       		.uleb128 0x19
+ 658 0064 11       		.uleb128 0x11
+ 659 0065 01       		.uleb128 0x1
+ 660 0066 12       		.uleb128 0x12
+ 661 0067 06       		.uleb128 0x6
+ 662 0068 40       		.uleb128 0x40
+ 663 0069 18       		.uleb128 0x18
+ 664 006a 9742     		.uleb128 0x2117
+ 665 006c 19       		.uleb128 0x19
+ 666 006d 01       		.uleb128 0x1
+ 667 006e 13       		.uleb128 0x13
+ 668 006f 00       		.byte	0
+ 669 0070 00       		.byte	0
+ 670 0071 08       		.uleb128 0x8
+ 671 0072 34       		.uleb128 0x34
+ 672 0073 00       		.byte	0
+ 673 0074 03       		.uleb128 0x3
+ 674 0075 0E       		.uleb128 0xe
+ 675 0076 3A       		.uleb128 0x3a
+ 676 0077 0B       		.uleb128 0xb
+ 677 0078 3B       		.uleb128 0x3b
+ 678 0079 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 27
+
+
+ 679 007a 49       		.uleb128 0x49
+ 680 007b 13       		.uleb128 0x13
+ 681 007c 02       		.uleb128 0x2
+ 682 007d 17       		.uleb128 0x17
+ 683 007e 00       		.byte	0
+ 684 007f 00       		.byte	0
+ 685 0080 09       		.uleb128 0x9
+ 686 0081 898201   		.uleb128 0x4109
+ 687 0084 00       		.byte	0
+ 688 0085 11       		.uleb128 0x11
+ 689 0086 01       		.uleb128 0x1
+ 690 0087 31       		.uleb128 0x31
+ 691 0088 13       		.uleb128 0x13
+ 692 0089 00       		.byte	0
+ 693 008a 00       		.byte	0
+ 694 008b 0A       		.uleb128 0xa
+ 695 008c 05       		.uleb128 0x5
+ 696 008d 00       		.byte	0
+ 697 008e 03       		.uleb128 0x3
+ 698 008f 0E       		.uleb128 0xe
+ 699 0090 3A       		.uleb128 0x3a
+ 700 0091 0B       		.uleb128 0xb
+ 701 0092 3B       		.uleb128 0x3b
+ 702 0093 0B       		.uleb128 0xb
+ 703 0094 49       		.uleb128 0x49
+ 704 0095 13       		.uleb128 0x13
+ 705 0096 02       		.uleb128 0x2
+ 706 0097 17       		.uleb128 0x17
+ 707 0098 00       		.byte	0
+ 708 0099 00       		.byte	0
+ 709 009a 0B       		.uleb128 0xb
+ 710 009b 2E       		.uleb128 0x2e
+ 711 009c 00       		.byte	0
+ 712 009d 3F       		.uleb128 0x3f
+ 713 009e 19       		.uleb128 0x19
+ 714 009f 03       		.uleb128 0x3
+ 715 00a0 0E       		.uleb128 0xe
+ 716 00a1 3A       		.uleb128 0x3a
+ 717 00a2 0B       		.uleb128 0xb
+ 718 00a3 3B       		.uleb128 0x3b
+ 719 00a4 0B       		.uleb128 0xb
+ 720 00a5 27       		.uleb128 0x27
+ 721 00a6 19       		.uleb128 0x19
+ 722 00a7 49       		.uleb128 0x49
+ 723 00a8 13       		.uleb128 0x13
+ 724 00a9 3C       		.uleb128 0x3c
+ 725 00aa 19       		.uleb128 0x19
+ 726 00ab 00       		.byte	0
+ 727 00ac 00       		.byte	0
+ 728 00ad 0C       		.uleb128 0xc
+ 729 00ae 2E       		.uleb128 0x2e
+ 730 00af 01       		.byte	0x1
+ 731 00b0 3F       		.uleb128 0x3f
+ 732 00b1 19       		.uleb128 0x19
+ 733 00b2 03       		.uleb128 0x3
+ 734 00b3 0E       		.uleb128 0xe
+ 735 00b4 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 28
+
+
+ 736 00b5 0B       		.uleb128 0xb
+ 737 00b6 3B       		.uleb128 0x3b
+ 738 00b7 0B       		.uleb128 0xb
+ 739 00b8 27       		.uleb128 0x27
+ 740 00b9 19       		.uleb128 0x19
+ 741 00ba 3C       		.uleb128 0x3c
+ 742 00bb 19       		.uleb128 0x19
+ 743 00bc 00       		.byte	0
+ 744 00bd 00       		.byte	0
+ 745 00be 0D       		.uleb128 0xd
+ 746 00bf 05       		.uleb128 0x5
+ 747 00c0 00       		.byte	0
+ 748 00c1 49       		.uleb128 0x49
+ 749 00c2 13       		.uleb128 0x13
+ 750 00c3 00       		.byte	0
+ 751 00c4 00       		.byte	0
+ 752 00c5 00       		.byte	0
+ 753              		.section	.debug_loc,"",%progbits
+ 754              	.Ldebug_loc0:
+ 755              	.LLST0:
+ 756 0000 06000000 		.4byte	.LVL0
+ 757 0004 13000000 		.4byte	.LVL1-1
+ 758 0008 0100     		.2byte	0x1
+ 759 000a 50       		.byte	0x50
+ 760 000b 00000000 		.4byte	0
+ 761 000f 00000000 		.4byte	0
+ 762              	.LLST1:
+ 763 0013 06000000 		.4byte	.LVL2
+ 764 0017 13000000 		.4byte	.LVL3-1
+ 765 001b 0100     		.2byte	0x1
+ 766 001d 50       		.byte	0x50
+ 767 001e 00000000 		.4byte	0
+ 768 0022 00000000 		.4byte	0
+ 769              	.LLST2:
+ 770 0026 00000000 		.4byte	.LVL4
+ 771 002a 04000000 		.4byte	.LVL5
+ 772 002e 0100     		.2byte	0x1
+ 773 0030 50       		.byte	0x50
+ 774 0031 04000000 		.4byte	.LVL5
+ 775 0035 10000000 		.4byte	.LFE3
+ 776 0039 0100     		.2byte	0x1
+ 777 003b 50       		.byte	0x50
+ 778 003c 00000000 		.4byte	0
+ 779 0040 00000000 		.4byte	0
+ 780              		.section	.debug_aranges,"",%progbits
+ 781 0000 3C000000 		.4byte	0x3c
+ 782 0004 0200     		.2byte	0x2
+ 783 0006 00000000 		.4byte	.Ldebug_info0
+ 784 000a 04       		.byte	0x4
+ 785 000b 00       		.byte	0
+ 786 000c 0000     		.2byte	0
+ 787 000e 0000     		.2byte	0
+ 788 0010 00000000 		.4byte	.LFB0
+ 789 0014 0C000000 		.4byte	.LFE0-.LFB0
+ 790 0018 00000000 		.4byte	.LFB1
+ 791 001c 1C000000 		.4byte	.LFE1-.LFB1
+ 792 0020 00000000 		.4byte	.LFB2
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 29
+
+
+ 793 0024 1C000000 		.4byte	.LFE2-.LFB2
+ 794 0028 00000000 		.4byte	.LFB3
+ 795 002c 10000000 		.4byte	.LFE3-.LFB3
+ 796 0030 00000000 		.4byte	.LFB4
+ 797 0034 0C000000 		.4byte	.LFE4-.LFB4
+ 798 0038 00000000 		.4byte	0
+ 799 003c 00000000 		.4byte	0
+ 800              		.section	.debug_ranges,"",%progbits
+ 801              	.Ldebug_ranges0:
+ 802 0000 00000000 		.4byte	.LFB0
+ 803 0004 0C000000 		.4byte	.LFE0
+ 804 0008 00000000 		.4byte	.LFB1
+ 805 000c 1C000000 		.4byte	.LFE1
+ 806 0010 00000000 		.4byte	.LFB2
+ 807 0014 1C000000 		.4byte	.LFE2
+ 808 0018 00000000 		.4byte	.LFB3
+ 809 001c 10000000 		.4byte	.LFE3
+ 810 0020 00000000 		.4byte	.LFB4
+ 811 0024 0C000000 		.4byte	.LFE4
+ 812 0028 00000000 		.4byte	0
+ 813 002c 00000000 		.4byte	0
+ 814              		.section	.debug_line,"",%progbits
+ 815              	.Ldebug_line0:
+ 816 0000 B9000000 		.section	.debug_str,"MS",%progbits,1
+ 816      02005900 
+ 816      00000201 
+ 816      FB0E0D00 
+ 816      01010101 
+ 817              	.LASF6:
+ 818 0000 6C6F6E67 		.ascii	"long long int\000"
+ 818      206C6F6E 
+ 818      6720696E 
+ 818      7400
+ 819              	.LASF8:
+ 820 000e 756E7369 		.ascii	"unsigned int\000"
+ 820      676E6564 
+ 820      20696E74 
+ 820      00
+ 821              	.LASF23:
+ 822 001b 433A5C55 		.ascii	"C:\\Users\\Luggi\\Desktop\\Aktuelles Projekt Laser_"
+ 822      73657273 
+ 822      5C4C7567 
+ 822      67695C44 
+ 822      65736B74 
+ 823 004a 73636875 		.ascii	"schutzschaltung\\Aktuelles Projekt Laser_schutzscha"
+ 823      747A7363 
+ 823      68616C74 
+ 823      756E675C 
+ 823      416B7475 
+ 824 007c 6C74756E 		.ascii	"ltung\\Laserschutzschaltung.cydsn\000"
+ 824      675C4C61 
+ 824      73657273 
+ 824      63687574 
+ 824      7A736368 
+ 825              	.LASF19:
+ 826 009d 55534255 		.ascii	"USBUART_1_Vbus_ps_Read\000"
+ 826      4152545F 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 30
+
+
+ 826      315F5662 
+ 826      75735F70 
+ 826      735F5265 
+ 827              	.LASF25:
+ 828 00b4 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 828      74657243 
+ 828      72697469 
+ 828      63616C53 
+ 828      65637469 
+ 829              	.LASF12:
+ 830 00cb 75696E74 		.ascii	"uint8\000"
+ 830      3800
+ 831              	.LASF5:
+ 832 00d1 6C6F6E67 		.ascii	"long unsigned int\000"
+ 832      20756E73 
+ 832      69676E65 
+ 832      6420696E 
+ 832      7400
+ 833              	.LASF7:
+ 834 00e3 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 834      206C6F6E 
+ 834      6720756E 
+ 834      7369676E 
+ 834      65642069 
+ 835              	.LASF16:
+ 836 00fa 55534255 		.ascii	"USBUART_1_Vbus_ps_InterruptDisable\000"
+ 836      4152545F 
+ 836      315F5662 
+ 836      75735F70 
+ 836      735F496E 
+ 837              	.LASF15:
+ 838 011d 55534255 		.ascii	"USBUART_1_Vbus_ps_InterruptEnable\000"
+ 838      4152545F 
+ 838      315F5662 
+ 838      75735F70 
+ 838      735F496E 
+ 839              	.LASF24:
+ 840 013f 6D61736B 		.ascii	"mask\000"
+ 840      00
+ 841              	.LASF1:
+ 842 0144 756E7369 		.ascii	"unsigned char\000"
+ 842      676E6564 
+ 842      20636861 
+ 842      7200
+ 843              	.LASF11:
+ 844 0152 63686172 		.ascii	"char\000"
+ 844      00
+ 845              	.LASF4:
+ 846 0157 6C6F6E67 		.ascii	"long int\000"
+ 846      20696E74 
+ 846      00
+ 847              	.LASF22:
+ 848 0160 47656E65 		.ascii	"Generated_Source\\PSoC5\\USBUART_1_Vbus_ps.c\000"
+ 848      72617465 
+ 848      645F536F 
+ 848      75726365 
+ 848      5C50536F 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 31
+
+
+ 849              	.LASF10:
+ 850 018b 646F7562 		.ascii	"double\000"
+ 850      6C6500
+ 851              	.LASF3:
+ 852 0192 73686F72 		.ascii	"short unsigned int\000"
+ 852      7420756E 
+ 852      7369676E 
+ 852      65642069 
+ 852      6E7400
+ 853              	.LASF0:
+ 854 01a5 7369676E 		.ascii	"signed char\000"
+ 854      65642063 
+ 854      68617200 
+ 855              	.LASF26:
+ 856 01b1 43794578 		.ascii	"CyExitCriticalSection\000"
+ 856      69744372 
+ 856      69746963 
+ 856      616C5365 
+ 856      6374696F 
+ 857              	.LASF9:
+ 858 01c7 666C6F61 		.ascii	"float\000"
+ 858      7400
+ 859              	.LASF18:
+ 860 01cd 55534255 		.ascii	"USBUART_1_Vbus_ps_WriteMask\000"
+ 860      4152545F 
+ 860      315F5662 
+ 860      75735F70 
+ 860      735F5772 
+ 861              	.LASF2:
+ 862 01e9 73686F72 		.ascii	"short int\000"
+ 862      7420696E 
+ 862      7400
+ 863              	.LASF13:
+ 864 01f3 72656738 		.ascii	"reg8\000"
+ 864      00
+ 865              	.LASF20:
+ 866 01f8 55534255 		.ascii	"USBUART_1_Vbus_ps_ReadMask\000"
+ 866      4152545F 
+ 866      315F5662 
+ 866      75735F70 
+ 866      735F5265 
+ 867              	.LASF14:
+ 868 0213 73697A65 		.ascii	"sizetype\000"
+ 868      74797065 
+ 868      00
+ 869              	.LASF17:
+ 870 021c 696E7465 		.ascii	"interruptState\000"
+ 870      72727570 
+ 870      74537461 
+ 870      746500
+ 871              	.LASF21:
+ 872 022b 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 872      4320342E 
+ 872      392E3320 
+ 872      32303135 
+ 872      30333033 
+ 873 025e 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccFgPQus.s 			page 32
+
+
+ 873      20726576 
+ 873      6973696F 
+ 873      6E203232 
+ 873      31323230 
+ 874 0291 67202D66 		.ascii	"g -ffunction-sections -flto -ffat-lto-objects\000"
+ 874      66756E63 
+ 874      74696F6E 
+ 874      2D736563 
+ 874      74696F6E 
+ 875              		.comm	__gnu_lto_v1,1,1
+ 876              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

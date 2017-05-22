@@ -1,0 +1,3592 @@
+--
+--	Conversion of Laserschutzschaltung.v to vh2:
+--
+--	Cypress Semiconductor - WARP Version 6.3 IR 41
+--	Mon May 15 19:23:07 2017
+--
+
+USE cypress.cypress.all;
+USE cypress.rtlpkg.all;
+ENTITY top_RTL IS
+ATTRIBUTE part_name of top_RTL:TYPE IS "cpsoc3";
+END top_RTL;
+--------------------------------------------------------
+ARCHITECTURE R_T_L OF top_RTL IS
+SIGNAL Net_449 : bit;
+SIGNAL zero : bit;
+SIGNAL Net_2 : bit;
+SIGNAL Net_436 : bit;
+SIGNAL \IDAC8_1:Net_125\ : bit;
+SIGNAL \IDAC8_1:Net_158\ : bit;
+SIGNAL \IDAC8_1:Net_123\ : bit;
+TERMINAL \IDAC8_1:Net_124\ : bit;
+TERMINAL Net_302 : bit;
+SIGNAL \IDAC8_1:Net_157\ : bit;
+SIGNAL \IDAC8_1:Net_194\ : bit;
+SIGNAL \IDAC8_1:Net_195\ : bit;
+SIGNAL \VDAC8:Net_83\ : bit;
+SIGNAL \VDAC8:Net_81\ : bit;
+SIGNAL \VDAC8:Net_82\ : bit;
+TERMINAL Net_51 : bit;
+TERMINAL \VDAC8:Net_77\ : bit;
+TERMINAL Net_558 : bit;
+SIGNAL \Comp_1:clock\ : bit;
+SIGNAL \Comp_1:Net_1\ : bit;
+SIGNAL osc_err : bit;
+SIGNAL \Comp_1:Net_9\ : bit;
+SIGNAL Net_52 : bit;
+TERMINAL Net_69 : bit;
+SIGNAL \Comp_2:clock\ : bit;
+SIGNAL \Comp_2:Net_1\ : bit;
+SIGNAL Seed_err1 : bit;
+SIGNAL \Comp_2:Net_9\ : bit;
+SIGNAL Net_901 : bit;
+SIGNAL \Filter:Net_1\ : bit;
+SIGNAL \Filter:Net_4\ : bit;
+SIGNAL \Filter:Net_5\ : bit;
+SIGNAL \Filter:Net_8\ : bit;
+SIGNAL \Filter:Net_9\ : bit;
+SIGNAL Net_645 : bit;
+SIGNAL Net_646 : bit;
+TERMINAL Net_18 : bit;
+TERMINAL Net_542 : bit;
+TERMINAL Net_543 : bit;
+SIGNAL tmpOE__Diode_Oscillation_net_0 : bit;
+SIGNAL tmpFB_0__Diode_Oscillation_net_0 : bit;
+SIGNAL tmpIO_0__Diode_Oscillation_net_0 : bit;
+TERMINAL tmpSIOVREF__Diode_Oscillation_net_0 : bit;
+SIGNAL one : bit;
+SIGNAL tmpINTERRUPT_0__Diode_Oscillation_net_0 : bit;
+SIGNAL Net_885 : bit;
+SIGNAL Seed_err2 : bit;
+SIGNAL Net_725 : bit;
+SIGNAL tmpOE__DAC_Out_net_0 : bit;
+SIGNAL tmpFB_0__DAC_Out_net_0 : bit;
+SIGNAL tmpIO_0__DAC_Out_net_0 : bit;
+TERMINAL tmpSIOVREF__DAC_Out_net_0 : bit;
+TERMINAL Net_16 : bit;
+SIGNAL tmpINTERRUPT_0__DAC_Out_net_0 : bit;
+TERMINAL Net_546 : bit;
+TERMINAL Net_914 : bit;
+TERMINAL Net_909 : bit;
+TERMINAL Net_664 : bit;
+SIGNAL \Comp_3:clock\ : bit;
+SIGNAL \Comp_3:Net_1\ : bit;
+SIGNAL \Comp_3:Net_9\ : bit;
+SIGNAL tmpOE__Buzzer_net_0 : bit;
+SIGNAL Net_729 : bit;
+SIGNAL tmpFB_0__Buzzer_net_0 : bit;
+SIGNAL tmpIO_0__Buzzer_net_0 : bit;
+TERMINAL tmpSIOVREF__Buzzer_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Buzzer_net_0 : bit;
+SIGNAL tmpOE__Diode_Seedseite_net_0 : bit;
+SIGNAL tmpFB_0__Diode_Seedseite_net_0 : bit;
+SIGNAL tmpIO_0__Diode_Seedseite_net_0 : bit;
+TERMINAL tmpSIOVREF__Diode_Seedseite_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Diode_Seedseite_net_0 : bit;
+SIGNAL tmpOE__Seed_ref_net_0 : bit;
+SIGNAL tmpFB_0__Seed_ref_net_0 : bit;
+SIGNAL tmpIO_0__Seed_ref_net_0 : bit;
+TERMINAL tmpSIOVREF__Seed_ref_net_0 : bit;
+TERMINAL Net_707 : bit;
+SIGNAL tmpINTERRUPT_0__Seed_ref_net_0 : bit;
+SIGNAL tmpOE__Pump_ref_net_0 : bit;
+SIGNAL tmpFB_0__Pump_ref_net_0 : bit;
+SIGNAL tmpIO_0__Pump_ref_net_0 : bit;
+TERMINAL tmpSIOVREF__Pump_ref_net_0 : bit;
+TERMINAL Net_126 : bit;
+SIGNAL tmpINTERRUPT_0__Pump_ref_net_0 : bit;
+TERMINAL Net_121 : bit;
+TERMINAL Net_129 : bit;
+TERMINAL Net_127 : bit;
+TERMINAL Net_131 : bit;
+TERMINAL Net_133 : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_enable\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ : bit;
+ATTRIBUTE soft of \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\:SIGNAL IS '1';
+SIGNAL \ADC_SAR_Seq_2:cmp_vv_vv_MODGEN_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:clock\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:ch_addr_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:ch_addr_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:ch_addr_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:ch_addr_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:ch_addr_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:ch_addr_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_6\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_7\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_8\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_9\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_10\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_11\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_12\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_13\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_14\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_15\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_16\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_17\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_18\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_19\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_20\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_21\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_22\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_23\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_24\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_25\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_26\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_27\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_28\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_29\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_30\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_31\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_32\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_33\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_34\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_35\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_36\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_37\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_38\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_39\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_40\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_41\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_42\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_43\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_44\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_45\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_46\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_47\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_48\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_49\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_50\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_51\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_52\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_53\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_54\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_55\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_56\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_57\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_58\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_59\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_60\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_61\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_62\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_63\ : bit;
+TERMINAL Net_1206 : bit;
+TERMINAL Net_1205 : bit;
+TERMINAL Net_1204 : bit;
+TERMINAL Net_1203 : bit;
+TERMINAL Net_1202 : bit;
+TERMINAL Net_1201 : bit;
+TERMINAL Net_1200 : bit;
+TERMINAL Net_1199 : bit;
+TERMINAL Net_1198 : bit;
+TERMINAL Net_1197 : bit;
+TERMINAL Net_1196 : bit;
+TERMINAL Net_1195 : bit;
+TERMINAL Net_1194 : bit;
+TERMINAL Net_1193 : bit;
+TERMINAL Net_1192 : bit;
+TERMINAL Net_1191 : bit;
+TERMINAL Net_1190 : bit;
+TERMINAL Net_1188 : bit;
+TERMINAL Net_1186 : bit;
+TERMINAL Net_1185 : bit;
+TERMINAL Net_1183 : bit;
+TERMINAL Net_1181 : bit;
+TERMINAL Net_1180 : bit;
+TERMINAL Net_1178 : bit;
+TERMINAL Net_1176 : bit;
+TERMINAL Net_1175 : bit;
+TERMINAL Net_1173 : bit;
+TERMINAL Net_1171 : bit;
+TERMINAL Net_1170 : bit;
+TERMINAL Net_1168 : bit;
+TERMINAL Net_1166 : bit;
+TERMINAL Net_1165 : bit;
+TERMINAL Net_1163 : bit;
+TERMINAL Net_1161 : bit;
+TERMINAL Net_1160 : bit;
+TERMINAL Net_1158 : bit;
+TERMINAL Net_1156 : bit;
+TERMINAL Net_1155 : bit;
+TERMINAL Net_1153 : bit;
+TERMINAL Net_1151 : bit;
+TERMINAL Net_1150 : bit;
+TERMINAL Net_1148 : bit;
+TERMINAL Net_1146 : bit;
+TERMINAL Net_1145 : bit;
+TERMINAL Net_1143 : bit;
+TERMINAL Net_1141 : bit;
+TERMINAL Net_1140 : bit;
+TERMINAL Net_1138 : bit;
+TERMINAL Net_1136 : bit;
+TERMINAL Net_1135 : bit;
+TERMINAL Net_1133 : bit;
+TERMINAL Net_1131 : bit;
+TERMINAL Net_1130 : bit;
+TERMINAL Net_1128 : bit;
+TERMINAL Net_1126 : bit;
+TERMINAL Net_1125 : bit;
+TERMINAL Net_1123 : bit;
+TERMINAL Net_1121 : bit;
+TERMINAL Net_1120 : bit;
+TERMINAL Net_1118 : bit;
+TERMINAL Net_1116 : bit;
+TERMINAL Net_1115 : bit;
+TERMINAL Net_1214 : bit;
+TERMINAL Net_1217 : bit;
+TERMINAL \ADC_SAR_Seq_2:V_single\ : bit;
+TERMINAL \ADC_SAR_Seq_2:SAR:Net_248\ : bit;
+TERMINAL \ADC_SAR_Seq_2:SAR:Net_235\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:vp_ctl_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:vp_ctl_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:vn_ctl_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:vn_ctl_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:vp_ctl_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:vp_ctl_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:vn_ctl_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:vn_ctl_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_188\ : bit;
+TERMINAL \ADC_SAR_Seq_2:Net_2803\ : bit;
+TERMINAL \ADC_SAR_Seq_2:SAR:Net_126\ : bit;
+TERMINAL \ADC_SAR_Seq_2:SAR:Net_215\ : bit;
+TERMINAL \ADC_SAR_Seq_2:SAR:Net_257\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:soc\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_252\ : bit;
+SIGNAL Net_1110 : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_207_11\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_207_10\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_207_9\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_207_8\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_207_7\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_207_6\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_207_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_207_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_207_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_207_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_207_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_207_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:Net_3830\ : bit;
+TERMINAL \ADC_SAR_Seq_2:SAR:Net_209\ : bit;
+TERMINAL \ADC_SAR_Seq_2:SAR:Net_149\ : bit;
+TERMINAL \ADC_SAR_Seq_2:SAR:Net_255\ : bit;
+TERMINAL \ADC_SAR_Seq_2:SAR:Net_368\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_221\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_381\ : bit;
+SIGNAL \ADC_SAR_Seq_2:SAR:Net_376\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:enable\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:control_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:load_period\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:control_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:sw_soc\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:control_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:clk_fin\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:clk_ctrl\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:count_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:count_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:count_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:count_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:count_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:count_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:status_7\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:status_6\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:status_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:status_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:status_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:status_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:status_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:status_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:nrq_edge_detect_reg\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:cnt_enable\ : bit;
+SIGNAL \ADC_SAR_Seq_2:Net_3710\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:bus_clk_nrq_reg\ : bit;
+SIGNAL \ADC_SAR_Seq_2:Net_3935\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:nrq_reg\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:nrq_edge_detect\ : bit;
+SIGNAL Net_1111 : bit;
+SIGNAL \ADC_SAR_Seq_2:soc_out\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:control_7\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:control_6\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:control_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:control_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:control_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:count_6\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:cnt_tc\ : bit;
+SIGNAL \ADC_SAR_Seq_2:Net_3874\ : bit;
+SIGNAL \ADC_SAR_Seq_2:Net_3698\ : bit;
+SIGNAL \ADC_SAR_Seq_2:nrq\ : bit;
+SIGNAL \ADC_SAR_Seq_2:Net_3905\ : bit;
+SIGNAL \ADC_SAR_Seq_2:Net_3867\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODIN1_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODIN1_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODIN1_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODIN1_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODIN1_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODIN1_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODIN2_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODIN2_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODIN2_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODIN2_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODIN2_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODIN2_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:xnor_array_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:xnor_array_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:xnor_array_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:xnor_array_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:xnor_array_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:xnor_array_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:aeqb_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:eq_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:eq_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:eq_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:eq_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:eq_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:eq_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:eqi_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:aeqb_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:albi_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:agbi_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:lt_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gt_3\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:lt_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gt_4\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:lt_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gt_5\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:lti_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gti_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:albi_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:agbi_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:lt_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gt_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:lt_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gt_1\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:lt_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gt_2\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:lti_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gti_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:albi_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:agbi_0\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:xeq\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:xneq\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:xlt\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:xlte\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:xgt\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:g1:a0:xgte\ : bit;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:lt\ : bit;
+ATTRIBUTE port_state_att of \ADC_SAR_Seq_2:MODULE_1:lt\:SIGNAL IS 2;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:gt\ : bit;
+ATTRIBUTE port_state_att of \ADC_SAR_Seq_2:MODULE_1:gt\:SIGNAL IS 2;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:gte\ : bit;
+ATTRIBUTE port_state_att of \ADC_SAR_Seq_2:MODULE_1:gte\:SIGNAL IS 2;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:lte\ : bit;
+ATTRIBUTE port_state_att of \ADC_SAR_Seq_2:MODULE_1:lte\:SIGNAL IS 2;
+SIGNAL \ADC_SAR_Seq_2:MODULE_1:neq\ : bit;
+ATTRIBUTE port_state_att of \ADC_SAR_Seq_2:MODULE_1:neq\:SIGNAL IS 2;
+SIGNAL \LCD:tmpOE__LCDPort_net_6\ : bit;
+SIGNAL \LCD:tmpOE__LCDPort_net_5\ : bit;
+SIGNAL \LCD:tmpOE__LCDPort_net_4\ : bit;
+SIGNAL \LCD:tmpOE__LCDPort_net_3\ : bit;
+SIGNAL \LCD:tmpOE__LCDPort_net_2\ : bit;
+SIGNAL \LCD:tmpOE__LCDPort_net_1\ : bit;
+SIGNAL \LCD:tmpOE__LCDPort_net_0\ : bit;
+SIGNAL \LCD:tmpFB_6__LCDPort_net_6\ : bit;
+SIGNAL \LCD:tmpFB_6__LCDPort_net_5\ : bit;
+SIGNAL \LCD:tmpFB_6__LCDPort_net_4\ : bit;
+SIGNAL \LCD:tmpFB_6__LCDPort_net_3\ : bit;
+SIGNAL \LCD:tmpFB_6__LCDPort_net_2\ : bit;
+SIGNAL \LCD:tmpFB_6__LCDPort_net_1\ : bit;
+SIGNAL \LCD:tmpFB_6__LCDPort_net_0\ : bit;
+SIGNAL \LCD:tmpIO_6__LCDPort_net_6\ : bit;
+SIGNAL \LCD:tmpIO_6__LCDPort_net_5\ : bit;
+SIGNAL \LCD:tmpIO_6__LCDPort_net_4\ : bit;
+SIGNAL \LCD:tmpIO_6__LCDPort_net_3\ : bit;
+SIGNAL \LCD:tmpIO_6__LCDPort_net_2\ : bit;
+SIGNAL \LCD:tmpIO_6__LCDPort_net_1\ : bit;
+SIGNAL \LCD:tmpIO_6__LCDPort_net_0\ : bit;
+TERMINAL \LCD:tmpSIOVREF__LCDPort_net_0\ : bit;
+SIGNAL \LCD:tmpINTERRUPT_0__LCDPort_net_0\ : bit;
+TERMINAL \ADC_SAR_1:Net_248\ : bit;
+TERMINAL \ADC_SAR_1:Net_235\ : bit;
+SIGNAL \ADC_SAR_1:vp_ctl_0\ : bit;
+SIGNAL \ADC_SAR_1:vp_ctl_2\ : bit;
+SIGNAL \ADC_SAR_1:vn_ctl_1\ : bit;
+SIGNAL \ADC_SAR_1:vn_ctl_3\ : bit;
+SIGNAL \ADC_SAR_1:vp_ctl_1\ : bit;
+SIGNAL \ADC_SAR_1:vp_ctl_3\ : bit;
+SIGNAL \ADC_SAR_1:vn_ctl_0\ : bit;
+SIGNAL \ADC_SAR_1:vn_ctl_2\ : bit;
+SIGNAL \ADC_SAR_1:Net_376\ : bit;
+SIGNAL \ADC_SAR_1:Net_188\ : bit;
+SIGNAL \ADC_SAR_1:Net_221\ : bit;
+TERMINAL Net_635 : bit;
+TERMINAL \ADC_SAR_1:Net_126\ : bit;
+TERMINAL \ADC_SAR_1:Net_215\ : bit;
+TERMINAL \ADC_SAR_1:Net_257\ : bit;
+SIGNAL \ADC_SAR_1:soc\ : bit;
+SIGNAL \ADC_SAR_1:Net_252\ : bit;
+SIGNAL Net_275 : bit;
+SIGNAL \ADC_SAR_1:Net_207_11\ : bit;
+SIGNAL \ADC_SAR_1:Net_207_10\ : bit;
+SIGNAL \ADC_SAR_1:Net_207_9\ : bit;
+SIGNAL \ADC_SAR_1:Net_207_8\ : bit;
+SIGNAL \ADC_SAR_1:Net_207_7\ : bit;
+SIGNAL \ADC_SAR_1:Net_207_6\ : bit;
+SIGNAL \ADC_SAR_1:Net_207_5\ : bit;
+SIGNAL \ADC_SAR_1:Net_207_4\ : bit;
+SIGNAL \ADC_SAR_1:Net_207_3\ : bit;
+SIGNAL \ADC_SAR_1:Net_207_2\ : bit;
+SIGNAL \ADC_SAR_1:Net_207_1\ : bit;
+SIGNAL \ADC_SAR_1:Net_207_0\ : bit;
+TERMINAL \ADC_SAR_1:Net_209\ : bit;
+TERMINAL \ADC_SAR_1:Net_149\ : bit;
+TERMINAL \ADC_SAR_1:Net_255\ : bit;
+TERMINAL \ADC_SAR_1:Net_368\ : bit;
+SIGNAL \ADC_SAR_1:Net_381\ : bit;
+SIGNAL \IDAC8_2:Net_125\ : bit;
+SIGNAL \IDAC8_2:Net_158\ : bit;
+SIGNAL \IDAC8_2:Net_123\ : bit;
+TERMINAL \IDAC8_2:Net_124\ : bit;
+SIGNAL \IDAC8_2:Net_157\ : bit;
+SIGNAL \IDAC8_2:Net_194\ : bit;
+SIGNAL \IDAC8_2:Net_195\ : bit;
+SIGNAL tmpOE__DAC_PGA_OUT_net_0 : bit;
+SIGNAL tmpFB_0__DAC_PGA_OUT_net_0 : bit;
+TERMINAL Net_308 : bit;
+SIGNAL tmpIO_0__DAC_PGA_OUT_net_0 : bit;
+TERMINAL tmpSIOVREF__DAC_PGA_OUT_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__DAC_PGA_OUT_net_0 : bit;
+TERMINAL \PGA_1:Net_17\ : bit;
+SIGNAL \PGA_1:Net_37\ : bit;
+SIGNAL \PGA_1:Net_40\ : bit;
+SIGNAL \PGA_1:Net_38\ : bit;
+SIGNAL \PGA_1:Net_39\ : bit;
+SIGNAL \PGA_1:Net_41\ : bit;
+TERMINAL \PGA_1:Net_75\ : bit;
+SIGNAL tmpOE__DAC_Current_net_0 : bit;
+SIGNAL tmpFB_0__DAC_Current_net_0 : bit;
+SIGNAL tmpIO_0__DAC_Current_net_0 : bit;
+TERMINAL tmpSIOVREF__DAC_Current_net_0 : bit;
+TERMINAL Net_1209 : bit;
+SIGNAL tmpINTERRUPT_0__DAC_Current_net_0 : bit;
+TERMINAL Net_1210 : bit;
+TERMINAL Net_530 : bit;
+SIGNAL Net_347 : bit;
+SIGNAL \Counter_1:Net_82\ : bit;
+SIGNAL \Counter_1:Net_91\ : bit;
+SIGNAL \Counter_1:Net_48\ : bit;
+SIGNAL \Counter_1:Net_47\ : bit;
+SIGNAL \Counter_1:Net_42\ : bit;
+SIGNAL Net_437 : bit;
+SIGNAL Net_648 : bit;
+SIGNAL \Counter_1:Net_89\ : bit;
+SIGNAL \Counter_1:Net_95\ : bit;
+SIGNAL \Counter_1:Net_102\ : bit;
+TERMINAL \ADC_DelSig_1:Net_244\ : bit;
+TERMINAL \ADC_DelSig_1:Net_690\ : bit;
+TERMINAL \ADC_DelSig_1:Net_35\ : bit;
+TERMINAL \ADC_DelSig_1:Net_34\ : bit;
+TERMINAL \ADC_DelSig_1:Net_677\ : bit;
+TERMINAL \ADC_DelSig_1:Net_20\ : bit;
+SIGNAL \ADC_DelSig_1:Net_488\ : bit;
+TERMINAL Net_412 : bit;
+TERMINAL \ADC_DelSig_1:Net_520\ : bit;
+SIGNAL \ADC_DelSig_1:Net_481\ : bit;
+SIGNAL \ADC_DelSig_1:Net_482\ : bit;
+SIGNAL \ADC_DelSig_1:mod_reset\ : bit;
+SIGNAL \ADC_DelSig_1:Net_93\ : bit;
+TERMINAL \ADC_DelSig_1:Net_573\ : bit;
+TERMINAL \ADC_DelSig_1:Net_41\ : bit;
+TERMINAL \ADC_DelSig_1:Net_109\ : bit;
+SIGNAL \ADC_DelSig_1:aclock\ : bit;
+SIGNAL \ADC_DelSig_1:mod_dat_3\ : bit;
+SIGNAL \ADC_DelSig_1:mod_dat_2\ : bit;
+SIGNAL \ADC_DelSig_1:mod_dat_1\ : bit;
+SIGNAL \ADC_DelSig_1:mod_dat_0\ : bit;
+SIGNAL \ADC_DelSig_1:Net_245_7\ : bit;
+SIGNAL \ADC_DelSig_1:Net_245_6\ : bit;
+SIGNAL \ADC_DelSig_1:Net_245_5\ : bit;
+SIGNAL \ADC_DelSig_1:Net_245_4\ : bit;
+SIGNAL \ADC_DelSig_1:Net_245_3\ : bit;
+SIGNAL \ADC_DelSig_1:Net_245_2\ : bit;
+SIGNAL \ADC_DelSig_1:Net_245_1\ : bit;
+SIGNAL \ADC_DelSig_1:Net_245_0\ : bit;
+TERMINAL \ADC_DelSig_1:Net_352\ : bit;
+TERMINAL \ADC_DelSig_1:Net_257\ : bit;
+TERMINAL \ADC_DelSig_1:Net_249\ : bit;
+SIGNAL Net_415 : bit;
+SIGNAL \ADC_DelSig_1:Net_250\ : bit;
+SIGNAL \ADC_DelSig_1:Net_252\ : bit;
+SIGNAL \ADC_DelSig_1:soc\ : bit;
+SIGNAL \ADC_DelSig_1:Net_268\ : bit;
+SIGNAL \ADC_DelSig_1:Net_270\ : bit;
+SIGNAL tmpOE__temp_sens_net_0 : bit;
+SIGNAL tmpFB_0__temp_sens_net_0 : bit;
+SIGNAL tmpIO_0__temp_sens_net_0 : bit;
+TERMINAL tmpSIOVREF__temp_sens_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__temp_sens_net_0 : bit;
+SIGNAL cy_srff_1 : bit;
+SIGNAL Net_465 : bit;
+SIGNAL Net_721 : bit;
+SIGNAL tmpOE__Fault_net_0 : bit;
+SIGNAL Net_887 : bit;
+SIGNAL tmpFB_0__Fault_net_0 : bit;
+SIGNAL tmpIO_0__Fault_net_0 : bit;
+TERMINAL tmpSIOVREF__Fault_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Fault_net_0 : bit;
+SIGNAL \Control_RS:clk\ : bit;
+SIGNAL \Control_RS:rst\ : bit;
+SIGNAL \Control_RS:control_out_0\ : bit;
+SIGNAL \Control_RS:control_out_1\ : bit;
+SIGNAL Net_487 : bit;
+SIGNAL \Control_RS:control_out_2\ : bit;
+SIGNAL Net_488 : bit;
+SIGNAL \Control_RS:control_out_3\ : bit;
+SIGNAL Net_490 : bit;
+SIGNAL \Control_RS:control_out_4\ : bit;
+SIGNAL Net_491 : bit;
+SIGNAL \Control_RS:control_out_5\ : bit;
+SIGNAL Net_492 : bit;
+SIGNAL \Control_RS:control_out_6\ : bit;
+SIGNAL Net_493 : bit;
+SIGNAL \Control_RS:control_out_7\ : bit;
+SIGNAL \Control_RS:control_7\ : bit;
+SIGNAL \Control_RS:control_6\ : bit;
+SIGNAL \Control_RS:control_5\ : bit;
+SIGNAL \Control_RS:control_4\ : bit;
+SIGNAL \Control_RS:control_3\ : bit;
+SIGNAL \Control_RS:control_2\ : bit;
+SIGNAL \Control_RS:control_1\ : bit;
+SIGNAL \Control_RS:control_0\ : bit;
+SIGNAL \USBUART_1:Net_1202\ : bit;
+SIGNAL \USBUART_1:Vbus_ps:status_0\ : bit;
+SIGNAL Net_680 : bit;
+SIGNAL \USBUART_1:Vbus_ps:status_1\ : bit;
+SIGNAL \USBUART_1:Vbus_ps:status_2\ : bit;
+SIGNAL \USBUART_1:Vbus_ps:status_3\ : bit;
+SIGNAL \USBUART_1:Vbus_ps:status_4\ : bit;
+SIGNAL \USBUART_1:Vbus_ps:status_5\ : bit;
+SIGNAL \USBUART_1:Vbus_ps:status_6\ : bit;
+SIGNAL \USBUART_1:Vbus_ps:status_7\ : bit;
+SIGNAL \USBUART_1:Net_1010\ : bit;
+SIGNAL \USBUART_1:tmpOE__Dm_net_0\ : bit;
+SIGNAL \USBUART_1:tmpFB_0__Dm_net_0\ : bit;
+TERMINAL \USBUART_1:Net_597\ : bit;
+SIGNAL \USBUART_1:tmpIO_0__Dm_net_0\ : bit;
+TERMINAL \USBUART_1:tmpSIOVREF__Dm_net_0\ : bit;
+SIGNAL \USBUART_1:tmpINTERRUPT_0__Dm_net_0\ : bit;
+SIGNAL \USBUART_1:tmpOE__Dp_net_0\ : bit;
+SIGNAL \USBUART_1:tmpFB_0__Dp_net_0\ : bit;
+TERMINAL \USBUART_1:Net_1000\ : bit;
+SIGNAL \USBUART_1:tmpIO_0__Dp_net_0\ : bit;
+TERMINAL \USBUART_1:tmpSIOVREF__Dp_net_0\ : bit;
+SIGNAL Net_718 : bit;
+SIGNAL \USBUART_1:Net_1889\ : bit;
+SIGNAL \USBUART_1:Net_1876\ : bit;
+SIGNAL \USBUART_1:ep_int_8\ : bit;
+SIGNAL \USBUART_1:ep_int_7\ : bit;
+SIGNAL \USBUART_1:ep_int_6\ : bit;
+SIGNAL \USBUART_1:ep_int_5\ : bit;
+SIGNAL \USBUART_1:ep_int_4\ : bit;
+SIGNAL \USBUART_1:ep_int_3\ : bit;
+SIGNAL \USBUART_1:ep_int_2\ : bit;
+SIGNAL \USBUART_1:ep_int_1\ : bit;
+SIGNAL \USBUART_1:ep_int_0\ : bit;
+SIGNAL \USBUART_1:Net_95\ : bit;
+SIGNAL \USBUART_1:dma_request_7\ : bit;
+SIGNAL \USBUART_1:dma_request_6\ : bit;
+SIGNAL \USBUART_1:dma_request_5\ : bit;
+SIGNAL \USBUART_1:dma_request_4\ : bit;
+SIGNAL \USBUART_1:dma_request_3\ : bit;
+SIGNAL \USBUART_1:dma_request_2\ : bit;
+SIGNAL \USBUART_1:dma_request_1\ : bit;
+SIGNAL \USBUART_1:dma_request_0\ : bit;
+SIGNAL \USBUART_1:dma_terminate\ : bit;
+SIGNAL \USBUART_1:dma_complete_0\ : bit;
+SIGNAL \USBUART_1:Net_1922\ : bit;
+SIGNAL \USBUART_1:dma_complete_1\ : bit;
+SIGNAL \USBUART_1:Net_1921\ : bit;
+SIGNAL \USBUART_1:dma_complete_2\ : bit;
+SIGNAL \USBUART_1:Net_1920\ : bit;
+SIGNAL \USBUART_1:dma_complete_3\ : bit;
+SIGNAL \USBUART_1:Net_1919\ : bit;
+SIGNAL \USBUART_1:dma_complete_4\ : bit;
+SIGNAL \USBUART_1:Net_1918\ : bit;
+SIGNAL \USBUART_1:dma_complete_5\ : bit;
+SIGNAL \USBUART_1:Net_1917\ : bit;
+SIGNAL \USBUART_1:dma_complete_6\ : bit;
+SIGNAL \USBUART_1:Net_1916\ : bit;
+SIGNAL \USBUART_1:dma_complete_7\ : bit;
+SIGNAL \USBUART_1:Net_1915\ : bit;
+SIGNAL tmpOE__VUSB_net_0 : bit;
+SIGNAL tmpIO_0__VUSB_net_0 : bit;
+TERMINAL tmpSIOVREF__VUSB_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__VUSB_net_0 : bit;
+TERMINAL Net_536 : bit;
+TERMINAL Net_538 : bit;
+TERMINAL Net_928 : bit;
+SIGNAL tmpOE__Diode_seed_adc_net_0 : bit;
+SIGNAL tmpFB_0__Diode_seed_adc_net_0 : bit;
+SIGNAL tmpIO_0__Diode_seed_adc_net_0 : bit;
+TERMINAL tmpSIOVREF__Diode_seed_adc_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Diode_seed_adc_net_0 : bit;
+SIGNAL tmpOE__ADC_IN_net_0 : bit;
+SIGNAL tmpFB_0__ADC_IN_net_0 : bit;
+TERMINAL ADC_lowpass : bit;
+SIGNAL tmpIO_0__ADC_IN_net_0 : bit;
+TERMINAL tmpSIOVREF__ADC_IN_net_0 : bit;
+TERMINAL Net_927 : bit;
+SIGNAL tmpINTERRUPT_0__ADC_IN_net_0 : bit;
+SIGNAL \Fault_Reg:status_0\ : bit;
+SIGNAL \Fault_Reg:status_1\ : bit;
+SIGNAL \Fault_Reg:status_2\ : bit;
+SIGNAL \Fault_Reg:status_3\ : bit;
+SIGNAL \Fault_Reg:status_4\ : bit;
+SIGNAL \Fault_Reg:status_5\ : bit;
+SIGNAL \Fault_Reg:status_6\ : bit;
+SIGNAL \Fault_Reg:status_7\ : bit;
+TERMINAL \PGA_2:Net_17\ : bit;
+SIGNAL \PGA_2:Net_37\ : bit;
+SIGNAL \PGA_2:Net_40\ : bit;
+SIGNAL \PGA_2:Net_38\ : bit;
+SIGNAL \PGA_2:Net_39\ : bit;
+SIGNAL \PGA_2:Net_41\ : bit;
+TERMINAL \PGA_2:Net_75\ : bit;
+SIGNAL \DAC_Current_Control:Net_83\ : bit;
+SIGNAL \DAC_Current_Control:Net_81\ : bit;
+SIGNAL \DAC_Current_Control:Net_82\ : bit;
+TERMINAL Net_1211 : bit;
+TERMINAL \DAC_Current_Control:Net_77\ : bit;
+SIGNAL tmpOE__DAC_Curr_OUT_net_0 : bit;
+SIGNAL tmpFB_0__DAC_Curr_OUT_net_0 : bit;
+SIGNAL tmpIO_0__DAC_Curr_OUT_net_0 : bit;
+TERMINAL tmpSIOVREF__DAC_Curr_OUT_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__DAC_Curr_OUT_net_0 : bit;
+SIGNAL tmpOE__SW2_net_0 : bit;
+SIGNAL Net_720 : bit;
+SIGNAL tmpIO_0__SW2_net_0 : bit;
+TERMINAL tmpSIOVREF__SW2_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__SW2_net_0 : bit;
+SIGNAL Net_813 : bit;
+SIGNAL \PWM_1:Net_107\ : bit;
+SIGNAL \PWM_1:Net_113\ : bit;
+SIGNAL \PWM_1:Net_63\ : bit;
+SIGNAL \PWM_1:Net_57\ : bit;
+SIGNAL \PWM_1:Net_54\ : bit;
+SIGNAL Net_876 : bit;
+SIGNAL Net_873 : bit;
+SIGNAL \PWM_1:Net_114\ : bit;
+SIGNAL tmpOE__Diode_pump_adc_net_0 : bit;
+SIGNAL tmpFB_0__Diode_pump_adc_net_0 : bit;
+SIGNAL tmpIO_0__Diode_pump_adc_net_0 : bit;
+TERMINAL tmpSIOVREF__Diode_pump_adc_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Diode_pump_adc_net_0 : bit;
+SIGNAL tmpOE__Diode_osc_adc_net_0 : bit;
+SIGNAL tmpFB_0__Diode_osc_adc_net_0 : bit;
+SIGNAL tmpIO_0__Diode_osc_adc_net_0 : bit;
+TERMINAL tmpSIOVREF__Diode_osc_adc_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Diode_osc_adc_net_0 : bit;
+SIGNAL tmpOE__Current_poti_net_0 : bit;
+SIGNAL tmpFB_0__Current_poti_net_0 : bit;
+SIGNAL tmpIO_0__Current_poti_net_0 : bit;
+TERMINAL tmpSIOVREF__Current_poti_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Current_poti_net_0 : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_0\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_1\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_2\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_3\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_4\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_5\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_6\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_7\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_8\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_9\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_10\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_11\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_12\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_13\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_14\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_15\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_16\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_17\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_18\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_19\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_20\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_21\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_22\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_23\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_24\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_25\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_26\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_27\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_28\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_29\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_30\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_31\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_32\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_33\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_34\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_35\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_36\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_37\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_38\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_39\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_40\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_41\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_42\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_43\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_44\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_45\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_46\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_47\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_48\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_49\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_50\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_51\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_52\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_53\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_54\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_55\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_56\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_57\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_58\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_59\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_60\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_61\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_62\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_63\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:nrq_edge_detect_reg\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:bus_clk_nrq_reg\\D\ : bit;
+SIGNAL \ADC_SAR_Seq_2:bSAR_SEQ:nrq_reg\\D\ : bit;
+SIGNAL cy_srff_1D : bit;
+BEGIN
+
+zero <=  ('0') ;
+
+Seed_err1 <= (not \Comp_2:Net_1\);
+
+tmpOE__Diode_Oscillation_net_0 <=  ('1') ;
+
+Net_885 <= (not \Comp_3:Net_1\
+	OR Net_725
+	OR not \Comp_2:Net_1\
+	OR osc_err);
+
+Seed_err2 <= (not \Comp_3:Net_1\);
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_0\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_1\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_2\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_3\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_4\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_5\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_6\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_7\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_8\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_9\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_10\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_11\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_12\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_13\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_14\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_15\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_16\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_17\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_18\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_19\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_20\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_21\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_22\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_23\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_24\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_25\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_26\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_27\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_28\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_29\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_30\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_31\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_32\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_33\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_34\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_35\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_36\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_37\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_38\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_39\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_40\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_41\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_42\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_43\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_44\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_45\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_46\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_47\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_48\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_49\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_50\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_51\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_52\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_53\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_54\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_55\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_56\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_57\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_58\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_59\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_60\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_61\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_62\\D\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\));
+
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_63\\D\ <= ((\ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\));
+
+\ADC_SAR_Seq_2:bSAR_SEQ:cnt_enable\ <= (\ADC_SAR_Seq_2:bSAR_SEQ:load_period\
+	OR Net_1110);
+
+\ADC_SAR_Seq_2:bSAR_SEQ:bus_clk_nrq_reg\\D\ <= ((not Net_1111 and \ADC_SAR_Seq_2:bSAR_SEQ:bus_clk_nrq_reg\)
+	OR \ADC_SAR_Seq_2:Net_3935\);
+
+\ADC_SAR_Seq_2:bSAR_SEQ:nrq_edge_detect\ <= ((not \ADC_SAR_Seq_2:bSAR_SEQ:nrq_reg\ and \ADC_SAR_Seq_2:bSAR_SEQ:bus_clk_nrq_reg\));
+
+\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:lt_5\ <= ((not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\)
+	OR (not \ADC_SAR_Seq_2:ch_addr_4\ and not \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\)
+	OR (not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\)
+	OR (not \ADC_SAR_Seq_2:ch_addr_3\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\)
+	OR (not \ADC_SAR_Seq_2:ch_addr_5\ and not \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\)
+	OR (not \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\)
+	OR (not \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\));
+
+\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gt_5\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:ch_addr_3\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_4\ and \ADC_SAR_Seq_2:ch_addr_3\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:ch_addr_3\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ and \ADC_SAR_Seq_2:ch_addr_3\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_5\ and \ADC_SAR_Seq_2:ch_addr_4\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ and \ADC_SAR_Seq_2:ch_addr_4\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ and \ADC_SAR_Seq_2:ch_addr_5\));
+
+\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:lt_2\ <= ((not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\)
+	OR (not \ADC_SAR_Seq_2:ch_addr_1\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\)
+	OR (not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\)
+	OR (not \ADC_SAR_Seq_2:ch_addr_0\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\)
+	OR (not \ADC_SAR_Seq_2:ch_addr_2\ and not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\)
+	OR (not \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\)
+	OR (not \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\));
+
+\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gt_2\ <= ((not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_1\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ and \ADC_SAR_Seq_2:ch_addr_0\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_2\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ and \ADC_SAR_Seq_2:ch_addr_1\)
+	OR (not \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ and \ADC_SAR_Seq_2:ch_addr_2\));
+
+cy_srff_1D <= ((not Net_721 and cy_srff_1)
+	OR (not \Comp_3:Net_1\ and not Net_721)
+	OR (not Net_721 and Net_725)
+	OR (not \Comp_2:Net_1\ and not Net_721)
+	OR (not Net_721 and osc_err));
+
+Net_887 <= (not cy_srff_1);
+
+DMA:cy_dma_v1_0
+	GENERIC MAP(drq_type=>"10",
+		num_tds=>0)
+	PORT MAP(drq=>Net_449,
+		trq=>zero,
+		nrq=>Net_2);
+isr:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_436);
+\IDAC8_1:viDAC8\:cy_psoc3_vidac8_v1_0
+	GENERIC MAP(cy_registers=>"",
+		reg_data=>'0',
+		is_all_if_any=>'0')
+	PORT MAP(reset=>zero,
+		idir=>zero,
+		ioff=>zero,
+		data=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		strobe=>zero,
+		strobe_udb=>zero,
+		vout=>\IDAC8_1:Net_124\,
+		iout=>Net_302);
+\IDAC8_1:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\IDAC8_1:Net_124\);
+\VDAC8:viDAC8\:cy_psoc3_vidac8_v1_0
+	GENERIC MAP(cy_registers=>"",
+		reg_data=>'0',
+		is_all_if_any=>'0')
+	PORT MAP(reset=>zero,
+		idir=>zero,
+		ioff=>zero,
+		data=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		strobe=>zero,
+		strobe_udb=>zero,
+		vout=>Net_51,
+		iout=>\VDAC8:Net_77\);
+\VDAC8:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\VDAC8:Net_77\);
+\Comp_1:ctComp\:cy_psoc3_ctcomp_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(vplus=>Net_558,
+		vminus=>Net_51,
+		clock=>zero,
+		clk_udb=>zero,
+		cmpout=>osc_err);
+Clock_1:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"59aa490c-d139-46d7-98e0-08af1c415a78",
+		source_clock_id=>"75C2148C-3656-4d8a-846D-0CAE99AB6FF7",
+		divisor=>0,
+		period=>"0",
+		is_direct=>'1',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_52,
+		dig_domain_out=>open);
+\Comp_2:ctComp\:cy_psoc3_ctcomp_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(vplus=>Net_558,
+		vminus=>Net_69,
+		clock=>zero,
+		clk_udb=>zero,
+		cmpout=>\Comp_2:Net_1\);
+Clock_2:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"d0cfe894-9689-4494-b73a-c0b0b0bb1e8f",
+		source_clock_id=>"75C2148C-3656-4d8a-846D-0CAE99AB6FF7",
+		divisor=>0,
+		period=>"0",
+		is_direct=>'1',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_901,
+		dig_domain_out=>open);
+\Filter:DFB\:cy_psoc3_dfb_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(clock=>zero,
+		in_1=>zero,
+		in_2=>zero,
+		out_1=>\Filter:Net_8\,
+		out_2=>\Filter:Net_9\,
+		dmareq_1=>Net_645,
+		dmareq_2=>Net_646,
+		interrupt=>Net_436);
+GND_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_18);
+R_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_542, Net_543));
+Diode_Oscillation:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"cc3bcd7e-5dc0-48ea-9bf6-6aa082be1ada",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"NONCONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'1',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__Diode_Oscillation_net_0),
+		analog=>Net_558,
+		io=>(tmpIO_0__Diode_Oscillation_net_0),
+		siovref=>(tmpSIOVREF__Diode_Oscillation_net_0),
+		annotation=>Net_543,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Diode_Oscillation_net_0);
+DAC_Out:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"d22fef88-f60e-4282-bad1-fc1bcae18b79",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"NONCONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'1',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__DAC_Out_net_0),
+		analog=>Net_51,
+		io=>(tmpIO_0__DAC_Out_net_0),
+		siovref=>(tmpSIOVREF__DAC_Out_net_0),
+		annotation=>Net_16,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__DAC_Out_net_0);
+R_6:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_546, Net_914));
+\Comp_3:ctComp\:cy_psoc3_ctcomp_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(vplus=>Net_909,
+		vminus=>Net_664,
+		clock=>zero,
+		clk_udb=>zero,
+		cmpout=>\Comp_3:Net_1\);
+Buzzer:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"e851a3b9-efb8-48be-bbb8-b303b216c393",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>Net_729,
+		fb=>(tmpFB_0__Buzzer_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__Buzzer_net_0),
+		siovref=>(tmpSIOVREF__Buzzer_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Buzzer_net_0);
+Diode_Seedseite:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"05a9c8de-3ba2-4909-8250-95fdc61c0bf4",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__Diode_Seedseite_net_0),
+		analog=>Net_909,
+		io=>(tmpIO_0__Diode_Seedseite_net_0),
+		siovref=>(tmpSIOVREF__Diode_Seedseite_net_0),
+		annotation=>Net_914,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Diode_Seedseite_net_0);
+Seed_ref:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"152a6a2e-04d1-4fd9-8247-e1e6823ea652",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__Seed_ref_net_0),
+		analog=>Net_664,
+		io=>(tmpIO_0__Seed_ref_net_0),
+		siovref=>(tmpSIOVREF__Seed_ref_net_0),
+		annotation=>Net_707,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Seed_ref_net_0);
+Pump_ref:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"b3c1449f-ffb2-4921-8d53-12b19966cef2",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__Pump_ref_net_0),
+		analog=>Net_69,
+		io=>(tmpIO_0__Pump_ref_net_0),
+		siovref=>(tmpSIOVREF__Pump_ref_net_0),
+		annotation=>Net_126,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Pump_ref_net_0);
+GND_4:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_121);
+R_3:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Potentiometer_v1_0",
+		port_names=>"T1, T2, W",
+		width=>3)
+	PORT MAP(connect=>(Net_129, Net_127, Net_126));
+PWR_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Power_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_129);
+GND_3:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_127);
+R_4:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Potentiometer_v1_0",
+		port_names=>"T1, T2, W",
+		width=>3)
+	PORT MAP(connect=>(Net_131, Net_133, Net_707));
+GND_5:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_133);
+Power:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Power_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_131);
+\ADC_SAR_Seq_2:AMuxHw_2\:cy_psoc3_amux_v1_0
+	GENERIC MAP(cy_registers=>"",
+		muxin_width=>64,
+		hw_control=>'1',
+		one_active=>'1',
+		init_mux_sel=>"0000000000000000000000000000000000000000000000000000000000000000",
+		api_type=>2,
+		connect_mode=>1)
+	PORT MAP(muxin=>(Net_1206, Net_1205, Net_1204, Net_1203,
+			Net_1202, Net_1201, Net_1200, Net_1199,
+			Net_1198, Net_1197, Net_1196, Net_1195,
+			Net_1194, Net_1193, Net_1192, Net_1191,
+			Net_1190, Net_1188, Net_1186, Net_1185,
+			Net_1183, Net_1181, Net_1180, Net_1178,
+			Net_1176, Net_1175, Net_1173, Net_1171,
+			Net_1170, Net_1168, Net_1166, Net_1165,
+			Net_1163, Net_1161, Net_1160, Net_1158,
+			Net_1156, Net_1155, Net_1153, Net_1151,
+			Net_1150, Net_1148, Net_1146, Net_1145,
+			Net_1143, Net_1141, Net_1140, Net_1138,
+			Net_1136, Net_1135, Net_1133, Net_1131,
+			Net_1130, Net_1128, Net_1126, Net_1125,
+			Net_1123, Net_1121, Net_1120, Net_1118,
+			Net_1116, Net_1115, Net_1214, Net_1217),
+		hw_ctrl_en=>(\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_63\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_62\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_61\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_60\,
+			\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_59\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_58\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_57\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_56\,
+			\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_55\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_54\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_53\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_52\,
+			\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_51\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_50\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_49\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_48\,
+			\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_47\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_46\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_45\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_44\,
+			\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_43\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_42\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_41\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_40\,
+			\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_39\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_38\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_37\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_36\,
+			\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_35\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_34\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_33\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_32\,
+			\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_31\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_30\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_29\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_28\,
+			\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_27\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_26\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_25\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_24\,
+			\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_23\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_22\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_21\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_20\,
+			\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_19\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_18\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_17\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_16\,
+			\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_15\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_14\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_13\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_12\,
+			\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_11\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_10\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_9\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_8\,
+			\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_7\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_6\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_5\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_4\,
+			\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_3\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_2\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_1\, \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_0\),
+		vout=>\ADC_SAR_Seq_2:V_single\);
+\ADC_SAR_Seq_2:SAR:cy_analog_virtualmux_3_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_SAR_Seq_2:SAR:Net_248\,
+		signal2=>\ADC_SAR_Seq_2:SAR:Net_235\);
+\ADC_SAR_Seq_2:SAR:ADC_SAR\:cy_psoc5_sar_v2_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(vplus=>\ADC_SAR_Seq_2:Net_2803\,
+		vminus=>\ADC_SAR_Seq_2:SAR:Net_126\,
+		ext_pin=>\ADC_SAR_Seq_2:SAR:Net_215\,
+		vrefhi_out=>\ADC_SAR_Seq_2:SAR:Net_257\,
+		vref=>\ADC_SAR_Seq_2:SAR:Net_248\,
+		clock=>\ADC_SAR_Seq_2:clock\,
+		pump_clock=>\ADC_SAR_Seq_2:clock\,
+		sof_udb=>zero,
+		clk_udb=>zero,
+		vp_ctl_udb=>(zero, zero, zero, zero),
+		vn_ctl_udb=>(zero, zero, zero, zero),
+		irq=>\ADC_SAR_Seq_2:SAR:Net_252\,
+		next_out=>Net_1110,
+		data_out=>(\ADC_SAR_Seq_2:SAR:Net_207_11\, \ADC_SAR_Seq_2:SAR:Net_207_10\, \ADC_SAR_Seq_2:SAR:Net_207_9\, \ADC_SAR_Seq_2:SAR:Net_207_8\,
+			\ADC_SAR_Seq_2:SAR:Net_207_7\, \ADC_SAR_Seq_2:SAR:Net_207_6\, \ADC_SAR_Seq_2:SAR:Net_207_5\, \ADC_SAR_Seq_2:SAR:Net_207_4\,
+			\ADC_SAR_Seq_2:SAR:Net_207_3\, \ADC_SAR_Seq_2:SAR:Net_207_2\, \ADC_SAR_Seq_2:SAR:Net_207_1\, \ADC_SAR_Seq_2:SAR:Net_207_0\),
+		eof_udb=>\ADC_SAR_Seq_2:Net_3830\);
+\ADC_SAR_Seq_2:SAR:cy_analog_virtualmux_2_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_SAR_Seq_2:SAR:Net_215\,
+		signal2=>\ADC_SAR_Seq_2:SAR:Net_209\);
+\ADC_SAR_Seq_2:SAR:cy_analog_virtualmux_1_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_SAR_Seq_2:SAR:Net_126\,
+		signal2=>\ADC_SAR_Seq_2:SAR:Net_149\);
+\ADC_SAR_Seq_2:SAR:noconnect\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC_SAR_Seq_2:SAR:Net_209\);
+\ADC_SAR_Seq_2:SAR:cy_analog_virtualmux_4_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_SAR_Seq_2:SAR:Net_257\,
+		signal2=>\ADC_SAR_Seq_2:SAR:Net_149\);
+\ADC_SAR_Seq_2:SAR:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC_SAR_Seq_2:SAR:Net_255\);
+\ADC_SAR_Seq_2:SAR:vRef_Vdda_1\:cy_vref_v1_0
+	GENERIC MAP(guid=>"4720866E-BC14-478d-B8A0-3E44F38CADAC",
+		name=>"Vdda/2",
+		autoenable=>'1',
+		ignoresleep=>'0')
+	PORT MAP(vout=>\ADC_SAR_Seq_2:SAR:Net_235\);
+\ADC_SAR_Seq_2:SAR:noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC_SAR_Seq_2:SAR:Net_368\);
+\ADC_SAR_Seq_2:cy_analog_virtualmux_1_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_SAR_Seq_2:Net_2803\,
+		signal2=>\ADC_SAR_Seq_2:V_single\);
+\ADC_SAR_Seq_2:bSAR_SEQ:ClkEn\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>\ADC_SAR_Seq_2:clock\,
+		enable=>\ADC_SAR_Seq_2:bSAR_SEQ:enable\,
+		clock_out=>\ADC_SAR_Seq_2:bSAR_SEQ:clk_fin\);
+\ADC_SAR_Seq_2:bSAR_SEQ:ClkCtrl\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>\ADC_SAR_Seq_2:clock\,
+		enable=>tmpOE__Diode_Oscillation_net_0,
+		clock_out=>\ADC_SAR_Seq_2:bSAR_SEQ:clk_ctrl\);
+\ADC_SAR_Seq_2:bSAR_SEQ:CtrlReg\:cy_psoc3_control
+	GENERIC MAP(cy_init_value=>"00000000",
+		cy_force_order=>'1',
+		cy_ctrl_mode_1=>"00000110",
+		cy_ctrl_mode_0=>"00000111",
+		cy_ext_reset=>'0')
+	PORT MAP(reset=>zero,
+		clock=>\ADC_SAR_Seq_2:bSAR_SEQ:clk_ctrl\,
+		control=>(\ADC_SAR_Seq_2:bSAR_SEQ:control_7\, \ADC_SAR_Seq_2:bSAR_SEQ:control_6\, \ADC_SAR_Seq_2:bSAR_SEQ:control_5\, \ADC_SAR_Seq_2:bSAR_SEQ:control_4\,
+			\ADC_SAR_Seq_2:bSAR_SEQ:control_3\, \ADC_SAR_Seq_2:bSAR_SEQ:control_2\, \ADC_SAR_Seq_2:bSAR_SEQ:load_period\, \ADC_SAR_Seq_2:bSAR_SEQ:enable\));
+\ADC_SAR_Seq_2:bSAR_SEQ:ChannelCounter\:cy_psoc3_count7
+	GENERIC MAP(cy_period=>"0000011",
+		cy_init_value=>"0000000",
+		cy_route_ld=>'1',
+		cy_route_en=>'1',
+		cy_alt_mode=>'0')
+	PORT MAP(clock=>\ADC_SAR_Seq_2:bSAR_SEQ:clk_fin\,
+		reset=>zero,
+		load=>\ADC_SAR_Seq_2:bSAR_SEQ:load_period\,
+		enable=>\ADC_SAR_Seq_2:bSAR_SEQ:cnt_enable\,
+		count=>(\ADC_SAR_Seq_2:bSAR_SEQ:count_6\, \ADC_SAR_Seq_2:ch_addr_5\, \ADC_SAR_Seq_2:ch_addr_4\, \ADC_SAR_Seq_2:ch_addr_3\,
+			\ADC_SAR_Seq_2:ch_addr_2\, \ADC_SAR_Seq_2:ch_addr_1\, \ADC_SAR_Seq_2:ch_addr_0\),
+		tc=>\ADC_SAR_Seq_2:bSAR_SEQ:cnt_tc\);
+\ADC_SAR_Seq_2:bSAR_SEQ:EOCSts\:cy_psoc3_status
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"00000001")
+	PORT MAP(reset=>zero,
+		clock=>\ADC_SAR_Seq_2:bSAR_SEQ:clk_fin\,
+		status=>(zero, zero, zero, zero,
+			zero, zero, zero, Net_1111));
+\ADC_SAR_Seq_2:IntClock\:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"1c766f45-b310-4a44-9ef5-17e4db18246e/9725d809-97e7-404e-b621-dfdbe78d0ca9",
+		source_clock_id=>"",
+		divisor=>0,
+		period=>"1000000000",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>\ADC_SAR_Seq_2:clock\,
+		dig_domain_out=>open);
+\ADC_SAR_Seq_2:TempBuf\:cy_dma_v1_0
+	GENERIC MAP(drq_type=>"00",
+		num_tds=>0)
+	PORT MAP(drq=>\ADC_SAR_Seq_2:Net_3830\,
+		trq=>zero,
+		nrq=>\ADC_SAR_Seq_2:Net_3698\);
+\ADC_SAR_Seq_2:FinalBuf\:cy_dma_v1_0
+	GENERIC MAP(drq_type=>"00",
+		num_tds=>0)
+	PORT MAP(drq=>\ADC_SAR_Seq_2:Net_3698\,
+		trq=>zero,
+		nrq=>\ADC_SAR_Seq_2:nrq\);
+\ADC_SAR_Seq_2:BusClock\:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"1c766f45-b310-4a44-9ef5-17e4db18246e/3d23b625-9a71-4c05-baf4-2f904356009b",
+		source_clock_id=>"75C2148C-3656-4d8a-846D-0CAE99AB6FF7",
+		divisor=>0,
+		period=>"0",
+		is_direct=>'1',
+		is_digital=>'1')
+	PORT MAP(clock_out=>\ADC_SAR_Seq_2:Net_3710\,
+		dig_domain_out=>open);
+\ADC_SAR_Seq_2:IRQ\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_1111);
+\ADC_SAR_Seq_2:Sync:genblk1[0]:INST\:cy_psoc3_sync
+	PORT MAP(clock=>\ADC_SAR_Seq_2:Net_3710\,
+		sc_in=>\ADC_SAR_Seq_2:nrq\,
+		sc_out=>\ADC_SAR_Seq_2:Net_3935\);
+\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gne(1):c4:c6:u1\:cy_buf
+	PORT MAP(x=>\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:lt_5\,
+		y=>\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:lti_1\);
+\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gne(1):c4:c6:u2\:cy_buf
+	PORT MAP(x=>\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gt_5\,
+		y=>\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gti_1\);
+\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gne(0):c3:u1\:cy_buf
+	PORT MAP(x=>\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:lt_2\,
+		y=>\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:lti_0\);
+\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gne(0):c3:u2\:cy_buf
+	PORT MAP(x=>\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gt_2\,
+		y=>\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gti_0\);
+\LCD:LCDPort\:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"6008145d-c60c-40d5-a756-2203fdc6ee91/ed092b9b-d398-4703-be89-cebf998501f6",
+		drive_mode=>"110110110110110110110",
+		ibuf_enabled=>"1111111",
+		init_dr_st=>"0000000",
+		input_sync=>"1111111",
+		input_clk_en=>'0',
+		input_sync_mode=>"0000000",
+		intr_mode=>"00000000000000",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>",,,,,,",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0000000",
+		output_sync=>"0000000",
+		output_clk_en=>'0',
+		output_mode=>"0000000",
+		output_reset=>'0',
+		output_clock_mode=>"0000000",
+		oe_sync=>"0000000",
+		oe_conn=>"0000000",
+		oe_reset=>'0',
+		pin_aliases=>",,,,,,",
+		pin_mode=>"OOOOOOO",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1111111",
+		sio_ibuf=>"00000000",
+		sio_info=>"00000000000000",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0000000",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10101010101010",
+		width=>7,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0000000",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0000000",
+		ovt_slew_control=>"00000000000000",
+		ovt_hyst_trim=>"0000000",
+		input_buffer_sel=>"00000000000000")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0, tmpOE__Diode_Oscillation_net_0, tmpOE__Diode_Oscillation_net_0, tmpOE__Diode_Oscillation_net_0,
+			tmpOE__Diode_Oscillation_net_0, tmpOE__Diode_Oscillation_net_0, tmpOE__Diode_Oscillation_net_0),
+		y=>(zero, zero, zero, zero,
+			zero, zero, zero),
+		fb=>(\LCD:tmpFB_6__LCDPort_net_6\, \LCD:tmpFB_6__LCDPort_net_5\, \LCD:tmpFB_6__LCDPort_net_4\, \LCD:tmpFB_6__LCDPort_net_3\,
+			\LCD:tmpFB_6__LCDPort_net_2\, \LCD:tmpFB_6__LCDPort_net_1\, \LCD:tmpFB_6__LCDPort_net_0\),
+		analog=>(open, open, open, open,
+			open, open, open),
+		io=>(\LCD:tmpIO_6__LCDPort_net_6\, \LCD:tmpIO_6__LCDPort_net_5\, \LCD:tmpIO_6__LCDPort_net_4\, \LCD:tmpIO_6__LCDPort_net_3\,
+			\LCD:tmpIO_6__LCDPort_net_2\, \LCD:tmpIO_6__LCDPort_net_1\, \LCD:tmpIO_6__LCDPort_net_0\),
+		siovref=>(\LCD:tmpSIOVREF__LCDPort_net_0\),
+		annotation=>(open, open, open, open,
+			open, open, open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>\LCD:tmpINTERRUPT_0__LCDPort_net_0\);
+Fault_isr:cy_isr_v1_0
+	GENERIC MAP(int_type=>"00",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_885);
+\ADC_SAR_1:cy_analog_virtualmux_3_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_SAR_1:Net_248\,
+		signal2=>\ADC_SAR_1:Net_235\);
+\ADC_SAR_1:IRQ\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_449);
+\ADC_SAR_1:theACLK\:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"5dc3ea83-91e6-4dc6-bd79-fe6e3a3dd0c9/696a0979-21fc-4185-bf38-6c79febcde7a",
+		source_clock_id=>"",
+		divisor=>0,
+		period=>"833333333.333333",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>\ADC_SAR_1:Net_376\,
+		dig_domain_out=>open);
+\ADC_SAR_1:ADC_SAR\:cy_psoc5_sar_v2_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(vplus=>Net_635,
+		vminus=>\ADC_SAR_1:Net_126\,
+		ext_pin=>\ADC_SAR_1:Net_215\,
+		vrefhi_out=>\ADC_SAR_1:Net_257\,
+		vref=>\ADC_SAR_1:Net_248\,
+		clock=>\ADC_SAR_1:Net_376\,
+		pump_clock=>\ADC_SAR_1:Net_376\,
+		sof_udb=>zero,
+		clk_udb=>zero,
+		vp_ctl_udb=>(zero, zero, zero, zero),
+		vn_ctl_udb=>(zero, zero, zero, zero),
+		irq=>\ADC_SAR_1:Net_252\,
+		next_out=>Net_275,
+		data_out=>(\ADC_SAR_1:Net_207_11\, \ADC_SAR_1:Net_207_10\, \ADC_SAR_1:Net_207_9\, \ADC_SAR_1:Net_207_8\,
+			\ADC_SAR_1:Net_207_7\, \ADC_SAR_1:Net_207_6\, \ADC_SAR_1:Net_207_5\, \ADC_SAR_1:Net_207_4\,
+			\ADC_SAR_1:Net_207_3\, \ADC_SAR_1:Net_207_2\, \ADC_SAR_1:Net_207_1\, \ADC_SAR_1:Net_207_0\),
+		eof_udb=>Net_449);
+\ADC_SAR_1:cy_analog_virtualmux_2_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_SAR_1:Net_215\,
+		signal2=>\ADC_SAR_1:Net_209\);
+\ADC_SAR_1:cy_analog_virtualmux_1_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_SAR_1:Net_126\,
+		signal2=>\ADC_SAR_1:Net_149\);
+\ADC_SAR_1:noconnect\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC_SAR_1:Net_209\);
+\ADC_SAR_1:cy_analog_virtualmux_4_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_SAR_1:Net_257\,
+		signal2=>\ADC_SAR_1:Net_149\);
+\ADC_SAR_1:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC_SAR_1:Net_255\);
+\ADC_SAR_1:vRef_Vdda_1\:cy_vref_v1_0
+	GENERIC MAP(guid=>"4720866E-BC14-478d-B8A0-3E44F38CADAC",
+		name=>"Vdda/2",
+		autoenable=>'1',
+		ignoresleep=>'0')
+	PORT MAP(vout=>\ADC_SAR_1:Net_235\);
+\ADC_SAR_1:noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC_SAR_1:Net_368\);
+\IDAC8_2:viDAC8\:cy_psoc3_vidac8_v1_0
+	GENERIC MAP(cy_registers=>"",
+		reg_data=>'0',
+		is_all_if_any=>'0')
+	PORT MAP(reset=>zero,
+		idir=>zero,
+		ioff=>zero,
+		data=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		strobe=>zero,
+		strobe_udb=>zero,
+		vout=>\IDAC8_2:Net_124\,
+		iout=>Net_302);
+\IDAC8_2:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\IDAC8_2:Net_124\);
+DAC_PGA_OUT:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"481b718a-148e-48ce-a544-a38e0203045c",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__DAC_PGA_OUT_net_0),
+		analog=>Net_308,
+		io=>(tmpIO_0__DAC_PGA_OUT_net_0),
+		siovref=>(tmpSIOVREF__DAC_PGA_OUT_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__DAC_PGA_OUT_net_0);
+\PGA_1:SC\:cy_psoc3_scblock_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(vref=>\PGA_1:Net_17\,
+		vin=>Net_302,
+		aclk=>zero,
+		bst_clk=>zero,
+		clk_udb=>zero,
+		dyn_cntl=>zero,
+		modout_sync=>\PGA_1:Net_41\,
+		vout=>Net_308);
+\PGA_1:cy_analog_virtualmux_1_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\PGA_1:Net_17\,
+		signal2=>\PGA_1:Net_75\);
+\PGA_1:cy_analog_noconnect_2\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\PGA_1:Net_75\);
+DAC_Current:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"c6c834b0-2e80-4a5a-89b4-915a03a07cde",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__DAC_Current_net_0),
+		analog=>Net_302,
+		io=>(tmpIO_0__DAC_Current_net_0),
+		siovref=>(tmpSIOVREF__DAC_Current_net_0),
+		annotation=>Net_1209,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__DAC_Current_net_0);
+R_IDAC:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_1209, Net_1210));
+GND_6:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_1210);
+PWR_2:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Power_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_530);
+\Counter_1:CounterHW\:cy_psoc3_timer_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(clock=>Net_347,
+		kill=>zero,
+		enable=>zero,
+		capture=>zero,
+		timer_reset=>zero,
+		tc=>\Counter_1:Net_48\,
+		compare=>\Counter_1:Net_47\,
+		interrupt=>Net_437);
+Clock_3:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"e9ed2762-fd25-462f-994b-dd6e4f7ef3f2",
+		source_clock_id=>"CEF43CFB-0213-49b9-B980-2FFAB81C5B47",
+		divisor=>500,
+		period=>"0",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_347,
+		dig_domain_out=>open);
+PID_isr:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_437);
+\ADC_DelSig_1:vRef_2\:cy_vref_v1_0
+	GENERIC MAP(guid=>"15B3DB15-B7B3-4d62-A2DF-25EA392A7161",
+		name=>"Vssa (GND)",
+		autoenable=>'1',
+		ignoresleep=>'0')
+	PORT MAP(vout=>\ADC_DelSig_1:Net_244\);
+\ADC_DelSig_1:cy_analog_virtualmux_6_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_DelSig_1:Net_690\,
+		signal2=>\ADC_DelSig_1:Net_35\);
+\ADC_DelSig_1:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC_DelSig_1:Net_34\);
+\ADC_DelSig_1:cy_analog_virtualmux_4_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_DelSig_1:Net_677\,
+		signal2=>\ADC_DelSig_1:Net_34\);
+\ADC_DelSig_1:AMux\:cy_psoc3_amux_v1_0
+	GENERIC MAP(cy_registers=>"",
+		muxin_width=>2,
+		hw_control=>'0',
+		one_active=>'0',
+		init_mux_sel=>"00",
+		api_type=>0,
+		connect_mode=>1)
+	PORT MAP(muxin=>(\ADC_DelSig_1:Net_690\, \ADC_DelSig_1:Net_244\),
+		hw_ctrl_en=>(others => zero),
+		vout=>\ADC_DelSig_1:Net_20\);
+\ADC_DelSig_1:DSM\:cy_psoc3_ds_mod_v4_0
+	GENERIC MAP(cy_registers=>"",
+		resolution=>16)
+	PORT MAP(aclock=>\ADC_DelSig_1:Net_488\,
+		vplus=>Net_412,
+		vminus=>\ADC_DelSig_1:Net_520\,
+		modbit=>zero,
+		reset_udb=>zero,
+		reset_dec=>\ADC_DelSig_1:mod_reset\,
+		clk_udb=>zero,
+		extclk_cp_udb=>\ADC_DelSig_1:Net_93\,
+		ext_pin_1=>\ADC_DelSig_1:Net_573\,
+		ext_pin_2=>\ADC_DelSig_1:Net_41\,
+		ext_vssa=>\ADC_DelSig_1:Net_109\,
+		qtz_ref=>\ADC_DelSig_1:Net_677\,
+		dec_clock=>\ADC_DelSig_1:aclock\,
+		mod_dat=>(\ADC_DelSig_1:mod_dat_3\, \ADC_DelSig_1:mod_dat_2\, \ADC_DelSig_1:mod_dat_1\, \ADC_DelSig_1:mod_dat_0\),
+		dout_udb=>(\ADC_DelSig_1:Net_245_7\, \ADC_DelSig_1:Net_245_6\, \ADC_DelSig_1:Net_245_5\, \ADC_DelSig_1:Net_245_4\,
+			\ADC_DelSig_1:Net_245_3\, \ADC_DelSig_1:Net_245_2\, \ADC_DelSig_1:Net_245_1\, \ADC_DelSig_1:Net_245_0\));
+\ADC_DelSig_1:cy_analog_noconnect_5\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC_DelSig_1:Net_352\);
+\ADC_DelSig_1:cy_analog_virtualmux_5_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_DelSig_1:Net_109\,
+		signal2=>\ADC_DelSig_1:Net_352\);
+\ADC_DelSig_1:Ext_CP_Clk\:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"eb5b73c6-b88a-44f0-90ca-1968706154de/b7604721-db56-4477-98c2-8fae77869066",
+		source_clock_id=>"61737EF6-3B74-48f9-8B91-F7473A442AE7",
+		divisor=>1,
+		period=>"0",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>\ADC_DelSig_1:Net_93\,
+		dig_domain_out=>open);
+\ADC_DelSig_1:cy_analog_noconnect_3\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC_DelSig_1:Net_257\);
+\ADC_DelSig_1:cy_analog_noconnect_2\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC_DelSig_1:Net_249\);
+\ADC_DelSig_1:cy_analog_virtualmux_3_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_DelSig_1:Net_41\,
+		signal2=>\ADC_DelSig_1:Net_257\);
+\ADC_DelSig_1:cy_analog_virtualmux_2_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_DelSig_1:Net_573\,
+		signal2=>\ADC_DelSig_1:Net_249\);
+\ADC_DelSig_1:cy_analog_virtualmux_1_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_DelSig_1:Net_520\,
+		signal2=>\ADC_DelSig_1:Net_20\);
+\ADC_DelSig_1:IRQ\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_415);
+\ADC_DelSig_1:theACLK\:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"eb5b73c6-b88a-44f0-90ca-1968706154de/edd15f43-b66b-457b-be3a-5342345270c8",
+		source_clock_id=>"61737EF6-3B74-48f9-8B91-F7473A442AE7",
+		divisor=>0,
+		period=>"2444987775.06112",
+		is_direct=>'0',
+		is_digital=>'0')
+	PORT MAP(clock_out=>\ADC_DelSig_1:Net_488\,
+		dig_domain_out=>open);
+\ADC_DelSig_1:DEC\:cy_psoc3_decimator_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(aclock=>\ADC_DelSig_1:aclock\,
+		mod_dat=>(\ADC_DelSig_1:mod_dat_3\, \ADC_DelSig_1:mod_dat_2\, \ADC_DelSig_1:mod_dat_1\, \ADC_DelSig_1:mod_dat_0\),
+		ext_start=>tmpOE__Diode_Oscillation_net_0,
+		mod_reset=>\ADC_DelSig_1:mod_reset\,
+		interrupt=>Net_415);
+temp_sens:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"664f0f9b-2295-4c1f-9c97-703882660bc8",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__temp_sens_net_0),
+		analog=>Net_412,
+		io=>(tmpIO_0__temp_sens_net_0),
+		siovref=>(tmpSIOVREF__temp_sens_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__temp_sens_net_0);
+Fault:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"52f31aa9-2f0a-497d-9a1f-1424095e13e6",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>1,
+		sio_hifreq=>"1",
+		sio_hyst=>"1",
+		sio_ibuf=>"0",
+		sio_info=>"01",
+		sio_obuf=>"0",
+		sio_refsel=>"0",
+		sio_vtrip=>"1",
+		sio_vohsel=>"000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"1",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>Net_887,
+		fb=>(tmpFB_0__Fault_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__Fault_net_0),
+		siovref=>(tmpSIOVREF__Fault_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Fault_net_0);
+\Control_RS:Sync:ctrl_reg\:cy_psoc3_control
+	GENERIC MAP(cy_init_value=>"00000000",
+		cy_force_order=>'1',
+		cy_ctrl_mode_1=>"00000000",
+		cy_ctrl_mode_0=>"00000000",
+		cy_ext_reset=>'0')
+	PORT MAP(reset=>zero,
+		clock=>zero,
+		control=>(\Control_RS:control_7\, \Control_RS:control_6\, \Control_RS:control_5\, \Control_RS:control_4\,
+			\Control_RS:control_3\, \Control_RS:control_2\, Net_721, Net_725));
+\USBUART_1:Clock_1\:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"beca5e2d-f70f-4900-a4db-7eca1ed3126e/4cf4f158-360d-4ad8-a918-22f2af70b5a3",
+		source_clock_id=>"75C2148C-3656-4d8a-846D-0CAE99AB6FF7",
+		divisor=>0,
+		period=>"0",
+		is_direct=>'1',
+		is_digital=>'1')
+	PORT MAP(clock_out=>\USBUART_1:Net_1202\,
+		dig_domain_out=>open);
+\USBUART_1:Vbus_ps:sts:sts_reg\:cy_psoc3_status
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"00000000")
+	PORT MAP(reset=>zero,
+		clock=>\USBUART_1:Net_1202\,
+		status=>(zero, zero, zero, zero,
+			zero, zero, zero, Net_680));
+\USBUART_1:dp_int\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>\USBUART_1:Net_1010\);
+\USBUART_1:Dm\:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"beca5e2d-f70f-4900-a4db-7eca1ed3126e/8b77a6c4-10a0-4390-971c-672353e2a49c",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"NONCONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'1',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>(\USBUART_1:tmpFB_0__Dm_net_0\),
+		analog=>\USBUART_1:Net_597\,
+		io=>(\USBUART_1:tmpIO_0__Dm_net_0\),
+		siovref=>(\USBUART_1:tmpSIOVREF__Dm_net_0\),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>\USBUART_1:tmpINTERRUPT_0__Dm_net_0\);
+\USBUART_1:Dp\:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"beca5e2d-f70f-4900-a4db-7eca1ed3126e/618a72fc-5ddd-4df5-958f-a3d55102db42",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"1",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"10",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>(\USBUART_1:tmpFB_0__Dp_net_0\),
+		analog=>\USBUART_1:Net_1000\,
+		io=>(\USBUART_1:tmpIO_0__Dp_net_0\),
+		siovref=>(\USBUART_1:tmpSIOVREF__Dp_net_0\),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>\USBUART_1:Net_1010\);
+\USBUART_1:USB\:cy_psoc3_usb_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(dp=>\USBUART_1:Net_1000\,
+		dm=>\USBUART_1:Net_597\,
+		sof_int=>Net_718,
+		arb_int=>\USBUART_1:Net_1889\,
+		usb_int=>\USBUART_1:Net_1876\,
+		ept_int=>(\USBUART_1:ep_int_8\, \USBUART_1:ep_int_7\, \USBUART_1:ep_int_6\, \USBUART_1:ep_int_5\,
+			\USBUART_1:ep_int_4\, \USBUART_1:ep_int_3\, \USBUART_1:ep_int_2\, \USBUART_1:ep_int_1\,
+			\USBUART_1:ep_int_0\),
+		ord_int=>\USBUART_1:Net_95\,
+		dma_req=>(\USBUART_1:dma_request_7\, \USBUART_1:dma_request_6\, \USBUART_1:dma_request_5\, \USBUART_1:dma_request_4\,
+			\USBUART_1:dma_request_3\, \USBUART_1:dma_request_2\, \USBUART_1:dma_request_1\, \USBUART_1:dma_request_0\),
+		dma_termin=>\USBUART_1:dma_terminate\);
+\USBUART_1:ep_4\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>\USBUART_1:ep_int_4\);
+\USBUART_1:ep_3\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>\USBUART_1:ep_int_3\);
+\USBUART_1:ep_2\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>\USBUART_1:ep_int_2\);
+\USBUART_1:ep_1\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>\USBUART_1:ep_int_1\);
+\USBUART_1:ep_0\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>\USBUART_1:ep_int_0\);
+\USBUART_1:bus_reset\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>\USBUART_1:Net_1876\);
+\USBUART_1:arb_int\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>\USBUART_1:Net_1889\);
+\USBUART_1:sof_int\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_718);
+\USBUART_1:ep_5\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>\USBUART_1:ep_int_5\);
+\USBUART_1:ep_6\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>\USBUART_1:ep_int_6\);
+VUSB:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"ef4ff76f-e94b-478e-9123-e15650ce7616",
+		drive_mode=>"001",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>Net_680,
+		analog=>(open),
+		io=>(tmpIO_0__VUSB_net_0),
+		siovref=>(tmpSIOVREF__VUSB_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__VUSB_net_0);
+R_5:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_536, Net_530));
+R_9:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_538, Net_536));
+GND_7:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_538);
+GND_2:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_928);
+Diode_seed_adc:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"f6b1caa5-936d-4744-bdb5-927feb72d9ec",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__Diode_seed_adc_net_0),
+		analog=>Net_1214,
+		io=>(tmpIO_0__Diode_seed_adc_net_0),
+		siovref=>(tmpSIOVREF__Diode_seed_adc_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Diode_seed_adc_net_0);
+ADC_IN:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"ee12e137-49f4-4271-9091-905f95c50b32",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"1",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__ADC_IN_net_0),
+		analog=>ADC_lowpass,
+		io=>(tmpIO_0__ADC_IN_net_0),
+		siovref=>(tmpSIOVREF__ADC_IN_net_0),
+		annotation=>Net_927,
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__ADC_IN_net_0);
+\Fault_Reg:sts:sts_reg\:cy_psoc3_status
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"00000000")
+	PORT MAP(reset=>zero,
+		clock=>Net_901,
+		status=>(zero, zero, zero, osc_err,
+			Seed_err2, Seed_err1, Net_885, cy_srff_1));
+\PGA_2:SC\:cy_psoc3_scblock_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(vref=>\PGA_2:Net_17\,
+		vin=>ADC_lowpass,
+		aclk=>zero,
+		bst_clk=>zero,
+		clk_udb=>zero,
+		dyn_cntl=>zero,
+		modout_sync=>\PGA_2:Net_41\,
+		vout=>Net_635);
+\PGA_2:cy_analog_virtualmux_1_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\PGA_2:Net_17\,
+		signal2=>\PGA_2:Net_75\);
+\PGA_2:cy_analog_noconnect_2\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\PGA_2:Net_75\);
+R_8:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_543, Net_927));
+C_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Capacitor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_928, Net_927));
+\DAC_Current_Control:viDAC8\:cy_psoc3_vidac8_v1_0
+	GENERIC MAP(cy_registers=>"",
+		reg_data=>'0',
+		is_all_if_any=>'0')
+	PORT MAP(reset=>zero,
+		idir=>zero,
+		ioff=>zero,
+		data=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		strobe=>zero,
+		strobe_udb=>zero,
+		vout=>Net_1211,
+		iout=>\DAC_Current_Control:Net_77\);
+\DAC_Current_Control:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\DAC_Current_Control:Net_77\);
+DAC_Curr_OUT:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"77715107-f8d5-47e5-a629-0fb83101ac6b",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__DAC_Curr_OUT_net_0),
+		analog=>Net_1211,
+		io=>(tmpIO_0__DAC_Curr_OUT_net_0),
+		siovref=>(tmpSIOVREF__DAC_Curr_OUT_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__DAC_Curr_OUT_net_0);
+SW2:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba",
+		drive_mode=>"010",
+		ibuf_enabled=>"1",
+		init_dr_st=>"1",
+		input_sync=>"0",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>Net_720,
+		analog=>(open),
+		io=>(tmpIO_0__SW2_net_0),
+		siovref=>(tmpSIOVREF__SW2_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__SW2_net_0);
+\PWM_1:PWMHW\:cy_psoc3_timer_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(clock=>Net_813,
+		kill=>Net_887,
+		enable=>tmpOE__Diode_Oscillation_net_0,
+		capture=>zero,
+		timer_reset=>zero,
+		tc=>\PWM_1:Net_63\,
+		compare=>Net_729,
+		interrupt=>\PWM_1:Net_54\);
+Clock_4:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"ddaa59b4-70c9-4f81-bfc7-05e650d47015",
+		source_clock_id=>"",
+		divisor=>0,
+		period=>"100000000000000",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_813,
+		dig_domain_out=>open);
+Diode_pump_adc:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"df9d8872-e0b0-4887-ba52-8d96c16247f1",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__Diode_pump_adc_net_0),
+		analog=>Net_1115,
+		io=>(tmpIO_0__Diode_pump_adc_net_0),
+		siovref=>(tmpSIOVREF__Diode_pump_adc_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Diode_pump_adc_net_0);
+Diode_osc_adc:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"e0042d2b-0baf-47a2-8fb0-86d3310801d8",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__Diode_osc_adc_net_0),
+		analog=>Net_1217,
+		io=>(tmpIO_0__Diode_osc_adc_net_0),
+		siovref=>(tmpSIOVREF__Diode_osc_adc_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Diode_osc_adc_net_0);
+Current_poti:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"466d8749-33d6-43bd-9601-69f52b9ac943",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Diode_Oscillation_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__Current_poti_net_0),
+		analog=>Net_1116,
+		io=>(tmpIO_0__Current_poti_net_0),
+		siovref=>(tmpSIOVREF__Current_poti_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Diode_Oscillation_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Current_poti_net_0);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:ch_addr_5\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:ch_addr_4\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:ch_addr_3\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:ch_addr_2\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:ch_addr_1\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:ch_addr_0\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_0\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_0\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_0\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_1\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_1\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_1\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_2\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_2\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_2\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_3\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_3\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_3\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_4\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_4\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_4\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_5\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_5\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_5\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_6\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_6\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_6\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_7\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_7\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_7\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_8\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_8\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_8\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_9\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_9\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_9\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_10\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_10\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_10\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_11\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_11\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_11\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_12\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_12\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_12\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_13\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_13\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_13\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_14\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_14\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_14\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_15\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_15\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_15\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_16\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_16\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_16\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_17\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_17\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_17\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_18\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_18\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_18\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_19\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_19\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_19\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_20\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_20\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_20\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_21\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_21\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_21\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_22\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_22\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_22\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_23\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_23\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_23\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_24\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_24\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_24\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_25\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_25\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_25\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_26\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_26\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_26\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_27\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_27\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_27\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_28\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_28\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_28\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_29\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_29\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_29\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_30\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_30\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_30\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_31\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_31\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_31\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_32\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_32\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_32\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_33\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_33\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_33\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_34\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_34\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_34\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_35\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_35\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_35\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_36\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_36\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_36\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_37\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_37\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_37\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_38\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_38\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_38\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_39\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_39\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_39\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_40\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_40\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_40\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_41\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_41\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_41\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_42\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_42\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_42\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_43\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_43\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_43\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_44\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_44\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_44\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_45\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_45\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_45\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_46\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_46\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_46\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_47\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_47\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_47\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_48\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_48\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_48\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_49\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_49\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_49\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_50\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_50\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_50\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_51\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_51\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_51\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_52\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_52\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_52\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_53\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_53\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_53\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_54\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_54\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_54\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_55\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_55\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_55\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_56\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_56\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_56\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_57\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_57\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_57\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_58\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_58\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_58\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_59\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_59\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_59\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_60\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_60\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_60\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_61\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_61\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_61\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_62\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_62\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_62\);
+\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_63\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_63\\D\,
+		clk=>\ADC_SAR_Seq_2:clock\,
+		q=>\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_63\);
+\ADC_SAR_Seq_2:bSAR_SEQ:nrq_edge_detect_reg\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:bSAR_SEQ:nrq_edge_detect\,
+		clk=>\ADC_SAR_Seq_2:bSAR_SEQ:clk_fin\,
+		q=>Net_1111);
+\ADC_SAR_Seq_2:bSAR_SEQ:bus_clk_nrq_reg\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:bSAR_SEQ:bus_clk_nrq_reg\\D\,
+		clk=>\ADC_SAR_Seq_2:Net_3710\,
+		q=>\ADC_SAR_Seq_2:bSAR_SEQ:bus_clk_nrq_reg\);
+\ADC_SAR_Seq_2:bSAR_SEQ:nrq_reg\:cy_dff
+	PORT MAP(d=>\ADC_SAR_Seq_2:bSAR_SEQ:bus_clk_nrq_reg\,
+		clk=>\ADC_SAR_Seq_2:bSAR_SEQ:clk_fin\,
+		q=>\ADC_SAR_Seq_2:bSAR_SEQ:nrq_reg\);
+cy_srff_1:cy_dff
+	PORT MAP(d=>cy_srff_1D,
+		clk=>Net_52,
+		q=>cy_srff_1);
+
+END R_T_L;

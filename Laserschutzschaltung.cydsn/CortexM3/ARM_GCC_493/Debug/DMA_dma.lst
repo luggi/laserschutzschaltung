@@ -1,0 +1,1818 @@
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"DMA_dma.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.section	.gnu.lto_.profile.d234ff9,"",%progbits
+  18 0000 789C6366 		.ascii	"x\234cf```a\200\000F\006[q\000\001\005\000]"
+  18      60606061 
+  18      80004606 
+  18      5B710001 
+  18      05005D
+  19              		.text
+  20              		.section	.gnu.lto_.inline.d234ff9,"",%progbits
+  21 0000 789C6366 		.ascii	"x\234cf\300\016\374\2414\023\003\203\250>#\003\023\307"
+  21      C00EFCA1 
+  21      34130383 
+  21      A83E2303 
+  21      13C7
+  22 0012 013B06B6 		.ascii	"\001;\006\266\005\362L 1f\036\240\370\004?\006\026^"
+  22      05F24C20 
+  22      31661EA0 
+  22      F8043F06 
+  22      165E
+  23 0024 207B821F 		.ascii	" {\202\037\010\262\01300\2601\200X`=l|@-L\027\370\341"
+  23      08B20B30 
+  23      30B03180 
+  23      58603D6C 
+  23      7C402D4C 
+  24 003b 5A98B819 		.ascii	"Z\230\270\031\030\030\201\222\000\262\306\012\214"
+  24      18188192 
+  24      00B2C60A 
+  24      8C
+  25              		.text
+  26              		.section	.gnu.lto_.jmpfuncs.d234ff9,"",%progbits
+  27 0000 789C6366 		.ascii	"x\234cf\300\016\262\2404\023\003\013#\020\360\203\010"
+  27      C00EB2A0 
+  27      3413030B 
+  27      2310F083 
+  27      08
+  28 0011 2620F723 		.ascii	"& \367#\023\343\254\353O\2770\277`\372\311\004\224d"
+  28      13E3ACEB 
+  28      4FBF30BF 
+  28      60FAC904 
+  28      9464
+  29 0023 5CCE28C5 		.ascii	"\\\316(\305\300\314\300\300\\\316\004\"\200,6\220\222"
+  29      C0CCC0C0 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 2
+
+
+  29      5CCE0422 
+  29      802C3690 
+  29      92
+  30 0034 C665BB7B 		.ascii	"\306e\273{\330\301J\030\030\030W\200\224\2243\200\344"
+  30      D8C14A18 
+  30      18185780 
+  30      94943380 
+  30      E4
+  31 0045 19812680 		.ascii	"\031\201&\200\371($P\015P\026\000*l\021\332"
+  31      F9282450 
+  31      0D501600 
+  31      2A6C11DA 
+  32              		.text
+  33              		.section	.gnu.lto_.pureconst.d234ff9,"",%progbits
+  34 0000 789C6366 		.ascii	"x\234cf```e\200\000&\006\011&\011\000\000\363\000="
+  34      60606065 
+  34      80002606 
+  34      09260900 
+  34      00F3003D 
+  35              		.text
+  36              		.section	.gnu.lto_DMA_DmaInitialize.d234ff9,"",%progbits
+  37 0000 789C8D52 		.ascii	"x\234\215R_HSQ\030?\3379\333\335m\2335z\212\275\005"
+  37      5F485351 
+  37      183FDF39 
+  37      DBDD6D9B 
+  37      357A8ABD 
+  38 0015 0D0DA29E 		.ascii	"\015\015\242\236z\012\"S\350\251\220Fo\222\310v\037"
+  38      7A0A2253 
+  38      E8A99046 
+  38      6F92C876 
+  38      1F
+  39 0026 7376B73D 		.ascii	"sv\267=\016\357l\222\017\021n\276\314\376G\377\314j"
+  39      0EEF6C92 
+  39      0F116EBE 
+  39      CCFE47FF 
+  39      CC6A
+  40 0038 6B69D9B2 		.ascii	"ki\331\262r/\205\220$b \224\025\204\213\204\036&S\327"
+  40      722F8590 
+  40      24622094 
+  40      15848B84 
+  40      1E2653D7 
+  41 004c 0AB3EF3B 		.ascii	"\012\263\357;\373S\350\002\007w\347|\337\375\375\373"
+  41      FB53E802 
+  41      0777E77C 
+  41      DFFDFDFB 
+  42 005c EE39826D 		.ascii	"\3569\202m\3749\361\351\025\214\235\304\025\004\003"
+  42      FC39F1E9 
+  42      158C9DC4 
+  42      150403
+  43 006b DEF796B1 		.ascii	"\336\367\226\261\260\312\001h\303\200uq\350\202\005"
+  43      B0CA0168 
+  43      C3807571 
+  43      E88205
+  44 007a BEC86132 		.ascii	"\276\310a2\375{\006\352o\031Fw.\226\236\263\365\354"
+  44      FD7B06EA 
+  44      6F194677 
+  44      2E969EB3 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 3
+
+
+  44      F5EC
+  45 008c 2872C6F2 		.ascii	"(r\306\362\234\301\036'\354&\035\270\003\365\210\033"
+  45      9CC11E27 
+  45      EC261DB8 
+  45      03F5881B 
+  46 009c 7A3770AD 		.ascii	"z7p\255N\354\002\206\373\237\327c\037\354\256\033\310"
+  46      4EEC0286 
+  46      FB9FD763 
+  46      1FECAE1B 
+  46      C8
+  47 00ad C98C278C 		.ascii	"\311\214'\214C\200\024\030\004\361\227E\032p\027\\\210"
+  47      43801418 
+  47      04F19745 
+  47      1A70175C 
+  47      88
+  48 00be 9D8D27A3 		.ascii	"\235\215'\243\252\330'y\231\324\307\357\226\022o\241"
+  48      AAD82779 
+  48      99D4C7EF 
+  48      96126FA1 
+  49 00ce C21BDAC0 		.ascii	"\302\033\332\300\273'yW'\373G\2048(yo\276\374\310\333"
+  49      BB277957 
+  49      27FB4784 
+  49      3828796F 
+  49      BEFCC8DB 
+  50 00e2 BFF12207 		.ascii	"\277\361\"\007\007\225\027f\263K\202J\316\251\354_~"
+  50      07951766 
+  50      B34B824A 
+  50      CEA9EC5F 
+  50      7E
+  51 00f3 FDAA9C26 		.ascii	"\375\252\234&~Fi(r\001\367K\242\017\300\011\011 Y\374"
+  51      7E466928 
+  51      7201F74B 
+  51      A20FC009 
+  51      092059FC 
+  52 0107 064929DB 		.ascii	"\006I)\333sv\312!\216I\325T\337\315QQ\342M\224y\017"
+  52      7376CA21 
+  52      8E49D554 
+  52      DFCD5151 
+  52      E24D9479 
+  53 011c 6BF052E0 		.ascii	"k\360R\340\"\364bdu\326\246D\014\303p\320\347\301\234"
+  53      22F46264 
+  53      75D6A644 
+  53      0CC370D0 
+  53      E7C19C
+  54 012f 8F40015C 		.ascii	"\217@\001\\\223\3333\306\332\332p6:q\000\352\004\320"
+  54      93DB33C6 
+  54      DADA7036 
+  54      3A7100EA 
+  54      04D0
+  55 0141 D826A021 		.ascii	"\330&\240!\024\344\233,@\306*\220\214\225\032v9$\233"
+  55      14E49B2C 
+  55      40C62A90 
+  55      8C951A76 
+  55      39249B
+  56 0154 C73F3A8B 		.ascii	"\307?:\213,\316\200\253x\017\335\271\334\327\224\231"
+  56      2CCE80AB 
+  56      780FDDB9 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 4
+
+
+  56      DCD79499 
+  57 0164 54D1EDCA 		.ascii	"T\321\355\312\314\371\004\017\3752z\015\265\310\315"
+  57      CCF9040F 
+  57      FD327A0D 
+  57      B5C8CD
+  58 0173 ABC4C0EE 		.ascii	"\253\304\300\356\347\371\251i\225\0067\313r0\034\271"
+  58      E7F9A969 
+  58      950637CB 
+  58      72301CB9 
+  59 0183 0497E162 		.ascii	"\004\227\341b\330 \024\203a\010\301\010\306f\360\030"
+  59      D8201483 
+  59      6108C108 
+  59      C666F018 
+  60 0193 DB0808DF 		.ascii	"\333\010\010\337\036;g!\274\011{O\360\315\034\014\030"
+  60      1E3B6721 
+  60      BC097B4F 
+  60      F0CD1C0C 
+  60      18
+  61 01a4 F1950632 		.ascii	"\361\225\0062a\353]\224<\307q`\024B\022[\340\242\300"
+  61      61EB5D94 
+  61      3CC77160 
+  61      1442125B 
+  61      E0A2C0
+  62 01b7 4DB4AB3C 		.ascii	"M\264\253<Ena\0303\026]\002\022(\360\377\007]\237\354"
+  62      456E6118 
+  62      33165D02 
+  62      1228F0FF 
+  62      075D9FEC 
+  63 01cb 6935591A 		.ascii	"i5Y\032\333\030C\251\031A\315s\272\000\3170\002\252"
+  63      DB1843A9 
+  63      1941CD73 
+  63      BA00CF30 
+  63      02AA
+  64 01dd 17B8A5C0 		.ascii	"\027\270\245\300\261\273E\272N/\227]\255\233v\035\253"
+  64      B1BB45BA 
+  64      4E2F975D 
+  64      AD9B761D 
+  64      AB
+  65 01ee BA3E2FB9 		.ascii	"\272>/\271\232k\272Z\363x\314\014^HW\353\277\367\313"
+  65      9A6BBA5A 
+  65      F378CC0C 
+  65      5E4857EB 
+  65      BFF7CB
+  66 0201 84222F69 		.ascii	"\204\"/ip[)\302J9\202}\323\021\306\253\0212\024\341"
+  66      705B29C2 
+  66      4A39827D 
+  66      D311C6AB 
+  66      113214E1 
+  67 0215 135414E4 		.ascii	"\023T\024\344\025\000:zd\356<\242uhz{@\363\266\271}"
+  67      15003A7A 
+  67      64EE3CA2 
+  67      75687A7B 
+  67      40F3B6B9 
+  68 022a 41DDA3B5 		.ascii	"A\335\243\265\266\270}M\373[\233\2176\266yO\265\357"
+  68      B6B87D4D 
+  68      FB5B9B8F 
+  68      36B6794F 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 5
+
+
+  68      B5EF
+  69 023c F530EBE1 		.ascii	"\3650\353\341\240\356\0174\371\202\035\201\255\307\265"
+  69      A0EE0F34 
+  69      F9821D81 
+  69      ADC7B5
+  70 024b D39A3FD0 		.ascii	"\323\232?\320\242\351\262\267\355Dg\247\246\273uO\243"
+  70      A2E9B2B7 
+  70      ED4467A7 
+  70      A6BB754F 
+  70      A3
+  71 025c D7AB6B7E 		.ascii	"\327\253k~\277C\326\315\210(7\376\000\034\361P\362"
+  71      BF43D6CD 
+  71      882837FE 
+  71      001CF150 
+  71      F2
+  72              		.text
+  73              		.section	.gnu.lto_DMA_DmaRelease.d234ff9,"",%progbits
+  74 0000 789C6366 		.ascii	"x\234cf\300\004R@\374\007\210\225\201\230\221\231\201"
+  74      C0045240 
+  74      FC078895 
+  74      81989199 
+  74      81
+  75 0011 9169C239 		.ascii	"\221i\3029\006\206F\016&FF\020\203\201\221\241\236\211"
+  75      0686460E 
+  75      26464610 
+  75      838191A1 
+  75      9E89
+  76 0023 B19EF125 		.ascii	"\261\236\361%\323G&\306\011\007V\317\340V_\332\320\320"
+  76      D34726C6 
+  76      090756CF 
+  76      E0565FDA 
+  76      D0D0
+  77 0035 F0A1E9B2 		.ascii	"\360\241\351\262D\253\304O&\006\206\317L\020c\030\227"
+  77      44ABC44F 
+  77      260686CF 
+  77      4C106318 
+  77      97
+  78 0046 33AA3300 		.ascii	"3\2523\000\325|l\371{\235\233\255\005\250F\000\"\307"
+  78      D57C6CF9 
+  78      7B9D9BAD 
+  78      05A84600 
+  78      22C7
+  79 0058 B882918D 		.ascii	"\270\202\221\215\021H\257\027:\320\360\377\377\3473"
+  79      1148AF17 
+  79      3AD0F0FF 
+  79      FFE733
+  80 0067 933AD499 		.ascii	"\223:\324\231X\230\030~2\001\005\237\000\025\200ly\312"
+  80      5898187E 
+  80      3201059F 
+  80      0015806C 
+  80      79CA
+  81 0079 C404A299 		.ascii	"\304\004\242\231o16M\372x6\010\244\345;\023\310\306"
+  81      6F31364D 
+  81      FA783608 
+  81      A4E53B13 
+  81      C8C6
+  82 008b 7997FBD6 		.ascii	"y\227\373\3261\325\376n\350h\340\370\311\304\364\027"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 6
+
+
+  82      31D5FE6E 
+  82      E868E0F8 
+  82      C9C4F417 
+  83 009b 641E50F4 		.ascii	"d\036P\364\376\223\363\0279^0\001E\300\334\025\215-"
+  83      FE93F317 
+  83      395E3001 
+  83      45C0DC15 
+  83      8D2D
+  84 00ad 7318E732 		.ascii	"s\030\3472\316nl\000\251bf\\\311X\313\270\212\021\350"
+  84      CE6E6C00 
+  84      A962665C 
+  84      C958CBB8 
+  84      8A11E8
+  85 00c0 2FC6D540 		.ascii	"/\306\325@a\206;\214, \003\031\320\215c\371\014r\002"
+  85      61863B8C 
+  85      2C200319 
+  85      D08D63F9 
+  85      0C7202
+  86 00d3 E31AC65A 		.ascii	"\343\032\306Z\006\240e?\231X\031\35616\036\330\351\005"
+  86      06A0653F 
+  86      995819EE 
+  86      31361ED8 
+  86      E905
+  87 00e5 56CC0072 		.ascii	"V\314\000r\034#\310Q@;\024\335S\363R\213\022KRS\342"
+  87      1C23C851 
+  87      403B14DD 
+  87      53F3528B 
+  87      124B5253 
+  88 00fa 83F34B8B 		.ascii	"\203\363K\213\222Sc\002\202\363\235Mc\\|\035\343Sr\023"
+  88      92536302 
+  88      82F39D4D 
+  88      635C7C1D 
+  88      E3537213 
+  89 010e F5921900 		.ascii	"\365\222\031\000\315-d\241"
+  89      CD2D64A1 
+  90              		.text
+  91              		.section	.gnu.lto_.symbol_nodes.d234ff9,"",%progbits
+  92 0000 789C4DCC 		.ascii	"x\234M\314!\022\2000\020C\321\337\335\226\341\326\251"
+  92      21128030 
+  92      1043D1DF 
+  92      DD96E1D6 
+  92      A9
+  93 0011 008F42C3 		.ascii	"\000\217B\303]\2529\003\\\204\241\005Dc2/\"\016\314"
+  93      5DAA3903 
+  93      5C84A105 
+  93      4463322F 
+  93      220ECC
+  94 0024 FCB12058 		.ascii	"\374\261 X\016\220X\267\221\004\273\0113\205~\016I\366"
+  94      0E9058B7 
+  94      9104BB09 
+  94      33857E0E 
+  94      49F6
+  95 0036 999C2BA3 		.ascii	"\231\234+\243\274\247+\366\034\224:z=-\347\035\234\310"
+  95      BCA72BF6 
+  95      1C943A7A 
+  95      3D2DE71D 
+  95      9CC8
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 7
+
+
+  96 0048 74B5764A 		.ascii	"t\265vJk\033\336\235\007o\247\"\014"
+  96      6B1BDE9D 
+  96      076FA722 
+  96      0C
+  97              		.text
+  98              		.section	.gnu.lto_.refs.d234ff9,"",%progbits
+  99 0000 789C6366 		.ascii	"x\234cf``\020a\200\000\026\006FFF\006Ff\006FV\006Fv"
+  99      60601061 
+  99      80001606 
+  99      46464606 
+  99      46660646 
+ 100 0018 46262097 		.ascii	"F& \227\001\000\003\363\0006"
+ 100      010003F3 
+ 100      0036
+ 101              		.text
+ 102              		.section	.gnu.lto_.decls.d234ff9,"",%progbits
+ 103 0000 789C8554 		.ascii	"x\234\205TmL[e\024\276oo)\245\353\307\214\011(\361G"
+ 103      6D4C5B65 
+ 103      14BE6F6F 
+ 103      29A5EBC7 
+ 103      8C0928F1 
+ 104 0015 C912A209 		.ascii	"\311\022\242\011\301\354\207\206\177\212\305\014\177"
+ 104      C1EC8786 
+ 104      7F8AC50C 
+ 104      7F
+ 105 0022 6888C444 		.ascii	"h\210\304D\303\342R\351\3255a\305\320\222\210\376y\245"
+ 105      C3E252E9 
+ 105      D53561C5 
+ 105      D09288FE 
+ 105      79A5
+ 106 0034 30C8B218 		.ascii	"0\310\262\030\304!\2540\350\370\250n\300\206\010\373"
+ 106      C421AC30 
+ 106      E8F8A86E 
+ 106      C08608FB 
+ 107 0044 02F91018 		.ascii	"\002\371\020\030 \002\033+_-\014h\321-2]\207\210\233"
+ 107      20021B2B 
+ 107      5F2D0C68 
+ 107      D12D325D 
+ 107      87889B
+ 108 0057 9BD6F3BE 		.ascii	"\233\326\363\276\367m{kl\326\344\264\367<\3679\357\363"
+ 108      F76D7B6B 
+ 108      6CD6E4B4 
+ 108      F73CF739 
+ 108      EFF3
+ 109 0069 9C737A2F 		.ascii	"\234sz/\317q\334\035\210 |\342\3429\216G\020\220\347"
+ 109      CF71DC1D 
+ 109      88207CE2 
+ 109      E2398E47 
+ 109      1090E7
+ 110 007c 40C02597 		.ascii	"@\300%\227\310\211\037\005D?\304 \304$\304,\304\022"
+ 110      C8891F05 
+ 110      443FC420 
+ 110      C424C42C 
+ 110      C412
+ 111 008e C40AE3AD 		.ascii	"\304\012\343\255q\321\037\302UC\264Ch\331u/;o\035b\003"
+ 111      71D11FC2 
+ 111      5543B443 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 8
+
+
+ 111      68D9752F 
+ 111      3B6F1D62 
+ 112 00a3 6201C207 		.ascii	"b\001\302\0071\015\341\207\030g\265rV\277\304t&ch\014"
+ 112      310DE187 
+ 112      1867B572 
+ 112      56BFC474 
+ 112      2663680C 
+ 113 00b7 325F3992 		.ascii	"2_9\222s\211\336&\204\207qd\214\027\313\347=\031Z\030"
+ 113      7389DE26 
+ 113      84877164 
+ 113      8C17CBE7 
+ 113      3D195A18 
+ 114 00cb ACA850F2 		.ascii	"\254\250P\3622D\256[\3526\334\252\264\263\030\343J<"
+ 114      3244AE5B 
+ 114      EA36DCAA 
+ 114      B4B318E3 
+ 114      4A3C
+ 115 00dd 348422A4 		.ascii	"4\204\"\244O]}\307\343o\313P\242\212\246\237M9\206y"
+ 115      4F5D7DC7 
+ 115      E36FCB50 
+ 115      A28AA69F 
+ 115      4D398679 
+ 116 00f1 9A06499D 		.ascii	"\232\006I\235ly\371\304\003\036\251R+1.\305\201j\314"
+ 116      6C79F9C4 
+ 116      031EA952 
+ 116      2B312EC5 
+ 116      816ACC
+ 117 0104 3FC5A1B4 		.ascii	"?\305\241\264d\364\\2\207:P*\320\320\327(\215CgP2:\213"
+ 117      64F45C32 
+ 117      873A502A 
+ 117      D0D0D728 
+ 117      8D436750 
+ 118 011b 92B95610 		.ascii	"\222\271V\020\0104\271=\317`,G\355H\205\276B<e\200I"
+ 118      0834B93D 
+ 118      CF602C47 
+ 118      ED4885BE 
+ 118      423C6580 
+ 119 0130 A2C0442F 		.ascii	"\242\300D/\237\333\231\336\003*Z\225\236\244W\252'\352"
+ 119      9FDB99DE 
+ 119      032A5A95 
+ 119      9EA457AA 
+ 119      27EA
+ 120 0142 1490AA55 		.ascii	"\024\220\252Ur\222N\371\356\377\256\246w\367\222\324"
+ 120      72924EF9 
+ 120      EEFFAEA6 
+ 120      77F792D4 
+ 121 0152 B1F8D30E 		.ascii	"\261\370\323\016O\357\312Hzj\373\267\376\004~?\222\232"
+ 121      4FEFCA48 
+ 121      7A6AFBB7 
+ 121      FE047E3F 
+ 121      929A
+ 122 0164 D78BE66B 		.ascii	"\327\213\346k\267\356\367(i\032\014\362\304\275\353"
+ 122      B7EEF728 
+ 122      691A0CF2 
+ 122      C4BDEB
+ 123 0173 DA9F0E2D 		.ascii	"\332\237\016-JU\021[\316v\015B\275`\351\233\210%=\263"
+ 123      4A55115B 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 9
+
+
+ 123      CE760D42 
+ 123      BD60E99B 
+ 123      88253DB3 
+ 124 0187 44BBC376 		.ascii	"D\273\303v\034\367,\207\316C+]\320\012\352\201\376\364"
+ 124      1CF72C87 
+ 124      CE432B5D 
+ 124      D00AEA81 
+ 124      FEF4
+ 125 0199 ACBF6E00 		.ascii	"\254\277n\000\277\005\020D\232\306\357\314\353\3440"
+ 125      BF051044 
+ 125      9AC6EFCC 
+ 125      EBE430
+ 126 01a8 7E7A581E 		.ascii	"~zX\036u\354\271\341=\223\020\306. \012v\014\264>\024"
+ 126      75ECB9E1 
+ 126      3D9310C6 
+ 126      2E200A76 
+ 126      0CB43E14 
+ 127 01bc 4132888B 		.ascii	"A2\210\213\"Xvo\263 \214]\022\261\277F\356~\256N\252"
+ 127      2258766F 
+ 127      B3208C5D 
+ 127      12B1BF46 
+ 127      EE7EAE4E 
+ 128 01d1 018FB8CA 		.ascii	"\001\217\270\312\216\367\212\203\353\004\305s\240\310"
+ 128      8EF78A83 
+ 128      EB04C573 
+ 128      A0C8
+ 129 01df A12B2809 		.ascii	"\241+(\011\276/#\2718\273[C\245\325Z>\203\366\337\366"
+ 129      BE2F23B9 
+ 129      38BB5B43 
+ 129      A5D55A3E 
+ 129      83F6DFF6 
+ 130 01f3 474B305E 		.ascii	"GK0^\337\210\235]\001G\313v\306I\354,\305\377\004as"
+ 130      DF889D5D 
+ 130      0147CB76 
+ 130      C649EC2C 
+ 130      C5FF0461 
+ 131 0208 A408F585 		.ascii	"\244\010\365\205\033\345\3105\355\024\365#=\024\366"
+ 131      1BE5C835 
+ 131      ED14F523 
+ 131      3D14F6
+ 132 0217 3DF4B9E5 		.ascii	"=\364\271\345R\311\234D\211\342wT1\217\011^\277Z\337"
+ 132      52C99C44 
+ 132      89E27754 
+ 132      318F095E 
+ 132      BF5ADF
+ 133 022a A0E40BA8 		.ascii	"\240\344\013\250`\305X\360K\005\025\\\257\033\023\206"
+ 133      60C558F0 
+ 133      4B05155C 
+ 133      AF1B1386 
+ 134 023a CAF02332 		.ascii	"\312\360#2iR\200\006$j\003!\265A\252VSo_\325\361\237"
+ 134      69528006 
+ 134      246A0321 
+ 134      B541AA56 
+ 134      536F5FD5 
+ 135 0250 44AD2C45 		.ascii	"D\255,E\\\331Z\375\203\326\004\232\222\007UG\226v\352"
+ 135      5CD95AFD 
+ 135      83D6049A 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 10
+
+
+ 135      92075547 
+ 135      9676EA
+ 136 0263 EF864BF1 		.ascii	"\357\206K\361li\201\246%\377\333v\3742\032\205\221\014"
+ 136      6C6981A6 
+ 136      25FFDB76 
+ 136      FC321A85 
+ 136      910C
+ 137 0275 45169722 		.ascii	"E\026\227\"]\034t\220\220\315\205\375\243\021X\\\012"
+ 137      5D1C7490 
+ 137      90CD85FD 
+ 137      A311585C 
+ 137      0A
+ 138 0286 5BDC3080 		.ascii	"[\3340\200\337\213\213\253*\037\256\222\207g/.\256\266"
+ 138      DF8B8BAB 
+ 138      2A1FAE92 
+ 138      87672F2E 
+ 138      AEB6
+ 139 0298 F2764F7C 		.ascii	"\362vO|\030\033\023\367\261\345\337l\224I\2073\032\265"
+ 139      181B13F7 
+ 139      B1E5DF6C 
+ 139      94498733 
+ 139      1AB5
+ 140 02aa 8F713A9D 		.ascii	"\217q:\235\253\241}4t?jV\362e\210v\347\356\276\270\243"
+ 140      ABA17D34 
+ 140      743F6A56 
+ 140      F2658876 
+ 140      E7EEBEB8 
+ 141 02bf 84F9ACE3 		.ascii	"\204\371\254\343@Gy\255\346$>\035Z\010T\241\011\311"
+ 141      404779AD 
+ 141      E6243E1D 
+ 141      5A0854A1 
+ 141      09C9
+ 142 02d1 88264223 		.ascii	"\210&B#\232\244#z\374\277\352\207\377\373WM\211\340"
+ 142      9AA4237A 
+ 142      FCBFEA87 
+ 142      FFFB574D 
+ 142      89E0
+ 143 02e3 A673C2B3 		.ascii	"\246s\302\263'\266\343i\352\370\307\220\343\2366\267"
+ 143      27B6E369 
+ 143      EAF8C790 
+ 143      E39E36B7 
+ 144 02f3 57C3F78A 		.ascii	"W\303\367\212\216/\370~~\222\032v\256v\343W\304\205"
+ 144      8E2FF87E 
+ 144      7E921A76 
+ 144      AE76E357 
+ 144      C485
+ 145 0305 92023423 		.ascii	"\222\0024#1;\0232;K\315>~\222\327D_\376N\307|\\\030"
+ 145      313B1332 
+ 145      3B4BCD3E 
+ 145      7E92D744 
+ 145      5FFE4EC7 
+ 146 031c BC2E8277 		.ascii	"\274.\202w\335}v>\014\316\261\231\227\271\3125a\360"
+ 146      DD7D763E 
+ 146      0CCEB199 
+ 146      97B9CA35 
+ 146      61F0
+ 147 032e 86088E34 		.ascii	"\206\010\21645{ua\320-\202\307\326\312f\345\261{]\240"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 11
+
+
+ 147      357B7561 
+ 147      D02D82C7 
+ 147      D6CA66E5 
+ 147      B17B5DA0 
+ 148 0342 BDCE877A 		.ascii	"\275\316\207z\375\365h\317\214\232\237\025{u\374\342"
+ 148      FDF568CF 
+ 148      8C9A9F15 
+ 148      7B75FCE2 
+ 149 0352 3AAA109B 		.ascii	":\252\020\233\335\2124\013\025hQ\322\354b\250\331\245"
+ 149      DD8A340B 
+ 149      156851D2 
+ 149      EC62A8D9 
+ 149      A5
+ 150 0363 98CD36D4 		.ascii	"\230\3156\324t\034G\261=x\250\207\345\220\207\252\225"
+ 150      741C47B1 
+ 150      3D78A887 
+ 150      E59087AA 
+ 150      95
+ 151 0374 E0A882BF 		.ascii	"\340\250\202\277%zh\233s\335\324\211\036<\021\017P\201"
+ 151      257A689B 
+ 151      73DDD489 
+ 151      1E3C110F 
+ 151      5081
+ 152 0386 BC120FDE 		.ascii	"\274\022\017\336\220\207\025\352aw\327\273$\343w\305"
+ 152      908715EA 
+ 152      6177D7BB 
+ 152      24E377C5 
+ 153 0396 133A9AE6 		.ascii	"\023:\232\346\362\340\211\0017\364\025\215\354\235\356"
+ 153      F2E08901 
+ 153      37F4158D 
+ 153      EC9DEE
+ 154 03a5 CC7DA7B1 		.ascii	"\314}\247\261\263\031\336\001\376\214Z8\031\343`\360"
+ 154      B319DE01 
+ 154      FE8C5A38 
+ 154      19E360F0 
+ 155 03b5 2544FDAE 		.ascii	"%D\375\256\212\207\262w6Gr\370\276I\036\2235\264\217"
+ 155      8A87B277 
+ 155      364772F8 
+ 155      BE491E93 
+ 155      35B48F
+ 156 03c8 3CDD81E0 		.ascii	"<\335\201\340\273\352c\341\307\350?\357\236u\244\246"
+ 156      BBEA63E1 
+ 156      C7E83FEF 
+ 156      9E75A4A6 
+ 157 03d8 36E017B8 		.ascii	"6\340\027\270\201\023\256F\225\224LF\027!o0\362\006"
+ 157      8113AE46 
+ 157      95944C46 
+ 157      17216F30 
+ 157      F206
+ 158 03ea 25F7D6B5 		.ascii	"%\367\326\265w%H\311\323Qd\037#\373(\331\363E\355\220"
+ 158      772548C9 
+ 158      D351641F 
+ 158      23FB28D9 
+ 158      F345ED90 
+ 159 03fe 4E4A1E8F 		.ascii	"NJ\036\217\"\373\031\331O\311-\347K\2675R\262'\212\274"
+ 159      22FB19D9 
+ 159      4FC92DE7 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 12
+
+
+ 159      4BB73552 
+ 159      B2278ABC 
+ 160 0412 C9C8E437 		.ascii	"\311\310\3447\256\330l\261e(\016\274\361\226\336\300"
+ 160      AED86CB1 
+ 160      65280EBC 
+ 160      F196DEC0 
+ 161 0422 A51C102C 		.ascii	"\245\034\020,B\221\321&\230\016\345\026\026\027\345"
+ 161      4291D126 
+ 161      980EE516 
+ 161      1617E5
+ 162 0431 0B077372 		.ascii	"\013\007sr\013\015/<\237_b+\371P\260\246\037\346\024"
+ 162      0B0D2F3C 
+ 162      9F5F622B 
+ 162      F950B0A6 
+ 162      1FE614
+ 163 0444 84BEFFC5 		.ascii	"\204\276\377\305'\262^\317<\224u\304\370\232\305l3\033"
+ 163      27B25ECF 
+ 163      3C9475C4 
+ 163      F89AC56C 
+ 163      331B
+ 164 0456 0BCC1F0B 		.ascii	"\013\314\037\0131J\017\022\242\351\2101=\237\323\262"
+ 164      314A0F12 
+ 164      A2E98831 
+ 164      3D9FD3B2 
+ 165 0466 9A378502 		.ascii	"\2327\205\002\301h\025\224\371%V\233\321Vl\325\031J"
+ 165      C1681594 
+ 165      F925569B 
+ 165      D1566CD5 
+ 165      194A
+ 166 0478 00351CCE 		.ascii	"\0005\034\316)2\027\026\231m%\372\030&\014\357\300\001"
+ 166      29321716 
+ 166      996D25FA 
+ 166      18260CEF 
+ 166      C001
+ 167 048a 86F46CEE 		.ascii	"\206\364l\356iV\220+\330^\375\310&XL\202)\323d*\022"
+ 167      6956902B 
+ 167      D85EFDC8 
+ 167      26584C82 
+ 167      29D3642A 
+ 168 049f ACD6A4C8 		.ascii	"\254\326\244\310\035C\241\345}\363\007\305p\216\271"
+ 168      1D43A1E5 
+ 168      7DF307C5 
+ 168      708EB9
+ 169 04ae D0A26578 		.ascii	"\320\242ex\226\331j|\257@\3200'\331F\213\251@\370\027"
+ 169      96D96A7C 
+ 169      AF40D030 
+ 169      27D9468B 
+ 169      A940F817 
+ 170 04c2 C7F88D0E 		.ascii	"\307\370\215\016"
+ 171              		.text
+ 172              		.section	.gnu.lto_.symtab.d234ff9,"",%progbits
+ 173 0000 444D415F 		.ascii	"DMA_DmaInitialize\000\000\000\000\000\000\000\000\000"
+ 173      446D6149 
+ 173      6E697469 
+ 173      616C697A 
+ 173      65000000 
+ 174 001a 000000BC 		.ascii	"\000\000\000\274\000\000\000DMA_DmaHandle\000\000\000"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 13
+
+
+ 174      00000044 
+ 174      4D415F44 
+ 174      6D614861 
+ 174      6E646C65 
+ 175 0031 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\337\000\000\000"
+ 175      00000000 
+ 175      00DF0000 
+ 175      00
+ 176 003e 444D415F 		.ascii	"DMA_DmaRelease\000\000\000\000\000\000\000\000\000\000"
+ 176      446D6152 
+ 176      656C6561 
+ 176      73650000 
+ 176      00000000 
+ 177 0056 0000BF00 		.ascii	"\000\000\277\000\000\000CyDmaChPriority\000\000\002"
+ 177      00004379 
+ 177      446D6143 
+ 177      68507269 
+ 177      6F726974 
+ 178 006e 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\311\000\000\000"
+ 178      00000000 
+ 178      00C90000 
+ 178      00
+ 179 007b 4379446D 		.ascii	"CyDmaChSetExtendedAddress\000\000\002\000\000\000\000"
+ 179      61436853 
+ 179      65744578 
+ 179      74656E64 
+ 179      65644164 
+ 180 009b 00000000 		.ascii	"\000\000\000\000\000\317\000\000\000CyDmaChSetConfi"
+ 180      00CF0000 
+ 180      00437944 
+ 180      6D614368 
+ 180      53657443 
+ 181 00b3 67757261 		.ascii	"guration\000\000\002\000\000\000\000\000\000\000\000"
+ 181      74696F6E 
+ 181      00000200 
+ 181      00000000 
+ 181      000000
+ 182 00c6 00D80000 		.ascii	"\000\330\000\000\000CyDmaChDisable\000\000\002\000\000"
+ 182      00437944 
+ 182      6D614368 
+ 182      44697361 
+ 182      626C6500 
+ 183 00de 00000000 		.ascii	"\000\000\000\000\000\000\000\334\000\000\000"
+ 183      000000DC 
+ 183      000000
+ 184              		.text
+ 185              		.section	.gnu.lto_.opts,"",%progbits
+ 186 0000 272D666E 		.ascii	"'-fno-trapv' '-fno-strict-overflow' '-mcpu=cortex-m"
+ 186      6F2D7472 
+ 186      61707627 
+ 186      20272D66 
+ 186      6E6F2D73 
+ 187 0033 33272027 		.ascii	"3' '-mthumb' '-g' '-Og' '-ffunction-sections' '-flt"
+ 187      2D6D7468 
+ 187      756D6227 
+ 187      20272D67 
+ 187      2720272D 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 14
+
+
+ 188 0066 6F272027 		.ascii	"o' '-ffat-lto-objects'\000"
+ 188      2D666661 
+ 188      742D6C74 
+ 188      6F2D6F62 
+ 188      6A656374 
+ 189              		.text
+ 190              		.cfi_sections	.debug_frame
+ 191              		.section	.text.DMA_DmaInitialize,"ax",%progbits
+ 192              		.align	2
+ 193              		.global	DMA_DmaInitialize
+ 194              		.thumb
+ 195              		.thumb_func
+ 196              		.type	DMA_DmaInitialize, %function
+ 197              	DMA_DmaInitialize:
+ 198              	.LFB0:
+ 199              		.file 1 "Generated_Source\\PSoC5\\DMA_dma.c"
+   1:Generated_Source\PSoC5/DMA_dma.c **** /***************************************************************************
+   2:Generated_Source\PSoC5/DMA_dma.c **** * File Name: DMA_dma.c  
+   3:Generated_Source\PSoC5/DMA_dma.c **** * Version 1.70
+   4:Generated_Source\PSoC5/DMA_dma.c **** *
+   5:Generated_Source\PSoC5/DMA_dma.c **** *  Description:
+   6:Generated_Source\PSoC5/DMA_dma.c **** *   Provides an API for the DMAC component. The API includes functions
+   7:Generated_Source\PSoC5/DMA_dma.c **** *   for the DMA controller, DMA channels and Transfer Descriptors.
+   8:Generated_Source\PSoC5/DMA_dma.c **** *
+   9:Generated_Source\PSoC5/DMA_dma.c **** *
+  10:Generated_Source\PSoC5/DMA_dma.c **** *   Note:
+  11:Generated_Source\PSoC5/DMA_dma.c **** *     This module requires the developer to finish or fill in the auto
+  12:Generated_Source\PSoC5/DMA_dma.c **** *     generated funcions and setup the dma channel and TD's.
+  13:Generated_Source\PSoC5/DMA_dma.c **** *
+  14:Generated_Source\PSoC5/DMA_dma.c **** ********************************************************************************
+  15:Generated_Source\PSoC5/DMA_dma.c **** * Copyright 2008-2010, Cypress Semiconductor Corporation.  All rights reserved.
+  16:Generated_Source\PSoC5/DMA_dma.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  17:Generated_Source\PSoC5/DMA_dma.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  18:Generated_Source\PSoC5/DMA_dma.c **** * the software package with which this file was provided.
+  19:Generated_Source\PSoC5/DMA_dma.c **** ********************************************************************************/
+  20:Generated_Source\PSoC5/DMA_dma.c **** #include <CYLIB.H>
+  21:Generated_Source\PSoC5/DMA_dma.c **** #include <CYDMAC.H>
+  22:Generated_Source\PSoC5/DMA_dma.c **** #include <DMA_dma.H>
+  23:Generated_Source\PSoC5/DMA_dma.c **** 
+  24:Generated_Source\PSoC5/DMA_dma.c **** 
+  25:Generated_Source\PSoC5/DMA_dma.c **** 
+  26:Generated_Source\PSoC5/DMA_dma.c **** /****************************************************************************
+  27:Generated_Source\PSoC5/DMA_dma.c **** * 
+  28:Generated_Source\PSoC5/DMA_dma.c **** * The following defines are available in Cyfitter.h
+  29:Generated_Source\PSoC5/DMA_dma.c **** * 
+  30:Generated_Source\PSoC5/DMA_dma.c **** * 
+  31:Generated_Source\PSoC5/DMA_dma.c **** * 
+  32:Generated_Source\PSoC5/DMA_dma.c **** * DMA__DRQ_CTL_REG
+  33:Generated_Source\PSoC5/DMA_dma.c **** * 
+  34:Generated_Source\PSoC5/DMA_dma.c **** * 
+  35:Generated_Source\PSoC5/DMA_dma.c **** * DMA__DRQ_NUMBER
+  36:Generated_Source\PSoC5/DMA_dma.c **** * 
+  37:Generated_Source\PSoC5/DMA_dma.c **** * Number of TD's used by this channel.
+  38:Generated_Source\PSoC5/DMA_dma.c **** * DMA__NUMBEROF_TDS
+  39:Generated_Source\PSoC5/DMA_dma.c **** * 
+  40:Generated_Source\PSoC5/DMA_dma.c **** * Priority of this channel.
+  41:Generated_Source\PSoC5/DMA_dma.c **** * DMA__PRIORITY
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 15
+
+
+  42:Generated_Source\PSoC5/DMA_dma.c **** * 
+  43:Generated_Source\PSoC5/DMA_dma.c **** * True if DMA_TERMIN_SEL is used.
+  44:Generated_Source\PSoC5/DMA_dma.c **** * DMA__TERMIN_EN
+  45:Generated_Source\PSoC5/DMA_dma.c **** * 
+  46:Generated_Source\PSoC5/DMA_dma.c **** * TERMIN interrupt line to signal terminate.
+  47:Generated_Source\PSoC5/DMA_dma.c **** * DMA__TERMIN_SEL
+  48:Generated_Source\PSoC5/DMA_dma.c **** * 
+  49:Generated_Source\PSoC5/DMA_dma.c **** * 
+  50:Generated_Source\PSoC5/DMA_dma.c **** * True if DMA_TERMOUT0_SEL is used.
+  51:Generated_Source\PSoC5/DMA_dma.c **** * DMA__TERMOUT0_EN
+  52:Generated_Source\PSoC5/DMA_dma.c **** * 
+  53:Generated_Source\PSoC5/DMA_dma.c **** * 
+  54:Generated_Source\PSoC5/DMA_dma.c **** * TERMOUT0 interrupt line to signal completion.
+  55:Generated_Source\PSoC5/DMA_dma.c **** * DMA__TERMOUT0_SEL
+  56:Generated_Source\PSoC5/DMA_dma.c **** * 
+  57:Generated_Source\PSoC5/DMA_dma.c **** * 
+  58:Generated_Source\PSoC5/DMA_dma.c **** * True if DMA_TERMOUT1_SEL is used.
+  59:Generated_Source\PSoC5/DMA_dma.c **** * DMA__TERMOUT1_EN
+  60:Generated_Source\PSoC5/DMA_dma.c **** * 
+  61:Generated_Source\PSoC5/DMA_dma.c **** * 
+  62:Generated_Source\PSoC5/DMA_dma.c **** * TERMOUT1 interrupt line to signal completion.
+  63:Generated_Source\PSoC5/DMA_dma.c **** * DMA__TERMOUT1_SEL
+  64:Generated_Source\PSoC5/DMA_dma.c **** * 
+  65:Generated_Source\PSoC5/DMA_dma.c **** ****************************************************************************/
+  66:Generated_Source\PSoC5/DMA_dma.c **** 
+  67:Generated_Source\PSoC5/DMA_dma.c **** 
+  68:Generated_Source\PSoC5/DMA_dma.c **** /* Zero based index of DMA dma channel */
+  69:Generated_Source\PSoC5/DMA_dma.c **** uint8 DMA_DmaHandle = DMA_INVALID_CHANNEL;
+  70:Generated_Source\PSoC5/DMA_dma.c **** 
+  71:Generated_Source\PSoC5/DMA_dma.c **** /*********************************************************************
+  72:Generated_Source\PSoC5/DMA_dma.c **** * Function Name: uint8 DMA_DmaInitalize
+  73:Generated_Source\PSoC5/DMA_dma.c **** **********************************************************************
+  74:Generated_Source\PSoC5/DMA_dma.c **** * Summary:
+  75:Generated_Source\PSoC5/DMA_dma.c **** *   Allocates and initialises a channel of the DMAC to be used by the
+  76:Generated_Source\PSoC5/DMA_dma.c **** *   caller.
+  77:Generated_Source\PSoC5/DMA_dma.c **** *
+  78:Generated_Source\PSoC5/DMA_dma.c **** * Parameters:
+  79:Generated_Source\PSoC5/DMA_dma.c **** *   BurstCount.
+  80:Generated_Source\PSoC5/DMA_dma.c **** *       
+  81:Generated_Source\PSoC5/DMA_dma.c **** *       
+  82:Generated_Source\PSoC5/DMA_dma.c **** *   ReqestPerBurst.
+  83:Generated_Source\PSoC5/DMA_dma.c **** *       
+  84:Generated_Source\PSoC5/DMA_dma.c **** *       
+  85:Generated_Source\PSoC5/DMA_dma.c **** *   UpperSrcAddress.
+  86:Generated_Source\PSoC5/DMA_dma.c **** *       
+  87:Generated_Source\PSoC5/DMA_dma.c **** *       
+  88:Generated_Source\PSoC5/DMA_dma.c **** *   UpperDestAddress.
+  89:Generated_Source\PSoC5/DMA_dma.c **** *       
+  90:Generated_Source\PSoC5/DMA_dma.c **** *
+  91:Generated_Source\PSoC5/DMA_dma.c **** * Return:
+  92:Generated_Source\PSoC5/DMA_dma.c **** *   The channel that can be used by the caller for DMA activity.
+  93:Generated_Source\PSoC5/DMA_dma.c **** *   DMA_INVALID_CHANNEL (0xFF) if there are no channels left. 
+  94:Generated_Source\PSoC5/DMA_dma.c **** *
+  95:Generated_Source\PSoC5/DMA_dma.c **** *
+  96:Generated_Source\PSoC5/DMA_dma.c **** *******************************************************************/
+  97:Generated_Source\PSoC5/DMA_dma.c **** uint8 DMA_DmaInitialize(uint8 BurstCount, uint8 ReqestPerBurst, uint16 UpperSrcAddress, uint16 Uppe
+  98:Generated_Source\PSoC5/DMA_dma.c **** {
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 16
+
+
+ 200              		.loc 1 98 0
+ 201              		.cfi_startproc
+ 202              		@ args = 0, pretend = 0, frame = 0
+ 203              		@ frame_needed = 0, uses_anonymous_args = 0
+ 204              	.LVL0:
+ 205 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 206              		.cfi_def_cfa_offset 20
+ 207              		.cfi_offset 4, -20
+ 208              		.cfi_offset 5, -16
+ 209              		.cfi_offset 6, -12
+ 210              		.cfi_offset 7, -8
+ 211              		.cfi_offset 14, -4
+ 212 0002 83B0     		sub	sp, sp, #12
+ 213              		.cfi_def_cfa_offset 32
+ 214 0004 8646     		mov	lr, r0
+ 215 0006 0F46     		mov	r7, r1
+ 216 0008 1646     		mov	r6, r2
+ 217 000a 1D46     		mov	r5, r3
+  99:Generated_Source\PSoC5/DMA_dma.c **** 
+ 100:Generated_Source\PSoC5/DMA_dma.c ****     /* Allocate a DMA channel. */
+ 101:Generated_Source\PSoC5/DMA_dma.c ****     DMA_DmaHandle = (uint8)DMA__DRQ_NUMBER;
+ 218              		.loc 1 101 0
+ 219 000c 0A4C     		ldr	r4, .L3
+ 220 000e 0023     		movs	r3, #0
+ 221              	.LVL1:
+ 222 0010 2370     		strb	r3, [r4]
+ 102:Generated_Source\PSoC5/DMA_dma.c **** 
+ 103:Generated_Source\PSoC5/DMA_dma.c ****     /* Configure the channel. */
+ 104:Generated_Source\PSoC5/DMA_dma.c ****     (void)CyDmaChSetConfiguration(DMA_DmaHandle,
+ 223              		.loc 1 104 0
+ 224 0012 0093     		str	r3, [sp]
+ 225 0014 0193     		str	r3, [sp, #4]
+ 226 0016 1846     		mov	r0, r3
+ 227              	.LVL2:
+ 228 0018 7146     		mov	r1, lr
+ 229              	.LVL3:
+ 230 001a 3A46     		mov	r2, r7
+ 231              	.LVL4:
+ 232 001c FFF7FEFF 		bl	CyDmaChSetConfiguration
+ 233              	.LVL5:
+ 105:Generated_Source\PSoC5/DMA_dma.c ****                                   BurstCount,
+ 106:Generated_Source\PSoC5/DMA_dma.c ****                                   ReqestPerBurst,
+ 107:Generated_Source\PSoC5/DMA_dma.c ****                                   (uint8)DMA__TERMOUT0_SEL,
+ 108:Generated_Source\PSoC5/DMA_dma.c ****                                   (uint8)DMA__TERMOUT1_SEL,
+ 109:Generated_Source\PSoC5/DMA_dma.c ****                                   (uint8)DMA__TERMIN_SEL);
+ 110:Generated_Source\PSoC5/DMA_dma.c **** 
+ 111:Generated_Source\PSoC5/DMA_dma.c ****     /* Set the extended address for the transfers */
+ 112:Generated_Source\PSoC5/DMA_dma.c ****     (void)CyDmaChSetExtendedAddress(DMA_DmaHandle, UpperSrcAddress, UpperDestAddress);
+ 234              		.loc 1 112 0
+ 235 0020 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+ 236 0022 3146     		mov	r1, r6
+ 237 0024 2A46     		mov	r2, r5
+ 238 0026 FFF7FEFF 		bl	CyDmaChSetExtendedAddress
+ 239              	.LVL6:
+ 113:Generated_Source\PSoC5/DMA_dma.c **** 
+ 114:Generated_Source\PSoC5/DMA_dma.c ****     /* Set the priority for this channel */
+ 115:Generated_Source\PSoC5/DMA_dma.c ****     (void)CyDmaChPriority(DMA_DmaHandle, (uint8)DMA__PRIORITY);
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 17
+
+
+ 240              		.loc 1 115 0
+ 241 002a 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+ 242 002c 0221     		movs	r1, #2
+ 243 002e FFF7FEFF 		bl	CyDmaChPriority
+ 244              	.LVL7:
+ 116:Generated_Source\PSoC5/DMA_dma.c ****     
+ 117:Generated_Source\PSoC5/DMA_dma.c ****     return DMA_DmaHandle;
+ 118:Generated_Source\PSoC5/DMA_dma.c **** }
+ 245              		.loc 1 118 0
+ 246 0032 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+ 247 0034 03B0     		add	sp, sp, #12
+ 248              		.cfi_def_cfa_offset 20
+ 249              		@ sp needed
+ 250 0036 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 251              	.L4:
+ 252              		.align	2
+ 253              	.L3:
+ 254 0038 00000000 		.word	.LANCHOR0
+ 255              		.cfi_endproc
+ 256              	.LFE0:
+ 257              		.size	DMA_DmaInitialize, .-DMA_DmaInitialize
+ 258              		.section	.text.DMA_DmaRelease,"ax",%progbits
+ 259              		.align	2
+ 260              		.global	DMA_DmaRelease
+ 261              		.thumb
+ 262              		.thumb_func
+ 263              		.type	DMA_DmaRelease, %function
+ 264              	DMA_DmaRelease:
+ 265              	.LFB1:
+ 119:Generated_Source\PSoC5/DMA_dma.c **** 
+ 120:Generated_Source\PSoC5/DMA_dma.c **** /*********************************************************************
+ 121:Generated_Source\PSoC5/DMA_dma.c **** * Function Name: void DMA_DmaRelease
+ 122:Generated_Source\PSoC5/DMA_dma.c **** **********************************************************************
+ 123:Generated_Source\PSoC5/DMA_dma.c **** * Summary:
+ 124:Generated_Source\PSoC5/DMA_dma.c **** *   Frees the channel associated with DMA.
+ 125:Generated_Source\PSoC5/DMA_dma.c **** *
+ 126:Generated_Source\PSoC5/DMA_dma.c **** *
+ 127:Generated_Source\PSoC5/DMA_dma.c **** * Parameters:
+ 128:Generated_Source\PSoC5/DMA_dma.c **** *   void.
+ 129:Generated_Source\PSoC5/DMA_dma.c **** *
+ 130:Generated_Source\PSoC5/DMA_dma.c **** *
+ 131:Generated_Source\PSoC5/DMA_dma.c **** *
+ 132:Generated_Source\PSoC5/DMA_dma.c **** * Return:
+ 133:Generated_Source\PSoC5/DMA_dma.c **** *   void.
+ 134:Generated_Source\PSoC5/DMA_dma.c **** *
+ 135:Generated_Source\PSoC5/DMA_dma.c **** *******************************************************************/
+ 136:Generated_Source\PSoC5/DMA_dma.c **** void DMA_DmaRelease(void) 
+ 137:Generated_Source\PSoC5/DMA_dma.c **** {
+ 266              		.loc 1 137 0
+ 267              		.cfi_startproc
+ 268              		@ args = 0, pretend = 0, frame = 0
+ 269              		@ frame_needed = 0, uses_anonymous_args = 0
+ 270 0000 08B5     		push	{r3, lr}
+ 271              		.cfi_def_cfa_offset 8
+ 272              		.cfi_offset 3, -8
+ 273              		.cfi_offset 14, -4
+ 138:Generated_Source\PSoC5/DMA_dma.c ****     /* Disable the channel */
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 18
+
+
+ 139:Generated_Source\PSoC5/DMA_dma.c ****     (void)CyDmaChDisable(DMA_DmaHandle);
+ 274              		.loc 1 139 0
+ 275 0002 024B     		ldr	r3, .L7
+ 276 0004 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 277 0006 FFF7FEFF 		bl	CyDmaChDisable
+ 278              	.LVL8:
+ 279 000a 08BD     		pop	{r3, pc}
+ 280              	.L8:
+ 281              		.align	2
+ 282              	.L7:
+ 283 000c 00000000 		.word	.LANCHOR0
+ 284              		.cfi_endproc
+ 285              	.LFE1:
+ 286              		.size	DMA_DmaRelease, .-DMA_DmaRelease
+ 287              		.global	DMA_DmaHandle
+ 288              		.data
+ 289              		.set	.LANCHOR0,. + 0
+ 290              		.type	DMA_DmaHandle, %object
+ 291              		.size	DMA_DmaHandle, 1
+ 292              	DMA_DmaHandle:
+ 293 0000 FF       		.byte	-1
+ 294              		.text
+ 295              	.Letext0:
+ 296              		.file 2 "Generated_Source\\PSoC5/cytypes.h"
+ 297              		.file 3 "Generated_Source\\PSoC5/CYDMAC.H"
+ 298              		.section	.debug_info,"",%progbits
+ 299              	.Ldebug_info0:
+ 300 0000 F9010000 		.4byte	0x1f9
+ 301 0004 0400     		.2byte	0x4
+ 302 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 303 000a 04       		.byte	0x4
+ 304 000b 01       		.uleb128 0x1
+ 305 000c CA000000 		.4byte	.LASF23
+ 306 0010 01       		.byte	0x1
+ 307 0011 A2000000 		.4byte	.LASF24
+ 308 0015 DF010000 		.4byte	.LASF25
+ 309 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 310 001d 00000000 		.4byte	0
+ 311 0021 00000000 		.4byte	.Ldebug_line0
+ 312 0025 02       		.uleb128 0x2
+ 313 0026 04       		.byte	0x4
+ 314 0027 05       		.byte	0x5
+ 315 0028 696E7400 		.ascii	"int\000"
+ 316 002c 03       		.uleb128 0x3
+ 317 002d 04       		.byte	0x4
+ 318 002e 07       		.byte	0x7
+ 319 002f 65010000 		.4byte	.LASF0
+ 320 0033 03       		.uleb128 0x3
+ 321 0034 01       		.byte	0x1
+ 322 0035 06       		.byte	0x6
+ 323 0036 74020000 		.4byte	.LASF1
+ 324 003a 03       		.uleb128 0x3
+ 325 003b 01       		.byte	0x1
+ 326 003c 08       		.byte	0x8
+ 327 003d 71000000 		.4byte	.LASF2
+ 328 0041 03       		.uleb128 0x3
+ 329 0042 02       		.byte	0x2
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 19
+
+
+ 330 0043 05       		.byte	0x5
+ 331 0044 61020000 		.4byte	.LASF3
+ 332 0048 03       		.uleb128 0x3
+ 333 0049 02       		.byte	0x2
+ 334 004a 07       		.byte	0x7
+ 335 004b 58000000 		.4byte	.LASF4
+ 336 004f 03       		.uleb128 0x3
+ 337 0050 04       		.byte	0x4
+ 338 0051 05       		.byte	0x5
+ 339 0052 6B020000 		.4byte	.LASF5
+ 340 0056 03       		.uleb128 0x3
+ 341 0057 04       		.byte	0x4
+ 342 0058 07       		.byte	0x7
+ 343 0059 8A000000 		.4byte	.LASF6
+ 344 005d 03       		.uleb128 0x3
+ 345 005e 08       		.byte	0x8
+ 346 005f 05       		.byte	0x5
+ 347 0060 B2010000 		.4byte	.LASF7
+ 348 0064 03       		.uleb128 0x3
+ 349 0065 08       		.byte	0x8
+ 350 0066 07       		.byte	0x7
+ 351 0067 72010000 		.4byte	.LASF8
+ 352 006b 03       		.uleb128 0x3
+ 353 006c 04       		.byte	0x4
+ 354 006d 07       		.byte	0x7
+ 355 006e A9010000 		.4byte	.LASF9
+ 356 0072 03       		.uleb128 0x3
+ 357 0073 01       		.byte	0x1
+ 358 0074 08       		.byte	0x8
+ 359 0075 DA010000 		.4byte	.LASF10
+ 360 0079 04       		.uleb128 0x4
+ 361 007a 9C000000 		.4byte	.LASF11
+ 362 007e 02       		.byte	0x2
+ 363 007f 9201     		.2byte	0x192
+ 364 0081 3A000000 		.4byte	0x3a
+ 365 0085 04       		.uleb128 0x4
+ 366 0086 5E010000 		.4byte	.LASF12
+ 367 008a 02       		.byte	0x2
+ 368 008b 9301     		.2byte	0x193
+ 369 008d 48000000 		.4byte	0x48
+ 370 0091 03       		.uleb128 0x3
+ 371 0092 04       		.byte	0x4
+ 372 0093 04       		.byte	0x4
+ 373 0094 6B000000 		.4byte	.LASF13
+ 374 0098 03       		.uleb128 0x3
+ 375 0099 08       		.byte	0x8
+ 376 009a 04       		.byte	0x4
+ 377 009b C3000000 		.4byte	.LASF14
+ 378 009f 04       		.uleb128 0x4
+ 379 00a0 00000000 		.4byte	.LASF15
+ 380 00a4 02       		.byte	0x2
+ 381 00a5 3402     		.2byte	0x234
+ 382 00a7 56000000 		.4byte	0x56
+ 383 00ab 05       		.uleb128 0x5
+ 384 00ac 46000000 		.4byte	.LASF26
+ 385 00b0 01       		.byte	0x1
+ 386 00b1 61       		.byte	0x61
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 20
+
+
+ 387 00b2 79000000 		.4byte	0x79
+ 388 00b6 00000000 		.4byte	.LFB0
+ 389 00ba 3C000000 		.4byte	.LFE0-.LFB0
+ 390 00be 01       		.uleb128 0x1
+ 391 00bf 9C       		.byte	0x9c
+ 392 00c0 54010000 		.4byte	0x154
+ 393 00c4 06       		.uleb128 0x6
+ 394 00c5 7F000000 		.4byte	.LASF16
+ 395 00c9 01       		.byte	0x1
+ 396 00ca 61       		.byte	0x61
+ 397 00cb 79000000 		.4byte	0x79
+ 398 00cf 00000000 		.4byte	.LLST0
+ 399 00d3 06       		.uleb128 0x6
+ 400 00d4 37000000 		.4byte	.LASF17
+ 401 00d8 01       		.byte	0x1
+ 402 00d9 61       		.byte	0x61
+ 403 00da 79000000 		.4byte	0x79
+ 404 00de 21000000 		.4byte	.LLST1
+ 405 00e2 06       		.uleb128 0x6
+ 406 00e3 09000000 		.4byte	.LASF18
+ 407 00e7 01       		.byte	0x1
+ 408 00e8 61       		.byte	0x61
+ 409 00e9 85000000 		.4byte	0x85
+ 410 00ed 42000000 		.4byte	.LLST2
+ 411 00f1 06       		.uleb128 0x6
+ 412 00f2 98010000 		.4byte	.LASF19
+ 413 00f6 01       		.byte	0x1
+ 414 00f7 61       		.byte	0x61
+ 415 00f8 85000000 		.4byte	0x85
+ 416 00fc 63000000 		.4byte	.LLST3
+ 417 0100 07       		.uleb128 0x7
+ 418 0101 20000000 		.4byte	.LVL5
+ 419 0105 84010000 		.4byte	0x184
+ 420 0109 2A010000 		.4byte	0x12a
+ 421 010d 08       		.uleb128 0x8
+ 422 010e 01       		.uleb128 0x1
+ 423 010f 53       		.byte	0x53
+ 424 0110 01       		.uleb128 0x1
+ 425 0111 30       		.byte	0x30
+ 426 0112 08       		.uleb128 0x8
+ 427 0113 01       		.uleb128 0x1
+ 428 0114 52       		.byte	0x52
+ 429 0115 02       		.uleb128 0x2
+ 430 0116 77       		.byte	0x77
+ 431 0117 00       		.sleb128 0
+ 432 0118 08       		.uleb128 0x8
+ 433 0119 01       		.uleb128 0x1
+ 434 011a 50       		.byte	0x50
+ 435 011b 01       		.uleb128 0x1
+ 436 011c 30       		.byte	0x30
+ 437 011d 08       		.uleb128 0x8
+ 438 011e 02       		.uleb128 0x2
+ 439 011f 7D       		.byte	0x7d
+ 440 0120 04       		.sleb128 4
+ 441 0121 01       		.uleb128 0x1
+ 442 0122 30       		.byte	0x30
+ 443 0123 08       		.uleb128 0x8
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 21
+
+
+ 444 0124 02       		.uleb128 0x2
+ 445 0125 7D       		.byte	0x7d
+ 446 0126 00       		.sleb128 0
+ 447 0127 01       		.uleb128 0x1
+ 448 0128 30       		.byte	0x30
+ 449 0129 00       		.byte	0
+ 450 012a 07       		.uleb128 0x7
+ 451 012b 2A000000 		.4byte	.LVL6
+ 452 012f B2010000 		.4byte	0x1b2
+ 453 0133 44010000 		.4byte	0x144
+ 454 0137 08       		.uleb128 0x8
+ 455 0138 01       		.uleb128 0x1
+ 456 0139 52       		.byte	0x52
+ 457 013a 02       		.uleb128 0x2
+ 458 013b 75       		.byte	0x75
+ 459 013c 00       		.sleb128 0
+ 460 013d 08       		.uleb128 0x8
+ 461 013e 01       		.uleb128 0x1
+ 462 013f 51       		.byte	0x51
+ 463 0140 02       		.uleb128 0x2
+ 464 0141 76       		.byte	0x76
+ 465 0142 00       		.sleb128 0
+ 466 0143 00       		.byte	0
+ 467 0144 09       		.uleb128 0x9
+ 468 0145 32000000 		.4byte	.LVL7
+ 469 0149 D1010000 		.4byte	0x1d1
+ 470 014d 08       		.uleb128 0x8
+ 471 014e 01       		.uleb128 0x1
+ 472 014f 51       		.byte	0x51
+ 473 0150 01       		.uleb128 0x1
+ 474 0151 32       		.byte	0x32
+ 475 0152 00       		.byte	0
+ 476 0153 00       		.byte	0
+ 477 0154 0A       		.uleb128 0xa
+ 478 0155 89010000 		.4byte	.LASF27
+ 479 0159 01       		.byte	0x1
+ 480 015a 88       		.byte	0x88
+ 481 015b 00000000 		.4byte	.LFB1
+ 482 015f 10000000 		.4byte	.LFE1-.LFB1
+ 483 0163 01       		.uleb128 0x1
+ 484 0164 9C       		.byte	0x9c
+ 485 0165 73010000 		.4byte	0x173
+ 486 0169 0B       		.uleb128 0xb
+ 487 016a 0A000000 		.4byte	.LVL8
+ 488 016e EB010000 		.4byte	0x1eb
+ 489 0172 00       		.byte	0
+ 490 0173 0C       		.uleb128 0xc
+ 491 0174 19000000 		.4byte	.LASF28
+ 492 0178 01       		.byte	0x1
+ 493 0179 45       		.byte	0x45
+ 494 017a 79000000 		.4byte	0x79
+ 495 017e 05       		.uleb128 0x5
+ 496 017f 03       		.byte	0x3
+ 497 0180 00000000 		.4byte	DMA_DmaHandle
+ 498 0184 0D       		.uleb128 0xd
+ 499 0185 8F020000 		.4byte	.LASF20
+ 500 0189 03       		.byte	0x3
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 22
+
+
+ 501 018a 33       		.byte	0x33
+ 502 018b 9F000000 		.4byte	0x9f
+ 503 018f B2010000 		.4byte	0x1b2
+ 504 0193 0E       		.uleb128 0xe
+ 505 0194 79000000 		.4byte	0x79
+ 506 0198 0E       		.uleb128 0xe
+ 507 0199 79000000 		.4byte	0x79
+ 508 019d 0E       		.uleb128 0xe
+ 509 019e 79000000 		.4byte	0x79
+ 510 01a2 0E       		.uleb128 0xe
+ 511 01a3 79000000 		.4byte	0x79
+ 512 01a7 0E       		.uleb128 0xe
+ 513 01a8 79000000 		.4byte	0x79
+ 514 01ac 0E       		.uleb128 0xe
+ 515 01ad 79000000 		.4byte	0x79
+ 516 01b1 00       		.byte	0
+ 517 01b2 0D       		.uleb128 0xd
+ 518 01b3 C0010000 		.4byte	.LASF21
+ 519 01b7 03       		.byte	0x3
+ 520 01b8 2D       		.byte	0x2d
+ 521 01b9 9F000000 		.4byte	0x9f
+ 522 01bd D1010000 		.4byte	0x1d1
+ 523 01c1 0E       		.uleb128 0xe
+ 524 01c2 79000000 		.4byte	0x79
+ 525 01c6 0E       		.uleb128 0xe
+ 526 01c7 85000000 		.4byte	0x85
+ 527 01cb 0E       		.uleb128 0xe
+ 528 01cc 85000000 		.4byte	0x85
+ 529 01d0 00       		.byte	0
+ 530 01d1 0D       		.uleb128 0xd
+ 531 01d2 27000000 		.4byte	.LASF22
+ 532 01d6 03       		.byte	0x3
+ 533 01d7 2C       		.byte	0x2c
+ 534 01d8 9F000000 		.4byte	0x9f
+ 535 01dc EB010000 		.4byte	0x1eb
+ 536 01e0 0E       		.uleb128 0xe
+ 537 01e1 79000000 		.4byte	0x79
+ 538 01e5 0E       		.uleb128 0xe
+ 539 01e6 79000000 		.4byte	0x79
+ 540 01ea 00       		.byte	0
+ 541 01eb 0F       		.uleb128 0xf
+ 542 01ec 80020000 		.4byte	.LASF29
+ 543 01f0 03       		.byte	0x3
+ 544 01f1 2A       		.byte	0x2a
+ 545 01f2 9F000000 		.4byte	0x9f
+ 546 01f6 0E       		.uleb128 0xe
+ 547 01f7 79000000 		.4byte	0x79
+ 548 01fb 00       		.byte	0
+ 549 01fc 00       		.byte	0
+ 550              		.section	.debug_abbrev,"",%progbits
+ 551              	.Ldebug_abbrev0:
+ 552 0000 01       		.uleb128 0x1
+ 553 0001 11       		.uleb128 0x11
+ 554 0002 01       		.byte	0x1
+ 555 0003 25       		.uleb128 0x25
+ 556 0004 0E       		.uleb128 0xe
+ 557 0005 13       		.uleb128 0x13
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 23
+
+
+ 558 0006 0B       		.uleb128 0xb
+ 559 0007 03       		.uleb128 0x3
+ 560 0008 0E       		.uleb128 0xe
+ 561 0009 1B       		.uleb128 0x1b
+ 562 000a 0E       		.uleb128 0xe
+ 563 000b 55       		.uleb128 0x55
+ 564 000c 17       		.uleb128 0x17
+ 565 000d 11       		.uleb128 0x11
+ 566 000e 01       		.uleb128 0x1
+ 567 000f 10       		.uleb128 0x10
+ 568 0010 17       		.uleb128 0x17
+ 569 0011 00       		.byte	0
+ 570 0012 00       		.byte	0
+ 571 0013 02       		.uleb128 0x2
+ 572 0014 24       		.uleb128 0x24
+ 573 0015 00       		.byte	0
+ 574 0016 0B       		.uleb128 0xb
+ 575 0017 0B       		.uleb128 0xb
+ 576 0018 3E       		.uleb128 0x3e
+ 577 0019 0B       		.uleb128 0xb
+ 578 001a 03       		.uleb128 0x3
+ 579 001b 08       		.uleb128 0x8
+ 580 001c 00       		.byte	0
+ 581 001d 00       		.byte	0
+ 582 001e 03       		.uleb128 0x3
+ 583 001f 24       		.uleb128 0x24
+ 584 0020 00       		.byte	0
+ 585 0021 0B       		.uleb128 0xb
+ 586 0022 0B       		.uleb128 0xb
+ 587 0023 3E       		.uleb128 0x3e
+ 588 0024 0B       		.uleb128 0xb
+ 589 0025 03       		.uleb128 0x3
+ 590 0026 0E       		.uleb128 0xe
+ 591 0027 00       		.byte	0
+ 592 0028 00       		.byte	0
+ 593 0029 04       		.uleb128 0x4
+ 594 002a 16       		.uleb128 0x16
+ 595 002b 00       		.byte	0
+ 596 002c 03       		.uleb128 0x3
+ 597 002d 0E       		.uleb128 0xe
+ 598 002e 3A       		.uleb128 0x3a
+ 599 002f 0B       		.uleb128 0xb
+ 600 0030 3B       		.uleb128 0x3b
+ 601 0031 05       		.uleb128 0x5
+ 602 0032 49       		.uleb128 0x49
+ 603 0033 13       		.uleb128 0x13
+ 604 0034 00       		.byte	0
+ 605 0035 00       		.byte	0
+ 606 0036 05       		.uleb128 0x5
+ 607 0037 2E       		.uleb128 0x2e
+ 608 0038 01       		.byte	0x1
+ 609 0039 3F       		.uleb128 0x3f
+ 610 003a 19       		.uleb128 0x19
+ 611 003b 03       		.uleb128 0x3
+ 612 003c 0E       		.uleb128 0xe
+ 613 003d 3A       		.uleb128 0x3a
+ 614 003e 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 24
+
+
+ 615 003f 3B       		.uleb128 0x3b
+ 616 0040 0B       		.uleb128 0xb
+ 617 0041 27       		.uleb128 0x27
+ 618 0042 19       		.uleb128 0x19
+ 619 0043 49       		.uleb128 0x49
+ 620 0044 13       		.uleb128 0x13
+ 621 0045 11       		.uleb128 0x11
+ 622 0046 01       		.uleb128 0x1
+ 623 0047 12       		.uleb128 0x12
+ 624 0048 06       		.uleb128 0x6
+ 625 0049 40       		.uleb128 0x40
+ 626 004a 18       		.uleb128 0x18
+ 627 004b 9742     		.uleb128 0x2117
+ 628 004d 19       		.uleb128 0x19
+ 629 004e 01       		.uleb128 0x1
+ 630 004f 13       		.uleb128 0x13
+ 631 0050 00       		.byte	0
+ 632 0051 00       		.byte	0
+ 633 0052 06       		.uleb128 0x6
+ 634 0053 05       		.uleb128 0x5
+ 635 0054 00       		.byte	0
+ 636 0055 03       		.uleb128 0x3
+ 637 0056 0E       		.uleb128 0xe
+ 638 0057 3A       		.uleb128 0x3a
+ 639 0058 0B       		.uleb128 0xb
+ 640 0059 3B       		.uleb128 0x3b
+ 641 005a 0B       		.uleb128 0xb
+ 642 005b 49       		.uleb128 0x49
+ 643 005c 13       		.uleb128 0x13
+ 644 005d 02       		.uleb128 0x2
+ 645 005e 17       		.uleb128 0x17
+ 646 005f 00       		.byte	0
+ 647 0060 00       		.byte	0
+ 648 0061 07       		.uleb128 0x7
+ 649 0062 898201   		.uleb128 0x4109
+ 650 0065 01       		.byte	0x1
+ 651 0066 11       		.uleb128 0x11
+ 652 0067 01       		.uleb128 0x1
+ 653 0068 31       		.uleb128 0x31
+ 654 0069 13       		.uleb128 0x13
+ 655 006a 01       		.uleb128 0x1
+ 656 006b 13       		.uleb128 0x13
+ 657 006c 00       		.byte	0
+ 658 006d 00       		.byte	0
+ 659 006e 08       		.uleb128 0x8
+ 660 006f 8A8201   		.uleb128 0x410a
+ 661 0072 00       		.byte	0
+ 662 0073 02       		.uleb128 0x2
+ 663 0074 18       		.uleb128 0x18
+ 664 0075 9142     		.uleb128 0x2111
+ 665 0077 18       		.uleb128 0x18
+ 666 0078 00       		.byte	0
+ 667 0079 00       		.byte	0
+ 668 007a 09       		.uleb128 0x9
+ 669 007b 898201   		.uleb128 0x4109
+ 670 007e 01       		.byte	0x1
+ 671 007f 11       		.uleb128 0x11
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 25
+
+
+ 672 0080 01       		.uleb128 0x1
+ 673 0081 31       		.uleb128 0x31
+ 674 0082 13       		.uleb128 0x13
+ 675 0083 00       		.byte	0
+ 676 0084 00       		.byte	0
+ 677 0085 0A       		.uleb128 0xa
+ 678 0086 2E       		.uleb128 0x2e
+ 679 0087 01       		.byte	0x1
+ 680 0088 3F       		.uleb128 0x3f
+ 681 0089 19       		.uleb128 0x19
+ 682 008a 03       		.uleb128 0x3
+ 683 008b 0E       		.uleb128 0xe
+ 684 008c 3A       		.uleb128 0x3a
+ 685 008d 0B       		.uleb128 0xb
+ 686 008e 3B       		.uleb128 0x3b
+ 687 008f 0B       		.uleb128 0xb
+ 688 0090 27       		.uleb128 0x27
+ 689 0091 19       		.uleb128 0x19
+ 690 0092 11       		.uleb128 0x11
+ 691 0093 01       		.uleb128 0x1
+ 692 0094 12       		.uleb128 0x12
+ 693 0095 06       		.uleb128 0x6
+ 694 0096 40       		.uleb128 0x40
+ 695 0097 18       		.uleb128 0x18
+ 696 0098 9742     		.uleb128 0x2117
+ 697 009a 19       		.uleb128 0x19
+ 698 009b 01       		.uleb128 0x1
+ 699 009c 13       		.uleb128 0x13
+ 700 009d 00       		.byte	0
+ 701 009e 00       		.byte	0
+ 702 009f 0B       		.uleb128 0xb
+ 703 00a0 898201   		.uleb128 0x4109
+ 704 00a3 00       		.byte	0
+ 705 00a4 11       		.uleb128 0x11
+ 706 00a5 01       		.uleb128 0x1
+ 707 00a6 31       		.uleb128 0x31
+ 708 00a7 13       		.uleb128 0x13
+ 709 00a8 00       		.byte	0
+ 710 00a9 00       		.byte	0
+ 711 00aa 0C       		.uleb128 0xc
+ 712 00ab 34       		.uleb128 0x34
+ 713 00ac 00       		.byte	0
+ 714 00ad 03       		.uleb128 0x3
+ 715 00ae 0E       		.uleb128 0xe
+ 716 00af 3A       		.uleb128 0x3a
+ 717 00b0 0B       		.uleb128 0xb
+ 718 00b1 3B       		.uleb128 0x3b
+ 719 00b2 0B       		.uleb128 0xb
+ 720 00b3 49       		.uleb128 0x49
+ 721 00b4 13       		.uleb128 0x13
+ 722 00b5 3F       		.uleb128 0x3f
+ 723 00b6 19       		.uleb128 0x19
+ 724 00b7 02       		.uleb128 0x2
+ 725 00b8 18       		.uleb128 0x18
+ 726 00b9 00       		.byte	0
+ 727 00ba 00       		.byte	0
+ 728 00bb 0D       		.uleb128 0xd
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 26
+
+
+ 729 00bc 2E       		.uleb128 0x2e
+ 730 00bd 01       		.byte	0x1
+ 731 00be 3F       		.uleb128 0x3f
+ 732 00bf 19       		.uleb128 0x19
+ 733 00c0 03       		.uleb128 0x3
+ 734 00c1 0E       		.uleb128 0xe
+ 735 00c2 3A       		.uleb128 0x3a
+ 736 00c3 0B       		.uleb128 0xb
+ 737 00c4 3B       		.uleb128 0x3b
+ 738 00c5 0B       		.uleb128 0xb
+ 739 00c6 27       		.uleb128 0x27
+ 740 00c7 19       		.uleb128 0x19
+ 741 00c8 49       		.uleb128 0x49
+ 742 00c9 13       		.uleb128 0x13
+ 743 00ca 3C       		.uleb128 0x3c
+ 744 00cb 19       		.uleb128 0x19
+ 745 00cc 01       		.uleb128 0x1
+ 746 00cd 13       		.uleb128 0x13
+ 747 00ce 00       		.byte	0
+ 748 00cf 00       		.byte	0
+ 749 00d0 0E       		.uleb128 0xe
+ 750 00d1 05       		.uleb128 0x5
+ 751 00d2 00       		.byte	0
+ 752 00d3 49       		.uleb128 0x49
+ 753 00d4 13       		.uleb128 0x13
+ 754 00d5 00       		.byte	0
+ 755 00d6 00       		.byte	0
+ 756 00d7 0F       		.uleb128 0xf
+ 757 00d8 2E       		.uleb128 0x2e
+ 758 00d9 01       		.byte	0x1
+ 759 00da 3F       		.uleb128 0x3f
+ 760 00db 19       		.uleb128 0x19
+ 761 00dc 03       		.uleb128 0x3
+ 762 00dd 0E       		.uleb128 0xe
+ 763 00de 3A       		.uleb128 0x3a
+ 764 00df 0B       		.uleb128 0xb
+ 765 00e0 3B       		.uleb128 0x3b
+ 766 00e1 0B       		.uleb128 0xb
+ 767 00e2 27       		.uleb128 0x27
+ 768 00e3 19       		.uleb128 0x19
+ 769 00e4 49       		.uleb128 0x49
+ 770 00e5 13       		.uleb128 0x13
+ 771 00e6 3C       		.uleb128 0x3c
+ 772 00e7 19       		.uleb128 0x19
+ 773 00e8 00       		.byte	0
+ 774 00e9 00       		.byte	0
+ 775 00ea 00       		.byte	0
+ 776              		.section	.debug_loc,"",%progbits
+ 777              	.Ldebug_loc0:
+ 778              	.LLST0:
+ 779 0000 00000000 		.4byte	.LVL0
+ 780 0004 18000000 		.4byte	.LVL2
+ 781 0008 0100     		.2byte	0x1
+ 782 000a 50       		.byte	0x50
+ 783 000b 18000000 		.4byte	.LVL2
+ 784 000f 3C000000 		.4byte	.LFE0
+ 785 0013 0400     		.2byte	0x4
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 27
+
+
+ 786 0015 F3       		.byte	0xf3
+ 787 0016 01       		.uleb128 0x1
+ 788 0017 50       		.byte	0x50
+ 789 0018 9F       		.byte	0x9f
+ 790 0019 00000000 		.4byte	0
+ 791 001d 00000000 		.4byte	0
+ 792              	.LLST1:
+ 793 0021 00000000 		.4byte	.LVL0
+ 794 0025 1A000000 		.4byte	.LVL3
+ 795 0029 0100     		.2byte	0x1
+ 796 002b 51       		.byte	0x51
+ 797 002c 1A000000 		.4byte	.LVL3
+ 798 0030 3C000000 		.4byte	.LFE0
+ 799 0034 0400     		.2byte	0x4
+ 800 0036 F3       		.byte	0xf3
+ 801 0037 01       		.uleb128 0x1
+ 802 0038 51       		.byte	0x51
+ 803 0039 9F       		.byte	0x9f
+ 804 003a 00000000 		.4byte	0
+ 805 003e 00000000 		.4byte	0
+ 806              	.LLST2:
+ 807 0042 00000000 		.4byte	.LVL0
+ 808 0046 1C000000 		.4byte	.LVL4
+ 809 004a 0100     		.2byte	0x1
+ 810 004c 52       		.byte	0x52
+ 811 004d 1C000000 		.4byte	.LVL4
+ 812 0051 3C000000 		.4byte	.LFE0
+ 813 0055 0400     		.2byte	0x4
+ 814 0057 F3       		.byte	0xf3
+ 815 0058 01       		.uleb128 0x1
+ 816 0059 52       		.byte	0x52
+ 817 005a 9F       		.byte	0x9f
+ 818 005b 00000000 		.4byte	0
+ 819 005f 00000000 		.4byte	0
+ 820              	.LLST3:
+ 821 0063 00000000 		.4byte	.LVL0
+ 822 0067 10000000 		.4byte	.LVL1
+ 823 006b 0100     		.2byte	0x1
+ 824 006d 53       		.byte	0x53
+ 825 006e 10000000 		.4byte	.LVL1
+ 826 0072 3C000000 		.4byte	.LFE0
+ 827 0076 0400     		.2byte	0x4
+ 828 0078 F3       		.byte	0xf3
+ 829 0079 01       		.uleb128 0x1
+ 830 007a 53       		.byte	0x53
+ 831 007b 9F       		.byte	0x9f
+ 832 007c 00000000 		.4byte	0
+ 833 0080 00000000 		.4byte	0
+ 834              		.section	.debug_aranges,"",%progbits
+ 835 0000 24000000 		.4byte	0x24
+ 836 0004 0200     		.2byte	0x2
+ 837 0006 00000000 		.4byte	.Ldebug_info0
+ 838 000a 04       		.byte	0x4
+ 839 000b 00       		.byte	0
+ 840 000c 0000     		.2byte	0
+ 841 000e 0000     		.2byte	0
+ 842 0010 00000000 		.4byte	.LFB0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 28
+
+
+ 843 0014 3C000000 		.4byte	.LFE0-.LFB0
+ 844 0018 00000000 		.4byte	.LFB1
+ 845 001c 10000000 		.4byte	.LFE1-.LFB1
+ 846 0020 00000000 		.4byte	0
+ 847 0024 00000000 		.4byte	0
+ 848              		.section	.debug_ranges,"",%progbits
+ 849              	.Ldebug_ranges0:
+ 850 0000 00000000 		.4byte	.LFB0
+ 851 0004 3C000000 		.4byte	.LFE0
+ 852 0008 00000000 		.4byte	.LFB1
+ 853 000c 10000000 		.4byte	.LFE1
+ 854 0010 00000000 		.4byte	0
+ 855 0014 00000000 		.4byte	0
+ 856              		.section	.debug_line,"",%progbits
+ 857              	.Ldebug_line0:
+ 858 0000 7C000000 		.section	.debug_str,"MS",%progbits,1
+ 858      02005000 
+ 858      00000201 
+ 858      FB0E0D00 
+ 858      01010101 
+ 859              	.LASF15:
+ 860 0000 63797374 		.ascii	"cystatus\000"
+ 860      61747573 
+ 860      00
+ 861              	.LASF18:
+ 862 0009 55707065 		.ascii	"UpperSrcAddress\000"
+ 862      72537263 
+ 862      41646472 
+ 862      65737300 
+ 863              	.LASF28:
+ 864 0019 444D415F 		.ascii	"DMA_DmaHandle\000"
+ 864      446D6148 
+ 864      616E646C 
+ 864      6500
+ 865              	.LASF22:
+ 866 0027 4379446D 		.ascii	"CyDmaChPriority\000"
+ 866      61436850 
+ 866      72696F72 
+ 866      69747900 
+ 867              	.LASF17:
+ 868 0037 52657165 		.ascii	"ReqestPerBurst\000"
+ 868      73745065 
+ 868      72427572 
+ 868      737400
+ 869              	.LASF26:
+ 870 0046 444D415F 		.ascii	"DMA_DmaInitialize\000"
+ 870      446D6149 
+ 870      6E697469 
+ 870      616C697A 
+ 870      6500
+ 871              	.LASF4:
+ 872 0058 73686F72 		.ascii	"short unsigned int\000"
+ 872      7420756E 
+ 872      7369676E 
+ 872      65642069 
+ 872      6E7400
+ 873              	.LASF13:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 29
+
+
+ 874 006b 666C6F61 		.ascii	"float\000"
+ 874      7400
+ 875              	.LASF2:
+ 876 0071 756E7369 		.ascii	"unsigned char\000"
+ 876      676E6564 
+ 876      20636861 
+ 876      7200
+ 877              	.LASF16:
+ 878 007f 42757273 		.ascii	"BurstCount\000"
+ 878      74436F75 
+ 878      6E7400
+ 879              	.LASF6:
+ 880 008a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 880      20756E73 
+ 880      69676E65 
+ 880      6420696E 
+ 880      7400
+ 881              	.LASF11:
+ 882 009c 75696E74 		.ascii	"uint8\000"
+ 882      3800
+ 883              	.LASF24:
+ 884 00a2 47656E65 		.ascii	"Generated_Source\\PSoC5\\DMA_dma.c\000"
+ 884      72617465 
+ 884      645F536F 
+ 884      75726365 
+ 884      5C50536F 
+ 885              	.LASF14:
+ 886 00c3 646F7562 		.ascii	"double\000"
+ 886      6C6500
+ 887              	.LASF23:
+ 888 00ca 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 888      4320342E 
+ 888      392E3320 
+ 888      32303135 
+ 888      30333033 
+ 889 00fd 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 889      20726576 
+ 889      6973696F 
+ 889      6E203232 
+ 889      31323230 
+ 890 0130 67202D66 		.ascii	"g -ffunction-sections -flto -ffat-lto-objects\000"
+ 890      66756E63 
+ 890      74696F6E 
+ 890      2D736563 
+ 890      74696F6E 
+ 891              	.LASF12:
+ 892 015e 75696E74 		.ascii	"uint16\000"
+ 892      313600
+ 893              	.LASF0:
+ 894 0165 756E7369 		.ascii	"unsigned int\000"
+ 894      676E6564 
+ 894      20696E74 
+ 894      00
+ 895              	.LASF8:
+ 896 0172 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 896      206C6F6E 
+ 896      6720756E 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 30
+
+
+ 896      7369676E 
+ 896      65642069 
+ 897              	.LASF27:
+ 898 0189 444D415F 		.ascii	"DMA_DmaRelease\000"
+ 898      446D6152 
+ 898      656C6561 
+ 898      736500
+ 899              	.LASF19:
+ 900 0198 55707065 		.ascii	"UpperDestAddress\000"
+ 900      72446573 
+ 900      74416464 
+ 900      72657373 
+ 900      00
+ 901              	.LASF9:
+ 902 01a9 73697A65 		.ascii	"sizetype\000"
+ 902      74797065 
+ 902      00
+ 903              	.LASF7:
+ 904 01b2 6C6F6E67 		.ascii	"long long int\000"
+ 904      206C6F6E 
+ 904      6720696E 
+ 904      7400
+ 905              	.LASF21:
+ 906 01c0 4379446D 		.ascii	"CyDmaChSetExtendedAddress\000"
+ 906      61436853 
+ 906      65744578 
+ 906      74656E64 
+ 906      65644164 
+ 907              	.LASF10:
+ 908 01da 63686172 		.ascii	"char\000"
+ 908      00
+ 909              	.LASF25:
+ 910 01df 433A5C55 		.ascii	"C:\\Users\\Luggi\\Desktop\\Aktuelles Projekt Laser_"
+ 910      73657273 
+ 910      5C4C7567 
+ 910      67695C44 
+ 910      65736B74 
+ 911 020e 73636875 		.ascii	"schutzschaltung\\Aktuelles Projekt Laser_schutzscha"
+ 911      747A7363 
+ 911      68616C74 
+ 911      756E675C 
+ 911      416B7475 
+ 912 0240 6C74756E 		.ascii	"ltung\\Laserschutzschaltung.cydsn\000"
+ 912      675C4C61 
+ 912      73657273 
+ 912      63687574 
+ 912      7A736368 
+ 913              	.LASF3:
+ 914 0261 73686F72 		.ascii	"short int\000"
+ 914      7420696E 
+ 914      7400
+ 915              	.LASF5:
+ 916 026b 6C6F6E67 		.ascii	"long int\000"
+ 916      20696E74 
+ 916      00
+ 917              	.LASF1:
+ 918 0274 7369676E 		.ascii	"signed char\000"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccJE9k2i.s 			page 31
+
+
+ 918      65642063 
+ 918      68617200 
+ 919              	.LASF29:
+ 920 0280 4379446D 		.ascii	"CyDmaChDisable\000"
+ 920      61436844 
+ 920      69736162 
+ 920      6C6500
+ 921              	.LASF20:
+ 922 028f 4379446D 		.ascii	"CyDmaChSetConfiguration\000"
+ 922      61436853 
+ 922      6574436F 
+ 922      6E666967 
+ 922      75726174 
+ 923              		.comm	__gnu_lto_v1,1,1
+ 924              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -1,0 +1,1570 @@
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"eeprom.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.erase_eeprom,"ax",%progbits
+  19              		.align	2
+  20              		.global	erase_eeprom
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	erase_eeprom, %function
+  24              	erase_eeprom:
+  25              	.LFB0:
+  26              		.file 1 ".\\eeprom.c"
+   1:.\eeprom.c    **** /* ========================================
+   2:.\eeprom.c    ****  *
+   3:.\eeprom.c    ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\eeprom.c    ****  * All Rights Reserved
+   5:.\eeprom.c    ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\eeprom.c    ****  *
+   7:.\eeprom.c    ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\eeprom.c    ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\eeprom.c    ****  *
+  10:.\eeprom.c    ****  * ========================================
+  11:.\eeprom.c    **** */
+  12:.\eeprom.c    **** #include "EEPROM_1.h"
+  13:.\eeprom.c    **** #include "pid.h"
+  14:.\eeprom.c    **** 
+  15:.\eeprom.c    **** // global data to save
+  16:.\eeprom.c    **** extern pid pid1;
+  17:.\eeprom.c    **** extern int setpoint;
+  18:.\eeprom.c    **** extern uint32_t eventcounter;
+  19:.\eeprom.c    **** extern int deltaTms;
+  20:.\eeprom.c    **** extern uint8_t dac_offset;
+  21:.\eeprom.c    **** 
+  22:.\eeprom.c    **** 
+  23:.\eeprom.c    **** typedef union saveDataUnion // union zum umwandeln der Variablen in ein byte array
+  24:.\eeprom.c    **** {
+  25:.\eeprom.c    ****     struct{pid pidx; int setPoint; int deltaTms; uint8_t offset;} structData;
+  26:.\eeprom.c    ****     uint8_t Data[sizeof(pid) + sizeof(int) * 2 + sizeof(uint8_t)];
+  27:.\eeprom.c    **** } saveDataUnion;
+  28:.\eeprom.c    **** 
+  29:.\eeprom.c    **** int erase_eeprom(void) // eeprom löschen
+  30:.\eeprom.c    **** {
+  27              		.loc 1 30 0
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 2
+
+
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 16
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 80B5     		push	{r7, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 84B0     		sub	sp, sp, #16
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 24
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  31:.\eeprom.c    ****     unsigned int Index;
+  32:.\eeprom.c    ****     cystatus eraseStatus;
+  33:.\eeprom.c    ****     reg8 * RegPointer;
+  34:.\eeprom.c    ****     
+  35:.\eeprom.c    ****     for(Index = 0u; Index < CY_EEPROM_NUMBER_ARRAYS; Index++)
+  42              		.loc 1 35 0
+  43 0006 4FF00003 		mov	r3, #0
+  44 000a FB60     		str	r3, [r7, #12]
+  45 000c 09E0     		b	.L2
+  46              	.L3:
+  36:.\eeprom.c    ****     {
+  37:.\eeprom.c    ****         eraseStatus = EEPROM_1_EraseSector(Index);
+  47              		.loc 1 37 0 discriminator 2
+  48 000e FB68     		ldr	r3, [r7, #12]
+  49 0010 DBB2     		uxtb	r3, r3
+  50 0012 1846     		mov	r0, r3
+  51 0014 FFF7FEFF 		bl	EEPROM_1_EraseSector
+  52 0018 B860     		str	r0, [r7, #8]
+  35:.\eeprom.c    ****     for(Index = 0u; Index < CY_EEPROM_NUMBER_ARRAYS; Index++)
+  53              		.loc 1 35 0 discriminator 2
+  54 001a FB68     		ldr	r3, [r7, #12]
+  55 001c 03F10103 		add	r3, r3, #1
+  56 0020 FB60     		str	r3, [r7, #12]
+  57              	.L2:
+  35:.\eeprom.c    ****     for(Index = 0u; Index < CY_EEPROM_NUMBER_ARRAYS; Index++)
+  58              		.loc 1 35 0 is_stmt 0 discriminator 1
+  59 0022 FB68     		ldr	r3, [r7, #12]
+  60 0024 012B     		cmp	r3, #1
+  61 0026 F2D9     		bls	.L3
+  38:.\eeprom.c    ****     }
+  39:.\eeprom.c    ****     if(eraseStatus != CYRET_SUCCESS)
+  62              		.loc 1 39 0 is_stmt 1
+  63 0028 BB68     		ldr	r3, [r7, #8]
+  64 002a 002B     		cmp	r3, #0
+  65 002c 02D0     		beq	.L4
+  40:.\eeprom.c    ****         return 0;
+  66              		.loc 1 40 0
+  67 002e 4FF00003 		mov	r3, #0
+  68 0032 1DE0     		b	.L5
+  69              	.L4:
+  41:.\eeprom.c    ****     
+  42:.\eeprom.c    ****     RegPointer = (reg8 *)CYDEV_EE_BASE;
+  70              		.loc 1 42 0
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 3
+
+
+  71 0034 4FF40043 		mov	r3, #32768
+  72 0038 C4F20003 		movt	r3, 16384
+  73 003c 7B60     		str	r3, [r7, #4]
+  43:.\eeprom.c    ****     
+  44:.\eeprom.c    ****     for(Index = 0; Index < EEPROM_1_EEPROM_SIZE; Index++)
+  74              		.loc 1 44 0
+  75 003e 4FF00003 		mov	r3, #0
+  76 0042 FB60     		str	r3, [r7, #12]
+  77 0044 0DE0     		b	.L6
+  78              	.L8:
+  45:.\eeprom.c    ****     {
+  46:.\eeprom.c    ****         if(RegPointer[Index] != 0u)
+  79              		.loc 1 46 0
+  80 0046 7A68     		ldr	r2, [r7, #4]
+  81 0048 FB68     		ldr	r3, [r7, #12]
+  82 004a D318     		adds	r3, r2, r3
+  83 004c 1B78     		ldrb	r3, [r3, #0]
+  84 004e DBB2     		uxtb	r3, r3
+  85 0050 002B     		cmp	r3, #0
+  86 0052 02D0     		beq	.L7
+  47:.\eeprom.c    ****         {
+  48:.\eeprom.c    ****             return 0;
+  87              		.loc 1 48 0
+  88 0054 4FF00003 		mov	r3, #0
+  89 0058 0AE0     		b	.L5
+  90              	.L7:
+  44:.\eeprom.c    ****     for(Index = 0; Index < EEPROM_1_EEPROM_SIZE; Index++)
+  91              		.loc 1 44 0
+  92 005a FB68     		ldr	r3, [r7, #12]
+  93 005c 03F10103 		add	r3, r3, #1
+  94 0060 FB60     		str	r3, [r7, #12]
+  95              	.L6:
+  44:.\eeprom.c    ****     for(Index = 0; Index < EEPROM_1_EEPROM_SIZE; Index++)
+  96              		.loc 1 44 0 is_stmt 0 discriminator 1
+  97 0062 FA68     		ldr	r2, [r7, #12]
+  98 0064 40F2FF73 		movw	r3, #2047
+  99 0068 9A42     		cmp	r2, r3
+ 100 006a ECD9     		bls	.L8
+  49:.\eeprom.c    ****         }
+  50:.\eeprom.c    ****     }
+  51:.\eeprom.c    ****     return 1;
+ 101              		.loc 1 51 0 is_stmt 1
+ 102 006c 4FF00103 		mov	r3, #1
+ 103              	.L5:
+  52:.\eeprom.c    **** }
+ 104              		.loc 1 52 0
+ 105 0070 1846     		mov	r0, r3
+ 106 0072 07F11007 		add	r7, r7, #16
+ 107 0076 BD46     		mov	sp, r7
+ 108 0078 80BD     		pop	{r7, pc}
+ 109              		.cfi_endproc
+ 110              	.LFE0:
+ 111              		.size	erase_eeprom, .-erase_eeprom
+ 112 007a 00BF     		.section	.text.save_settings,"ax",%progbits
+ 113              		.align	2
+ 114              		.global	save_settings
+ 115              		.thumb
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 4
+
+
+ 116              		.thumb_func
+ 117              		.type	save_settings, %function
+ 118              	save_settings:
+ 119              	.LFB1:
+  53:.\eeprom.c    **** 
+  54:.\eeprom.c    **** int save_settings(void) // speichern der Variablen
+  55:.\eeprom.c    **** {
+ 120              		.loc 1 55 0
+ 121              		.cfi_startproc
+ 122              		@ args = 0, pretend = 0, frame = 64
+ 123              		@ frame_needed = 1, uses_anonymous_args = 0
+ 124 0000 B0B5     		push	{r4, r5, r7, lr}
+ 125              	.LCFI3:
+ 126              		.cfi_def_cfa_offset 16
+ 127              		.cfi_offset 4, -16
+ 128              		.cfi_offset 5, -12
+ 129              		.cfi_offset 7, -8
+ 130              		.cfi_offset 14, -4
+ 131 0002 90B0     		sub	sp, sp, #64
+ 132              	.LCFI4:
+ 133              		.cfi_def_cfa_offset 80
+ 134 0004 00AF     		add	r7, sp, #0
+ 135              	.LCFI5:
+ 136              		.cfi_def_cfa_register 7
+  56:.\eeprom.c    ****     reg8 * RegPointer;
+  57:.\eeprom.c    ****     saveDataUnion globalData;
+  58:.\eeprom.c    ****     unsigned int byteswritten=0;
+ 137              		.loc 1 58 0
+ 138 0006 4FF00003 		mov	r3, #0
+ 139 000a FB63     		str	r3, [r7, #60]
+  59:.\eeprom.c    ****     unsigned int x,y;
+  60:.\eeprom.c    ****     unsigned int Index;
+  61:.\eeprom.c    ****     
+  62:.\eeprom.c    **** 	// Variablen in Zwischenspeicher schreiben
+  63:.\eeprom.c    ****     memcpy(&globalData.structData.pidx,&pid1,sizeof(pid));
+ 140              		.loc 1 63 0
+ 141 000c 40F20003 		movw	r3, #:lower16:pid1
+ 142 0010 C0F20003 		movt	r3, #:upper16:pid1
+ 143 0014 07F10404 		add	r4, r7, #4
+ 144 0018 1D46     		mov	r5, r3
+ 145 001a 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 146 001c 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 147 001e 95E80700 		ldmia	r5, {r0, r1, r2}
+ 148 0022 84E80700 		stmia	r4, {r0, r1, r2}
+  64:.\eeprom.c    ****     globalData.structData.setPoint = setpoint;
+ 149              		.loc 1 64 0
+ 150 0026 40F20003 		movw	r3, #:lower16:setpoint
+ 151 002a C0F20003 		movt	r3, #:upper16:setpoint
+ 152 002e 1B68     		ldr	r3, [r3, #0]
+ 153 0030 3B62     		str	r3, [r7, #32]
+  65:.\eeprom.c    ****     globalData.structData.deltaTms = deltaTms;
+ 154              		.loc 1 65 0
+ 155 0032 40F20003 		movw	r3, #:lower16:deltaTms
+ 156 0036 C0F20003 		movt	r3, #:upper16:deltaTms
+ 157 003a 1B68     		ldr	r3, [r3, #0]
+ 158 003c 7B62     		str	r3, [r7, #36]
+  66:.\eeprom.c    **** 	globalData.structData.offset = dac_offset;
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 5
+
+
+ 159              		.loc 1 66 0
+ 160 003e 40F20003 		movw	r3, #:lower16:dac_offset
+ 161 0042 C0F20003 		movt	r3, #:upper16:dac_offset
+ 162 0046 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 163 0048 87F82830 		strb	r3, [r7, #40]
+  67:.\eeprom.c    **** 
+  68:.\eeprom.c    ****     // Variablen byteweise in den EEPROM schreiben
+  69:.\eeprom.c    ****     for(x = 0; x <= (sizeof(globalData) / SIZEOF_EEPROM_ROW); x++) 
+ 164              		.loc 1 69 0
+ 165 004c 4FF00003 		mov	r3, #0
+ 166 0050 BB63     		str	r3, [r7, #56]
+ 167 0052 25E0     		b	.L10
+ 168              	.L15:
+  70:.\eeprom.c    ****     {
+  71:.\eeprom.c    ****         for(y=0; y < SIZEOF_EEPROM_ROW; y++)
+ 169              		.loc 1 71 0
+ 170 0054 4FF00003 		mov	r3, #0
+ 171 0058 7B63     		str	r3, [r7, #52]
+ 172 005a 18E0     		b	.L11
+ 173              	.L14:
+  72:.\eeprom.c    ****         {
+  73:.\eeprom.c    ****             EEPROM_1_ByteWrite(globalData.Data[byteswritten], x, y);
+ 174              		.loc 1 73 0
+ 175 005c 07F10402 		add	r2, r7, #4
+ 176 0060 FB6B     		ldr	r3, [r7, #60]
+ 177 0062 D318     		adds	r3, r2, r3
+ 178 0064 1978     		ldrb	r1, [r3, #0]	@ zero_extendqisi2
+ 179 0066 BB6B     		ldr	r3, [r7, #56]
+ 180 0068 DAB2     		uxtb	r2, r3
+ 181 006a 7B6B     		ldr	r3, [r7, #52]
+ 182 006c DBB2     		uxtb	r3, r3
+ 183 006e 0846     		mov	r0, r1
+ 184 0070 1146     		mov	r1, r2
+ 185 0072 1A46     		mov	r2, r3
+ 186 0074 FFF7FEFF 		bl	EEPROM_1_ByteWrite
+  74:.\eeprom.c    ****             byteswritten++;
+ 187              		.loc 1 74 0
+ 188 0078 FB6B     		ldr	r3, [r7, #60]
+ 189 007a 03F10103 		add	r3, r3, #1
+ 190 007e FB63     		str	r3, [r7, #60]
+  75:.\eeprom.c    ****             if(byteswritten >= sizeof(globalData))
+ 191              		.loc 1 75 0
+ 192 0080 FB6B     		ldr	r3, [r7, #60]
+ 193 0082 272B     		cmp	r3, #39
+ 194 0084 07D8     		bhi	.L21
+ 195              	.L12:
+  71:.\eeprom.c    ****         for(y=0; y < SIZEOF_EEPROM_ROW; y++)
+ 196              		.loc 1 71 0
+ 197 0086 7B6B     		ldr	r3, [r7, #52]
+ 198 0088 03F10103 		add	r3, r3, #1
+ 199 008c 7B63     		str	r3, [r7, #52]
+ 200              	.L11:
+  71:.\eeprom.c    ****         for(y=0; y < SIZEOF_EEPROM_ROW; y++)
+ 201              		.loc 1 71 0 is_stmt 0 discriminator 1
+ 202 008e 7B6B     		ldr	r3, [r7, #52]
+ 203 0090 0F2B     		cmp	r3, #15
+ 204 0092 E3D9     		bls	.L14
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 6
+
+
+ 205 0094 00E0     		b	.L13
+ 206              	.L21:
+  76:.\eeprom.c    ****                 break;
+ 207              		.loc 1 76 0 is_stmt 1
+ 208 0096 00BF     		nop
+ 209              	.L13:
+  69:.\eeprom.c    ****     for(x = 0; x <= (sizeof(globalData) / SIZEOF_EEPROM_ROW); x++) 
+ 210              		.loc 1 69 0
+ 211 0098 BB6B     		ldr	r3, [r7, #56]
+ 212 009a 03F10103 		add	r3, r3, #1
+ 213 009e BB63     		str	r3, [r7, #56]
+ 214              	.L10:
+  69:.\eeprom.c    ****     for(x = 0; x <= (sizeof(globalData) / SIZEOF_EEPROM_ROW); x++) 
+ 215              		.loc 1 69 0 is_stmt 0 discriminator 1
+ 216 00a0 BB6B     		ldr	r3, [r7, #56]
+ 217 00a2 022B     		cmp	r3, #2
+ 218 00a4 D6D9     		bls	.L15
+  77:.\eeprom.c    ****         }
+  78:.\eeprom.c    ****     }
+  79:.\eeprom.c    ****     
+  80:.\eeprom.c    **** 	// die geschriebenen Daten überprüfen
+  81:.\eeprom.c    ****     RegPointer = (reg8 *) CYDEV_EE_BASE;
+ 219              		.loc 1 81 0 is_stmt 1
+ 220 00a6 4FF40043 		mov	r3, #32768
+ 221 00aa C4F20003 		movt	r3, 16384
+ 222 00ae FB62     		str	r3, [r7, #44]
+  82:.\eeprom.c    ****     for(Index = 0; Index < sizeof(globalData); Index++)
+ 223              		.loc 1 82 0
+ 224 00b0 4FF00003 		mov	r3, #0
+ 225 00b4 3B63     		str	r3, [r7, #48]
+ 226 00b6 12E0     		b	.L16
+ 227              	.L19:
+  83:.\eeprom.c    ****     {
+  84:.\eeprom.c    ****         if(globalData.Data[Index] != RegPointer[Index])
+ 228              		.loc 1 84 0
+ 229 00b8 07F10402 		add	r2, r7, #4
+ 230 00bc 3B6B     		ldr	r3, [r7, #48]
+ 231 00be D318     		adds	r3, r2, r3
+ 232 00c0 1A78     		ldrb	r2, [r3, #0]	@ zero_extendqisi2
+ 233 00c2 F96A     		ldr	r1, [r7, #44]
+ 234 00c4 3B6B     		ldr	r3, [r7, #48]
+ 235 00c6 CB18     		adds	r3, r1, r3
+ 236 00c8 1B78     		ldrb	r3, [r3, #0]
+ 237 00ca DBB2     		uxtb	r3, r3
+ 238 00cc 9A42     		cmp	r2, r3
+ 239 00ce 02D0     		beq	.L17
+  85:.\eeprom.c    ****             return 0;
+ 240              		.loc 1 85 0
+ 241 00d0 4FF00003 		mov	r3, #0
+ 242 00d4 08E0     		b	.L20
+ 243              	.L17:
+  82:.\eeprom.c    ****     for(Index = 0; Index < sizeof(globalData); Index++)
+ 244              		.loc 1 82 0
+ 245 00d6 3B6B     		ldr	r3, [r7, #48]
+ 246 00d8 03F10103 		add	r3, r3, #1
+ 247 00dc 3B63     		str	r3, [r7, #48]
+ 248              	.L16:
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 7
+
+
+  82:.\eeprom.c    ****     for(Index = 0; Index < sizeof(globalData); Index++)
+ 249              		.loc 1 82 0 is_stmt 0 discriminator 1
+ 250 00de 3B6B     		ldr	r3, [r7, #48]
+ 251 00e0 272B     		cmp	r3, #39
+ 252 00e2 E9D9     		bls	.L19
+  86:.\eeprom.c    ****     }
+  87:.\eeprom.c    ****     
+  88:.\eeprom.c    ****     return 1;   
+ 253              		.loc 1 88 0 is_stmt 1
+ 254 00e4 4FF00103 		mov	r3, #1
+ 255              	.L20:
+  89:.\eeprom.c    **** }
+ 256              		.loc 1 89 0
+ 257 00e8 1846     		mov	r0, r3
+ 258 00ea 07F14007 		add	r7, r7, #64
+ 259 00ee BD46     		mov	sp, r7
+ 260 00f0 B0BD     		pop	{r4, r5, r7, pc}
+ 261              		.cfi_endproc
+ 262              	.LFE1:
+ 263              		.size	save_settings, .-save_settings
+ 264 00f2 00BF     		.section	.text.read_settings,"ax",%progbits
+ 265              		.align	2
+ 266              		.global	read_settings
+ 267              		.thumb
+ 268              		.thumb_func
+ 269              		.type	read_settings, %function
+ 270              	read_settings:
+ 271              	.LFB2:
+  90:.\eeprom.c    **** 
+  91:.\eeprom.c    **** void read_settings(void)
+  92:.\eeprom.c    **** {
+ 272              		.loc 1 92 0
+ 273              		.cfi_startproc
+ 274              		@ args = 0, pretend = 0, frame = 48
+ 275              		@ frame_needed = 1, uses_anonymous_args = 0
+ 276              		@ link register save eliminated.
+ 277 0000 B0B4     		push	{r4, r5, r7}
+ 278              	.LCFI6:
+ 279              		.cfi_def_cfa_offset 12
+ 280              		.cfi_offset 4, -12
+ 281              		.cfi_offset 5, -8
+ 282              		.cfi_offset 7, -4
+ 283 0002 8DB0     		sub	sp, sp, #52
+ 284              	.LCFI7:
+ 285              		.cfi_def_cfa_offset 64
+ 286 0004 00AF     		add	r7, sp, #0
+ 287              	.LCFI8:
+ 288              		.cfi_def_cfa_register 7
+  93:.\eeprom.c    ****     reg8 * RegPointer;
+  94:.\eeprom.c    ****     saveDataUnion globalData;
+  95:.\eeprom.c    ****     unsigned int Index;
+  96:.\eeprom.c    ****     
+  97:.\eeprom.c    **** 	// EEPROM byteweise lesen
+  98:.\eeprom.c    ****     RegPointer = (reg8 *) CYDEV_EE_BASE;
+ 289              		.loc 1 98 0
+ 290 0006 4FF40043 		mov	r3, #32768
+ 291 000a C4F20003 		movt	r3, 16384
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 8
+
+
+ 292 000e BB62     		str	r3, [r7, #40]
+  99:.\eeprom.c    ****     for(Index = 0; Index < sizeof(globalData); Index++)
+ 293              		.loc 1 99 0
+ 294 0010 4FF00003 		mov	r3, #0
+ 295 0014 FB62     		str	r3, [r7, #44]
+ 296 0016 0CE0     		b	.L23
+ 297              	.L24:
+ 100:.\eeprom.c    ****     {
+ 101:.\eeprom.c    ****         globalData.Data[Index] = RegPointer[Index];
+ 298              		.loc 1 101 0 discriminator 2
+ 299 0018 BA6A     		ldr	r2, [r7, #40]
+ 300 001a FB6A     		ldr	r3, [r7, #44]
+ 301 001c D318     		adds	r3, r2, r3
+ 302 001e 1B78     		ldrb	r3, [r3, #0]
+ 303 0020 DAB2     		uxtb	r2, r3
+ 304 0022 3946     		mov	r1, r7
+ 305 0024 FB6A     		ldr	r3, [r7, #44]
+ 306 0026 CB18     		adds	r3, r1, r3
+ 307 0028 1A70     		strb	r2, [r3, #0]
+  99:.\eeprom.c    ****     for(Index = 0; Index < sizeof(globalData); Index++)
+ 308              		.loc 1 99 0 discriminator 2
+ 309 002a FB6A     		ldr	r3, [r7, #44]
+ 310 002c 03F10103 		add	r3, r3, #1
+ 311 0030 FB62     		str	r3, [r7, #44]
+ 312              	.L23:
+  99:.\eeprom.c    ****     for(Index = 0; Index < sizeof(globalData); Index++)
+ 313              		.loc 1 99 0 is_stmt 0 discriminator 1
+ 314 0032 FB6A     		ldr	r3, [r7, #44]
+ 315 0034 272B     		cmp	r3, #39
+ 316 0036 EFD9     		bls	.L24
+ 102:.\eeprom.c    ****     }
+ 103:.\eeprom.c    **** 	
+ 104:.\eeprom.c    **** 	// globale Variablen setzen 
+ 105:.\eeprom.c    ****     memcpy(&pid1, &globalData.structData.pidx, sizeof(pid));
+ 317              		.loc 1 105 0 is_stmt 1
+ 318 0038 40F20003 		movw	r3, #:lower16:pid1
+ 319 003c C0F20003 		movt	r3, #:upper16:pid1
+ 320 0040 1C46     		mov	r4, r3
+ 321 0042 3D46     		mov	r5, r7
+ 322 0044 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ 323 0046 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 324 0048 95E80700 		ldmia	r5, {r0, r1, r2}
+ 325 004c 84E80700 		stmia	r4, {r0, r1, r2}
+ 106:.\eeprom.c    ****     setpoint = globalData.structData.setPoint;  
+ 326              		.loc 1 106 0
+ 327 0050 FA69     		ldr	r2, [r7, #28]
+ 328 0052 40F20003 		movw	r3, #:lower16:setpoint
+ 329 0056 C0F20003 		movt	r3, #:upper16:setpoint
+ 330 005a 1A60     		str	r2, [r3, #0]
+ 107:.\eeprom.c    ****     deltaTms = globalData.structData.deltaTms;
+ 331              		.loc 1 107 0
+ 332 005c 3A6A     		ldr	r2, [r7, #32]
+ 333 005e 40F20003 		movw	r3, #:lower16:deltaTms
+ 334 0062 C0F20003 		movt	r3, #:upper16:deltaTms
+ 335 0066 1A60     		str	r2, [r3, #0]
+ 108:.\eeprom.c    **** 	dac_offset = globalData.structData.offset;
+ 336              		.loc 1 108 0
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 9
+
+
+ 337 0068 97F82420 		ldrb	r2, [r7, #36]	@ zero_extendqisi2
+ 338 006c 40F20003 		movw	r3, #:lower16:dac_offset
+ 339 0070 C0F20003 		movt	r3, #:upper16:dac_offset
+ 340 0074 1A70     		strb	r2, [r3, #0]
+ 109:.\eeprom.c    **** }
+ 341              		.loc 1 109 0
+ 342 0076 07F13407 		add	r7, r7, #52
+ 343 007a BD46     		mov	sp, r7
+ 344 007c B0BC     		pop	{r4, r5, r7}
+ 345 007e 7047     		bx	lr
+ 346              		.cfi_endproc
+ 347              	.LFE2:
+ 348              		.size	read_settings, .-read_settings
+ 349              		.text
+ 350              	.Letext0:
+ 351              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.0\\psoc creator\\import\\gnu_cs\\arm\\4
+ 352              		.file 3 "./Generated_Source/PSoC5/cytypes.h"
+ 353              		.file 4 ".\\pid.h"
+ 354              		.section	.debug_info,"",%progbits
+ 355              	.Ldebug_info0:
+ 356 0000 0C030000 		.4byte	0x30c
+ 357 0004 0200     		.2byte	0x2
+ 358 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 359 000a 04       		.byte	0x4
+ 360 000b 01       		.uleb128 0x1
+ 361 000c AD010000 		.4byte	.LASF40
+ 362 0010 01       		.byte	0x1
+ 363 0011 25000000 		.4byte	.LASF41
+ 364 0015 49000000 		.4byte	.LASF42
+ 365 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 366 001d 00000000 		.4byte	0
+ 367 0021 00000000 		.4byte	0
+ 368 0025 00000000 		.4byte	.Ldebug_line0
+ 369 0029 02       		.uleb128 0x2
+ 370 002a 01       		.byte	0x1
+ 371 002b 06       		.byte	0x6
+ 372 002c FF010000 		.4byte	.LASF0
+ 373 0030 03       		.uleb128 0x3
+ 374 0031 51010000 		.4byte	.LASF4
+ 375 0035 02       		.byte	0x2
+ 376 0036 2A       		.byte	0x2a
+ 377 0037 3B000000 		.4byte	0x3b
+ 378 003b 02       		.uleb128 0x2
+ 379 003c 01       		.byte	0x1
+ 380 003d 08       		.byte	0x8
+ 381 003e AF000000 		.4byte	.LASF1
+ 382 0042 02       		.uleb128 0x2
+ 383 0043 02       		.byte	0x2
+ 384 0044 05       		.byte	0x5
+ 385 0045 98010000 		.4byte	.LASF2
+ 386 0049 02       		.uleb128 0x2
+ 387 004a 02       		.byte	0x2
+ 388 004b 07       		.byte	0x7
+ 389 004c 1D020000 		.4byte	.LASF3
+ 390 0050 03       		.uleb128 0x3
+ 391 0051 59010000 		.4byte	.LASF5
+ 392 0055 02       		.byte	0x2
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 10
+
+
+ 393 0056 4F       		.byte	0x4f
+ 394 0057 5B000000 		.4byte	0x5b
+ 395 005b 02       		.uleb128 0x2
+ 396 005c 04       		.byte	0x4
+ 397 005d 05       		.byte	0x5
+ 398 005e F6010000 		.4byte	.LASF6
+ 399 0062 02       		.uleb128 0x2
+ 400 0063 04       		.byte	0x4
+ 401 0064 07       		.byte	0x7
+ 402 0065 CF000000 		.4byte	.LASF7
+ 403 0069 02       		.uleb128 0x2
+ 404 006a 08       		.byte	0x8
+ 405 006b 05       		.byte	0x5
+ 406 006c 77010000 		.4byte	.LASF8
+ 407 0070 02       		.uleb128 0x2
+ 408 0071 08       		.byte	0x8
+ 409 0072 07       		.byte	0x7
+ 410 0073 3A010000 		.4byte	.LASF9
+ 411 0077 04       		.uleb128 0x4
+ 412 0078 04       		.byte	0x4
+ 413 0079 05       		.byte	0x5
+ 414 007a 696E7400 		.ascii	"int\000"
+ 415 007e 02       		.uleb128 0x2
+ 416 007f 04       		.byte	0x4
+ 417 0080 07       		.byte	0x7
+ 418 0081 24010000 		.4byte	.LASF10
+ 419 0085 03       		.uleb128 0x3
+ 420 0086 E1000000 		.4byte	.LASF11
+ 421 008a 03       		.byte	0x3
+ 422 008b 5B       		.byte	0x5b
+ 423 008c 3B000000 		.4byte	0x3b
+ 424 0090 02       		.uleb128 0x2
+ 425 0091 04       		.byte	0x4
+ 426 0092 04       		.byte	0x4
+ 427 0093 9E000000 		.4byte	.LASF12
+ 428 0097 02       		.uleb128 0x2
+ 429 0098 08       		.byte	0x8
+ 430 0099 04       		.byte	0x4
+ 431 009a 00010000 		.4byte	.LASF13
+ 432 009e 02       		.uleb128 0x2
+ 433 009f 01       		.byte	0x1
+ 434 00a0 08       		.byte	0x8
+ 435 00a1 85010000 		.4byte	.LASF14
+ 436 00a5 03       		.uleb128 0x3
+ 437 00a6 07000000 		.4byte	.LASF15
+ 438 00aa 03       		.byte	0x3
+ 439 00ab E8       		.byte	0xe8
+ 440 00ac 62000000 		.4byte	0x62
+ 441 00b0 03       		.uleb128 0x3
+ 442 00b1 BD000000 		.4byte	.LASF16
+ 443 00b5 03       		.byte	0x3
+ 444 00b6 F0       		.byte	0xf0
+ 445 00b7 BB000000 		.4byte	0xbb
+ 446 00bb 05       		.uleb128 0x5
+ 447 00bc 85000000 		.4byte	0x85
+ 448 00c0 02       		.uleb128 0x2
+ 449 00c1 04       		.byte	0x4
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 11
+
+
+ 450 00c2 07       		.byte	0x7
+ 451 00c3 61010000 		.4byte	.LASF17
+ 452 00c7 03       		.uleb128 0x3
+ 453 00c8 0B020000 		.4byte	.LASF18
+ 454 00cc 04       		.byte	0x4
+ 455 00cd 0E       		.byte	0xe
+ 456 00ce D2000000 		.4byte	0xd2
+ 457 00d2 06       		.uleb128 0x6
+ 458 00d3 04       		.byte	0x4
+ 459 00d4 D8000000 		.4byte	0xd8
+ 460 00d8 07       		.uleb128 0x7
+ 461 00d9 01       		.byte	0x1
+ 462 00da E4000000 		.4byte	0xe4
+ 463 00de 08       		.uleb128 0x8
+ 464 00df 50000000 		.4byte	0x50
+ 465 00e3 00       		.byte	0
+ 466 00e4 09       		.uleb128 0x9
+ 467 00e5 70696400 		.ascii	"pid\000"
+ 468 00e9 1C       		.byte	0x1c
+ 469 00ea 04       		.byte	0x4
+ 470 00eb 10       		.byte	0x10
+ 471 00ec 4D010000 		.4byte	0x14d
+ 472 00f0 0A       		.uleb128 0xa
+ 473 00f1 5000     		.ascii	"P\000"
+ 474 00f3 04       		.byte	0x4
+ 475 00f4 12       		.byte	0x12
+ 476 00f5 50000000 		.4byte	0x50
+ 477 00f9 02       		.byte	0x2
+ 478 00fa 23       		.byte	0x23
+ 479 00fb 00       		.uleb128 0
+ 480 00fc 0A       		.uleb128 0xa
+ 481 00fd 4900     		.ascii	"I\000"
+ 482 00ff 04       		.byte	0x4
+ 483 0100 13       		.byte	0x13
+ 484 0101 50000000 		.4byte	0x50
+ 485 0105 02       		.byte	0x2
+ 486 0106 23       		.byte	0x23
+ 487 0107 04       		.uleb128 0x4
+ 488 0108 0A       		.uleb128 0xa
+ 489 0109 4400     		.ascii	"D\000"
+ 490 010b 04       		.byte	0x4
+ 491 010c 14       		.byte	0x14
+ 492 010d 50000000 		.4byte	0x50
+ 493 0111 02       		.byte	0x2
+ 494 0112 23       		.byte	0x23
+ 495 0113 08       		.uleb128 0x8
+ 496 0114 0B       		.uleb128 0xb
+ 497 0115 C2000000 		.4byte	.LASF19
+ 498 0119 04       		.byte	0x4
+ 499 011a 15       		.byte	0x15
+ 500 011b 50000000 		.4byte	0x50
+ 501 011f 02       		.byte	0x2
+ 502 0120 23       		.byte	0x23
+ 503 0121 0C       		.uleb128 0xc
+ 504 0122 0B       		.uleb128 0xb
+ 505 0123 97000000 		.4byte	.LASF20
+ 506 0127 04       		.byte	0x4
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 12
+
+
+ 507 0128 16       		.byte	0x16
+ 508 0129 50000000 		.4byte	0x50
+ 509 012d 02       		.byte	0x2
+ 510 012e 23       		.byte	0x23
+ 511 012f 10       		.uleb128 0x10
+ 512 0130 0B       		.uleb128 0xb
+ 513 0131 00000000 		.4byte	.LASF21
+ 514 0135 04       		.byte	0x4
+ 515 0136 17       		.byte	0x17
+ 516 0137 50000000 		.4byte	0x50
+ 517 013b 02       		.byte	0x2
+ 518 013c 23       		.byte	0x23
+ 519 013d 14       		.uleb128 0x14
+ 520 013e 0B       		.uleb128 0xb
+ 521 013f E7000000 		.4byte	.LASF22
+ 522 0143 04       		.byte	0x4
+ 523 0144 18       		.byte	0x18
+ 524 0145 C7000000 		.4byte	0xc7
+ 525 0149 02       		.byte	0x2
+ 526 014a 23       		.byte	0x23
+ 527 014b 18       		.uleb128 0x18
+ 528 014c 00       		.byte	0
+ 529 014d 0C       		.uleb128 0xc
+ 530 014e 70696400 		.ascii	"pid\000"
+ 531 0152 04       		.byte	0x4
+ 532 0153 19       		.byte	0x19
+ 533 0154 E4000000 		.4byte	0xe4
+ 534 0158 0D       		.uleb128 0xd
+ 535 0159 28       		.byte	0x28
+ 536 015a 01       		.byte	0x1
+ 537 015b 19       		.byte	0x19
+ 538 015c 99010000 		.4byte	0x199
+ 539 0160 0B       		.uleb128 0xb
+ 540 0161 ED000000 		.4byte	.LASF23
+ 541 0165 01       		.byte	0x1
+ 542 0166 19       		.byte	0x19
+ 543 0167 4D010000 		.4byte	0x14d
+ 544 016b 02       		.byte	0x2
+ 545 016c 23       		.byte	0x23
+ 546 016d 00       		.uleb128 0
+ 547 016e 0B       		.uleb128 0xb
+ 548 016f 8A010000 		.4byte	.LASF24
+ 549 0173 01       		.byte	0x1
+ 550 0174 19       		.byte	0x19
+ 551 0175 77000000 		.4byte	0x77
+ 552 0179 02       		.byte	0x2
+ 553 017a 23       		.byte	0x23
+ 554 017b 1C       		.uleb128 0x1c
+ 555 017c 0B       		.uleb128 0xb
+ 556 017d 1C000000 		.4byte	.LASF25
+ 557 0181 01       		.byte	0x1
+ 558 0182 19       		.byte	0x19
+ 559 0183 77000000 		.4byte	0x77
+ 560 0187 02       		.byte	0x2
+ 561 0188 23       		.byte	0x23
+ 562 0189 20       		.uleb128 0x20
+ 563 018a 0B       		.uleb128 0xb
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 13
+
+
+ 564 018b C8000000 		.4byte	.LASF26
+ 565 018f 01       		.byte	0x1
+ 566 0190 19       		.byte	0x19
+ 567 0191 30000000 		.4byte	0x30
+ 568 0195 02       		.byte	0x2
+ 569 0196 23       		.byte	0x23
+ 570 0197 24       		.uleb128 0x24
+ 571 0198 00       		.byte	0
+ 572 0199 0E       		.uleb128 0xe
+ 573 019a 30000000 		.4byte	.LASF29
+ 574 019e 28       		.byte	0x28
+ 575 019f 01       		.byte	0x1
+ 576 01a0 17       		.byte	0x17
+ 577 01a1 BC010000 		.4byte	0x1bc
+ 578 01a5 0F       		.uleb128 0xf
+ 579 01a6 A2010000 		.4byte	.LASF27
+ 580 01aa 01       		.byte	0x1
+ 581 01ab 19       		.byte	0x19
+ 582 01ac 58010000 		.4byte	0x158
+ 583 01b0 0F       		.uleb128 0xf
+ 584 01b1 07010000 		.4byte	.LASF28
+ 585 01b5 01       		.byte	0x1
+ 586 01b6 1A       		.byte	0x1a
+ 587 01b7 BC010000 		.4byte	0x1bc
+ 588 01bb 00       		.byte	0
+ 589 01bc 10       		.uleb128 0x10
+ 590 01bd 30000000 		.4byte	0x30
+ 591 01c1 CC010000 		.4byte	0x1cc
+ 592 01c5 11       		.uleb128 0x11
+ 593 01c6 C0000000 		.4byte	0xc0
+ 594 01ca 24       		.byte	0x24
+ 595 01cb 00       		.byte	0
+ 596 01cc 03       		.uleb128 0x3
+ 597 01cd 30000000 		.4byte	.LASF29
+ 598 01d1 01       		.byte	0x1
+ 599 01d2 1B       		.byte	0x1b
+ 600 01d3 99010000 		.4byte	0x199
+ 601 01d7 12       		.uleb128 0x12
+ 602 01d8 01       		.byte	0x1
+ 603 01d9 0C010000 		.4byte	.LASF33
+ 604 01dd 01       		.byte	0x1
+ 605 01de 1D       		.byte	0x1d
+ 606 01df 01       		.byte	0x1
+ 607 01e0 77000000 		.4byte	0x77
+ 608 01e4 00000000 		.4byte	.LFB0
+ 609 01e8 7A000000 		.4byte	.LFE0
+ 610 01ec 00000000 		.4byte	.LLST0
+ 611 01f0 01       		.byte	0x1
+ 612 01f1 20020000 		.4byte	0x220
+ 613 01f5 13       		.uleb128 0x13
+ 614 01f6 30020000 		.4byte	.LASF30
+ 615 01fa 01       		.byte	0x1
+ 616 01fb 1F       		.byte	0x1f
+ 617 01fc 7E000000 		.4byte	0x7e
+ 618 0200 02       		.byte	0x2
+ 619 0201 91       		.byte	0x91
+ 620 0202 74       		.sleb128 -12
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 14
+
+
+ 621 0203 13       		.uleb128 0x13
+ 622 0204 10000000 		.4byte	.LASF31
+ 623 0208 01       		.byte	0x1
+ 624 0209 20       		.byte	0x20
+ 625 020a A5000000 		.4byte	0xa5
+ 626 020e 02       		.byte	0x2
+ 627 020f 91       		.byte	0x91
+ 628 0210 70       		.sleb128 -16
+ 629 0211 13       		.uleb128 0x13
+ 630 0212 A4000000 		.4byte	.LASF32
+ 631 0216 01       		.byte	0x1
+ 632 0217 21       		.byte	0x21
+ 633 0218 20020000 		.4byte	0x220
+ 634 021c 02       		.byte	0x2
+ 635 021d 91       		.byte	0x91
+ 636 021e 6C       		.sleb128 -20
+ 637 021f 00       		.byte	0
+ 638 0220 06       		.uleb128 0x6
+ 639 0221 04       		.byte	0x4
+ 640 0222 B0000000 		.4byte	0xb0
+ 641 0226 12       		.uleb128 0x12
+ 642 0227 01       		.byte	0x1
+ 643 0228 36020000 		.4byte	.LASF34
+ 644 022c 01       		.byte	0x1
+ 645 022d 36       		.byte	0x36
+ 646 022e 01       		.byte	0x1
+ 647 022f 77000000 		.4byte	0x77
+ 648 0233 00000000 		.4byte	.LFB1
+ 649 0237 F2000000 		.4byte	.LFE1
+ 650 023b 38000000 		.4byte	.LLST1
+ 651 023f 01       		.byte	0x1
+ 652 0240 96020000 		.4byte	0x296
+ 653 0244 13       		.uleb128 0x13
+ 654 0245 A4000000 		.4byte	.LASF32
+ 655 0249 01       		.byte	0x1
+ 656 024a 38       		.byte	0x38
+ 657 024b 20020000 		.4byte	0x220
+ 658 024f 02       		.byte	0x2
+ 659 0250 91       		.byte	0x91
+ 660 0251 5C       		.sleb128 -36
+ 661 0252 13       		.uleb128 0x13
+ 662 0253 3E000000 		.4byte	.LASF35
+ 663 0257 01       		.byte	0x1
+ 664 0258 39       		.byte	0x39
+ 665 0259 CC010000 		.4byte	0x1cc
+ 666 025d 03       		.byte	0x3
+ 667 025e 91       		.byte	0x91
+ 668 025f B47F     		.sleb128 -76
+ 669 0261 13       		.uleb128 0x13
+ 670 0262 6A010000 		.4byte	.LASF36
+ 671 0266 01       		.byte	0x1
+ 672 0267 3A       		.byte	0x3a
+ 673 0268 7E000000 		.4byte	0x7e
+ 674 026c 02       		.byte	0x2
+ 675 026d 91       		.byte	0x91
+ 676 026e 6C       		.sleb128 -20
+ 677 026f 14       		.uleb128 0x14
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 15
+
+
+ 678 0270 7800     		.ascii	"x\000"
+ 679 0272 01       		.byte	0x1
+ 680 0273 3B       		.byte	0x3b
+ 681 0274 7E000000 		.4byte	0x7e
+ 682 0278 02       		.byte	0x2
+ 683 0279 91       		.byte	0x91
+ 684 027a 68       		.sleb128 -24
+ 685 027b 14       		.uleb128 0x14
+ 686 027c 7900     		.ascii	"y\000"
+ 687 027e 01       		.byte	0x1
+ 688 027f 3B       		.byte	0x3b
+ 689 0280 7E000000 		.4byte	0x7e
+ 690 0284 02       		.byte	0x2
+ 691 0285 91       		.byte	0x91
+ 692 0286 64       		.sleb128 -28
+ 693 0287 13       		.uleb128 0x13
+ 694 0288 30020000 		.4byte	.LASF30
+ 695 028c 01       		.byte	0x1
+ 696 028d 3C       		.byte	0x3c
+ 697 028e 7E000000 		.4byte	0x7e
+ 698 0292 02       		.byte	0x2
+ 699 0293 91       		.byte	0x91
+ 700 0294 60       		.sleb128 -32
+ 701 0295 00       		.byte	0
+ 702 0296 15       		.uleb128 0x15
+ 703 0297 01       		.byte	0x1
+ 704 0298 F2000000 		.4byte	.LASF43
+ 705 029c 01       		.byte	0x1
+ 706 029d 5B       		.byte	0x5b
+ 707 029e 01       		.byte	0x1
+ 708 029f 00000000 		.4byte	.LFB2
+ 709 02a3 80000000 		.4byte	.LFE2
+ 710 02a7 72000000 		.4byte	.LLST2
+ 711 02ab 01       		.byte	0x1
+ 712 02ac DB020000 		.4byte	0x2db
+ 713 02b0 13       		.uleb128 0x13
+ 714 02b1 A4000000 		.4byte	.LASF32
+ 715 02b5 01       		.byte	0x1
+ 716 02b6 5D       		.byte	0x5d
+ 717 02b7 20020000 		.4byte	0x220
+ 718 02bb 02       		.byte	0x2
+ 719 02bc 91       		.byte	0x91
+ 720 02bd 68       		.sleb128 -24
+ 721 02be 13       		.uleb128 0x13
+ 722 02bf 3E000000 		.4byte	.LASF35
+ 723 02c3 01       		.byte	0x1
+ 724 02c4 5E       		.byte	0x5e
+ 725 02c5 CC010000 		.4byte	0x1cc
+ 726 02c9 02       		.byte	0x2
+ 727 02ca 91       		.byte	0x91
+ 728 02cb 40       		.sleb128 -64
+ 729 02cc 13       		.uleb128 0x13
+ 730 02cd 30020000 		.4byte	.LASF30
+ 731 02d1 01       		.byte	0x1
+ 732 02d2 5F       		.byte	0x5f
+ 733 02d3 7E000000 		.4byte	0x7e
+ 734 02d7 02       		.byte	0x2
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 16
+
+
+ 735 02d8 91       		.byte	0x91
+ 736 02d9 6C       		.sleb128 -20
+ 737 02da 00       		.byte	0
+ 738 02db 16       		.uleb128 0x16
+ 739 02dc 93010000 		.4byte	.LASF37
+ 740 02e0 01       		.byte	0x1
+ 741 02e1 10       		.byte	0x10
+ 742 02e2 4D010000 		.4byte	0x14d
+ 743 02e6 01       		.byte	0x1
+ 744 02e7 01       		.byte	0x1
+ 745 02e8 16       		.uleb128 0x16
+ 746 02e9 31010000 		.4byte	.LASF38
+ 747 02ed 01       		.byte	0x1
+ 748 02ee 11       		.byte	0x11
+ 749 02ef 77000000 		.4byte	0x77
+ 750 02f3 01       		.byte	0x1
+ 751 02f4 01       		.byte	0x1
+ 752 02f5 16       		.uleb128 0x16
+ 753 02f6 1C000000 		.4byte	.LASF25
+ 754 02fa 01       		.byte	0x1
+ 755 02fb 13       		.byte	0x13
+ 756 02fc 77000000 		.4byte	0x77
+ 757 0300 01       		.byte	0x1
+ 758 0301 01       		.byte	0x1
+ 759 0302 16       		.uleb128 0x16
+ 760 0303 19010000 		.4byte	.LASF39
+ 761 0307 01       		.byte	0x1
+ 762 0308 14       		.byte	0x14
+ 763 0309 30000000 		.4byte	0x30
+ 764 030d 01       		.byte	0x1
+ 765 030e 01       		.byte	0x1
+ 766 030f 00       		.byte	0
+ 767              		.section	.debug_abbrev,"",%progbits
+ 768              	.Ldebug_abbrev0:
+ 769 0000 01       		.uleb128 0x1
+ 770 0001 11       		.uleb128 0x11
+ 771 0002 01       		.byte	0x1
+ 772 0003 25       		.uleb128 0x25
+ 773 0004 0E       		.uleb128 0xe
+ 774 0005 13       		.uleb128 0x13
+ 775 0006 0B       		.uleb128 0xb
+ 776 0007 03       		.uleb128 0x3
+ 777 0008 0E       		.uleb128 0xe
+ 778 0009 1B       		.uleb128 0x1b
+ 779 000a 0E       		.uleb128 0xe
+ 780 000b 55       		.uleb128 0x55
+ 781 000c 06       		.uleb128 0x6
+ 782 000d 11       		.uleb128 0x11
+ 783 000e 01       		.uleb128 0x1
+ 784 000f 52       		.uleb128 0x52
+ 785 0010 01       		.uleb128 0x1
+ 786 0011 10       		.uleb128 0x10
+ 787 0012 06       		.uleb128 0x6
+ 788 0013 00       		.byte	0
+ 789 0014 00       		.byte	0
+ 790 0015 02       		.uleb128 0x2
+ 791 0016 24       		.uleb128 0x24
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 17
+
+
+ 792 0017 00       		.byte	0
+ 793 0018 0B       		.uleb128 0xb
+ 794 0019 0B       		.uleb128 0xb
+ 795 001a 3E       		.uleb128 0x3e
+ 796 001b 0B       		.uleb128 0xb
+ 797 001c 03       		.uleb128 0x3
+ 798 001d 0E       		.uleb128 0xe
+ 799 001e 00       		.byte	0
+ 800 001f 00       		.byte	0
+ 801 0020 03       		.uleb128 0x3
+ 802 0021 16       		.uleb128 0x16
+ 803 0022 00       		.byte	0
+ 804 0023 03       		.uleb128 0x3
+ 805 0024 0E       		.uleb128 0xe
+ 806 0025 3A       		.uleb128 0x3a
+ 807 0026 0B       		.uleb128 0xb
+ 808 0027 3B       		.uleb128 0x3b
+ 809 0028 0B       		.uleb128 0xb
+ 810 0029 49       		.uleb128 0x49
+ 811 002a 13       		.uleb128 0x13
+ 812 002b 00       		.byte	0
+ 813 002c 00       		.byte	0
+ 814 002d 04       		.uleb128 0x4
+ 815 002e 24       		.uleb128 0x24
+ 816 002f 00       		.byte	0
+ 817 0030 0B       		.uleb128 0xb
+ 818 0031 0B       		.uleb128 0xb
+ 819 0032 3E       		.uleb128 0x3e
+ 820 0033 0B       		.uleb128 0xb
+ 821 0034 03       		.uleb128 0x3
+ 822 0035 08       		.uleb128 0x8
+ 823 0036 00       		.byte	0
+ 824 0037 00       		.byte	0
+ 825 0038 05       		.uleb128 0x5
+ 826 0039 35       		.uleb128 0x35
+ 827 003a 00       		.byte	0
+ 828 003b 49       		.uleb128 0x49
+ 829 003c 13       		.uleb128 0x13
+ 830 003d 00       		.byte	0
+ 831 003e 00       		.byte	0
+ 832 003f 06       		.uleb128 0x6
+ 833 0040 0F       		.uleb128 0xf
+ 834 0041 00       		.byte	0
+ 835 0042 0B       		.uleb128 0xb
+ 836 0043 0B       		.uleb128 0xb
+ 837 0044 49       		.uleb128 0x49
+ 838 0045 13       		.uleb128 0x13
+ 839 0046 00       		.byte	0
+ 840 0047 00       		.byte	0
+ 841 0048 07       		.uleb128 0x7
+ 842 0049 15       		.uleb128 0x15
+ 843 004a 01       		.byte	0x1
+ 844 004b 27       		.uleb128 0x27
+ 845 004c 0C       		.uleb128 0xc
+ 846 004d 01       		.uleb128 0x1
+ 847 004e 13       		.uleb128 0x13
+ 848 004f 00       		.byte	0
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 18
+
+
+ 849 0050 00       		.byte	0
+ 850 0051 08       		.uleb128 0x8
+ 851 0052 05       		.uleb128 0x5
+ 852 0053 00       		.byte	0
+ 853 0054 49       		.uleb128 0x49
+ 854 0055 13       		.uleb128 0x13
+ 855 0056 00       		.byte	0
+ 856 0057 00       		.byte	0
+ 857 0058 09       		.uleb128 0x9
+ 858 0059 13       		.uleb128 0x13
+ 859 005a 01       		.byte	0x1
+ 860 005b 03       		.uleb128 0x3
+ 861 005c 08       		.uleb128 0x8
+ 862 005d 0B       		.uleb128 0xb
+ 863 005e 0B       		.uleb128 0xb
+ 864 005f 3A       		.uleb128 0x3a
+ 865 0060 0B       		.uleb128 0xb
+ 866 0061 3B       		.uleb128 0x3b
+ 867 0062 0B       		.uleb128 0xb
+ 868 0063 01       		.uleb128 0x1
+ 869 0064 13       		.uleb128 0x13
+ 870 0065 00       		.byte	0
+ 871 0066 00       		.byte	0
+ 872 0067 0A       		.uleb128 0xa
+ 873 0068 0D       		.uleb128 0xd
+ 874 0069 00       		.byte	0
+ 875 006a 03       		.uleb128 0x3
+ 876 006b 08       		.uleb128 0x8
+ 877 006c 3A       		.uleb128 0x3a
+ 878 006d 0B       		.uleb128 0xb
+ 879 006e 3B       		.uleb128 0x3b
+ 880 006f 0B       		.uleb128 0xb
+ 881 0070 49       		.uleb128 0x49
+ 882 0071 13       		.uleb128 0x13
+ 883 0072 38       		.uleb128 0x38
+ 884 0073 0A       		.uleb128 0xa
+ 885 0074 00       		.byte	0
+ 886 0075 00       		.byte	0
+ 887 0076 0B       		.uleb128 0xb
+ 888 0077 0D       		.uleb128 0xd
+ 889 0078 00       		.byte	0
+ 890 0079 03       		.uleb128 0x3
+ 891 007a 0E       		.uleb128 0xe
+ 892 007b 3A       		.uleb128 0x3a
+ 893 007c 0B       		.uleb128 0xb
+ 894 007d 3B       		.uleb128 0x3b
+ 895 007e 0B       		.uleb128 0xb
+ 896 007f 49       		.uleb128 0x49
+ 897 0080 13       		.uleb128 0x13
+ 898 0081 38       		.uleb128 0x38
+ 899 0082 0A       		.uleb128 0xa
+ 900 0083 00       		.byte	0
+ 901 0084 00       		.byte	0
+ 902 0085 0C       		.uleb128 0xc
+ 903 0086 16       		.uleb128 0x16
+ 904 0087 00       		.byte	0
+ 905 0088 03       		.uleb128 0x3
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 19
+
+
+ 906 0089 08       		.uleb128 0x8
+ 907 008a 3A       		.uleb128 0x3a
+ 908 008b 0B       		.uleb128 0xb
+ 909 008c 3B       		.uleb128 0x3b
+ 910 008d 0B       		.uleb128 0xb
+ 911 008e 49       		.uleb128 0x49
+ 912 008f 13       		.uleb128 0x13
+ 913 0090 00       		.byte	0
+ 914 0091 00       		.byte	0
+ 915 0092 0D       		.uleb128 0xd
+ 916 0093 13       		.uleb128 0x13
+ 917 0094 01       		.byte	0x1
+ 918 0095 0B       		.uleb128 0xb
+ 919 0096 0B       		.uleb128 0xb
+ 920 0097 3A       		.uleb128 0x3a
+ 921 0098 0B       		.uleb128 0xb
+ 922 0099 3B       		.uleb128 0x3b
+ 923 009a 0B       		.uleb128 0xb
+ 924 009b 01       		.uleb128 0x1
+ 925 009c 13       		.uleb128 0x13
+ 926 009d 00       		.byte	0
+ 927 009e 00       		.byte	0
+ 928 009f 0E       		.uleb128 0xe
+ 929 00a0 17       		.uleb128 0x17
+ 930 00a1 01       		.byte	0x1
+ 931 00a2 03       		.uleb128 0x3
+ 932 00a3 0E       		.uleb128 0xe
+ 933 00a4 0B       		.uleb128 0xb
+ 934 00a5 0B       		.uleb128 0xb
+ 935 00a6 3A       		.uleb128 0x3a
+ 936 00a7 0B       		.uleb128 0xb
+ 937 00a8 3B       		.uleb128 0x3b
+ 938 00a9 0B       		.uleb128 0xb
+ 939 00aa 01       		.uleb128 0x1
+ 940 00ab 13       		.uleb128 0x13
+ 941 00ac 00       		.byte	0
+ 942 00ad 00       		.byte	0
+ 943 00ae 0F       		.uleb128 0xf
+ 944 00af 0D       		.uleb128 0xd
+ 945 00b0 00       		.byte	0
+ 946 00b1 03       		.uleb128 0x3
+ 947 00b2 0E       		.uleb128 0xe
+ 948 00b3 3A       		.uleb128 0x3a
+ 949 00b4 0B       		.uleb128 0xb
+ 950 00b5 3B       		.uleb128 0x3b
+ 951 00b6 0B       		.uleb128 0xb
+ 952 00b7 49       		.uleb128 0x49
+ 953 00b8 13       		.uleb128 0x13
+ 954 00b9 00       		.byte	0
+ 955 00ba 00       		.byte	0
+ 956 00bb 10       		.uleb128 0x10
+ 957 00bc 01       		.uleb128 0x1
+ 958 00bd 01       		.byte	0x1
+ 959 00be 49       		.uleb128 0x49
+ 960 00bf 13       		.uleb128 0x13
+ 961 00c0 01       		.uleb128 0x1
+ 962 00c1 13       		.uleb128 0x13
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 20
+
+
+ 963 00c2 00       		.byte	0
+ 964 00c3 00       		.byte	0
+ 965 00c4 11       		.uleb128 0x11
+ 966 00c5 21       		.uleb128 0x21
+ 967 00c6 00       		.byte	0
+ 968 00c7 49       		.uleb128 0x49
+ 969 00c8 13       		.uleb128 0x13
+ 970 00c9 2F       		.uleb128 0x2f
+ 971 00ca 0B       		.uleb128 0xb
+ 972 00cb 00       		.byte	0
+ 973 00cc 00       		.byte	0
+ 974 00cd 12       		.uleb128 0x12
+ 975 00ce 2E       		.uleb128 0x2e
+ 976 00cf 01       		.byte	0x1
+ 977 00d0 3F       		.uleb128 0x3f
+ 978 00d1 0C       		.uleb128 0xc
+ 979 00d2 03       		.uleb128 0x3
+ 980 00d3 0E       		.uleb128 0xe
+ 981 00d4 3A       		.uleb128 0x3a
+ 982 00d5 0B       		.uleb128 0xb
+ 983 00d6 3B       		.uleb128 0x3b
+ 984 00d7 0B       		.uleb128 0xb
+ 985 00d8 27       		.uleb128 0x27
+ 986 00d9 0C       		.uleb128 0xc
+ 987 00da 49       		.uleb128 0x49
+ 988 00db 13       		.uleb128 0x13
+ 989 00dc 11       		.uleb128 0x11
+ 990 00dd 01       		.uleb128 0x1
+ 991 00de 12       		.uleb128 0x12
+ 992 00df 01       		.uleb128 0x1
+ 993 00e0 40       		.uleb128 0x40
+ 994 00e1 06       		.uleb128 0x6
+ 995 00e2 9642     		.uleb128 0x2116
+ 996 00e4 0C       		.uleb128 0xc
+ 997 00e5 01       		.uleb128 0x1
+ 998 00e6 13       		.uleb128 0x13
+ 999 00e7 00       		.byte	0
+ 1000 00e8 00       		.byte	0
+ 1001 00e9 13       		.uleb128 0x13
+ 1002 00ea 34       		.uleb128 0x34
+ 1003 00eb 00       		.byte	0
+ 1004 00ec 03       		.uleb128 0x3
+ 1005 00ed 0E       		.uleb128 0xe
+ 1006 00ee 3A       		.uleb128 0x3a
+ 1007 00ef 0B       		.uleb128 0xb
+ 1008 00f0 3B       		.uleb128 0x3b
+ 1009 00f1 0B       		.uleb128 0xb
+ 1010 00f2 49       		.uleb128 0x49
+ 1011 00f3 13       		.uleb128 0x13
+ 1012 00f4 02       		.uleb128 0x2
+ 1013 00f5 0A       		.uleb128 0xa
+ 1014 00f6 00       		.byte	0
+ 1015 00f7 00       		.byte	0
+ 1016 00f8 14       		.uleb128 0x14
+ 1017 00f9 34       		.uleb128 0x34
+ 1018 00fa 00       		.byte	0
+ 1019 00fb 03       		.uleb128 0x3
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 21
+
+
+ 1020 00fc 08       		.uleb128 0x8
+ 1021 00fd 3A       		.uleb128 0x3a
+ 1022 00fe 0B       		.uleb128 0xb
+ 1023 00ff 3B       		.uleb128 0x3b
+ 1024 0100 0B       		.uleb128 0xb
+ 1025 0101 49       		.uleb128 0x49
+ 1026 0102 13       		.uleb128 0x13
+ 1027 0103 02       		.uleb128 0x2
+ 1028 0104 0A       		.uleb128 0xa
+ 1029 0105 00       		.byte	0
+ 1030 0106 00       		.byte	0
+ 1031 0107 15       		.uleb128 0x15
+ 1032 0108 2E       		.uleb128 0x2e
+ 1033 0109 01       		.byte	0x1
+ 1034 010a 3F       		.uleb128 0x3f
+ 1035 010b 0C       		.uleb128 0xc
+ 1036 010c 03       		.uleb128 0x3
+ 1037 010d 0E       		.uleb128 0xe
+ 1038 010e 3A       		.uleb128 0x3a
+ 1039 010f 0B       		.uleb128 0xb
+ 1040 0110 3B       		.uleb128 0x3b
+ 1041 0111 0B       		.uleb128 0xb
+ 1042 0112 27       		.uleb128 0x27
+ 1043 0113 0C       		.uleb128 0xc
+ 1044 0114 11       		.uleb128 0x11
+ 1045 0115 01       		.uleb128 0x1
+ 1046 0116 12       		.uleb128 0x12
+ 1047 0117 01       		.uleb128 0x1
+ 1048 0118 40       		.uleb128 0x40
+ 1049 0119 06       		.uleb128 0x6
+ 1050 011a 9742     		.uleb128 0x2117
+ 1051 011c 0C       		.uleb128 0xc
+ 1052 011d 01       		.uleb128 0x1
+ 1053 011e 13       		.uleb128 0x13
+ 1054 011f 00       		.byte	0
+ 1055 0120 00       		.byte	0
+ 1056 0121 16       		.uleb128 0x16
+ 1057 0122 34       		.uleb128 0x34
+ 1058 0123 00       		.byte	0
+ 1059 0124 03       		.uleb128 0x3
+ 1060 0125 0E       		.uleb128 0xe
+ 1061 0126 3A       		.uleb128 0x3a
+ 1062 0127 0B       		.uleb128 0xb
+ 1063 0128 3B       		.uleb128 0x3b
+ 1064 0129 0B       		.uleb128 0xb
+ 1065 012a 49       		.uleb128 0x49
+ 1066 012b 13       		.uleb128 0x13
+ 1067 012c 3F       		.uleb128 0x3f
+ 1068 012d 0C       		.uleb128 0xc
+ 1069 012e 3C       		.uleb128 0x3c
+ 1070 012f 0C       		.uleb128 0xc
+ 1071 0130 00       		.byte	0
+ 1072 0131 00       		.byte	0
+ 1073 0132 00       		.byte	0
+ 1074              		.section	.debug_loc,"",%progbits
+ 1075              	.Ldebug_loc0:
+ 1076              	.LLST0:
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 22
+
+
+ 1077 0000 00000000 		.4byte	.LFB0
+ 1078 0004 02000000 		.4byte	.LCFI0
+ 1079 0008 0200     		.2byte	0x2
+ 1080 000a 7D       		.byte	0x7d
+ 1081 000b 00       		.sleb128 0
+ 1082 000c 02000000 		.4byte	.LCFI0
+ 1083 0010 04000000 		.4byte	.LCFI1
+ 1084 0014 0200     		.2byte	0x2
+ 1085 0016 7D       		.byte	0x7d
+ 1086 0017 08       		.sleb128 8
+ 1087 0018 04000000 		.4byte	.LCFI1
+ 1088 001c 06000000 		.4byte	.LCFI2
+ 1089 0020 0200     		.2byte	0x2
+ 1090 0022 7D       		.byte	0x7d
+ 1091 0023 18       		.sleb128 24
+ 1092 0024 06000000 		.4byte	.LCFI2
+ 1093 0028 7A000000 		.4byte	.LFE0
+ 1094 002c 0200     		.2byte	0x2
+ 1095 002e 77       		.byte	0x77
+ 1096 002f 18       		.sleb128 24
+ 1097 0030 00000000 		.4byte	0
+ 1098 0034 00000000 		.4byte	0
+ 1099              	.LLST1:
+ 1100 0038 00000000 		.4byte	.LFB1
+ 1101 003c 02000000 		.4byte	.LCFI3
+ 1102 0040 0200     		.2byte	0x2
+ 1103 0042 7D       		.byte	0x7d
+ 1104 0043 00       		.sleb128 0
+ 1105 0044 02000000 		.4byte	.LCFI3
+ 1106 0048 04000000 		.4byte	.LCFI4
+ 1107 004c 0200     		.2byte	0x2
+ 1108 004e 7D       		.byte	0x7d
+ 1109 004f 10       		.sleb128 16
+ 1110 0050 04000000 		.4byte	.LCFI4
+ 1111 0054 06000000 		.4byte	.LCFI5
+ 1112 0058 0300     		.2byte	0x3
+ 1113 005a 7D       		.byte	0x7d
+ 1114 005b D000     		.sleb128 80
+ 1115 005d 06000000 		.4byte	.LCFI5
+ 1116 0061 F2000000 		.4byte	.LFE1
+ 1117 0065 0300     		.2byte	0x3
+ 1118 0067 77       		.byte	0x77
+ 1119 0068 D000     		.sleb128 80
+ 1120 006a 00000000 		.4byte	0
+ 1121 006e 00000000 		.4byte	0
+ 1122              	.LLST2:
+ 1123 0072 00000000 		.4byte	.LFB2
+ 1124 0076 02000000 		.4byte	.LCFI6
+ 1125 007a 0200     		.2byte	0x2
+ 1126 007c 7D       		.byte	0x7d
+ 1127 007d 00       		.sleb128 0
+ 1128 007e 02000000 		.4byte	.LCFI6
+ 1129 0082 04000000 		.4byte	.LCFI7
+ 1130 0086 0200     		.2byte	0x2
+ 1131 0088 7D       		.byte	0x7d
+ 1132 0089 0C       		.sleb128 12
+ 1133 008a 04000000 		.4byte	.LCFI7
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 23
+
+
+ 1134 008e 06000000 		.4byte	.LCFI8
+ 1135 0092 0300     		.2byte	0x3
+ 1136 0094 7D       		.byte	0x7d
+ 1137 0095 C000     		.sleb128 64
+ 1138 0097 06000000 		.4byte	.LCFI8
+ 1139 009b 80000000 		.4byte	.LFE2
+ 1140 009f 0300     		.2byte	0x3
+ 1141 00a1 77       		.byte	0x77
+ 1142 00a2 C000     		.sleb128 64
+ 1143 00a4 00000000 		.4byte	0
+ 1144 00a8 00000000 		.4byte	0
+ 1145              		.section	.debug_aranges,"",%progbits
+ 1146 0000 2C000000 		.4byte	0x2c
+ 1147 0004 0200     		.2byte	0x2
+ 1148 0006 00000000 		.4byte	.Ldebug_info0
+ 1149 000a 04       		.byte	0x4
+ 1150 000b 00       		.byte	0
+ 1151 000c 0000     		.2byte	0
+ 1152 000e 0000     		.2byte	0
+ 1153 0010 00000000 		.4byte	.LFB0
+ 1154 0014 7A000000 		.4byte	.LFE0-.LFB0
+ 1155 0018 00000000 		.4byte	.LFB1
+ 1156 001c F2000000 		.4byte	.LFE1-.LFB1
+ 1157 0020 00000000 		.4byte	.LFB2
+ 1158 0024 80000000 		.4byte	.LFE2-.LFB2
+ 1159 0028 00000000 		.4byte	0
+ 1160 002c 00000000 		.4byte	0
+ 1161              		.section	.debug_ranges,"",%progbits
+ 1162              	.Ldebug_ranges0:
+ 1163 0000 00000000 		.4byte	.LFB0
+ 1164 0004 7A000000 		.4byte	.LFE0
+ 1165 0008 00000000 		.4byte	.LFB1
+ 1166 000c F2000000 		.4byte	.LFE1
+ 1167 0010 00000000 		.4byte	.LFB2
+ 1168 0014 80000000 		.4byte	.LFE2
+ 1169 0018 00000000 		.4byte	0
+ 1170 001c 00000000 		.4byte	0
+ 1171              		.section	.debug_line,"",%progbits
+ 1172              	.Ldebug_line0:
+ 1173 0000 93010000 		.section	.debug_str,"MS",%progbits,1
+ 1173      0200F800 
+ 1173      00000201 
+ 1173      FB0E0D00 
+ 1173      01010101 
+ 1174              	.LASF21:
+ 1175 0000 77696E64 		.ascii	"windup\000"
+ 1175      757000
+ 1176              	.LASF15:
+ 1177 0007 63797374 		.ascii	"cystatus\000"
+ 1177      61747573 
+ 1177      00
+ 1178              	.LASF31:
+ 1179 0010 65726173 		.ascii	"eraseStatus\000"
+ 1179      65537461 
+ 1179      74757300 
+ 1180              	.LASF25:
+ 1181 001c 64656C74 		.ascii	"deltaTms\000"
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 24
+
+
+ 1181      61546D73 
+ 1181      00
+ 1182              	.LASF41:
+ 1183 0025 2E5C6565 		.ascii	".\\eeprom.c\000"
+ 1183      70726F6D 
+ 1183      2E6300
+ 1184              	.LASF29:
+ 1185 0030 73617665 		.ascii	"saveDataUnion\000"
+ 1185      44617461 
+ 1185      556E696F 
+ 1185      6E00
+ 1186              	.LASF35:
+ 1187 003e 676C6F62 		.ascii	"globalData\000"
+ 1187      616C4461 
+ 1187      746100
+ 1188              	.LASF42:
+ 1189 0049 4A3A5C63 		.ascii	"J:\\c704\\C704224\\Cypress\\CY8C5868\\Aktuelles Pro"
+ 1189      3730345C 
+ 1189      43373034 
+ 1189      3232345C 
+ 1189      43797072 
+ 1190 0077 6A656B74 		.ascii	"jekt\\Laserschutzschaltung.cydsn\000"
+ 1190      5C4C6173 
+ 1190      65727363 
+ 1190      6875747A 
+ 1190      73636861 
+ 1191              	.LASF20:
+ 1192 0097 6F6C645F 		.ascii	"old_pv\000"
+ 1192      707600
+ 1193              	.LASF12:
+ 1194 009e 666C6F61 		.ascii	"float\000"
+ 1194      7400
+ 1195              	.LASF32:
+ 1196 00a4 52656750 		.ascii	"RegPointer\000"
+ 1196      6F696E74 
+ 1196      657200
+ 1197              	.LASF1:
+ 1198 00af 756E7369 		.ascii	"unsigned char\000"
+ 1198      676E6564 
+ 1198      20636861 
+ 1198      7200
+ 1199              	.LASF16:
+ 1200 00bd 72656738 		.ascii	"reg8\000"
+ 1200      00
+ 1201              	.LASF19:
+ 1202 00c2 49746572 		.ascii	"Iterm\000"
+ 1202      6D00
+ 1203              	.LASF26:
+ 1204 00c8 6F666673 		.ascii	"offset\000"
+ 1204      657400
+ 1205              	.LASF7:
+ 1206 00cf 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1206      20756E73 
+ 1206      69676E65 
+ 1206      6420696E 
+ 1206      7400
+ 1207              	.LASF11:
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 25
+
+
+ 1208 00e1 75696E74 		.ascii	"uint8\000"
+ 1208      3800
+ 1209              	.LASF22:
+ 1210 00e7 77726974 		.ascii	"write\000"
+ 1210      6500
+ 1211              	.LASF23:
+ 1212 00ed 70696478 		.ascii	"pidx\000"
+ 1212      00
+ 1213              	.LASF43:
+ 1214 00f2 72656164 		.ascii	"read_settings\000"
+ 1214      5F736574 
+ 1214      74696E67 
+ 1214      7300
+ 1215              	.LASF13:
+ 1216 0100 646F7562 		.ascii	"double\000"
+ 1216      6C6500
+ 1217              	.LASF28:
+ 1218 0107 44617461 		.ascii	"Data\000"
+ 1218      00
+ 1219              	.LASF33:
+ 1220 010c 65726173 		.ascii	"erase_eeprom\000"
+ 1220      655F6565 
+ 1220      70726F6D 
+ 1220      00
+ 1221              	.LASF39:
+ 1222 0119 6461635F 		.ascii	"dac_offset\000"
+ 1222      6F666673 
+ 1222      657400
+ 1223              	.LASF10:
+ 1224 0124 756E7369 		.ascii	"unsigned int\000"
+ 1224      676E6564 
+ 1224      20696E74 
+ 1224      00
+ 1225              	.LASF38:
+ 1226 0131 73657470 		.ascii	"setpoint\000"
+ 1226      6F696E74 
+ 1226      00
+ 1227              	.LASF9:
+ 1228 013a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1228      206C6F6E 
+ 1228      6720756E 
+ 1228      7369676E 
+ 1228      65642069 
+ 1229              	.LASF4:
+ 1230 0151 75696E74 		.ascii	"uint8_t\000"
+ 1230      385F7400 
+ 1231              	.LASF5:
+ 1232 0159 696E7433 		.ascii	"int32_t\000"
+ 1232      325F7400 
+ 1233              	.LASF17:
+ 1234 0161 73697A65 		.ascii	"sizetype\000"
+ 1234      74797065 
+ 1234      00
+ 1235              	.LASF36:
+ 1236 016a 62797465 		.ascii	"byteswritten\000"
+ 1236      73777269 
+ 1236      7474656E 
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 26
+
+
+ 1236      00
+ 1237              	.LASF8:
+ 1238 0177 6C6F6E67 		.ascii	"long long int\000"
+ 1238      206C6F6E 
+ 1238      6720696E 
+ 1238      7400
+ 1239              	.LASF14:
+ 1240 0185 63686172 		.ascii	"char\000"
+ 1240      00
+ 1241              	.LASF24:
+ 1242 018a 73657450 		.ascii	"setPoint\000"
+ 1242      6F696E74 
+ 1242      00
+ 1243              	.LASF37:
+ 1244 0193 70696431 		.ascii	"pid1\000"
+ 1244      00
+ 1245              	.LASF2:
+ 1246 0198 73686F72 		.ascii	"short int\000"
+ 1246      7420696E 
+ 1246      7400
+ 1247              	.LASF27:
+ 1248 01a2 73747275 		.ascii	"structData\000"
+ 1248      63744461 
+ 1248      746100
+ 1249              	.LASF40:
+ 1250 01ad 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 1250      4320342E 
+ 1250      372E3320 
+ 1250      32303133 
+ 1250      30333132 
+ 1251 01e0 616E6368 		.ascii	"anch revision 196615]\000"
+ 1251      20726576 
+ 1251      6973696F 
+ 1251      6E203139 
+ 1251      36363135 
+ 1252              	.LASF6:
+ 1253 01f6 6C6F6E67 		.ascii	"long int\000"
+ 1253      20696E74 
+ 1253      00
+ 1254              	.LASF0:
+ 1255 01ff 7369676E 		.ascii	"signed char\000"
+ 1255      65642063 
+ 1255      68617200 
+ 1256              	.LASF18:
+ 1257 020b 6F757470 		.ascii	"outputFunctionPtr\000"
+ 1257      75744675 
+ 1257      6E637469 
+ 1257      6F6E5074 
+ 1257      7200
+ 1258              	.LASF3:
+ 1259 021d 73686F72 		.ascii	"short unsigned int\000"
+ 1259      7420756E 
+ 1259      7369676E 
+ 1259      65642069 
+ 1259      6E7400
+ 1260              	.LASF30:
+ 1261 0230 496E6465 		.ascii	"Index\000"
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccgsHrFA.s 			page 27
+
+
+ 1261      7800
+ 1262              	.LASF34:
+ 1263 0236 73617665 		.ascii	"save_settings\000"
+ 1263      5F736574 
+ 1263      74696E67 
+ 1263      7300
+ 1264              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

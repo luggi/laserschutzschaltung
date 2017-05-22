@@ -1,0 +1,615 @@
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cccALYQt.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Filter_PVT.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.Filter_SetInterruptMode,"ax",%progbits
+  19              		.align	1
+  20              		.global	Filter_SetInterruptMode
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	Filter_SetInterruptMode, %function
+  24              	Filter_SetInterruptMode:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\Filter_PVT.c"
+   1:.\Generated_Source\PSoC5/Filter_PVT.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/Filter_PVT.c **** * File Name: Filter_PVT.c
+   3:.\Generated_Source\PSoC5/Filter_PVT.c **** * Version 2.20
+   4:.\Generated_Source\PSoC5/Filter_PVT.c **** *
+   5:.\Generated_Source\PSoC5/Filter_PVT.c **** * Description:
+   6:.\Generated_Source\PSoC5/Filter_PVT.c **** *  This file provides source code for FILT component internal functions.
+   7:.\Generated_Source\PSoC5/Filter_PVT.c **** *
+   8:.\Generated_Source\PSoC5/Filter_PVT.c **** * Note:
+   9:.\Generated_Source\PSoC5/Filter_PVT.c **** *  
+  10:.\Generated_Source\PSoC5/Filter_PVT.c **** *******************************************************************************
+  11:.\Generated_Source\PSoC5/Filter_PVT.c **** * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC5/Filter_PVT.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:.\Generated_Source\PSoC5/Filter_PVT.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:.\Generated_Source\PSoC5/Filter_PVT.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC5/Filter_PVT.c **** ********************************************************************************/
+  16:.\Generated_Source\PSoC5/Filter_PVT.c **** 
+  17:.\Generated_Source\PSoC5/Filter_PVT.c **** #include "Filter_PVT.h"
+  18:.\Generated_Source\PSoC5/Filter_PVT.c **** 
+  19:.\Generated_Source\PSoC5/Filter_PVT.c **** 
+  20:.\Generated_Source\PSoC5/Filter_PVT.c **** /*******************************************************************************
+  21:.\Generated_Source\PSoC5/Filter_PVT.c **** * Function Name: Filter_SetInterruptMode
+  22:.\Generated_Source\PSoC5/Filter_PVT.c **** ********************************************************************************
+  23:.\Generated_Source\PSoC5/Filter_PVT.c **** *
+  24:.\Generated_Source\PSoC5/Filter_PVT.c **** * Summary:
+  25:.\Generated_Source\PSoC5/Filter_PVT.c **** *  Assign the events which will trigger a DFB interrupt to be triggered. 
+  26:.\Generated_Source\PSoC5/Filter_PVT.c **** *
+  27:.\Generated_Source\PSoC5/Filter_PVT.c **** * Parameters:  
+  28:.\Generated_Source\PSoC5/Filter_PVT.c **** *  events:  Bits [0:5] of events represent the events which will trigger DFB
+  29:.\Generated_Source\PSoC5/Filter_PVT.c **** *           interrupts.
+  30:.\Generated_Source\PSoC5/Filter_PVT.c **** *            Bit 0 - Output value ready in the holding register on channel A
+  31:.\Generated_Source\PSoC5/Filter_PVT.c **** *            Bit 1 - Output value ready in the holding register on channel B
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cccALYQt.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/Filter_PVT.c **** *            Bit 2 - '1' written to Semaphore 0  - See Note
+  33:.\Generated_Source\PSoC5/Filter_PVT.c **** *            Bit 3 - '1' written to Semaphore 1  - See Note
+  34:.\Generated_Source\PSoC5/Filter_PVT.c **** *            Bit 4 - '1' written to Semaphore 2
+  35:.\Generated_Source\PSoC5/Filter_PVT.c **** *
+  36:.\Generated_Source\PSoC5/Filter_PVT.c **** * Return: 
+  37:.\Generated_Source\PSoC5/Filter_PVT.c **** *  void
+  38:.\Generated_Source\PSoC5/Filter_PVT.c **** *
+  39:.\Generated_Source\PSoC5/Filter_PVT.c **** * Note:
+  40:.\Generated_Source\PSoC5/Filter_PVT.c **** *  Semaphore 0 and Semaphore 1 should not be configured as both a DMA request 
+  41:.\Generated_Source\PSoC5/Filter_PVT.c **** *  and an interrupt event, because, after one clock cycle, the system 
+  42:.\Generated_Source\PSoC5/Filter_PVT.c **** *  automatically clears any semaphore which triggered a DMA request.
+  43:.\Generated_Source\PSoC5/Filter_PVT.c **** *
+  44:.\Generated_Source\PSoC5/Filter_PVT.c **** *******************************************************************************/
+  45:.\Generated_Source\PSoC5/Filter_PVT.c **** void Filter_SetInterruptMode(uint8 events) 
+  46:.\Generated_Source\PSoC5/Filter_PVT.c **** {
+  27              		.loc 1 46 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  47:.\Generated_Source\PSoC5/Filter_PVT.c ****     events &= Filter_EVENT_MASK;
+  48:.\Generated_Source\PSoC5/Filter_PVT.c ****     Filter_INT_CTRL_REG = events;
+  33              		.loc 1 48 0
+  34 0000 024B     		ldr	r3, .L2
+  47:.\Generated_Source\PSoC5/Filter_PVT.c ****     events &= Filter_EVENT_MASK;
+  35              		.loc 1 47 0
+  36 0002 00F01F00 		and	r0, r0, #31
+  37              	.LVL1:
+  38              		.loc 1 48 0
+  39 0006 1870     		strb	r0, [r3, #0]
+  40 0008 7047     		bx	lr
+  41              	.L3:
+  42 000a 00BF     		.align	2
+  43              	.L2:
+  44 000c 98C70040 		.word	1073792920
+  45              		.cfi_endproc
+  46              	.LFE0:
+  47              		.size	Filter_SetInterruptMode, .-Filter_SetInterruptMode
+  48              		.section	.text.Filter_SetDMAMode,"ax",%progbits
+  49              		.align	1
+  50              		.global	Filter_SetDMAMode
+  51              		.thumb
+  52              		.thumb_func
+  53              		.type	Filter_SetDMAMode, %function
+  54              	Filter_SetDMAMode:
+  55              	.LFB1:
+  49:.\Generated_Source\PSoC5/Filter_PVT.c **** }
+  50:.\Generated_Source\PSoC5/Filter_PVT.c **** 
+  51:.\Generated_Source\PSoC5/Filter_PVT.c **** 
+  52:.\Generated_Source\PSoC5/Filter_PVT.c **** /*******************************************************************************
+  53:.\Generated_Source\PSoC5/Filter_PVT.c **** * Function Name: Filter_SetDMAMode
+  54:.\Generated_Source\PSoC5/Filter_PVT.c **** ********************************************************************************
+  55:.\Generated_Source\PSoC5/Filter_PVT.c **** *
+  56:.\Generated_Source\PSoC5/Filter_PVT.c **** * Summary:
+  57:.\Generated_Source\PSoC5/Filter_PVT.c **** *  Assign the events which will trigger a DMA request for the DFB.  There are 
+  58:.\Generated_Source\PSoC5/Filter_PVT.c **** *  two different DMA requests that can be triggered.
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cccALYQt.s 			page 3
+
+
+  59:.\Generated_Source\PSoC5/Filter_PVT.c **** *
+  60:.\Generated_Source\PSoC5/Filter_PVT.c **** * Parameters:  
+  61:.\Generated_Source\PSoC5/Filter_PVT.c **** *  events:  A set of 4 bits which configure what event, if any, triggers a DMA 
+  62:.\Generated_Source\PSoC5/Filter_PVT.c **** *           request for the DFB.  
+  63:.\Generated_Source\PSoC5/Filter_PVT.c **** *           Bits [0:1] configure the trigger for DMA Request 1
+  64:.\Generated_Source\PSoC5/Filter_PVT.c **** *           Bits [2:3] configure the trigger for DMA Request 2
+  65:.\Generated_Source\PSoC5/Filter_PVT.c **** *            DMA Request 1: 
+  66:.\Generated_Source\PSoC5/Filter_PVT.c **** *               0 - no request will be generated
+  67:.\Generated_Source\PSoC5/Filter_PVT.c **** *               1 - Output value ready in the holding register on channel A
+  68:.\Generated_Source\PSoC5/Filter_PVT.c **** *               2 - Semaphore 0
+  69:.\Generated_Source\PSoC5/Filter_PVT.c **** *               3 - Sempahore 1
+  70:.\Generated_Source\PSoC5/Filter_PVT.c **** *            DMA Request 2: 
+  71:.\Generated_Source\PSoC5/Filter_PVT.c **** *               0 - no request will be generated
+  72:.\Generated_Source\PSoC5/Filter_PVT.c **** *               1 - Output value ready in the holding register on channel B
+  73:.\Generated_Source\PSoC5/Filter_PVT.c **** *               2 - Semaphore 0
+  74:.\Generated_Source\PSoC5/Filter_PVT.c **** *               3 - Sempahore 1
+  75:.\Generated_Source\PSoC5/Filter_PVT.c **** *
+  76:.\Generated_Source\PSoC5/Filter_PVT.c **** * Return: 
+  77:.\Generated_Source\PSoC5/Filter_PVT.c **** *  void
+  78:.\Generated_Source\PSoC5/Filter_PVT.c **** *
+  79:.\Generated_Source\PSoC5/Filter_PVT.c **** * Note:
+  80:.\Generated_Source\PSoC5/Filter_PVT.c **** *  Semaphore 0 and Semaphore 1 should not be configured as both a DMA request 
+  81:.\Generated_Source\PSoC5/Filter_PVT.c **** *  and an interrupt event, because, after one clock cycle, the system 
+  82:.\Generated_Source\PSoC5/Filter_PVT.c **** *  automatically clears any semaphore which triggered a DMA request.
+  83:.\Generated_Source\PSoC5/Filter_PVT.c **** *
+  84:.\Generated_Source\PSoC5/Filter_PVT.c **** *******************************************************************************/
+  85:.\Generated_Source\PSoC5/Filter_PVT.c **** void Filter_SetDMAMode(uint8 events) 
+  86:.\Generated_Source\PSoC5/Filter_PVT.c **** {
+  56              		.loc 1 86 0
+  57              		.cfi_startproc
+  58              		@ args = 0, pretend = 0, frame = 0
+  59              		@ frame_needed = 0, uses_anonymous_args = 0
+  60              		@ link register save eliminated.
+  61              	.LVL2:
+  87:.\Generated_Source\PSoC5/Filter_PVT.c ****     events &= Filter_DMA_CTRL_MASK;
+  88:.\Generated_Source\PSoC5/Filter_PVT.c ****     Filter_DMA_CTRL_REG = events;
+  62              		.loc 1 88 0
+  63 0000 024B     		ldr	r3, .L5
+  87:.\Generated_Source\PSoC5/Filter_PVT.c ****     events &= Filter_DMA_CTRL_MASK;
+  64              		.loc 1 87 0
+  65 0002 00F00F00 		and	r0, r0, #15
+  66              	.LVL3:
+  67              		.loc 1 88 0
+  68 0006 1870     		strb	r0, [r3, #0]
+  69 0008 7047     		bx	lr
+  70              	.L6:
+  71 000a 00BF     		.align	2
+  72              	.L5:
+  73 000c 9CC70040 		.word	1073792924
+  74              		.cfi_endproc
+  75              	.LFE1:
+  76              		.size	Filter_SetDMAMode, .-Filter_SetDMAMode
+  77              		.text
+  78              	.Letext0:
+  79              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+  80              		.section	.debug_info,"",%progbits
+  81              	.Ldebug_info0:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cccALYQt.s 			page 4
+
+
+  82 0000 F1000000 		.4byte	0xf1
+  83 0004 0200     		.2byte	0x2
+  84 0006 00000000 		.4byte	.Ldebug_abbrev0
+  85 000a 04       		.byte	0x4
+  86 000b 01       		.uleb128 0x1
+  87 000c 2D000000 		.4byte	.LASF16
+  88 0010 01       		.byte	0x1
+  89 0011 1B010000 		.4byte	.LASF17
+  90 0015 4A010000 		.4byte	.LASF18
+  91 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  92 001d 00000000 		.4byte	0
+  93 0021 00000000 		.4byte	0
+  94 0025 00000000 		.4byte	.Ldebug_line0
+  95 0029 02       		.uleb128 0x2
+  96 002a 01       		.byte	0x1
+  97 002b 06       		.byte	0x6
+  98 002c E7000000 		.4byte	.LASF0
+  99 0030 02       		.uleb128 0x2
+ 100 0031 01       		.byte	0x1
+ 101 0032 08       		.byte	0x8
+ 102 0033 AC000000 		.4byte	.LASF1
+ 103 0037 02       		.uleb128 0x2
+ 104 0038 02       		.byte	0x2
+ 105 0039 05       		.byte	0x5
+ 106 003a 11010000 		.4byte	.LASF2
+ 107 003e 02       		.uleb128 0x2
+ 108 003f 02       		.byte	0x2
+ 109 0040 07       		.byte	0x7
+ 110 0041 D4000000 		.4byte	.LASF3
+ 111 0045 03       		.uleb128 0x3
+ 112 0046 04       		.byte	0x4
+ 113 0047 05       		.byte	0x5
+ 114 0048 696E7400 		.ascii	"int\000"
+ 115 004c 02       		.uleb128 0x2
+ 116 004d 04       		.byte	0x4
+ 117 004e 07       		.byte	0x7
+ 118 004f 0E000000 		.4byte	.LASF4
+ 119 0053 02       		.uleb128 0x2
+ 120 0054 08       		.byte	0x8
+ 121 0055 05       		.byte	0x5
+ 122 0056 00000000 		.4byte	.LASF5
+ 123 005a 02       		.uleb128 0x2
+ 124 005b 08       		.byte	0x8
+ 125 005c 07       		.byte	0x7
+ 126 005d 8E000000 		.4byte	.LASF6
+ 127 0061 02       		.uleb128 0x2
+ 128 0062 04       		.byte	0x4
+ 129 0063 05       		.byte	0x5
+ 130 0064 BF000000 		.4byte	.LASF7
+ 131 0068 02       		.uleb128 0x2
+ 132 0069 04       		.byte	0x4
+ 133 006a 07       		.byte	0x7
+ 134 006b 41010000 		.4byte	.LASF8
+ 135 006f 02       		.uleb128 0x2
+ 136 0070 04       		.byte	0x4
+ 137 0071 07       		.byte	0x7
+ 138 0072 7C000000 		.4byte	.LASF9
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cccALYQt.s 			page 5
+
+
+ 139 0076 02       		.uleb128 0x2
+ 140 0077 01       		.byte	0x1
+ 141 0078 08       		.byte	0x8
+ 142 0079 BA000000 		.4byte	.LASF10
+ 143 007d 04       		.uleb128 0x4
+ 144 007e 76000000 		.4byte	.LASF13
+ 145 0082 02       		.byte	0x2
+ 146 0083 5B       		.byte	0x5b
+ 147 0084 30000000 		.4byte	0x30
+ 148 0088 02       		.uleb128 0x2
+ 149 0089 04       		.byte	0x4
+ 150 008a 04       		.byte	0x4
+ 151 008b F3000000 		.4byte	.LASF11
+ 152 008f 02       		.uleb128 0x2
+ 153 0090 08       		.byte	0x8
+ 154 0091 04       		.byte	0x4
+ 155 0092 CD000000 		.4byte	.LASF12
+ 156 0096 04       		.uleb128 0x4
+ 157 0097 C8000000 		.4byte	.LASF14
+ 158 009b 02       		.byte	0x2
+ 159 009c F0       		.byte	0xf0
+ 160 009d A1000000 		.4byte	0xa1
+ 161 00a1 05       		.uleb128 0x5
+ 162 00a2 7D000000 		.4byte	0x7d
+ 163 00a6 06       		.uleb128 0x6
+ 164 00a7 01       		.byte	0x1
+ 165 00a8 F9000000 		.4byte	.LASF19
+ 166 00ac 01       		.byte	0x1
+ 167 00ad 2D       		.byte	0x2d
+ 168 00ae 01       		.byte	0x1
+ 169 00af 00000000 		.4byte	.LFB0
+ 170 00b3 10000000 		.4byte	.LFE0
+ 171 00b7 02       		.byte	0x2
+ 172 00b8 7D       		.byte	0x7d
+ 173 00b9 00       		.sleb128 0
+ 174 00ba 01       		.byte	0x1
+ 175 00bb CF000000 		.4byte	0xcf
+ 176 00bf 07       		.uleb128 0x7
+ 177 00c0 A5000000 		.4byte	.LASF15
+ 178 00c4 01       		.byte	0x1
+ 179 00c5 2D       		.byte	0x2d
+ 180 00c6 7D000000 		.4byte	0x7d
+ 181 00ca 00000000 		.4byte	.LLST0
+ 182 00ce 00       		.byte	0
+ 183 00cf 08       		.uleb128 0x8
+ 184 00d0 01       		.byte	0x1
+ 185 00d1 1B000000 		.4byte	.LASF20
+ 186 00d5 01       		.byte	0x1
+ 187 00d6 55       		.byte	0x55
+ 188 00d7 01       		.byte	0x1
+ 189 00d8 00000000 		.4byte	.LFB1
+ 190 00dc 10000000 		.4byte	.LFE1
+ 191 00e0 02       		.byte	0x2
+ 192 00e1 7D       		.byte	0x7d
+ 193 00e2 00       		.sleb128 0
+ 194 00e3 01       		.byte	0x1
+ 195 00e4 07       		.uleb128 0x7
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cccALYQt.s 			page 6
+
+
+ 196 00e5 A5000000 		.4byte	.LASF15
+ 197 00e9 01       		.byte	0x1
+ 198 00ea 55       		.byte	0x55
+ 199 00eb 7D000000 		.4byte	0x7d
+ 200 00ef 1E000000 		.4byte	.LLST1
+ 201 00f3 00       		.byte	0
+ 202 00f4 00       		.byte	0
+ 203              		.section	.debug_abbrev,"",%progbits
+ 204              	.Ldebug_abbrev0:
+ 205 0000 01       		.uleb128 0x1
+ 206 0001 11       		.uleb128 0x11
+ 207 0002 01       		.byte	0x1
+ 208 0003 25       		.uleb128 0x25
+ 209 0004 0E       		.uleb128 0xe
+ 210 0005 13       		.uleb128 0x13
+ 211 0006 0B       		.uleb128 0xb
+ 212 0007 03       		.uleb128 0x3
+ 213 0008 0E       		.uleb128 0xe
+ 214 0009 1B       		.uleb128 0x1b
+ 215 000a 0E       		.uleb128 0xe
+ 216 000b 55       		.uleb128 0x55
+ 217 000c 06       		.uleb128 0x6
+ 218 000d 11       		.uleb128 0x11
+ 219 000e 01       		.uleb128 0x1
+ 220 000f 52       		.uleb128 0x52
+ 221 0010 01       		.uleb128 0x1
+ 222 0011 10       		.uleb128 0x10
+ 223 0012 06       		.uleb128 0x6
+ 224 0013 00       		.byte	0
+ 225 0014 00       		.byte	0
+ 226 0015 02       		.uleb128 0x2
+ 227 0016 24       		.uleb128 0x24
+ 228 0017 00       		.byte	0
+ 229 0018 0B       		.uleb128 0xb
+ 230 0019 0B       		.uleb128 0xb
+ 231 001a 3E       		.uleb128 0x3e
+ 232 001b 0B       		.uleb128 0xb
+ 233 001c 03       		.uleb128 0x3
+ 234 001d 0E       		.uleb128 0xe
+ 235 001e 00       		.byte	0
+ 236 001f 00       		.byte	0
+ 237 0020 03       		.uleb128 0x3
+ 238 0021 24       		.uleb128 0x24
+ 239 0022 00       		.byte	0
+ 240 0023 0B       		.uleb128 0xb
+ 241 0024 0B       		.uleb128 0xb
+ 242 0025 3E       		.uleb128 0x3e
+ 243 0026 0B       		.uleb128 0xb
+ 244 0027 03       		.uleb128 0x3
+ 245 0028 08       		.uleb128 0x8
+ 246 0029 00       		.byte	0
+ 247 002a 00       		.byte	0
+ 248 002b 04       		.uleb128 0x4
+ 249 002c 16       		.uleb128 0x16
+ 250 002d 00       		.byte	0
+ 251 002e 03       		.uleb128 0x3
+ 252 002f 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cccALYQt.s 			page 7
+
+
+ 253 0030 3A       		.uleb128 0x3a
+ 254 0031 0B       		.uleb128 0xb
+ 255 0032 3B       		.uleb128 0x3b
+ 256 0033 0B       		.uleb128 0xb
+ 257 0034 49       		.uleb128 0x49
+ 258 0035 13       		.uleb128 0x13
+ 259 0036 00       		.byte	0
+ 260 0037 00       		.byte	0
+ 261 0038 05       		.uleb128 0x5
+ 262 0039 35       		.uleb128 0x35
+ 263 003a 00       		.byte	0
+ 264 003b 49       		.uleb128 0x49
+ 265 003c 13       		.uleb128 0x13
+ 266 003d 00       		.byte	0
+ 267 003e 00       		.byte	0
+ 268 003f 06       		.uleb128 0x6
+ 269 0040 2E       		.uleb128 0x2e
+ 270 0041 01       		.byte	0x1
+ 271 0042 3F       		.uleb128 0x3f
+ 272 0043 0C       		.uleb128 0xc
+ 273 0044 03       		.uleb128 0x3
+ 274 0045 0E       		.uleb128 0xe
+ 275 0046 3A       		.uleb128 0x3a
+ 276 0047 0B       		.uleb128 0xb
+ 277 0048 3B       		.uleb128 0x3b
+ 278 0049 0B       		.uleb128 0xb
+ 279 004a 27       		.uleb128 0x27
+ 280 004b 0C       		.uleb128 0xc
+ 281 004c 11       		.uleb128 0x11
+ 282 004d 01       		.uleb128 0x1
+ 283 004e 12       		.uleb128 0x12
+ 284 004f 01       		.uleb128 0x1
+ 285 0050 40       		.uleb128 0x40
+ 286 0051 0A       		.uleb128 0xa
+ 287 0052 9742     		.uleb128 0x2117
+ 288 0054 0C       		.uleb128 0xc
+ 289 0055 01       		.uleb128 0x1
+ 290 0056 13       		.uleb128 0x13
+ 291 0057 00       		.byte	0
+ 292 0058 00       		.byte	0
+ 293 0059 07       		.uleb128 0x7
+ 294 005a 05       		.uleb128 0x5
+ 295 005b 00       		.byte	0
+ 296 005c 03       		.uleb128 0x3
+ 297 005d 0E       		.uleb128 0xe
+ 298 005e 3A       		.uleb128 0x3a
+ 299 005f 0B       		.uleb128 0xb
+ 300 0060 3B       		.uleb128 0x3b
+ 301 0061 0B       		.uleb128 0xb
+ 302 0062 49       		.uleb128 0x49
+ 303 0063 13       		.uleb128 0x13
+ 304 0064 02       		.uleb128 0x2
+ 305 0065 06       		.uleb128 0x6
+ 306 0066 00       		.byte	0
+ 307 0067 00       		.byte	0
+ 308 0068 08       		.uleb128 0x8
+ 309 0069 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cccALYQt.s 			page 8
+
+
+ 310 006a 01       		.byte	0x1
+ 311 006b 3F       		.uleb128 0x3f
+ 312 006c 0C       		.uleb128 0xc
+ 313 006d 03       		.uleb128 0x3
+ 314 006e 0E       		.uleb128 0xe
+ 315 006f 3A       		.uleb128 0x3a
+ 316 0070 0B       		.uleb128 0xb
+ 317 0071 3B       		.uleb128 0x3b
+ 318 0072 0B       		.uleb128 0xb
+ 319 0073 27       		.uleb128 0x27
+ 320 0074 0C       		.uleb128 0xc
+ 321 0075 11       		.uleb128 0x11
+ 322 0076 01       		.uleb128 0x1
+ 323 0077 12       		.uleb128 0x12
+ 324 0078 01       		.uleb128 0x1
+ 325 0079 40       		.uleb128 0x40
+ 326 007a 0A       		.uleb128 0xa
+ 327 007b 9742     		.uleb128 0x2117
+ 328 007d 0C       		.uleb128 0xc
+ 329 007e 00       		.byte	0
+ 330 007f 00       		.byte	0
+ 331 0080 00       		.byte	0
+ 332              		.section	.debug_loc,"",%progbits
+ 333              	.Ldebug_loc0:
+ 334              	.LLST0:
+ 335 0000 00000000 		.4byte	.LVL0
+ 336 0004 06000000 		.4byte	.LVL1
+ 337 0008 0100     		.2byte	0x1
+ 338 000a 50       		.byte	0x50
+ 339 000b 06000000 		.4byte	.LVL1
+ 340 000f 10000000 		.4byte	.LFE0
+ 341 0013 0100     		.2byte	0x1
+ 342 0015 50       		.byte	0x50
+ 343 0016 00000000 		.4byte	0
+ 344 001a 00000000 		.4byte	0
+ 345              	.LLST1:
+ 346 001e 00000000 		.4byte	.LVL2
+ 347 0022 06000000 		.4byte	.LVL3
+ 348 0026 0100     		.2byte	0x1
+ 349 0028 50       		.byte	0x50
+ 350 0029 06000000 		.4byte	.LVL3
+ 351 002d 10000000 		.4byte	.LFE1
+ 352 0031 0100     		.2byte	0x1
+ 353 0033 50       		.byte	0x50
+ 354 0034 00000000 		.4byte	0
+ 355 0038 00000000 		.4byte	0
+ 356              		.section	.debug_aranges,"",%progbits
+ 357 0000 24000000 		.4byte	0x24
+ 358 0004 0200     		.2byte	0x2
+ 359 0006 00000000 		.4byte	.Ldebug_info0
+ 360 000a 04       		.byte	0x4
+ 361 000b 00       		.byte	0
+ 362 000c 0000     		.2byte	0
+ 363 000e 0000     		.2byte	0
+ 364 0010 00000000 		.4byte	.LFB0
+ 365 0014 10000000 		.4byte	.LFE0-.LFB0
+ 366 0018 00000000 		.4byte	.LFB1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cccALYQt.s 			page 9
+
+
+ 367 001c 10000000 		.4byte	.LFE1-.LFB1
+ 368 0020 00000000 		.4byte	0
+ 369 0024 00000000 		.4byte	0
+ 370              		.section	.debug_ranges,"",%progbits
+ 371              	.Ldebug_ranges0:
+ 372 0000 00000000 		.4byte	.LFB0
+ 373 0004 10000000 		.4byte	.LFE0
+ 374 0008 00000000 		.4byte	.LFB1
+ 375 000c 10000000 		.4byte	.LFE1
+ 376 0010 00000000 		.4byte	0
+ 377 0014 00000000 		.4byte	0
+ 378              		.section	.debug_line,"",%progbits
+ 379              	.Ldebug_line0:
+ 380 0000 74000000 		.section	.debug_str,"MS",%progbits,1
+ 380      02004900 
+ 380      00000201 
+ 380      FB0E0D00 
+ 380      01010101 
+ 381              	.LASF5:
+ 382 0000 6C6F6E67 		.ascii	"long long int\000"
+ 382      206C6F6E 
+ 382      6720696E 
+ 382      7400
+ 383              	.LASF4:
+ 384 000e 756E7369 		.ascii	"unsigned int\000"
+ 384      676E6564 
+ 384      20696E74 
+ 384      00
+ 385              	.LASF20:
+ 386 001b 46696C74 		.ascii	"Filter_SetDMAMode\000"
+ 386      65725F53 
+ 386      6574444D 
+ 386      414D6F64 
+ 386      6500
+ 387              	.LASF16:
+ 388 002d 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 388      4320342E 
+ 388      372E3320 
+ 388      32303133 
+ 388      30333132 
+ 389 0060 616E6368 		.ascii	"anch revision 196615]\000"
+ 389      20726576 
+ 389      6973696F 
+ 389      6E203139 
+ 389      36363135 
+ 390              	.LASF13:
+ 391 0076 75696E74 		.ascii	"uint8\000"
+ 391      3800
+ 392              	.LASF9:
+ 393 007c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 393      20756E73 
+ 393      69676E65 
+ 393      6420696E 
+ 393      7400
+ 394              	.LASF6:
+ 395 008e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 395      206C6F6E 
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cccALYQt.s 			page 10
+
+
+ 395      6720756E 
+ 395      7369676E 
+ 395      65642069 
+ 396              	.LASF15:
+ 397 00a5 6576656E 		.ascii	"events\000"
+ 397      747300
+ 398              	.LASF1:
+ 399 00ac 756E7369 		.ascii	"unsigned char\000"
+ 399      676E6564 
+ 399      20636861 
+ 399      7200
+ 400              	.LASF10:
+ 401 00ba 63686172 		.ascii	"char\000"
+ 401      00
+ 402              	.LASF7:
+ 403 00bf 6C6F6E67 		.ascii	"long int\000"
+ 403      20696E74 
+ 403      00
+ 404              	.LASF14:
+ 405 00c8 72656738 		.ascii	"reg8\000"
+ 405      00
+ 406              	.LASF12:
+ 407 00cd 646F7562 		.ascii	"double\000"
+ 407      6C6500
+ 408              	.LASF3:
+ 409 00d4 73686F72 		.ascii	"short unsigned int\000"
+ 409      7420756E 
+ 409      7369676E 
+ 409      65642069 
+ 409      6E7400
+ 410              	.LASF0:
+ 411 00e7 7369676E 		.ascii	"signed char\000"
+ 411      65642063 
+ 411      68617200 
+ 412              	.LASF11:
+ 413 00f3 666C6F61 		.ascii	"float\000"
+ 413      7400
+ 414              	.LASF19:
+ 415 00f9 46696C74 		.ascii	"Filter_SetInterruptMode\000"
+ 415      65725F53 
+ 415      6574496E 
+ 415      74657272 
+ 415      7570744D 
+ 416              	.LASF2:
+ 417 0111 73686F72 		.ascii	"short int\000"
+ 417      7420696E 
+ 417      7400
+ 418              	.LASF17:
+ 419 011b 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Filter_PVT.c\000"
+ 419      6E657261 
+ 419      7465645F 
+ 419      536F7572 
+ 419      63655C50 
+ 420              	.LASF8:
+ 421 0141 73697A65 		.ascii	"sizetype\000"
+ 421      74797065 
+ 421      00
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cccALYQt.s 			page 11
+
+
+ 422              	.LASF18:
+ 423 014a 433A5C55 		.ascii	"C:\\Users\\Luke\\Desktop\\Laserschutzschaltung.cyds"
+ 423      73657273 
+ 423      5C4C756B 
+ 423      655C4465 
+ 423      736B746F 
+ 424 0179 6E5C4C61 		.ascii	"n\\Laserschutzschaltung.cydsn\000"
+ 424      73657273 
+ 424      63687574 
+ 424      7A736368 
+ 424      616C7475 
+ 425              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

@@ -1,0 +1,1529 @@
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"VUSB.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.section	.gnu.lto_.profile.d23619f,"",%progbits
+  18 0000 789C6366 		.ascii	"x\234cf```a\200\000F\0061!\000\000\262\0001"
+  18      60606061 
+  18      80004606 
+  18      31210000 
+  18      B20031
+  19              		.text
+  20              		.section	.gnu.lto_.inline.d23619f,"",%progbits
+  21 0000 789C6366 		.ascii	"x\234cf\300\016\022\2404\013\003\003\007;##\003#\003"
+  21      C00E12A0 
+  21      340B0303 
+  21      073B2323 
+  21      032303
+  22 0013 0333C701 		.ascii	"\0033\307\001;\006\266\005\362L\014L\027\370Y@\222\214"
+  22      3B06B605 
+  22      F24C0C4C 
+  22      17F85940 
+  22      928C
+  23 0025 78E49818 		.ascii	"x\344\230\030XY\030\031\230X\026\310C\304\201\200\031"
+  23      58591819 
+  23      985816C8 
+  23      43C48180 
+  23      19
+  24 0036 53880100 		.ascii	"S\210\001\000\322\320\011("
+  24      D2D00928 
+  25              		.text
+  26              		.section	.gnu.lto_.jmpfuncs.d23619f,"",%progbits
+  27 0000 789C6366 		.ascii	"x\234cf\300\016\204\2404\013\003##c=#\210`b``\006\212"
+  27      C00E84A0 
+  27      340B0323 
+  27      23633D23 
+  27      88606260 
+  28 0017 00000DC0 		.ascii	"\000\000\015\300\001$"
+  28      0124
+  29              		.text
+  30              		.section	.gnu.lto_.pureconst.d23619f,"",%progbits
+  31 0000 789C6366 		.ascii	"x\234cf``\340d\200\000\026\006)F)&)f)\000\002\305\000"
+  31      6060E064 
+  31      80001606 
+  31      29462926 
+  31      29662900 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 2
+
+
+  32 0017 7F       		.ascii	"\177"
+  33              		.text
+  34              		.section	.gnu.lto_VUSB_Write.d23619f,"",%progbits
+  35 0000 789C6551 		.ascii	"x\234eQKH\033Q\024\275\347\275\231$\250\013q\231\205"
+  35      4B481B51 
+  35      14BDE7BD 
+  35      9924A80B 
+  35      719985
+  36 0013 50448220 		.ascii	"PD\202 \205.\272/v\321\255\020t\025(!\235\205P*h\354"
+  36      852EBA2F 
+  36      76D1AD10 
+  36      74152821 
+  36      9D85502A 
+  37 0029 366FDA90 		.ascii	"6o\332\220EA\020)(\024\361\207\364\223\326\250\005w"
+  37      45411029 
+  37      2814F187 
+  37      F493D6A8 
+  37      0577
+  38 003b 85A9B850 		.ascii	"\205\251\270PJ+B\251 bSH\213\242\013E1Uk\246\367\316"
+  38      4A2B42A9 
+  38      20625348 
+  38      8BA20B45 
+  38      31556BA6 
+  39 0051 B8507CF0 		.ascii	"\270P|\360\346\275w8\347\334s\357h\272\271\342\274}"
+  39      E6BD7738 
+  39      E7DC73EF 
+  39      68BAB9E2 
+  39      BC7D
+  40 0063 10DDE113 		.ascii	"\020\335\341\023\232\240\206\276\021\2711\005\310\205"
+  40      9AA086BE 
+  40      11B93105 
+  40      C885
+  41 0071 4039851C 		.ascii	"@9\205\034v\325\241\302\220W\034\255O\314\030c\016\206"
+  41      76D5A1C2 
+  41      90571CAD 
+  41      4FCC1863 
+  41      0E86
+  42 0083 D7DC4E0F 		.ascii	"\327\334N\017\247\212\350H\205>x\215\004s\216\212\346"
+  42      A78AE848 
+  42      853E788D 
+  42      04738E8A 
+  42      E6
+  43 0094 A5D6B740 		.ascii	"\245\326\267@|\237[\377Z\213\266N\033\363\314+\315\232"
+  43      7C9F5BFF 
+  43      5A8BB64E 
+  43      1BF3CC2B 
+  43      CD9A
+  44 00a6 7B4C07DE 		.ascii	"{L\007\336@\263\002\355q\264\305\211\001\302[\264\012"
+  44      40B302ED 
+  44      71B4C589 
+  44      01C25BB4 
+  44      0A
+  45 00b7 79617079 		.ascii	"yapyQ\351D \234\374\362k\271\241e\222\205\345\363\305"
+  45      51E94420 
+  45      9CFCF26B 
+  45      B9A16592 
+  45      85E5F3C5 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 3
+
+
+  46 00cb 94E74E98 		.ascii	"\224\347N\230\232\357\007\362wW\345\341b\376a\376b\243"
+  46      9AEF07F2 
+  46      7757E5E1 
+  46      62FE61FE 
+  46      62A3
+  47 00dd 3E92E760 		.ascii	">\222\347`\215(\242%\314\204\367\210p_\020\244\324\344"
+  47      8D28A225 
+  47      CC84F788 
+  47      705F10A4 
+  47      D4E4
+  48 00ef 19DFFFF8 		.ascii	"\031\337\377\370\351\363\031b\212\313*n\224a\013R\335"
+  48      E9F31962 
+  48      8ACB2A6E 
+  48      94610B52 
+  48      DD
+  49 0100 1620221F 		.ascii	"\026 \"\037\242\012o\351\3737?\370\324\233X:y\261=\022"
+  49      A20A6FE9 
+  49      FB373FF8 
+  49      D49B583A 
+  49      79B13D12 
+  50 0114 15B3AA92 		.ascii	"\025\263\252\222!\314\377\373\276\322\260\243N\225."
+  50      21CCFFFB 
+  50      BED2B0A3 
+  50      4E952E
+  51 0123 4FB9C692 		.ascii	"O\271\306\222\362?+k\353\261\000\012\322T\313\253\203"
+  51      F23F2B6B 
+  51      EBB1000A 
+  51      D254CBAB 
+  51      83
+  52 0134 756378E5 		.ascii	"ucx\345\3469\262\205\017\210c\026\234\026%\214\2016"
+  52      E639B285 
+  52      0F886316 
+  52      9C16258C 
+  52      8136
+  53 0146 F1FC6F61 		.ascii	"\361\374oa\013\241\241\016=\307wk;\226\030 G\230c\356"
+  53      0BA1A10E 
+  53      3DC7776B 
+  53      3B961820 
+  53      479863EE 
+  54 015a 0FA8203E 		.ascii	"\017\250 >gd\222h\266\012\1776.S\330UeI\231\351\362"
+  54      67649268 
+  54      B60A7F36 
+  54      2E53D855 
+  54      654999E9 
+  55 016f 1E44A4A2 		.ascii	"\036D\244\242\204y\0261\353\270\260\177\351\034\362"
+  55      84791631 
+  55      EBB8B07F 
+  55      E91CF2
+  56 017e 44BA341C 		.ascii	"D\2724\034@\327\202\271\236}=\332\002Gc\021m\303\365"
+  56      40D782B9 
+  56      9E7D3DDA 
+  56      02476311 
+  56      6DC3F5
+  57 0191 CE6DE1CB 		.ascii	"\316m\341\313h+\374\177x\012<\223\346\007\316\023\247"
+  57      682BFC7F 
+  57      780A3C93 
+  57      E607CE13 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 4
+
+
+  57      A7
+  58 01a2 2F9D751E 		.ascii	"/\235u\036=L\366\016\364e\234Tg\262\367\376\335TwW\262"
+  58      3D4CF60E 
+  58      F4659C54 
+  58      67B2F7FE 
+  58      DD547757 
+  59 01b7 E37686EC 		.ascii	"\343v\206\354\247\351\307\003N]\1776\235\355\311t\364"
+  59      A7E9C703 
+  59      4E5D7F36 
+  59      9DEDC974 
+  59      F4
+  60 01c8 64FBFF03 		.ascii	"d\373\377\003\245\213\302\010"
+  60      A58BC208 
+  61              		.text
+  62              		.section	.gnu.lto_VUSB_SetDriveMode.d23619f,"",%progbits
+  63 0000 789C7D51 		.ascii	"x\234}Q;H\003A\020\235\267{\311%DE\254B\012\301\"\210"
+  63      3B480341 
+  63      109DB77B 
+  63      C9254445 
+  63      AC420AC1 
+  64 0016 205AD98B 		.ascii	" Z\331\213\202\266B\320J\020\321+5 Z\347\362\261\261"
+  64      82B642D0 
+  64      4A10D12B 
+  64      35205AE7 
+  64      F2B1B1
+  65 0029 4A6C1444 		.ascii	"Jl\024D\020E\374\304\037X\244\223C\254\024\025m\304"
+  65      1045FCC4 
+  65      1F58A493 
+  65      43AC1415 
+  65      6DC4
+  66 003b 80DAC44F 		.ascii	"\200\332\304O\002JBD\015\022\342\354\305\" \270\334"
+  66      024A4244 
+  66      0D12E2EC 
+  66      C52220B8 
+  66      DC
+  67 004c CECE1BDE 		.ascii	"\316\316\033\336{7;+\351\357\362\361\316\201\310\317"
+  67      7B373B2B 
+  67      E9EFF2F1 
+  67      CE81C8CF 
+  68 005c 272441C4 		.ascii	"'$A\304/\210\302.\001\250\204@!\201\020\262\242 \020"
+  68      2F88C22E 
+  68      01A88440 
+  68      218110B2 
+  68      A22010
+  69 006f B7928B9E 		.ascii	"\267\222\213\236\326u\3234\363\253)\357\254\267$\210"
+  69      D675D334 
+  69      F3AB29EF 
+  69      ACB72488 
+  70 007f 8AA26A83 		.ascii	"\212\242j\203\015\2642\345\271\224\335\250\227- \316"
+  70      0DB432E5 
+  70      B994DDA8 
+  70      972D20CE 
+  71 008f CB899B6B 		.ascii	"\313\211\233k\341_3\315\210u\264gv\243\304\236\233\220"
+  71      E15F33CD 
+  71      8875B467 
+  71      76A3C49E 
+  71      9B90
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 5
+
+
+  72 00a1 AC40BB0F 		.ascii	"\254@\273\017m>\342\002a\013~E.\304\3127\036g\214\275"
+  72      6D3EE202 
+  72      610B7E45 
+  72      2EC4CA37 
+  72      1E678CBD 
+  73 00b5 1BAB9ED8 		.ascii	"\033\253\236\330\206\223\333\242\375&\313\254T\212w"
+  73      8693DBA2 
+  73      FD26CBAC 
+  73      548A77
+  74 00c4 89CD4E78 		.ascii	"\211\315Nx\004k\204\344 5\025\034Pr\247Ju\025\\*\270"
+  74      046B84E4 
+  74      2035151C 
+  74      5072A74A 
+  74      75155C2A 
+  75 00d9 158728C3 		.ascii	"\025\207(\303[\335\340\221\001\2372\215\343\217\271"
+  75      5BDDE091 
+  75      019F328D 
+  75      E38FB9
+  76 00e8 A7254DF9 		.ascii	"\247%M\371~\012u\235\273\334\351B\335\213(\011-\265"
+  76      7E0A759D 
+  76      BBDCE942 
+  76      DD8B2809 
+  76      2DB5
+  77 00fa 123635D5 		.ascii	"\02265\325\305C\346\362\312e\227H\301\312y:\345^\306"
+  77      C543E6F2 
+  77      CA659748 
+  77      C1CA793A 
+  77      E55EC6
+  78 010d 5238C6CD 		.ascii	"R8\306\315;\220\204\017;\340\201a\027\313\2404\"\367"
+  78      3B90840F 
+  78      3BE08161 
+  78      17CBA034 
+  78      22F7
+  79 011f 7AD54EB2 		.ascii	"z\325N\262#\343\350\227\263\2125.\261\376\366-\177f"
+  79      23E3E897 
+  79      B38A352E 
+  79      B1FEF62D 
+  79      7F66
+  80 0131 DBC942E5 		.ascii	"\333\311B\345w\361,\367\330\242F\313\237\243V\253s\211"
+  80      77F12CF7 
+  80      D8A246CB 
+  80      9FA356AB 
+  80      7389
+  81 0143 B55787AF 		.ascii	"\265W\207\257'\016[\333@\330\267%\321\367_\212\313\376"
+  81      270E5BDB 
+  81      40D8B725 
+  81      D1F75F8A 
+  81      CBFE
+  82 0155 835EEBE2 		.ascii	"\203^\353\342\346*\343\343y(\374_\357\007\334;\363\351"
+  82      E62AE3E3 
+  82      7928FC5F 
+  82      EF07DC3B 
+  82      F3E9
+  83 0167 1E61EBBB 		.ascii	"\036a\353\273O\261\325\373e\370-xL<\264\346~c\322\230"
+  83      4FB1D5FB 
+  83      65F82D78 
+  83      4C3CB4E6 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 6
+
+
+  83      7E63D298 
+  84 017b 1A9D36C6 		.ascii	"\032\2356\306G\002\301\231\2511cx \020\354\355\032\036"
+  84      4702C199 
+  84      A9316378 
+  84      2010ECED 
+  84      1A1E
+  85 018d 1A0CF474 		.ascii	"\032\014\364t\214\2216\021\0347~\000\207\232\267\236"
+  85      8C913611 
+  85      1C377E00 
+  85      879AB79E 
+  86              		.text
+  87              		.section	.gnu.lto_VUSB_Read.d23619f,"",%progbits
+  88 0000 789C6366 		.ascii	"x\234cf\300\004R@\374\033\210\025\200\230\221\231\201"
+  88      C0045240 
+  88      FC1B8815 
+  88      80989199 
+  88      81
+  89 0011 9169C239 		.ascii	"\221i\3029\006\206F\016&FF\020\203\201\221\241\236\211"
+  89      0686460E 
+  89      26464610 
+  89      838191A1 
+  89      9E89
+  90 0023 B19EF125 		.ascii	"\261\236\361%\323G&\3063;\377]fT_\332\320\320\364a\322"
+  90      D34726C6 
+  90      333BFF5D 
+  90      66545FDA 
+  90      D0D0F461 
+  91 0038 DE3BDCAD 		.ascii	"\336;\334\255\022?\231\030\030>310\352H1j\202\314a\\"
+  91      123F9918 
+  91      183E3331 
+  91      30EA4831 
+  91      6A82CC61 
+  92 004d CEA8CE00 		.ascii	"\316\250\316\000T\370\261\345\357un\266\226\206\206"
+  92      54F8B1E5 
+  92      EF756EB6 
+  92      968686
+  93 005c 0601903C 		.ascii	"\006\001\220<Pb\005#\033#\220^/t\240\341\377\377\315"
+  93      50620523 
+  93      1B23905E 
+  93      2F74A0E1 
+  93      FFFFCD
+  94 006f 5F277658 		.ascii	"_'vX3\26201\374d\002\332\0102\204\341\011\220\000\331"
+  94      33B23031 
+  94      FC6402DA 
+  94      083284E1 
+  94      099000D9 
+  95 0083 F7948909 		.ascii	"\367\224\211\011D3\337b<\364\255\353\336<+\220\306\357"
+  95      4433DF62 
+  95      3CF4ADEB 
+  95      DE3C2B90 
+  95      C6EF
+  96 0095 4C20CBEF 		.ascii	"L \313\357\354\352n\343x\301\364\223\211\351\341\242"
+  96      ECEA6EE3 
+  96      78C1F493 
+  96      89E9E1A2 
+  97 00a5 C6061690 		.ascii	"\306\006\026\2205\367\237\234\277\010\021b\000\333z"
+  97      35F79F9C 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 7
+
+
+  97      BF081162 
+  97      00DB7A
+  98 00b4 B137722E 		.ascii	"\2617r.\343\354\306\026\306\237L\314\214+\031\245\030"
+  98      E3ECC616 
+  98      C69F4CCC 
+  98      8C2B19A5 
+  98      18
+  99 00c5 5731025D 		.ascii	"W1\002]\305\270\232q.#\303-\306\346{m:\020\343\230!"
+  99      C5B89A71 
+  99      2E23C32D 
+  99      C6E67B6D 
+  99      3A10E398 
+ 100 00da 267E5FFC 		.ascii	"&~_\374\3405#H;\013;\003\343\032\240\322{\214\214P\005"
+ 100      E0352348 
+ 100      3B0B3B03 
+ 100      E31AA0D2 
+ 100      7B8C8C50 
+ 101 00ef 60173182 		.ascii	"`\0271\202\\\0024Z\316=5/\265(\261$5%>8\277\264(95&"
+ 101      5C02345A 
+ 101      CE3D352F 
+ 101      B528B124 
+ 101      35253E38 
+ 102 0109 2038DFD9 		.ascii	" 8\337\3314&,4\330I/\231\001\000\370\246d?"
+ 102      34262C34 
+ 102      D8492F99 
+ 102      0100F8A6 
+ 102      643F
+ 103              		.text
+ 104              		.section	.gnu.lto_VUSB_ReadDataReg.d23619f,"",%progbits
+ 105 0000 789C6366 		.ascii	"x\234cf\300\004R@\374\007\210\025\200\230\221\231\201"
+ 105      C0045240 
+ 105      FC078815 
+ 105      80989199 
+ 105      81
+ 106 0011 9169C239 		.ascii	"\221i\3029\006\206F\016&FF\020\203\201\221\241\236\211"
+ 106      0686460E 
+ 106      26464610 
+ 106      838191A1 
+ 106      9E89
+ 107 0023 B19EF125 		.ascii	"\261\236\361%\323G&\3063;\377]fT_\332\320\320\364\341"
+ 107      D34726C6 
+ 107      333BFF5D 
+ 107      66545FDA 
+ 107      D0D0F4E1 
+ 108 0037 D2E53BDC 		.ascii	"\322\345;\334\255\022?\231\030\030>310\352H1j\202\314"
+ 108      AD123F99 
+ 108      18183E33 
+ 108      3130EA48 
+ 108      316A82CC 
+ 109 004b 615CCEA8 		.ascii	"a\\\316\250\316\000T\370\261\345\357un\266\226\206\206"
+ 109      CE0054F8 
+ 109      B1E5EF75 
+ 109      6EB69686 
+ 109      86
+ 110 005c 0601903C 		.ascii	"\006\001\220<Pb\005#\033#\220^/t\240\341\377\377\315"
+ 110      50620523 
+ 110      1B23905E 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 8
+
+
+ 110      2F74A0E1 
+ 110      FFFFCD
+ 111 006f E7277568 		.ascii	"\347'uh1\26101\374d\002\332\0102\204\341\011\220\000"
+ 111      31B13031 
+ 111      FC6402DA 
+ 111      083284E1 
+ 111      099000
+ 112 0082 D9F79489 		.ascii	"\331\367\224\211\011D3\337b<\364\255\353\337J+\220\306"
+ 112      094433DF 
+ 112      623CF4AD 
+ 112      EBDF4A2B 
+ 112      90C6
+ 113 0094 EF4C20CB 		.ascii	"\357L \3137\376\271r\202\347\005\323O&\246\007\213\032"
+ 113      37FEB972 
+ 113      82E705D3 
+ 113      4F26A607 
+ 113      8B1A
+ 114 00a6 1B5840D6 		.ascii	"\033X@\326\334\177r\376\"\007X\210\001\304\375\376\340"
+ 114      DC7F72FE 
+ 114      22075888 
+ 114      01C4FDFE 
+ 114      E0
+ 115 00b7 642FD75C 		.ascii	"d/\327\\\306\331\215-\214?\231\230\031W2J1\256b\004"
+ 115      C6D98D2D 
+ 115      8C3F9998 
+ 115      1957324A 
+ 115      31AE6204 
+ 116 00cb 3A8B7135 		.ascii	":\213q5\343\\F\206[\214\315\367\332t \3461C\214\374"
+ 116      E35C4686 
+ 116      5B8CCDF7 
+ 116      DA7420E6 
+ 116      31438CFC 
+ 117 00df BEF8C16B 		.ascii	"\276\370\301kF\220~\026v\006\3065@\245\367\030\031\241"
+ 117      46907E16 
+ 117      7606C635 
+ 117      40A5F718 
+ 117      19A1
+ 118 00f1 0AC04E62 		.ascii	"\012\300Nb\0049\005h\266\234{j^jQbIjJ|p~iQrjL@p\276"
+ 118      04390568 
+ 118      B69C7B6A 
+ 118      5E6A5162 
+ 118      496A4A7C 
+ 119 010f B3694C58 		.ascii	"\263iLXh\260\223^2\003\000*\377e\300"
+ 119      68B0935E 
+ 119      3203002A 
+ 119      FF65C0
+ 120              		.text
+ 121              		.section	.gnu.lto_.symbol_nodes.d23619f,"",%progbits
+ 122 0000 789C6366 		.ascii	"x\234cf``pb\200\002&\206z\006\206\011\347\030\030\352"
+ 122      60607062 
+ 122      80022686 
+ 122      7A068609 
+ 122      E71818EA 
+ 123 0014 EB19A62D 		.ascii	"\353\031\246-\340``b\254gD\3413\3253\241\360\231\353"
+ 123      E0606062 
+ 123      AC6744E1 
+ 123      33D533A1 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 9
+
+
+ 123      F099EB
+ 124 0027 9991F90C 		.ascii	"\231\221\371\014\0000N\020\276"
+ 124      00304E10 
+ 124      BE
+ 125              		.text
+ 126              		.section	.gnu.lto_.refs.d23619f,"",%progbits
+ 127 0000 789C6366 		.ascii	"x\234cf```d\200\002\000\000=\000\005"
+ 127      60606064 
+ 127      80020000 
+ 127      3D0005
+ 128              		.text
+ 129              		.section	.gnu.lto_.decls.d23619f,"",%progbits
+ 130 0000 789C8D92 		.ascii	"x\234\215\222QH\223Q\024\307\357\371\356\347\246_K\354"
+ 130      51489351 
+ 130      14C7EFF9 
+ 130      EEE7A65F 
+ 130      4BEC
+ 131 0012 65CA885A 		.ascii	"e\312\210Z/B B\017\201oE\012JP\210\303zP\220\241\037"
+ 131      2F422042 
+ 131      0F816F45 
+ 131      0A4A5088 
+ 131      C37A5090 
+ 132 0028 E6431A6B 		.ascii	"\346C\032k\026>uS\303\265\244\226\030I\220\011j\245"
+ 132      163E7553 
+ 132      C3B5A496 
+ 132      18499009 
+ 132      6AA5
+ 133 003a A52D9DCE 		.ascii	"\245-\235\316M\323\015\012\0041\010\207\240=\224\370"
+ 133      4DD30D0A 
+ 133      04310887 
+ 133      A03D94F8 
+ 134 004a 9085D00C 		.ascii	"\220\205\320\014\013\003\341\353\334\273\315}\254\011"
+ 134      0B03E1EB 
+ 134      DCBBCD7D 
+ 134      AC09
+ 135 0058 1E38DB3D 		.ascii	"\0368\333=\367;\277\3779\367\336C\011!y@\210\206v\206"
+ 135      F73BBFFF 
+ 135      39F7DE43 
+ 135      09217940 
+ 135      88867686 
+ 136 006c 12D28971 		.ascii	"\022\322\211q\006z9I\232\214>\206\356C\367\243\007\310"
+ 136      067A3949 
+ 136      9A8C3E86 
+ 136      EE43F7A3 
+ 136      07C8
+ 137 007e FF36A6E3 		.ascii	"\3776\246\343F\320\315\350\263\3503\361\357\020\317"
+ 137      46D0CDE8 
+ 137      B3E833F1 
+ 137      EF10CF
+ 138 008d 4935AE69 		.ascii	"I5\256iH\341\302iX_\032\326\037\257\231Z\357\274\216"
+ 138      48E1C269 
+ 138      585F1AD6 
+ 138      1FAF995A 
+ 138      EFBC8E
+ 139 00a0 F3A7E102 		.ascii	"\363\247\341\002\007\340\322\235qK\202\300\350\366\342"
+ 139      07E0D29D 
+ 139      714B82C0 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 10
+
+
+ 139      E8F6E2
+ 140 00af A10D09B2 		.ascii	"\241\015\011\262\025+\017\203]\363=\006\014M\212\314"
+ 140      152B0F83 
+ 140      5DF33D06 
+ 140      0C4D8ACC 
+ 141 00bf C3E5B98E 		.ascii	"\303\345\271\216\216L*\001_\367\367\254E\224\202a\306"
+ 141      8E4C2A01 
+ 141      5FF7F7AC 
+ 141      45948261 
+ 141      C6
+ 142 00d0 988B8542 		.ascii	"\230\213\205B\220\224\270\375|\272\323\210\214Y\021"
+ 142      9094B8FD 
+ 142      7CBAD388 
+ 142      8C5911
+ 143 00df E1FD8527 		.ascii	"\341\375\205'a*B\215s\322\312J\367_\012J\276\213\261"
+ 143      612A428D 
+ 143      73D2CA4A 
+ 143      F75F0A4A 
+ 143      BE8BB1
+ 144 00f2 5616ED62 		.ascii	"V\026\355b4\217@\201\005NZ\010\214B>\246\3010\024\020"
+ 144      348F4081 
+ 144      054E5A08 
+ 144      8C423EA6 
+ 144      C1301410 
+ 145 0106 78051678 		.ascii	"x\005\026x\015\0262\200\005\242\317\"\253G\031\223a"
+ 145      0D163280 
+ 145      05A2CF22 
+ 145      AB471993 
+ 145      61
+ 146 0117 04141802 		.ascii	"\004\024\030\002*2\360\030\274B\274\250\347N\330#\313"
+ 146      2A32F018 
+ 146      BC42BCA8 
+ 146      E74ED823 
+ 146      CB
+ 147 0128 126EF29C 		.ascii	"\022n\362\234*\321\355ommP\312}\204\002\314\323\306"
+ 147      2AD1ED6F 
+ 147      6D6D50CA 
+ 147      7D8402CC 
+ 147      D3C6
+ 148 013a 72642837 		.ascii	"rd(7\303\013\224}\211\262\004\274\220\213\277o@\216"
+ 148      C30B947D 
+ 148      89B204BC 
+ 148      908BBF6F 
+ 148      408E
+ 149 014c 09783FFC 		.ascii	"\011x?\374\374a\242\247\304\321\026{\335\363\222\265"
+ 149      FC61A2A7 
+ 149      C4D1167B 
+ 149      DDF392B5 
+ 150 015c 97F579A3 		.ascii	"\227\365y\243\273\277VLl\236\205px\004\002o\367\312"
+ 150      BBBF564C 
+ 150      6C9E8570 
+ 150      7804026F 
+ 150      F7CA
+ 151 016e 13BE8EDD 		.ascii	"\023\276\216\335\347\030X\021\333\\Z\235\242\264JH\274"
+ 151      E7185811 
+ 151      DB5C5A9D 
+ 151      A2B44A48 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 11
+
+
+ 151      BC
+ 152 017f EF58DC34 		.ascii	"\357X\3344\012\211\276`\277!& \370q\035?\236\340}\202"
+ 152      0A89BE60 
+ 152      BF212620 
+ 152      F8711D3F 
+ 152      9EE07D82 
+ 153 0193 BFDBEEA5 		.ascii	"\277\333\356\245\372v\371I\222\375N\210~\253\342\355"
+ 153      FA76F949 
+ 153      92FD4E88 
+ 153      7EABE2ED 
+ 154 01a3 6E7FD979 		.ascii	"n\177\331y\230M\257\212Z\036\3372\012\360Z_\277\257"
+ 154      984DAF8A 
+ 154      5A1EDF32 
+ 154      0AF05A5F 
+ 154      BFAF
+ 155 01b5 ABA176B6 		.ascii	"\253\241v\266\253iT\0000\251\2536\231\250\346\027\325"
+ 155      AB695400 
+ 155      30A9AB36 
+ 155      99A8E617 
+ 155      D5
+ 156 01c6 BA83436D 		.ascii	"\272\203CmFzS(l\007\276-e\304\272}:\230\350\226\363"
+ 156      467A5328 
+ 156      6C07BE2D 
+ 156      65C4BA7D 
+ 156      3A98E896 
+ 157 01db 533A7E2A 		.ascii	"S:~*\301\007\004\317\036\337\033\310\244.\020\002\023"
+ 157      C10704CF 
+ 157      1EDF1BC8 
+ 157      A42E1002 
+ 157      13
+ 158 01ec 7FDC81C3 		.ascii	"\177\334\201\303\012>i\333\001\236\024\207 \362\321"
+ 158      0A3E69DB 
+ 158      019E1487 
+ 158      20F2D1
+ 159 01fb BD9C151B 		.ascii	"\275\234\025\033\202T\342\335\276C\260\263^\326\316"
+ 159      8254E2DD 
+ 159      BE43B0B3 
+ 159      5ED6CE
+ 160 020a CEC20C5E 		.ascii	"\316\302\014^K09\004\323\220\234\202\310B\353gjr\363"
+ 160      4B303904 
+ 160      D3909C82 
+ 160      C842EB67 
+ 160      6A72F3
+ 161 021d C9C22BCC 		.ascii	"\311\302+\314*\023\271\311+\234\005\2238\000\376oIt"
+ 161      2A13B9C9 
+ 161      2B9C0593 
+ 161      3800FE6F 
+ 161      4974
+ 162 022f F4D35CAF 		.ascii	"\364\323\\\257\004\026\213\322\203\023\274s\034\302"
+ 162      04168BD2 
+ 162      8313BC73 
+ 162      1CC2
+ 163 023d 28C497A1 		.ascii	"(\304\227\241\015M\273\245\305\354\201Ql\273\370\243"
+ 163      0D4DBBA5 
+ 163      C5EC8151 
+ 163      6CBBF8A3 
+ 164 024d 445B756D 		.ascii	"D[um\022\261O \204\342s(.\302\214\346\206Fg\221\241"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 12
+
+
+ 164      12B14F20 
+ 164      84E27328 
+ 164      2EC28CE6 
+ 164      86466791 
+ 165 0262 F462A5B5 		.ascii	"\364b\245\265\230\234(U\033U\207\335\251\326\325\330"
+ 165      989C2855 
+ 165      1B5587DD 
+ 165      A9D6D5D8 
+ 166 0272 9A9A1DB5 		.ascii	"\232\232\035\265ju\271\255\251\370tum\213\263\345\232"
+ 166      6A75B9AD 
+ 166      A9F87475 
+ 166      6D8BB3E5 
+ 166      9A
+ 167 0283 7ABDF00A 		.ascii	"z\275\360\012Q.U\332\316\325\\v48\325c\373$\363\214"
+ 167      512E55DA 
+ 167      CED55C76 
+ 167      3438D563 
+ 167      FB24F38C 
+ 168 0297 C25A7244 		.ascii	"\302ZrDd\332Tg\211\243\341\206z\241\251N\315\022;\025"
+ 168      64DA5467 
+ 168      89A3E186 
+ 168      7AA1A94E 
+ 168      CD123B15 
+ 169 02ab AABD2E67 		.ascii	"\252\275.goUbw\332+\324z\331\241\326\027\375\003h-D"
+ 169      6F556277 
+ 169      DA2BD47A 
+ 169      D9A1D617 
+ 169      FD03682D 
+ 170 02c0 7D       		.ascii	"}"
+ 171              		.text
+ 172              		.section	.gnu.lto_.symtab.d23619f,"",%progbits
+ 173 0000 56555342 		.ascii	"VUSB_Write\000\000\000\000\000\000\000\000\000\000\000"
+ 173      5F577269 
+ 173      74650000 
+ 173      00000000 
+ 173      00000000 
+ 174 0015 00B20000 		.ascii	"\000\262\000\000\000VUSB_SetDriveMode\000\000\000\000"
+ 174      00565553 
+ 174      425F5365 
+ 174      74447269 
+ 174      76654D6F 
+ 175 002f 00000000 		.ascii	"\000\000\000\000\000\000\000\000\264\000\000\000VUS"
+ 175      00000000 
+ 175      B4000000 
+ 175      565553
+ 176 003e 425F5265 		.ascii	"B_Read\000\000\000\000\000\000\000\000\000\000\000\000"
+ 176      61640000 
+ 176      00000000 
+ 176      00000000 
+ 176      0000
+ 177 0050 B7000000 		.ascii	"\267\000\000\000VUSB_ReadDataReg\000\000\000\000\000"
+ 177      56555342 
+ 177      5F526561 
+ 177      64446174 
+ 177      61526567 
+ 178 0069 00000000 		.ascii	"\000\000\000\000\000\000\000\271\000\000\000"
+ 178      000000B9 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 13
+
+
+ 178      000000
+ 179              		.text
+ 180              		.section	.gnu.lto_.opts,"",%progbits
+ 181 0000 272D666E 		.ascii	"'-fno-trapv' '-fno-strict-overflow' '-mcpu=cortex-m"
+ 181      6F2D7472 
+ 181      61707627 
+ 181      20272D66 
+ 181      6E6F2D73 
+ 182 0033 33272027 		.ascii	"3' '-mthumb' '-g' '-Og' '-ffunction-sections' '-flt"
+ 182      2D6D7468 
+ 182      756D6227 
+ 182      20272D67 
+ 182      2720272D 
+ 183 0066 6F272027 		.ascii	"o' '-ffat-lto-objects'\000"
+ 183      2D666661 
+ 183      742D6C74 
+ 183      6F2D6F62 
+ 183      6A656374 
+ 184              		.text
+ 185              		.cfi_sections	.debug_frame
+ 186              		.section	.text.VUSB_Write,"ax",%progbits
+ 187              		.align	2
+ 188              		.global	VUSB_Write
+ 189              		.thumb
+ 190              		.thumb_func
+ 191              		.type	VUSB_Write, %function
+ 192              	VUSB_Write:
+ 193              	.LFB0:
+ 194              		.file 1 "Generated_Source\\PSoC5\\VUSB.c"
+   1:Generated_Source\PSoC5/VUSB.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/VUSB.c **** * File Name: VUSB.c  
+   3:Generated_Source\PSoC5/VUSB.c **** * Version 2.20
+   4:Generated_Source\PSoC5/VUSB.c **** *
+   5:Generated_Source\PSoC5/VUSB.c **** * Description:
+   6:Generated_Source\PSoC5/VUSB.c **** *  This file contains API to enable firmware control of a Pins component.
+   7:Generated_Source\PSoC5/VUSB.c **** *
+   8:Generated_Source\PSoC5/VUSB.c **** * Note:
+   9:Generated_Source\PSoC5/VUSB.c **** *
+  10:Generated_Source\PSoC5/VUSB.c **** ********************************************************************************
+  11:Generated_Source\PSoC5/VUSB.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  12:Generated_Source\PSoC5/VUSB.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:Generated_Source\PSoC5/VUSB.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:Generated_Source\PSoC5/VUSB.c **** * the software package with which this file was provided.
+  15:Generated_Source\PSoC5/VUSB.c **** *******************************************************************************/
+  16:Generated_Source\PSoC5/VUSB.c **** 
+  17:Generated_Source\PSoC5/VUSB.c **** #include "cytypes.h"
+  18:Generated_Source\PSoC5/VUSB.c **** #include "VUSB.h"
+  19:Generated_Source\PSoC5/VUSB.c **** 
+  20:Generated_Source\PSoC5/VUSB.c **** /* APIs are not generated for P15[7:6] on PSoC 5 */
+  21:Generated_Source\PSoC5/VUSB.c **** #if !(CY_PSOC5A &&\
+  22:Generated_Source\PSoC5/VUSB.c **** 	 VUSB__PORT == 15 && ((VUSB__MASK & 0xC0) != 0))
+  23:Generated_Source\PSoC5/VUSB.c **** 
+  24:Generated_Source\PSoC5/VUSB.c **** 
+  25:Generated_Source\PSoC5/VUSB.c **** /*******************************************************************************
+  26:Generated_Source\PSoC5/VUSB.c **** * Function Name: VUSB_Write
+  27:Generated_Source\PSoC5/VUSB.c **** ****************************************************************************//**
+  28:Generated_Source\PSoC5/VUSB.c **** *
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 14
+
+
+  29:Generated_Source\PSoC5/VUSB.c **** * \brief Writes the value to the physical port (data output register), masking
+  30:Generated_Source\PSoC5/VUSB.c **** *  and shifting the bits appropriately. 
+  31:Generated_Source\PSoC5/VUSB.c **** *
+  32:Generated_Source\PSoC5/VUSB.c **** * The data output register controls the signal applied to the physical pin in 
+  33:Generated_Source\PSoC5/VUSB.c **** * conjunction with the drive mode parameter. This function avoids changing 
+  34:Generated_Source\PSoC5/VUSB.c **** * other bits in the port by using the appropriate method (read-modify-write or
+  35:Generated_Source\PSoC5/VUSB.c **** * bit banding).
+  36:Generated_Source\PSoC5/VUSB.c **** *
+  37:Generated_Source\PSoC5/VUSB.c **** * <b>Note</b> This function should not be used on a hardware digital output pin 
+  38:Generated_Source\PSoC5/VUSB.c **** * as it is driven by the hardware signal attached to it.
+  39:Generated_Source\PSoC5/VUSB.c **** *
+  40:Generated_Source\PSoC5/VUSB.c **** * \param value
+  41:Generated_Source\PSoC5/VUSB.c **** *  Value to write to the component instance.
+  42:Generated_Source\PSoC5/VUSB.c **** *
+  43:Generated_Source\PSoC5/VUSB.c **** * \return 
+  44:Generated_Source\PSoC5/VUSB.c **** *  None 
+  45:Generated_Source\PSoC5/VUSB.c **** *
+  46:Generated_Source\PSoC5/VUSB.c **** * \sideeffect
+  47:Generated_Source\PSoC5/VUSB.c **** *  If you use read-modify-write operations that are not atomic; the Interrupt 
+  48:Generated_Source\PSoC5/VUSB.c **** *  Service Routines (ISR) can cause corruption of this function. An ISR that 
+  49:Generated_Source\PSoC5/VUSB.c **** *  interrupts this function and performs writes to the Pins component data 
+  50:Generated_Source\PSoC5/VUSB.c **** *  register can cause corrupted port data. To avoid this issue, you should 
+  51:Generated_Source\PSoC5/VUSB.c **** *  either use the Per-Pin APIs (primary method) or disable interrupts around 
+  52:Generated_Source\PSoC5/VUSB.c **** *  this function.
+  53:Generated_Source\PSoC5/VUSB.c **** *
+  54:Generated_Source\PSoC5/VUSB.c **** * \funcusage
+  55:Generated_Source\PSoC5/VUSB.c **** *  \snippet VUSB_SUT.c usage_VUSB_Write
+  56:Generated_Source\PSoC5/VUSB.c **** *******************************************************************************/
+  57:Generated_Source\PSoC5/VUSB.c **** void VUSB_Write(uint8 value)
+  58:Generated_Source\PSoC5/VUSB.c **** {
+ 195              		.loc 1 58 0
+ 196              		.cfi_startproc
+ 197              		@ args = 0, pretend = 0, frame = 0
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199              		@ link register save eliminated.
+ 200              	.LVL0:
+  59:Generated_Source\PSoC5/VUSB.c ****     uint8 staticBits = (VUSB_DR & (uint8)(~VUSB_MASK));
+ 201              		.loc 1 59 0
+ 202 0000 044A     		ldr	r2, .L2
+ 203 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 204 0004 03F07F03 		and	r3, r3, #127
+ 205              	.LVL1:
+  60:Generated_Source\PSoC5/VUSB.c ****     VUSB_DR = staticBits | ((uint8)(value << VUSB_SHIFT) & VUSB_MASK);
+ 206              		.loc 1 60 0
+ 207 0008 C001     		lsls	r0, r0, #7
+ 208              	.LVL2:
+ 209 000a C0B2     		uxtb	r0, r0
+ 210 000c 0343     		orrs	r3, r3, r0
+ 211              	.LVL3:
+ 212 000e 1370     		strb	r3, [r2]
+ 213 0010 7047     		bx	lr
+ 214              	.L3:
+ 215 0012 00BF     		.align	2
+ 216              	.L2:
+ 217 0014 60510040 		.word	1073762656
+ 218              		.cfi_endproc
+ 219              	.LFE0:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 15
+
+
+ 220              		.size	VUSB_Write, .-VUSB_Write
+ 221              		.section	.text.VUSB_SetDriveMode,"ax",%progbits
+ 222              		.align	2
+ 223              		.global	VUSB_SetDriveMode
+ 224              		.thumb
+ 225              		.thumb_func
+ 226              		.type	VUSB_SetDriveMode, %function
+ 227              	VUSB_SetDriveMode:
+ 228              	.LFB1:
+  61:Generated_Source\PSoC5/VUSB.c **** }
+  62:Generated_Source\PSoC5/VUSB.c **** 
+  63:Generated_Source\PSoC5/VUSB.c **** 
+  64:Generated_Source\PSoC5/VUSB.c **** /*******************************************************************************
+  65:Generated_Source\PSoC5/VUSB.c **** * Function Name: VUSB_SetDriveMode
+  66:Generated_Source\PSoC5/VUSB.c **** ****************************************************************************//**
+  67:Generated_Source\PSoC5/VUSB.c **** *
+  68:Generated_Source\PSoC5/VUSB.c **** * \brief Sets the drive mode for each of the Pins component's pins.
+  69:Generated_Source\PSoC5/VUSB.c **** * 
+  70:Generated_Source\PSoC5/VUSB.c **** * <b>Note</b> This affects all pins in the Pins component instance. Use the
+  71:Generated_Source\PSoC5/VUSB.c **** * Per-Pin APIs if you wish to control individual pin's drive modes.
+  72:Generated_Source\PSoC5/VUSB.c **** *
+  73:Generated_Source\PSoC5/VUSB.c **** * \param mode
+  74:Generated_Source\PSoC5/VUSB.c **** *  Mode for the selected signals. Valid options are documented in 
+  75:Generated_Source\PSoC5/VUSB.c **** *  \ref driveMode.
+  76:Generated_Source\PSoC5/VUSB.c **** *
+  77:Generated_Source\PSoC5/VUSB.c **** * \return
+  78:Generated_Source\PSoC5/VUSB.c **** *  None
+  79:Generated_Source\PSoC5/VUSB.c **** *
+  80:Generated_Source\PSoC5/VUSB.c **** * \sideeffect
+  81:Generated_Source\PSoC5/VUSB.c **** *  If you use read-modify-write operations that are not atomic, the ISR can
+  82:Generated_Source\PSoC5/VUSB.c **** *  cause corruption of this function. An ISR that interrupts this function 
+  83:Generated_Source\PSoC5/VUSB.c **** *  and performs writes to the Pins component Drive Mode registers can cause 
+  84:Generated_Source\PSoC5/VUSB.c **** *  corrupted port data. To avoid this issue, you should either use the Per-Pin
+  85:Generated_Source\PSoC5/VUSB.c **** *  APIs (primary method) or disable interrupts around this function.
+  86:Generated_Source\PSoC5/VUSB.c **** *
+  87:Generated_Source\PSoC5/VUSB.c **** * \funcusage
+  88:Generated_Source\PSoC5/VUSB.c **** *  \snippet VUSB_SUT.c usage_VUSB_SetDriveMode
+  89:Generated_Source\PSoC5/VUSB.c **** *******************************************************************************/
+  90:Generated_Source\PSoC5/VUSB.c **** void VUSB_SetDriveMode(uint8 mode)
+  91:Generated_Source\PSoC5/VUSB.c **** {
+ 229              		.loc 1 91 0
+ 230              		.cfi_startproc
+ 231              		@ args = 0, pretend = 0, frame = 0
+ 232              		@ frame_needed = 0, uses_anonymous_args = 0
+ 233              		@ link register save eliminated.
+ 234              	.LVL4:
+  92:Generated_Source\PSoC5/VUSB.c **** 	CyPins_SetPinDriveMode(VUSB_0, mode);
+ 235              		.loc 1 92 0
+ 236 0000 044A     		ldr	r2, .L5
+ 237 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 238 0004 03F0F103 		and	r3, r3, #241
+ 239 0008 00F00E00 		and	r0, r0, #14
+ 240              	.LVL5:
+ 241 000c 1843     		orrs	r0, r0, r3
+ 242 000e 1070     		strb	r0, [r2]
+ 243 0010 7047     		bx	lr
+ 244              	.L6:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 16
+
+
+ 245 0012 00BF     		.align	2
+ 246              	.L5:
+ 247 0014 37500040 		.word	1073762359
+ 248              		.cfi_endproc
+ 249              	.LFE1:
+ 250              		.size	VUSB_SetDriveMode, .-VUSB_SetDriveMode
+ 251              		.section	.text.VUSB_Read,"ax",%progbits
+ 252              		.align	2
+ 253              		.global	VUSB_Read
+ 254              		.thumb
+ 255              		.thumb_func
+ 256              		.type	VUSB_Read, %function
+ 257              	VUSB_Read:
+ 258              	.LFB2:
+  93:Generated_Source\PSoC5/VUSB.c **** }
+  94:Generated_Source\PSoC5/VUSB.c **** 
+  95:Generated_Source\PSoC5/VUSB.c **** 
+  96:Generated_Source\PSoC5/VUSB.c **** /*******************************************************************************
+  97:Generated_Source\PSoC5/VUSB.c **** * Function Name: VUSB_Read
+  98:Generated_Source\PSoC5/VUSB.c **** ****************************************************************************//**
+  99:Generated_Source\PSoC5/VUSB.c **** *
+ 100:Generated_Source\PSoC5/VUSB.c **** * \brief Reads the associated physical port (pin status register) and masks 
+ 101:Generated_Source\PSoC5/VUSB.c **** *  the required bits according to the width and bit position of the component
+ 102:Generated_Source\PSoC5/VUSB.c **** *  instance. 
+ 103:Generated_Source\PSoC5/VUSB.c **** *
+ 104:Generated_Source\PSoC5/VUSB.c **** * The pin's status register returns the current logic level present on the 
+ 105:Generated_Source\PSoC5/VUSB.c **** * physical pin.
+ 106:Generated_Source\PSoC5/VUSB.c **** *
+ 107:Generated_Source\PSoC5/VUSB.c **** * \return 
+ 108:Generated_Source\PSoC5/VUSB.c **** *  The current value for the pins in the component as a right justified number.
+ 109:Generated_Source\PSoC5/VUSB.c **** *
+ 110:Generated_Source\PSoC5/VUSB.c **** * \funcusage
+ 111:Generated_Source\PSoC5/VUSB.c **** *  \snippet VUSB_SUT.c usage_VUSB_Read  
+ 112:Generated_Source\PSoC5/VUSB.c **** *******************************************************************************/
+ 113:Generated_Source\PSoC5/VUSB.c **** uint8 VUSB_Read(void)
+ 114:Generated_Source\PSoC5/VUSB.c **** {
+ 259              		.loc 1 114 0
+ 260              		.cfi_startproc
+ 261              		@ args = 0, pretend = 0, frame = 0
+ 262              		@ frame_needed = 0, uses_anonymous_args = 0
+ 263              		@ link register save eliminated.
+ 115:Generated_Source\PSoC5/VUSB.c ****     return (VUSB_PS & VUSB_MASK) >> VUSB_SHIFT;
+ 264              		.loc 1 115 0
+ 265 0000 014B     		ldr	r3, .L8
+ 266 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 116:Generated_Source\PSoC5/VUSB.c **** }
+ 267              		.loc 1 116 0
+ 268 0004 C009     		lsrs	r0, r0, #7
+ 269 0006 7047     		bx	lr
+ 270              	.L9:
+ 271              		.align	2
+ 272              	.L8:
+ 273 0008 61510040 		.word	1073762657
+ 274              		.cfi_endproc
+ 275              	.LFE2:
+ 276              		.size	VUSB_Read, .-VUSB_Read
+ 277              		.section	.text.VUSB_ReadDataReg,"ax",%progbits
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 17
+
+
+ 278              		.align	2
+ 279              		.global	VUSB_ReadDataReg
+ 280              		.thumb
+ 281              		.thumb_func
+ 282              		.type	VUSB_ReadDataReg, %function
+ 283              	VUSB_ReadDataReg:
+ 284              	.LFB3:
+ 117:Generated_Source\PSoC5/VUSB.c **** 
+ 118:Generated_Source\PSoC5/VUSB.c **** 
+ 119:Generated_Source\PSoC5/VUSB.c **** /*******************************************************************************
+ 120:Generated_Source\PSoC5/VUSB.c **** * Function Name: VUSB_ReadDataReg
+ 121:Generated_Source\PSoC5/VUSB.c **** ****************************************************************************//**
+ 122:Generated_Source\PSoC5/VUSB.c **** *
+ 123:Generated_Source\PSoC5/VUSB.c **** * \brief Reads the associated physical port's data output register and masks 
+ 124:Generated_Source\PSoC5/VUSB.c **** *  the correct bits according to the width and bit position of the component 
+ 125:Generated_Source\PSoC5/VUSB.c **** *  instance. 
+ 126:Generated_Source\PSoC5/VUSB.c **** *
+ 127:Generated_Source\PSoC5/VUSB.c **** * The data output register controls the signal applied to the physical pin in 
+ 128:Generated_Source\PSoC5/VUSB.c **** * conjunction with the drive mode parameter. This is not the same as the 
+ 129:Generated_Source\PSoC5/VUSB.c **** * preferred VUSB_Read() API because the 
+ 130:Generated_Source\PSoC5/VUSB.c **** * VUSB_ReadDataReg() reads the data register instead of the status 
+ 131:Generated_Source\PSoC5/VUSB.c **** * register. For output pins this is a useful function to determine the value 
+ 132:Generated_Source\PSoC5/VUSB.c **** * just written to the pin.
+ 133:Generated_Source\PSoC5/VUSB.c **** *
+ 134:Generated_Source\PSoC5/VUSB.c **** * \return 
+ 135:Generated_Source\PSoC5/VUSB.c **** *  The current value of the data register masked and shifted into a right 
+ 136:Generated_Source\PSoC5/VUSB.c **** *  justified number for the component instance.
+ 137:Generated_Source\PSoC5/VUSB.c **** *
+ 138:Generated_Source\PSoC5/VUSB.c **** * \funcusage
+ 139:Generated_Source\PSoC5/VUSB.c **** *  \snippet VUSB_SUT.c usage_VUSB_ReadDataReg 
+ 140:Generated_Source\PSoC5/VUSB.c **** *******************************************************************************/
+ 141:Generated_Source\PSoC5/VUSB.c **** uint8 VUSB_ReadDataReg(void)
+ 142:Generated_Source\PSoC5/VUSB.c **** {
+ 285              		.loc 1 142 0
+ 286              		.cfi_startproc
+ 287              		@ args = 0, pretend = 0, frame = 0
+ 288              		@ frame_needed = 0, uses_anonymous_args = 0
+ 289              		@ link register save eliminated.
+ 143:Generated_Source\PSoC5/VUSB.c ****     return (VUSB_DR & VUSB_MASK) >> VUSB_SHIFT;
+ 290              		.loc 1 143 0
+ 291 0000 014B     		ldr	r3, .L11
+ 292 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 144:Generated_Source\PSoC5/VUSB.c **** }
+ 293              		.loc 1 144 0
+ 294 0004 C009     		lsrs	r0, r0, #7
+ 295 0006 7047     		bx	lr
+ 296              	.L12:
+ 297              		.align	2
+ 298              	.L11:
+ 299 0008 60510040 		.word	1073762656
+ 300              		.cfi_endproc
+ 301              	.LFE3:
+ 302              		.size	VUSB_ReadDataReg, .-VUSB_ReadDataReg
+ 303              		.text
+ 304              	.Letext0:
+ 305              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 306              		.section	.debug_info,"",%progbits
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 18
+
+
+ 307              	.Ldebug_info0:
+ 308 0000 1D010000 		.4byte	0x11d
+ 309 0004 0400     		.2byte	0x4
+ 310 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 311 000a 04       		.byte	0x4
+ 312 000b 01       		.uleb128 0x1
+ 313 000c 45000000 		.4byte	.LASF20
+ 314 0010 01       		.byte	0x1
+ 315 0011 18010000 		.4byte	.LASF21
+ 316 0015 72010000 		.4byte	.LASF22
+ 317 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 318 001d 00000000 		.4byte	0
+ 319 0021 00000000 		.4byte	.Ldebug_line0
+ 320 0025 02       		.uleb128 0x2
+ 321 0026 01       		.byte	0x1
+ 322 0027 06       		.byte	0x6
+ 323 0028 17020000 		.4byte	.LASF0
+ 324 002c 02       		.uleb128 0x2
+ 325 002d 01       		.byte	0x1
+ 326 002e 08       		.byte	0x8
+ 327 002f 03010000 		.4byte	.LASF1
+ 328 0033 02       		.uleb128 0x2
+ 329 0034 02       		.byte	0x2
+ 330 0035 05       		.byte	0x5
+ 331 0036 F4010000 		.4byte	.LASF2
+ 332 003a 02       		.uleb128 0x2
+ 333 003b 02       		.byte	0x2
+ 334 003c 07       		.byte	0x7
+ 335 003d F0000000 		.4byte	.LASF3
+ 336 0041 02       		.uleb128 0x2
+ 337 0042 04       		.byte	0x4
+ 338 0043 05       		.byte	0x5
+ 339 0044 04020000 		.4byte	.LASF4
+ 340 0048 02       		.uleb128 0x2
+ 341 0049 04       		.byte	0x4
+ 342 004a 07       		.byte	0x7
+ 343 004b DE000000 		.4byte	.LASF5
+ 344 004f 02       		.uleb128 0x2
+ 345 0050 08       		.byte	0x8
+ 346 0051 05       		.byte	0x5
+ 347 0052 5F010000 		.4byte	.LASF6
+ 348 0056 02       		.uleb128 0x2
+ 349 0057 08       		.byte	0x8
+ 350 0058 07       		.byte	0x7
+ 351 0059 43010000 		.4byte	.LASF7
+ 352 005d 03       		.uleb128 0x3
+ 353 005e 04       		.byte	0x4
+ 354 005f 05       		.byte	0x5
+ 355 0060 696E7400 		.ascii	"int\000"
+ 356 0064 02       		.uleb128 0x2
+ 357 0065 04       		.byte	0x4
+ 358 0066 07       		.byte	0x7
+ 359 0067 36010000 		.4byte	.LASF8
+ 360 006b 04       		.uleb128 0x4
+ 361 006c FE010000 		.4byte	.LASF12
+ 362 0070 02       		.byte	0x2
+ 363 0071 9201     		.2byte	0x192
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 19
+
+
+ 364 0073 2C000000 		.4byte	0x2c
+ 365 0077 02       		.uleb128 0x2
+ 366 0078 04       		.byte	0x4
+ 367 0079 04       		.byte	0x4
+ 368 007a 2E000000 		.4byte	.LASF9
+ 369 007e 02       		.uleb128 0x2
+ 370 007f 08       		.byte	0x8
+ 371 0080 04       		.byte	0x4
+ 372 0081 11010000 		.4byte	.LASF10
+ 373 0085 02       		.uleb128 0x2
+ 374 0086 01       		.byte	0x1
+ 375 0087 08       		.byte	0x8
+ 376 0088 6D010000 		.4byte	.LASF11
+ 377 008c 04       		.uleb128 0x4
+ 378 008d D9000000 		.4byte	.LASF13
+ 379 0091 02       		.byte	0x2
+ 380 0092 3C02     		.2byte	0x23c
+ 381 0094 98000000 		.4byte	0x98
+ 382 0098 05       		.uleb128 0x5
+ 383 0099 6B000000 		.4byte	0x6b
+ 384 009d 06       		.uleb128 0x6
+ 385 009e 00000000 		.4byte	.LASF14
+ 386 00a2 01       		.byte	0x1
+ 387 00a3 39       		.byte	0x39
+ 388 00a4 00000000 		.4byte	.LFB0
+ 389 00a8 18000000 		.4byte	.LFE0-.LFB0
+ 390 00ac 01       		.uleb128 0x1
+ 391 00ad 9C       		.byte	0x9c
+ 392 00ae D1000000 		.4byte	0xd1
+ 393 00b2 07       		.uleb128 0x7
+ 394 00b3 0B000000 		.4byte	.LASF16
+ 395 00b7 01       		.byte	0x1
+ 396 00b8 39       		.byte	0x39
+ 397 00b9 6B000000 		.4byte	0x6b
+ 398 00bd 00000000 		.4byte	.LLST0
+ 399 00c1 08       		.uleb128 0x8
+ 400 00c2 11000000 		.4byte	.LASF23
+ 401 00c6 01       		.byte	0x1
+ 402 00c7 3B       		.byte	0x3b
+ 403 00c8 6B000000 		.4byte	0x6b
+ 404 00cc 21000000 		.4byte	.LLST1
+ 405 00d0 00       		.byte	0
+ 406 00d1 06       		.uleb128 0x6
+ 407 00d2 1C000000 		.4byte	.LASF15
+ 408 00d6 01       		.byte	0x1
+ 409 00d7 5A       		.byte	0x5a
+ 410 00d8 00000000 		.4byte	.LFB1
+ 411 00dc 18000000 		.4byte	.LFE1-.LFB1
+ 412 00e0 01       		.uleb128 0x1
+ 413 00e1 9C       		.byte	0x9c
+ 414 00e2 F6000000 		.4byte	0xf6
+ 415 00e6 07       		.uleb128 0x7
+ 416 00e7 5A010000 		.4byte	.LASF17
+ 417 00eb 01       		.byte	0x1
+ 418 00ec 5A       		.byte	0x5a
+ 419 00ed 6B000000 		.4byte	0x6b
+ 420 00f1 34000000 		.4byte	.LLST2
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 20
+
+
+ 421 00f5 00       		.byte	0
+ 422 00f6 09       		.uleb128 0x9
+ 423 00f7 0D020000 		.4byte	.LASF18
+ 424 00fb 01       		.byte	0x1
+ 425 00fc 71       		.byte	0x71
+ 426 00fd 6B000000 		.4byte	0x6b
+ 427 0101 00000000 		.4byte	.LFB2
+ 428 0105 0C000000 		.4byte	.LFE2-.LFB2
+ 429 0109 01       		.uleb128 0x1
+ 430 010a 9C       		.byte	0x9c
+ 431 010b 09       		.uleb128 0x9
+ 432 010c 34000000 		.4byte	.LASF19
+ 433 0110 01       		.byte	0x1
+ 434 0111 8D       		.byte	0x8d
+ 435 0112 6B000000 		.4byte	0x6b
+ 436 0116 00000000 		.4byte	.LFB3
+ 437 011a 0C000000 		.4byte	.LFE3-.LFB3
+ 438 011e 01       		.uleb128 0x1
+ 439 011f 9C       		.byte	0x9c
+ 440 0120 00       		.byte	0
+ 441              		.section	.debug_abbrev,"",%progbits
+ 442              	.Ldebug_abbrev0:
+ 443 0000 01       		.uleb128 0x1
+ 444 0001 11       		.uleb128 0x11
+ 445 0002 01       		.byte	0x1
+ 446 0003 25       		.uleb128 0x25
+ 447 0004 0E       		.uleb128 0xe
+ 448 0005 13       		.uleb128 0x13
+ 449 0006 0B       		.uleb128 0xb
+ 450 0007 03       		.uleb128 0x3
+ 451 0008 0E       		.uleb128 0xe
+ 452 0009 1B       		.uleb128 0x1b
+ 453 000a 0E       		.uleb128 0xe
+ 454 000b 55       		.uleb128 0x55
+ 455 000c 17       		.uleb128 0x17
+ 456 000d 11       		.uleb128 0x11
+ 457 000e 01       		.uleb128 0x1
+ 458 000f 10       		.uleb128 0x10
+ 459 0010 17       		.uleb128 0x17
+ 460 0011 00       		.byte	0
+ 461 0012 00       		.byte	0
+ 462 0013 02       		.uleb128 0x2
+ 463 0014 24       		.uleb128 0x24
+ 464 0015 00       		.byte	0
+ 465 0016 0B       		.uleb128 0xb
+ 466 0017 0B       		.uleb128 0xb
+ 467 0018 3E       		.uleb128 0x3e
+ 468 0019 0B       		.uleb128 0xb
+ 469 001a 03       		.uleb128 0x3
+ 470 001b 0E       		.uleb128 0xe
+ 471 001c 00       		.byte	0
+ 472 001d 00       		.byte	0
+ 473 001e 03       		.uleb128 0x3
+ 474 001f 24       		.uleb128 0x24
+ 475 0020 00       		.byte	0
+ 476 0021 0B       		.uleb128 0xb
+ 477 0022 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 21
+
+
+ 478 0023 3E       		.uleb128 0x3e
+ 479 0024 0B       		.uleb128 0xb
+ 480 0025 03       		.uleb128 0x3
+ 481 0026 08       		.uleb128 0x8
+ 482 0027 00       		.byte	0
+ 483 0028 00       		.byte	0
+ 484 0029 04       		.uleb128 0x4
+ 485 002a 16       		.uleb128 0x16
+ 486 002b 00       		.byte	0
+ 487 002c 03       		.uleb128 0x3
+ 488 002d 0E       		.uleb128 0xe
+ 489 002e 3A       		.uleb128 0x3a
+ 490 002f 0B       		.uleb128 0xb
+ 491 0030 3B       		.uleb128 0x3b
+ 492 0031 05       		.uleb128 0x5
+ 493 0032 49       		.uleb128 0x49
+ 494 0033 13       		.uleb128 0x13
+ 495 0034 00       		.byte	0
+ 496 0035 00       		.byte	0
+ 497 0036 05       		.uleb128 0x5
+ 498 0037 35       		.uleb128 0x35
+ 499 0038 00       		.byte	0
+ 500 0039 49       		.uleb128 0x49
+ 501 003a 13       		.uleb128 0x13
+ 502 003b 00       		.byte	0
+ 503 003c 00       		.byte	0
+ 504 003d 06       		.uleb128 0x6
+ 505 003e 2E       		.uleb128 0x2e
+ 506 003f 01       		.byte	0x1
+ 507 0040 3F       		.uleb128 0x3f
+ 508 0041 19       		.uleb128 0x19
+ 509 0042 03       		.uleb128 0x3
+ 510 0043 0E       		.uleb128 0xe
+ 511 0044 3A       		.uleb128 0x3a
+ 512 0045 0B       		.uleb128 0xb
+ 513 0046 3B       		.uleb128 0x3b
+ 514 0047 0B       		.uleb128 0xb
+ 515 0048 27       		.uleb128 0x27
+ 516 0049 19       		.uleb128 0x19
+ 517 004a 11       		.uleb128 0x11
+ 518 004b 01       		.uleb128 0x1
+ 519 004c 12       		.uleb128 0x12
+ 520 004d 06       		.uleb128 0x6
+ 521 004e 40       		.uleb128 0x40
+ 522 004f 18       		.uleb128 0x18
+ 523 0050 9742     		.uleb128 0x2117
+ 524 0052 19       		.uleb128 0x19
+ 525 0053 01       		.uleb128 0x1
+ 526 0054 13       		.uleb128 0x13
+ 527 0055 00       		.byte	0
+ 528 0056 00       		.byte	0
+ 529 0057 07       		.uleb128 0x7
+ 530 0058 05       		.uleb128 0x5
+ 531 0059 00       		.byte	0
+ 532 005a 03       		.uleb128 0x3
+ 533 005b 0E       		.uleb128 0xe
+ 534 005c 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 22
+
+
+ 535 005d 0B       		.uleb128 0xb
+ 536 005e 3B       		.uleb128 0x3b
+ 537 005f 0B       		.uleb128 0xb
+ 538 0060 49       		.uleb128 0x49
+ 539 0061 13       		.uleb128 0x13
+ 540 0062 02       		.uleb128 0x2
+ 541 0063 17       		.uleb128 0x17
+ 542 0064 00       		.byte	0
+ 543 0065 00       		.byte	0
+ 544 0066 08       		.uleb128 0x8
+ 545 0067 34       		.uleb128 0x34
+ 546 0068 00       		.byte	0
+ 547 0069 03       		.uleb128 0x3
+ 548 006a 0E       		.uleb128 0xe
+ 549 006b 3A       		.uleb128 0x3a
+ 550 006c 0B       		.uleb128 0xb
+ 551 006d 3B       		.uleb128 0x3b
+ 552 006e 0B       		.uleb128 0xb
+ 553 006f 49       		.uleb128 0x49
+ 554 0070 13       		.uleb128 0x13
+ 555 0071 02       		.uleb128 0x2
+ 556 0072 17       		.uleb128 0x17
+ 557 0073 00       		.byte	0
+ 558 0074 00       		.byte	0
+ 559 0075 09       		.uleb128 0x9
+ 560 0076 2E       		.uleb128 0x2e
+ 561 0077 00       		.byte	0
+ 562 0078 3F       		.uleb128 0x3f
+ 563 0079 19       		.uleb128 0x19
+ 564 007a 03       		.uleb128 0x3
+ 565 007b 0E       		.uleb128 0xe
+ 566 007c 3A       		.uleb128 0x3a
+ 567 007d 0B       		.uleb128 0xb
+ 568 007e 3B       		.uleb128 0x3b
+ 569 007f 0B       		.uleb128 0xb
+ 570 0080 27       		.uleb128 0x27
+ 571 0081 19       		.uleb128 0x19
+ 572 0082 49       		.uleb128 0x49
+ 573 0083 13       		.uleb128 0x13
+ 574 0084 11       		.uleb128 0x11
+ 575 0085 01       		.uleb128 0x1
+ 576 0086 12       		.uleb128 0x12
+ 577 0087 06       		.uleb128 0x6
+ 578 0088 40       		.uleb128 0x40
+ 579 0089 18       		.uleb128 0x18
+ 580 008a 9742     		.uleb128 0x2117
+ 581 008c 19       		.uleb128 0x19
+ 582 008d 00       		.byte	0
+ 583 008e 00       		.byte	0
+ 584 008f 00       		.byte	0
+ 585              		.section	.debug_loc,"",%progbits
+ 586              	.Ldebug_loc0:
+ 587              	.LLST0:
+ 588 0000 00000000 		.4byte	.LVL0
+ 589 0004 0A000000 		.4byte	.LVL2
+ 590 0008 0100     		.2byte	0x1
+ 591 000a 50       		.byte	0x50
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 23
+
+
+ 592 000b 0A000000 		.4byte	.LVL2
+ 593 000f 18000000 		.4byte	.LFE0
+ 594 0013 0400     		.2byte	0x4
+ 595 0015 F3       		.byte	0xf3
+ 596 0016 01       		.uleb128 0x1
+ 597 0017 50       		.byte	0x50
+ 598 0018 9F       		.byte	0x9f
+ 599 0019 00000000 		.4byte	0
+ 600 001d 00000000 		.4byte	0
+ 601              	.LLST1:
+ 602 0021 08000000 		.4byte	.LVL1
+ 603 0025 0E000000 		.4byte	.LVL3
+ 604 0029 0100     		.2byte	0x1
+ 605 002b 53       		.byte	0x53
+ 606 002c 00000000 		.4byte	0
+ 607 0030 00000000 		.4byte	0
+ 608              	.LLST2:
+ 609 0034 00000000 		.4byte	.LVL4
+ 610 0038 0C000000 		.4byte	.LVL5
+ 611 003c 0100     		.2byte	0x1
+ 612 003e 50       		.byte	0x50
+ 613 003f 0C000000 		.4byte	.LVL5
+ 614 0043 18000000 		.4byte	.LFE1
+ 615 0047 0400     		.2byte	0x4
+ 616 0049 F3       		.byte	0xf3
+ 617 004a 01       		.uleb128 0x1
+ 618 004b 50       		.byte	0x50
+ 619 004c 9F       		.byte	0x9f
+ 620 004d 00000000 		.4byte	0
+ 621 0051 00000000 		.4byte	0
+ 622              		.section	.debug_aranges,"",%progbits
+ 623 0000 34000000 		.4byte	0x34
+ 624 0004 0200     		.2byte	0x2
+ 625 0006 00000000 		.4byte	.Ldebug_info0
+ 626 000a 04       		.byte	0x4
+ 627 000b 00       		.byte	0
+ 628 000c 0000     		.2byte	0
+ 629 000e 0000     		.2byte	0
+ 630 0010 00000000 		.4byte	.LFB0
+ 631 0014 18000000 		.4byte	.LFE0-.LFB0
+ 632 0018 00000000 		.4byte	.LFB1
+ 633 001c 18000000 		.4byte	.LFE1-.LFB1
+ 634 0020 00000000 		.4byte	.LFB2
+ 635 0024 0C000000 		.4byte	.LFE2-.LFB2
+ 636 0028 00000000 		.4byte	.LFB3
+ 637 002c 0C000000 		.4byte	.LFE3-.LFB3
+ 638 0030 00000000 		.4byte	0
+ 639 0034 00000000 		.4byte	0
+ 640              		.section	.debug_ranges,"",%progbits
+ 641              	.Ldebug_ranges0:
+ 642 0000 00000000 		.4byte	.LFB0
+ 643 0004 18000000 		.4byte	.LFE0
+ 644 0008 00000000 		.4byte	.LFB1
+ 645 000c 18000000 		.4byte	.LFE1
+ 646 0010 00000000 		.4byte	.LFB2
+ 647 0014 0C000000 		.4byte	.LFE2
+ 648 0018 00000000 		.4byte	.LFB3
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 24
+
+
+ 649 001c 0C000000 		.4byte	.LFE3
+ 650 0020 00000000 		.4byte	0
+ 651 0024 00000000 		.4byte	0
+ 652              		.section	.debug_line,"",%progbits
+ 653              	.Ldebug_line0:
+ 654 0000 8D000000 		.section	.debug_str,"MS",%progbits,1
+ 654      02004100 
+ 654      00000201 
+ 654      FB0E0D00 
+ 654      01010101 
+ 655              	.LASF14:
+ 656 0000 56555342 		.ascii	"VUSB_Write\000"
+ 656      5F577269 
+ 656      746500
+ 657              	.LASF16:
+ 658 000b 76616C75 		.ascii	"value\000"
+ 658      6500
+ 659              	.LASF23:
+ 660 0011 73746174 		.ascii	"staticBits\000"
+ 660      69634269 
+ 660      747300
+ 661              	.LASF15:
+ 662 001c 56555342 		.ascii	"VUSB_SetDriveMode\000"
+ 662      5F536574 
+ 662      44726976 
+ 662      654D6F64 
+ 662      6500
+ 663              	.LASF9:
+ 664 002e 666C6F61 		.ascii	"float\000"
+ 664      7400
+ 665              	.LASF19:
+ 666 0034 56555342 		.ascii	"VUSB_ReadDataReg\000"
+ 666      5F526561 
+ 666      64446174 
+ 666      61526567 
+ 666      00
+ 667              	.LASF20:
+ 668 0045 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 668      4320342E 
+ 668      392E3320 
+ 668      32303135 
+ 668      30333033 
+ 669 0078 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 669      20726576 
+ 669      6973696F 
+ 669      6E203232 
+ 669      31323230 
+ 670 00ab 67202D66 		.ascii	"g -ffunction-sections -flto -ffat-lto-objects\000"
+ 670      66756E63 
+ 670      74696F6E 
+ 670      2D736563 
+ 670      74696F6E 
+ 671              	.LASF13:
+ 672 00d9 72656738 		.ascii	"reg8\000"
+ 672      00
+ 673              	.LASF5:
+ 674 00de 6C6F6E67 		.ascii	"long unsigned int\000"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 25
+
+
+ 674      20756E73 
+ 674      69676E65 
+ 674      6420696E 
+ 674      7400
+ 675              	.LASF3:
+ 676 00f0 73686F72 		.ascii	"short unsigned int\000"
+ 676      7420756E 
+ 676      7369676E 
+ 676      65642069 
+ 676      6E7400
+ 677              	.LASF1:
+ 678 0103 756E7369 		.ascii	"unsigned char\000"
+ 678      676E6564 
+ 678      20636861 
+ 678      7200
+ 679              	.LASF10:
+ 680 0111 646F7562 		.ascii	"double\000"
+ 680      6C6500
+ 681              	.LASF21:
+ 682 0118 47656E65 		.ascii	"Generated_Source\\PSoC5\\VUSB.c\000"
+ 682      72617465 
+ 682      645F536F 
+ 682      75726365 
+ 682      5C50536F 
+ 683              	.LASF8:
+ 684 0136 756E7369 		.ascii	"unsigned int\000"
+ 684      676E6564 
+ 684      20696E74 
+ 684      00
+ 685              	.LASF7:
+ 686 0143 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 686      206C6F6E 
+ 686      6720756E 
+ 686      7369676E 
+ 686      65642069 
+ 687              	.LASF17:
+ 688 015a 6D6F6465 		.ascii	"mode\000"
+ 688      00
+ 689              	.LASF6:
+ 690 015f 6C6F6E67 		.ascii	"long long int\000"
+ 690      206C6F6E 
+ 690      6720696E 
+ 690      7400
+ 691              	.LASF11:
+ 692 016d 63686172 		.ascii	"char\000"
+ 692      00
+ 693              	.LASF22:
+ 694 0172 433A5C55 		.ascii	"C:\\Users\\Luggi\\Desktop\\Aktuelles Projekt Laser_"
+ 694      73657273 
+ 694      5C4C7567 
+ 694      67695C44 
+ 694      65736B74 
+ 695 01a1 73636875 		.ascii	"schutzschaltung\\Aktuelles Projekt Laser_schutzscha"
+ 695      747A7363 
+ 695      68616C74 
+ 695      756E675C 
+ 695      416B7475 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVKvI2j.s 			page 26
+
+
+ 696 01d3 6C74756E 		.ascii	"ltung\\Laserschutzschaltung.cydsn\000"
+ 696      675C4C61 
+ 696      73657273 
+ 696      63687574 
+ 696      7A736368 
+ 697              	.LASF2:
+ 698 01f4 73686F72 		.ascii	"short int\000"
+ 698      7420696E 
+ 698      7400
+ 699              	.LASF12:
+ 700 01fe 75696E74 		.ascii	"uint8\000"
+ 700      3800
+ 701              	.LASF4:
+ 702 0204 6C6F6E67 		.ascii	"long int\000"
+ 702      20696E74 
+ 702      00
+ 703              	.LASF18:
+ 704 020d 56555342 		.ascii	"VUSB_Read\000"
+ 704      5F526561 
+ 704      6400
+ 705              	.LASF0:
+ 706 0217 7369676E 		.ascii	"signed char\000"
+ 706      65642063 
+ 706      68617200 
+ 707              		.comm	__gnu_lto_v1,1,1
+ 708              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

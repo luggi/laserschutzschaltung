@@ -1,0 +1,953 @@
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccLnLyb3.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"ADC_SAR_2_PM.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.ADC_SAR_2_SaveConfig,"ax",%progbits
+  19              		.align	1
+  20              		.global	ADC_SAR_2_SaveConfig
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	ADC_SAR_2_SaveConfig, %function
+  24              	ADC_SAR_2_SaveConfig:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\ADC_SAR_2_PM.c"
+   1:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * File Name: ADC_SAR_2_PM.c
+   3:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Version 2.10
+   4:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+   5:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Description:
+   6:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  This file provides Sleep/WakeUp APIs functionality.
+   7:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+   8:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Note:
+   9:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+  10:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** 
+  17:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** #include "ADC_SAR_2.h"
+  18:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** 
+  19:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** 
+  20:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** /***************************************
+  21:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Local data allocation
+  22:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** ***************************************/
+  23:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** 
+  24:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** static ADC_SAR_2_BACKUP_STRUCT  ADC_SAR_2_backup =
+  25:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** {
+  26:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****     ADC_SAR_2_DISABLED
+  27:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** };
+  28:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** 
+  29:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** 
+  30:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** /*******************************************************************************
+  31:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Function Name: ADC_SAR_2_SaveConfig
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccLnLyb3.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** ********************************************************************************
+  33:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+  34:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Summary:
+  35:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  Saves the current user configuration.
+  36:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+  37:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Parameters:
+  38:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  None.
+  39:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+  40:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Return:
+  41:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  None.
+  42:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+  43:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *******************************************************************************/
+  44:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** void ADC_SAR_2_SaveConfig(void)
+  45:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** {
+  27              		.loc 1 45 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 7047     		bx	lr
+  33              		.cfi_endproc
+  34              	.LFE0:
+  35              		.size	ADC_SAR_2_SaveConfig, .-ADC_SAR_2_SaveConfig
+  36              		.section	.text.ADC_SAR_2_RestoreConfig,"ax",%progbits
+  37              		.align	1
+  38              		.global	ADC_SAR_2_RestoreConfig
+  39              		.thumb
+  40              		.thumb_func
+  41              		.type	ADC_SAR_2_RestoreConfig, %function
+  42              	ADC_SAR_2_RestoreConfig:
+  43              	.LFB1:
+  46:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****     /* All configuration registers are marked as [reset_all_retention] */
+  47:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** }
+  48:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** 
+  49:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** 
+  50:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** /*******************************************************************************
+  51:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Function Name: ADC_SAR_2_RestoreConfig
+  52:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** ********************************************************************************
+  53:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+  54:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Summary:
+  55:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  Restores the current user configuration.
+  56:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+  57:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Parameters:
+  58:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  None.
+  59:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+  60:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Return:
+  61:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  None.
+  62:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+  63:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *******************************************************************************/
+  64:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** void ADC_SAR_2_RestoreConfig(void)
+  65:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** {
+  44              		.loc 1 65 0
+  45              		.cfi_startproc
+  46              		@ args = 0, pretend = 0, frame = 0
+  47              		@ frame_needed = 0, uses_anonymous_args = 0
+  48              		@ link register save eliminated.
+  49 0000 7047     		bx	lr
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccLnLyb3.s 			page 3
+
+
+  50              		.cfi_endproc
+  51              	.LFE1:
+  52              		.size	ADC_SAR_2_RestoreConfig, .-ADC_SAR_2_RestoreConfig
+  53              		.section	.text.ADC_SAR_2_Sleep,"ax",%progbits
+  54              		.align	1
+  55              		.global	ADC_SAR_2_Sleep
+  56              		.thumb
+  57              		.thumb_func
+  58              		.type	ADC_SAR_2_Sleep, %function
+  59              	ADC_SAR_2_Sleep:
+  60              	.LFB2:
+  66:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****     /* All congiguration registers are marked as [reset_all_retention] */
+  67:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** }
+  68:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** 
+  69:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** 
+  70:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** /*******************************************************************************
+  71:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Function Name: ADC_SAR_2_Sleep
+  72:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** ********************************************************************************
+  73:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+  74:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Summary:
+  75:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  This is the preferred routine to prepare the component for sleep.
+  76:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  The ADC_SAR_2_Sleep() routine saves the current component state,
+  77:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  then it calls the ADC_Stop() function.
+  78:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+  79:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Parameters:
+  80:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  None.
+  81:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+  82:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Return:
+  83:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  None.
+  84:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+  85:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Global Variables:
+  86:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  ADC_SAR_2_backup - modified.
+  87:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+  88:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *******************************************************************************/
+  89:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** void ADC_SAR_2_Sleep(void)
+  90:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** {
+  61              		.loc 1 90 0
+  62              		.cfi_startproc
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65              		@ link register save eliminated.
+  91:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****     if((ADC_SAR_2_PWRMGR_SAR_REG  & ADC_SAR_2_ACT_PWR_SAR_EN) != 0u)
+  66              		.loc 1 91 0
+  67 0000 094B     		ldr	r3, .L9
+  68 0002 1878     		ldrb	r0, [r3, #0]	@ zero_extendqisi2
+  69 0004 10F00101 		ands	r1, r0, #1
+  70 0008 0BD0     		beq	.L4
+  92:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****     {
+  93:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****         if((ADC_SAR_2_SAR_CSR0_REG & ADC_SAR_2_SAR_SOF_START_CONV) != 0u)
+  71              		.loc 1 93 0
+  72 000a 084B     		ldr	r3, .L9+4
+  73 000c 0849     		ldr	r1, .L9+8
+  74 000e 1878     		ldrb	r0, [r3, #0]	@ zero_extendqisi2
+  75 0010 10F0010F 		tst	r0, #1
+  76 0014 01D0     		beq	.L5
+  94:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****         {
+  95:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****             ADC_SAR_2_backup.enableState = ADC_SAR_2_ENABLED | ADC_SAR_2_STARTED;
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccLnLyb3.s 			page 4
+
+
+  77              		.loc 1 95 0
+  78 0016 0322     		movs	r2, #3
+  79 0018 00E0     		b	.L7
+  80              	.L5:
+  96:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****         }
+  97:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****         else
+  98:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****         {
+  99:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****             ADC_SAR_2_backup.enableState = ADC_SAR_2_ENABLED;
+  81              		.loc 1 99 0
+  82 001a 0122     		movs	r2, #1
+  83              	.L7:
+  84 001c 0A70     		strb	r2, [r1, #0]
+ 100:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****         }
+ 101:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****         ADC_SAR_2_Stop();
+ 102:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****     }
+ 103:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****     else
+ 104:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****     {
+ 105:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****         ADC_SAR_2_backup.enableState = ADC_SAR_2_DISABLED;
+ 106:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****     }
+ 107:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** }
+  85              		.loc 1 107 0
+ 101:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****         ADC_SAR_2_Stop();
+  86              		.loc 1 101 0
+  87 001e FFF7FEBF 		b	ADC_SAR_2_Stop
+  88              	.LVL0:
+  89              	.L4:
+ 105:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****         ADC_SAR_2_backup.enableState = ADC_SAR_2_DISABLED;
+  90              		.loc 1 105 0
+  91 0022 034A     		ldr	r2, .L9+8
+  92 0024 1170     		strb	r1, [r2, #0]
+  93 0026 7047     		bx	lr
+  94              	.L10:
+  95              		.align	2
+  96              	.L9:
+  97 0028 AB430040 		.word	1073759147
+  98 002c 00590040 		.word	1073764608
+  99 0030 00000000 		.word	.LANCHOR0
+ 100              		.cfi_endproc
+ 101              	.LFE2:
+ 102              		.size	ADC_SAR_2_Sleep, .-ADC_SAR_2_Sleep
+ 103              		.section	.text.ADC_SAR_2_Wakeup,"ax",%progbits
+ 104              		.align	1
+ 105              		.global	ADC_SAR_2_Wakeup
+ 106              		.thumb
+ 107              		.thumb_func
+ 108              		.type	ADC_SAR_2_Wakeup, %function
+ 109              	ADC_SAR_2_Wakeup:
+ 110              	.LFB3:
+ 108:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** 
+ 109:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** 
+ 110:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** /*******************************************************************************
+ 111:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Function Name: ADC_SAR_2_Wakeup
+ 112:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** ********************************************************************************
+ 113:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+ 114:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Summary:
+ 115:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  This is the preferred routine to restore the component to the state when
+ 116:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  ADC_SAR_2_Sleep() was called. If the component was enabled before the
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccLnLyb3.s 			page 5
+
+
+ 117:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  ADC_SAR_2_Sleep() function was called, the
+ 118:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  ADC_SAR_2_Wakeup() function also re-enables the component.
+ 119:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+ 120:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Parameters:
+ 121:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  None.
+ 122:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+ 123:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Return:
+ 124:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  None.
+ 125:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+ 126:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** * Global Variables:
+ 127:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *  ADC_SAR_2_backup - used to check enabable state.
+ 128:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *
+ 129:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** *******************************************************************************/
+ 130:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** void ADC_SAR_2_Wakeup(void)
+ 131:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** {
+ 111              		.loc 1 131 0
+ 112              		.cfi_startproc
+ 113              		@ args = 0, pretend = 0, frame = 0
+ 114              		@ frame_needed = 0, uses_anonymous_args = 0
+ 115 0000 10B5     		push	{r4, lr}
+ 116              	.LCFI0:
+ 117              		.cfi_def_cfa_offset 8
+ 118              		.cfi_offset 4, -8
+ 119              		.cfi_offset 14, -4
+ 132:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****     if(ADC_SAR_2_backup.enableState != ADC_SAR_2_DISABLED)
+ 120              		.loc 1 132 0
+ 121 0002 074C     		ldr	r4, .L18
+ 122 0004 2378     		ldrb	r3, [r4, #0]	@ zero_extendqisi2
+ 123 0006 53B1     		cbz	r3, .L11
+ 133:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****     {
+ 134:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****         ADC_SAR_2_Enable();
+ 124              		.loc 1 134 0
+ 125 0008 FFF7FEFF 		bl	ADC_SAR_2_Enable
+ 126              	.LVL1:
+ 135:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****         #if(ADC_SAR_2_DEFAULT_CONV_MODE != ADC_SAR_2__HARDWARE_TRIGGER)
+ 136:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****             if((ADC_SAR_2_backup.enableState & ADC_SAR_2_STARTED) != 0u)
+ 127              		.loc 1 136 0
+ 128 000c 2078     		ldrb	r0, [r4, #0]	@ zero_extendqisi2
+ 129 000e 00F00201 		and	r1, r0, #2
+ 130 0012 CAB2     		uxtb	r2, r1
+ 131 0014 1AB1     		cbz	r2, .L11
+ 137:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****             {
+ 138:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****                 ADC_SAR_2_StartConvert();
+ 139:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****             }
+ 140:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****         #endif /* End ADC_SAR_2_DEFAULT_CONV_MODE != ADC_SAR_2__HARDWARE_TRIGGER */
+ 141:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****     }
+ 142:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c **** }
+ 132              		.loc 1 142 0
+ 133 0016 BDE81040 		pop	{r4, lr}
+ 138:.\Generated_Source\PSoC5/ADC_SAR_2_PM.c ****                 ADC_SAR_2_StartConvert();
+ 134              		.loc 1 138 0
+ 135 001a FFF7FEBF 		b	ADC_SAR_2_StartConvert
+ 136              	.LVL2:
+ 137              	.L11:
+ 138 001e 10BD     		pop	{r4, pc}
+ 139              	.L19:
+ 140              		.align	2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccLnLyb3.s 			page 6
+
+
+ 141              	.L18:
+ 142 0020 00000000 		.word	.LANCHOR0
+ 143              		.cfi_endproc
+ 144              	.LFE3:
+ 145              		.size	ADC_SAR_2_Wakeup, .-ADC_SAR_2_Wakeup
+ 146              		.bss
+ 147              		.set	.LANCHOR0,. + 0
+ 148              		.type	ADC_SAR_2_backup, %object
+ 149              		.size	ADC_SAR_2_backup, 1
+ 150              	ADC_SAR_2_backup:
+ 151 0000 00       		.space	1
+ 152              		.text
+ 153              	.Letext0:
+ 154              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 155              		.file 3 ".\\Generated_Source\\PSoC5\\ADC_SAR_2.h"
+ 156              		.section	.debug_info,"",%progbits
+ 157              	.Ldebug_info0:
+ 158 0000 69010000 		.4byte	0x169
+ 159 0004 0200     		.2byte	0x2
+ 160 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 161 000a 04       		.byte	0x4
+ 162 000b 01       		.uleb128 0x1
+ 163 000c 9D010000 		.4byte	.LASF22
+ 164 0010 01       		.byte	0x1
+ 165 0011 3E000000 		.4byte	.LASF23
+ 166 0015 E2000000 		.4byte	.LASF24
+ 167 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 168 001d 00000000 		.4byte	0
+ 169 0021 00000000 		.4byte	0
+ 170 0025 00000000 		.4byte	.Ldebug_line0
+ 171 0029 02       		.uleb128 0x2
+ 172 002a 01       		.byte	0x1
+ 173 002b 06       		.byte	0x6
+ 174 002c FB010000 		.4byte	.LASF0
+ 175 0030 02       		.uleb128 0x2
+ 176 0031 01       		.byte	0x1
+ 177 0032 08       		.byte	0x8
+ 178 0033 95000000 		.4byte	.LASF1
+ 179 0037 02       		.uleb128 0x2
+ 180 0038 02       		.byte	0x2
+ 181 0039 05       		.byte	0x5
+ 182 003a 7D010000 		.4byte	.LASF2
+ 183 003e 02       		.uleb128 0x2
+ 184 003f 02       		.byte	0x2
+ 185 0040 07       		.byte	0x7
+ 186 0041 CF000000 		.4byte	.LASF3
+ 187 0045 02       		.uleb128 0x2
+ 188 0046 04       		.byte	0x4
+ 189 0047 05       		.byte	0x5
+ 190 0048 E6010000 		.4byte	.LASF4
+ 191 004c 02       		.uleb128 0x2
+ 192 004d 04       		.byte	0x4
+ 193 004e 07       		.byte	0x7
+ 194 004f BD000000 		.4byte	.LASF5
+ 195 0053 02       		.uleb128 0x2
+ 196 0054 08       		.byte	0x8
+ 197 0055 05       		.byte	0x5
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccLnLyb3.s 			page 7
+
+
+ 198 0056 6A010000 		.4byte	.LASF6
+ 199 005a 02       		.uleb128 0x2
+ 200 005b 08       		.byte	0x8
+ 201 005c 07       		.byte	0x7
+ 202 005d 53010000 		.4byte	.LASF7
+ 203 0061 03       		.uleb128 0x3
+ 204 0062 04       		.byte	0x4
+ 205 0063 05       		.byte	0x5
+ 206 0064 696E7400 		.ascii	"int\000"
+ 207 0068 02       		.uleb128 0x2
+ 208 0069 04       		.byte	0x4
+ 209 006a 07       		.byte	0x7
+ 210 006b 46010000 		.4byte	.LASF8
+ 211 006f 04       		.uleb128 0x4
+ 212 0070 97010000 		.4byte	.LASF12
+ 213 0074 02       		.byte	0x2
+ 214 0075 5B       		.byte	0x5b
+ 215 0076 30000000 		.4byte	0x30
+ 216 007a 02       		.uleb128 0x2
+ 217 007b 04       		.byte	0x4
+ 218 007c 04       		.byte	0x4
+ 219 007d 8F000000 		.4byte	.LASF9
+ 220 0081 02       		.uleb128 0x2
+ 221 0082 08       		.byte	0x8
+ 222 0083 04       		.byte	0x4
+ 223 0084 3F010000 		.4byte	.LASF10
+ 224 0088 02       		.uleb128 0x2
+ 225 0089 01       		.byte	0x1
+ 226 008a 08       		.byte	0x8
+ 227 008b 78010000 		.4byte	.LASF11
+ 228 008f 04       		.uleb128 0x4
+ 229 0090 B8000000 		.4byte	.LASF13
+ 230 0094 02       		.byte	0x2
+ 231 0095 F0       		.byte	0xf0
+ 232 0096 9A000000 		.4byte	0x9a
+ 233 009a 05       		.uleb128 0x5
+ 234 009b 6F000000 		.4byte	0x6f
+ 235 009f 06       		.uleb128 0x6
+ 236 00a0 01       		.byte	0x1
+ 237 00a1 03       		.byte	0x3
+ 238 00a2 2A       		.byte	0x2a
+ 239 00a3 B6000000 		.4byte	0xb6
+ 240 00a7 07       		.uleb128 0x7
+ 241 00a8 EF010000 		.4byte	.LASF25
+ 242 00ac 03       		.byte	0x3
+ 243 00ad 2C       		.byte	0x2c
+ 244 00ae 6F000000 		.4byte	0x6f
+ 245 00b2 02       		.byte	0x2
+ 246 00b3 23       		.byte	0x23
+ 247 00b4 00       		.uleb128 0
+ 248 00b5 00       		.byte	0
+ 249 00b6 04       		.uleb128 0x4
+ 250 00b7 77000000 		.4byte	.LASF14
+ 251 00bb 03       		.byte	0x3
+ 252 00bc 2D       		.byte	0x2d
+ 253 00bd 9F000000 		.4byte	0x9f
+ 254 00c1 08       		.uleb128 0x8
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccLnLyb3.s 			page 8
+
+
+ 255 00c2 01       		.byte	0x1
+ 256 00c3 A3000000 		.4byte	.LASF15
+ 257 00c7 01       		.byte	0x1
+ 258 00c8 2C       		.byte	0x2c
+ 259 00c9 01       		.byte	0x1
+ 260 00ca 00000000 		.4byte	.LFB0
+ 261 00ce 02000000 		.4byte	.LFE0
+ 262 00d2 02       		.byte	0x2
+ 263 00d3 7D       		.byte	0x7d
+ 264 00d4 00       		.sleb128 0
+ 265 00d5 01       		.byte	0x1
+ 266 00d6 08       		.uleb128 0x8
+ 267 00d7 01       		.byte	0x1
+ 268 00d8 00000000 		.4byte	.LASF16
+ 269 00dc 01       		.byte	0x1
+ 270 00dd 40       		.byte	0x40
+ 271 00de 01       		.byte	0x1
+ 272 00df 00000000 		.4byte	.LFB1
+ 273 00e3 02000000 		.4byte	.LFE1
+ 274 00e7 02       		.byte	0x2
+ 275 00e8 7D       		.byte	0x7d
+ 276 00e9 00       		.sleb128 0
+ 277 00ea 01       		.byte	0x1
+ 278 00eb 09       		.uleb128 0x9
+ 279 00ec 01       		.byte	0x1
+ 280 00ed 87010000 		.4byte	.LASF17
+ 281 00f1 01       		.byte	0x1
+ 282 00f2 59       		.byte	0x59
+ 283 00f3 01       		.byte	0x1
+ 284 00f4 00000000 		.4byte	.LFB2
+ 285 00f8 34000000 		.4byte	.LFE2
+ 286 00fc 02       		.byte	0x2
+ 287 00fd 7D       		.byte	0x7d
+ 288 00fe 00       		.sleb128 0
+ 289 00ff 01       		.byte	0x1
+ 290 0100 0F010000 		.4byte	0x10f
+ 291 0104 0A       		.uleb128 0xa
+ 292 0105 22000000 		.4byte	.LVL0
+ 293 0109 01       		.byte	0x1
+ 294 010a 4E010000 		.4byte	0x14e
+ 295 010e 00       		.byte	0
+ 296 010f 0B       		.uleb128 0xb
+ 297 0110 01       		.byte	0x1
+ 298 0111 2E010000 		.4byte	.LASF18
+ 299 0115 01       		.byte	0x1
+ 300 0116 82       		.byte	0x82
+ 301 0117 01       		.byte	0x1
+ 302 0118 00000000 		.4byte	.LFB3
+ 303 011c 24000000 		.4byte	.LFE3
+ 304 0120 00000000 		.4byte	.LLST0
+ 305 0124 01       		.byte	0x1
+ 306 0125 3D010000 		.4byte	0x13d
+ 307 0129 0C       		.uleb128 0xc
+ 308 012a 0C000000 		.4byte	.LVL1
+ 309 012e 58010000 		.4byte	0x158
+ 310 0132 0A       		.uleb128 0xa
+ 311 0133 1E000000 		.4byte	.LVL2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccLnLyb3.s 			page 9
+
+
+ 312 0137 01       		.byte	0x1
+ 313 0138 62010000 		.4byte	0x162
+ 314 013c 00       		.byte	0
+ 315 013d 0D       		.uleb128 0xd
+ 316 013e 66000000 		.4byte	.LASF26
+ 317 0142 01       		.byte	0x1
+ 318 0143 18       		.byte	0x18
+ 319 0144 B6000000 		.4byte	0xb6
+ 320 0148 05       		.byte	0x5
+ 321 0149 03       		.byte	0x3
+ 322 014a 00000000 		.4byte	ADC_SAR_2_backup
+ 323 014e 0E       		.uleb128 0xe
+ 324 014f 01       		.byte	0x1
+ 325 0150 18000000 		.4byte	.LASF19
+ 326 0154 03       		.byte	0x3
+ 327 0155 35       		.byte	0x35
+ 328 0156 01       		.byte	0x1
+ 329 0157 01       		.byte	0x1
+ 330 0158 0E       		.uleb128 0xe
+ 331 0159 01       		.byte	0x1
+ 332 015a 07020000 		.4byte	.LASF20
+ 333 015e 03       		.byte	0x3
+ 334 015f 44       		.byte	0x44
+ 335 0160 01       		.byte	0x1
+ 336 0161 01       		.byte	0x1
+ 337 0162 0E       		.uleb128 0xe
+ 338 0163 01       		.byte	0x1
+ 339 0164 27000000 		.4byte	.LASF21
+ 340 0168 03       		.byte	0x3
+ 341 0169 D1       		.byte	0xd1
+ 342 016a 01       		.byte	0x1
+ 343 016b 01       		.byte	0x1
+ 344 016c 00       		.byte	0
+ 345              		.section	.debug_abbrev,"",%progbits
+ 346              	.Ldebug_abbrev0:
+ 347 0000 01       		.uleb128 0x1
+ 348 0001 11       		.uleb128 0x11
+ 349 0002 01       		.byte	0x1
+ 350 0003 25       		.uleb128 0x25
+ 351 0004 0E       		.uleb128 0xe
+ 352 0005 13       		.uleb128 0x13
+ 353 0006 0B       		.uleb128 0xb
+ 354 0007 03       		.uleb128 0x3
+ 355 0008 0E       		.uleb128 0xe
+ 356 0009 1B       		.uleb128 0x1b
+ 357 000a 0E       		.uleb128 0xe
+ 358 000b 55       		.uleb128 0x55
+ 359 000c 06       		.uleb128 0x6
+ 360 000d 11       		.uleb128 0x11
+ 361 000e 01       		.uleb128 0x1
+ 362 000f 52       		.uleb128 0x52
+ 363 0010 01       		.uleb128 0x1
+ 364 0011 10       		.uleb128 0x10
+ 365 0012 06       		.uleb128 0x6
+ 366 0013 00       		.byte	0
+ 367 0014 00       		.byte	0
+ 368 0015 02       		.uleb128 0x2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccLnLyb3.s 			page 10
+
+
+ 369 0016 24       		.uleb128 0x24
+ 370 0017 00       		.byte	0
+ 371 0018 0B       		.uleb128 0xb
+ 372 0019 0B       		.uleb128 0xb
+ 373 001a 3E       		.uleb128 0x3e
+ 374 001b 0B       		.uleb128 0xb
+ 375 001c 03       		.uleb128 0x3
+ 376 001d 0E       		.uleb128 0xe
+ 377 001e 00       		.byte	0
+ 378 001f 00       		.byte	0
+ 379 0020 03       		.uleb128 0x3
+ 380 0021 24       		.uleb128 0x24
+ 381 0022 00       		.byte	0
+ 382 0023 0B       		.uleb128 0xb
+ 383 0024 0B       		.uleb128 0xb
+ 384 0025 3E       		.uleb128 0x3e
+ 385 0026 0B       		.uleb128 0xb
+ 386 0027 03       		.uleb128 0x3
+ 387 0028 08       		.uleb128 0x8
+ 388 0029 00       		.byte	0
+ 389 002a 00       		.byte	0
+ 390 002b 04       		.uleb128 0x4
+ 391 002c 16       		.uleb128 0x16
+ 392 002d 00       		.byte	0
+ 393 002e 03       		.uleb128 0x3
+ 394 002f 0E       		.uleb128 0xe
+ 395 0030 3A       		.uleb128 0x3a
+ 396 0031 0B       		.uleb128 0xb
+ 397 0032 3B       		.uleb128 0x3b
+ 398 0033 0B       		.uleb128 0xb
+ 399 0034 49       		.uleb128 0x49
+ 400 0035 13       		.uleb128 0x13
+ 401 0036 00       		.byte	0
+ 402 0037 00       		.byte	0
+ 403 0038 05       		.uleb128 0x5
+ 404 0039 35       		.uleb128 0x35
+ 405 003a 00       		.byte	0
+ 406 003b 49       		.uleb128 0x49
+ 407 003c 13       		.uleb128 0x13
+ 408 003d 00       		.byte	0
+ 409 003e 00       		.byte	0
+ 410 003f 06       		.uleb128 0x6
+ 411 0040 13       		.uleb128 0x13
+ 412 0041 01       		.byte	0x1
+ 413 0042 0B       		.uleb128 0xb
+ 414 0043 0B       		.uleb128 0xb
+ 415 0044 3A       		.uleb128 0x3a
+ 416 0045 0B       		.uleb128 0xb
+ 417 0046 3B       		.uleb128 0x3b
+ 418 0047 0B       		.uleb128 0xb
+ 419 0048 01       		.uleb128 0x1
+ 420 0049 13       		.uleb128 0x13
+ 421 004a 00       		.byte	0
+ 422 004b 00       		.byte	0
+ 423 004c 07       		.uleb128 0x7
+ 424 004d 0D       		.uleb128 0xd
+ 425 004e 00       		.byte	0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccLnLyb3.s 			page 11
+
+
+ 426 004f 03       		.uleb128 0x3
+ 427 0050 0E       		.uleb128 0xe
+ 428 0051 3A       		.uleb128 0x3a
+ 429 0052 0B       		.uleb128 0xb
+ 430 0053 3B       		.uleb128 0x3b
+ 431 0054 0B       		.uleb128 0xb
+ 432 0055 49       		.uleb128 0x49
+ 433 0056 13       		.uleb128 0x13
+ 434 0057 38       		.uleb128 0x38
+ 435 0058 0A       		.uleb128 0xa
+ 436 0059 00       		.byte	0
+ 437 005a 00       		.byte	0
+ 438 005b 08       		.uleb128 0x8
+ 439 005c 2E       		.uleb128 0x2e
+ 440 005d 00       		.byte	0
+ 441 005e 3F       		.uleb128 0x3f
+ 442 005f 0C       		.uleb128 0xc
+ 443 0060 03       		.uleb128 0x3
+ 444 0061 0E       		.uleb128 0xe
+ 445 0062 3A       		.uleb128 0x3a
+ 446 0063 0B       		.uleb128 0xb
+ 447 0064 3B       		.uleb128 0x3b
+ 448 0065 0B       		.uleb128 0xb
+ 449 0066 27       		.uleb128 0x27
+ 450 0067 0C       		.uleb128 0xc
+ 451 0068 11       		.uleb128 0x11
+ 452 0069 01       		.uleb128 0x1
+ 453 006a 12       		.uleb128 0x12
+ 454 006b 01       		.uleb128 0x1
+ 455 006c 40       		.uleb128 0x40
+ 456 006d 0A       		.uleb128 0xa
+ 457 006e 9742     		.uleb128 0x2117
+ 458 0070 0C       		.uleb128 0xc
+ 459 0071 00       		.byte	0
+ 460 0072 00       		.byte	0
+ 461 0073 09       		.uleb128 0x9
+ 462 0074 2E       		.uleb128 0x2e
+ 463 0075 01       		.byte	0x1
+ 464 0076 3F       		.uleb128 0x3f
+ 465 0077 0C       		.uleb128 0xc
+ 466 0078 03       		.uleb128 0x3
+ 467 0079 0E       		.uleb128 0xe
+ 468 007a 3A       		.uleb128 0x3a
+ 469 007b 0B       		.uleb128 0xb
+ 470 007c 3B       		.uleb128 0x3b
+ 471 007d 0B       		.uleb128 0xb
+ 472 007e 27       		.uleb128 0x27
+ 473 007f 0C       		.uleb128 0xc
+ 474 0080 11       		.uleb128 0x11
+ 475 0081 01       		.uleb128 0x1
+ 476 0082 12       		.uleb128 0x12
+ 477 0083 01       		.uleb128 0x1
+ 478 0084 40       		.uleb128 0x40
+ 479 0085 0A       		.uleb128 0xa
+ 480 0086 9742     		.uleb128 0x2117
+ 481 0088 0C       		.uleb128 0xc
+ 482 0089 01       		.uleb128 0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccLnLyb3.s 			page 12
+
+
+ 483 008a 13       		.uleb128 0x13
+ 484 008b 00       		.byte	0
+ 485 008c 00       		.byte	0
+ 486 008d 0A       		.uleb128 0xa
+ 487 008e 898201   		.uleb128 0x4109
+ 488 0091 00       		.byte	0
+ 489 0092 11       		.uleb128 0x11
+ 490 0093 01       		.uleb128 0x1
+ 491 0094 9542     		.uleb128 0x2115
+ 492 0096 0C       		.uleb128 0xc
+ 493 0097 31       		.uleb128 0x31
+ 494 0098 13       		.uleb128 0x13
+ 495 0099 00       		.byte	0
+ 496 009a 00       		.byte	0
+ 497 009b 0B       		.uleb128 0xb
+ 498 009c 2E       		.uleb128 0x2e
+ 499 009d 01       		.byte	0x1
+ 500 009e 3F       		.uleb128 0x3f
+ 501 009f 0C       		.uleb128 0xc
+ 502 00a0 03       		.uleb128 0x3
+ 503 00a1 0E       		.uleb128 0xe
+ 504 00a2 3A       		.uleb128 0x3a
+ 505 00a3 0B       		.uleb128 0xb
+ 506 00a4 3B       		.uleb128 0x3b
+ 507 00a5 0B       		.uleb128 0xb
+ 508 00a6 27       		.uleb128 0x27
+ 509 00a7 0C       		.uleb128 0xc
+ 510 00a8 11       		.uleb128 0x11
+ 511 00a9 01       		.uleb128 0x1
+ 512 00aa 12       		.uleb128 0x12
+ 513 00ab 01       		.uleb128 0x1
+ 514 00ac 40       		.uleb128 0x40
+ 515 00ad 06       		.uleb128 0x6
+ 516 00ae 9742     		.uleb128 0x2117
+ 517 00b0 0C       		.uleb128 0xc
+ 518 00b1 01       		.uleb128 0x1
+ 519 00b2 13       		.uleb128 0x13
+ 520 00b3 00       		.byte	0
+ 521 00b4 00       		.byte	0
+ 522 00b5 0C       		.uleb128 0xc
+ 523 00b6 898201   		.uleb128 0x4109
+ 524 00b9 00       		.byte	0
+ 525 00ba 11       		.uleb128 0x11
+ 526 00bb 01       		.uleb128 0x1
+ 527 00bc 31       		.uleb128 0x31
+ 528 00bd 13       		.uleb128 0x13
+ 529 00be 00       		.byte	0
+ 530 00bf 00       		.byte	0
+ 531 00c0 0D       		.uleb128 0xd
+ 532 00c1 34       		.uleb128 0x34
+ 533 00c2 00       		.byte	0
+ 534 00c3 03       		.uleb128 0x3
+ 535 00c4 0E       		.uleb128 0xe
+ 536 00c5 3A       		.uleb128 0x3a
+ 537 00c6 0B       		.uleb128 0xb
+ 538 00c7 3B       		.uleb128 0x3b
+ 539 00c8 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccLnLyb3.s 			page 13
+
+
+ 540 00c9 49       		.uleb128 0x49
+ 541 00ca 13       		.uleb128 0x13
+ 542 00cb 02       		.uleb128 0x2
+ 543 00cc 0A       		.uleb128 0xa
+ 544 00cd 00       		.byte	0
+ 545 00ce 00       		.byte	0
+ 546 00cf 0E       		.uleb128 0xe
+ 547 00d0 2E       		.uleb128 0x2e
+ 548 00d1 00       		.byte	0
+ 549 00d2 3F       		.uleb128 0x3f
+ 550 00d3 0C       		.uleb128 0xc
+ 551 00d4 03       		.uleb128 0x3
+ 552 00d5 0E       		.uleb128 0xe
+ 553 00d6 3A       		.uleb128 0x3a
+ 554 00d7 0B       		.uleb128 0xb
+ 555 00d8 3B       		.uleb128 0x3b
+ 556 00d9 0B       		.uleb128 0xb
+ 557 00da 27       		.uleb128 0x27
+ 558 00db 0C       		.uleb128 0xc
+ 559 00dc 3C       		.uleb128 0x3c
+ 560 00dd 0C       		.uleb128 0xc
+ 561 00de 00       		.byte	0
+ 562 00df 00       		.byte	0
+ 563 00e0 00       		.byte	0
+ 564              		.section	.debug_loc,"",%progbits
+ 565              	.Ldebug_loc0:
+ 566              	.LLST0:
+ 567 0000 00000000 		.4byte	.LFB3
+ 568 0004 02000000 		.4byte	.LCFI0
+ 569 0008 0200     		.2byte	0x2
+ 570 000a 7D       		.byte	0x7d
+ 571 000b 00       		.sleb128 0
+ 572 000c 02000000 		.4byte	.LCFI0
+ 573 0010 24000000 		.4byte	.LFE3
+ 574 0014 0200     		.2byte	0x2
+ 575 0016 7D       		.byte	0x7d
+ 576 0017 08       		.sleb128 8
+ 577 0018 00000000 		.4byte	0
+ 578 001c 00000000 		.4byte	0
+ 579              		.section	.debug_aranges,"",%progbits
+ 580 0000 34000000 		.4byte	0x34
+ 581 0004 0200     		.2byte	0x2
+ 582 0006 00000000 		.4byte	.Ldebug_info0
+ 583 000a 04       		.byte	0x4
+ 584 000b 00       		.byte	0
+ 585 000c 0000     		.2byte	0
+ 586 000e 0000     		.2byte	0
+ 587 0010 00000000 		.4byte	.LFB0
+ 588 0014 02000000 		.4byte	.LFE0-.LFB0
+ 589 0018 00000000 		.4byte	.LFB1
+ 590 001c 02000000 		.4byte	.LFE1-.LFB1
+ 591 0020 00000000 		.4byte	.LFB2
+ 592 0024 34000000 		.4byte	.LFE2-.LFB2
+ 593 0028 00000000 		.4byte	.LFB3
+ 594 002c 24000000 		.4byte	.LFE3-.LFB3
+ 595 0030 00000000 		.4byte	0
+ 596 0034 00000000 		.4byte	0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccLnLyb3.s 			page 14
+
+
+ 597              		.section	.debug_ranges,"",%progbits
+ 598              	.Ldebug_ranges0:
+ 599 0000 00000000 		.4byte	.LFB0
+ 600 0004 02000000 		.4byte	.LFE0
+ 601 0008 00000000 		.4byte	.LFB1
+ 602 000c 02000000 		.4byte	.LFE1
+ 603 0010 00000000 		.4byte	.LFB2
+ 604 0014 34000000 		.4byte	.LFE2
+ 605 0018 00000000 		.4byte	.LFB3
+ 606 001c 24000000 		.4byte	.LFE3
+ 607 0020 00000000 		.4byte	0
+ 608 0024 00000000 		.4byte	0
+ 609              		.section	.debug_line,"",%progbits
+ 610              	.Ldebug_line0:
+ 611 0000 AD000000 		.section	.debug_str,"MS",%progbits,1
+ 611      02005A00 
+ 611      00000201 
+ 611      FB0E0D00 
+ 611      01010101 
+ 612              	.LASF16:
+ 613 0000 4144435F 		.ascii	"ADC_SAR_2_RestoreConfig\000"
+ 613      5341525F 
+ 613      325F5265 
+ 613      73746F72 
+ 613      65436F6E 
+ 614              	.LASF19:
+ 615 0018 4144435F 		.ascii	"ADC_SAR_2_Stop\000"
+ 615      5341525F 
+ 615      325F5374 
+ 615      6F7000
+ 616              	.LASF21:
+ 617 0027 4144435F 		.ascii	"ADC_SAR_2_StartConvert\000"
+ 617      5341525F 
+ 617      325F5374 
+ 617      61727443 
+ 617      6F6E7665 
+ 618              	.LASF23:
+ 619 003e 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\ADC_SAR_2_PM.c\000"
+ 619      6E657261 
+ 619      7465645F 
+ 619      536F7572 
+ 619      63655C50 
+ 620              	.LASF26:
+ 621 0066 4144435F 		.ascii	"ADC_SAR_2_backup\000"
+ 621      5341525F 
+ 621      325F6261 
+ 621      636B7570 
+ 621      00
+ 622              	.LASF14:
+ 623 0077 4144435F 		.ascii	"ADC_SAR_2_BACKUP_STRUCT\000"
+ 623      5341525F 
+ 623      325F4241 
+ 623      434B5550 
+ 623      5F535452 
+ 624              	.LASF9:
+ 625 008f 666C6F61 		.ascii	"float\000"
+ 625      7400
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccLnLyb3.s 			page 15
+
+
+ 626              	.LASF1:
+ 627 0095 756E7369 		.ascii	"unsigned char\000"
+ 627      676E6564 
+ 627      20636861 
+ 627      7200
+ 628              	.LASF15:
+ 629 00a3 4144435F 		.ascii	"ADC_SAR_2_SaveConfig\000"
+ 629      5341525F 
+ 629      325F5361 
+ 629      7665436F 
+ 629      6E666967 
+ 630              	.LASF13:
+ 631 00b8 72656738 		.ascii	"reg8\000"
+ 631      00
+ 632              	.LASF5:
+ 633 00bd 6C6F6E67 		.ascii	"long unsigned int\000"
+ 633      20756E73 
+ 633      69676E65 
+ 633      6420696E 
+ 633      7400
+ 634              	.LASF3:
+ 635 00cf 73686F72 		.ascii	"short unsigned int\000"
+ 635      7420756E 
+ 635      7369676E 
+ 635      65642069 
+ 635      6E7400
+ 636              	.LASF24:
+ 637 00e2 433A5C55 		.ascii	"C:\\Users\\Luke\\Desktop\\Laserschutzschaltung.cyds"
+ 637      73657273 
+ 637      5C4C756B 
+ 637      655C4465 
+ 637      736B746F 
+ 638 0111 6E5C4C61 		.ascii	"n\\Laserschutzschaltung.cydsn\000"
+ 638      73657273 
+ 638      63687574 
+ 638      7A736368 
+ 638      616C7475 
+ 639              	.LASF18:
+ 640 012e 4144435F 		.ascii	"ADC_SAR_2_Wakeup\000"
+ 640      5341525F 
+ 640      325F5761 
+ 640      6B657570 
+ 640      00
+ 641              	.LASF10:
+ 642 013f 646F7562 		.ascii	"double\000"
+ 642      6C6500
+ 643              	.LASF8:
+ 644 0146 756E7369 		.ascii	"unsigned int\000"
+ 644      676E6564 
+ 644      20696E74 
+ 644      00
+ 645              	.LASF7:
+ 646 0153 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 646      206C6F6E 
+ 646      6720756E 
+ 646      7369676E 
+ 646      65642069 
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccLnLyb3.s 			page 16
+
+
+ 647              	.LASF6:
+ 648 016a 6C6F6E67 		.ascii	"long long int\000"
+ 648      206C6F6E 
+ 648      6720696E 
+ 648      7400
+ 649              	.LASF11:
+ 650 0178 63686172 		.ascii	"char\000"
+ 650      00
+ 651              	.LASF2:
+ 652 017d 73686F72 		.ascii	"short int\000"
+ 652      7420696E 
+ 652      7400
+ 653              	.LASF17:
+ 654 0187 4144435F 		.ascii	"ADC_SAR_2_Sleep\000"
+ 654      5341525F 
+ 654      325F536C 
+ 654      65657000 
+ 655              	.LASF12:
+ 656 0197 75696E74 		.ascii	"uint8\000"
+ 656      3800
+ 657              	.LASF22:
+ 658 019d 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 658      4320342E 
+ 658      372E3320 
+ 658      32303133 
+ 658      30333132 
+ 659 01d0 616E6368 		.ascii	"anch revision 196615]\000"
+ 659      20726576 
+ 659      6973696F 
+ 659      6E203139 
+ 659      36363135 
+ 660              	.LASF4:
+ 661 01e6 6C6F6E67 		.ascii	"long int\000"
+ 661      20696E74 
+ 661      00
+ 662              	.LASF25:
+ 663 01ef 656E6162 		.ascii	"enableState\000"
+ 663      6C655374 
+ 663      61746500 
+ 664              	.LASF0:
+ 665 01fb 7369676E 		.ascii	"signed char\000"
+ 665      65642063 
+ 665      68617200 
+ 666              	.LASF20:
+ 667 0207 4144435F 		.ascii	"ADC_SAR_2_Enable\000"
+ 667      5341525F 
+ 667      325F456E 
+ 667      61626C65 
+ 667      00
+ 668              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

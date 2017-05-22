@@ -1,0 +1,1447 @@
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"USBUART_1_descr.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.comm	USBUART_1_idSerialNumberStringDescriptor,34,1
+  19              		.global	USBUART_1_TABLE
+  20              		.global	USBUART_1_DEVICE0_TABLE
+  21              		.global	USBUART_1_DEVICE0_CONFIGURATION0_TABLE
+  22              		.global	USBUART_1_DEVICE0_CONFIGURATION0_INTERFACE_CLASS
+  23              		.global	USBUART_1_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE
+  24              		.global	USBUART_1_SN_STRING_DESCRIPTOR
+  25              		.global	USBUART_1_STRING_DESCRIPTORS
+  26              		.global	USBUART_1_DEVICE0_CONFIGURATION0_DESCR
+  27              		.global	USBUART_1_DEVICE0_DESCR
+  28              		.section	.rodata
+  29              		.align	2
+  30              		.type	USBUART_1_TABLE, %object
+  31              		.size	USBUART_1_TABLE, 8
+  32              	USBUART_1_TABLE:
+  33 0000 01       		.byte	1
+  34 0001 000000   		.space	3
+  35 0004 00000000 		.word	USBUART_1_DEVICE0_TABLE
+  36              		.type	USBUART_1_DEVICE0_TABLE, %object
+  37              		.size	USBUART_1_DEVICE0_TABLE, 24
+  38              	USBUART_1_DEVICE0_TABLE:
+  39 0008 01       		.byte	1
+  40 0009 000000   		.space	3
+  41 000c 00000000 		.word	USBUART_1_DEVICE0_DESCR
+  42 0010 00       		.byte	0
+  43 0011 000000   		.space	3
+  44 0014 00000000 		.word	0
+  45 0018 01       		.byte	1
+  46 0019 000000   		.space	3
+  47 001c 00000000 		.word	USBUART_1_DEVICE0_CONFIGURATION0_TABLE
+  48              		.type	USBUART_1_DEVICE0_CONFIGURATION0_TABLE, %object
+  49              		.size	USBUART_1_DEVICE0_CONFIGURATION0_TABLE, 40
+  50              	USBUART_1_DEVICE0_CONFIGURATION0_TABLE:
+  51 0020 01       		.byte	1
+  52 0021 000000   		.space	3
+  53 0024 00000000 		.word	USBUART_1_DEVICE0_CONFIGURATION0_DESCR
+  54 0028 06       		.byte	6
+  55 0029 000000   		.space	3
+  56 002c 00000000 		.word	USBUART_1_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE
+  57 0030 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 2
+
+
+  58 0031 000000   		.space	3
+  59 0034 00000000 		.word	0
+  60 0038 00       		.byte	0
+  61 0039 000000   		.space	3
+  62 003c 00000000 		.word	0
+  63 0040 00       		.byte	0
+  64 0041 000000   		.space	3
+  65 0044 00000000 		.word	USBUART_1_DEVICE0_CONFIGURATION0_INTERFACE_CLASS
+  66              		.type	USBUART_1_DEVICE0_CONFIGURATION0_INTERFACE_CLASS, %object
+  67              		.size	USBUART_1_DEVICE0_CONFIGURATION0_INTERFACE_CLASS, 2
+  68              	USBUART_1_DEVICE0_CONFIGURATION0_INTERFACE_CLASS:
+  69 0048 02       		.byte	2
+  70 0049 02       		.byte	2
+  71              		.type	USBUART_1_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE, %object
+  72              		.size	USBUART_1_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE, 48
+  73              	USBUART_1_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE:
+  74 004a 00       		.byte	0
+  75 004b 00       		.byte	0
+  76 004c 81       		.byte	-127
+  77 004d 03       		.byte	3
+  78 004e 4000     		.short	64
+  79 0050 02       		.byte	2
+  80 0051 00       		.space	1
+  81 0052 00       		.byte	0
+  82 0053 00       		.byte	0
+  83 0054 02       		.byte	2
+  84 0055 02       		.byte	2
+  85 0056 4000     		.short	64
+  86 0058 02       		.byte	2
+  87 0059 00       		.space	1
+  88 005a 00       		.byte	0
+  89 005b 00       		.byte	0
+  90 005c 83       		.byte	-125
+  91 005d 02       		.byte	2
+  92 005e 4000     		.short	64
+  93 0060 02       		.byte	2
+  94 0061 00       		.space	1
+  95 0062 01       		.byte	1
+  96 0063 00       		.byte	0
+  97 0064 84       		.byte	-124
+  98 0065 03       		.byte	3
+  99 0066 0800     		.short	8
+ 100 0068 02       		.byte	2
+ 101 0069 00       		.space	1
+ 102 006a 01       		.byte	1
+ 103 006b 00       		.byte	0
+ 104 006c 05       		.byte	5
+ 105 006d 02       		.byte	2
+ 106 006e 4000     		.short	64
+ 107 0070 02       		.byte	2
+ 108 0071 00       		.space	1
+ 109 0072 01       		.byte	1
+ 110 0073 00       		.byte	0
+ 111 0074 86       		.byte	-122
+ 112 0075 02       		.byte	2
+ 113 0076 4000     		.short	64
+ 114 0078 02       		.byte	2
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 3
+
+
+ 115 0079 00       		.space	1
+ 116              		.type	USBUART_1_SN_STRING_DESCRIPTOR, %object
+ 117              		.size	USBUART_1_SN_STRING_DESCRIPTOR, 2
+ 118              	USBUART_1_SN_STRING_DESCRIPTOR:
+ 119 007a 02       		.byte	2
+ 120 007b 03       		.byte	3
+ 121              		.type	USBUART_1_STRING_DESCRIPTORS, %object
+ 122              		.size	USBUART_1_STRING_DESCRIPTORS, 403
+ 123              	USBUART_1_STRING_DESCRIPTORS:
+ 124 007c 04       		.byte	4
+ 125 007d 03       		.byte	3
+ 126 007e 09       		.byte	9
+ 127 007f 04       		.byte	4
+ 128 0080 2C       		.byte	44
+ 129 0081 03       		.byte	3
+ 130 0082 43       		.byte	67
+ 131 0083 00       		.byte	0
+ 132 0084 79       		.byte	121
+ 133 0085 00       		.byte	0
+ 134 0086 70       		.byte	112
+ 135 0087 00       		.byte	0
+ 136 0088 72       		.byte	114
+ 137 0089 00       		.byte	0
+ 138 008a 65       		.byte	101
+ 139 008b 00       		.byte	0
+ 140 008c 73       		.byte	115
+ 141 008d 00       		.byte	0
+ 142 008e 73       		.byte	115
+ 143 008f 00       		.byte	0
+ 144 0090 20       		.byte	32
+ 145 0091 00       		.byte	0
+ 146 0092 53       		.byte	83
+ 147 0093 00       		.byte	0
+ 148 0094 65       		.byte	101
+ 149 0095 00       		.byte	0
+ 150 0096 6D       		.byte	109
+ 151 0097 00       		.byte	0
+ 152 0098 69       		.byte	105
+ 153 0099 00       		.byte	0
+ 154 009a 63       		.byte	99
+ 155 009b 00       		.byte	0
+ 156 009c 6F       		.byte	111
+ 157 009d 00       		.byte	0
+ 158 009e 6E       		.byte	110
+ 159 009f 00       		.byte	0
+ 160 00a0 64       		.byte	100
+ 161 00a1 00       		.byte	0
+ 162 00a2 75       		.byte	117
+ 163 00a3 00       		.byte	0
+ 164 00a4 63       		.byte	99
+ 165 00a5 00       		.byte	0
+ 166 00a6 74       		.byte	116
+ 167 00a7 00       		.byte	0
+ 168 00a8 6F       		.byte	111
+ 169 00a9 00       		.byte	0
+ 170 00aa 72       		.byte	114
+ 171 00ab 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 4
+
+
+ 172 00ac 10       		.byte	16
+ 173 00ad 03       		.byte	3
+ 174 00ae 55       		.byte	85
+ 175 00af 00       		.byte	0
+ 176 00b0 53       		.byte	83
+ 177 00b1 00       		.byte	0
+ 178 00b2 42       		.byte	66
+ 179 00b3 00       		.byte	0
+ 180 00b4 55       		.byte	85
+ 181 00b5 00       		.byte	0
+ 182 00b6 41       		.byte	65
+ 183 00b7 00       		.byte	0
+ 184 00b8 52       		.byte	82
+ 185 00b9 00       		.byte	0
+ 186 00ba 54       		.byte	84
+ 187 00bb 00       		.byte	0
+ 188 00bc 38       		.byte	56
+ 189 00bd 03       		.byte	3
+ 190 00be 43       		.byte	67
+ 191 00bf 00       		.byte	0
+ 192 00c0 44       		.byte	68
+ 193 00c1 00       		.byte	0
+ 194 00c2 43       		.byte	67
+ 195 00c3 00       		.byte	0
+ 196 00c4 20       		.byte	32
+ 197 00c5 00       		.byte	0
+ 198 00c6 43       		.byte	67
+ 199 00c7 00       		.byte	0
+ 200 00c8 6F       		.byte	111
+ 201 00c9 00       		.byte	0
+ 202 00ca 6D       		.byte	109
+ 203 00cb 00       		.byte	0
+ 204 00cc 6D       		.byte	109
+ 205 00cd 00       		.byte	0
+ 206 00ce 75       		.byte	117
+ 207 00cf 00       		.byte	0
+ 208 00d0 6E       		.byte	110
+ 209 00d1 00       		.byte	0
+ 210 00d2 69       		.byte	105
+ 211 00d3 00       		.byte	0
+ 212 00d4 63       		.byte	99
+ 213 00d5 00       		.byte	0
+ 214 00d6 61       		.byte	97
+ 215 00d7 00       		.byte	0
+ 216 00d8 74       		.byte	116
+ 217 00d9 00       		.byte	0
+ 218 00da 69       		.byte	105
+ 219 00db 00       		.byte	0
+ 220 00dc 6F       		.byte	111
+ 221 00dd 00       		.byte	0
+ 222 00de 6E       		.byte	110
+ 223 00df 00       		.byte	0
+ 224 00e0 20       		.byte	32
+ 225 00e1 00       		.byte	0
+ 226 00e2 49       		.byte	73
+ 227 00e3 00       		.byte	0
+ 228 00e4 6E       		.byte	110
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 5
+
+
+ 229 00e5 00       		.byte	0
+ 230 00e6 74       		.byte	116
+ 231 00e7 00       		.byte	0
+ 232 00e8 65       		.byte	101
+ 233 00e9 00       		.byte	0
+ 234 00ea 72       		.byte	114
+ 235 00eb 00       		.byte	0
+ 236 00ec 66       		.byte	102
+ 237 00ed 00       		.byte	0
+ 238 00ee 61       		.byte	97
+ 239 00ef 00       		.byte	0
+ 240 00f0 63       		.byte	99
+ 241 00f1 00       		.byte	0
+ 242 00f2 65       		.byte	101
+ 243 00f3 00       		.byte	0
+ 244 00f4 26       		.byte	38
+ 245 00f5 03       		.byte	3
+ 246 00f6 43       		.byte	67
+ 247 00f7 00       		.byte	0
+ 248 00f8 44       		.byte	68
+ 249 00f9 00       		.byte	0
+ 250 00fa 43       		.byte	67
+ 251 00fb 00       		.byte	0
+ 252 00fc 20       		.byte	32
+ 253 00fd 00       		.byte	0
+ 254 00fe 44       		.byte	68
+ 255 00ff 00       		.byte	0
+ 256 0100 61       		.byte	97
+ 257 0101 00       		.byte	0
+ 258 0102 74       		.byte	116
+ 259 0103 00       		.byte	0
+ 260 0104 61       		.byte	97
+ 261 0105 00       		.byte	0
+ 262 0106 20       		.byte	32
+ 263 0107 00       		.byte	0
+ 264 0108 49       		.byte	73
+ 265 0109 00       		.byte	0
+ 266 010a 6E       		.byte	110
+ 267 010b 00       		.byte	0
+ 268 010c 74       		.byte	116
+ 269 010d 00       		.byte	0
+ 270 010e 65       		.byte	101
+ 271 010f 00       		.byte	0
+ 272 0110 72       		.byte	114
+ 273 0111 00       		.byte	0
+ 274 0112 66       		.byte	102
+ 275 0113 00       		.byte	0
+ 276 0114 61       		.byte	97
+ 277 0115 00       		.byte	0
+ 278 0116 63       		.byte	99
+ 279 0117 00       		.byte	0
+ 280 0118 65       		.byte	101
+ 281 0119 00       		.byte	0
+ 282 011a 3C       		.byte	60
+ 283 011b 03       		.byte	3
+ 284 011c 43       		.byte	67
+ 285 011d 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 6
+
+
+ 286 011e 44       		.byte	68
+ 287 011f 00       		.byte	0
+ 288 0120 43       		.byte	67
+ 289 0121 00       		.byte	0
+ 290 0122 20       		.byte	32
+ 291 0123 00       		.byte	0
+ 292 0124 43       		.byte	67
+ 293 0125 00       		.byte	0
+ 294 0126 6F       		.byte	111
+ 295 0127 00       		.byte	0
+ 296 0128 6D       		.byte	109
+ 297 0129 00       		.byte	0
+ 298 012a 6D       		.byte	109
+ 299 012b 00       		.byte	0
+ 300 012c 75       		.byte	117
+ 301 012d 00       		.byte	0
+ 302 012e 6E       		.byte	110
+ 303 012f 00       		.byte	0
+ 304 0130 69       		.byte	105
+ 305 0131 00       		.byte	0
+ 306 0132 63       		.byte	99
+ 307 0133 00       		.byte	0
+ 308 0134 61       		.byte	97
+ 309 0135 00       		.byte	0
+ 310 0136 74       		.byte	116
+ 311 0137 00       		.byte	0
+ 312 0138 69       		.byte	105
+ 313 0139 00       		.byte	0
+ 314 013a 6F       		.byte	111
+ 315 013b 00       		.byte	0
+ 316 013c 6E       		.byte	110
+ 317 013d 00       		.byte	0
+ 318 013e 20       		.byte	32
+ 319 013f 00       		.byte	0
+ 320 0140 49       		.byte	73
+ 321 0141 00       		.byte	0
+ 322 0142 6E       		.byte	110
+ 323 0143 00       		.byte	0
+ 324 0144 74       		.byte	116
+ 325 0145 00       		.byte	0
+ 326 0146 65       		.byte	101
+ 327 0147 00       		.byte	0
+ 328 0148 72       		.byte	114
+ 329 0149 00       		.byte	0
+ 330 014a 66       		.byte	102
+ 331 014b 00       		.byte	0
+ 332 014c 61       		.byte	97
+ 333 014d 00       		.byte	0
+ 334 014e 63       		.byte	99
+ 335 014f 00       		.byte	0
+ 336 0150 65       		.byte	101
+ 337 0151 00       		.byte	0
+ 338 0152 20       		.byte	32
+ 339 0153 00       		.byte	0
+ 340 0154 30       		.byte	48
+ 341 0155 00       		.byte	0
+ 342 0156 2A       		.byte	42
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 7
+
+
+ 343 0157 03       		.byte	3
+ 344 0158 43       		.byte	67
+ 345 0159 00       		.byte	0
+ 346 015a 44       		.byte	68
+ 347 015b 00       		.byte	0
+ 348 015c 43       		.byte	67
+ 349 015d 00       		.byte	0
+ 350 015e 20       		.byte	32
+ 351 015f 00       		.byte	0
+ 352 0160 44       		.byte	68
+ 353 0161 00       		.byte	0
+ 354 0162 61       		.byte	97
+ 355 0163 00       		.byte	0
+ 356 0164 74       		.byte	116
+ 357 0165 00       		.byte	0
+ 358 0166 61       		.byte	97
+ 359 0167 00       		.byte	0
+ 360 0168 20       		.byte	32
+ 361 0169 00       		.byte	0
+ 362 016a 49       		.byte	73
+ 363 016b 00       		.byte	0
+ 364 016c 6E       		.byte	110
+ 365 016d 00       		.byte	0
+ 366 016e 74       		.byte	116
+ 367 016f 00       		.byte	0
+ 368 0170 65       		.byte	101
+ 369 0171 00       		.byte	0
+ 370 0172 72       		.byte	114
+ 371 0173 00       		.byte	0
+ 372 0174 66       		.byte	102
+ 373 0175 00       		.byte	0
+ 374 0176 61       		.byte	97
+ 375 0177 00       		.byte	0
+ 376 0178 63       		.byte	99
+ 377 0179 00       		.byte	0
+ 378 017a 65       		.byte	101
+ 379 017b 00       		.byte	0
+ 380 017c 20       		.byte	32
+ 381 017d 00       		.byte	0
+ 382 017e 30       		.byte	48
+ 383 017f 00       		.byte	0
+ 384 0180 3C       		.byte	60
+ 385 0181 03       		.byte	3
+ 386 0182 43       		.byte	67
+ 387 0183 00       		.byte	0
+ 388 0184 44       		.byte	68
+ 389 0185 00       		.byte	0
+ 390 0186 43       		.byte	67
+ 391 0187 00       		.byte	0
+ 392 0188 20       		.byte	32
+ 393 0189 00       		.byte	0
+ 394 018a 43       		.byte	67
+ 395 018b 00       		.byte	0
+ 396 018c 6F       		.byte	111
+ 397 018d 00       		.byte	0
+ 398 018e 6D       		.byte	109
+ 399 018f 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 8
+
+
+ 400 0190 6D       		.byte	109
+ 401 0191 00       		.byte	0
+ 402 0192 75       		.byte	117
+ 403 0193 00       		.byte	0
+ 404 0194 6E       		.byte	110
+ 405 0195 00       		.byte	0
+ 406 0196 69       		.byte	105
+ 407 0197 00       		.byte	0
+ 408 0198 63       		.byte	99
+ 409 0199 00       		.byte	0
+ 410 019a 61       		.byte	97
+ 411 019b 00       		.byte	0
+ 412 019c 74       		.byte	116
+ 413 019d 00       		.byte	0
+ 414 019e 69       		.byte	105
+ 415 019f 00       		.byte	0
+ 416 01a0 6F       		.byte	111
+ 417 01a1 00       		.byte	0
+ 418 01a2 6E       		.byte	110
+ 419 01a3 00       		.byte	0
+ 420 01a4 20       		.byte	32
+ 421 01a5 00       		.byte	0
+ 422 01a6 49       		.byte	73
+ 423 01a7 00       		.byte	0
+ 424 01a8 6E       		.byte	110
+ 425 01a9 00       		.byte	0
+ 426 01aa 74       		.byte	116
+ 427 01ab 00       		.byte	0
+ 428 01ac 65       		.byte	101
+ 429 01ad 00       		.byte	0
+ 430 01ae 72       		.byte	114
+ 431 01af 00       		.byte	0
+ 432 01b0 66       		.byte	102
+ 433 01b1 00       		.byte	0
+ 434 01b2 61       		.byte	97
+ 435 01b3 00       		.byte	0
+ 436 01b4 63       		.byte	99
+ 437 01b5 00       		.byte	0
+ 438 01b6 65       		.byte	101
+ 439 01b7 00       		.byte	0
+ 440 01b8 20       		.byte	32
+ 441 01b9 00       		.byte	0
+ 442 01ba 31       		.byte	49
+ 443 01bb 00       		.byte	0
+ 444 01bc 2A       		.byte	42
+ 445 01bd 03       		.byte	3
+ 446 01be 43       		.byte	67
+ 447 01bf 00       		.byte	0
+ 448 01c0 44       		.byte	68
+ 449 01c1 00       		.byte	0
+ 450 01c2 43       		.byte	67
+ 451 01c3 00       		.byte	0
+ 452 01c4 20       		.byte	32
+ 453 01c5 00       		.byte	0
+ 454 01c6 44       		.byte	68
+ 455 01c7 00       		.byte	0
+ 456 01c8 61       		.byte	97
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 9
+
+
+ 457 01c9 00       		.byte	0
+ 458 01ca 74       		.byte	116
+ 459 01cb 00       		.byte	0
+ 460 01cc 61       		.byte	97
+ 461 01cd 00       		.byte	0
+ 462 01ce 20       		.byte	32
+ 463 01cf 00       		.byte	0
+ 464 01d0 49       		.byte	73
+ 465 01d1 00       		.byte	0
+ 466 01d2 6E       		.byte	110
+ 467 01d3 00       		.byte	0
+ 468 01d4 74       		.byte	116
+ 469 01d5 00       		.byte	0
+ 470 01d6 65       		.byte	101
+ 471 01d7 00       		.byte	0
+ 472 01d8 72       		.byte	114
+ 473 01d9 00       		.byte	0
+ 474 01da 66       		.byte	102
+ 475 01db 00       		.byte	0
+ 476 01dc 61       		.byte	97
+ 477 01dd 00       		.byte	0
+ 478 01de 63       		.byte	99
+ 479 01df 00       		.byte	0
+ 480 01e0 65       		.byte	101
+ 481 01e1 00       		.byte	0
+ 482 01e2 20       		.byte	32
+ 483 01e3 00       		.byte	0
+ 484 01e4 31       		.byte	49
+ 485 01e5 00       		.byte	0
+ 486 01e6 14       		.byte	20
+ 487 01e7 03       		.byte	3
+ 488 01e8 55       		.byte	85
+ 489 01e9 00       		.byte	0
+ 490 01ea 53       		.byte	83
+ 491 01eb 00       		.byte	0
+ 492 01ec 42       		.byte	66
+ 493 01ed 00       		.byte	0
+ 494 01ee 55       		.byte	85
+ 495 01ef 00       		.byte	0
+ 496 01f0 41       		.byte	65
+ 497 01f1 00       		.byte	0
+ 498 01f2 52       		.byte	82
+ 499 01f3 00       		.byte	0
+ 500 01f4 54       		.byte	84
+ 501 01f5 00       		.byte	0
+ 502 01f6 20       		.byte	32
+ 503 01f7 00       		.byte	0
+ 504 01f8 31       		.byte	49
+ 505 01f9 00       		.byte	0
+ 506 01fa 14       		.byte	20
+ 507 01fb 03       		.byte	3
+ 508 01fc 55       		.byte	85
+ 509 01fd 00       		.byte	0
+ 510 01fe 53       		.byte	83
+ 511 01ff 00       		.byte	0
+ 512 0200 42       		.byte	66
+ 513 0201 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 10
+
+
+ 514 0202 55       		.byte	85
+ 515 0203 00       		.byte	0
+ 516 0204 41       		.byte	65
+ 517 0205 00       		.byte	0
+ 518 0206 52       		.byte	82
+ 519 0207 00       		.byte	0
+ 520 0208 54       		.byte	84
+ 521 0209 00       		.byte	0
+ 522 020a 20       		.byte	32
+ 523 020b 00       		.byte	0
+ 524 020c 32       		.byte	50
+ 525 020d 00       		.byte	0
+ 526 020e 00       		.byte	0
+ 527              		.type	USBUART_1_DEVICE0_CONFIGURATION0_DESCR, %object
+ 528              		.size	USBUART_1_DEVICE0_CONFIGURATION0_DESCR, 97
+ 529              	USBUART_1_DEVICE0_CONFIGURATION0_DESCR:
+ 530 020f 09       		.byte	9
+ 531 0210 02       		.byte	2
+ 532 0211 61       		.byte	97
+ 533 0212 00       		.byte	0
+ 534 0213 02       		.byte	2
+ 535 0214 01       		.byte	1
+ 536 0215 00       		.byte	0
+ 537 0216 C0       		.byte	-64
+ 538 0217 19       		.byte	25
+ 539 0218 09       		.byte	9
+ 540 0219 04       		.byte	4
+ 541 021a 00       		.byte	0
+ 542 021b 00       		.byte	0
+ 543 021c 03       		.byte	3
+ 544 021d 02       		.byte	2
+ 545 021e 02       		.byte	2
+ 546 021f 01       		.byte	1
+ 547 0220 03       		.byte	3
+ 548 0221 05       		.byte	5
+ 549 0222 24       		.byte	36
+ 550 0223 00       		.byte	0
+ 551 0224 10       		.byte	16
+ 552 0225 01       		.byte	1
+ 553 0226 04       		.byte	4
+ 554 0227 24       		.byte	36
+ 555 0228 02       		.byte	2
+ 556 0229 02       		.byte	2
+ 557 022a 05       		.byte	5
+ 558 022b 24       		.byte	36
+ 559 022c 01       		.byte	1
+ 560 022d 00       		.byte	0
+ 561 022e 00       		.byte	0
+ 562 022f 07       		.byte	7
+ 563 0230 05       		.byte	5
+ 564 0231 81       		.byte	-127
+ 565 0232 03       		.byte	3
+ 566 0233 40       		.byte	64
+ 567 0234 00       		.byte	0
+ 568 0235 02       		.byte	2
+ 569 0236 07       		.byte	7
+ 570 0237 05       		.byte	5
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 11
+
+
+ 571 0238 02       		.byte	2
+ 572 0239 02       		.byte	2
+ 573 023a 40       		.byte	64
+ 574 023b 00       		.byte	0
+ 575 023c 00       		.byte	0
+ 576 023d 07       		.byte	7
+ 577 023e 05       		.byte	5
+ 578 023f 83       		.byte	-125
+ 579 0240 02       		.byte	2
+ 580 0241 40       		.byte	64
+ 581 0242 00       		.byte	0
+ 582 0243 00       		.byte	0
+ 583 0244 09       		.byte	9
+ 584 0245 04       		.byte	4
+ 585 0246 01       		.byte	1
+ 586 0247 00       		.byte	0
+ 587 0248 03       		.byte	3
+ 588 0249 02       		.byte	2
+ 589 024a 02       		.byte	2
+ 590 024b 01       		.byte	1
+ 591 024c 07       		.byte	7
+ 592 024d 05       		.byte	5
+ 593 024e 24       		.byte	36
+ 594 024f 00       		.byte	0
+ 595 0250 10       		.byte	16
+ 596 0251 01       		.byte	1
+ 597 0252 04       		.byte	4
+ 598 0253 24       		.byte	36
+ 599 0254 02       		.byte	2
+ 600 0255 02       		.byte	2
+ 601 0256 05       		.byte	5
+ 602 0257 24       		.byte	36
+ 603 0258 01       		.byte	1
+ 604 0259 00       		.byte	0
+ 605 025a 00       		.byte	0
+ 606 025b 07       		.byte	7
+ 607 025c 05       		.byte	5
+ 608 025d 84       		.byte	-124
+ 609 025e 03       		.byte	3
+ 610 025f 08       		.byte	8
+ 611 0260 00       		.byte	0
+ 612 0261 02       		.byte	2
+ 613 0262 07       		.byte	7
+ 614 0263 05       		.byte	5
+ 615 0264 05       		.byte	5
+ 616 0265 02       		.byte	2
+ 617 0266 40       		.byte	64
+ 618 0267 00       		.byte	0
+ 619 0268 00       		.byte	0
+ 620 0269 07       		.byte	7
+ 621 026a 05       		.byte	5
+ 622 026b 86       		.byte	-122
+ 623 026c 02       		.byte	2
+ 624 026d 40       		.byte	64
+ 625 026e 00       		.byte	0
+ 626 026f 00       		.byte	0
+ 627              		.type	USBUART_1_DEVICE0_DESCR, %object
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 12
+
+
+ 628              		.size	USBUART_1_DEVICE0_DESCR, 18
+ 629              	USBUART_1_DEVICE0_DESCR:
+ 630 0270 12       		.byte	18
+ 631 0271 01       		.byte	1
+ 632 0272 00       		.byte	0
+ 633 0273 02       		.byte	2
+ 634 0274 00       		.byte	0
+ 635 0275 00       		.byte	0
+ 636 0276 00       		.byte	0
+ 637 0277 08       		.byte	8
+ 638 0278 B4       		.byte	-76
+ 639 0279 04       		.byte	4
+ 640 027a 32       		.byte	50
+ 641 027b F2       		.byte	-14
+ 642 027c 01       		.byte	1
+ 643 027d 00       		.byte	0
+ 644 027e 01       		.byte	1
+ 645 027f 02       		.byte	2
+ 646 0280 80       		.byte	-128
+ 647 0281 01       		.byte	1
+ 648 0282 0000     		.text
+ 649              	.Letext0:
+ 650              		.file 1 "Generated_Source\\PSoC5\\cytypes.h"
+ 651              		.file 2 "Generated_Source\\PSoC5\\USBUART_1.h"
+ 652              		.file 3 "Generated_Source\\PSoC5\\USBUART_1_descr.c"
+ 653              		.section	.debug_info,"",%progbits
+ 654              	.Ldebug_info0:
+ 655 0000 90020000 		.4byte	0x290
+ 656 0004 0400     		.2byte	0x4
+ 657 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 658 000a 04       		.byte	0x4
+ 659 000b 01       		.uleb128 0x1
+ 660 000c EC000000 		.4byte	.LASF34
+ 661 0010 01       		.byte	0x1
+ 662 0011 7E030000 		.4byte	.LASF35
+ 663 0015 58020000 		.4byte	.LASF36
+ 664 0019 00000000 		.4byte	.Ldebug_line0
+ 665 001d 02       		.uleb128 0x2
+ 666 001e 01       		.byte	0x1
+ 667 001f 06       		.byte	0x6
+ 668 0020 72030000 		.4byte	.LASF0
+ 669 0024 02       		.uleb128 0x2
+ 670 0025 01       		.byte	0x1
+ 671 0026 08       		.byte	0x8
+ 672 0027 7A010000 		.4byte	.LASF1
+ 673 002b 02       		.uleb128 0x2
+ 674 002c 02       		.byte	0x2
+ 675 002d 05       		.byte	0x5
+ 676 002e E2010000 		.4byte	.LASF2
+ 677 0032 02       		.uleb128 0x2
+ 678 0033 02       		.byte	0x2
+ 679 0034 07       		.byte	0x7
+ 680 0035 73000000 		.4byte	.LASF3
+ 681 0039 02       		.uleb128 0x2
+ 682 003a 04       		.byte	0x4
+ 683 003b 05       		.byte	0x5
+ 684 003c 69030000 		.4byte	.LASF4
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 13
+
+
+ 685 0040 02       		.uleb128 0x2
+ 686 0041 04       		.byte	0x4
+ 687 0042 07       		.byte	0x7
+ 688 0043 93010000 		.4byte	.LASF5
+ 689 0047 02       		.uleb128 0x2
+ 690 0048 08       		.byte	0x8
+ 691 0049 05       		.byte	0x5
+ 692 004a 3F020000 		.4byte	.LASF6
+ 693 004e 02       		.uleb128 0x2
+ 694 004f 08       		.byte	0x8
+ 695 0050 07       		.byte	0x7
+ 696 0051 00020000 		.4byte	.LASF7
+ 697 0055 03       		.uleb128 0x3
+ 698 0056 04       		.byte	0x4
+ 699 0057 05       		.byte	0x5
+ 700 0058 696E7400 		.ascii	"int\000"
+ 701 005c 02       		.uleb128 0x2
+ 702 005d 04       		.byte	0x4
+ 703 005e 07       		.byte	0x7
+ 704 005f F3010000 		.4byte	.LASF8
+ 705 0063 04       		.uleb128 0x4
+ 706 0064 26030000 		.4byte	.LASF9
+ 707 0068 01       		.byte	0x1
+ 708 0069 9201     		.2byte	0x192
+ 709 006b 24000000 		.4byte	0x24
+ 710 006f 04       		.uleb128 0x4
+ 711 0070 EC010000 		.4byte	.LASF10
+ 712 0074 01       		.byte	0x1
+ 713 0075 9301     		.2byte	0x193
+ 714 0077 32000000 		.4byte	0x32
+ 715 007b 02       		.uleb128 0x2
+ 716 007c 04       		.byte	0x4
+ 717 007d 04       		.byte	0x4
+ 718 007e B4000000 		.4byte	.LASF11
+ 719 0082 02       		.uleb128 0x2
+ 720 0083 08       		.byte	0x8
+ 721 0084 04       		.byte	0x4
+ 722 0085 DB010000 		.4byte	.LASF12
+ 723 0089 02       		.uleb128 0x2
+ 724 008a 01       		.byte	0x1
+ 725 008b 08       		.byte	0x8
+ 726 008c 4D020000 		.4byte	.LASF13
+ 727 0090 02       		.uleb128 0x2
+ 728 0091 04       		.byte	0x4
+ 729 0092 07       		.byte	0x7
+ 730 0093 36020000 		.4byte	.LASF14
+ 731 0097 05       		.uleb128 0x5
+ 732 0098 08       		.byte	0x8
+ 733 0099 02       		.byte	0x2
+ 734 009a 9A       		.byte	0x9a
+ 735 009b E8000000 		.4byte	0xe8
+ 736 009f 06       		.uleb128 0x6
+ 737 00a0 2C030000 		.4byte	.LASF15
+ 738 00a4 02       		.byte	0x2
+ 739 00a5 9C       		.byte	0x9c
+ 740 00a6 63000000 		.4byte	0x63
+ 741 00aa 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 14
+
+
+ 742 00ab 06       		.uleb128 0x6
+ 743 00ac BA000000 		.4byte	.LASF16
+ 744 00b0 02       		.byte	0x2
+ 745 00b1 9D       		.byte	0x9d
+ 746 00b2 63000000 		.4byte	0x63
+ 747 00b6 01       		.byte	0x1
+ 748 00b7 06       		.uleb128 0x6
+ 749 00b8 A5010000 		.4byte	.LASF17
+ 750 00bc 02       		.byte	0x2
+ 751 00bd 9E       		.byte	0x9e
+ 752 00be 63000000 		.4byte	0x63
+ 753 00c2 02       		.byte	0x2
+ 754 00c3 06       		.uleb128 0x6
+ 755 00c4 88010000 		.4byte	.LASF18
+ 756 00c8 02       		.byte	0x2
+ 757 00c9 9F       		.byte	0x9f
+ 758 00ca 63000000 		.4byte	0x63
+ 759 00ce 03       		.byte	0x3
+ 760 00cf 06       		.uleb128 0x6
+ 761 00d0 DA020000 		.4byte	.LASF19
+ 762 00d4 02       		.byte	0x2
+ 763 00d5 A0       		.byte	0xa0
+ 764 00d6 6F000000 		.4byte	0x6f
+ 765 00da 04       		.byte	0x4
+ 766 00db 06       		.uleb128 0x6
+ 767 00dc 52020000 		.4byte	.LASF20
+ 768 00e0 02       		.byte	0x2
+ 769 00e1 A1       		.byte	0xa1
+ 770 00e2 63000000 		.4byte	0x63
+ 771 00e6 06       		.byte	0x6
+ 772 00e7 00       		.byte	0
+ 773 00e8 07       		.uleb128 0x7
+ 774 00e9 96000000 		.4byte	.LASF21
+ 775 00ed 02       		.byte	0x2
+ 776 00ee A2       		.byte	0xa2
+ 777 00ef 97000000 		.4byte	0x97
+ 778 00f3 05       		.uleb128 0x5
+ 779 00f4 08       		.byte	0x8
+ 780 00f5 02       		.byte	0x2
+ 781 00f6 B1       		.byte	0xb1
+ 782 00f7 12010000 		.4byte	0x112
+ 783 00fb 08       		.uleb128 0x8
+ 784 00fc 6300     		.ascii	"c\000"
+ 785 00fe 02       		.byte	0x2
+ 786 00ff B3       		.byte	0xb3
+ 787 0100 63000000 		.4byte	0x63
+ 788 0104 00       		.byte	0
+ 789 0105 06       		.uleb128 0x6
+ 790 0106 2F020000 		.4byte	.LASF22
+ 791 010a 02       		.byte	0x2
+ 792 010b B4       		.byte	0xb4
+ 793 010c 12010000 		.4byte	0x112
+ 794 0110 04       		.byte	0x4
+ 795 0111 00       		.byte	0
+ 796 0112 09       		.uleb128 0x9
+ 797 0113 04       		.byte	0x4
+ 798 0114 18010000 		.4byte	0x118
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 15
+
+
+ 799 0118 0A       		.uleb128 0xa
+ 800 0119 07       		.uleb128 0x7
+ 801 011a 86000000 		.4byte	.LASF23
+ 802 011e 02       		.byte	0x2
+ 803 011f B5       		.byte	0xb5
+ 804 0120 F3000000 		.4byte	0xf3
+ 805 0124 0B       		.uleb128 0xb
+ 806 0125 63000000 		.4byte	0x63
+ 807 0129 34010000 		.4byte	0x134
+ 808 012d 0C       		.uleb128 0xc
+ 809 012e 90000000 		.4byte	0x90
+ 810 0132 11       		.byte	0x11
+ 811 0133 00       		.byte	0
+ 812 0134 0D       		.uleb128 0xd
+ 813 0135 0E030000 		.4byte	.LASF24
+ 814 0139 03       		.byte	0x3
+ 815 013a 24       		.byte	0x24
+ 816 013b 45010000 		.4byte	0x145
+ 817 013f 05       		.uleb128 0x5
+ 818 0140 03       		.byte	0x3
+ 819 0141 00000000 		.4byte	USBUART_1_DEVICE0_DESCR
+ 820 0145 0E       		.uleb128 0xe
+ 821 0146 24010000 		.4byte	0x124
+ 822 014a 0B       		.uleb128 0xb
+ 823 014b 63000000 		.4byte	0x63
+ 824 014f 5A010000 		.4byte	0x15a
+ 825 0153 0C       		.uleb128 0xc
+ 826 0154 90000000 		.4byte	0x90
+ 827 0158 60       		.byte	0x60
+ 828 0159 00       		.byte	0
+ 829 015a 0D       		.uleb128 0xd
+ 830 015b C5000000 		.4byte	.LASF25
+ 831 015f 03       		.byte	0x3
+ 832 0160 37       		.byte	0x37
+ 833 0161 6B010000 		.4byte	0x16b
+ 834 0165 05       		.uleb128 0x5
+ 835 0166 03       		.byte	0x3
+ 836 0167 00000000 		.4byte	USBUART_1_DEVICE0_CONFIGURATION0_DESCR
+ 837 016b 0E       		.uleb128 0xe
+ 838 016c 4A010000 		.4byte	0x14a
+ 839 0170 0B       		.uleb128 0xb
+ 840 0171 E8000000 		.4byte	0xe8
+ 841 0175 80010000 		.4byte	0x180
+ 842 0179 0C       		.uleb128 0xc
+ 843 017a 90000000 		.4byte	0x90
+ 844 017e 05       		.byte	0x5
+ 845 017f 00       		.byte	0
+ 846 0180 0F       		.uleb128 0xf
+ 847 0181 36030000 		.4byte	.LASF26
+ 848 0185 03       		.byte	0x3
+ 849 0186 3701     		.2byte	0x137
+ 850 0188 92010000 		.4byte	0x192
+ 851 018c 05       		.uleb128 0x5
+ 852 018d 03       		.byte	0x3
+ 853 018e 00000000 		.4byte	USBUART_1_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE
+ 854 0192 0E       		.uleb128 0xe
+ 855 0193 70010000 		.4byte	0x170
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 16
+
+
+ 856 0197 0B       		.uleb128 0xb
+ 857 0198 63000000 		.4byte	0x63
+ 858 019c A7010000 		.4byte	0x1a7
+ 859 01a0 0C       		.uleb128 0xc
+ 860 01a1 90000000 		.4byte	0x90
+ 861 01a5 01       		.byte	0x1
+ 862 01a6 00       		.byte	0
+ 863 01a7 0F       		.uleb128 0xf
+ 864 01a8 AA010000 		.4byte	.LASF27
+ 865 01ac 03       		.byte	0x3
+ 866 01ad 4001     		.2byte	0x140
+ 867 01af B9010000 		.4byte	0x1b9
+ 868 01b3 05       		.uleb128 0x5
+ 869 01b4 03       		.byte	0x3
+ 870 01b5 00000000 		.4byte	USBUART_1_DEVICE0_CONFIGURATION0_INTERFACE_CLASS
+ 871 01b9 0E       		.uleb128 0xe
+ 872 01ba 97010000 		.4byte	0x197
+ 873 01be 0B       		.uleb128 0xb
+ 874 01bf 19010000 		.4byte	0x119
+ 875 01c3 CE010000 		.4byte	0x1ce
+ 876 01c7 0C       		.uleb128 0xc
+ 877 01c8 90000000 		.4byte	0x90
+ 878 01cc 04       		.byte	0x4
+ 879 01cd 00       		.byte	0
+ 880 01ce 0F       		.uleb128 0xf
+ 881 01cf 4C000000 		.4byte	.LASF28
+ 882 01d3 03       		.byte	0x3
+ 883 01d4 4801     		.2byte	0x148
+ 884 01d6 E0010000 		.4byte	0x1e0
+ 885 01da 05       		.uleb128 0x5
+ 886 01db 03       		.byte	0x3
+ 887 01dc 00000000 		.4byte	USBUART_1_DEVICE0_CONFIGURATION0_TABLE
+ 888 01e0 0E       		.uleb128 0xe
+ 889 01e1 BE010000 		.4byte	0x1be
+ 890 01e5 0B       		.uleb128 0xb
+ 891 01e6 19010000 		.4byte	0x119
+ 892 01ea F5010000 		.4byte	0x1f5
+ 893 01ee 0C       		.uleb128 0xc
+ 894 01ef 90000000 		.4byte	0x90
+ 895 01f3 02       		.byte	0x2
+ 896 01f4 00       		.byte	0
+ 897 01f5 0F       		.uleb128 0xf
+ 898 01f6 17020000 		.4byte	.LASF29
+ 899 01fa 03       		.byte	0x3
+ 900 01fb 5301     		.2byte	0x153
+ 901 01fd 07020000 		.4byte	0x207
+ 902 0201 05       		.uleb128 0x5
+ 903 0202 03       		.byte	0x3
+ 904 0203 00000000 		.4byte	USBUART_1_DEVICE0_TABLE
+ 905 0207 0E       		.uleb128 0xe
+ 906 0208 E5010000 		.4byte	0x1e5
+ 907 020c 0B       		.uleb128 0xb
+ 908 020d 19010000 		.4byte	0x119
+ 909 0211 1C020000 		.4byte	0x21c
+ 910 0215 0C       		.uleb128 0xc
+ 911 0216 90000000 		.4byte	0x90
+ 912 021a 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 17
+
+
+ 913 021b 00       		.byte	0
+ 914 021c 0F       		.uleb128 0xf
+ 915 021d 3C000000 		.4byte	.LASF30
+ 916 0221 03       		.byte	0x3
+ 917 0222 5B01     		.2byte	0x15b
+ 918 0224 2E020000 		.4byte	0x22e
+ 919 0228 05       		.uleb128 0x5
+ 920 0229 03       		.byte	0x3
+ 921 022a 00000000 		.4byte	USBUART_1_TABLE
+ 922 022e 0E       		.uleb128 0xe
+ 923 022f 0C020000 		.4byte	0x20c
+ 924 0233 0F       		.uleb128 0xf
+ 925 0234 00000000 		.4byte	.LASF31
+ 926 0238 03       		.byte	0x3
+ 927 0239 2801     		.2byte	0x128
+ 928 023b 45020000 		.4byte	0x245
+ 929 023f 05       		.uleb128 0x5
+ 930 0240 03       		.byte	0x3
+ 931 0241 00000000 		.4byte	USBUART_1_SN_STRING_DESCRIPTOR
+ 932 0245 0E       		.uleb128 0xe
+ 933 0246 97010000 		.4byte	0x197
+ 934 024a 0B       		.uleb128 0xb
+ 935 024b 63000000 		.4byte	0x63
+ 936 024f 5B020000 		.4byte	0x25b
+ 937 0253 10       		.uleb128 0x10
+ 938 0254 90000000 		.4byte	0x90
+ 939 0258 9201     		.2byte	0x192
+ 940 025a 00       		.byte	0
+ 941 025b 0D       		.uleb128 0xd
+ 942 025c 1F000000 		.4byte	.LASF32
+ 943 0260 03       		.byte	0x3
+ 944 0261 BF       		.byte	0xbf
+ 945 0262 6C020000 		.4byte	0x26c
+ 946 0266 05       		.uleb128 0x5
+ 947 0267 03       		.byte	0x3
+ 948 0268 00000000 		.4byte	USBUART_1_STRING_DESCRIPTORS
+ 949 026c 0E       		.uleb128 0xe
+ 950 026d 4A020000 		.4byte	0x24a
+ 951 0271 0B       		.uleb128 0xb
+ 952 0272 63000000 		.4byte	0x63
+ 953 0276 81020000 		.4byte	0x281
+ 954 027a 0C       		.uleb128 0xc
+ 955 027b 90000000 		.4byte	0x90
+ 956 027f 21       		.byte	0x21
+ 957 0280 00       		.byte	0
+ 958 0281 0F       		.uleb128 0xf
+ 959 0282 E5020000 		.4byte	.LASF33
+ 960 0286 03       		.byte	0x3
+ 961 0287 8901     		.2byte	0x189
+ 962 0289 71020000 		.4byte	0x271
+ 963 028d 05       		.uleb128 0x5
+ 964 028e 03       		.byte	0x3
+ 965 028f 00000000 		.4byte	USBUART_1_idSerialNumberStringDescriptor
+ 966 0293 00       		.byte	0
+ 967              		.section	.debug_abbrev,"",%progbits
+ 968              	.Ldebug_abbrev0:
+ 969 0000 01       		.uleb128 0x1
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 18
+
+
+ 970 0001 11       		.uleb128 0x11
+ 971 0002 01       		.byte	0x1
+ 972 0003 25       		.uleb128 0x25
+ 973 0004 0E       		.uleb128 0xe
+ 974 0005 13       		.uleb128 0x13
+ 975 0006 0B       		.uleb128 0xb
+ 976 0007 03       		.uleb128 0x3
+ 977 0008 0E       		.uleb128 0xe
+ 978 0009 1B       		.uleb128 0x1b
+ 979 000a 0E       		.uleb128 0xe
+ 980 000b 10       		.uleb128 0x10
+ 981 000c 17       		.uleb128 0x17
+ 982 000d 00       		.byte	0
+ 983 000e 00       		.byte	0
+ 984 000f 02       		.uleb128 0x2
+ 985 0010 24       		.uleb128 0x24
+ 986 0011 00       		.byte	0
+ 987 0012 0B       		.uleb128 0xb
+ 988 0013 0B       		.uleb128 0xb
+ 989 0014 3E       		.uleb128 0x3e
+ 990 0015 0B       		.uleb128 0xb
+ 991 0016 03       		.uleb128 0x3
+ 992 0017 0E       		.uleb128 0xe
+ 993 0018 00       		.byte	0
+ 994 0019 00       		.byte	0
+ 995 001a 03       		.uleb128 0x3
+ 996 001b 24       		.uleb128 0x24
+ 997 001c 00       		.byte	0
+ 998 001d 0B       		.uleb128 0xb
+ 999 001e 0B       		.uleb128 0xb
+ 1000 001f 3E       		.uleb128 0x3e
+ 1001 0020 0B       		.uleb128 0xb
+ 1002 0021 03       		.uleb128 0x3
+ 1003 0022 08       		.uleb128 0x8
+ 1004 0023 00       		.byte	0
+ 1005 0024 00       		.byte	0
+ 1006 0025 04       		.uleb128 0x4
+ 1007 0026 16       		.uleb128 0x16
+ 1008 0027 00       		.byte	0
+ 1009 0028 03       		.uleb128 0x3
+ 1010 0029 0E       		.uleb128 0xe
+ 1011 002a 3A       		.uleb128 0x3a
+ 1012 002b 0B       		.uleb128 0xb
+ 1013 002c 3B       		.uleb128 0x3b
+ 1014 002d 05       		.uleb128 0x5
+ 1015 002e 49       		.uleb128 0x49
+ 1016 002f 13       		.uleb128 0x13
+ 1017 0030 00       		.byte	0
+ 1018 0031 00       		.byte	0
+ 1019 0032 05       		.uleb128 0x5
+ 1020 0033 13       		.uleb128 0x13
+ 1021 0034 01       		.byte	0x1
+ 1022 0035 0B       		.uleb128 0xb
+ 1023 0036 0B       		.uleb128 0xb
+ 1024 0037 3A       		.uleb128 0x3a
+ 1025 0038 0B       		.uleb128 0xb
+ 1026 0039 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 19
+
+
+ 1027 003a 0B       		.uleb128 0xb
+ 1028 003b 01       		.uleb128 0x1
+ 1029 003c 13       		.uleb128 0x13
+ 1030 003d 00       		.byte	0
+ 1031 003e 00       		.byte	0
+ 1032 003f 06       		.uleb128 0x6
+ 1033 0040 0D       		.uleb128 0xd
+ 1034 0041 00       		.byte	0
+ 1035 0042 03       		.uleb128 0x3
+ 1036 0043 0E       		.uleb128 0xe
+ 1037 0044 3A       		.uleb128 0x3a
+ 1038 0045 0B       		.uleb128 0xb
+ 1039 0046 3B       		.uleb128 0x3b
+ 1040 0047 0B       		.uleb128 0xb
+ 1041 0048 49       		.uleb128 0x49
+ 1042 0049 13       		.uleb128 0x13
+ 1043 004a 38       		.uleb128 0x38
+ 1044 004b 0B       		.uleb128 0xb
+ 1045 004c 00       		.byte	0
+ 1046 004d 00       		.byte	0
+ 1047 004e 07       		.uleb128 0x7
+ 1048 004f 16       		.uleb128 0x16
+ 1049 0050 00       		.byte	0
+ 1050 0051 03       		.uleb128 0x3
+ 1051 0052 0E       		.uleb128 0xe
+ 1052 0053 3A       		.uleb128 0x3a
+ 1053 0054 0B       		.uleb128 0xb
+ 1054 0055 3B       		.uleb128 0x3b
+ 1055 0056 0B       		.uleb128 0xb
+ 1056 0057 49       		.uleb128 0x49
+ 1057 0058 13       		.uleb128 0x13
+ 1058 0059 00       		.byte	0
+ 1059 005a 00       		.byte	0
+ 1060 005b 08       		.uleb128 0x8
+ 1061 005c 0D       		.uleb128 0xd
+ 1062 005d 00       		.byte	0
+ 1063 005e 03       		.uleb128 0x3
+ 1064 005f 08       		.uleb128 0x8
+ 1065 0060 3A       		.uleb128 0x3a
+ 1066 0061 0B       		.uleb128 0xb
+ 1067 0062 3B       		.uleb128 0x3b
+ 1068 0063 0B       		.uleb128 0xb
+ 1069 0064 49       		.uleb128 0x49
+ 1070 0065 13       		.uleb128 0x13
+ 1071 0066 38       		.uleb128 0x38
+ 1072 0067 0B       		.uleb128 0xb
+ 1073 0068 00       		.byte	0
+ 1074 0069 00       		.byte	0
+ 1075 006a 09       		.uleb128 0x9
+ 1076 006b 0F       		.uleb128 0xf
+ 1077 006c 00       		.byte	0
+ 1078 006d 0B       		.uleb128 0xb
+ 1079 006e 0B       		.uleb128 0xb
+ 1080 006f 49       		.uleb128 0x49
+ 1081 0070 13       		.uleb128 0x13
+ 1082 0071 00       		.byte	0
+ 1083 0072 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 20
+
+
+ 1084 0073 0A       		.uleb128 0xa
+ 1085 0074 26       		.uleb128 0x26
+ 1086 0075 00       		.byte	0
+ 1087 0076 00       		.byte	0
+ 1088 0077 00       		.byte	0
+ 1089 0078 0B       		.uleb128 0xb
+ 1090 0079 01       		.uleb128 0x1
+ 1091 007a 01       		.byte	0x1
+ 1092 007b 49       		.uleb128 0x49
+ 1093 007c 13       		.uleb128 0x13
+ 1094 007d 01       		.uleb128 0x1
+ 1095 007e 13       		.uleb128 0x13
+ 1096 007f 00       		.byte	0
+ 1097 0080 00       		.byte	0
+ 1098 0081 0C       		.uleb128 0xc
+ 1099 0082 21       		.uleb128 0x21
+ 1100 0083 00       		.byte	0
+ 1101 0084 49       		.uleb128 0x49
+ 1102 0085 13       		.uleb128 0x13
+ 1103 0086 2F       		.uleb128 0x2f
+ 1104 0087 0B       		.uleb128 0xb
+ 1105 0088 00       		.byte	0
+ 1106 0089 00       		.byte	0
+ 1107 008a 0D       		.uleb128 0xd
+ 1108 008b 34       		.uleb128 0x34
+ 1109 008c 00       		.byte	0
+ 1110 008d 03       		.uleb128 0x3
+ 1111 008e 0E       		.uleb128 0xe
+ 1112 008f 3A       		.uleb128 0x3a
+ 1113 0090 0B       		.uleb128 0xb
+ 1114 0091 3B       		.uleb128 0x3b
+ 1115 0092 0B       		.uleb128 0xb
+ 1116 0093 49       		.uleb128 0x49
+ 1117 0094 13       		.uleb128 0x13
+ 1118 0095 3F       		.uleb128 0x3f
+ 1119 0096 19       		.uleb128 0x19
+ 1120 0097 02       		.uleb128 0x2
+ 1121 0098 18       		.uleb128 0x18
+ 1122 0099 00       		.byte	0
+ 1123 009a 00       		.byte	0
+ 1124 009b 0E       		.uleb128 0xe
+ 1125 009c 26       		.uleb128 0x26
+ 1126 009d 00       		.byte	0
+ 1127 009e 49       		.uleb128 0x49
+ 1128 009f 13       		.uleb128 0x13
+ 1129 00a0 00       		.byte	0
+ 1130 00a1 00       		.byte	0
+ 1131 00a2 0F       		.uleb128 0xf
+ 1132 00a3 34       		.uleb128 0x34
+ 1133 00a4 00       		.byte	0
+ 1134 00a5 03       		.uleb128 0x3
+ 1135 00a6 0E       		.uleb128 0xe
+ 1136 00a7 3A       		.uleb128 0x3a
+ 1137 00a8 0B       		.uleb128 0xb
+ 1138 00a9 3B       		.uleb128 0x3b
+ 1139 00aa 05       		.uleb128 0x5
+ 1140 00ab 49       		.uleb128 0x49
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 21
+
+
+ 1141 00ac 13       		.uleb128 0x13
+ 1142 00ad 3F       		.uleb128 0x3f
+ 1143 00ae 19       		.uleb128 0x19
+ 1144 00af 02       		.uleb128 0x2
+ 1145 00b0 18       		.uleb128 0x18
+ 1146 00b1 00       		.byte	0
+ 1147 00b2 00       		.byte	0
+ 1148 00b3 10       		.uleb128 0x10
+ 1149 00b4 21       		.uleb128 0x21
+ 1150 00b5 00       		.byte	0
+ 1151 00b6 49       		.uleb128 0x49
+ 1152 00b7 13       		.uleb128 0x13
+ 1153 00b8 2F       		.uleb128 0x2f
+ 1154 00b9 05       		.uleb128 0x5
+ 1155 00ba 00       		.byte	0
+ 1156 00bb 00       		.byte	0
+ 1157 00bc 00       		.byte	0
+ 1158              		.section	.debug_aranges,"",%progbits
+ 1159 0000 14000000 		.4byte	0x14
+ 1160 0004 0200     		.2byte	0x2
+ 1161 0006 00000000 		.4byte	.Ldebug_info0
+ 1162 000a 04       		.byte	0x4
+ 1163 000b 00       		.byte	0
+ 1164 000c 0000     		.2byte	0
+ 1165 000e 0000     		.2byte	0
+ 1166 0010 00000000 		.4byte	0
+ 1167 0014 00000000 		.4byte	0
+ 1168              		.section	.debug_line,"",%progbits
+ 1169              	.Ldebug_line0:
+ 1170 0000 61000000 		.section	.debug_str,"MS",%progbits,1
+ 1170      02005B00 
+ 1170      00000201 
+ 1170      FB0E0D00 
+ 1170      01010101 
+ 1171              	.LASF31:
+ 1172 0000 55534255 		.ascii	"USBUART_1_SN_STRING_DESCRIPTOR\000"
+ 1172      4152545F 
+ 1172      315F534E 
+ 1172      5F535452 
+ 1172      494E475F 
+ 1173              	.LASF32:
+ 1174 001f 55534255 		.ascii	"USBUART_1_STRING_DESCRIPTORS\000"
+ 1174      4152545F 
+ 1174      315F5354 
+ 1174      52494E47 
+ 1174      5F444553 
+ 1175              	.LASF30:
+ 1176 003c 55534255 		.ascii	"USBUART_1_TABLE\000"
+ 1176      4152545F 
+ 1176      315F5441 
+ 1176      424C4500 
+ 1177              	.LASF28:
+ 1178 004c 55534255 		.ascii	"USBUART_1_DEVICE0_CONFIGURATION0_TABLE\000"
+ 1178      4152545F 
+ 1178      315F4445 
+ 1178      56494345 
+ 1178      305F434F 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 22
+
+
+ 1179              	.LASF3:
+ 1180 0073 73686F72 		.ascii	"short unsigned int\000"
+ 1180      7420756E 
+ 1180      7369676E 
+ 1180      65642069 
+ 1180      6E7400
+ 1181              	.LASF23:
+ 1182 0086 545F5553 		.ascii	"T_USBUART_1_LUT\000"
+ 1182      42554152 
+ 1182      545F315F 
+ 1182      4C555400 
+ 1183              	.LASF21:
+ 1184 0096 545F5553 		.ascii	"T_USBUART_1_EP_SETTINGS_BLOCK\000"
+ 1184      42554152 
+ 1184      545F315F 
+ 1184      45505F53 
+ 1184      45545449 
+ 1185              	.LASF11:
+ 1186 00b4 666C6F61 		.ascii	"float\000"
+ 1186      7400
+ 1187              	.LASF16:
+ 1188 00ba 616C7453 		.ascii	"altSetting\000"
+ 1188      65747469 
+ 1188      6E6700
+ 1189              	.LASF25:
+ 1190 00c5 55534255 		.ascii	"USBUART_1_DEVICE0_CONFIGURATION0_DESCR\000"
+ 1190      4152545F 
+ 1190      315F4445 
+ 1190      56494345 
+ 1190      305F434F 
+ 1191              	.LASF34:
+ 1192 00ec 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1192      4320342E 
+ 1192      392E3320 
+ 1192      32303135 
+ 1192      30333033 
+ 1193 011f 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1193      20726576 
+ 1193      6973696F 
+ 1193      6E203232 
+ 1193      31323230 
+ 1194 0152 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 1194      66756E63 
+ 1194      74696F6E 
+ 1194      2D736563 
+ 1194      74696F6E 
+ 1195              	.LASF1:
+ 1196 017a 756E7369 		.ascii	"unsigned char\000"
+ 1196      676E6564 
+ 1196      20636861 
+ 1196      7200
+ 1197              	.LASF18:
+ 1198 0188 61747472 		.ascii	"attributes\000"
+ 1198      69627574 
+ 1198      657300
+ 1199              	.LASF5:
+ 1200 0193 6C6F6E67 		.ascii	"long unsigned int\000"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 23
+
+
+ 1200      20756E73 
+ 1200      69676E65 
+ 1200      6420696E 
+ 1200      7400
+ 1201              	.LASF17:
+ 1202 01a5 61646472 		.ascii	"addr\000"
+ 1202      00
+ 1203              	.LASF27:
+ 1204 01aa 55534255 		.ascii	"USBUART_1_DEVICE0_CONFIGURATION0_INTERFACE_CLASS\000"
+ 1204      4152545F 
+ 1204      315F4445 
+ 1204      56494345 
+ 1204      305F434F 
+ 1205              	.LASF12:
+ 1206 01db 646F7562 		.ascii	"double\000"
+ 1206      6C6500
+ 1207              	.LASF2:
+ 1208 01e2 73686F72 		.ascii	"short int\000"
+ 1208      7420696E 
+ 1208      7400
+ 1209              	.LASF10:
+ 1210 01ec 75696E74 		.ascii	"uint16\000"
+ 1210      313600
+ 1211              	.LASF8:
+ 1212 01f3 756E7369 		.ascii	"unsigned int\000"
+ 1212      676E6564 
+ 1212      20696E74 
+ 1212      00
+ 1213              	.LASF7:
+ 1214 0200 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1214      206C6F6E 
+ 1214      6720756E 
+ 1214      7369676E 
+ 1214      65642069 
+ 1215              	.LASF29:
+ 1216 0217 55534255 		.ascii	"USBUART_1_DEVICE0_TABLE\000"
+ 1216      4152545F 
+ 1216      315F4445 
+ 1216      56494345 
+ 1216      305F5441 
+ 1217              	.LASF22:
+ 1218 022f 705F6C69 		.ascii	"p_list\000"
+ 1218      737400
+ 1219              	.LASF14:
+ 1220 0236 73697A65 		.ascii	"sizetype\000"
+ 1220      74797065 
+ 1220      00
+ 1221              	.LASF6:
+ 1222 023f 6C6F6E67 		.ascii	"long long int\000"
+ 1222      206C6F6E 
+ 1222      6720696E 
+ 1222      7400
+ 1223              	.LASF13:
+ 1224 024d 63686172 		.ascii	"char\000"
+ 1224      00
+ 1225              	.LASF20:
+ 1226 0252 624D6973 		.ascii	"bMisc\000"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 24
+
+
+ 1226      6300
+ 1227              	.LASF36:
+ 1228 0258 433A5C55 		.ascii	"C:\\Users\\Luggi\\Desktop\\Aktuelles Projekt Laser_"
+ 1228      73657273 
+ 1228      5C4C7567 
+ 1228      67695C44 
+ 1228      65736B74 
+ 1229 0287 73636875 		.ascii	"schutzschaltung\\Aktuelles Projekt Laser_schutzscha"
+ 1229      747A7363 
+ 1229      68616C74 
+ 1229      756E675C 
+ 1229      416B7475 
+ 1230 02b9 6C74756E 		.ascii	"ltung\\Laserschutzschaltung.cydsn\000"
+ 1230      675C4C61 
+ 1230      73657273 
+ 1230      63687574 
+ 1230      7A736368 
+ 1231              	.LASF19:
+ 1232 02da 62756666 		.ascii	"bufferSize\000"
+ 1232      65725369 
+ 1232      7A6500
+ 1233              	.LASF33:
+ 1234 02e5 55534255 		.ascii	"USBUART_1_idSerialNumberStringDescriptor\000"
+ 1234      4152545F 
+ 1234      315F6964 
+ 1234      53657269 
+ 1234      616C4E75 
+ 1235              	.LASF24:
+ 1236 030e 55534255 		.ascii	"USBUART_1_DEVICE0_DESCR\000"
+ 1236      4152545F 
+ 1236      315F4445 
+ 1236      56494345 
+ 1236      305F4445 
+ 1237              	.LASF9:
+ 1238 0326 75696E74 		.ascii	"uint8\000"
+ 1238      3800
+ 1239              	.LASF15:
+ 1240 032c 696E7465 		.ascii	"interface\000"
+ 1240      72666163 
+ 1240      6500
+ 1241              	.LASF26:
+ 1242 0336 55534255 		.ascii	"USBUART_1_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE\000"
+ 1242      4152545F 
+ 1242      315F4445 
+ 1242      56494345 
+ 1242      305F434F 
+ 1243              	.LASF4:
+ 1244 0369 6C6F6E67 		.ascii	"long int\000"
+ 1244      20696E74 
+ 1244      00
+ 1245              	.LASF0:
+ 1246 0372 7369676E 		.ascii	"signed char\000"
+ 1246      65642063 
+ 1246      68617200 
+ 1247              	.LASF35:
+ 1248 037e 47656E65 		.ascii	"Generated_Source\\PSoC5\\USBUART_1_descr.c\000"
+ 1248      72617465 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccfPhuqZ.s 			page 25
+
+
+ 1248      645F536F 
+ 1248      75726365 
+ 1248      5C50536F 
+ 1249              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

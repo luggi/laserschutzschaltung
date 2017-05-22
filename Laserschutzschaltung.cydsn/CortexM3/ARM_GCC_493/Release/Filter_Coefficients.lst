@@ -1,0 +1,892 @@
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVM382l.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Filter_Coefficients.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	Filter_ChannelAFirCoefficients
+  19              		.section	.rodata
+  20              		.type	Filter_ChannelAFirCoefficients, %object
+  21              		.size	Filter_ChannelAFirCoefficients, 512
+  22              	Filter_ChannelAFirCoefficients:
+  23 0000 F6       		.byte	-10
+  24 0001 F5       		.byte	-11
+  25 0002 FF       		.byte	-1
+  26 0003 00       		.byte	0
+  27 0004 3F       		.byte	63
+  28 0005 F6       		.byte	-10
+  29 0006 FF       		.byte	-1
+  30 0007 00       		.byte	0
+  31 0008 77       		.byte	119
+  32 0009 F6       		.byte	-10
+  33 000a FF       		.byte	-1
+  34 000b 00       		.byte	0
+  35 000c A5       		.byte	-91
+  36 000d F6       		.byte	-10
+  37 000e FF       		.byte	-1
+  38 000f 00       		.byte	0
+  39 0010 D1       		.byte	-47
+  40 0011 F6       		.byte	-10
+  41 0012 FF       		.byte	-1
+  42 0013 00       		.byte	0
+  43 0014 03       		.byte	3
+  44 0015 F7       		.byte	-9
+  45 0016 FF       		.byte	-1
+  46 0017 00       		.byte	0
+  47 0018 45       		.byte	69
+  48 0019 F7       		.byte	-9
+  49 001a FF       		.byte	-1
+  50 001b 00       		.byte	0
+  51 001c A2       		.byte	-94
+  52 001d F7       		.byte	-9
+  53 001e FF       		.byte	-1
+  54 001f 00       		.byte	0
+  55 0020 27       		.byte	39
+  56 0021 F8       		.byte	-8
+  57 0022 FF       		.byte	-1
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVM382l.s 			page 2
+
+
+  58 0023 00       		.byte	0
+  59 0024 DE       		.byte	-34
+  60 0025 F8       		.byte	-8
+  61 0026 FF       		.byte	-1
+  62 0027 00       		.byte	0
+  63 0028 D6       		.byte	-42
+  64 0029 F9       		.byte	-7
+  65 002a FF       		.byte	-1
+  66 002b 00       		.byte	0
+  67 002c 1D       		.byte	29
+  68 002d FB       		.byte	-5
+  69 002e FF       		.byte	-1
+  70 002f 00       		.byte	0
+  71 0030 C0       		.byte	-64
+  72 0031 FC       		.byte	-4
+  73 0032 FF       		.byte	-1
+  74 0033 00       		.byte	0
+  75 0034 CD       		.byte	-51
+  76 0035 FE       		.byte	-2
+  77 0036 FF       		.byte	-1
+  78 0037 00       		.byte	0
+  79 0038 53       		.byte	83
+  80 0039 01       		.byte	1
+  81 003a 00       		.byte	0
+  82 003b 00       		.byte	0
+  83 003c 60       		.byte	96
+  84 003d 04       		.byte	4
+  85 003e 00       		.byte	0
+  86 003f 00       		.byte	0
+  87 0040 03       		.byte	3
+  88 0041 08       		.byte	8
+  89 0042 00       		.byte	0
+  90 0043 00       		.byte	0
+  91 0044 49       		.byte	73
+  92 0045 0C       		.byte	12
+  93 0046 00       		.byte	0
+  94 0047 00       		.byte	0
+  95 0048 3E       		.byte	62
+  96 0049 11       		.byte	17
+  97 004a 00       		.byte	0
+  98 004b 00       		.byte	0
+  99 004c F0       		.byte	-16
+ 100 004d 16       		.byte	22
+ 101 004e 00       		.byte	0
+ 102 004f 00       		.byte	0
+ 103 0050 6A       		.byte	106
+ 104 0051 1D       		.byte	29
+ 105 0052 00       		.byte	0
+ 106 0053 00       		.byte	0
+ 107 0054 B5       		.byte	-75
+ 108 0055 24       		.byte	36
+ 109 0056 00       		.byte	0
+ 110 0057 00       		.byte	0
+ 111 0058 DD       		.byte	-35
+ 112 0059 2C       		.byte	44
+ 113 005a 00       		.byte	0
+ 114 005b 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVM382l.s 			page 3
+
+
+ 115 005c E7       		.byte	-25
+ 116 005d 35       		.byte	53
+ 117 005e 00       		.byte	0
+ 118 005f 00       		.byte	0
+ 119 0060 DB       		.byte	-37
+ 120 0061 3F       		.byte	63
+ 121 0062 00       		.byte	0
+ 122 0063 00       		.byte	0
+ 123 0064 BD       		.byte	-67
+ 124 0065 4A       		.byte	74
+ 125 0066 00       		.byte	0
+ 126 0067 00       		.byte	0
+ 127 0068 91       		.byte	-111
+ 128 0069 56       		.byte	86
+ 129 006a 00       		.byte	0
+ 130 006b 00       		.byte	0
+ 131 006c 58       		.byte	88
+ 132 006d 63       		.byte	99
+ 133 006e 00       		.byte	0
+ 134 006f 00       		.byte	0
+ 135 0070 10       		.byte	16
+ 136 0071 71       		.byte	113
+ 137 0072 00       		.byte	0
+ 138 0073 00       		.byte	0
+ 139 0074 B7       		.byte	-73
+ 140 0075 7F       		.byte	127
+ 141 0076 00       		.byte	0
+ 142 0077 00       		.byte	0
+ 143 0078 4A       		.byte	74
+ 144 0079 8F       		.byte	-113
+ 145 007a 00       		.byte	0
+ 146 007b 00       		.byte	0
+ 147 007c C0       		.byte	-64
+ 148 007d 9F       		.byte	-97
+ 149 007e 00       		.byte	0
+ 150 007f 00       		.byte	0
+ 151 0080 11       		.byte	17
+ 152 0081 B1       		.byte	-79
+ 153 0082 00       		.byte	0
+ 154 0083 00       		.byte	0
+ 155 0084 33       		.byte	51
+ 156 0085 C3       		.byte	-61
+ 157 0086 00       		.byte	0
+ 158 0087 00       		.byte	0
+ 159 0088 19       		.byte	25
+ 160 0089 D6       		.byte	-42
+ 161 008a 00       		.byte	0
+ 162 008b 00       		.byte	0
+ 163 008c B3       		.byte	-77
+ 164 008d E9       		.byte	-23
+ 165 008e 00       		.byte	0
+ 166 008f 00       		.byte	0
+ 167 0090 F2       		.byte	-14
+ 168 0091 FD       		.byte	-3
+ 169 0092 00       		.byte	0
+ 170 0093 00       		.byte	0
+ 171 0094 C2       		.byte	-62
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVM382l.s 			page 4
+
+
+ 172 0095 12       		.byte	18
+ 173 0096 01       		.byte	1
+ 174 0097 00       		.byte	0
+ 175 0098 0F       		.byte	15
+ 176 0099 28       		.byte	40
+ 177 009a 01       		.byte	1
+ 178 009b 00       		.byte	0
+ 179 009c C4       		.byte	-60
+ 180 009d 3D       		.byte	61
+ 181 009e 01       		.byte	1
+ 182 009f 00       		.byte	0
+ 183 00a0 C9       		.byte	-55
+ 184 00a1 53       		.byte	83
+ 185 00a2 01       		.byte	1
+ 186 00a3 00       		.byte	0
+ 187 00a4 06       		.byte	6
+ 188 00a5 6A       		.byte	106
+ 189 00a6 01       		.byte	1
+ 190 00a7 00       		.byte	0
+ 191 00a8 60       		.byte	96
+ 192 00a9 80       		.byte	-128
+ 193 00aa 01       		.byte	1
+ 194 00ab 00       		.byte	0
+ 195 00ac BC       		.byte	-68
+ 196 00ad 96       		.byte	-106
+ 197 00ae 01       		.byte	1
+ 198 00af 00       		.byte	0
+ 199 00b0 00       		.byte	0
+ 200 00b1 AD       		.byte	-83
+ 201 00b2 01       		.byte	1
+ 202 00b3 00       		.byte	0
+ 203 00b4 0E       		.byte	14
+ 204 00b5 C3       		.byte	-61
+ 205 00b6 01       		.byte	1
+ 206 00b7 00       		.byte	0
+ 207 00b8 CB       		.byte	-53
+ 208 00b9 D8       		.byte	-40
+ 209 00ba 01       		.byte	1
+ 210 00bb 00       		.byte	0
+ 211 00bc 19       		.byte	25
+ 212 00bd EE       		.byte	-18
+ 213 00be 01       		.byte	1
+ 214 00bf 00       		.byte	0
+ 215 00c0 DC       		.byte	-36
+ 216 00c1 02       		.byte	2
+ 217 00c2 02       		.byte	2
+ 218 00c3 00       		.byte	0
+ 219 00c4 F6       		.byte	-10
+ 220 00c5 16       		.byte	22
+ 221 00c6 02       		.byte	2
+ 222 00c7 00       		.byte	0
+ 223 00c8 4D       		.byte	77
+ 224 00c9 2A       		.byte	42
+ 225 00ca 02       		.byte	2
+ 226 00cb 00       		.byte	0
+ 227 00cc C4       		.byte	-60
+ 228 00cd 3C       		.byte	60
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVM382l.s 			page 5
+
+
+ 229 00ce 02       		.byte	2
+ 230 00cf 00       		.byte	0
+ 231 00d0 41       		.byte	65
+ 232 00d1 4E       		.byte	78
+ 233 00d2 02       		.byte	2
+ 234 00d3 00       		.byte	0
+ 235 00d4 AB       		.byte	-85
+ 236 00d5 5E       		.byte	94
+ 237 00d6 02       		.byte	2
+ 238 00d7 00       		.byte	0
+ 239 00d8 EA       		.byte	-22
+ 240 00d9 6D       		.byte	109
+ 241 00da 02       		.byte	2
+ 242 00db 00       		.byte	0
+ 243 00dc E7       		.byte	-25
+ 244 00dd 7B       		.byte	123
+ 245 00de 02       		.byte	2
+ 246 00df 00       		.byte	0
+ 247 00e0 8D       		.byte	-115
+ 248 00e1 88       		.byte	-120
+ 249 00e2 02       		.byte	2
+ 250 00e3 00       		.byte	0
+ 251 00e4 CA       		.byte	-54
+ 252 00e5 93       		.byte	-109
+ 253 00e6 02       		.byte	2
+ 254 00e7 00       		.byte	0
+ 255 00e8 8D       		.byte	-115
+ 256 00e9 9D       		.byte	-99
+ 257 00ea 02       		.byte	2
+ 258 00eb 00       		.byte	0
+ 259 00ec C6       		.byte	-58
+ 260 00ed A5       		.byte	-91
+ 261 00ee 02       		.byte	2
+ 262 00ef 00       		.byte	0
+ 263 00f0 6A       		.byte	106
+ 264 00f1 AC       		.byte	-84
+ 265 00f2 02       		.byte	2
+ 266 00f3 00       		.byte	0
+ 267 00f4 6D       		.byte	109
+ 268 00f5 B1       		.byte	-79
+ 269 00f6 02       		.byte	2
+ 270 00f7 00       		.byte	0
+ 271 00f8 C9       		.byte	-55
+ 272 00f9 B4       		.byte	-76
+ 273 00fa 02       		.byte	2
+ 274 00fb 00       		.byte	0
+ 275 00fc 79       		.byte	121
+ 276 00fd B6       		.byte	-74
+ 277 00fe 02       		.byte	2
+ 278 00ff 00       		.byte	0
+ 279 0100 79       		.byte	121
+ 280 0101 B6       		.byte	-74
+ 281 0102 02       		.byte	2
+ 282 0103 00       		.byte	0
+ 283 0104 C9       		.byte	-55
+ 284 0105 B4       		.byte	-76
+ 285 0106 02       		.byte	2
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVM382l.s 			page 6
+
+
+ 286 0107 00       		.byte	0
+ 287 0108 6D       		.byte	109
+ 288 0109 B1       		.byte	-79
+ 289 010a 02       		.byte	2
+ 290 010b 00       		.byte	0
+ 291 010c 6A       		.byte	106
+ 292 010d AC       		.byte	-84
+ 293 010e 02       		.byte	2
+ 294 010f 00       		.byte	0
+ 295 0110 C6       		.byte	-58
+ 296 0111 A5       		.byte	-91
+ 297 0112 02       		.byte	2
+ 298 0113 00       		.byte	0
+ 299 0114 8D       		.byte	-115
+ 300 0115 9D       		.byte	-99
+ 301 0116 02       		.byte	2
+ 302 0117 00       		.byte	0
+ 303 0118 CA       		.byte	-54
+ 304 0119 93       		.byte	-109
+ 305 011a 02       		.byte	2
+ 306 011b 00       		.byte	0
+ 307 011c 8D       		.byte	-115
+ 308 011d 88       		.byte	-120
+ 309 011e 02       		.byte	2
+ 310 011f 00       		.byte	0
+ 311 0120 E7       		.byte	-25
+ 312 0121 7B       		.byte	123
+ 313 0122 02       		.byte	2
+ 314 0123 00       		.byte	0
+ 315 0124 EA       		.byte	-22
+ 316 0125 6D       		.byte	109
+ 317 0126 02       		.byte	2
+ 318 0127 00       		.byte	0
+ 319 0128 AB       		.byte	-85
+ 320 0129 5E       		.byte	94
+ 321 012a 02       		.byte	2
+ 322 012b 00       		.byte	0
+ 323 012c 41       		.byte	65
+ 324 012d 4E       		.byte	78
+ 325 012e 02       		.byte	2
+ 326 012f 00       		.byte	0
+ 327 0130 C4       		.byte	-60
+ 328 0131 3C       		.byte	60
+ 329 0132 02       		.byte	2
+ 330 0133 00       		.byte	0
+ 331 0134 4D       		.byte	77
+ 332 0135 2A       		.byte	42
+ 333 0136 02       		.byte	2
+ 334 0137 00       		.byte	0
+ 335 0138 F6       		.byte	-10
+ 336 0139 16       		.byte	22
+ 337 013a 02       		.byte	2
+ 338 013b 00       		.byte	0
+ 339 013c DC       		.byte	-36
+ 340 013d 02       		.byte	2
+ 341 013e 02       		.byte	2
+ 342 013f 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVM382l.s 			page 7
+
+
+ 343 0140 19       		.byte	25
+ 344 0141 EE       		.byte	-18
+ 345 0142 01       		.byte	1
+ 346 0143 00       		.byte	0
+ 347 0144 CB       		.byte	-53
+ 348 0145 D8       		.byte	-40
+ 349 0146 01       		.byte	1
+ 350 0147 00       		.byte	0
+ 351 0148 0E       		.byte	14
+ 352 0149 C3       		.byte	-61
+ 353 014a 01       		.byte	1
+ 354 014b 00       		.byte	0
+ 355 014c 00       		.byte	0
+ 356 014d AD       		.byte	-83
+ 357 014e 01       		.byte	1
+ 358 014f 00       		.byte	0
+ 359 0150 BC       		.byte	-68
+ 360 0151 96       		.byte	-106
+ 361 0152 01       		.byte	1
+ 362 0153 00       		.byte	0
+ 363 0154 60       		.byte	96
+ 364 0155 80       		.byte	-128
+ 365 0156 01       		.byte	1
+ 366 0157 00       		.byte	0
+ 367 0158 06       		.byte	6
+ 368 0159 6A       		.byte	106
+ 369 015a 01       		.byte	1
+ 370 015b 00       		.byte	0
+ 371 015c C9       		.byte	-55
+ 372 015d 53       		.byte	83
+ 373 015e 01       		.byte	1
+ 374 015f 00       		.byte	0
+ 375 0160 C4       		.byte	-60
+ 376 0161 3D       		.byte	61
+ 377 0162 01       		.byte	1
+ 378 0163 00       		.byte	0
+ 379 0164 0F       		.byte	15
+ 380 0165 28       		.byte	40
+ 381 0166 01       		.byte	1
+ 382 0167 00       		.byte	0
+ 383 0168 C2       		.byte	-62
+ 384 0169 12       		.byte	18
+ 385 016a 01       		.byte	1
+ 386 016b 00       		.byte	0
+ 387 016c F2       		.byte	-14
+ 388 016d FD       		.byte	-3
+ 389 016e 00       		.byte	0
+ 390 016f 00       		.byte	0
+ 391 0170 B3       		.byte	-77
+ 392 0171 E9       		.byte	-23
+ 393 0172 00       		.byte	0
+ 394 0173 00       		.byte	0
+ 395 0174 19       		.byte	25
+ 396 0175 D6       		.byte	-42
+ 397 0176 00       		.byte	0
+ 398 0177 00       		.byte	0
+ 399 0178 33       		.byte	51
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVM382l.s 			page 8
+
+
+ 400 0179 C3       		.byte	-61
+ 401 017a 00       		.byte	0
+ 402 017b 00       		.byte	0
+ 403 017c 11       		.byte	17
+ 404 017d B1       		.byte	-79
+ 405 017e 00       		.byte	0
+ 406 017f 00       		.byte	0
+ 407 0180 C0       		.byte	-64
+ 408 0181 9F       		.byte	-97
+ 409 0182 00       		.byte	0
+ 410 0183 00       		.byte	0
+ 411 0184 4A       		.byte	74
+ 412 0185 8F       		.byte	-113
+ 413 0186 00       		.byte	0
+ 414 0187 00       		.byte	0
+ 415 0188 B7       		.byte	-73
+ 416 0189 7F       		.byte	127
+ 417 018a 00       		.byte	0
+ 418 018b 00       		.byte	0
+ 419 018c 10       		.byte	16
+ 420 018d 71       		.byte	113
+ 421 018e 00       		.byte	0
+ 422 018f 00       		.byte	0
+ 423 0190 58       		.byte	88
+ 424 0191 63       		.byte	99
+ 425 0192 00       		.byte	0
+ 426 0193 00       		.byte	0
+ 427 0194 91       		.byte	-111
+ 428 0195 56       		.byte	86
+ 429 0196 00       		.byte	0
+ 430 0197 00       		.byte	0
+ 431 0198 BD       		.byte	-67
+ 432 0199 4A       		.byte	74
+ 433 019a 00       		.byte	0
+ 434 019b 00       		.byte	0
+ 435 019c DB       		.byte	-37
+ 436 019d 3F       		.byte	63
+ 437 019e 00       		.byte	0
+ 438 019f 00       		.byte	0
+ 439 01a0 E7       		.byte	-25
+ 440 01a1 35       		.byte	53
+ 441 01a2 00       		.byte	0
+ 442 01a3 00       		.byte	0
+ 443 01a4 DD       		.byte	-35
+ 444 01a5 2C       		.byte	44
+ 445 01a6 00       		.byte	0
+ 446 01a7 00       		.byte	0
+ 447 01a8 B5       		.byte	-75
+ 448 01a9 24       		.byte	36
+ 449 01aa 00       		.byte	0
+ 450 01ab 00       		.byte	0
+ 451 01ac 6A       		.byte	106
+ 452 01ad 1D       		.byte	29
+ 453 01ae 00       		.byte	0
+ 454 01af 00       		.byte	0
+ 455 01b0 F0       		.byte	-16
+ 456 01b1 16       		.byte	22
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVM382l.s 			page 9
+
+
+ 457 01b2 00       		.byte	0
+ 458 01b3 00       		.byte	0
+ 459 01b4 3E       		.byte	62
+ 460 01b5 11       		.byte	17
+ 461 01b6 00       		.byte	0
+ 462 01b7 00       		.byte	0
+ 463 01b8 49       		.byte	73
+ 464 01b9 0C       		.byte	12
+ 465 01ba 00       		.byte	0
+ 466 01bb 00       		.byte	0
+ 467 01bc 03       		.byte	3
+ 468 01bd 08       		.byte	8
+ 469 01be 00       		.byte	0
+ 470 01bf 00       		.byte	0
+ 471 01c0 60       		.byte	96
+ 472 01c1 04       		.byte	4
+ 473 01c2 00       		.byte	0
+ 474 01c3 00       		.byte	0
+ 475 01c4 53       		.byte	83
+ 476 01c5 01       		.byte	1
+ 477 01c6 00       		.byte	0
+ 478 01c7 00       		.byte	0
+ 479 01c8 CD       		.byte	-51
+ 480 01c9 FE       		.byte	-2
+ 481 01ca FF       		.byte	-1
+ 482 01cb 00       		.byte	0
+ 483 01cc C0       		.byte	-64
+ 484 01cd FC       		.byte	-4
+ 485 01ce FF       		.byte	-1
+ 486 01cf 00       		.byte	0
+ 487 01d0 1D       		.byte	29
+ 488 01d1 FB       		.byte	-5
+ 489 01d2 FF       		.byte	-1
+ 490 01d3 00       		.byte	0
+ 491 01d4 D6       		.byte	-42
+ 492 01d5 F9       		.byte	-7
+ 493 01d6 FF       		.byte	-1
+ 494 01d7 00       		.byte	0
+ 495 01d8 DE       		.byte	-34
+ 496 01d9 F8       		.byte	-8
+ 497 01da FF       		.byte	-1
+ 498 01db 00       		.byte	0
+ 499 01dc 27       		.byte	39
+ 500 01dd F8       		.byte	-8
+ 501 01de FF       		.byte	-1
+ 502 01df 00       		.byte	0
+ 503 01e0 A2       		.byte	-94
+ 504 01e1 F7       		.byte	-9
+ 505 01e2 FF       		.byte	-1
+ 506 01e3 00       		.byte	0
+ 507 01e4 45       		.byte	69
+ 508 01e5 F7       		.byte	-9
+ 509 01e6 FF       		.byte	-1
+ 510 01e7 00       		.byte	0
+ 511 01e8 03       		.byte	3
+ 512 01e9 F7       		.byte	-9
+ 513 01ea FF       		.byte	-1
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVM382l.s 			page 10
+
+
+ 514 01eb 00       		.byte	0
+ 515 01ec D1       		.byte	-47
+ 516 01ed F6       		.byte	-10
+ 517 01ee FF       		.byte	-1
+ 518 01ef 00       		.byte	0
+ 519 01f0 A5       		.byte	-91
+ 520 01f1 F6       		.byte	-10
+ 521 01f2 FF       		.byte	-1
+ 522 01f3 00       		.byte	0
+ 523 01f4 77       		.byte	119
+ 524 01f5 F6       		.byte	-10
+ 525 01f6 FF       		.byte	-1
+ 526 01f7 00       		.byte	0
+ 527 01f8 3F       		.byte	63
+ 528 01f9 F6       		.byte	-10
+ 529 01fa FF       		.byte	-1
+ 530 01fb 00       		.byte	0
+ 531 01fc F6       		.byte	-10
+ 532 01fd F5       		.byte	-11
+ 533 01fe FF       		.byte	-1
+ 534 01ff 00       		.byte	0
+ 535              		.text
+ 536              	.Letext0:
+ 537              		.file 1 "Generated_Source\\PSoC5\\cytypes.h"
+ 538              		.file 2 "Generated_Source\\PSoC5\\Filter_Coefficients.c"
+ 539              		.section	.debug_info,"",%progbits
+ 540              	.Ldebug_info0:
+ 541 0000 AF000000 		.4byte	0xaf
+ 542 0004 0400     		.2byte	0x4
+ 543 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 544 000a 04       		.byte	0x4
+ 545 000b 01       		.uleb128 0x1
+ 546 000c EF000000 		.4byte	.LASF13
+ 547 0010 01       		.byte	0x1
+ 548 0011 D4010000 		.4byte	.LASF14
+ 549 0015 1B000000 		.4byte	.LASF15
+ 550 0019 00000000 		.4byte	.Ldebug_line0
+ 551 001d 02       		.uleb128 0x2
+ 552 001e 04       		.byte	0x4
+ 553 001f 05       		.byte	0x5
+ 554 0020 696E7400 		.ascii	"int\000"
+ 555 0024 03       		.uleb128 0x3
+ 556 0025 04       		.byte	0x4
+ 557 0026 07       		.byte	0x7
+ 558 0027 0E000000 		.4byte	.LASF0
+ 559 002b 03       		.uleb128 0x3
+ 560 002c 01       		.byte	0x1
+ 561 002d 06       		.byte	0x6
+ 562 002e 90010000 		.4byte	.LASF1
+ 563 0032 03       		.uleb128 0x3
+ 564 0033 01       		.byte	0x1
+ 565 0034 08       		.byte	0x8
+ 566 0035 CC000000 		.4byte	.LASF2
+ 567 0039 03       		.uleb128 0x3
+ 568 003a 02       		.byte	0x2
+ 569 003b 05       		.byte	0x5
+ 570 003c A2010000 		.4byte	.LASF3
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVM382l.s 			page 11
+
+
+ 571 0040 03       		.uleb128 0x3
+ 572 0041 02       		.byte	0x2
+ 573 0042 07       		.byte	0x7
+ 574 0043 7D010000 		.4byte	.LASF4
+ 575 0047 03       		.uleb128 0x3
+ 576 0048 04       		.byte	0x4
+ 577 0049 05       		.byte	0x5
+ 578 004a DF000000 		.4byte	.LASF5
+ 579 004e 03       		.uleb128 0x3
+ 580 004f 04       		.byte	0x4
+ 581 0050 07       		.byte	0x7
+ 582 0051 A3000000 		.4byte	.LASF6
+ 583 0055 03       		.uleb128 0x3
+ 584 0056 08       		.byte	0x8
+ 585 0057 05       		.byte	0x5
+ 586 0058 00000000 		.4byte	.LASF7
+ 587 005c 03       		.uleb128 0x3
+ 588 005d 08       		.byte	0x8
+ 589 005e 07       		.byte	0x7
+ 590 005f B5000000 		.4byte	.LASF8
+ 591 0063 03       		.uleb128 0x3
+ 592 0064 04       		.byte	0x4
+ 593 0065 07       		.byte	0x7
+ 594 0066 CB010000 		.4byte	.LASF9
+ 595 006a 03       		.uleb128 0x3
+ 596 006b 01       		.byte	0x1
+ 597 006c 08       		.byte	0x8
+ 598 006d DA000000 		.4byte	.LASF10
+ 599 0071 04       		.uleb128 0x4
+ 600 0072 9D000000 		.4byte	.LASF16
+ 601 0076 01       		.byte	0x1
+ 602 0077 9201     		.2byte	0x192
+ 603 0079 32000000 		.4byte	0x32
+ 604 007d 03       		.uleb128 0x3
+ 605 007e 04       		.byte	0x4
+ 606 007f 04       		.byte	0x4
+ 607 0080 9C010000 		.4byte	.LASF11
+ 608 0084 03       		.uleb128 0x3
+ 609 0085 08       		.byte	0x8
+ 610 0086 04       		.byte	0x4
+ 611 0087 E8000000 		.4byte	.LASF12
+ 612 008b 05       		.uleb128 0x5
+ 613 008c 71000000 		.4byte	0x71
+ 614 0090 9C000000 		.4byte	0x9c
+ 615 0094 06       		.uleb128 0x6
+ 616 0095 63000000 		.4byte	0x63
+ 617 0099 FF01     		.2byte	0x1ff
+ 618 009b 00       		.byte	0
+ 619 009c 07       		.uleb128 0x7
+ 620 009d AC010000 		.4byte	.LASF17
+ 621 00a1 02       		.byte	0x2
+ 622 00a2 11       		.byte	0x11
+ 623 00a3 AD000000 		.4byte	0xad
+ 624 00a7 05       		.uleb128 0x5
+ 625 00a8 03       		.byte	0x3
+ 626 00a9 00000000 		.4byte	Filter_ChannelAFirCoefficients
+ 627 00ad 08       		.uleb128 0x8
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVM382l.s 			page 12
+
+
+ 628 00ae 8B000000 		.4byte	0x8b
+ 629 00b2 00       		.byte	0
+ 630              		.section	.debug_abbrev,"",%progbits
+ 631              	.Ldebug_abbrev0:
+ 632 0000 01       		.uleb128 0x1
+ 633 0001 11       		.uleb128 0x11
+ 634 0002 01       		.byte	0x1
+ 635 0003 25       		.uleb128 0x25
+ 636 0004 0E       		.uleb128 0xe
+ 637 0005 13       		.uleb128 0x13
+ 638 0006 0B       		.uleb128 0xb
+ 639 0007 03       		.uleb128 0x3
+ 640 0008 0E       		.uleb128 0xe
+ 641 0009 1B       		.uleb128 0x1b
+ 642 000a 0E       		.uleb128 0xe
+ 643 000b 10       		.uleb128 0x10
+ 644 000c 17       		.uleb128 0x17
+ 645 000d 00       		.byte	0
+ 646 000e 00       		.byte	0
+ 647 000f 02       		.uleb128 0x2
+ 648 0010 24       		.uleb128 0x24
+ 649 0011 00       		.byte	0
+ 650 0012 0B       		.uleb128 0xb
+ 651 0013 0B       		.uleb128 0xb
+ 652 0014 3E       		.uleb128 0x3e
+ 653 0015 0B       		.uleb128 0xb
+ 654 0016 03       		.uleb128 0x3
+ 655 0017 08       		.uleb128 0x8
+ 656 0018 00       		.byte	0
+ 657 0019 00       		.byte	0
+ 658 001a 03       		.uleb128 0x3
+ 659 001b 24       		.uleb128 0x24
+ 660 001c 00       		.byte	0
+ 661 001d 0B       		.uleb128 0xb
+ 662 001e 0B       		.uleb128 0xb
+ 663 001f 3E       		.uleb128 0x3e
+ 664 0020 0B       		.uleb128 0xb
+ 665 0021 03       		.uleb128 0x3
+ 666 0022 0E       		.uleb128 0xe
+ 667 0023 00       		.byte	0
+ 668 0024 00       		.byte	0
+ 669 0025 04       		.uleb128 0x4
+ 670 0026 16       		.uleb128 0x16
+ 671 0027 00       		.byte	0
+ 672 0028 03       		.uleb128 0x3
+ 673 0029 0E       		.uleb128 0xe
+ 674 002a 3A       		.uleb128 0x3a
+ 675 002b 0B       		.uleb128 0xb
+ 676 002c 3B       		.uleb128 0x3b
+ 677 002d 05       		.uleb128 0x5
+ 678 002e 49       		.uleb128 0x49
+ 679 002f 13       		.uleb128 0x13
+ 680 0030 00       		.byte	0
+ 681 0031 00       		.byte	0
+ 682 0032 05       		.uleb128 0x5
+ 683 0033 01       		.uleb128 0x1
+ 684 0034 01       		.byte	0x1
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVM382l.s 			page 13
+
+
+ 685 0035 49       		.uleb128 0x49
+ 686 0036 13       		.uleb128 0x13
+ 687 0037 01       		.uleb128 0x1
+ 688 0038 13       		.uleb128 0x13
+ 689 0039 00       		.byte	0
+ 690 003a 00       		.byte	0
+ 691 003b 06       		.uleb128 0x6
+ 692 003c 21       		.uleb128 0x21
+ 693 003d 00       		.byte	0
+ 694 003e 49       		.uleb128 0x49
+ 695 003f 13       		.uleb128 0x13
+ 696 0040 2F       		.uleb128 0x2f
+ 697 0041 05       		.uleb128 0x5
+ 698 0042 00       		.byte	0
+ 699 0043 00       		.byte	0
+ 700 0044 07       		.uleb128 0x7
+ 701 0045 34       		.uleb128 0x34
+ 702 0046 00       		.byte	0
+ 703 0047 03       		.uleb128 0x3
+ 704 0048 0E       		.uleb128 0xe
+ 705 0049 3A       		.uleb128 0x3a
+ 706 004a 0B       		.uleb128 0xb
+ 707 004b 3B       		.uleb128 0x3b
+ 708 004c 0B       		.uleb128 0xb
+ 709 004d 49       		.uleb128 0x49
+ 710 004e 13       		.uleb128 0x13
+ 711 004f 3F       		.uleb128 0x3f
+ 712 0050 19       		.uleb128 0x19
+ 713 0051 02       		.uleb128 0x2
+ 714 0052 18       		.uleb128 0x18
+ 715 0053 00       		.byte	0
+ 716 0054 00       		.byte	0
+ 717 0055 08       		.uleb128 0x8
+ 718 0056 26       		.uleb128 0x26
+ 719 0057 00       		.byte	0
+ 720 0058 49       		.uleb128 0x49
+ 721 0059 13       		.uleb128 0x13
+ 722 005a 00       		.byte	0
+ 723 005b 00       		.byte	0
+ 724 005c 00       		.byte	0
+ 725              		.section	.debug_aranges,"",%progbits
+ 726 0000 14000000 		.4byte	0x14
+ 727 0004 0200     		.2byte	0x2
+ 728 0006 00000000 		.4byte	.Ldebug_info0
+ 729 000a 04       		.byte	0x4
+ 730 000b 00       		.byte	0
+ 731 000c 0000     		.2byte	0
+ 732 000e 0000     		.2byte	0
+ 733 0010 00000000 		.4byte	0
+ 734 0014 00000000 		.4byte	0
+ 735              		.section	.debug_line,"",%progbits
+ 736              	.Ldebug_line0:
+ 737 0000 56000000 		.section	.debug_str,"MS",%progbits,1
+ 737      02005000 
+ 737      00000201 
+ 737      FB0E0D00 
+ 737      01010101 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVM382l.s 			page 14
+
+
+ 738              	.LASF7:
+ 739 0000 6C6F6E67 		.ascii	"long long int\000"
+ 739      206C6F6E 
+ 739      6720696E 
+ 739      7400
+ 740              	.LASF0:
+ 741 000e 756E7369 		.ascii	"unsigned int\000"
+ 741      676E6564 
+ 741      20696E74 
+ 741      00
+ 742              	.LASF15:
+ 743 001b 433A5C55 		.ascii	"C:\\Users\\Luggi\\Desktop\\Aktuelles Projekt Laser_"
+ 743      73657273 
+ 743      5C4C7567 
+ 743      67695C44 
+ 743      65736B74 
+ 744 004a 73636875 		.ascii	"schutzschaltung\\Aktuelles Projekt Laser_schutzscha"
+ 744      747A7363 
+ 744      68616C74 
+ 744      756E675C 
+ 744      416B7475 
+ 745 007c 6C74756E 		.ascii	"ltung\\Laserschutzschaltung.cydsn\000"
+ 745      675C4C61 
+ 745      73657273 
+ 745      63687574 
+ 745      7A736368 
+ 746              	.LASF16:
+ 747 009d 75696E74 		.ascii	"uint8\000"
+ 747      3800
+ 748              	.LASF6:
+ 749 00a3 6C6F6E67 		.ascii	"long unsigned int\000"
+ 749      20756E73 
+ 749      69676E65 
+ 749      6420696E 
+ 749      7400
+ 750              	.LASF8:
+ 751 00b5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 751      206C6F6E 
+ 751      6720756E 
+ 751      7369676E 
+ 751      65642069 
+ 752              	.LASF2:
+ 753 00cc 756E7369 		.ascii	"unsigned char\000"
+ 753      676E6564 
+ 753      20636861 
+ 753      7200
+ 754              	.LASF10:
+ 755 00da 63686172 		.ascii	"char\000"
+ 755      00
+ 756              	.LASF5:
+ 757 00df 6C6F6E67 		.ascii	"long int\000"
+ 757      20696E74 
+ 757      00
+ 758              	.LASF12:
+ 759 00e8 646F7562 		.ascii	"double\000"
+ 759      6C6500
+ 760              	.LASF13:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccVM382l.s 			page 15
+
+
+ 761 00ef 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 761      4320342E 
+ 761      392E3320 
+ 761      32303135 
+ 761      30333033 
+ 762 0122 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 762      20726576 
+ 762      6973696F 
+ 762      6E203232 
+ 762      31323230 
+ 763 0155 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 763      66756E63 
+ 763      74696F6E 
+ 763      2D736563 
+ 763      74696F6E 
+ 764              	.LASF4:
+ 765 017d 73686F72 		.ascii	"short unsigned int\000"
+ 765      7420756E 
+ 765      7369676E 
+ 765      65642069 
+ 765      6E7400
+ 766              	.LASF1:
+ 767 0190 7369676E 		.ascii	"signed char\000"
+ 767      65642063 
+ 767      68617200 
+ 768              	.LASF11:
+ 769 019c 666C6F61 		.ascii	"float\000"
+ 769      7400
+ 770              	.LASF3:
+ 771 01a2 73686F72 		.ascii	"short int\000"
+ 771      7420696E 
+ 771      7400
+ 772              	.LASF17:
+ 773 01ac 46696C74 		.ascii	"Filter_ChannelAFirCoefficients\000"
+ 773      65725F43 
+ 773      68616E6E 
+ 773      656C4146 
+ 773      6972436F 
+ 774              	.LASF9:
+ 775 01cb 73697A65 		.ascii	"sizetype\000"
+ 775      74797065 
+ 775      00
+ 776              	.LASF14:
+ 777 01d4 47656E65 		.ascii	"Generated_Source\\PSoC5\\Filter_Coefficients.c\000"
+ 777      72617465 
+ 777      645F536F 
+ 777      75726365 
+ 777      5C50536F 
+ 778              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

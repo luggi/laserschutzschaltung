@@ -1,0 +1,1703 @@
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"LCD_LCDPort.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.section	.gnu.lto_.profile.d2352b7,"",%progbits
+  18 0000 789C6366 		.ascii	"x\234cf```a\200\000F\006=-\000\000\372\000a"
+  18      60606061 
+  18      80004606 
+  18      3D2D0000 
+  18      FA0061
+  19              		.text
+  20              		.section	.gnu.lto_.inline.d2352b7,"",%progbits
+  21 0000 789C6366 		.ascii	"x\234cf\300\016\022\2414\013\003\003\007;##\003#\003"
+  21      C00E12A1 
+  21      340B0303 
+  21      073B2323 
+  21      032303
+  22 0013 0333C701 		.ascii	"\0033\307\001;\006\266\005\362L\014L\027\370Y@\222\214"
+  22      3B06B605 
+  22      F24C0C4C 
+  22      17F85940 
+  22      928C
+  23 0025 0C0AF250 		.ascii	"\014\012\362P9\213\003[\231Q%\231\030XY\030\031\230"
+  23      398B035B 
+  23      99512599 
+  23      18585918 
+  23      1998
+  24 0037 5816C843 		.ascii	"X\026\310C\304\201\200\031S\210\001\000\010\276\012"
+  24      C4818019 
+  24      53880100 
+  24      08BE0A
+  25 0046 03       		.ascii	"\003"
+  26              		.text
+  27              		.section	.gnu.lto_.jmpfuncs.d2352b7,"",%progbits
+  28 0000 789C6366 		.ascii	"x\234cf\300\016\204\2404\013\003##c=#\210`b``\006\212"
+  28      C00E84A0 
+  28      340B0323 
+  28      23633D23 
+  28      88606260 
+  29 0017 00000DC0 		.ascii	"\000\000\015\300\001$"
+  29      0124
+  30              		.text
+  31              		.section	.gnu.lto_.pureconst.d2352b7,"",%progbits
+  32 0000 789C6366 		.ascii	"x\234cf``\340d\200\000\026\006)F)&)f)\000\002\305\000"
+  32      6060E064 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 2
+
+
+  32      80001606 
+  32      29462926 
+  32      29662900 
+  33 0017 7F       		.ascii	"\177"
+  34              		.text
+  35              		.section	.gnu.lto_LCD_LCDPort_Write.d2352b7,"",%progbits
+  36 0000 789C6591 		.ascii	"x\234e\221OH\033A\024\306\3377\263\033\323ZA<\346*\301"
+  36      4F481B41 
+  36      14C6DF37 
+  36      B31BD35A 
+  36      413CE62A 
+  37 0015 168A0741 		.ascii	"\026\212\007A\350Q\252\320\213\207\200\327\200\204t"
+  37      E851AAD0 
+  37      8B8780D7 
+  37      808474
+  38 0024 0F426920 		.ascii	"\017Bi \256^3k\243\007\241 \"(\024\321(bk\254Z\013\336"
+  38      AE5E336B 
+  38      A307A120 
+  38      222814D1 
+  38      28626BAC 
+  39 003b 2ADB20B4 		.ascii	"*\333 \264PT\274X*\022\025b\321[%R\377a\3227;\227\212"
+  39      5054BC58 
+  39      2A121562 
+  39      D15B2552 
+  39      FF61D237 
+  40 0052 036F67E6 		.ascii	"\003og\346\361\375\336\373\346\255\244\373+\302q\013"
+  40      F1FDDEFB 
+  40      E6ADA4FB 
+  40      2BC2710B 
+  41 0062 A267BC43 		.ascii	"\242g\274C\022\304\310\026\221\027\026\200>\020(#\220"
+  41      12C4C816 
+  41      91171680 
+  41      3E102823 
+  41      90
+  42 0073 C1A93813 		.ascii	"\301\2518\023\030\361\363\023\265MsJ\251?\243\333^\314"
+  42      18F1F313 
+  42      B54D734A 
+  42      A93FA3DB 
+  42      5ECC
+  43 0085 C795202A 		.ascii	"\307\225 *\013S\007\363hbM9\257\306\244|\014\342\363"
+  43      0B5307F3 
+  43      68624D39 
+  43      AFC6A47C 
+  43      0CE2F3
+  44 0098 CACE66A5 		.ascii	"\312\316f\245&:\253\324\200\277\276\244\332X\016\274"
+  44      263AABD4 
+  44      80BFBEA4 
+  44      DA580EBC 
+  45 00a8 8764024F 		.ascii	"\207d\002O#x\022!N\020> \252\305\253o7\326\204l\016"
+  45      23781221 
+  45      4E103E20 
+  45      AAC5AB6F 
+  45      37D6846C 
+  46 00bd C0DC8FA3 		.ascii	"\300\334\217\243\215G\2159\006\017o\326\342\2767\255"
+  46      8D478D39 
+  46      060F6FD6 
+  46      E2BE37AD 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 3
+
+
+  47 00cd 2AD56A80 		.ascii	"*\325j\200/\374\217\233\305\372\263\354\355\317\332"
+  47      2FFC8F9B 
+  47      C5FAB3EC 
+  47      EDCFDA
+  48 00dc 50968DD5 		.ascii	"P\226\215\325#\217F\343\011\213\010\361\273\2403\313"
+  48      238F46E3 
+  48      098B08F1 
+  48      BBA033CB 
+  49 00ec 0DBEAA56 		.ascii	"\015\276\252V?\177\371z\215\260\340\266\202\037\312"
+  49      3F7FF97A 
+  49      8DB0E0B6 
+  49      821FCA
+  50 00fb 690BBABB 		.ascii	"i\013\272\273\255\023!\375!*q\350w\037\363\205w\271"
+  50      AD1321FD 
+  50      212A71E8 
+  50      771FF385 
+  50      77B9
+  51 010d 87C2DFE1 		.ascii	"\207\302\337\341\342x\215.v!\364\020\006\277\027\006"
+  51      E2788D2E 
+  51      7621F410 
+  51      06BF1706 
+  52 011d EA4EC495 		.ascii	"\352N\304\225\220\3233\236\262t\373\203\322\366N8H\005"
+  52      90D3339E 
+  52      B274FB83 
+  52      D2F64E38 
+  52      4805
+  53 012f 6E7E0D17 		.ascii	"n~\015\027\327\037L\342\235\227e\313\026>\"\202%\260"
+  53      D71F4CE2 
+  53      9D9765CB 
+  53      163E2282 
+  53      25B0
+  54 0141 5B2C6312 		.ascii	"[,c\022\264\2077\227C\3730\005\245\251Y>\310\265h\036"
+  54      B4873797 
+  54      43FB3005 
+  54      A5A9593E 
+  54      C8B5681E 
+  55 0155 8AE7B1C2 		.ascii	"\212\347\261\302\332]\210\300>{d\221a~\177\263\015d"
+  55      DA5D88C0 
+  55      3E7B6491 
+  55      617E7FB3 
+  55      0D64
+  56 0167 5F088BA1 		.ascii	"_\010\213\241\251\323\312\211\245)+C\370\304\020\253"
+  56      A9D3CA89 
+  56      A5292B43 
+  56      F8C410AB 
+  57 0177 CE434662 		.ascii	"\316CFbT\032,\214\006\255\356\330\362|\373\256\261U"
+  57      541A2C8C 
+  57      06ADEED8 
+  57      F27CFBAE 
+  57      B155
+  58 0189 36C61015 		.ascii	"6\306\020\025\341\3717A\027=\330\022\377\035\236\001"
+  58      E1F93741 
+  58      173DD812 
+  58      FF1D9E01 
+  59 0199 4F24FAC2 		.ascii	"O$\372\302y\355\244\023\256\363\262\273+\325\227N:\361"
+  59      79EDA413 
+  59      AEF3B2BB 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 4
+
+
+  59      2BD5974E 
+  59      3AF1
+  60 01ab 5857AABD 		.ascii	"XW\252\2755\336\331\336\321\315\021K\245\335\346$\331"
+  60      35DED9DE 
+  60      D1CD114B 
+  60      A5DDE624 
+  60      D9
+  61 01bc FD89577D 		.ascii	"\375\211W}\316\303^7\341\366$\237\367\270\275\377\000"
+  61      CEC35E37 
+  61      E1F6249F 
+  61      F7B8BDFF 
+  61      00
+  62 01cd 97F9C19E 		.ascii	"\227\371\301\236"
+  63              		.text
+  64              		.section	.gnu.lto_LCD_LCDPort_SetDriveMode.d2352b7,"",%progbits
+  65 0000 789C7D95 		.ascii	"x\234}\225]HSa\030\307\337\347\234}\331\234\313/\234"
+  65      5D485361 
+  65      18C7DFE7 
+  65      9C7DD99C 
+  65      CB2F9C
+  66 0013 5B7EA173 		.ascii	"[~\241s\251\263 \350>0\360\246\013\301[ABwY\203a\327"
+  66      A9B320E8 
+  66      3E30F0A6 
+  66      0BC15B41 
+  66      42775983 
+  67 0029 9EA91179 		.ascii	"\236\251\021y\021\323JC\221\322\012-M\363\243\354\323"
+  67      11D34A43 
+  67      91D20A2D 
+  67      4DF3A3EC 
+  67      D3
+  68 003a E6102F8C 		.ascii	"\346\020/\214L%\220\214\014\312J\203\302\245T+d=\317"
+  68      4C25908C 
+  68      0CCA4A83 
+  68      C2A5542B 
+  68      643DCF
+  69 004d 7BF67176 		.ascii	"{\366qvb\215\235\3779\317\237\363\377\277\277\363nl"
+  69      628D9DFF 
+  69      39CF9FF3 
+  69      FFBFBFF3 
+  69      6E6C
+  70 005f 22FBF765 		.ascii	"\"\373\367e\305cN\307\230\023\317 2\020|\213\214y\015"
+  70      C5634EC7 
+  70      9813CF20 
+  70      32107C8B 
+  70      8C790D
+  71 0072 02005D30 		.ascii	"\002\000]0`\315\0024\303\226\020\024\300\347\037\276"
+  71      60CD0234 
+  71      C3961014 
+  71      C0E71FBE 
+  72 0082 6274DC94 		.ascii	"bt\334\224$i{`\332r\326\022\022\030\333\021\344\032"
+  72      24697B60 
+  72      DA72D612 
+  72      1218DB11 
+  72      E41A
+  73 0094 180407DE 		.ascii	"\030\004\007\336\3629\2645h\022\017\002\303\353\275"
+  73      F239B435 
+  73      68120F02 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 5
+
+
+  73      C3EBBD
+  74 00a3 8ED515C1 		.ascii	"\216\325\025\301~]\222Z\374/F\245c\020\302\316!\020"
+  74      7E5D925A 
+  74      FC2F46A5 
+  74      6310C2CE 
+  74      2110
+  75 00b5 31014E2B 		.ascii	"1\001N+\224Y\031\032\014n\201\235n\016\266\355\255\032"
+  75      9459191A 
+  75      0C6E819D 
+  75      6E0EB6ED 
+  75      AD1A
+  76 00c7 756DD8BD 		.ascii	"um\330\275_\356\204\333\240\003<\217e\370\245px\347"
+  76      5FEE84DB 
+  76      A0033C8F 
+  76      65F8A570 
+  76      78E7
+  77 00d9 6DC7E611 		.ascii	"m\307\346\0218,`F\020QD\015\211\026(\256\243K=\211\201"
+  77      382C6046 
+  77      1051440D 
+  77      891628AE 
+  77      A34B3D89 
+  78 00ee 2485EE31 		.ascii	"$\205\3561\222\244\322h\"I#1\223\227N\222Ac&I\026I6"
+  78      92A4D268 
+  78      22492331 
+  78      93974E92 
+  78      41632649 
+  79 0105 79392416 		.ascii	"y9$\026\032sI\210N\264\221\227G\222Oc\001I!I\021y\305"
+  79      1A734988 
+  79      4EB49197 
+  79      47924F63 
+  79      01492149 
+  80 011c 242534DA 		.ascii	"$%4\332IJI\034\344\225\221\224\323XA\342$\251$\217\261"
+  80      494A491C 
+  80      E4959194 
+  80      D35841E2 
+  80      24A9248F 
+  81 0131 0D3C685F 		.ascii	"\015<h_?\342\200gq\015\002?\332?\365j\350i\177\012\264"
+  81      3FE28067 
+  81      710D023F 
+  81      DA3FF56A 
+  81      E8697F0A 
+  82 0146 C9B353E7 		.ascii	"\311\263S\347:\015\233BH\320\370\256y%\015\355\315\273"
+  82      3A0D9B42 
+  82      48D0F8AE 
+  82      79250DED 
+  82      CDBB
+  83 0158 8D97CBB2 		.ascii	"\215\227\313\262\305h|\377\301{C\337\007\275\3366\334"
+  83      C5687CFF 
+  83      C17B43DF 
+  83      07BDDE36 
+  83      DC
+  84 0169 522D0C83 		.ascii	"R-\014\203\025F\000?F\270\003}\300\326\240e]/\327\211"
+  84      1546003F 
+  84      46B8037D 
+  84      C0D6A065 
+  84      5D2FD789 
+  85 017d D88873EB 		.ascii	"\330\210s\353/\235<k\320\302\374\353o\333\317y\235\030"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 6
+
+
+  85      2F9D3C6B 
+  85      D0C2FCEB 
+  85      6FDBCF79 
+  85      9D18
+  86 018f 0C475EF8 		.ascii	"\014G^\370\011\217b\205\"\213o\2552\253G\013\263\313"
+  86      098F6285 
+  86      228B6FAD 
+  86      32AB470B 
+  86      B3CB
+  87 01a1 935FE7B4 		.ascii	"\223_\347\264<\233\306`\214GZw#\267\030\370\012zeK\012"
+  87      3C9BC660 
+  87      8C475A77 
+  87      23B718F8 
+  87      0A7A654B 
+  88 01b6 BA38073A 		.ascii	"\2728\007:\201\346\377\261\337Ev\274\237\361\015\371"
+  88      81E6FFB1 
+  88      DF4576BC 
+  88      9FF10DF9 
+  89 01c6 6293E346 		.ascii	"b\223\343FL\314\207w\206E\376\360\035\321\375\230\350"
+  89      4CCC8777 
+  89      8645FEF0 
+  89      1DD1FD98 
+  89      E8
+  90 01d7 5E5AD4C4 		.ascii	"^Z\324\304K\306c%\023\252\015H\305\012\345C\230\320"
+  90      4BC66325 
+  90      13AA0D48 
+  90      C50AE543 
+  90      98D0
+  91 01e9 8A3C688C 		.ascii	"\212<h\214:\215?\233I\0313\243\233@\235t\301INm\226"
+  91      3A8D3F9B 
+  91      491933A3 
+  91      9B409D74 
+  91      C1494E6D 
+  92 01fe A9BF47A8 		.ascii	"\251\277G\250\323\351\273?2\260k\346\324\235Q\352u\337"
+  92      D3E9BB3F 
+  92      32B06BE6 
+  92      D49D51EA 
+  92      75DF
+  93 0210 9F80102F 		.ascii	"\237\200\020/\231\212\225\334SQg`\205\222:\023-5u\026"
+  93      998A95DC 
+  93      53516760 
+  93      85923A13 
+  93      2D357516 
+  94 0224 A7CE54C6 		.ascii	"\247\316T\306\262\321M\240N\272\340}N\235-S\377\216"
+  94      B2D14DA0 
+  94      4EBAE07D 
+  94      4E9D2D53 
+  94      FF8E
+  95 0236 50E76062 		.ascii	"P\347`ba\263\347\202\211S_\214R\007gf\247\315\361\222"
+  95      61B3E782 
+  95      89535F8C 
+  95      52076766 
+  95      A7CDF192 
+  96 024a E958C903 		.ascii	"\351X\311\003\025\265\005+\224\324\271h\251\251\255"
+  96      15B5052B 
+  96      94D4B968 
+  96      A9A9AD
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 7
+
+
+  97 0259 9C3A5719 		.ascii	"\234:W\031\263\241\233@\235t\301\207\234\332&S\007\016"
+  97      B3A19B40 
+  97      9D74C187 
+  97      9CDA2653 
+  97      070E
+  98 026b C8F13C4C 		.ascii	"\310\361<L\234\357i\017\356\343\324\227\242\324\276"
+  98      9CEF690F 
+  98      EEE3D497 
+  98      A2D4BE
+  99 027a 5E6F574A 		.ascii	"^oWJ\274\344Q\254\344\261\212:\037+\224\324\005h\251"
+  99      BCE451AC 
+  99      E4B18A3A 
+  99      1F2B94D4 
+  99      0568A9
+ 100 028d A90B3975 		.ascii	"\251\0139u\2012V\204n\002u\322\005\237p\352\"\231z!"
+ 100      81325684 
+ 100      6E0275D2 
+ 100      059F70EA 
+ 100      22997A21 
+ 101 02a1 425D8C89 		.ascii	"B]\214\211\361\245\241~\371{}9J\035\352o\035\322\305"
+ 101      F1A5A17E 
+ 101      F97B7D39 
+ 101      4A1DEA6F 
+ 101      1DD2C5
+ 102 02b4 4B9EC64A 		.ascii	"K\236\306JfT\324%X\241\244\266\243\245\246.\345\324"
+ 102      6654D425 
+ 102      58A1A4B6 
+ 102      A3A5A62E 
+ 102      E5D4
+ 103 02c6 7665CC81 		.ascii	"ve\314\201n\002u\322\005\237qj\207L\275\022\241.\303"
+ 103      6E0275D2 
+ 103      059F716A 
+ 103      874CBD12 
+ 103      A12EC3
+ 104 02d9 445F4FE8 		.ascii	"D_O\350\225L\335\025\245~sun\336\020/\361\307JfU\324"
+ 104      954CDD15 
+ 104      A57E7375 
+ 104      6EDE102F 
+ 104      F1C74A66 
+ 105 02ef E558A1A4 		.ascii	"\345X\241\244\256@KM\355\344\324\025\312X%\272\011\324"
+ 105      AE404B4D 
+ 105      EDE4D415 
+ 105      CA5825BA 
+ 105      09D4
+ 106 0301 49170C70 		.ascii	"I\027\014p\352J\266\016^\177w5\335M\377L\033\370/\203"
+ 106      EA4AB60E 
+ 106      5E7F7735 
+ 106      DD4DFF4C 
+ 106      1BF82F83 
+ 107 0315 3FB5F8C3 		.ascii	"?\265\370\303k\257v\235vyN6\271\032\353k\335g<\015\256"
+ 107      6BAF769D 
+ 107      76794E36 
+ 107      B91AEB6B 
+ 107      DD673C0D 
+ 108 032a BA9A5A77 		.ascii	"\272\232Zw\325\321\272\023U\307\353\361\250q{\232\016"
+ 108      D5D1BA13 
+ 108      55C7EBF1 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 8
+
+
+ 108      A8717B9A 
+ 108      0E
+ 109 033b 3530CD29 		.ascii	"50\315)w\243\353/\264\233D\217"
+ 109      77A3EB2F 
+ 109      B49B448F 
+ 110              		.text
+ 111              		.section	.gnu.lto_LCD_LCDPort_Read.d2352b7,"",%progbits
+ 112 0000 789C6366 		.ascii	"x\234cf\300\004R@\374\007\210\325\201\230\221\231\201"
+ 112      C0045240 
+ 112      FC0788D5 
+ 112      81989199 
+ 112      81
+ 113 0011 9169C239 		.ascii	"\221i\3029\006\206F\016&FF\020\203\201\221\241\236\211"
+ 113      0686460E 
+ 113      26464610 
+ 113      838191A1 
+ 113      9E89
+ 114 0023 B19EF125 		.ascii	"\261\236\361%\323G&\3063;\377]fT_\332\320\320\364\341"
+ 114      D34726C6 
+ 114      333BFF5D 
+ 114      66545FDA 
+ 114      D0D0F4E1 
+ 115 0037 D3DE3BDC 		.ascii	"\323\336;\334\255\022?\231\030\030>310\352H1j\202\314"
+ 115      AD123F99 
+ 115      18183E33 
+ 115      3130EA48 
+ 115      316A82CC 
+ 116 004b 615CCEA8 		.ascii	"a\\\316\250\316\000T\370\261\345\357un\266\226\206\206"
+ 116      CE0054F8 
+ 116      B1E5EF75 
+ 116      6EB69686 
+ 116      86
+ 117 005c 0601903C 		.ascii	"\006\001\220<Pb\005#\033#\220^/t\240\341\377\377\315"
+ 117      50620523 
+ 117      1B23905E 
+ 117      2F74A0E1 
+ 117      FFFFCD
+ 118 006f 7F269EB0 		.ascii	"\177&\236\260cdab\370\311\004\264\021d\010\303\023 "
+ 118      63646162 
+ 118      F8C904B4 
+ 118      116408C3 
+ 118      1320
+ 119 0081 01B2EF29 		.ascii	"\001\262\357)\023\023\210f\276\305x\350[\327\271\371"
+ 119      13138866 
+ 119      BEC578E8 
+ 119      5BD7B9F9 
+ 120 0091 56208DDF 		.ascii	"V \215\337\231@\226?\276\264\350\003\347\013\246\237"
+ 120      9940963F 
+ 120      BEB4E803 
+ 120      E70BA69F 
+ 121 00a1 4C4C0B17 		.ascii	"LL\013\02756\260\200\254\271\377\344\374E\016\260\020"
+ 121      3536B080 
+ 121      ACB9FFE4 
+ 121      FC450EB0 
+ 121      10
+ 122 00b2 03887BF0 		.ascii	"\003\210{\360\343\372-\034s\031g7\2660\376dbf\\\311"
+ 122      E3FA2D1C 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 9
+
+
+ 122      73196737 
+ 122      B630FE64 
+ 122      62665CC9 
+ 123 00c6 28C5B88A 		.ascii	"(\305\270\212\021\350,\306\325\214s\031\031n16\377h"
+ 123      11E82CC6 
+ 123      D58C7319 
+ 123      196E3136 
+ 123      FF68
+ 124 00d8 D38198C7 		.ascii	"\323\201\230\307\0141r\376\313\177/X@\372\031\352\031"
+ 124      0C3172FE 
+ 124      CB7F2F58 
+ 124      40FA19EA 
+ 124      19
+ 125 00e9 18D70095 		.ascii	"\030\327\000\225\336cd\204*\000;\211\021\344\024\240"
+ 125      DE636484 
+ 125      2A003B89 
+ 125      11E414A0 
+ 126 00f9 D9AAEEA9 		.ascii	"\331\252\356\251y\251E\211%\251)\361\301\371\245E\311"
+ 126      79A94589 
+ 126      25A929F1 
+ 126      C1F9A545 
+ 126      C9
+ 127 010a A93101C1 		.ascii	"\2511\001\301\371\316\2461>\316.\361@\034\220_T\242"
+ 127      F9CEA631 
+ 127      3ECE2EF1 
+ 127      401C905F 
+ 127      54A2
+ 128 011c 97CC0000 		.ascii	"\227\314\000\000K'h\303"
+ 128      4B2768C3 
+ 129              		.text
+ 130              		.section	.gnu.lto_LCD_LCDPort_ReadDataReg.d2352b7,"",%progbits
+ 131 0000 789C6366 		.ascii	"x\234cf\300\004R@\374\007\210\325\201\230\221\231\201"
+ 131      C0045240 
+ 131      FC0788D5 
+ 131      81989199 
+ 131      81
+ 132 0011 9169C239 		.ascii	"\221i\3029\006\206F\016&FF\020\203\201\221\241\236\211"
+ 132      0686460E 
+ 132      26464610 
+ 132      838191A1 
+ 132      9E89
+ 133 0023 B19EF125 		.ascii	"\261\236\361%\323G&\3063;\377]fT_\332\320\320\364a\323"
+ 133      D34726C6 
+ 133      333BFF5D 
+ 133      66545FDA 
+ 133      D0D0F461 
+ 134 0038 D53BDCAD 		.ascii	"\325;\334\255\022?\231\030\030>310\352H1j\202\314a\\"
+ 134      123F9918 
+ 134      183E3331 
+ 134      30EA4831 
+ 134      6A82CC61 
+ 135 004d CEA8CE00 		.ascii	"\316\250\316\000T\370\261\345\357un\266\226\206\206"
+ 135      54F8B1E5 
+ 135      EF756EB6 
+ 135      968686
+ 136 005c 0601903C 		.ascii	"\006\001\220<Pb\005#\033#\220^/t\240\341\377\377\315"
+ 136      50620523 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 10
+
+
+ 136      1B23905E 
+ 136      2F74A0E1 
+ 136      FFFFCD
+ 137 006f D7269DD0 		.ascii	"\327&\235\320fbab\370\311\004\264\021d\010\303\023 "
+ 137      66626162 
+ 137      F8C904B4 
+ 137      116408C3 
+ 137      1320
+ 138 0081 01B2EF29 		.ascii	"\001\262\357)\023\023\210f\276\305x\350[\327\273UV "
+ 138      13138866 
+ 138      BEC578E8 
+ 138      5BD7BB55 
+ 138      5620
+ 139 0093 8DDF9940 		.ascii	"\215\337\231@\226\267\2368\324\304\373\202\351'\023"
+ 139      96B79E38 
+ 139      D4C4FB82 
+ 139      E92713
+ 140 00a2 D382458D 		.ascii	"\323\202E\215\015, k\356?9\177\221\003,\304\000\342"
+ 140      0D2C206B 
+ 140      EE3F397F 
+ 140      91032CC4 
+ 140      00E2
+ 141 00b4 DEECBAB7 		.ascii	"\336\354\272\267\217s.\343\354\306\026\306\237L\314"
+ 141      8F732EE3 
+ 141      ECC616C6 
+ 141      9F4CCC
+ 142 00c3 8C2B19A5 		.ascii	"\214+\031\245\030W1\002\235\305\270\232q.#\303-\306"
+ 142      18573102 
+ 142      9DC5B89A 
+ 142      712E23C3 
+ 142      2DC6
+ 143 00d5 E61F6D3A 		.ascii	"\346\037m:\020\363\230!F\316\177\371\357\005\013H?C"
+ 143      10F39821 
+ 143      46CE7FF9 
+ 143      EF050B48 
+ 143      3F43
+ 144 00e7 3D03E31A 		.ascii	"=\003\343\032\240\322{\214\214P\005`'1\202\234\0024"
+ 144      A0D27B8C 
+ 144      8C500560 
+ 144      2731829C 
+ 144      0234
+ 145 00f9 5BD53D35 		.ascii	"[\325=5/\265(\261$5%>8\277\264(95& 8\337\3314\306\307"
+ 145      2FB528B1 
+ 145      2435253E 
+ 145      38BFB428 
+ 145      39352620 
+ 146 0113 D9251E88 		.ascii	"\331%\036\210\003\362\213J\364\222\031\000\225\237g"
+ 146      03F28B4A 
+ 146      F4921900 
+ 146      959F67
+ 147 0122 C7       		.ascii	"\307"
+ 148              		.text
+ 149              		.section	.gnu.lto_.symbol_nodes.d2352b7,"",%progbits
+ 150 0000 789C6366 		.ascii	"x\234cf``pb\200\002&\206z\006\206\011\347\030\030\352"
+ 150      60607062 
+ 150      80022686 
+ 150      7A068609 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 11
+
+
+ 150      E71818EA 
+ 151 0014 EB19A62D 		.ascii	"\353\031\246-\340``b\254gD\3413\3253\241\360\231\353"
+ 151      E0606062 
+ 151      AC6744E1 
+ 151      33D533A1 
+ 151      F099EB
+ 152 0027 9991F90C 		.ascii	"\231\221\371\014\0000N\020\276"
+ 152      00304E10 
+ 152      BE
+ 153              		.text
+ 154              		.section	.gnu.lto_.refs.d2352b7,"",%progbits
+ 155 0000 789C6366 		.ascii	"x\234cf```d\200\002\000\000=\000\005"
+ 155      60606064 
+ 155      80020000 
+ 155      3D0005
+ 156              		.text
+ 157              		.section	.gnu.lto_.decls.d2352b7,"",%progbits
+ 158 0000 789C8D52 		.ascii	"x\234\215RMHTQ\024\276\347\335\347\250O\023\333\250"
+ 158      4D485451 
+ 158      14BEE7DD 
+ 158      E7A84F13 
+ 158      DBA8
+ 159 0012 0C41D322 		.ascii	"\014A\323\"!\020\241E\340\256`\004]T\014J\264P\220A"
+ 159      2110A145 
+ 159      E0AE6004 
+ 159      5D540C4A 
+ 159      B4509041 
+ 160 0026 1F361B27 		.ascii	"\0376\033'\246g\340\252\333h\3703\221bY\326\302\206"
+ 160      A667E0AA 
+ 160      DB68F833 
+ 160      916259D6 
+ 160      C286
+ 161 0038 D47EFCCF 		.ascii	"\324~\374\317\277q\374\235\241\215 \006\301$X\233D*"
+ 161      BF71FC9D 
+ 161      A18D2006 
+ 161      C124589B 
+ 161      442A
+ 162 004a 778EA062 		.ascii	"w\216\240b\020\275\316\275o\246yL#u\340\274w\317\275"
+ 162      10BDCEBD 
+ 162      6FA6794C 
+ 162      2375E0BC 
+ 162      77CFBD
+ 163 005d E7FBCE77 		.ascii	"\347\373\316w\356=\224\020\222\013\204\350hvJ\3108\306"
+ 163      EE3D9410 
+ 163      920B84E8 
+ 163      68764AC8 
+ 163      38C6
+ 164 006f 69E80E92 		.ascii	"i\350\016\2220\031}\022}\032=\200\036$\177\333\244\011"
+ 164      30197D12 
+ 164      7D1A3D80 
+ 164      1E247FDB 
+ 164      A409
+ 165 0081 378A9E87 		.ascii	"7\212\236\207\276\214\276\030;\207XN\262qNK\022.\234"
+ 165      BE8CBE18 
+ 165      3B87584E 
+ 165      B2714E4B 
+ 165      122E9C
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 12
+
+
+ 166 0094 023B9D02 		.ascii	"\002;\235\002\033\210i;\256^ \005&\370\017L\252\336"
+ 166      1B88693B 
+ 166      AE5E2005 
+ 166      26F80F4C 
+ 166      AADE
+ 167 00a6 F624088E 		.ascii	"\366$\010\216\355\257g\355H\220\243\330x8\337\275\332"
+ 167      EDAF67ED 
+ 167      4890A3D8 
+ 167      7838DFBD 
+ 167      DA
+ 168 00b7 6BC1305B 		.ascii	"k\3010[\221y\270\261\322\332\232A%\340\353\376\336\255"
+ 168      9179B8B1 
+ 168      D2DA9A41 
+ 168      25E0EBFE 
+ 168      DEAD
+ 169 00c9 885234C4 		.ascii	"\210R4\304\030kc\241\020$(\356\276\\\270\237\216\230"
+ 169      186B63A1 
+ 169      102428EE 
+ 169      BE5CB89F 
+ 169      8E98
+ 170 00db 3C45840F 		.ascii	"<E\204\017\326\236\205\251\010u\216\22367\037\375\240"
+ 170      D69E85A9 
+ 170      08758E93 
+ 170      36371FFD 
+ 170      A0
+ 171 00ec A014B631 		.ascii	"\240\024\2661\346e\321nF\013\010\024Y\341\234\225\300"
+ 171      E665D16E 
+ 171      460B0814 
+ 171      59E19C95 
+ 171      C0
+ 172 00fd 1814621A 		.ascii	"\030\024b\032\014A\021\201a\260\302\010X\311\000\026"
+ 172      0C411181 
+ 172      61B0C208 
+ 172      58C90016 
+ 173 010d 883E8F7C 		.ascii	"\210>\217|:\305\230\014\243\240\300\033\240\"\003\333"
+ 173      3AC5980C 
+ 173      A3A0C01B 
+ 173      A02203DB 
+ 174 011d E0156245 		.ascii	"\340\025bE\273\356\205\273dY\302M\236S%\324\036\350"
+ 174      BBEE85BB 
+ 174      6459C24D 
+ 174      9E5325D4 
+ 174      1EE8
+ 175 012f 5B83527E 		.ascii	"[\203R~\017\022\260\256f\226+\203#\017^!\355k\244%0"
+ 175      0F12B0AE 
+ 175      66962B83 
+ 175      230F5E21 
+ 175      ED6BA425 
+ 176 0144 01F9F81D 		.ascii	"\001\371\370\035\007\331 \360\255\266~\224\350y\321"
+ 176      07D920F0 
+ 176      ADB67E94 
+ 176      E879D1
+ 177 0153 9A3EF478 		.ascii	"\232>\364x.\313\326\307\374\023Q_\177\037}\312\374^"
+ 177      2ECBD6C7 
+ 177      FC13515F 
+ 177      7F1F7DCA 
+ 177      FC5E
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 13
+
+
+ 178 0165 F64B47F9 		.ascii	"\366KG\371\034\004o\377\010 |m\334\350$\330\020x\330"
+ 178      1C046FFF 
+ 178      08207C6D 
+ 178      DCE824D8 
+ 178      1078D8
+ 179 0178 B9DB9D45 		.ascii	"\271\333\235E]\202\344]\3637_\216 \361\317\367[VYH\327"
+ 179      5D82E45D 
+ 179      F3375F8E 
+ 179      20F1CFF7 
+ 179      5B565948 
+ 180 018d 2F0AFC94 		.ascii	"/\012\374\224\011?\025\307O\013|{\313\0045\013\346\275"
+ 180      093F15C7 
+ 180      4F0B7C7B 
+ 180      CB04350B 
+ 180      E6BD
+ 181 019f 2414CF08 		.ascii	"$\024\317\010\305Uq\301\333\007\273@\275 \212\355\177"
+ 181      C55571C1 
+ 181      DB07BB40 
+ 181      BD208AED 
+ 181      7F
+ 182 01b0 7F316314 		.ascii	"\1771c\024\373\262\273\255\206Z\330O]\247\002\001\263"
+ 182      FBB2BBAD 
+ 182      865AD84F 
+ 182      5DA70201 
+ 182      B3
+ 183 01c1 A672B3F1 		.ascii	"\246r\263\361r\001Q\256g\251=d\241\017\015\212\021\337"
+ 183      720151AE 
+ 183      67A93D64 
+ 183      A10F0D8A 
+ 183      11DF
+ 184 01d3 D765A369 		.ascii	"\327e\243i\377\360`\\/'\2303\021\314\305\011\202\202"
+ 184      FFF0605C 
+ 184      2F279833 
+ 184      11CCC509 
+ 184      8282
+ 185 01e5 803DF10D 		.ascii	"\200=\361\015d\320a\203`\346\260#xB\301gm\376\217g\305"
+ 185      64D06183 
+ 185      60E6B023 
+ 185      7842C167 
+ 185      6DFE8F67 
+ 186 01fa 4188BCEF 		.ascii	"A\210\274\357\330\3104\006!\031\261t\354 \034m\227\267"
+ 186      D8C83406 
+ 186      2119B174 
+ 186      EC201C6D 
+ 186      97B7
+ 187 020c B04BB088 		.ascii	"\260K\260\210\0273\237\030\204\005HLBd\315\373\231f"
+ 187      17339F18 
+ 187      8405484C 
+ 187      4264CDFB 
+ 187      9966
+ 188 021e 77F0E9C2 		.ascii	"w\360\351\302K\314,\027\271\211K\\\206l\321\000\376"
+ 188      4BCC2C17 
+ 188      B9894B5C 
+ 188      866CD100 
+ 188      FE
+ 189 022f F7243AF6 		.ascii	"\367$:\366a\245O\002\253U\351\305)>:\015a$\342\313\320"
+ 189      61A54F02 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 14
+
+
+ 189      AB55E9C5 
+ 189      293E3A0D 
+ 189      6124E2CB 
+ 190 0244 8EAEDFD1 		.ascii	"\216\256\337\321\015\353L\027\333m\374Y\242^\223L\""
+ 190      0DEB4C17 
+ 190      DB6DFC59 
+ 190      A25E934C 
+ 190      22
+ 191 0255 F6098490 		.ascii	"\366\011\204\220|\005\311E\230\326\350j\320J,eW\257"
+ 191      7C05C945 
+ 191      98D6E86A 
+ 191      D04A2C65 
+ 191      57AF
+ 192 0267 D9ECE44C 		.ascii	"\331\354\344L\231\332\240z\234\232ZWS\351n\364\324\252"
+ 192      99DAA07A 
+ 192      9C9A5A57 
+ 192      53E96EF4 
+ 192      D4AA
+ 193 0279 D58E4AB7 		.ascii	"\325\216J\267\375Bum\223\326tS\275U|\203\234\274l/\255"
+ 193      FD42756D 
+ 193      93D67453 
+ 193      BD557C83 
+ 193      9CBC6C2F 
+ 194 028e 4177B83D 		.ascii	"Aw\270=Z\315u\217KS\317\036\2031%\026\327\222\0023\256"
+ 194      5ACD758F 
+ 194      4B53CF1E 
+ 194      83312516 
+ 194      D7920233 
+ 195 02a3 52D54A3D 		.ascii	"R\325J=\256\333\352\025w\235\232k>\250P\235u\371\311"
+ 195      AEDBEA15 
+ 195      779D9A6B 
+ 195      3EA8509D 
+ 195      75F9C9
+ 196 02b6 1BA54ECD 		.ascii	"\033\245N\315Y\241\326\313\036\265\276\3447u(O\246"
+ 196      59A1D6CB 
+ 196      1EB5BEE4 
+ 196      3775284F 
+ 196      A6
+ 197              		.text
+ 198              		.section	.gnu.lto_.symtab.d2352b7,"",%progbits
+ 199 0000 4C43445F 		.ascii	"LCD_LCDPort_Write\000\000\000\000\000\000\000\000\000"
+ 199      4C434450 
+ 199      6F72745F 
+ 199      57726974 
+ 199      65000000 
+ 200 001a 000000B2 		.ascii	"\000\000\000\262\000\000\000LCD_LCDPort_SetDriveMod"
+ 200      0000004C 
+ 200      43445F4C 
+ 200      4344506F 
+ 200      72745F53 
+ 201 0038 65000000 		.ascii	"e\000\000\000\000\000\000\000\000\000\000\000\000\264"
+ 201      00000000 
+ 201      00000000 
+ 201      00B4
+ 202 0046 0000004C 		.ascii	"\000\000\000LCD_LCDPort_Read\000\000\000\000\000\000"
+ 202      43445F4C 
+ 202      4344506F 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 15
+
+
+ 202      72745F52 
+ 202      65616400 
+ 203 005f 00000000 		.ascii	"\000\000\000\000\000\000\267\000\000\000LCD_LCDPort"
+ 203      0000B700 
+ 203      00004C43 
+ 203      445F4C43 
+ 203      44506F72 
+ 204 0074 5F526561 		.ascii	"_ReadDataReg\000\000\000\000\000\000\000\000\000\000"
+ 204      64446174 
+ 204      61526567 
+ 204      00000000 
+ 204      00000000 
+ 205 008a 0000B900 		.ascii	"\000\000\271\000\000\000"
+ 205      0000
+ 206              		.text
+ 207              		.section	.gnu.lto_.opts,"",%progbits
+ 208 0000 272D666E 		.ascii	"'-fno-trapv' '-fno-strict-overflow' '-mcpu=cortex-m"
+ 208      6F2D7472 
+ 208      61707627 
+ 208      20272D66 
+ 208      6E6F2D73 
+ 209 0033 33272027 		.ascii	"3' '-mthumb' '-g' '-Og' '-ffunction-sections' '-flt"
+ 209      2D6D7468 
+ 209      756D6227 
+ 209      20272D67 
+ 209      2720272D 
+ 210 0066 6F272027 		.ascii	"o' '-ffat-lto-objects'\000"
+ 210      2D666661 
+ 210      742D6C74 
+ 210      6F2D6F62 
+ 210      6A656374 
+ 211              		.text
+ 212              		.cfi_sections	.debug_frame
+ 213              		.section	.text.LCD_LCDPort_Write,"ax",%progbits
+ 214              		.align	2
+ 215              		.global	LCD_LCDPort_Write
+ 216              		.thumb
+ 217              		.thumb_func
+ 218              		.type	LCD_LCDPort_Write, %function
+ 219              	LCD_LCDPort_Write:
+ 220              	.LFB0:
+ 221              		.file 1 "Generated_Source\\PSoC5\\LCD_LCDPort.c"
+   1:Generated_Source\PSoC5/LCD_LCDPort.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/LCD_LCDPort.c **** * File Name: LCD_LCDPort.c  
+   3:Generated_Source\PSoC5/LCD_LCDPort.c **** * Version 2.20
+   4:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+   5:Generated_Source\PSoC5/LCD_LCDPort.c **** * Description:
+   6:Generated_Source\PSoC5/LCD_LCDPort.c **** *  This file contains API to enable firmware control of a Pins component.
+   7:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+   8:Generated_Source\PSoC5/LCD_LCDPort.c **** * Note:
+   9:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+  10:Generated_Source\PSoC5/LCD_LCDPort.c **** ********************************************************************************
+  11:Generated_Source\PSoC5/LCD_LCDPort.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  12:Generated_Source\PSoC5/LCD_LCDPort.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:Generated_Source\PSoC5/LCD_LCDPort.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:Generated_Source\PSoC5/LCD_LCDPort.c **** * the software package with which this file was provided.
+  15:Generated_Source\PSoC5/LCD_LCDPort.c **** *******************************************************************************/
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 16
+
+
+  16:Generated_Source\PSoC5/LCD_LCDPort.c **** 
+  17:Generated_Source\PSoC5/LCD_LCDPort.c **** #include "cytypes.h"
+  18:Generated_Source\PSoC5/LCD_LCDPort.c **** #include "LCD_LCDPort.h"
+  19:Generated_Source\PSoC5/LCD_LCDPort.c **** 
+  20:Generated_Source\PSoC5/LCD_LCDPort.c **** /* APIs are not generated for P15[7:6] on PSoC 5 */
+  21:Generated_Source\PSoC5/LCD_LCDPort.c **** #if !(CY_PSOC5A &&\
+  22:Generated_Source\PSoC5/LCD_LCDPort.c **** 	 LCD_LCDPort__PORT == 15 && ((LCD_LCDPort__MASK & 0xC0) != 0))
+  23:Generated_Source\PSoC5/LCD_LCDPort.c **** 
+  24:Generated_Source\PSoC5/LCD_LCDPort.c **** 
+  25:Generated_Source\PSoC5/LCD_LCDPort.c **** /*******************************************************************************
+  26:Generated_Source\PSoC5/LCD_LCDPort.c **** * Function Name: LCD_LCDPort_Write
+  27:Generated_Source\PSoC5/LCD_LCDPort.c **** ****************************************************************************//**
+  28:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+  29:Generated_Source\PSoC5/LCD_LCDPort.c **** * \brief Writes the value to the physical port (data output register), masking
+  30:Generated_Source\PSoC5/LCD_LCDPort.c **** *  and shifting the bits appropriately. 
+  31:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+  32:Generated_Source\PSoC5/LCD_LCDPort.c **** * The data output register controls the signal applied to the physical pin in 
+  33:Generated_Source\PSoC5/LCD_LCDPort.c **** * conjunction with the drive mode parameter. This function avoids changing 
+  34:Generated_Source\PSoC5/LCD_LCDPort.c **** * other bits in the port by using the appropriate method (read-modify-write or
+  35:Generated_Source\PSoC5/LCD_LCDPort.c **** * bit banding).
+  36:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+  37:Generated_Source\PSoC5/LCD_LCDPort.c **** * <b>Note</b> This function should not be used on a hardware digital output pin 
+  38:Generated_Source\PSoC5/LCD_LCDPort.c **** * as it is driven by the hardware signal attached to it.
+  39:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+  40:Generated_Source\PSoC5/LCD_LCDPort.c **** * \param value
+  41:Generated_Source\PSoC5/LCD_LCDPort.c **** *  Value to write to the component instance.
+  42:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+  43:Generated_Source\PSoC5/LCD_LCDPort.c **** * \return 
+  44:Generated_Source\PSoC5/LCD_LCDPort.c **** *  None 
+  45:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+  46:Generated_Source\PSoC5/LCD_LCDPort.c **** * \sideeffect
+  47:Generated_Source\PSoC5/LCD_LCDPort.c **** *  If you use read-modify-write operations that are not atomic; the Interrupt 
+  48:Generated_Source\PSoC5/LCD_LCDPort.c **** *  Service Routines (ISR) can cause corruption of this function. An ISR that 
+  49:Generated_Source\PSoC5/LCD_LCDPort.c **** *  interrupts this function and performs writes to the Pins component data 
+  50:Generated_Source\PSoC5/LCD_LCDPort.c **** *  register can cause corrupted port data. To avoid this issue, you should 
+  51:Generated_Source\PSoC5/LCD_LCDPort.c **** *  either use the Per-Pin APIs (primary method) or disable interrupts around 
+  52:Generated_Source\PSoC5/LCD_LCDPort.c **** *  this function.
+  53:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+  54:Generated_Source\PSoC5/LCD_LCDPort.c **** * \funcusage
+  55:Generated_Source\PSoC5/LCD_LCDPort.c **** *  \snippet LCD_LCDPort_SUT.c usage_LCD_LCDPort_Write
+  56:Generated_Source\PSoC5/LCD_LCDPort.c **** *******************************************************************************/
+  57:Generated_Source\PSoC5/LCD_LCDPort.c **** void LCD_LCDPort_Write(uint8 value)
+  58:Generated_Source\PSoC5/LCD_LCDPort.c **** {
+ 222              		.loc 1 58 0
+ 223              		.cfi_startproc
+ 224              		@ args = 0, pretend = 0, frame = 0
+ 225              		@ frame_needed = 0, uses_anonymous_args = 0
+ 226              		@ link register save eliminated.
+ 227              	.LVL0:
+  59:Generated_Source\PSoC5/LCD_LCDPort.c ****     uint8 staticBits = (LCD_LCDPort_DR & (uint8)(~LCD_LCDPort_MASK));
+ 228              		.loc 1 59 0
+ 229 0000 044A     		ldr	r2, .L2
+ 230 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 231 0004 03F08003 		and	r3, r3, #128
+ 232              	.LVL1:
+  60:Generated_Source\PSoC5/LCD_LCDPort.c ****     LCD_LCDPort_DR = staticBits | ((uint8)(value << LCD_LCDPort_SHIFT) & LCD_LCDPort_MASK);
+ 233              		.loc 1 60 0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 17
+
+
+ 234 0008 00F07F00 		and	r0, r0, #127
+ 235              	.LVL2:
+ 236 000c 1843     		orrs	r0, r0, r3
+ 237 000e 1070     		strb	r0, [r2]
+ 238 0010 7047     		bx	lr
+ 239              	.L3:
+ 240 0012 00BF     		.align	2
+ 241              	.L2:
+ 242 0014 20510040 		.word	1073762592
+ 243              		.cfi_endproc
+ 244              	.LFE0:
+ 245              		.size	LCD_LCDPort_Write, .-LCD_LCDPort_Write
+ 246              		.section	.text.LCD_LCDPort_SetDriveMode,"ax",%progbits
+ 247              		.align	2
+ 248              		.global	LCD_LCDPort_SetDriveMode
+ 249              		.thumb
+ 250              		.thumb_func
+ 251              		.type	LCD_LCDPort_SetDriveMode, %function
+ 252              	LCD_LCDPort_SetDriveMode:
+ 253              	.LFB1:
+  61:Generated_Source\PSoC5/LCD_LCDPort.c **** }
+  62:Generated_Source\PSoC5/LCD_LCDPort.c **** 
+  63:Generated_Source\PSoC5/LCD_LCDPort.c **** 
+  64:Generated_Source\PSoC5/LCD_LCDPort.c **** /*******************************************************************************
+  65:Generated_Source\PSoC5/LCD_LCDPort.c **** * Function Name: LCD_LCDPort_SetDriveMode
+  66:Generated_Source\PSoC5/LCD_LCDPort.c **** ****************************************************************************//**
+  67:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+  68:Generated_Source\PSoC5/LCD_LCDPort.c **** * \brief Sets the drive mode for each of the Pins component's pins.
+  69:Generated_Source\PSoC5/LCD_LCDPort.c **** * 
+  70:Generated_Source\PSoC5/LCD_LCDPort.c **** * <b>Note</b> This affects all pins in the Pins component instance. Use the
+  71:Generated_Source\PSoC5/LCD_LCDPort.c **** * Per-Pin APIs if you wish to control individual pin's drive modes.
+  72:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+  73:Generated_Source\PSoC5/LCD_LCDPort.c **** * \param mode
+  74:Generated_Source\PSoC5/LCD_LCDPort.c **** *  Mode for the selected signals. Valid options are documented in 
+  75:Generated_Source\PSoC5/LCD_LCDPort.c **** *  \ref driveMode.
+  76:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+  77:Generated_Source\PSoC5/LCD_LCDPort.c **** * \return
+  78:Generated_Source\PSoC5/LCD_LCDPort.c **** *  None
+  79:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+  80:Generated_Source\PSoC5/LCD_LCDPort.c **** * \sideeffect
+  81:Generated_Source\PSoC5/LCD_LCDPort.c **** *  If you use read-modify-write operations that are not atomic, the ISR can
+  82:Generated_Source\PSoC5/LCD_LCDPort.c **** *  cause corruption of this function. An ISR that interrupts this function 
+  83:Generated_Source\PSoC5/LCD_LCDPort.c **** *  and performs writes to the Pins component Drive Mode registers can cause 
+  84:Generated_Source\PSoC5/LCD_LCDPort.c **** *  corrupted port data. To avoid this issue, you should either use the Per-Pin
+  85:Generated_Source\PSoC5/LCD_LCDPort.c **** *  APIs (primary method) or disable interrupts around this function.
+  86:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+  87:Generated_Source\PSoC5/LCD_LCDPort.c **** * \funcusage
+  88:Generated_Source\PSoC5/LCD_LCDPort.c **** *  \snippet LCD_LCDPort_SUT.c usage_LCD_LCDPort_SetDriveMode
+  89:Generated_Source\PSoC5/LCD_LCDPort.c **** *******************************************************************************/
+  90:Generated_Source\PSoC5/LCD_LCDPort.c **** void LCD_LCDPort_SetDriveMode(uint8 mode)
+  91:Generated_Source\PSoC5/LCD_LCDPort.c **** {
+ 254              		.loc 1 91 0
+ 255              		.cfi_startproc
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 258              		@ link register save eliminated.
+ 259              	.LVL3:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 18
+
+
+  92:Generated_Source\PSoC5/LCD_LCDPort.c **** 	CyPins_SetPinDriveMode(LCD_LCDPort_0, mode);
+ 260              		.loc 1 92 0
+ 261 0000 164A     		ldr	r2, .L5
+ 262 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 263 0004 00F00E00 		and	r0, r0, #14
+ 264              	.LVL4:
+ 265 0008 03F0F103 		and	r3, r3, #241
+ 266 000c 0343     		orrs	r3, r3, r0
+ 267 000e 1370     		strb	r3, [r2]
+  93:Generated_Source\PSoC5/LCD_LCDPort.c **** 	CyPins_SetPinDriveMode(LCD_LCDPort_1, mode);
+ 268              		.loc 1 93 0
+ 269 0010 0132     		adds	r2, r2, #1
+ 270 0012 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 271 0014 03F0F103 		and	r3, r3, #241
+ 272 0018 0343     		orrs	r3, r3, r0
+ 273 001a 1370     		strb	r3, [r2]
+  94:Generated_Source\PSoC5/LCD_LCDPort.c **** 	CyPins_SetPinDriveMode(LCD_LCDPort_2, mode);
+ 274              		.loc 1 94 0
+ 275 001c 0132     		adds	r2, r2, #1
+ 276 001e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 277 0020 03F0F103 		and	r3, r3, #241
+ 278 0024 0343     		orrs	r3, r3, r0
+ 279 0026 1370     		strb	r3, [r2]
+  95:Generated_Source\PSoC5/LCD_LCDPort.c **** 	CyPins_SetPinDriveMode(LCD_LCDPort_3, mode);
+ 280              		.loc 1 95 0
+ 281 0028 0132     		adds	r2, r2, #1
+ 282 002a 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 283 002c 03F0F103 		and	r3, r3, #241
+ 284 0030 0343     		orrs	r3, r3, r0
+ 285 0032 1370     		strb	r3, [r2]
+  96:Generated_Source\PSoC5/LCD_LCDPort.c **** 	CyPins_SetPinDriveMode(LCD_LCDPort_4, mode);
+ 286              		.loc 1 96 0
+ 287 0034 0132     		adds	r2, r2, #1
+ 288 0036 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 289 0038 03F0F103 		and	r3, r3, #241
+ 290 003c 0343     		orrs	r3, r3, r0
+ 291 003e 1370     		strb	r3, [r2]
+  97:Generated_Source\PSoC5/LCD_LCDPort.c **** 	CyPins_SetPinDriveMode(LCD_LCDPort_5, mode);
+ 292              		.loc 1 97 0
+ 293 0040 0132     		adds	r2, r2, #1
+ 294 0042 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 295 0044 03F0F103 		and	r3, r3, #241
+ 296 0048 0343     		orrs	r3, r3, r0
+ 297 004a 1370     		strb	r3, [r2]
+  98:Generated_Source\PSoC5/LCD_LCDPort.c **** 	CyPins_SetPinDriveMode(LCD_LCDPort_6, mode);
+ 298              		.loc 1 98 0
+ 299 004c 0132     		adds	r2, r2, #1
+ 300 004e 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 301 0050 03F0F103 		and	r3, r3, #241
+ 302 0054 1843     		orrs	r0, r0, r3
+ 303 0056 1070     		strb	r0, [r2]
+ 304 0058 7047     		bx	lr
+ 305              	.L6:
+ 306 005a 00BF     		.align	2
+ 307              	.L5:
+ 308 005c 10500040 		.word	1073762320
+ 309              		.cfi_endproc
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 19
+
+
+ 310              	.LFE1:
+ 311              		.size	LCD_LCDPort_SetDriveMode, .-LCD_LCDPort_SetDriveMode
+ 312              		.section	.text.LCD_LCDPort_Read,"ax",%progbits
+ 313              		.align	2
+ 314              		.global	LCD_LCDPort_Read
+ 315              		.thumb
+ 316              		.thumb_func
+ 317              		.type	LCD_LCDPort_Read, %function
+ 318              	LCD_LCDPort_Read:
+ 319              	.LFB2:
+  99:Generated_Source\PSoC5/LCD_LCDPort.c **** }
+ 100:Generated_Source\PSoC5/LCD_LCDPort.c **** 
+ 101:Generated_Source\PSoC5/LCD_LCDPort.c **** 
+ 102:Generated_Source\PSoC5/LCD_LCDPort.c **** /*******************************************************************************
+ 103:Generated_Source\PSoC5/LCD_LCDPort.c **** * Function Name: LCD_LCDPort_Read
+ 104:Generated_Source\PSoC5/LCD_LCDPort.c **** ****************************************************************************//**
+ 105:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+ 106:Generated_Source\PSoC5/LCD_LCDPort.c **** * \brief Reads the associated physical port (pin status register) and masks 
+ 107:Generated_Source\PSoC5/LCD_LCDPort.c **** *  the required bits according to the width and bit position of the component
+ 108:Generated_Source\PSoC5/LCD_LCDPort.c **** *  instance. 
+ 109:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+ 110:Generated_Source\PSoC5/LCD_LCDPort.c **** * The pin's status register returns the current logic level present on the 
+ 111:Generated_Source\PSoC5/LCD_LCDPort.c **** * physical pin.
+ 112:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+ 113:Generated_Source\PSoC5/LCD_LCDPort.c **** * \return 
+ 114:Generated_Source\PSoC5/LCD_LCDPort.c **** *  The current value for the pins in the component as a right justified number.
+ 115:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+ 116:Generated_Source\PSoC5/LCD_LCDPort.c **** * \funcusage
+ 117:Generated_Source\PSoC5/LCD_LCDPort.c **** *  \snippet LCD_LCDPort_SUT.c usage_LCD_LCDPort_Read  
+ 118:Generated_Source\PSoC5/LCD_LCDPort.c **** *******************************************************************************/
+ 119:Generated_Source\PSoC5/LCD_LCDPort.c **** uint8 LCD_LCDPort_Read(void)
+ 120:Generated_Source\PSoC5/LCD_LCDPort.c **** {
+ 320              		.loc 1 120 0
+ 321              		.cfi_startproc
+ 322              		@ args = 0, pretend = 0, frame = 0
+ 323              		@ frame_needed = 0, uses_anonymous_args = 0
+ 324              		@ link register save eliminated.
+ 121:Generated_Source\PSoC5/LCD_LCDPort.c ****     return (LCD_LCDPort_PS & LCD_LCDPort_MASK) >> LCD_LCDPort_SHIFT;
+ 325              		.loc 1 121 0
+ 326 0000 024B     		ldr	r3, .L8
+ 327 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 122:Generated_Source\PSoC5/LCD_LCDPort.c **** }
+ 328              		.loc 1 122 0
+ 329 0004 00F07F00 		and	r0, r0, #127
+ 330 0008 7047     		bx	lr
+ 331              	.L9:
+ 332 000a 00BF     		.align	2
+ 333              	.L8:
+ 334 000c 21510040 		.word	1073762593
+ 335              		.cfi_endproc
+ 336              	.LFE2:
+ 337              		.size	LCD_LCDPort_Read, .-LCD_LCDPort_Read
+ 338              		.section	.text.LCD_LCDPort_ReadDataReg,"ax",%progbits
+ 339              		.align	2
+ 340              		.global	LCD_LCDPort_ReadDataReg
+ 341              		.thumb
+ 342              		.thumb_func
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 20
+
+
+ 343              		.type	LCD_LCDPort_ReadDataReg, %function
+ 344              	LCD_LCDPort_ReadDataReg:
+ 345              	.LFB3:
+ 123:Generated_Source\PSoC5/LCD_LCDPort.c **** 
+ 124:Generated_Source\PSoC5/LCD_LCDPort.c **** 
+ 125:Generated_Source\PSoC5/LCD_LCDPort.c **** /*******************************************************************************
+ 126:Generated_Source\PSoC5/LCD_LCDPort.c **** * Function Name: LCD_LCDPort_ReadDataReg
+ 127:Generated_Source\PSoC5/LCD_LCDPort.c **** ****************************************************************************//**
+ 128:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+ 129:Generated_Source\PSoC5/LCD_LCDPort.c **** * \brief Reads the associated physical port's data output register and masks 
+ 130:Generated_Source\PSoC5/LCD_LCDPort.c **** *  the correct bits according to the width and bit position of the component 
+ 131:Generated_Source\PSoC5/LCD_LCDPort.c **** *  instance. 
+ 132:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+ 133:Generated_Source\PSoC5/LCD_LCDPort.c **** * The data output register controls the signal applied to the physical pin in 
+ 134:Generated_Source\PSoC5/LCD_LCDPort.c **** * conjunction with the drive mode parameter. This is not the same as the 
+ 135:Generated_Source\PSoC5/LCD_LCDPort.c **** * preferred LCD_LCDPort_Read() API because the 
+ 136:Generated_Source\PSoC5/LCD_LCDPort.c **** * LCD_LCDPort_ReadDataReg() reads the data register instead of the status 
+ 137:Generated_Source\PSoC5/LCD_LCDPort.c **** * register. For output pins this is a useful function to determine the value 
+ 138:Generated_Source\PSoC5/LCD_LCDPort.c **** * just written to the pin.
+ 139:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+ 140:Generated_Source\PSoC5/LCD_LCDPort.c **** * \return 
+ 141:Generated_Source\PSoC5/LCD_LCDPort.c **** *  The current value of the data register masked and shifted into a right 
+ 142:Generated_Source\PSoC5/LCD_LCDPort.c **** *  justified number for the component instance.
+ 143:Generated_Source\PSoC5/LCD_LCDPort.c **** *
+ 144:Generated_Source\PSoC5/LCD_LCDPort.c **** * \funcusage
+ 145:Generated_Source\PSoC5/LCD_LCDPort.c **** *  \snippet LCD_LCDPort_SUT.c usage_LCD_LCDPort_ReadDataReg 
+ 146:Generated_Source\PSoC5/LCD_LCDPort.c **** *******************************************************************************/
+ 147:Generated_Source\PSoC5/LCD_LCDPort.c **** uint8 LCD_LCDPort_ReadDataReg(void)
+ 148:Generated_Source\PSoC5/LCD_LCDPort.c **** {
+ 346              		.loc 1 148 0
+ 347              		.cfi_startproc
+ 348              		@ args = 0, pretend = 0, frame = 0
+ 349              		@ frame_needed = 0, uses_anonymous_args = 0
+ 350              		@ link register save eliminated.
+ 149:Generated_Source\PSoC5/LCD_LCDPort.c ****     return (LCD_LCDPort_DR & LCD_LCDPort_MASK) >> LCD_LCDPort_SHIFT;
+ 351              		.loc 1 149 0
+ 352 0000 024B     		ldr	r3, .L11
+ 353 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 150:Generated_Source\PSoC5/LCD_LCDPort.c **** }
+ 354              		.loc 1 150 0
+ 355 0004 00F07F00 		and	r0, r0, #127
+ 356 0008 7047     		bx	lr
+ 357              	.L12:
+ 358 000a 00BF     		.align	2
+ 359              	.L11:
+ 360 000c 20510040 		.word	1073762592
+ 361              		.cfi_endproc
+ 362              	.LFE3:
+ 363              		.size	LCD_LCDPort_ReadDataReg, .-LCD_LCDPort_ReadDataReg
+ 364              		.text
+ 365              	.Letext0:
+ 366              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 367              		.section	.debug_info,"",%progbits
+ 368              	.Ldebug_info0:
+ 369 0000 1B010000 		.4byte	0x11b
+ 370 0004 0400     		.2byte	0x4
+ 371 0006 00000000 		.4byte	.Ldebug_abbrev0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 21
+
+
+ 372 000a 04       		.byte	0x4
+ 373 000b 01       		.uleb128 0x1
+ 374 000c 49000000 		.4byte	.LASF20
+ 375 0010 01       		.byte	0x1
+ 376 0011 FF000000 		.4byte	.LASF21
+ 377 0015 8E010000 		.4byte	.LASF22
+ 378 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 379 001d 00000000 		.4byte	0
+ 380 0021 00000000 		.4byte	.Ldebug_line0
+ 381 0025 02       		.uleb128 0x2
+ 382 0026 01       		.byte	0x1
+ 383 0027 06       		.byte	0x6
+ 384 0028 3A020000 		.4byte	.LASF0
+ 385 002c 02       		.uleb128 0x2
+ 386 002d 01       		.byte	0x1
+ 387 002e 08       		.byte	0x8
+ 388 002f 3D010000 		.4byte	.LASF1
+ 389 0033 02       		.uleb128 0x2
+ 390 0034 02       		.byte	0x2
+ 391 0035 05       		.byte	0x5
+ 392 0036 10020000 		.4byte	.LASF2
+ 393 003a 02       		.uleb128 0x2
+ 394 003b 02       		.byte	0x2
+ 395 003c 07       		.byte	0x7
+ 396 003d 18000000 		.4byte	.LASF3
+ 397 0041 02       		.uleb128 0x2
+ 398 0042 04       		.byte	0x4
+ 399 0043 05       		.byte	0x5
+ 400 0044 31020000 		.4byte	.LASF4
+ 401 0048 02       		.uleb128 0x2
+ 402 0049 04       		.byte	0x4
+ 403 004a 07       		.byte	0x7
+ 404 004b ED000000 		.4byte	.LASF5
+ 405 004f 02       		.uleb128 0x2
+ 406 0050 08       		.byte	0x8
+ 407 0051 05       		.byte	0x5
+ 408 0052 7B010000 		.4byte	.LASF6
+ 409 0056 02       		.uleb128 0x2
+ 410 0057 08       		.byte	0x8
+ 411 0058 07       		.byte	0x7
+ 412 0059 5F010000 		.4byte	.LASF7
+ 413 005d 03       		.uleb128 0x3
+ 414 005e 04       		.byte	0x4
+ 415 005f 05       		.byte	0x5
+ 416 0060 696E7400 		.ascii	"int\000"
+ 417 0064 02       		.uleb128 0x2
+ 418 0065 04       		.byte	0x4
+ 419 0066 07       		.byte	0x7
+ 420 0067 52010000 		.4byte	.LASF8
+ 421 006b 04       		.uleb128 0x4
+ 422 006c 1A020000 		.4byte	.LASF12
+ 423 0070 02       		.byte	0x2
+ 424 0071 9201     		.2byte	0x192
+ 425 0073 2C000000 		.4byte	0x2c
+ 426 0077 02       		.uleb128 0x2
+ 427 0078 04       		.byte	0x4
+ 428 0079 04       		.byte	0x4
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 22
+
+
+ 429 007a 43000000 		.4byte	.LASF9
+ 430 007e 02       		.uleb128 0x2
+ 431 007f 08       		.byte	0x8
+ 432 0080 04       		.byte	0x4
+ 433 0081 4B010000 		.4byte	.LASF10
+ 434 0085 02       		.uleb128 0x2
+ 435 0086 01       		.byte	0x1
+ 436 0087 08       		.byte	0x8
+ 437 0088 89010000 		.4byte	.LASF11
+ 438 008c 04       		.uleb128 0x4
+ 439 008d E8000000 		.4byte	.LASF13
+ 440 0091 02       		.byte	0x2
+ 441 0092 3C02     		.2byte	0x23c
+ 442 0094 98000000 		.4byte	0x98
+ 443 0098 05       		.uleb128 0x5
+ 444 0099 6B000000 		.4byte	0x6b
+ 445 009d 06       		.uleb128 0x6
+ 446 009e 06000000 		.4byte	.LASF14
+ 447 00a2 01       		.byte	0x1
+ 448 00a3 39       		.byte	0x39
+ 449 00a4 00000000 		.4byte	.LFB0
+ 450 00a8 18000000 		.4byte	.LFE0-.LFB0
+ 451 00ac 01       		.uleb128 0x1
+ 452 00ad 9C       		.byte	0x9c
+ 453 00ae CF000000 		.4byte	0xcf
+ 454 00b2 07       		.uleb128 0x7
+ 455 00b3 00000000 		.4byte	.LASF16
+ 456 00b7 01       		.byte	0x1
+ 457 00b8 39       		.byte	0x39
+ 458 00b9 6B000000 		.4byte	0x6b
+ 459 00bd 00000000 		.4byte	.LLST0
+ 460 00c1 08       		.uleb128 0x8
+ 461 00c2 DD000000 		.4byte	.LASF23
+ 462 00c6 01       		.byte	0x1
+ 463 00c7 3B       		.byte	0x3b
+ 464 00c8 6B000000 		.4byte	0x6b
+ 465 00cc 01       		.uleb128 0x1
+ 466 00cd 53       		.byte	0x53
+ 467 00ce 00       		.byte	0
+ 468 00cf 06       		.uleb128 0x6
+ 469 00d0 24010000 		.4byte	.LASF15
+ 470 00d4 01       		.byte	0x1
+ 471 00d5 5A       		.byte	0x5a
+ 472 00d6 00000000 		.4byte	.LFB1
+ 473 00da 60000000 		.4byte	.LFE1-.LFB1
+ 474 00de 01       		.uleb128 0x1
+ 475 00df 9C       		.byte	0x9c
+ 476 00e0 F4000000 		.4byte	0xf4
+ 477 00e4 07       		.uleb128 0x7
+ 478 00e5 76010000 		.4byte	.LASF17
+ 479 00e9 01       		.byte	0x1
+ 480 00ea 5A       		.byte	0x5a
+ 481 00eb 6B000000 		.4byte	0x6b
+ 482 00ef 21000000 		.4byte	.LLST1
+ 483 00f3 00       		.byte	0
+ 484 00f4 09       		.uleb128 0x9
+ 485 00f5 20020000 		.4byte	.LASF18
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 23
+
+
+ 486 00f9 01       		.byte	0x1
+ 487 00fa 77       		.byte	0x77
+ 488 00fb 6B000000 		.4byte	0x6b
+ 489 00ff 00000000 		.4byte	.LFB2
+ 490 0103 10000000 		.4byte	.LFE2-.LFB2
+ 491 0107 01       		.uleb128 0x1
+ 492 0108 9C       		.byte	0x9c
+ 493 0109 09       		.uleb128 0x9
+ 494 010a 2B000000 		.4byte	.LASF19
+ 495 010e 01       		.byte	0x1
+ 496 010f 93       		.byte	0x93
+ 497 0110 6B000000 		.4byte	0x6b
+ 498 0114 00000000 		.4byte	.LFB3
+ 499 0118 10000000 		.4byte	.LFE3-.LFB3
+ 500 011c 01       		.uleb128 0x1
+ 501 011d 9C       		.byte	0x9c
+ 502 011e 00       		.byte	0
+ 503              		.section	.debug_abbrev,"",%progbits
+ 504              	.Ldebug_abbrev0:
+ 505 0000 01       		.uleb128 0x1
+ 506 0001 11       		.uleb128 0x11
+ 507 0002 01       		.byte	0x1
+ 508 0003 25       		.uleb128 0x25
+ 509 0004 0E       		.uleb128 0xe
+ 510 0005 13       		.uleb128 0x13
+ 511 0006 0B       		.uleb128 0xb
+ 512 0007 03       		.uleb128 0x3
+ 513 0008 0E       		.uleb128 0xe
+ 514 0009 1B       		.uleb128 0x1b
+ 515 000a 0E       		.uleb128 0xe
+ 516 000b 55       		.uleb128 0x55
+ 517 000c 17       		.uleb128 0x17
+ 518 000d 11       		.uleb128 0x11
+ 519 000e 01       		.uleb128 0x1
+ 520 000f 10       		.uleb128 0x10
+ 521 0010 17       		.uleb128 0x17
+ 522 0011 00       		.byte	0
+ 523 0012 00       		.byte	0
+ 524 0013 02       		.uleb128 0x2
+ 525 0014 24       		.uleb128 0x24
+ 526 0015 00       		.byte	0
+ 527 0016 0B       		.uleb128 0xb
+ 528 0017 0B       		.uleb128 0xb
+ 529 0018 3E       		.uleb128 0x3e
+ 530 0019 0B       		.uleb128 0xb
+ 531 001a 03       		.uleb128 0x3
+ 532 001b 0E       		.uleb128 0xe
+ 533 001c 00       		.byte	0
+ 534 001d 00       		.byte	0
+ 535 001e 03       		.uleb128 0x3
+ 536 001f 24       		.uleb128 0x24
+ 537 0020 00       		.byte	0
+ 538 0021 0B       		.uleb128 0xb
+ 539 0022 0B       		.uleb128 0xb
+ 540 0023 3E       		.uleb128 0x3e
+ 541 0024 0B       		.uleb128 0xb
+ 542 0025 03       		.uleb128 0x3
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 24
+
+
+ 543 0026 08       		.uleb128 0x8
+ 544 0027 00       		.byte	0
+ 545 0028 00       		.byte	0
+ 546 0029 04       		.uleb128 0x4
+ 547 002a 16       		.uleb128 0x16
+ 548 002b 00       		.byte	0
+ 549 002c 03       		.uleb128 0x3
+ 550 002d 0E       		.uleb128 0xe
+ 551 002e 3A       		.uleb128 0x3a
+ 552 002f 0B       		.uleb128 0xb
+ 553 0030 3B       		.uleb128 0x3b
+ 554 0031 05       		.uleb128 0x5
+ 555 0032 49       		.uleb128 0x49
+ 556 0033 13       		.uleb128 0x13
+ 557 0034 00       		.byte	0
+ 558 0035 00       		.byte	0
+ 559 0036 05       		.uleb128 0x5
+ 560 0037 35       		.uleb128 0x35
+ 561 0038 00       		.byte	0
+ 562 0039 49       		.uleb128 0x49
+ 563 003a 13       		.uleb128 0x13
+ 564 003b 00       		.byte	0
+ 565 003c 00       		.byte	0
+ 566 003d 06       		.uleb128 0x6
+ 567 003e 2E       		.uleb128 0x2e
+ 568 003f 01       		.byte	0x1
+ 569 0040 3F       		.uleb128 0x3f
+ 570 0041 19       		.uleb128 0x19
+ 571 0042 03       		.uleb128 0x3
+ 572 0043 0E       		.uleb128 0xe
+ 573 0044 3A       		.uleb128 0x3a
+ 574 0045 0B       		.uleb128 0xb
+ 575 0046 3B       		.uleb128 0x3b
+ 576 0047 0B       		.uleb128 0xb
+ 577 0048 27       		.uleb128 0x27
+ 578 0049 19       		.uleb128 0x19
+ 579 004a 11       		.uleb128 0x11
+ 580 004b 01       		.uleb128 0x1
+ 581 004c 12       		.uleb128 0x12
+ 582 004d 06       		.uleb128 0x6
+ 583 004e 40       		.uleb128 0x40
+ 584 004f 18       		.uleb128 0x18
+ 585 0050 9742     		.uleb128 0x2117
+ 586 0052 19       		.uleb128 0x19
+ 587 0053 01       		.uleb128 0x1
+ 588 0054 13       		.uleb128 0x13
+ 589 0055 00       		.byte	0
+ 590 0056 00       		.byte	0
+ 591 0057 07       		.uleb128 0x7
+ 592 0058 05       		.uleb128 0x5
+ 593 0059 00       		.byte	0
+ 594 005a 03       		.uleb128 0x3
+ 595 005b 0E       		.uleb128 0xe
+ 596 005c 3A       		.uleb128 0x3a
+ 597 005d 0B       		.uleb128 0xb
+ 598 005e 3B       		.uleb128 0x3b
+ 599 005f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 25
+
+
+ 600 0060 49       		.uleb128 0x49
+ 601 0061 13       		.uleb128 0x13
+ 602 0062 02       		.uleb128 0x2
+ 603 0063 17       		.uleb128 0x17
+ 604 0064 00       		.byte	0
+ 605 0065 00       		.byte	0
+ 606 0066 08       		.uleb128 0x8
+ 607 0067 34       		.uleb128 0x34
+ 608 0068 00       		.byte	0
+ 609 0069 03       		.uleb128 0x3
+ 610 006a 0E       		.uleb128 0xe
+ 611 006b 3A       		.uleb128 0x3a
+ 612 006c 0B       		.uleb128 0xb
+ 613 006d 3B       		.uleb128 0x3b
+ 614 006e 0B       		.uleb128 0xb
+ 615 006f 49       		.uleb128 0x49
+ 616 0070 13       		.uleb128 0x13
+ 617 0071 02       		.uleb128 0x2
+ 618 0072 18       		.uleb128 0x18
+ 619 0073 00       		.byte	0
+ 620 0074 00       		.byte	0
+ 621 0075 09       		.uleb128 0x9
+ 622 0076 2E       		.uleb128 0x2e
+ 623 0077 00       		.byte	0
+ 624 0078 3F       		.uleb128 0x3f
+ 625 0079 19       		.uleb128 0x19
+ 626 007a 03       		.uleb128 0x3
+ 627 007b 0E       		.uleb128 0xe
+ 628 007c 3A       		.uleb128 0x3a
+ 629 007d 0B       		.uleb128 0xb
+ 630 007e 3B       		.uleb128 0x3b
+ 631 007f 0B       		.uleb128 0xb
+ 632 0080 27       		.uleb128 0x27
+ 633 0081 19       		.uleb128 0x19
+ 634 0082 49       		.uleb128 0x49
+ 635 0083 13       		.uleb128 0x13
+ 636 0084 11       		.uleb128 0x11
+ 637 0085 01       		.uleb128 0x1
+ 638 0086 12       		.uleb128 0x12
+ 639 0087 06       		.uleb128 0x6
+ 640 0088 40       		.uleb128 0x40
+ 641 0089 18       		.uleb128 0x18
+ 642 008a 9742     		.uleb128 0x2117
+ 643 008c 19       		.uleb128 0x19
+ 644 008d 00       		.byte	0
+ 645 008e 00       		.byte	0
+ 646 008f 00       		.byte	0
+ 647              		.section	.debug_loc,"",%progbits
+ 648              	.Ldebug_loc0:
+ 649              	.LLST0:
+ 650 0000 00000000 		.4byte	.LVL0
+ 651 0004 0C000000 		.4byte	.LVL2
+ 652 0008 0100     		.2byte	0x1
+ 653 000a 50       		.byte	0x50
+ 654 000b 0C000000 		.4byte	.LVL2
+ 655 000f 18000000 		.4byte	.LFE0
+ 656 0013 0400     		.2byte	0x4
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 26
+
+
+ 657 0015 F3       		.byte	0xf3
+ 658 0016 01       		.uleb128 0x1
+ 659 0017 50       		.byte	0x50
+ 660 0018 9F       		.byte	0x9f
+ 661 0019 00000000 		.4byte	0
+ 662 001d 00000000 		.4byte	0
+ 663              	.LLST1:
+ 664 0021 00000000 		.4byte	.LVL3
+ 665 0025 08000000 		.4byte	.LVL4
+ 666 0029 0100     		.2byte	0x1
+ 667 002b 50       		.byte	0x50
+ 668 002c 08000000 		.4byte	.LVL4
+ 669 0030 60000000 		.4byte	.LFE1
+ 670 0034 0400     		.2byte	0x4
+ 671 0036 F3       		.byte	0xf3
+ 672 0037 01       		.uleb128 0x1
+ 673 0038 50       		.byte	0x50
+ 674 0039 9F       		.byte	0x9f
+ 675 003a 00000000 		.4byte	0
+ 676 003e 00000000 		.4byte	0
+ 677              		.section	.debug_aranges,"",%progbits
+ 678 0000 34000000 		.4byte	0x34
+ 679 0004 0200     		.2byte	0x2
+ 680 0006 00000000 		.4byte	.Ldebug_info0
+ 681 000a 04       		.byte	0x4
+ 682 000b 00       		.byte	0
+ 683 000c 0000     		.2byte	0
+ 684 000e 0000     		.2byte	0
+ 685 0010 00000000 		.4byte	.LFB0
+ 686 0014 18000000 		.4byte	.LFE0-.LFB0
+ 687 0018 00000000 		.4byte	.LFB1
+ 688 001c 60000000 		.4byte	.LFE1-.LFB1
+ 689 0020 00000000 		.4byte	.LFB2
+ 690 0024 10000000 		.4byte	.LFE2-.LFB2
+ 691 0028 00000000 		.4byte	.LFB3
+ 692 002c 10000000 		.4byte	.LFE3-.LFB3
+ 693 0030 00000000 		.4byte	0
+ 694 0034 00000000 		.4byte	0
+ 695              		.section	.debug_ranges,"",%progbits
+ 696              	.Ldebug_ranges0:
+ 697 0000 00000000 		.4byte	.LFB0
+ 698 0004 18000000 		.4byte	.LFE0
+ 699 0008 00000000 		.4byte	.LFB1
+ 700 000c 60000000 		.4byte	.LFE1
+ 701 0010 00000000 		.4byte	.LFB2
+ 702 0014 10000000 		.4byte	.LFE2
+ 703 0018 00000000 		.4byte	.LFB3
+ 704 001c 10000000 		.4byte	.LFE3
+ 705 0020 00000000 		.4byte	0
+ 706 0024 00000000 		.4byte	0
+ 707              		.section	.debug_line,"",%progbits
+ 708              	.Ldebug_line0:
+ 709 0000 9A000000 		.section	.debug_str,"MS",%progbits,1
+ 709      02004800 
+ 709      00000201 
+ 709      FB0E0D00 
+ 709      01010101 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 27
+
+
+ 710              	.LASF16:
+ 711 0000 76616C75 		.ascii	"value\000"
+ 711      6500
+ 712              	.LASF14:
+ 713 0006 4C43445F 		.ascii	"LCD_LCDPort_Write\000"
+ 713      4C434450 
+ 713      6F72745F 
+ 713      57726974 
+ 713      6500
+ 714              	.LASF3:
+ 715 0018 73686F72 		.ascii	"short unsigned int\000"
+ 715      7420756E 
+ 715      7369676E 
+ 715      65642069 
+ 715      6E7400
+ 716              	.LASF19:
+ 717 002b 4C43445F 		.ascii	"LCD_LCDPort_ReadDataReg\000"
+ 717      4C434450 
+ 717      6F72745F 
+ 717      52656164 
+ 717      44617461 
+ 718              	.LASF9:
+ 719 0043 666C6F61 		.ascii	"float\000"
+ 719      7400
+ 720              	.LASF20:
+ 721 0049 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 721      4320342E 
+ 721      392E3320 
+ 721      32303135 
+ 721      30333033 
+ 722 007c 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 722      20726576 
+ 722      6973696F 
+ 722      6E203232 
+ 722      31323230 
+ 723 00af 67202D66 		.ascii	"g -ffunction-sections -flto -ffat-lto-objects\000"
+ 723      66756E63 
+ 723      74696F6E 
+ 723      2D736563 
+ 723      74696F6E 
+ 724              	.LASF23:
+ 725 00dd 73746174 		.ascii	"staticBits\000"
+ 725      69634269 
+ 725      747300
+ 726              	.LASF13:
+ 727 00e8 72656738 		.ascii	"reg8\000"
+ 727      00
+ 728              	.LASF5:
+ 729 00ed 6C6F6E67 		.ascii	"long unsigned int\000"
+ 729      20756E73 
+ 729      69676E65 
+ 729      6420696E 
+ 729      7400
+ 730              	.LASF21:
+ 731 00ff 47656E65 		.ascii	"Generated_Source\\PSoC5\\LCD_LCDPort.c\000"
+ 731      72617465 
+ 731      645F536F 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 28
+
+
+ 731      75726365 
+ 731      5C50536F 
+ 732              	.LASF15:
+ 733 0124 4C43445F 		.ascii	"LCD_LCDPort_SetDriveMode\000"
+ 733      4C434450 
+ 733      6F72745F 
+ 733      53657444 
+ 733      72697665 
+ 734              	.LASF1:
+ 735 013d 756E7369 		.ascii	"unsigned char\000"
+ 735      676E6564 
+ 735      20636861 
+ 735      7200
+ 736              	.LASF10:
+ 737 014b 646F7562 		.ascii	"double\000"
+ 737      6C6500
+ 738              	.LASF8:
+ 739 0152 756E7369 		.ascii	"unsigned int\000"
+ 739      676E6564 
+ 739      20696E74 
+ 739      00
+ 740              	.LASF7:
+ 741 015f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 741      206C6F6E 
+ 741      6720756E 
+ 741      7369676E 
+ 741      65642069 
+ 742              	.LASF17:
+ 743 0176 6D6F6465 		.ascii	"mode\000"
+ 743      00
+ 744              	.LASF6:
+ 745 017b 6C6F6E67 		.ascii	"long long int\000"
+ 745      206C6F6E 
+ 745      6720696E 
+ 745      7400
+ 746              	.LASF11:
+ 747 0189 63686172 		.ascii	"char\000"
+ 747      00
+ 748              	.LASF22:
+ 749 018e 433A5C55 		.ascii	"C:\\Users\\Luggi\\Desktop\\Aktuelles Projekt Laser_"
+ 749      73657273 
+ 749      5C4C7567 
+ 749      67695C44 
+ 749      65736B74 
+ 750 01bd 73636875 		.ascii	"schutzschaltung\\Aktuelles Projekt Laser_schutzscha"
+ 750      747A7363 
+ 750      68616C74 
+ 750      756E675C 
+ 750      416B7475 
+ 751 01ef 6C74756E 		.ascii	"ltung\\Laserschutzschaltung.cydsn\000"
+ 751      675C4C61 
+ 751      73657273 
+ 751      63687574 
+ 751      7A736368 
+ 752              	.LASF2:
+ 753 0210 73686F72 		.ascii	"short int\000"
+ 753      7420696E 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccTD2Iuj.s 			page 29
+
+
+ 753      7400
+ 754              	.LASF12:
+ 755 021a 75696E74 		.ascii	"uint8\000"
+ 755      3800
+ 756              	.LASF18:
+ 757 0220 4C43445F 		.ascii	"LCD_LCDPort_Read\000"
+ 757      4C434450 
+ 757      6F72745F 
+ 757      52656164 
+ 757      00
+ 758              	.LASF4:
+ 759 0231 6C6F6E67 		.ascii	"long int\000"
+ 759      20696E74 
+ 759      00
+ 760              	.LASF0:
+ 761 023a 7369676E 		.ascii	"signed char\000"
+ 761      65642063 
+ 761      68617200 
+ 762              		.comm	__gnu_lto_v1,1,1
+ 763              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -1,0 +1,1275 @@
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"main.c"
+  14              		.section	.debug_abbrev,"",%progbits
+  15              	.Ldebug_abbrev0:
+  16              		.section	.debug_info,"",%progbits
+  17              	.Ldebug_info0:
+  18              		.section	.debug_line,"",%progbits
+  19              	.Ldebug_line0:
+  20 0000 6C010000 		.text
+  20      0200F900 
+  20      00000201 
+  20      FB0E0D00 
+  20      01010101 
+  21              	.Ltext0:
+  22              		.cfi_sections	.debug_frame
+  23              		.global	filterStatus
+  24              		.bss
+  25              		.type	filterStatus, %object
+  26              		.size	filterStatus, 1
+  27              	filterStatus:
+  28 0000 00       		.space	1
+  29              		.global	faultStatus
+  30              		.type	faultStatus, %object
+  31              		.size	faultStatus, 1
+  32              	faultStatus:
+  33 0001 00       		.space	1
+  34              		.global	ADC_read
+  35              		.type	ADC_read, %object
+  36              		.size	ADC_read, 1
+  37              	ADC_read:
+  38 0002 00       		.space	1
+  39              		.section	.text.filterVDAC,"ax",%progbits
+  40              		.align	2
+  41              		.global	filterVDAC
+  42              		.thumb
+  43              		.thumb_func
+  44              		.type	filterVDAC, %function
+  45              	filterVDAC:
+  46              	.LFB29:
+  47              		.file 1 ".\\main.c"
+   1:.\main.c      **** /*******************************************************************************
+   2:.\main.c      **** * File Name: main.c
+   3:.\main.c      **** *
+   4:.\main.c      **** * Version: 1.10
+   5:.\main.c      **** *
+   6:.\main.c      **** ********************************************************************************
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 2
+
+
+   7:.\main.c      **** * Copyright 2012, Cypress Semiconductor Corporation. All rights reserved.
+   8:.\main.c      **** * This software is owned by Cypress Semiconductor Corporation and is protected
+   9:.\main.c      **** * by and subject to worldwide patent and copyright laws and treaties.
+  10:.\main.c      **** * Therefore, you may use this software only as provided in the license agreement
+  11:.\main.c      **** * accompanying the software package from which you obtained this software.
+  12:.\main.c      **** * CYPRESS AND ITS SUPPLIERS MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+  13:.\main.c      **** * WITH REGARD TO THIS SOFTWARE, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT,
+  14:.\main.c      **** * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  15:.\main.c      **** *******************************************************************************/
+  16:.\main.c      **** 
+  17:.\main.c      **** #include <device.h>
+  18:.\main.c      **** #include <VDAC8.h>
+  19:.\main.c      **** #include <stdio.h>
+  20:.\main.c      **** 
+  21:.\main.c      **** #define REQUEST_PER_BURST        (1u)
+  22:.\main.c      **** #define BYTES_PER_BURST          (1u)
+  23:.\main.c      **** #define UPPER_SRC_ADDRESS        CYDEV_PERIPH_BASE
+  24:.\main.c      **** #define UPPER_DEST_ADDRESS       CYDEV_PERIPH_BASE
+  25:.\main.c      **** 
+  26:.\main.c      **** void DMA_Config(void);
+  27:.\main.c      **** 
+  28:.\main.c      **** uint8_t filterStatus = 0;
+  29:.\main.c      **** uint8_t faultStatus = 0;
+  30:.\main.c      **** uint8_t ADC_read = 0;
+  31:.\main.c      **** 
+  32:.\main.c      **** 
+  33:.\main.c      **** /*******************************************************************************
+  34:.\main.c      **** * Interrupt
+  35:.\main.c      **** ********************************************************************************
+  36:.\main.c      **** * Interrupt generated on Filter sample-ready. Interrupt handle:filterVDAC
+  37:.\main.c      **** *
+  38:.\main.c      **** * Summary:
+  39:.\main.c      **** *  The interrupt performs following functions:
+  40:.\main.c      **** *   1: Reads the left-justified register for Filter Channel A
+  41:.\main.c      **** *   2: Converts it into an unsigned value
+  42:.\main.c      **** *   3: Writes this value to VDAC
+  43:.\main.c      **** *
+  44:.\main.c      **** *******************************************************************************/
+  45:.\main.c      **** CY_ISR(filterVDAC)
+  46:.\main.c      **** {
+  48              		.loc 1 46 0
+  49              		.cfi_startproc
+  50              		@ args = 0, pretend = 0, frame = 0
+  51              		@ frame_needed = 1, uses_anonymous_args = 0
+  52 0000 80B5     		push	{r7, lr}
+  53              	.LCFI0:
+  54              		.cfi_def_cfa_offset 8
+  55 0002 00AF     		add	r7, sp, #0
+  56              		.cfi_offset 14, -4
+  57              		.cfi_offset 7, -8
+  58              	.LCFI1:
+  59              		.cfi_def_cfa_register 7
+  47:.\main.c      ****     /* Convert the 2's complement value to an unsigned 8-bit value
+  48:.\main.c      ****      * The VDAC expects an unsigned 8-bit value as input.
+  49:.\main.c      ****      */
+  50:.\main.c      **** 	ADC_read = Filter_Read8(Filter_CHANNEL_A); 
+  60              		.loc 1 50 0
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 3
+
+
+  61 0004 4FF00000 		mov	r0, #0
+  62 0008 FFF7FEFF 		bl	Filter_Read8
+  63 000c 0346     		mov	r3, r0
+  64 000e 1A46     		mov	r2, r3
+  65 0010 40F20003 		movw	r3, #:lower16:ADC_read
+  66 0014 C0F20003 		movt	r3, #:upper16:ADC_read
+  67 0018 1A70     		strb	r2, [r3, #0]
+  51:.\main.c      **** 	VDAC8_SetValue(ADC_read);
+  68              		.loc 1 51 0
+  69 001a 40F20003 		movw	r3, #:lower16:ADC_read
+  70 001e C0F20003 		movt	r3, #:upper16:ADC_read
+  71 0022 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+  72 0024 1846     		mov	r0, r3
+  73 0026 FFF7FEFF 		bl	VDAC8_SetValue
+  52:.\main.c      **** 	filterStatus = 1;
+  74              		.loc 1 52 0
+  75 002a 40F20003 		movw	r3, #:lower16:filterStatus
+  76 002e C0F20003 		movt	r3, #:upper16:filterStatus
+  77 0032 4FF00102 		mov	r2, #1
+  78 0036 1A70     		strb	r2, [r3, #0]
+  53:.\main.c      **** }
+  79              		.loc 1 53 0
+  80 0038 80BD     		pop	{r7, pc}
+  81              		.cfi_endproc
+  82              	.LFE29:
+  83              		.size	filterVDAC, .-filterVDAC
+  84 003a 00BF     		.section	.text.faultISR,"ax",%progbits
+  85              		.align	2
+  86              		.global	faultISR
+  87              		.thumb
+  88              		.thumb_func
+  89              		.type	faultISR, %function
+  90              	faultISR:
+  91              	.LFB30:
+  54:.\main.c      **** 
+  55:.\main.c      **** /*******************************************************************************
+  56:.\main.c      **** * Interrupt
+  57:.\main.c      **** ********************************************************************************
+  58:.\main.c      **** * Interrupt generated on Filter sample-ready. Interrupt handle:filterVDAC
+  59:.\main.c      **** *
+  60:.\main.c      **** * Summary:
+  61:.\main.c      **** *  The interrupt performs following functions:
+  62:.\main.c      **** *   1: Sets Status flag 1 when Fault is triggered
+  63:.\main.c      **** *
+  64:.\main.c      **** *******************************************************************************/
+  65:.\main.c      **** CY_ISR(faultISR)
+  66:.\main.c      **** {
+  92              		.loc 1 66 0
+  93              		.cfi_startproc
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 1, uses_anonymous_args = 0
+  96              		@ link register save eliminated.
+  97 0000 80B4     		push	{r7}
+  98              	.LCFI2:
+  99              		.cfi_def_cfa_offset 4
+ 100 0002 00AF     		add	r7, sp, #0
+ 101              		.cfi_offset 7, -4
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 4
+
+
+ 102              	.LCFI3:
+ 103              		.cfi_def_cfa_register 7
+  67:.\main.c      ****     /* Convert the 2's complement value to an unsigned 8-bit value
+  68:.\main.c      ****      * The VDAC expects an unsigned 8-bit value as input.
+  69:.\main.c      ****      */
+  70:.\main.c      **** 	faultStatus=1;
+ 104              		.loc 1 70 0
+ 105 0004 40F20003 		movw	r3, #:lower16:faultStatus
+ 106 0008 C0F20003 		movt	r3, #:upper16:faultStatus
+ 107 000c 4FF00102 		mov	r2, #1
+ 108 0010 1A70     		strb	r2, [r3, #0]
+  71:.\main.c      **** }
+ 109              		.loc 1 71 0
+ 110 0012 BD46     		mov	sp, r7
+ 111 0014 80BC     		pop	{r7}
+ 112 0016 7047     		bx	lr
+ 113              		.cfi_endproc
+ 114              	.LFE30:
+ 115              		.size	faultISR, .-faultISR
+ 116              		.section	.rodata
+ 117              		.align	2
+ 118              	.LC0:
+ 119 0000 202000   		.ascii	"  \000"
+ 120 0003 00       		.align	2
+ 121              	.LC1:
+ 122 0004 2000     		.ascii	" \000"
+ 123 0006 0000     		.align	2
+ 124              	.LC2:
+ 125 0008 256900   		.ascii	"%i\000"
+ 126 000b 00       		.align	2
+ 127              	.LC3:
+ 128 000c 4552524F 		.ascii	"ERROR\000"
+ 128      5200
+ 129 0012 0000     		.align	2
+ 130              	.LC4:
+ 131 0014 4F4B2020 		.ascii	"OK   \000"
+ 131      2000
+ 132 001a 0000     		.section	.text.main,"ax",%progbits
+ 133              		.align	2
+ 134              		.global	main
+ 135              		.thumb
+ 136              		.thumb_func
+ 137              		.type	main, %function
+ 138              	main:
+ 139              	.LFB31:
+  72:.\main.c      **** 
+  73:.\main.c      **** /*******************************************************************************
+  74:.\main.c      **** * Function Name: main
+  75:.\main.c      **** ********************************************************************************
+  76:.\main.c      **** *
+  77:.\main.c      **** * Summary:
+  78:.\main.c      **** *  Main function performs following functions:
+  79:.\main.c      **** *   1: Enables global interrupts
+  80:.\main.c      **** *   2: Start all components on the schematic
+  81:.\main.c      **** *   3: Calls a function to configure DMA
+  82:.\main.c      **** 
+  83:.\main.c      **** * Parameters:
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 5
+
+
+  84:.\main.c      **** *  None.
+  85:.\main.c      **** *
+  86:.\main.c      **** * Return:
+  87:.\main.c      **** *  None.
+  88:.\main.c      **** *
+  89:.\main.c      **** *******************************************************************************/
+  90:.\main.c      **** void main()
+  91:.\main.c      **** {
+ 140              		.loc 1 91 0
+ 141              		.cfi_startproc
+ 142              		@ args = 0, pretend = 0, frame = 32
+ 143              		@ frame_needed = 1, uses_anonymous_args = 0
+ 144 0000 80B5     		push	{r7, lr}
+ 145              	.LCFI4:
+ 146              		.cfi_def_cfa_offset 8
+ 147 0002 88B0     		sub	sp, sp, #32
+ 148              	.LCFI5:
+ 149              		.cfi_def_cfa_offset 40
+ 150 0004 00AF     		add	r7, sp, #0
+ 151              		.cfi_offset 14, -4
+ 152              		.cfi_offset 7, -8
+ 153              	.LCFI6:
+ 154              		.cfi_def_cfa_register 7
+  92:.\main.c      **** 	char buffer[30];
+  93:.\main.c      **** 	uint8_t filterRead;
+  94:.\main.c      ****     /* Start all components used on schematic */
+  95:.\main.c      ****     ADC_DelSig_IRQ_Start();
+ 155              		.loc 1 95 0
+ 156 0006 FFF7FEFF 		bl	ADC_DelSig_IRQ_Start
+  96:.\main.c      ****     isr_StartEx(filterVDAC);
+ 157              		.loc 1 96 0
+ 158 000a 40F20000 		movw	r0, #:lower16:filterVDAC
+ 159 000e C0F20000 		movt	r0, #:upper16:filterVDAC
+ 160 0012 FFF7FEFF 		bl	isr_StartEx
+  97:.\main.c      ****     ADC_DelSig_Start();
+ 161              		.loc 1 97 0
+ 162 0016 FFF7FEFF 		bl	ADC_DelSig_Start
+  98:.\main.c      ****     ADC_DelSig_StartConvert();
+ 163              		.loc 1 98 0
+ 164 001a FFF7FEFF 		bl	ADC_DelSig_StartConvert
+  99:.\main.c      **** 	Fault_isr_StartEx(faultISR);
+ 165              		.loc 1 99 0
+ 166 001e 40F20000 		movw	r0, #:lower16:faultISR
+ 167 0022 C0F20000 		movt	r0, #:upper16:faultISR
+ 168 0026 FFF7FEFF 		bl	Fault_isr_StartEx
+ 100:.\main.c      **** 	Comp_1_Start();
+ 169              		.loc 1 100 0
+ 170 002a FFF7FEFF 		bl	Comp_1_Start
+ 101:.\main.c      **** 	Comp_2_Start();
+ 171              		.loc 1 101 0
+ 172 002e FFF7FEFF 		bl	Comp_2_Start
+ 102:.\main.c      **** 	Comp_3_Start();
+ 173              		.loc 1 102 0
+ 174 0032 FFF7FEFF 		bl	Comp_3_Start
+ 103:.\main.c      ****     VDAC8_Start();
+ 175              		.loc 1 103 0
+ 176 0036 FFF7FEFF 		bl	VDAC8_Start
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 6
+
+
+ 104:.\main.c      ****     Filter_Start();
+ 177              		.loc 1 104 0
+ 178 003a FFF7FEFF 		bl	Filter_Start
+ 105:.\main.c      **** 	LCD_Start();
+ 179              		.loc 1 105 0
+ 180 003e FFF7FEFF 		bl	LCD_Start
+ 106:.\main.c      **** 
+ 107:.\main.c      ****     /* User-implemented function to set-up DMA */
+ 108:.\main.c      ****     DMA_Config();
+ 181              		.loc 1 108 0
+ 182 0042 FFF7FEFF 		bl	DMA_Config
+ 109:.\main.c      **** 	
+ 110:.\main.c      **** 	
+ 111:.\main.c      **** 	
+ 112:.\main.c      ****     /* Enable Global Interrupts */
+ 113:.\main.c      ****     CYGlobalIntEnable;
+ 183              		.loc 1 113 0
+ 184              	@ 113 ".\main.c" 1
+ 185 0046 62B6     		CPSIE   i
+ 186              	@ 0 "" 2
+ 187              		.thumb
+ 188              	.L11:
+ 114:.\main.c      **** 
+ 115:.\main.c      ****     for(;;)
+ 116:.\main.c      ****     {
+ 117:.\main.c      **** 		if(filterStatus)
+ 189              		.loc 1 117 0
+ 190 0048 40F20003 		movw	r3, #:lower16:filterStatus
+ 191 004c C0F20003 		movt	r3, #:upper16:filterStatus
+ 192 0050 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 193 0052 002B     		cmp	r3, #0
+ 194 0054 33D0     		beq	.L6
+ 118:.\main.c      **** 		{
+ 119:.\main.c      **** 			LCD_Position(1u, 0u);
+ 195              		.loc 1 119 0
+ 196 0056 4FF00100 		mov	r0, #1
+ 197 005a 4FF00001 		mov	r1, #0
+ 198 005e FFF7FEFF 		bl	LCD_Position
+ 120:.\main.c      **** 			
+ 121:.\main.c      **** 			//filterRead = Filter_Read8(Filter_CHANNEL_A);
+ 122:.\main.c      **** 			filterRead = ADC_read;
+ 199              		.loc 1 122 0
+ 200 0062 40F20003 		movw	r3, #:lower16:ADC_read
+ 201 0066 C0F20003 		movt	r3, #:upper16:ADC_read
+ 202 006a 1B78     		ldrb	r3, [r3, #0]
+ 203 006c FB77     		strb	r3, [r7, #31]
+ 123:.\main.c      **** 			
+ 124:.\main.c      **** 			if(filterRead < 10) {
+ 204              		.loc 1 124 0
+ 205 006e FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ 206 0070 092B     		cmp	r3, #9
+ 207 0072 06D8     		bhi	.L7
+ 125:.\main.c      **** 			LCD_PrintString("  ");			
+ 208              		.loc 1 125 0
+ 209 0074 40F20000 		movw	r0, #:lower16:.LC0
+ 210 0078 C0F20000 		movt	r0, #:upper16:.LC0
+ 211 007c FFF7FEFF 		bl	LCD_PrintString
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 7
+
+
+ 212 0080 08E0     		b	.L8
+ 213              	.L7:
+ 126:.\main.c      **** 			} else if(filterRead < 100) {
+ 214              		.loc 1 126 0
+ 215 0082 FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ 216 0084 632B     		cmp	r3, #99
+ 217 0086 05D8     		bhi	.L8
+ 127:.\main.c      **** 			LCD_PrintString(" ");			
+ 218              		.loc 1 127 0
+ 219 0088 40F20000 		movw	r0, #:lower16:.LC1
+ 220 008c C0F20000 		movt	r0, #:upper16:.LC1
+ 221 0090 FFF7FEFF 		bl	LCD_PrintString
+ 222              	.L8:
+ 128:.\main.c      **** 			} else {}
+ 129:.\main.c      **** 			
+ 130:.\main.c      **** 			sprintf(buffer, "%i", filterRead);
+ 223              		.loc 1 130 0
+ 224 0094 FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ 225 0096 3A46     		mov	r2, r7
+ 226 0098 1046     		mov	r0, r2
+ 227 009a 40F20001 		movw	r1, #:lower16:.LC2
+ 228 009e C0F20001 		movt	r1, #:upper16:.LC2
+ 229 00a2 1A46     		mov	r2, r3
+ 230 00a4 FFF7FEFF 		bl	sprintf
+ 131:.\main.c      **** 			LCD_PrintString(buffer);
+ 231              		.loc 1 131 0
+ 232 00a8 3B46     		mov	r3, r7
+ 233 00aa 1846     		mov	r0, r3
+ 234 00ac FFF7FEFF 		bl	LCD_PrintString
+ 132:.\main.c      **** 			filterStatus=0;
+ 235              		.loc 1 132 0
+ 236 00b0 40F20003 		movw	r3, #:lower16:filterStatus
+ 237 00b4 C0F20003 		movt	r3, #:upper16:filterStatus
+ 238 00b8 4FF00002 		mov	r2, #0
+ 239 00bc 1A70     		strb	r2, [r3, #0]
+ 240              	.L6:
+ 133:.\main.c      **** 		}
+ 134:.\main.c      **** 		
+ 135:.\main.c      **** 		if(faultStatus) {
+ 241              		.loc 1 135 0
+ 242 00be 40F20003 		movw	r3, #:lower16:faultStatus
+ 243 00c2 C0F20003 		movt	r3, #:upper16:faultStatus
+ 244 00c6 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 245 00c8 002B     		cmp	r3, #0
+ 246 00ca 13D0     		beq	.L9
+ 136:.\main.c      **** 			LCD_Position(0u, 0u);
+ 247              		.loc 1 136 0
+ 248 00cc 4FF00000 		mov	r0, #0
+ 249 00d0 4FF00001 		mov	r1, #0
+ 250 00d4 FFF7FEFF 		bl	LCD_Position
+ 137:.\main.c      **** 			LCD_PrintString("ERROR");
+ 251              		.loc 1 137 0
+ 252 00d8 40F20000 		movw	r0, #:lower16:.LC3
+ 253 00dc C0F20000 		movt	r0, #:upper16:.LC3
+ 254 00e0 FFF7FEFF 		bl	LCD_PrintString
+ 138:.\main.c      **** 			faultStatus=0;
+ 255              		.loc 1 138 0
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 8
+
+
+ 256 00e4 40F20003 		movw	r3, #:lower16:faultStatus
+ 257 00e8 C0F20003 		movt	r3, #:upper16:faultStatus
+ 258 00ec 4FF00002 		mov	r2, #0
+ 259 00f0 1A70     		strb	r2, [r3, #0]
+ 139:.\main.c      **** 			
+ 140:.\main.c      **** 		} else {
+ 141:.\main.c      **** 			LCD_Position(0u, 0u);
+ 142:.\main.c      **** 			LCD_PrintString("OK   ");
+ 143:.\main.c      **** 		}
+ 144:.\main.c      **** 		
+ 145:.\main.c      **** 		
+ 146:.\main.c      ****     }
+ 260              		.loc 1 146 0
+ 261 00f2 A9E7     		b	.L11
+ 262              	.L9:
+ 263              		.loc 1 141 0
+ 264 00f4 4FF00000 		mov	r0, #0
+ 265 00f8 4FF00001 		mov	r1, #0
+ 266 00fc FFF7FEFF 		bl	LCD_Position
+ 267              		.loc 1 142 0
+ 268 0100 40F20000 		movw	r0, #:lower16:.LC4
+ 269 0104 C0F20000 		movt	r0, #:upper16:.LC4
+ 270 0108 FFF7FEFF 		bl	LCD_PrintString
+ 271              		.loc 1 146 0
+ 272 010c 9CE7     		b	.L11
+ 273              		.cfi_endproc
+ 274              	.LFE31:
+ 275              		.size	main, .-main
+ 276 010e 00BF     		.section	.text.DMA_Config,"ax",%progbits
+ 277              		.align	2
+ 278              		.global	DMA_Config
+ 279              		.thumb
+ 280              		.thumb_func
+ 281              		.type	DMA_Config, %function
+ 282              	DMA_Config:
+ 283              	.LFB32:
+ 147:.\main.c      **** } /* End of main */
+ 148:.\main.c      **** 
+ 149:.\main.c      **** 
+ 150:.\main.c      **** /*******************************************************************************
+ 151:.\main.c      **** * Function Name: DMA_Config
+ 152:.\main.c      **** ********************************************************************************
+ 153:.\main.c      **** *
+ 154:.\main.c      **** * Summary:
+ 155:.\main.c      **** *  Initializes and sets up DMA for use (generated by DMA Wizard)
+ 156:.\main.c      **** *
+ 157:.\main.c      **** * Parameters:
+ 158:.\main.c      **** *  None.
+ 159:.\main.c      **** *
+ 160:.\main.c      **** * Return:
+ 161:.\main.c      **** *  None.
+ 162:.\main.c      **** *
+ 163:.\main.c      **** *******************************************************************************/
+ 164:.\main.c      **** void DMA_Config(void)
+ 165:.\main.c      **** {
+ 284              		.loc 1 165 0
+ 285              		.cfi_startproc
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 9
+
+
+ 286              		@ args = 0, pretend = 0, frame = 8
+ 287              		@ frame_needed = 1, uses_anonymous_args = 0
+ 288 0000 80B5     		push	{r7, lr}
+ 289              	.LCFI7:
+ 290              		.cfi_def_cfa_offset 8
+ 291 0002 82B0     		sub	sp, sp, #8
+ 292              	.LCFI8:
+ 293              		.cfi_def_cfa_offset 16
+ 294 0004 00AF     		add	r7, sp, #0
+ 295              		.cfi_offset 14, -4
+ 296              		.cfi_offset 7, -8
+ 297              	.LCFI9:
+ 298              		.cfi_def_cfa_register 7
+ 166:.\main.c      ****     /* Declare variable to hold the handle for DMA channel */
+ 167:.\main.c      ****     uint8 channelHandle;
+ 168:.\main.c      **** 
+ 169:.\main.c      ****     /* Declare DMA Transaction Descriptor for memory transfer into
+ 170:.\main.c      ****      * Filter Channel.
+ 171:.\main.c      ****      */
+ 172:.\main.c      ****     uint8 tdChanA;
+ 173:.\main.c      **** 
+ 174:.\main.c      ****     /* Configure the DMA to Transfer the data in 1 burst with individual trigger
+ 175:.\main.c      ****      * for each burst.
+ 176:.\main.c      ****      */
+ 177:.\main.c      ****     channelHandle = DMA_DmaInitialize(BYTES_PER_BURST, REQUEST_PER_BURST,
+ 299              		.loc 1 177 0
+ 300 0006 4FF00100 		mov	r0, #1
+ 301 000a 4FF00101 		mov	r1, #1
+ 302 000e 4FF48042 		mov	r2, #16384
+ 303 0012 4FF48043 		mov	r3, #16384
+ 304 0016 FFF7FEFF 		bl	DMA_DmaInitialize
+ 305 001a 0346     		mov	r3, r0
+ 306 001c BB71     		strb	r3, [r7, #6]
+ 178:.\main.c      ****                                         HI16(UPPER_SRC_ADDRESS), HI16(UPPER_DEST_ADDRESS));
+ 179:.\main.c      **** 
+ 180:.\main.c      ****     /* This function allocates a TD for use with an initialized DMA channel */
+ 181:.\main.c      ****     tdChanA = CyDmaTdAllocate();
+ 307              		.loc 1 181 0
+ 308 001e FFF7FEFF 		bl	CyDmaTdAllocate
+ 309 0022 0346     		mov	r3, r0
+ 310 0024 FB71     		strb	r3, [r7, #7]
+ 182:.\main.c      **** 
+ 183:.\main.c      ****     /* Configure the tdChanA to transfer 1 byte with no next TD */
+ 184:.\main.c      ****     CyDmaTdSetConfiguration(tdChanA, 1u, DMA_INVALID_TD, 0u);
+ 311              		.loc 1 184 0
+ 312 0026 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 313 0028 1846     		mov	r0, r3
+ 314 002a 4FF00101 		mov	r1, #1
+ 315 002e 4FF0FF02 		mov	r2, #255
+ 316 0032 4FF00003 		mov	r3, #0
+ 317 0036 FFF7FEFF 		bl	CyDmaTdSetConfiguration
+ 185:.\main.c      **** 
+ 186:.\main.c      ****     /* Set the source address as ADC_DelSig and the destination as
+ 187:.\main.c      ****      * Filter Channel A.
+ 188:.\main.c      ****      */
+ 189:.\main.c      ****     CyDmaTdSetAddress(tdChanA, LO16((uint32)ADC_DelSig_DEC_SAMP_PTR), LO16((uint32)Filter_STAGEAH_P
+ 318              		.loc 1 189 0
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 10
+
+
+ 319 003a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 320 003c 1846     		mov	r0, r3
+ 321 003e 44F61061 		movw	r1, #19984
+ 322 0042 4CF2A272 		movw	r2, #51106
+ 323 0046 FFF7FEFF 		bl	CyDmaTdSetAddress
+ 190:.\main.c      **** 
+ 191:.\main.c      ****     /* Set tdChanA to be the initial TD associated with channelHandle */
+ 192:.\main.c      ****     CyDmaChSetInitialTd(channelHandle, tdChanA);
+ 324              		.loc 1 192 0
+ 325 004a BA79     		ldrb	r2, [r7, #6]	@ zero_extendqisi2
+ 326 004c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 327 004e 1046     		mov	r0, r2
+ 328 0050 1946     		mov	r1, r3
+ 329 0052 FFF7FEFF 		bl	CyDmaChSetInitialTd
+ 193:.\main.c      **** 
+ 194:.\main.c      ****     /* Enable the DMA channel represented by channelHandle and preserve the TD */
+ 195:.\main.c      ****     CyDmaChEnable(channelHandle, 1u);
+ 330              		.loc 1 195 0
+ 331 0056 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 332 0058 1846     		mov	r0, r3
+ 333 005a 4FF00101 		mov	r1, #1
+ 334 005e FFF7FEFF 		bl	CyDmaChEnable
+ 196:.\main.c      **** }
+ 335              		.loc 1 196 0
+ 336 0062 07F10807 		add	r7, r7, #8
+ 337 0066 BD46     		mov	sp, r7
+ 338 0068 80BD     		pop	{r7, pc}
+ 339              		.cfi_endproc
+ 340              	.LFE32:
+ 341              		.size	DMA_Config, .-DMA_Config
+ 342 006a 00BF     		.text
+ 343              	.Letext0:
+ 344              		.section	.debug_loc,"",%progbits
+ 345              	.Ldebug_loc0:
+ 346              	.LLST0:
+ 347 0000 00000000 		.4byte	.LFB29
+ 348 0004 02000000 		.4byte	.LCFI0
+ 349 0008 0100     		.2byte	0x1
+ 350 000a 5D       		.byte	0x5d
+ 351 000b 02000000 		.4byte	.LCFI0
+ 352 000f 04000000 		.4byte	.LCFI1
+ 353 0013 0200     		.2byte	0x2
+ 354 0015 7D       		.byte	0x7d
+ 355 0016 08       		.sleb128 8
+ 356 0017 04000000 		.4byte	.LCFI1
+ 357 001b 3A000000 		.4byte	.LFE29
+ 358 001f 0200     		.2byte	0x2
+ 359 0021 77       		.byte	0x77
+ 360 0022 08       		.sleb128 8
+ 361 0023 00000000 		.4byte	0x0
+ 362 0027 00000000 		.4byte	0x0
+ 363              	.LLST1:
+ 364 002b 00000000 		.4byte	.LFB30
+ 365 002f 02000000 		.4byte	.LCFI2
+ 366 0033 0100     		.2byte	0x1
+ 367 0035 5D       		.byte	0x5d
+ 368 0036 02000000 		.4byte	.LCFI2
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 11
+
+
+ 369 003a 04000000 		.4byte	.LCFI3
+ 370 003e 0200     		.2byte	0x2
+ 371 0040 7D       		.byte	0x7d
+ 372 0041 04       		.sleb128 4
+ 373 0042 04000000 		.4byte	.LCFI3
+ 374 0046 18000000 		.4byte	.LFE30
+ 375 004a 0200     		.2byte	0x2
+ 376 004c 77       		.byte	0x77
+ 377 004d 04       		.sleb128 4
+ 378 004e 00000000 		.4byte	0x0
+ 379 0052 00000000 		.4byte	0x0
+ 380              	.LLST2:
+ 381 0056 00000000 		.4byte	.LFB31
+ 382 005a 02000000 		.4byte	.LCFI4
+ 383 005e 0100     		.2byte	0x1
+ 384 0060 5D       		.byte	0x5d
+ 385 0061 02000000 		.4byte	.LCFI4
+ 386 0065 04000000 		.4byte	.LCFI5
+ 387 0069 0200     		.2byte	0x2
+ 388 006b 7D       		.byte	0x7d
+ 389 006c 08       		.sleb128 8
+ 390 006d 04000000 		.4byte	.LCFI5
+ 391 0071 06000000 		.4byte	.LCFI6
+ 392 0075 0200     		.2byte	0x2
+ 393 0077 7D       		.byte	0x7d
+ 394 0078 28       		.sleb128 40
+ 395 0079 06000000 		.4byte	.LCFI6
+ 396 007d 0E010000 		.4byte	.LFE31
+ 397 0081 0200     		.2byte	0x2
+ 398 0083 77       		.byte	0x77
+ 399 0084 28       		.sleb128 40
+ 400 0085 00000000 		.4byte	0x0
+ 401 0089 00000000 		.4byte	0x0
+ 402              	.LLST3:
+ 403 008d 00000000 		.4byte	.LFB32
+ 404 0091 02000000 		.4byte	.LCFI7
+ 405 0095 0100     		.2byte	0x1
+ 406 0097 5D       		.byte	0x5d
+ 407 0098 02000000 		.4byte	.LCFI7
+ 408 009c 04000000 		.4byte	.LCFI8
+ 409 00a0 0200     		.2byte	0x2
+ 410 00a2 7D       		.byte	0x7d
+ 411 00a3 08       		.sleb128 8
+ 412 00a4 04000000 		.4byte	.LCFI8
+ 413 00a8 06000000 		.4byte	.LCFI9
+ 414 00ac 0200     		.2byte	0x2
+ 415 00ae 7D       		.byte	0x7d
+ 416 00af 10       		.sleb128 16
+ 417 00b0 06000000 		.4byte	.LCFI9
+ 418 00b4 6A000000 		.4byte	.LFE32
+ 419 00b8 0200     		.2byte	0x2
+ 420 00ba 77       		.byte	0x77
+ 421 00bb 10       		.sleb128 16
+ 422 00bc 00000000 		.4byte	0x0
+ 423 00c0 00000000 		.4byte	0x0
+ 424              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\2.1\\psoc creator\\import\\gnu_cs\\arm\\4
+ 425              		.file 3 "./Generated_Source/PSoC5/cytypes.h"
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 12
+
+
+ 426              		.file 4 "./Generated_Source/PSoC5/core_cm3.h"
+ 427              		.section	.debug_info
+ 428 0000 7A010000 		.4byte	0x17a
+ 429 0004 0200     		.2byte	0x2
+ 430 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 431 000a 04       		.byte	0x4
+ 432 000b 01       		.uleb128 0x1
+ 433 000c E7000000 		.4byte	.LASF22
+ 434 0010 01       		.byte	0x1
+ 435 0011 2C010000 		.4byte	.LASF23
+ 436 0015 2E000000 		.4byte	.LASF24
+ 437 0019 00000000 		.4byte	0x0
+ 438 001d 00000000 		.4byte	0x0
+ 439 0021 00000000 		.4byte	.Ldebug_ranges0+0x0
+ 440 0025 00000000 		.4byte	.Ldebug_line0
+ 441 0029 02       		.uleb128 0x2
+ 442 002a 01       		.byte	0x1
+ 443 002b 06       		.byte	0x6
+ 444 002c 82000000 		.4byte	.LASF0
+ 445 0030 03       		.uleb128 0x3
+ 446 0031 F3000000 		.4byte	.LASF10
+ 447 0035 02       		.byte	0x2
+ 448 0036 2A       		.byte	0x2a
+ 449 0037 3B000000 		.4byte	0x3b
+ 450 003b 02       		.uleb128 0x2
+ 451 003c 01       		.byte	0x1
+ 452 003d 08       		.byte	0x8
+ 453 003e FB000000 		.4byte	.LASF1
+ 454 0042 02       		.uleb128 0x2
+ 455 0043 02       		.byte	0x2
+ 456 0044 05       		.byte	0x5
+ 457 0045 59010000 		.4byte	.LASF2
+ 458 0049 02       		.uleb128 0x2
+ 459 004a 02       		.byte	0x2
+ 460 004b 07       		.byte	0x7
+ 461 004c 0E000000 		.4byte	.LASF3
+ 462 0050 02       		.uleb128 0x2
+ 463 0051 04       		.byte	0x4
+ 464 0052 05       		.byte	0x5
+ 465 0053 16010000 		.4byte	.LASF4
+ 466 0057 02       		.uleb128 0x2
+ 467 0058 04       		.byte	0x4
+ 468 0059 07       		.byte	0x7
+ 469 005a 9F000000 		.4byte	.LASF5
+ 470 005e 02       		.uleb128 0x2
+ 471 005f 08       		.byte	0x8
+ 472 0060 05       		.byte	0x5
+ 473 0061 00000000 		.4byte	.LASF6
+ 474 0065 02       		.uleb128 0x2
+ 475 0066 08       		.byte	0x8
+ 476 0067 07       		.byte	0x7
+ 477 0068 B1000000 		.4byte	.LASF7
+ 478 006c 04       		.uleb128 0x4
+ 479 006d 04       		.byte	0x4
+ 480 006e 05       		.byte	0x5
+ 481 006f 696E7400 		.ascii	"int\000"
+ 482 0073 02       		.uleb128 0x2
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 13
+
+
+ 483 0074 04       		.byte	0x4
+ 484 0075 07       		.byte	0x7
+ 485 0076 21000000 		.4byte	.LASF8
+ 486 007a 02       		.uleb128 0x2
+ 487 007b 01       		.byte	0x1
+ 488 007c 08       		.byte	0x8
+ 489 007d 11010000 		.4byte	.LASF9
+ 490 0081 03       		.uleb128 0x3
+ 491 0082 99000000 		.4byte	.LASF11
+ 492 0086 03       		.byte	0x3
+ 493 0087 60       		.byte	0x60
+ 494 0088 3B000000 		.4byte	0x3b
+ 495 008c 05       		.uleb128 0x5
+ 496 008d 04       		.byte	0x4
+ 497 008e 07       		.byte	0x7
+ 498 008f 06       		.uleb128 0x6
+ 499 0090 01       		.byte	0x1
+ 500 0091 D3000000 		.4byte	.LASF12
+ 501 0095 01       		.byte	0x1
+ 502 0096 2D       		.byte	0x2d
+ 503 0097 01       		.byte	0x1
+ 504 0098 00000000 		.4byte	.LFB29
+ 505 009c 3A000000 		.4byte	.LFE29
+ 506 00a0 00000000 		.4byte	.LLST0
+ 507 00a4 06       		.uleb128 0x6
+ 508 00a5 01       		.byte	0x1
+ 509 00a6 DE000000 		.4byte	.LASF13
+ 510 00aa 01       		.byte	0x1
+ 511 00ab 41       		.byte	0x41
+ 512 00ac 01       		.byte	0x1
+ 513 00ad 00000000 		.4byte	.LFB30
+ 514 00b1 18000000 		.4byte	.LFE30
+ 515 00b5 2B000000 		.4byte	.LLST1
+ 516 00b9 07       		.uleb128 0x7
+ 517 00ba 01       		.byte	0x1
+ 518 00bb 7D000000 		.4byte	.LASF25
+ 519 00bf 01       		.byte	0x1
+ 520 00c0 5A       		.byte	0x5a
+ 521 00c1 00000000 		.4byte	.LFB31
+ 522 00c5 0E010000 		.4byte	.LFE31
+ 523 00c9 56000000 		.4byte	.LLST2
+ 524 00cd EE000000 		.4byte	0xee
+ 525 00d1 08       		.uleb128 0x8
+ 526 00d2 63010000 		.4byte	.LASF14
+ 527 00d6 01       		.byte	0x1
+ 528 00d7 5C       		.byte	0x5c
+ 529 00d8 EE000000 		.4byte	0xee
+ 530 00dc 02       		.byte	0x2
+ 531 00dd 91       		.byte	0x91
+ 532 00de 58       		.sleb128 -40
+ 533 00df 08       		.uleb128 0x8
+ 534 00e0 C8000000 		.4byte	.LASF15
+ 535 00e4 01       		.byte	0x1
+ 536 00e5 5D       		.byte	0x5d
+ 537 00e6 30000000 		.4byte	0x30
+ 538 00ea 02       		.byte	0x2
+ 539 00eb 91       		.byte	0x91
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 14
+
+
+ 540 00ec 77       		.sleb128 -9
+ 541 00ed 00       		.byte	0x0
+ 542 00ee 09       		.uleb128 0x9
+ 543 00ef 7A000000 		.4byte	0x7a
+ 544 00f3 FE000000 		.4byte	0xfe
+ 545 00f7 0A       		.uleb128 0xa
+ 546 00f8 8C000000 		.4byte	0x8c
+ 547 00fc 1D       		.byte	0x1d
+ 548 00fd 00       		.byte	0x0
+ 549 00fe 0B       		.uleb128 0xb
+ 550 00ff 01       		.byte	0x1
+ 551 0100 8E000000 		.4byte	.LASF26
+ 552 0104 01       		.byte	0x1
+ 553 0105 A4       		.byte	0xa4
+ 554 0106 01       		.byte	0x1
+ 555 0107 00000000 		.4byte	.LFB32
+ 556 010b 6A000000 		.4byte	.LFE32
+ 557 010f 8D000000 		.4byte	.LLST3
+ 558 0113 34010000 		.4byte	0x134
+ 559 0117 08       		.uleb128 0x8
+ 560 0118 42010000 		.4byte	.LASF16
+ 561 011c 01       		.byte	0x1
+ 562 011d A7       		.byte	0xa7
+ 563 011e 81000000 		.4byte	0x81
+ 564 0122 02       		.byte	0x2
+ 565 0123 91       		.byte	0x91
+ 566 0124 76       		.sleb128 -10
+ 567 0125 08       		.uleb128 0x8
+ 568 0126 09010000 		.4byte	.LASF17
+ 569 012a 01       		.byte	0x1
+ 570 012b AC       		.byte	0xac
+ 571 012c 81000000 		.4byte	0x81
+ 572 0130 02       		.byte	0x2
+ 573 0131 91       		.byte	0x91
+ 574 0132 77       		.sleb128 -9
+ 575 0133 00       		.byte	0x0
+ 576 0134 0C       		.uleb128 0xc
+ 577 0135 35010000 		.4byte	.LASF18
+ 578 0139 04       		.byte	0x4
+ 579 013a CE06     		.2byte	0x6ce
+ 580 013c 42010000 		.4byte	0x142
+ 581 0140 01       		.byte	0x1
+ 582 0141 01       		.byte	0x1
+ 583 0142 0D       		.uleb128 0xd
+ 584 0143 6C000000 		.4byte	0x6c
+ 585 0147 0E       		.uleb128 0xe
+ 586 0148 1F010000 		.4byte	.LASF19
+ 587 014c 01       		.byte	0x1
+ 588 014d 1C       		.byte	0x1c
+ 589 014e 30000000 		.4byte	0x30
+ 590 0152 01       		.byte	0x1
+ 591 0153 05       		.byte	0x5
+ 592 0154 03       		.byte	0x3
+ 593 0155 00000000 		.4byte	filterStatus
+ 594 0159 0E       		.uleb128 0xe
+ 595 015a 6A010000 		.4byte	.LASF20
+ 596 015e 01       		.byte	0x1
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 15
+
+
+ 597 015f 1D       		.byte	0x1d
+ 598 0160 30000000 		.4byte	0x30
+ 599 0164 01       		.byte	0x1
+ 600 0165 05       		.byte	0x5
+ 601 0166 03       		.byte	0x3
+ 602 0167 00000000 		.4byte	faultStatus
+ 603 016b 0E       		.uleb128 0xe
+ 604 016c 50010000 		.4byte	.LASF21
+ 605 0170 01       		.byte	0x1
+ 606 0171 1E       		.byte	0x1e
+ 607 0172 30000000 		.4byte	0x30
+ 608 0176 01       		.byte	0x1
+ 609 0177 05       		.byte	0x5
+ 610 0178 03       		.byte	0x3
+ 611 0179 00000000 		.4byte	ADC_read
+ 612 017d 00       		.byte	0x0
+ 613              		.section	.debug_abbrev
+ 614 0000 01       		.uleb128 0x1
+ 615 0001 11       		.uleb128 0x11
+ 616 0002 01       		.byte	0x1
+ 617 0003 25       		.uleb128 0x25
+ 618 0004 0E       		.uleb128 0xe
+ 619 0005 13       		.uleb128 0x13
+ 620 0006 0B       		.uleb128 0xb
+ 621 0007 03       		.uleb128 0x3
+ 622 0008 0E       		.uleb128 0xe
+ 623 0009 1B       		.uleb128 0x1b
+ 624 000a 0E       		.uleb128 0xe
+ 625 000b 11       		.uleb128 0x11
+ 626 000c 01       		.uleb128 0x1
+ 627 000d 52       		.uleb128 0x52
+ 628 000e 01       		.uleb128 0x1
+ 629 000f 55       		.uleb128 0x55
+ 630 0010 06       		.uleb128 0x6
+ 631 0011 10       		.uleb128 0x10
+ 632 0012 06       		.uleb128 0x6
+ 633 0013 00       		.byte	0x0
+ 634 0014 00       		.byte	0x0
+ 635 0015 02       		.uleb128 0x2
+ 636 0016 24       		.uleb128 0x24
+ 637 0017 00       		.byte	0x0
+ 638 0018 0B       		.uleb128 0xb
+ 639 0019 0B       		.uleb128 0xb
+ 640 001a 3E       		.uleb128 0x3e
+ 641 001b 0B       		.uleb128 0xb
+ 642 001c 03       		.uleb128 0x3
+ 643 001d 0E       		.uleb128 0xe
+ 644 001e 00       		.byte	0x0
+ 645 001f 00       		.byte	0x0
+ 646 0020 03       		.uleb128 0x3
+ 647 0021 16       		.uleb128 0x16
+ 648 0022 00       		.byte	0x0
+ 649 0023 03       		.uleb128 0x3
+ 650 0024 0E       		.uleb128 0xe
+ 651 0025 3A       		.uleb128 0x3a
+ 652 0026 0B       		.uleb128 0xb
+ 653 0027 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 16
+
+
+ 654 0028 0B       		.uleb128 0xb
+ 655 0029 49       		.uleb128 0x49
+ 656 002a 13       		.uleb128 0x13
+ 657 002b 00       		.byte	0x0
+ 658 002c 00       		.byte	0x0
+ 659 002d 04       		.uleb128 0x4
+ 660 002e 24       		.uleb128 0x24
+ 661 002f 00       		.byte	0x0
+ 662 0030 0B       		.uleb128 0xb
+ 663 0031 0B       		.uleb128 0xb
+ 664 0032 3E       		.uleb128 0x3e
+ 665 0033 0B       		.uleb128 0xb
+ 666 0034 03       		.uleb128 0x3
+ 667 0035 08       		.uleb128 0x8
+ 668 0036 00       		.byte	0x0
+ 669 0037 00       		.byte	0x0
+ 670 0038 05       		.uleb128 0x5
+ 671 0039 24       		.uleb128 0x24
+ 672 003a 00       		.byte	0x0
+ 673 003b 0B       		.uleb128 0xb
+ 674 003c 0B       		.uleb128 0xb
+ 675 003d 3E       		.uleb128 0x3e
+ 676 003e 0B       		.uleb128 0xb
+ 677 003f 00       		.byte	0x0
+ 678 0040 00       		.byte	0x0
+ 679 0041 06       		.uleb128 0x6
+ 680 0042 2E       		.uleb128 0x2e
+ 681 0043 00       		.byte	0x0
+ 682 0044 3F       		.uleb128 0x3f
+ 683 0045 0C       		.uleb128 0xc
+ 684 0046 03       		.uleb128 0x3
+ 685 0047 0E       		.uleb128 0xe
+ 686 0048 3A       		.uleb128 0x3a
+ 687 0049 0B       		.uleb128 0xb
+ 688 004a 3B       		.uleb128 0x3b
+ 689 004b 0B       		.uleb128 0xb
+ 690 004c 27       		.uleb128 0x27
+ 691 004d 0C       		.uleb128 0xc
+ 692 004e 11       		.uleb128 0x11
+ 693 004f 01       		.uleb128 0x1
+ 694 0050 12       		.uleb128 0x12
+ 695 0051 01       		.uleb128 0x1
+ 696 0052 40       		.uleb128 0x40
+ 697 0053 06       		.uleb128 0x6
+ 698 0054 00       		.byte	0x0
+ 699 0055 00       		.byte	0x0
+ 700 0056 07       		.uleb128 0x7
+ 701 0057 2E       		.uleb128 0x2e
+ 702 0058 01       		.byte	0x1
+ 703 0059 3F       		.uleb128 0x3f
+ 704 005a 0C       		.uleb128 0xc
+ 705 005b 03       		.uleb128 0x3
+ 706 005c 0E       		.uleb128 0xe
+ 707 005d 3A       		.uleb128 0x3a
+ 708 005e 0B       		.uleb128 0xb
+ 709 005f 3B       		.uleb128 0x3b
+ 710 0060 0B       		.uleb128 0xb
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 17
+
+
+ 711 0061 11       		.uleb128 0x11
+ 712 0062 01       		.uleb128 0x1
+ 713 0063 12       		.uleb128 0x12
+ 714 0064 01       		.uleb128 0x1
+ 715 0065 40       		.uleb128 0x40
+ 716 0066 06       		.uleb128 0x6
+ 717 0067 01       		.uleb128 0x1
+ 718 0068 13       		.uleb128 0x13
+ 719 0069 00       		.byte	0x0
+ 720 006a 00       		.byte	0x0
+ 721 006b 08       		.uleb128 0x8
+ 722 006c 34       		.uleb128 0x34
+ 723 006d 00       		.byte	0x0
+ 724 006e 03       		.uleb128 0x3
+ 725 006f 0E       		.uleb128 0xe
+ 726 0070 3A       		.uleb128 0x3a
+ 727 0071 0B       		.uleb128 0xb
+ 728 0072 3B       		.uleb128 0x3b
+ 729 0073 0B       		.uleb128 0xb
+ 730 0074 49       		.uleb128 0x49
+ 731 0075 13       		.uleb128 0x13
+ 732 0076 02       		.uleb128 0x2
+ 733 0077 0A       		.uleb128 0xa
+ 734 0078 00       		.byte	0x0
+ 735 0079 00       		.byte	0x0
+ 736 007a 09       		.uleb128 0x9
+ 737 007b 01       		.uleb128 0x1
+ 738 007c 01       		.byte	0x1
+ 739 007d 49       		.uleb128 0x49
+ 740 007e 13       		.uleb128 0x13
+ 741 007f 01       		.uleb128 0x1
+ 742 0080 13       		.uleb128 0x13
+ 743 0081 00       		.byte	0x0
+ 744 0082 00       		.byte	0x0
+ 745 0083 0A       		.uleb128 0xa
+ 746 0084 21       		.uleb128 0x21
+ 747 0085 00       		.byte	0x0
+ 748 0086 49       		.uleb128 0x49
+ 749 0087 13       		.uleb128 0x13
+ 750 0088 2F       		.uleb128 0x2f
+ 751 0089 0B       		.uleb128 0xb
+ 752 008a 00       		.byte	0x0
+ 753 008b 00       		.byte	0x0
+ 754 008c 0B       		.uleb128 0xb
+ 755 008d 2E       		.uleb128 0x2e
+ 756 008e 01       		.byte	0x1
+ 757 008f 3F       		.uleb128 0x3f
+ 758 0090 0C       		.uleb128 0xc
+ 759 0091 03       		.uleb128 0x3
+ 760 0092 0E       		.uleb128 0xe
+ 761 0093 3A       		.uleb128 0x3a
+ 762 0094 0B       		.uleb128 0xb
+ 763 0095 3B       		.uleb128 0x3b
+ 764 0096 0B       		.uleb128 0xb
+ 765 0097 27       		.uleb128 0x27
+ 766 0098 0C       		.uleb128 0xc
+ 767 0099 11       		.uleb128 0x11
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 18
+
+
+ 768 009a 01       		.uleb128 0x1
+ 769 009b 12       		.uleb128 0x12
+ 770 009c 01       		.uleb128 0x1
+ 771 009d 40       		.uleb128 0x40
+ 772 009e 06       		.uleb128 0x6
+ 773 009f 01       		.uleb128 0x1
+ 774 00a0 13       		.uleb128 0x13
+ 775 00a1 00       		.byte	0x0
+ 776 00a2 00       		.byte	0x0
+ 777 00a3 0C       		.uleb128 0xc
+ 778 00a4 34       		.uleb128 0x34
+ 779 00a5 00       		.byte	0x0
+ 780 00a6 03       		.uleb128 0x3
+ 781 00a7 0E       		.uleb128 0xe
+ 782 00a8 3A       		.uleb128 0x3a
+ 783 00a9 0B       		.uleb128 0xb
+ 784 00aa 3B       		.uleb128 0x3b
+ 785 00ab 05       		.uleb128 0x5
+ 786 00ac 49       		.uleb128 0x49
+ 787 00ad 13       		.uleb128 0x13
+ 788 00ae 3F       		.uleb128 0x3f
+ 789 00af 0C       		.uleb128 0xc
+ 790 00b0 3C       		.uleb128 0x3c
+ 791 00b1 0C       		.uleb128 0xc
+ 792 00b2 00       		.byte	0x0
+ 793 00b3 00       		.byte	0x0
+ 794 00b4 0D       		.uleb128 0xd
+ 795 00b5 35       		.uleb128 0x35
+ 796 00b6 00       		.byte	0x0
+ 797 00b7 49       		.uleb128 0x49
+ 798 00b8 13       		.uleb128 0x13
+ 799 00b9 00       		.byte	0x0
+ 800 00ba 00       		.byte	0x0
+ 801 00bb 0E       		.uleb128 0xe
+ 802 00bc 34       		.uleb128 0x34
+ 803 00bd 00       		.byte	0x0
+ 804 00be 03       		.uleb128 0x3
+ 805 00bf 0E       		.uleb128 0xe
+ 806 00c0 3A       		.uleb128 0x3a
+ 807 00c1 0B       		.uleb128 0xb
+ 808 00c2 3B       		.uleb128 0x3b
+ 809 00c3 0B       		.uleb128 0xb
+ 810 00c4 49       		.uleb128 0x49
+ 811 00c5 13       		.uleb128 0x13
+ 812 00c6 3F       		.uleb128 0x3f
+ 813 00c7 0C       		.uleb128 0xc
+ 814 00c8 02       		.uleb128 0x2
+ 815 00c9 0A       		.uleb128 0xa
+ 816 00ca 00       		.byte	0x0
+ 817 00cb 00       		.byte	0x0
+ 818 00cc 00       		.byte	0x0
+ 819              		.section	.debug_pubnames,"",%progbits
+ 820 0000 70000000 		.4byte	0x70
+ 821 0004 0200     		.2byte	0x2
+ 822 0006 00000000 		.4byte	.Ldebug_info0
+ 823 000a 7E010000 		.4byte	0x17e
+ 824 000e 8F000000 		.4byte	0x8f
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 19
+
+
+ 825 0012 66696C74 		.ascii	"filterVDAC\000"
+ 825      65725644 
+ 825      414300
+ 826 001d A4000000 		.4byte	0xa4
+ 827 0021 6661756C 		.ascii	"faultISR\000"
+ 827      74495352 
+ 827      00
+ 828 002a B9000000 		.4byte	0xb9
+ 829 002e 6D61696E 		.ascii	"main\000"
+ 829      00
+ 830 0033 FE000000 		.4byte	0xfe
+ 831 0037 444D415F 		.ascii	"DMA_Config\000"
+ 831      436F6E66 
+ 831      696700
+ 832 0042 47010000 		.4byte	0x147
+ 833 0046 66696C74 		.ascii	"filterStatus\000"
+ 833      65725374 
+ 833      61747573 
+ 833      00
+ 834 0053 59010000 		.4byte	0x159
+ 835 0057 6661756C 		.ascii	"faultStatus\000"
+ 835      74537461 
+ 835      74757300 
+ 836 0063 6B010000 		.4byte	0x16b
+ 837 0067 4144435F 		.ascii	"ADC_read\000"
+ 837      72656164 
+ 837      00
+ 838 0070 00000000 		.4byte	0x0
+ 839              		.section	.debug_aranges,"",%progbits
+ 840 0000 34000000 		.4byte	0x34
+ 841 0004 0200     		.2byte	0x2
+ 842 0006 00000000 		.4byte	.Ldebug_info0
+ 843 000a 04       		.byte	0x4
+ 844 000b 00       		.byte	0x0
+ 845 000c 0000     		.2byte	0x0
+ 846 000e 0000     		.2byte	0x0
+ 847 0010 00000000 		.4byte	.LFB29
+ 848 0014 3A000000 		.4byte	.LFE29-.LFB29
+ 849 0018 00000000 		.4byte	.LFB30
+ 850 001c 18000000 		.4byte	.LFE30-.LFB30
+ 851 0020 00000000 		.4byte	.LFB31
+ 852 0024 0E010000 		.4byte	.LFE31-.LFB31
+ 853 0028 00000000 		.4byte	.LFB32
+ 854 002c 6A000000 		.4byte	.LFE32-.LFB32
+ 855 0030 00000000 		.4byte	0x0
+ 856 0034 00000000 		.4byte	0x0
+ 857              		.section	.debug_ranges,"",%progbits
+ 858              	.Ldebug_ranges0:
+ 859 0000 00000000 		.4byte	.Ltext0
+ 860 0004 00000000 		.4byte	.Letext0
+ 861 0008 00000000 		.4byte	.LFB29
+ 862 000c 3A000000 		.4byte	.LFE29
+ 863 0010 00000000 		.4byte	.LFB30
+ 864 0014 18000000 		.4byte	.LFE30
+ 865 0018 00000000 		.4byte	.LFB31
+ 866 001c 0E010000 		.4byte	.LFE31
+ 867 0020 00000000 		.4byte	.LFB32
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 20
+
+
+ 868 0024 6A000000 		.4byte	.LFE32
+ 869 0028 00000000 		.4byte	0x0
+ 870 002c 00000000 		.4byte	0x0
+ 871              		.section	.debug_str,"MS",%progbits,1
+ 872              	.LASF6:
+ 873 0000 6C6F6E67 		.ascii	"long long int\000"
+ 873      206C6F6E 
+ 873      6720696E 
+ 873      7400
+ 874              	.LASF3:
+ 875 000e 73686F72 		.ascii	"short unsigned int\000"
+ 875      7420756E 
+ 875      7369676E 
+ 875      65642069 
+ 875      6E7400
+ 876              	.LASF8:
+ 877 0021 756E7369 		.ascii	"unsigned int\000"
+ 877      676E6564 
+ 877      20696E74 
+ 877      00
+ 878              	.LASF24:
+ 879 002e 4A3A5C63 		.ascii	"J:\\c704\\C704224\\Cypress\\CY8C5868\\Laser_Schutzs"
+ 879      3730345C 
+ 879      43373034 
+ 879      3232345C 
+ 879      43797072 
+ 880 005c 6368616C 		.ascii	"chaltung\\Design01\\Design02.cydsn\000"
+ 880      74756E67 
+ 880      5C446573 
+ 880      69676E30 
+ 880      315C4465 
+ 881              	.LASF25:
+ 882 007d 6D61696E 		.ascii	"main\000"
+ 882      00
+ 883              	.LASF0:
+ 884 0082 7369676E 		.ascii	"signed char\000"
+ 884      65642063 
+ 884      68617200 
+ 885              	.LASF26:
+ 886 008e 444D415F 		.ascii	"DMA_Config\000"
+ 886      436F6E66 
+ 886      696700
+ 887              	.LASF11:
+ 888 0099 75696E74 		.ascii	"uint8\000"
+ 888      3800
+ 889              	.LASF5:
+ 890 009f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 890      20756E73 
+ 890      69676E65 
+ 890      6420696E 
+ 890      7400
+ 891              	.LASF7:
+ 892 00b1 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 892      206C6F6E 
+ 892      6720756E 
+ 892      7369676E 
+ 892      65642069 
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 21
+
+
+ 893              	.LASF15:
+ 894 00c8 66696C74 		.ascii	"filterRead\000"
+ 894      65725265 
+ 894      616400
+ 895              	.LASF12:
+ 896 00d3 66696C74 		.ascii	"filterVDAC\000"
+ 896      65725644 
+ 896      414300
+ 897              	.LASF13:
+ 898 00de 6661756C 		.ascii	"faultISR\000"
+ 898      74495352 
+ 898      00
+ 899              	.LASF22:
+ 900 00e7 474E5520 		.ascii	"GNU C 4.4.1\000"
+ 900      4320342E 
+ 900      342E3100 
+ 901              	.LASF10:
+ 902 00f3 75696E74 		.ascii	"uint8_t\000"
+ 902      385F7400 
+ 903              	.LASF1:
+ 904 00fb 756E7369 		.ascii	"unsigned char\000"
+ 904      676E6564 
+ 904      20636861 
+ 904      7200
+ 905              	.LASF17:
+ 906 0109 74644368 		.ascii	"tdChanA\000"
+ 906      616E4100 
+ 907              	.LASF9:
+ 908 0111 63686172 		.ascii	"char\000"
+ 908      00
+ 909              	.LASF4:
+ 910 0116 6C6F6E67 		.ascii	"long int\000"
+ 910      20696E74 
+ 910      00
+ 911              	.LASF19:
+ 912 011f 66696C74 		.ascii	"filterStatus\000"
+ 912      65725374 
+ 912      61747573 
+ 912      00
+ 913              	.LASF23:
+ 914 012c 2E5C6D61 		.ascii	".\\main.c\000"
+ 914      696E2E63 
+ 914      00
+ 915              	.LASF18:
+ 916 0135 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 916      52784275 
+ 916      66666572 
+ 916      00
+ 917              	.LASF16:
+ 918 0142 6368616E 		.ascii	"channelHandle\000"
+ 918      6E656C48 
+ 918      616E646C 
+ 918      6500
+ 919              	.LASF21:
+ 920 0150 4144435F 		.ascii	"ADC_read\000"
+ 920      72656164 
+ 920      00
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccv2pNmg.s 			page 22
+
+
+ 921              	.LASF2:
+ 922 0159 73686F72 		.ascii	"short int\000"
+ 922      7420696E 
+ 922      7400
+ 923              	.LASF14:
+ 924 0163 62756666 		.ascii	"buffer\000"
+ 924      657200
+ 925              	.LASF20:
+ 926 016a 6661756C 		.ascii	"faultStatus\000"
+ 926      74537461 
+ 926      74757300 
+ 927              		.ident	"GCC: (Sourcery G++ Lite 2010q1-188) 4.4.1"

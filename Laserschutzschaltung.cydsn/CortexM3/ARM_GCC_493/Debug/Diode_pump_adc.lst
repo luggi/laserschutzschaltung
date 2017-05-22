@@ -1,0 +1,1553 @@
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Diode_pump_adc.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.section	.gnu.lto_.profile.d237c97,"",%progbits
+  18 0000 789C6366 		.ascii	"x\234cf```a\200\000F\0061!\000\000\262\0001"
+  18      60606061 
+  18      80004606 
+  18      31210000 
+  18      B20031
+  19              		.text
+  20              		.section	.gnu.lto_.inline.d237c97,"",%progbits
+  21 0000 789C6366 		.ascii	"x\234cf\300\016\022\2404\013\003\003\007;##\003#\003"
+  21      C00E12A0 
+  21      340B0303 
+  21      073B2323 
+  21      032303
+  22 0013 0333C701 		.ascii	"\0033\307\001;\006\266\005\362L\014L\027\370Y@\222\214"
+  22      3B06B605 
+  22      F24C0C4C 
+  22      17F85940 
+  22      928C
+  23 0025 78E49818 		.ascii	"x\344\230\030XY\030\031\230X\026\310C\304\201\200\031"
+  23      58591819 
+  23      985816C8 
+  23      43C48180 
+  23      19
+  24 0036 53880100 		.ascii	"S\210\001\000\322\320\011("
+  24      D2D00928 
+  25              		.text
+  26              		.section	.gnu.lto_.jmpfuncs.d237c97,"",%progbits
+  27 0000 789C6366 		.ascii	"x\234cf\300\016\204\2404\013\003##c=#\210`b``\006\212"
+  27      C00E84A0 
+  27      340B0323 
+  27      23633D23 
+  27      88606260 
+  28 0017 00000DC0 		.ascii	"\000\000\015\300\001$"
+  28      0124
+  29              		.text
+  30              		.section	.gnu.lto_.pureconst.d237c97,"",%progbits
+  31 0000 789C6366 		.ascii	"x\234cf``\340d\200\000\026\006)F)&)f)\000\002\305\000"
+  31      6060E064 
+  31      80001606 
+  31      29462926 
+  31      29662900 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 2
+
+
+  32 0017 7F       		.ascii	"\177"
+  33              		.text
+  34              		.section	.gnu.lto_Diode_pump_adc_Write.d237c97,"",%progbits
+  35 0000 789C6591 		.ascii	"x\234e\221OH\024Q\034\307\177\337\337\233\331]\265C"
+  35      4F481451 
+  35      1CC77FDF 
+  35      DF9BD95D 
+  35      B543
+  36 0012 749CAB88 		.ascii	"t\234\253\210I\022t\350\324%2\350*x]X\226\3359,h+\272"
+  36      491274E8 
+  36      D42532E8 
+  36      2A785D58 
+  36      96DD392C 
+  37 0029 DB75DFD4 		.ascii	"\333u\337\324\262\207 \020\011\012Bj\223\322\332RS\360"
+  37      B2872010 
+  37      090A426A 
+  37      93D2DA52 
+  37      53F0
+  38 003b 264CE225 		.ascii	"&L\342%D\315K\201\210\031l\241ti1\232\374\323n\2777"
+  38      44CD4B81 
+  38      88196CA1 
+  38      7469319A 
+  38      FCD36EBF 
+  39 0050 73511A78 		.ascii	"sQ\032x\363\336|\371~~\277\357\373\215\242\377\037G"
+  39      F3DE7CF9 
+  39      7E7EBFEF 
+  39      FB8DA2FF 
+  39      1F47
+  40 0062 561344D7 		.ascii	"V\023D\327d\207\"\360\330:\221\227`\300\034\010Tb\224"
+  40      648722F0 
+  40      D83A9197 
+  40      60C01C08 
+  40      546294
+  41 0075 B0CF0DC6 		.ascii	"\260\317\015\306\230_{\334\321\375Bk\375s|\303\353\367"
+  41      985F7BDC 
+  41      D1FD426B 
+  41      FD737CC3 
+  41      EBF7
+  42 0087 71C84407 		.ascii	"q\310D\007\034\325\301\024\272\305sP\323\017\225\272"
+  42      1CD5C114 
+  42      BAC57350 
+  42      D30F95BA 
+  43 0097 0492F3DC 		.ascii	"\004\222\363\334\346Z3\3365\251\365]\377\303\214\276"
+  43      E65A33DE 
+  43      35A9F55D 
+  43      FFC38CBE 
+  44 00a7 2E76601A 		.ascii	".v`\032J\010\364:\350qH\004\302+t\031\363\374\203\225"
+  44      4A08F43A 
+  44      E8714804 
+  44      C22B7419 
+  44      F3FC8395 
+  45 00bb 45565742 		.ascii	"EVWB\260\272\372u\345\\gU\300\335\343\305\244\357=\323"
+  45      B0BAFA75 
+  45      E55C6755 
+  45      C0DDE3C5 
+  45      A4EF3DD3 
+  46 00cf CD562BC4 		.ascii	"\315V+\304_\237\306\243G\374\215\362\337\317\035\261"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 3
+
+
+  46      5F9FC6A3 
+  46      47FC8DF2 
+  46      DFCF1DB1 
+  47 00df B2043B8F 		.ascii	"\262\004;\217\032:\243Lx\203\230\334\013F\231\275\340"
+  47      1A3AA34C 
+  47      788398DC 
+  47      0B4699BD 
+  47      E0
+  48 00f0 EB566B61 		.ascii	"\353Vka\351\375\021\022,mY.*\262\005\323\3356B\314\274"
+  48      E9FD1112 
+  48      2C6D592E 
+  48      2AB205D3 
+  48      DD3642CC 
+  49 0105 88EAB2CC 		.ascii	"\210\352\262\314\275\277\311\207\354j\013\313\277\357"
+  49      BDBFC987 
+  49      EC6A0BCB 
+  49      BFEF
+  50 0113 EF3C8A9B 		.ascii	"\357<\212\233b\001\233!\2546N\234=>d\365\361\271\247"
+  50      62019B21 
+  50      AC364E9C 
+  50      3D3E64F5 
+  50      F1B9A7
+  51 0126 2DD3FD4B 		.ascii	"-\323\375K}c3\021Ja\230\352\313Z\200\011<\361\312\222"
+  51      7D633311 
+  51      4A6198EA 
+  51      CB5A8009 
+  51      3CF1CA92 
+  52 013a D8C25B38 		.ascii	"\330\302[8\230\201\204\305\254\250\264\205{\177*\333"
+  52      988184C5 
+  52      ACA8B485 
+  52      7B7F2ADB 
+  53 014a 88EAA9A8 		.ascii	"\210\352\251\250\344\323\375\346\236e\012\240D\230\023"
+  53      E4D3FDE6 
+  53      9E650AA0 
+  53      449813
+  54 0159 EF277098 		.ascii	"\357'p\230^\"\212\3110\333\225\357A[\004\331\001[\002"
+  54      5E228AC9 
+  54      30DB95EF 
+  54      415B04D9 
+  54      015B02
+  55 016c 0593BB3F 		.ascii	"\005\223\273?` \216\023\336\011$\256_\225\023\216L\221"
+  55      60208E13 
+  55      DE0924AE 
+  55      5F95138E 
+  55      4C91
+  56 017e CFA0CBE3 		.ascii	"\317\240\313\343a\2633\301<\337>\033m^t\201h\007\236"
+  56      61B333C1 
+  56      3CDF3E1B 
+  56      6D5E7481 
+  56      68079E
+  57 0191 7F6C1BBF 		.ascii	"\177l\033\277\231l]~\217\014AFr\361\226{\333\035I\027"
+  57      996C5D7E 
+  57      8F0C4146 
+  57      72F1967B 
+  57      DB1D4917 
+  58 01a5 DC6C6A20 		.ascii	"\334lj _\034\311\270\311\376\201|\337\325\344\315\\"
+  58      5F1CC9B8 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 4
+
+
+  58      C9FE817C 
+  58      DFD5E4CD 
+  58      5C
+  59 01b6 3EEBA686 		.ascii	">\353\246\206\213C\303\251t6s9C\366\235\364`\321m\037"
+  59      8B43C3A9 
+  59      74367339 
+  59      43F69DF4 
+  59      60D16D1F 
+  60 01ca 2DA40BB9 		.ascii	"-\244\013\271\314\215\\a\364\037wl\305\234"
+  60      CC8D5C61 
+  60      F41F776C 
+  60      C59C
+  61              		.text
+  62              		.section	.gnu.lto_Diode_pump_adc_SetDriveMode.d237c97,"",%progbits
+  63 0000 789C7D51 		.ascii	"x\234}Q=H[Q\030\375\316\275/\177\244\026q\222\354\222"
+  63      3D485B51 
+  63      18FDCEBD 
+  63      2F7FA416 
+  63      7192EC92 
+  64 0014 4AA599DC 		.ascii	"J\245\231\334\205\026]\005\327@\220\344\015\035\322"
+  64      85165D05 
+  64      D74090E4 
+  64      0D1DD2
+  65 0023 48A8B32F 		.ascii	"H\250\263/&]:\251\223E\004\261\024\177\242\246\320\241"
+  65      265D3AA9 
+  65      934504B1 
+  65      147FA2A6 
+  65      D0A1
+  66 0035 D0A184E0 		.ascii	"\320\241\204\340&\375\321%\0320.\321j\321bP\254A$\236"
+  66      26FDD125 
+  66      1A302ED1 
+  66      6AD16250 
+  66      AC41249E 
+  67 0049 FBE21010 		.ascii	"\373\342\020\020\274\274\373\335\357;|\347\274s\277"
+  67      BCBCFBDD 
+  67      EF3B7CE7 
+  67      BC73BF
+  68 0058 ABE5E10A 		.ascii	"\253\345\341\012q\377\205H\204'\264@M\375\024\311\370"
+  68      71FF8548 
+  68      8427B440 
+  68      4DFD14C9 
+  68      F8
+  69 0069 15601281 		.ascii	"\025`\022\201L(L\340D\325\025\246\212\371\331`\370\223"
+  69      4C284CE0 
+  69      44D515A6 
+  69      8AF9D960 
+  69      F893
+  70 007b E338E78B 		.ascii	"\3438\347\213_\273\337u7\224\310\205j\311`\011a\266"
+  70      5FBBDF75 
+  70      3794C885 
+  70      6AC96009 
+  70      61B6
+  71 008d FC699C2C 		.ascii	"\374i\234,u\350\347\020\346\267\323\345\035\325\363"
+  71      75E8E710 
+  71      E6B7D3E5 
+  71      1DD5F3
+  72 009c D171268B 		.ascii	"\321q&\213\273\033\316\000\032\324\\\206&\003}!\364"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 5
+
+
+  72      BB1BCE00 
+  72      1AD45C86 
+  72      26037D21 
+  72      F4
+  73 00ad 86848060 		.ascii	"\206\204\200`\005=\246\271\236\273-\007\2759jw\2664"
+  73      053DA6B9 
+  73      9EBB2D07 
+  73      BD396A77 
+  73      B634
+  74 00bf B10A2F6D 		.ascii	"\261\012/mI\241\253\3504\233\027\373\323\313\021\004"
+  74      49A1ABE8 
+  74      349B17FB 
+  74      D3CB1104 
+  75 00cf 15394A33 		.ascii	"\0259J3h\313\004\017\014\335kR\237\011~\023\002\246"
+  75      68CB040F 
+  75      0CDD6B52 
+  75      9F097E13 
+  75      02A6
+  76 00e1 47A4C66D 		.ascii	"G\244\306mnp\310\202\247\256\240t\365\376h\3162\272"
+  76      6E70C882 
+  76      A7AEA074 
+  76      F5FE68CE 
+  76      32BA
+  77 00f3 FF95B9CE 		.ascii	"\377\225\271\316\351\301\217\337\236c\325PVa!\343X\306"
+  77      E9C18FDF 
+  77      9E63D550 
+  77      566121E3 
+  77      58C6
+  78 0105 C541EDD7 		.ascii	"\305A\355\327\266\337\205\304\224\037\276\035\177\177"
+  78      B6DF85C4 
+  78      941FBE1D 
+  78      7F7F
+  79 0113 328FB94C 		.ascii	"2\217\271L\216\346=\310#\2045p`X\307<\244\202\311\252"
+  79      8EE63DC8 
+  79      23843570 
+  79      6058C73C 
+  79      A482C9AA 
+  80 0127 AF25A7A9 		.ascii	"\257%\247\251\310:{\355m\325\026!\362\367\376\235o\271"
+  80      C83A7BED 
+  80      6DD51621 
+  80      F2F7FE9D 
+  80      6FB9
+  81 0139 72BADEBC 		.ascii	"r\272\336\274_\234\345\006%\332\270\374<\355\\\037!"
+  81      5F9CE506 
+  81      25DAB8FC 
+  81      3CED5C1F 
+  81      21
+  82 014a 72B7BF9C 		.ascii	"r\267\277\234m\272\356\364SA\301\245d/\357[\374\356"
+  82      6DBAEEF4 
+  82      5341C1A5 
+  82      642FEF5B 
+  82      FCEE
+  83 015c 1F7CED2A 		.ascii	"\037|\355*\001\242\254K30\365c\336?\323;\373\245\212"
+  83      01A2AC4B 
+  83      3330F563 
+  83      DE3FD33B 
+  83      FBA58A
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 6
+
+
+  84 016f 4CF166D0 		.ascii	"L\361f\320t\233\367\253\361-8&\016\355\331\220\375\306"
+  84      749BF7AB 
+  84      F12D3826 
+  84      0EEDD990 
+  84      FDC6
+  85 0181 4E8FBEB5 		.ascii	"N\217\276\265\023\261\221\324x:nG\207GR/\373\243\257"
+  85      13B191D4 
+  85      783A6E47 
+  85      8747522F 
+  85      FBA3AF
+  86 0194 5EA71276 		.ascii	"^\247\022vll<9\026\033M\304_\304\305J\022\270\003\335"
+  86      6C6C3C39 
+  86      161B4DC4 
+  86      5FC4C54A 
+  86      12B803DD 
+  87 01a8 46BB92   		.ascii	"F\273\222"
+  88              		.text
+  89              		.section	.gnu.lto_Diode_pump_adc_Read.d237c97,"",%progbits
+  90 0000 789C6366 		.ascii	"x\234cf\300\004R@\374\007\210\265\200\230\221\231\201"
+  90      C0045240 
+  90      FC0788B5 
+  90      80989199 
+  90      81
+  91 0011 9169C239 		.ascii	"\221i\3029\006\206F\016&FF\020\203\201\221\241\236\211"
+  91      0686460E 
+  91      26464610 
+  91      838191A1 
+  91      9E89
+  92 0023 B19EF125 		.ascii	"\261\236\361%\323G&\3063;\377]fT_\332\320\320\364a\322"
+  92      D34726C6 
+  92      333BFF5D 
+  92      66545FDA 
+  92      D0D0F461 
+  93 0038 DE3BDCAD 		.ascii	"\336;\334\255\022?\231\030\030>310\352H1j\202\314a\\"
+  93      123F9918 
+  93      183E3331 
+  93      30EA4831 
+  93      6A82CC61 
+  94 004d CEA8CE00 		.ascii	"\316\250\316\000T\370\261\345\357un\266\226\206\206"
+  94      54F8B1E5 
+  94      EF756EB6 
+  94      968686
+  95 005c 0601903C 		.ascii	"\006\001\220<Pb\005#\033#\220^/t\240\341\377\377\315"
+  95      50620523 
+  95      1B23905E 
+  95      2F74A0E1 
+  95      FFFFCD
+  96 006f 5F277658 		.ascii	"_'vX3\26201\374d\002\332\0102\204\341\011\220\000\331"
+  96      33B23031 
+  96      FC6402DA 
+  96      083284E1 
+  96      099000D9 
+  97 0083 F7948909 		.ascii	"\367\224\211\011D3\337b<\364\255\353\336<+\220\306\357"
+  97      4433DF62 
+  97      3CF4ADEB 
+  97      DE3C2B90 
+  97      C6EF
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 7
+
+
+  98 0095 4C20CB4F 		.ascii	"L \313O\315\351}\312\372\202\351'\023\323\305E\215\015"
+  98      CDE97DCA 
+  98      FA82E927 
+  98      13D3C545 
+  98      8D0D
+  99 00a7 2C206BEE 		.ascii	", k\356?9\177\221\003,\304\000\342\236\376\267\376?"
+  99      3F397F91 
+  99      032CC400 
+  99      E29EFEB7 
+  99      FE3F
+ 100 00b9 CF5CC6D9 		.ascii	"\317\\\306\331\215-\214?\231\230\031W2J1\256b\004:\213"
+ 100      8D2D8C3F 
+ 100      99981957 
+ 100      324A31AE 
+ 100      62043A8B 
+ 101 00cd 7135E35C 		.ascii	"q5\343\\F\206[\214\315\367\332t \3461C\214\374\276\370"
+ 101      46865B8C 
+ 101      CDF7DA74 
+ 101      20E63143 
+ 101      8CFCBEF8 
+ 102 00e1 C16B4690 		.ascii	"\301kF\220~\026v\006\3065@\245\367\030\031\241\012\300"
+ 102      7E167606 
+ 102      C63540A5 
+ 102      F71819A1 
+ 102      0AC0
+ 103 00f3 4E620439 		.ascii	"Nb\0049\005h\266\206{j^jQbIjJ|p~iQrjL@p\276\263i\214"
+ 103      0568B686 
+ 103      7B6A5E6A 
+ 103      5162496A 
+ 103      4A7C707E 
+ 104 0112 4B667E4A 		.ascii	"Kf~Jj|AinA|bJ\262^2\003\000\325&i\232"
+ 104      6A7C4169 
+ 104      6E417C62 
+ 104      4AB25E32 
+ 104      0300D526 
+ 105              		.text
+ 106              		.section	.gnu.lto_Diode_pump_adc_ReadDataReg.d237c97,"",%progbits
+ 107 0000 789C6366 		.ascii	"x\234cf\300\004R@\374\033\210\265\200\230\221\231\201"
+ 107      C0045240 
+ 107      FC1B88B5 
+ 107      80989199 
+ 107      81
+ 108 0011 9169C239 		.ascii	"\221i\3029\006\206F\016&FF\020\203\201\221\241\236\211"
+ 108      0686460E 
+ 108      26464610 
+ 108      838191A1 
+ 108      9E89
+ 109 0023 B19EF125 		.ascii	"\261\236\361%\323G&\3063;\377]fT_\332\320\320\364\341"
+ 109      D34726C6 
+ 109      333BFF5D 
+ 109      66545FDA 
+ 109      D0D0F4E1 
+ 110 0037 D2E53BDC 		.ascii	"\322\345;\334\255\022?\231\030\030>310\352H1j\202\314"
+ 110      AD123F99 
+ 110      18183E33 
+ 110      3130EA48 
+ 110      316A82CC 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 8
+
+
+ 111 004b 615CCEA8 		.ascii	"a\\\316\250\316\000T\370\261\345\357un\266\226\206\206"
+ 111      CE0054F8 
+ 111      B1E5EF75 
+ 111      6EB69686 
+ 111      86
+ 112 005c 0601903C 		.ascii	"\006\001\220<Pb\005#\033#\220^/t\240\341\377\377\315"
+ 112      50620523 
+ 112      1B23905E 
+ 112      2F74A0E1 
+ 112      FFFFCD
+ 113 006f E7277568 		.ascii	"\347'uh1\26101\374d\002\332\0102\204\341\011\220\000"
+ 113      31B13031 
+ 113      FC6402DA 
+ 113      083284E1 
+ 113      099000
+ 114 0082 D9F79489 		.ascii	"\331\367\224\211\011D3\337b<\364\255\353\337J+\220\306"
+ 114      094433DF 
+ 114      623CF4AD 
+ 114      EBDF4A2B 
+ 114      90C6
+ 115 0094 EF4C20CB 		.ascii	"\357L \313O\177\374#\365\202\351'\023\323\205E\215\015"
+ 115      4F7FFC23 
+ 115      F582E927 
+ 115      13D38545 
+ 115      8D0D
+ 116 00a6 2C205BEE 		.ascii	", [\356?9\177\221\003,\304\000\342.\\\266\372;\343\\"
+ 116      3F397F91 
+ 116      032CC400 
+ 116      E22E5CB6 
+ 116      FA3BE35C 
+ 117 00ba C6D98D2D 		.ascii	"\306\331\215-\214?\231\230\031W2J1\256b\004\272\212"
+ 117      8C3F9998 
+ 117      1957324A 
+ 117      31AE6204 
+ 117      BA8A
+ 118 00cc 71355094 		.ascii	"q5P\224\341\026c\363\2756\035\210q\314\020\023\277/"
+ 118      E11663F3 
+ 118      BD361D88 
+ 118      71CC1013 
+ 118      BF2F
+ 119 00de 7EF09A11 		.ascii	"~\360\232\021\244\237\205\235\201q\015P\351=FF\250\002"
+ 119      A49F859D 
+ 119      81710D50 
+ 119      E93D4646 
+ 119      A802
+ 120 00f0 B08B1841 		.ascii	"\260\213\030A.\001\232\255\341\236\232\227Z\224X\222"
+ 120      2E019AAD 
+ 120      E19E9A97 
+ 120      5A945892 
+ 121 0100 9A121F9C 		.ascii	"\232\022\037\234_Z\224\234\032\023\020\234\357l\032"
+ 121      5F5A949C 
+ 121      1A13109C 
+ 121      EF6C1A
+ 122 010f E392999F 		.ascii	"\343\222\231\237\222\032_P\232[\020\237\230\222\254"
+ 122      921A5F50 
+ 122      9A5B109F 
+ 122      9892AC
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 9
+
+
+ 123 011e 97CC0000 		.ascii	"\227\314\000\000\232\226i@"
+ 123      9A966940 
+ 124              		.text
+ 125              		.section	.gnu.lto_.symbol_nodes.d237c97,"",%progbits
+ 126 0000 789C6366 		.ascii	"x\234cf``pb\200\002&\206z\006\206\011\347\030\030\352"
+ 126      60607062 
+ 126      80022686 
+ 126      7A068609 
+ 126      E71818EA 
+ 127 0014 EB19A62D 		.ascii	"\353\031\246-\340``b\254gD\3413\3253\241\360\231\353"
+ 127      E0606062 
+ 127      AC6744E1 
+ 127      33D533A1 
+ 127      F099EB
+ 128 0027 9991F90C 		.ascii	"\231\221\371\014\0000N\020\276"
+ 128      00304E10 
+ 128      BE
+ 129              		.text
+ 130              		.section	.gnu.lto_.refs.d237c97,"",%progbits
+ 131 0000 789C6366 		.ascii	"x\234cf```d\200\002\000\000=\000\005"
+ 131      60606064 
+ 131      80020000 
+ 131      3D0005
+ 132              		.text
+ 133              		.section	.gnu.lto_.decls.d237c97,"",%progbits
+ 134 0000 789C8D52 		.ascii	"x\234\215R_H\223Q\024\277\347\273\237S\277\226\006\205"
+ 134      5F489351 
+ 134      14BFE7BB 
+ 134      9F53BF96 
+ 134      0685
+ 135 0012 CA0A5A2F 		.ascii	"\312\012Z/R B\017\201oE\012IP\210\022=(\214\261}\330"
+ 135      5220420F 
+ 135      816F450A 
+ 135      49508812 
+ 135      3D288CB1 
+ 136 0028 1E72B266 		.ascii	"\036r\262f\340S\327ih.T\304h\005M\301?\245\246\255\371"
+ 136      E053D769 
+ 136      682E54C4 
+ 136      68054DC1 
+ 136      3FA5A6AD 
+ 137 003d 676E9A6E 		.ascii	"gn\232no\003Q\220\226a\021$\276X\364\260A\205Q\364u"
+ 137      6F035190 
+ 137      96611124 
+ 137      BE58F4B0 
+ 137      418551F4 
+ 138 0052 BEBBADAD 		.ascii	"\276\273\255\2555\301\003g\273\347|\347\367\373\235"
+ 138      35C10367 
+ 138      BBE77CE7 
+ 138      F7FB9D
+ 139 0061 73EFA184 		.ascii	"s\357\241\204\220\022 DA\273H\011Y\3068\007\275\206"
+ 139      90122044 
+ 139      41BB4809 
+ 139      59C63807 
+ 139      BD86
+ 140 0073 A44C44F7 		.ascii	"\244LD\367\242\317\242\373\320\375\344\177\363\246\341"
+ 140      A2CFA2FB 
+ 140      D0FDE47F 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 10
+
+
+ 140      F3A6E1
+ 141 0082 A6D08B48 		.ascii	"\246\320\213H\234k)\361\035\0225\231\246rj2p\241,\330"
+ 141      9C6B29F1 
+ 141      1D123599 
+ 141      A6726A32 
+ 141      70A12CD8 
+ 142 0096 D92C585F 		.ascii	"\331,X_B3S\357r\032\316\227\005\347?\000.\333\2141\001"
+ 142      423353EF 
+ 142      721ACE97 
+ 142      05E73F00 
+ 142      2EDB8C31 
+ 143 00ab FCD35FD7 		.ascii	"\374\323_\327\016\355\012P \351\3250\320\037vi0\324"
+ 143      0EED0A50 
+ 143      20E9D530 
+ 143      D01F7669 
+ 143      30D4
+ 144 00bd 4AA21A6E 		.ascii	"J\242\032n\256tv\346Q\001\324\363\260k;\"\225M0\306"
+ 144      AE7476E6 
+ 144      5101D4F3 
+ 144      B06B3B22 
+ 144      954D30C6 
+ 145 00d1 BA583008 		.ascii	"\272X0\010)\212\266\261\305\373\271\210)\222x\330\263"
+ 145      298AB6B1 
+ 145      C5FBB988 
+ 145      299278D8 
+ 145      B3
+ 146 00e2 FA384479 		.ascii	"\3728Dy\250\2508akk\340\007\005\251\264\2131\007\213"
+ 146      A8A83861 
+ 146      6B6BE007 
+ 146      05A9B48B 
+ 146      31078B
+ 147 00f5 F6335A42 		.ascii	"\3663ZB\240L\007gt\004\246\241\024\313`\002\312\010"
+ 147      A04C0767 
+ 147      7404A6A1 
+ 147      14CB6002 
+ 147      CA08
+ 148 0107 4C820E9E 		.ascii	"L\202\016\236\203\216\214\240@t0\362\356\004c\"L\201"
+ 148      838E8CA0 
+ 148      407430F2 
+ 148      EE046322 
+ 148      4C81
+ 149 0119 04E34079 		.ascii	"\004\343@y\005\216\241*$D\373\356\206\372DQ\300\244"
+ 149      058EA12A 
+ 149      2444FBEE 
+ 149      86FA4451 
+ 149      C0A4
+ 150 012b 5A53CFBB 		.ascii	"ZS\317\273\375\246l\217\012\305\017\220\200\365\265"
+ 150      FDA66C8F 
+ 150      0AC50F90 
+ 150      80F5B5
+ 151 013a B32322D4 		.ascii	"\263#\"\324\024\301S\244}\206\264\004<P\214\277/@\214"
+ 151      14C153A4 
+ 151      7D86B404 
+ 151      3C508CBF 
+ 151      2F408C
+ 152 014d 13ACBFFD 		.ascii	"\023\254\277\375\020+\244g\371h\001\357\227]\215\336"
+ 152      102BA467 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 11
+
+
+ 152      F96801EF 
+ 152      975D8DDE 
+ 153 015d CD863CD1 		.ascii	"\315\206<\321\236a7}\304\206\034\354\267\202\355\253"
+ 153      9E61377D 
+ 153      C4861CEC 
+ 153      B782EDAB 
+ 154 016d 2078F9B7 		.ascii	" x\371\267\001\242\236\3437\352\005=\0027\334\241\317"
+ 154      01A29EE3 
+ 154      37EA053D 
+ 154      0237DCA1 
+ 154      CF
+ 155 017e 05D4CA49 		.ascii	"\005\324\312I\306;~\2328\307P`X\023fAE9\317\3413i\360"
+ 155      C63B7E9A 
+ 155      38C75060 
+ 155      58136641 
+ 155      4539CFE1 
+ 156 0195 99247C96 		.ascii	"\231$|\226\303\357uxhz\277\352(\251\206\347x\303\365"
+ 156      C3EF7578 
+ 156      687ABFEA 
+ 156      28A986E7 
+ 156      78C3F5
+ 157 01a8 897E6361 		.ascii	"\211~cag\257\226:\201k\265\2559\006\012\271\330\307"
+ 157      67AF963A 
+ 157      816BB5AD 
+ 157      39060AB9 
+ 157      D8C7
+ 158 01ba 4F3B72B0 		.ascii	"O;r\260\203\375R\024\312\0210\237&7\237\224\363q9\327"
+ 158      83FD5214 
+ 158      CA11309F 
+ 158      26379F94 
+ 158      F37139D7 
+ 159 01ce E46B8F86 		.ascii	"\344k\217\206\016\306)\302o\234cR\274\337'\243\311~"
+ 159      0EC629C2 
+ 159      6F9C6352 
+ 159      BCDF27A3 
+ 159      C97E
+ 160 01e0 55828534 		.ascii	"U\202\2054\202\205$\201\237\023\260\207\316\221<\032"
+ 160      82852481 
+ 160      9F13B087 
+ 160      CE913C1A 
+ 161 01f0 8813CC7D 		.ascii	"\210\023\314}\357\366\037\226\360U\333\017\360\252\270"
+ 161      EFF61F96 
+ 161      F055DB0F 
+ 161      F0AAB8
+ 162 01ff 0791F5EE 		.ascii	"\007\221\365\356\315\374\370\036d\"^\355\273\007{;\325"
+ 162      CDFCF81E 
+ 162      64225EED 
+ 162      BB077B3B 
+ 162      D5
+ 163 0210 1DEC022C 		.ascii	"\035\354\002,\341\305\004R{\260\010\251E\210\254:\336"
+ 163      E1C50452 
+ 163      7BB008A9 
+ 163      4588AC3A 
+ 163      DE
+ 164 0221 536DB7BA 		.ascii	"Sm\267\272\\x\211\371\325\2746u\211\313\240\345\003"
+ 164      5C7889F9 
+ 164      D5BC3675 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 12
+
+
+ 164      89CBA0E5 
+ 164      03
+ 165 0232 E07F4CA0 		.ascii	"\340\177L\240\323\033+n\001t:\311\205K\274w\022BH\244"
+ 165      D31B2B6E 
+ 165      01743AC9 
+ 165      854BBC77 
+ 165      124248A4 
+ 166 0246 1E83BB8A 		.ascii	"\036\203\273\212rG\211[o.Ow\251\317\022u\244\265Ix\236"
+ 166      7247895B 
+ 166      6F2E4F77 
+ 166      A9CF1275 
+ 166      A4B54978 
+ 167 025b 4010C957 		.ascii	"@\020\311W\220\234\2079-\226&{\205\346\322\325k\372"
+ 167      909C8739 
+ 167      2D96267B 
+ 167      85E6D2D5 
+ 167      6BFA
+ 168 026d 4A72EA92 		.ascii	"Jr\352\222\334$\333\214v\331l\250\263\266\330LrCM\235"
+ 168      DC24DB8C 
+ 168      76D96CA8 
+ 168      B3B6D84C 
+ 168      72434D9D 
+ 169 0281 B5F25C83 		.ascii	"\265\362\\\203\251\325\336\332,\337*\277A\216UY\254"
+ 169      A9D5DEDA 
+ 169      2CDF2ABF 
+ 169      418E5559 
+ 169      AC
+ 170 0292 66D9D0DC 		.ascii	"f\331\320\334r\263\331`4\233\014\327m\026\273|z\037"
+ 170      72B3D960 
+ 170      349B0CD7 
+ 170      6D16BB7C 
+ 170      7A1F
+ 171 02a4 D8BFB5E5 		.ascii	"\330\277\265\345&r<\003]'\333\253l\226\333\362\025\314"
+ 171      26723C03 
+ 171      5D27DBAB 
+ 171      6C96DBF2 
+ 171      15CC
+ 172 02b6 1ECDF856 		.ascii	"\036\315\370V+\033\315\272,\271*\243\335X+7\2126\271"
+ 172      2B1BCDBA 
+ 172      2CB92AA3 
+ 172      DD582B37 
+ 172      8A36B9
+ 173 02c9 B1E20F27 		.ascii	"\261\342\017'\000Y\270"
+ 173      0059B8
+ 174              		.text
+ 175              		.section	.gnu.lto_.symtab.d237c97,"",%progbits
+ 176 0000 44696F64 		.ascii	"Diode_pump_adc_Write\000\000\000\000\000\000\000\000"
+ 176      655F7075 
+ 176      6D705F61 
+ 176      64635F57 
+ 176      72697465 
+ 177 001c 00000000 		.ascii	"\000\000\000\000\262\000\000\000Diode_pump_adc_SetD"
+ 177      B2000000 
+ 177      44696F64 
+ 177      655F7075 
+ 177      6D705F61 
+ 178 0037 72697665 		.ascii	"riveMode\000\000\000\000\000\000\000\000\000\000\000"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 13
+
+
+ 178      4D6F6465 
+ 178      00000000 
+ 178      00000000 
+ 178      000000
+ 179 004a 00B40000 		.ascii	"\000\264\000\000\000Diode_pump_adc_Read\000\000\000"
+ 179      0044696F 
+ 179      64655F70 
+ 179      756D705F 
+ 179      6164635F 
+ 180 0065 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\267\000\000\000"
+ 180      00000000 
+ 180      00B70000 
+ 180      00
+ 181 0072 44696F64 		.ascii	"Diode_pump_adc_ReadDataReg\000\000\000\000\000\000\000"
+ 181      655F7075 
+ 181      6D705F61 
+ 181      64635F52 
+ 181      65616444 
+ 182 0093 00000000 		.ascii	"\000\000\000\000\000\271\000\000\000"
+ 182      00B90000 
+ 182      00
+ 183              		.text
+ 184              		.section	.gnu.lto_.opts,"",%progbits
+ 185 0000 272D666E 		.ascii	"'-fno-trapv' '-fno-strict-overflow' '-mcpu=cortex-m"
+ 185      6F2D7472 
+ 185      61707627 
+ 185      20272D66 
+ 185      6E6F2D73 
+ 186 0033 33272027 		.ascii	"3' '-mthumb' '-g' '-Og' '-ffunction-sections' '-flt"
+ 186      2D6D7468 
+ 186      756D6227 
+ 186      20272D67 
+ 186      2720272D 
+ 187 0066 6F272027 		.ascii	"o' '-ffat-lto-objects'\000"
+ 187      2D666661 
+ 187      742D6C74 
+ 187      6F2D6F62 
+ 187      6A656374 
+ 188              		.text
+ 189              		.cfi_sections	.debug_frame
+ 190              		.section	.text.Diode_pump_adc_Write,"ax",%progbits
+ 191              		.align	2
+ 192              		.global	Diode_pump_adc_Write
+ 193              		.thumb
+ 194              		.thumb_func
+ 195              		.type	Diode_pump_adc_Write, %function
+ 196              	Diode_pump_adc_Write:
+ 197              	.LFB0:
+ 198              		.file 1 "Generated_Source\\PSoC5\\Diode_pump_adc.c"
+   1:Generated_Source\PSoC5/Diode_pump_adc.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/Diode_pump_adc.c **** * File Name: Diode_pump_adc.c  
+   3:Generated_Source\PSoC5/Diode_pump_adc.c **** * Version 2.20
+   4:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+   5:Generated_Source\PSoC5/Diode_pump_adc.c **** * Description:
+   6:Generated_Source\PSoC5/Diode_pump_adc.c **** *  This file contains API to enable firmware control of a Pins component.
+   7:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+   8:Generated_Source\PSoC5/Diode_pump_adc.c **** * Note:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 14
+
+
+   9:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+  10:Generated_Source\PSoC5/Diode_pump_adc.c **** ********************************************************************************
+  11:Generated_Source\PSoC5/Diode_pump_adc.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  12:Generated_Source\PSoC5/Diode_pump_adc.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  13:Generated_Source\PSoC5/Diode_pump_adc.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  14:Generated_Source\PSoC5/Diode_pump_adc.c **** * the software package with which this file was provided.
+  15:Generated_Source\PSoC5/Diode_pump_adc.c **** *******************************************************************************/
+  16:Generated_Source\PSoC5/Diode_pump_adc.c **** 
+  17:Generated_Source\PSoC5/Diode_pump_adc.c **** #include "cytypes.h"
+  18:Generated_Source\PSoC5/Diode_pump_adc.c **** #include "Diode_pump_adc.h"
+  19:Generated_Source\PSoC5/Diode_pump_adc.c **** 
+  20:Generated_Source\PSoC5/Diode_pump_adc.c **** /* APIs are not generated for P15[7:6] on PSoC 5 */
+  21:Generated_Source\PSoC5/Diode_pump_adc.c **** #if !(CY_PSOC5A &&\
+  22:Generated_Source\PSoC5/Diode_pump_adc.c **** 	 Diode_pump_adc__PORT == 15 && ((Diode_pump_adc__MASK & 0xC0) != 0))
+  23:Generated_Source\PSoC5/Diode_pump_adc.c **** 
+  24:Generated_Source\PSoC5/Diode_pump_adc.c **** 
+  25:Generated_Source\PSoC5/Diode_pump_adc.c **** /*******************************************************************************
+  26:Generated_Source\PSoC5/Diode_pump_adc.c **** * Function Name: Diode_pump_adc_Write
+  27:Generated_Source\PSoC5/Diode_pump_adc.c **** ****************************************************************************//**
+  28:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+  29:Generated_Source\PSoC5/Diode_pump_adc.c **** * \brief Writes the value to the physical port (data output register), masking
+  30:Generated_Source\PSoC5/Diode_pump_adc.c **** *  and shifting the bits appropriately. 
+  31:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+  32:Generated_Source\PSoC5/Diode_pump_adc.c **** * The data output register controls the signal applied to the physical pin in 
+  33:Generated_Source\PSoC5/Diode_pump_adc.c **** * conjunction with the drive mode parameter. This function avoids changing 
+  34:Generated_Source\PSoC5/Diode_pump_adc.c **** * other bits in the port by using the appropriate method (read-modify-write or
+  35:Generated_Source\PSoC5/Diode_pump_adc.c **** * bit banding).
+  36:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+  37:Generated_Source\PSoC5/Diode_pump_adc.c **** * <b>Note</b> This function should not be used on a hardware digital output pin 
+  38:Generated_Source\PSoC5/Diode_pump_adc.c **** * as it is driven by the hardware signal attached to it.
+  39:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+  40:Generated_Source\PSoC5/Diode_pump_adc.c **** * \param value
+  41:Generated_Source\PSoC5/Diode_pump_adc.c **** *  Value to write to the component instance.
+  42:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+  43:Generated_Source\PSoC5/Diode_pump_adc.c **** * \return 
+  44:Generated_Source\PSoC5/Diode_pump_adc.c **** *  None 
+  45:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+  46:Generated_Source\PSoC5/Diode_pump_adc.c **** * \sideeffect
+  47:Generated_Source\PSoC5/Diode_pump_adc.c **** *  If you use read-modify-write operations that are not atomic; the Interrupt 
+  48:Generated_Source\PSoC5/Diode_pump_adc.c **** *  Service Routines (ISR) can cause corruption of this function. An ISR that 
+  49:Generated_Source\PSoC5/Diode_pump_adc.c **** *  interrupts this function and performs writes to the Pins component data 
+  50:Generated_Source\PSoC5/Diode_pump_adc.c **** *  register can cause corrupted port data. To avoid this issue, you should 
+  51:Generated_Source\PSoC5/Diode_pump_adc.c **** *  either use the Per-Pin APIs (primary method) or disable interrupts around 
+  52:Generated_Source\PSoC5/Diode_pump_adc.c **** *  this function.
+  53:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+  54:Generated_Source\PSoC5/Diode_pump_adc.c **** * \funcusage
+  55:Generated_Source\PSoC5/Diode_pump_adc.c **** *  \snippet Diode_pump_adc_SUT.c usage_Diode_pump_adc_Write
+  56:Generated_Source\PSoC5/Diode_pump_adc.c **** *******************************************************************************/
+  57:Generated_Source\PSoC5/Diode_pump_adc.c **** void Diode_pump_adc_Write(uint8 value)
+  58:Generated_Source\PSoC5/Diode_pump_adc.c **** {
+ 199              		.loc 1 58 0
+ 200              		.cfi_startproc
+ 201              		@ args = 0, pretend = 0, frame = 0
+ 202              		@ frame_needed = 0, uses_anonymous_args = 0
+ 203              		@ link register save eliminated.
+ 204              	.LVL0:
+  59:Generated_Source\PSoC5/Diode_pump_adc.c ****     uint8 staticBits = (Diode_pump_adc_DR & (uint8)(~Diode_pump_adc_MASK));
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 15
+
+
+ 205              		.loc 1 59 0
+ 206 0000 044A     		ldr	r2, .L2
+ 207 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 208 0004 03F07F03 		and	r3, r3, #127
+ 209              	.LVL1:
+  60:Generated_Source\PSoC5/Diode_pump_adc.c ****     Diode_pump_adc_DR = staticBits | ((uint8)(value << Diode_pump_adc_SHIFT) & Diode_pump_adc_MASK)
+ 210              		.loc 1 60 0
+ 211 0008 C001     		lsls	r0, r0, #7
+ 212              	.LVL2:
+ 213 000a C0B2     		uxtb	r0, r0
+ 214 000c 0343     		orrs	r3, r3, r0
+ 215              	.LVL3:
+ 216 000e 1370     		strb	r3, [r2]
+ 217 0010 7047     		bx	lr
+ 218              	.L3:
+ 219 0012 00BF     		.align	2
+ 220              	.L2:
+ 221 0014 50510040 		.word	1073762640
+ 222              		.cfi_endproc
+ 223              	.LFE0:
+ 224              		.size	Diode_pump_adc_Write, .-Diode_pump_adc_Write
+ 225              		.section	.text.Diode_pump_adc_SetDriveMode,"ax",%progbits
+ 226              		.align	2
+ 227              		.global	Diode_pump_adc_SetDriveMode
+ 228              		.thumb
+ 229              		.thumb_func
+ 230              		.type	Diode_pump_adc_SetDriveMode, %function
+ 231              	Diode_pump_adc_SetDriveMode:
+ 232              	.LFB1:
+  61:Generated_Source\PSoC5/Diode_pump_adc.c **** }
+  62:Generated_Source\PSoC5/Diode_pump_adc.c **** 
+  63:Generated_Source\PSoC5/Diode_pump_adc.c **** 
+  64:Generated_Source\PSoC5/Diode_pump_adc.c **** /*******************************************************************************
+  65:Generated_Source\PSoC5/Diode_pump_adc.c **** * Function Name: Diode_pump_adc_SetDriveMode
+  66:Generated_Source\PSoC5/Diode_pump_adc.c **** ****************************************************************************//**
+  67:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+  68:Generated_Source\PSoC5/Diode_pump_adc.c **** * \brief Sets the drive mode for each of the Pins component's pins.
+  69:Generated_Source\PSoC5/Diode_pump_adc.c **** * 
+  70:Generated_Source\PSoC5/Diode_pump_adc.c **** * <b>Note</b> This affects all pins in the Pins component instance. Use the
+  71:Generated_Source\PSoC5/Diode_pump_adc.c **** * Per-Pin APIs if you wish to control individual pin's drive modes.
+  72:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+  73:Generated_Source\PSoC5/Diode_pump_adc.c **** * \param mode
+  74:Generated_Source\PSoC5/Diode_pump_adc.c **** *  Mode for the selected signals. Valid options are documented in 
+  75:Generated_Source\PSoC5/Diode_pump_adc.c **** *  \ref driveMode.
+  76:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+  77:Generated_Source\PSoC5/Diode_pump_adc.c **** * \return
+  78:Generated_Source\PSoC5/Diode_pump_adc.c **** *  None
+  79:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+  80:Generated_Source\PSoC5/Diode_pump_adc.c **** * \sideeffect
+  81:Generated_Source\PSoC5/Diode_pump_adc.c **** *  If you use read-modify-write operations that are not atomic, the ISR can
+  82:Generated_Source\PSoC5/Diode_pump_adc.c **** *  cause corruption of this function. An ISR that interrupts this function 
+  83:Generated_Source\PSoC5/Diode_pump_adc.c **** *  and performs writes to the Pins component Drive Mode registers can cause 
+  84:Generated_Source\PSoC5/Diode_pump_adc.c **** *  corrupted port data. To avoid this issue, you should either use the Per-Pin
+  85:Generated_Source\PSoC5/Diode_pump_adc.c **** *  APIs (primary method) or disable interrupts around this function.
+  86:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+  87:Generated_Source\PSoC5/Diode_pump_adc.c **** * \funcusage
+  88:Generated_Source\PSoC5/Diode_pump_adc.c **** *  \snippet Diode_pump_adc_SUT.c usage_Diode_pump_adc_SetDriveMode
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 16
+
+
+  89:Generated_Source\PSoC5/Diode_pump_adc.c **** *******************************************************************************/
+  90:Generated_Source\PSoC5/Diode_pump_adc.c **** void Diode_pump_adc_SetDriveMode(uint8 mode)
+  91:Generated_Source\PSoC5/Diode_pump_adc.c **** {
+ 233              		.loc 1 91 0
+ 234              		.cfi_startproc
+ 235              		@ args = 0, pretend = 0, frame = 0
+ 236              		@ frame_needed = 0, uses_anonymous_args = 0
+ 237              		@ link register save eliminated.
+ 238              	.LVL4:
+  92:Generated_Source\PSoC5/Diode_pump_adc.c **** 	CyPins_SetPinDriveMode(Diode_pump_adc_0, mode);
+ 239              		.loc 1 92 0
+ 240 0000 044A     		ldr	r2, .L5
+ 241 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 242 0004 03F0F103 		and	r3, r3, #241
+ 243 0008 00F00E00 		and	r0, r0, #14
+ 244              	.LVL5:
+ 245 000c 1843     		orrs	r0, r0, r3
+ 246 000e 1070     		strb	r0, [r2]
+ 247 0010 7047     		bx	lr
+ 248              	.L6:
+ 249 0012 00BF     		.align	2
+ 250              	.L5:
+ 251 0014 2F500040 		.word	1073762351
+ 252              		.cfi_endproc
+ 253              	.LFE1:
+ 254              		.size	Diode_pump_adc_SetDriveMode, .-Diode_pump_adc_SetDriveMode
+ 255              		.section	.text.Diode_pump_adc_Read,"ax",%progbits
+ 256              		.align	2
+ 257              		.global	Diode_pump_adc_Read
+ 258              		.thumb
+ 259              		.thumb_func
+ 260              		.type	Diode_pump_adc_Read, %function
+ 261              	Diode_pump_adc_Read:
+ 262              	.LFB2:
+  93:Generated_Source\PSoC5/Diode_pump_adc.c **** }
+  94:Generated_Source\PSoC5/Diode_pump_adc.c **** 
+  95:Generated_Source\PSoC5/Diode_pump_adc.c **** 
+  96:Generated_Source\PSoC5/Diode_pump_adc.c **** /*******************************************************************************
+  97:Generated_Source\PSoC5/Diode_pump_adc.c **** * Function Name: Diode_pump_adc_Read
+  98:Generated_Source\PSoC5/Diode_pump_adc.c **** ****************************************************************************//**
+  99:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+ 100:Generated_Source\PSoC5/Diode_pump_adc.c **** * \brief Reads the associated physical port (pin status register) and masks 
+ 101:Generated_Source\PSoC5/Diode_pump_adc.c **** *  the required bits according to the width and bit position of the component
+ 102:Generated_Source\PSoC5/Diode_pump_adc.c **** *  instance. 
+ 103:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+ 104:Generated_Source\PSoC5/Diode_pump_adc.c **** * The pin's status register returns the current logic level present on the 
+ 105:Generated_Source\PSoC5/Diode_pump_adc.c **** * physical pin.
+ 106:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+ 107:Generated_Source\PSoC5/Diode_pump_adc.c **** * \return 
+ 108:Generated_Source\PSoC5/Diode_pump_adc.c **** *  The current value for the pins in the component as a right justified number.
+ 109:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+ 110:Generated_Source\PSoC5/Diode_pump_adc.c **** * \funcusage
+ 111:Generated_Source\PSoC5/Diode_pump_adc.c **** *  \snippet Diode_pump_adc_SUT.c usage_Diode_pump_adc_Read  
+ 112:Generated_Source\PSoC5/Diode_pump_adc.c **** *******************************************************************************/
+ 113:Generated_Source\PSoC5/Diode_pump_adc.c **** uint8 Diode_pump_adc_Read(void)
+ 114:Generated_Source\PSoC5/Diode_pump_adc.c **** {
+ 263              		.loc 1 114 0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 17
+
+
+ 264              		.cfi_startproc
+ 265              		@ args = 0, pretend = 0, frame = 0
+ 266              		@ frame_needed = 0, uses_anonymous_args = 0
+ 267              		@ link register save eliminated.
+ 115:Generated_Source\PSoC5/Diode_pump_adc.c ****     return (Diode_pump_adc_PS & Diode_pump_adc_MASK) >> Diode_pump_adc_SHIFT;
+ 268              		.loc 1 115 0
+ 269 0000 014B     		ldr	r3, .L8
+ 270 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 116:Generated_Source\PSoC5/Diode_pump_adc.c **** }
+ 271              		.loc 1 116 0
+ 272 0004 C009     		lsrs	r0, r0, #7
+ 273 0006 7047     		bx	lr
+ 274              	.L9:
+ 275              		.align	2
+ 276              	.L8:
+ 277 0008 51510040 		.word	1073762641
+ 278              		.cfi_endproc
+ 279              	.LFE2:
+ 280              		.size	Diode_pump_adc_Read, .-Diode_pump_adc_Read
+ 281              		.section	.text.Diode_pump_adc_ReadDataReg,"ax",%progbits
+ 282              		.align	2
+ 283              		.global	Diode_pump_adc_ReadDataReg
+ 284              		.thumb
+ 285              		.thumb_func
+ 286              		.type	Diode_pump_adc_ReadDataReg, %function
+ 287              	Diode_pump_adc_ReadDataReg:
+ 288              	.LFB3:
+ 117:Generated_Source\PSoC5/Diode_pump_adc.c **** 
+ 118:Generated_Source\PSoC5/Diode_pump_adc.c **** 
+ 119:Generated_Source\PSoC5/Diode_pump_adc.c **** /*******************************************************************************
+ 120:Generated_Source\PSoC5/Diode_pump_adc.c **** * Function Name: Diode_pump_adc_ReadDataReg
+ 121:Generated_Source\PSoC5/Diode_pump_adc.c **** ****************************************************************************//**
+ 122:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+ 123:Generated_Source\PSoC5/Diode_pump_adc.c **** * \brief Reads the associated physical port's data output register and masks 
+ 124:Generated_Source\PSoC5/Diode_pump_adc.c **** *  the correct bits according to the width and bit position of the component 
+ 125:Generated_Source\PSoC5/Diode_pump_adc.c **** *  instance. 
+ 126:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+ 127:Generated_Source\PSoC5/Diode_pump_adc.c **** * The data output register controls the signal applied to the physical pin in 
+ 128:Generated_Source\PSoC5/Diode_pump_adc.c **** * conjunction with the drive mode parameter. This is not the same as the 
+ 129:Generated_Source\PSoC5/Diode_pump_adc.c **** * preferred Diode_pump_adc_Read() API because the 
+ 130:Generated_Source\PSoC5/Diode_pump_adc.c **** * Diode_pump_adc_ReadDataReg() reads the data register instead of the status 
+ 131:Generated_Source\PSoC5/Diode_pump_adc.c **** * register. For output pins this is a useful function to determine the value 
+ 132:Generated_Source\PSoC5/Diode_pump_adc.c **** * just written to the pin.
+ 133:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+ 134:Generated_Source\PSoC5/Diode_pump_adc.c **** * \return 
+ 135:Generated_Source\PSoC5/Diode_pump_adc.c **** *  The current value of the data register masked and shifted into a right 
+ 136:Generated_Source\PSoC5/Diode_pump_adc.c **** *  justified number for the component instance.
+ 137:Generated_Source\PSoC5/Diode_pump_adc.c **** *
+ 138:Generated_Source\PSoC5/Diode_pump_adc.c **** * \funcusage
+ 139:Generated_Source\PSoC5/Diode_pump_adc.c **** *  \snippet Diode_pump_adc_SUT.c usage_Diode_pump_adc_ReadDataReg 
+ 140:Generated_Source\PSoC5/Diode_pump_adc.c **** *******************************************************************************/
+ 141:Generated_Source\PSoC5/Diode_pump_adc.c **** uint8 Diode_pump_adc_ReadDataReg(void)
+ 142:Generated_Source\PSoC5/Diode_pump_adc.c **** {
+ 289              		.loc 1 142 0
+ 290              		.cfi_startproc
+ 291              		@ args = 0, pretend = 0, frame = 0
+ 292              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 18
+
+
+ 293              		@ link register save eliminated.
+ 143:Generated_Source\PSoC5/Diode_pump_adc.c ****     return (Diode_pump_adc_DR & Diode_pump_adc_MASK) >> Diode_pump_adc_SHIFT;
+ 294              		.loc 1 143 0
+ 295 0000 014B     		ldr	r3, .L11
+ 296 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 144:Generated_Source\PSoC5/Diode_pump_adc.c **** }
+ 297              		.loc 1 144 0
+ 298 0004 C009     		lsrs	r0, r0, #7
+ 299 0006 7047     		bx	lr
+ 300              	.L12:
+ 301              		.align	2
+ 302              	.L11:
+ 303 0008 50510040 		.word	1073762640
+ 304              		.cfi_endproc
+ 305              	.LFE3:
+ 306              		.size	Diode_pump_adc_ReadDataReg, .-Diode_pump_adc_ReadDataReg
+ 307              		.text
+ 308              	.Letext0:
+ 309              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 310              		.section	.debug_info,"",%progbits
+ 311              	.Ldebug_info0:
+ 312 0000 1D010000 		.4byte	0x11d
+ 313 0004 0400     		.2byte	0x4
+ 314 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 315 000a 04       		.byte	0x4
+ 316 000b 01       		.uleb128 0x1
+ 317 000c 3F000000 		.4byte	.LASF20
+ 318 0010 01       		.byte	0x1
+ 319 0011 11000000 		.4byte	.LASF21
+ 320 0015 93010000 		.4byte	.LASF22
+ 321 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 322 001d 00000000 		.4byte	0
+ 323 0021 00000000 		.4byte	.Ldebug_line0
+ 324 0025 02       		.uleb128 0x2
+ 325 0026 01       		.byte	0x1
+ 326 0027 06       		.byte	0x6
+ 327 0028 2E020000 		.4byte	.LASF0
+ 328 002c 02       		.uleb128 0x2
+ 329 002d 01       		.byte	0x1
+ 330 002e 08       		.byte	0x8
+ 331 002f 11010000 		.4byte	.LASF1
+ 332 0033 02       		.uleb128 0x2
+ 333 0034 02       		.byte	0x2
+ 334 0035 05       		.byte	0x5
+ 335 0036 15020000 		.4byte	.LASF2
+ 336 003a 02       		.uleb128 0x2
+ 337 003b 02       		.byte	0x2
+ 338 003c 07       		.byte	0x7
+ 339 003d EA000000 		.4byte	.LASF3
+ 340 0041 02       		.uleb128 0x2
+ 341 0042 04       		.byte	0x4
+ 342 0043 05       		.byte	0x5
+ 343 0044 25020000 		.4byte	.LASF4
+ 344 0048 02       		.uleb128 0x2
+ 345 0049 04       		.byte	0x4
+ 346 004a 07       		.byte	0x7
+ 347 004b D8000000 		.4byte	.LASF5
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 19
+
+
+ 348 004f 02       		.uleb128 0x2
+ 349 0050 08       		.byte	0x8
+ 350 0051 05       		.byte	0x5
+ 351 0052 80010000 		.4byte	.LASF6
+ 352 0056 02       		.uleb128 0x2
+ 353 0057 08       		.byte	0x8
+ 354 0058 07       		.byte	0x7
+ 355 0059 4F010000 		.4byte	.LASF7
+ 356 005d 03       		.uleb128 0x3
+ 357 005e 04       		.byte	0x4
+ 358 005f 05       		.byte	0x5
+ 359 0060 696E7400 		.ascii	"int\000"
+ 360 0064 02       		.uleb128 0x2
+ 361 0065 04       		.byte	0x4
+ 362 0066 07       		.byte	0x7
+ 363 0067 26010000 		.4byte	.LASF8
+ 364 006b 04       		.uleb128 0x4
+ 365 006c 1F020000 		.4byte	.LASF12
+ 366 0070 02       		.byte	0x2
+ 367 0071 9201     		.2byte	0x192
+ 368 0073 2C000000 		.4byte	0x2c
+ 369 0077 02       		.uleb128 0x2
+ 370 0078 04       		.byte	0x4
+ 371 0079 04       		.byte	0x4
+ 372 007a 39000000 		.4byte	.LASF9
+ 373 007e 02       		.uleb128 0x2
+ 374 007f 08       		.byte	0x8
+ 375 0080 04       		.byte	0x4
+ 376 0081 1F010000 		.4byte	.LASF10
+ 377 0085 02       		.uleb128 0x2
+ 378 0086 01       		.byte	0x1
+ 379 0087 08       		.byte	0x8
+ 380 0088 8E010000 		.4byte	.LASF11
+ 381 008c 04       		.uleb128 0x4
+ 382 008d D3000000 		.4byte	.LASF13
+ 383 0091 02       		.byte	0x2
+ 384 0092 3C02     		.2byte	0x23c
+ 385 0094 98000000 		.4byte	0x98
+ 386 0098 05       		.uleb128 0x5
+ 387 0099 6B000000 		.4byte	0x6b
+ 388 009d 06       		.uleb128 0x6
+ 389 009e 6B010000 		.4byte	.LASF14
+ 390 00a2 01       		.byte	0x1
+ 391 00a3 39       		.byte	0x39
+ 392 00a4 00000000 		.4byte	.LFB0
+ 393 00a8 18000000 		.4byte	.LFE0-.LFB0
+ 394 00ac 01       		.uleb128 0x1
+ 395 00ad 9C       		.byte	0x9c
+ 396 00ae D1000000 		.4byte	0xd1
+ 397 00b2 07       		.uleb128 0x7
+ 398 00b3 00000000 		.4byte	.LASF16
+ 399 00b7 01       		.byte	0x1
+ 400 00b8 39       		.byte	0x39
+ 401 00b9 6B000000 		.4byte	0x6b
+ 402 00bd 00000000 		.4byte	.LLST0
+ 403 00c1 08       		.uleb128 0x8
+ 404 00c2 06000000 		.4byte	.LASF23
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 20
+
+
+ 405 00c6 01       		.byte	0x1
+ 406 00c7 3B       		.byte	0x3b
+ 407 00c8 6B000000 		.4byte	0x6b
+ 408 00cc 21000000 		.4byte	.LLST1
+ 409 00d0 00       		.byte	0
+ 410 00d1 06       		.uleb128 0x6
+ 411 00d2 33010000 		.4byte	.LASF15
+ 412 00d6 01       		.byte	0x1
+ 413 00d7 5A       		.byte	0x5a
+ 414 00d8 00000000 		.4byte	.LFB1
+ 415 00dc 18000000 		.4byte	.LFE1-.LFB1
+ 416 00e0 01       		.uleb128 0x1
+ 417 00e1 9C       		.byte	0x9c
+ 418 00e2 F6000000 		.4byte	0xf6
+ 419 00e6 07       		.uleb128 0x7
+ 420 00e7 66010000 		.4byte	.LASF17
+ 421 00eb 01       		.byte	0x1
+ 422 00ec 5A       		.byte	0x5a
+ 423 00ed 6B000000 		.4byte	0x6b
+ 424 00f1 34000000 		.4byte	.LLST2
+ 425 00f5 00       		.byte	0
+ 426 00f6 09       		.uleb128 0x9
+ 427 00f7 FD000000 		.4byte	.LASF18
+ 428 00fb 01       		.byte	0x1
+ 429 00fc 71       		.byte	0x71
+ 430 00fd 6B000000 		.4byte	0x6b
+ 431 0101 00000000 		.4byte	.LFB2
+ 432 0105 0C000000 		.4byte	.LFE2-.LFB2
+ 433 0109 01       		.uleb128 0x1
+ 434 010a 9C       		.byte	0x9c
+ 435 010b 09       		.uleb128 0x9
+ 436 010c 3A020000 		.4byte	.LASF19
+ 437 0110 01       		.byte	0x1
+ 438 0111 8D       		.byte	0x8d
+ 439 0112 6B000000 		.4byte	0x6b
+ 440 0116 00000000 		.4byte	.LFB3
+ 441 011a 0C000000 		.4byte	.LFE3-.LFB3
+ 442 011e 01       		.uleb128 0x1
+ 443 011f 9C       		.byte	0x9c
+ 444 0120 00       		.byte	0
+ 445              		.section	.debug_abbrev,"",%progbits
+ 446              	.Ldebug_abbrev0:
+ 447 0000 01       		.uleb128 0x1
+ 448 0001 11       		.uleb128 0x11
+ 449 0002 01       		.byte	0x1
+ 450 0003 25       		.uleb128 0x25
+ 451 0004 0E       		.uleb128 0xe
+ 452 0005 13       		.uleb128 0x13
+ 453 0006 0B       		.uleb128 0xb
+ 454 0007 03       		.uleb128 0x3
+ 455 0008 0E       		.uleb128 0xe
+ 456 0009 1B       		.uleb128 0x1b
+ 457 000a 0E       		.uleb128 0xe
+ 458 000b 55       		.uleb128 0x55
+ 459 000c 17       		.uleb128 0x17
+ 460 000d 11       		.uleb128 0x11
+ 461 000e 01       		.uleb128 0x1
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 21
+
+
+ 462 000f 10       		.uleb128 0x10
+ 463 0010 17       		.uleb128 0x17
+ 464 0011 00       		.byte	0
+ 465 0012 00       		.byte	0
+ 466 0013 02       		.uleb128 0x2
+ 467 0014 24       		.uleb128 0x24
+ 468 0015 00       		.byte	0
+ 469 0016 0B       		.uleb128 0xb
+ 470 0017 0B       		.uleb128 0xb
+ 471 0018 3E       		.uleb128 0x3e
+ 472 0019 0B       		.uleb128 0xb
+ 473 001a 03       		.uleb128 0x3
+ 474 001b 0E       		.uleb128 0xe
+ 475 001c 00       		.byte	0
+ 476 001d 00       		.byte	0
+ 477 001e 03       		.uleb128 0x3
+ 478 001f 24       		.uleb128 0x24
+ 479 0020 00       		.byte	0
+ 480 0021 0B       		.uleb128 0xb
+ 481 0022 0B       		.uleb128 0xb
+ 482 0023 3E       		.uleb128 0x3e
+ 483 0024 0B       		.uleb128 0xb
+ 484 0025 03       		.uleb128 0x3
+ 485 0026 08       		.uleb128 0x8
+ 486 0027 00       		.byte	0
+ 487 0028 00       		.byte	0
+ 488 0029 04       		.uleb128 0x4
+ 489 002a 16       		.uleb128 0x16
+ 490 002b 00       		.byte	0
+ 491 002c 03       		.uleb128 0x3
+ 492 002d 0E       		.uleb128 0xe
+ 493 002e 3A       		.uleb128 0x3a
+ 494 002f 0B       		.uleb128 0xb
+ 495 0030 3B       		.uleb128 0x3b
+ 496 0031 05       		.uleb128 0x5
+ 497 0032 49       		.uleb128 0x49
+ 498 0033 13       		.uleb128 0x13
+ 499 0034 00       		.byte	0
+ 500 0035 00       		.byte	0
+ 501 0036 05       		.uleb128 0x5
+ 502 0037 35       		.uleb128 0x35
+ 503 0038 00       		.byte	0
+ 504 0039 49       		.uleb128 0x49
+ 505 003a 13       		.uleb128 0x13
+ 506 003b 00       		.byte	0
+ 507 003c 00       		.byte	0
+ 508 003d 06       		.uleb128 0x6
+ 509 003e 2E       		.uleb128 0x2e
+ 510 003f 01       		.byte	0x1
+ 511 0040 3F       		.uleb128 0x3f
+ 512 0041 19       		.uleb128 0x19
+ 513 0042 03       		.uleb128 0x3
+ 514 0043 0E       		.uleb128 0xe
+ 515 0044 3A       		.uleb128 0x3a
+ 516 0045 0B       		.uleb128 0xb
+ 517 0046 3B       		.uleb128 0x3b
+ 518 0047 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 22
+
+
+ 519 0048 27       		.uleb128 0x27
+ 520 0049 19       		.uleb128 0x19
+ 521 004a 11       		.uleb128 0x11
+ 522 004b 01       		.uleb128 0x1
+ 523 004c 12       		.uleb128 0x12
+ 524 004d 06       		.uleb128 0x6
+ 525 004e 40       		.uleb128 0x40
+ 526 004f 18       		.uleb128 0x18
+ 527 0050 9742     		.uleb128 0x2117
+ 528 0052 19       		.uleb128 0x19
+ 529 0053 01       		.uleb128 0x1
+ 530 0054 13       		.uleb128 0x13
+ 531 0055 00       		.byte	0
+ 532 0056 00       		.byte	0
+ 533 0057 07       		.uleb128 0x7
+ 534 0058 05       		.uleb128 0x5
+ 535 0059 00       		.byte	0
+ 536 005a 03       		.uleb128 0x3
+ 537 005b 0E       		.uleb128 0xe
+ 538 005c 3A       		.uleb128 0x3a
+ 539 005d 0B       		.uleb128 0xb
+ 540 005e 3B       		.uleb128 0x3b
+ 541 005f 0B       		.uleb128 0xb
+ 542 0060 49       		.uleb128 0x49
+ 543 0061 13       		.uleb128 0x13
+ 544 0062 02       		.uleb128 0x2
+ 545 0063 17       		.uleb128 0x17
+ 546 0064 00       		.byte	0
+ 547 0065 00       		.byte	0
+ 548 0066 08       		.uleb128 0x8
+ 549 0067 34       		.uleb128 0x34
+ 550 0068 00       		.byte	0
+ 551 0069 03       		.uleb128 0x3
+ 552 006a 0E       		.uleb128 0xe
+ 553 006b 3A       		.uleb128 0x3a
+ 554 006c 0B       		.uleb128 0xb
+ 555 006d 3B       		.uleb128 0x3b
+ 556 006e 0B       		.uleb128 0xb
+ 557 006f 49       		.uleb128 0x49
+ 558 0070 13       		.uleb128 0x13
+ 559 0071 02       		.uleb128 0x2
+ 560 0072 17       		.uleb128 0x17
+ 561 0073 00       		.byte	0
+ 562 0074 00       		.byte	0
+ 563 0075 09       		.uleb128 0x9
+ 564 0076 2E       		.uleb128 0x2e
+ 565 0077 00       		.byte	0
+ 566 0078 3F       		.uleb128 0x3f
+ 567 0079 19       		.uleb128 0x19
+ 568 007a 03       		.uleb128 0x3
+ 569 007b 0E       		.uleb128 0xe
+ 570 007c 3A       		.uleb128 0x3a
+ 571 007d 0B       		.uleb128 0xb
+ 572 007e 3B       		.uleb128 0x3b
+ 573 007f 0B       		.uleb128 0xb
+ 574 0080 27       		.uleb128 0x27
+ 575 0081 19       		.uleb128 0x19
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 23
+
+
+ 576 0082 49       		.uleb128 0x49
+ 577 0083 13       		.uleb128 0x13
+ 578 0084 11       		.uleb128 0x11
+ 579 0085 01       		.uleb128 0x1
+ 580 0086 12       		.uleb128 0x12
+ 581 0087 06       		.uleb128 0x6
+ 582 0088 40       		.uleb128 0x40
+ 583 0089 18       		.uleb128 0x18
+ 584 008a 9742     		.uleb128 0x2117
+ 585 008c 19       		.uleb128 0x19
+ 586 008d 00       		.byte	0
+ 587 008e 00       		.byte	0
+ 588 008f 00       		.byte	0
+ 589              		.section	.debug_loc,"",%progbits
+ 590              	.Ldebug_loc0:
+ 591              	.LLST0:
+ 592 0000 00000000 		.4byte	.LVL0
+ 593 0004 0A000000 		.4byte	.LVL2
+ 594 0008 0100     		.2byte	0x1
+ 595 000a 50       		.byte	0x50
+ 596 000b 0A000000 		.4byte	.LVL2
+ 597 000f 18000000 		.4byte	.LFE0
+ 598 0013 0400     		.2byte	0x4
+ 599 0015 F3       		.byte	0xf3
+ 600 0016 01       		.uleb128 0x1
+ 601 0017 50       		.byte	0x50
+ 602 0018 9F       		.byte	0x9f
+ 603 0019 00000000 		.4byte	0
+ 604 001d 00000000 		.4byte	0
+ 605              	.LLST1:
+ 606 0021 08000000 		.4byte	.LVL1
+ 607 0025 0E000000 		.4byte	.LVL3
+ 608 0029 0100     		.2byte	0x1
+ 609 002b 53       		.byte	0x53
+ 610 002c 00000000 		.4byte	0
+ 611 0030 00000000 		.4byte	0
+ 612              	.LLST2:
+ 613 0034 00000000 		.4byte	.LVL4
+ 614 0038 0C000000 		.4byte	.LVL5
+ 615 003c 0100     		.2byte	0x1
+ 616 003e 50       		.byte	0x50
+ 617 003f 0C000000 		.4byte	.LVL5
+ 618 0043 18000000 		.4byte	.LFE1
+ 619 0047 0400     		.2byte	0x4
+ 620 0049 F3       		.byte	0xf3
+ 621 004a 01       		.uleb128 0x1
+ 622 004b 50       		.byte	0x50
+ 623 004c 9F       		.byte	0x9f
+ 624 004d 00000000 		.4byte	0
+ 625 0051 00000000 		.4byte	0
+ 626              		.section	.debug_aranges,"",%progbits
+ 627 0000 34000000 		.4byte	0x34
+ 628 0004 0200     		.2byte	0x2
+ 629 0006 00000000 		.4byte	.Ldebug_info0
+ 630 000a 04       		.byte	0x4
+ 631 000b 00       		.byte	0
+ 632 000c 0000     		.2byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 24
+
+
+ 633 000e 0000     		.2byte	0
+ 634 0010 00000000 		.4byte	.LFB0
+ 635 0014 18000000 		.4byte	.LFE0-.LFB0
+ 636 0018 00000000 		.4byte	.LFB1
+ 637 001c 18000000 		.4byte	.LFE1-.LFB1
+ 638 0020 00000000 		.4byte	.LFB2
+ 639 0024 0C000000 		.4byte	.LFE2-.LFB2
+ 640 0028 00000000 		.4byte	.LFB3
+ 641 002c 0C000000 		.4byte	.LFE3-.LFB3
+ 642 0030 00000000 		.4byte	0
+ 643 0034 00000000 		.4byte	0
+ 644              		.section	.debug_ranges,"",%progbits
+ 645              	.Ldebug_ranges0:
+ 646 0000 00000000 		.4byte	.LFB0
+ 647 0004 18000000 		.4byte	.LFE0
+ 648 0008 00000000 		.4byte	.LFB1
+ 649 000c 18000000 		.4byte	.LFE1
+ 650 0010 00000000 		.4byte	.LFB2
+ 651 0014 0C000000 		.4byte	.LFE2
+ 652 0018 00000000 		.4byte	.LFB3
+ 653 001c 0C000000 		.4byte	.LFE3
+ 654 0020 00000000 		.4byte	0
+ 655 0024 00000000 		.4byte	0
+ 656              		.section	.debug_line,"",%progbits
+ 657              	.Ldebug_line0:
+ 658 0000 97000000 		.section	.debug_str,"MS",%progbits,1
+ 658      02004B00 
+ 658      00000201 
+ 658      FB0E0D00 
+ 658      01010101 
+ 659              	.LASF16:
+ 660 0000 76616C75 		.ascii	"value\000"
+ 660      6500
+ 661              	.LASF23:
+ 662 0006 73746174 		.ascii	"staticBits\000"
+ 662      69634269 
+ 662      747300
+ 663              	.LASF21:
+ 664 0011 47656E65 		.ascii	"Generated_Source\\PSoC5\\Diode_pump_adc.c\000"
+ 664      72617465 
+ 664      645F536F 
+ 664      75726365 
+ 664      5C50536F 
+ 665              	.LASF9:
+ 666 0039 666C6F61 		.ascii	"float\000"
+ 666      7400
+ 667              	.LASF20:
+ 668 003f 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 668      4320342E 
+ 668      392E3320 
+ 668      32303135 
+ 668      30333033 
+ 669 0072 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 669      20726576 
+ 669      6973696F 
+ 669      6E203232 
+ 669      31323230 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 25
+
+
+ 670 00a5 67202D66 		.ascii	"g -ffunction-sections -flto -ffat-lto-objects\000"
+ 670      66756E63 
+ 670      74696F6E 
+ 670      2D736563 
+ 670      74696F6E 
+ 671              	.LASF13:
+ 672 00d3 72656738 		.ascii	"reg8\000"
+ 672      00
+ 673              	.LASF5:
+ 674 00d8 6C6F6E67 		.ascii	"long unsigned int\000"
+ 674      20756E73 
+ 674      69676E65 
+ 674      6420696E 
+ 674      7400
+ 675              	.LASF3:
+ 676 00ea 73686F72 		.ascii	"short unsigned int\000"
+ 676      7420756E 
+ 676      7369676E 
+ 676      65642069 
+ 676      6E7400
+ 677              	.LASF18:
+ 678 00fd 44696F64 		.ascii	"Diode_pump_adc_Read\000"
+ 678      655F7075 
+ 678      6D705F61 
+ 678      64635F52 
+ 678      65616400 
+ 679              	.LASF1:
+ 680 0111 756E7369 		.ascii	"unsigned char\000"
+ 680      676E6564 
+ 680      20636861 
+ 680      7200
+ 681              	.LASF10:
+ 682 011f 646F7562 		.ascii	"double\000"
+ 682      6C6500
+ 683              	.LASF8:
+ 684 0126 756E7369 		.ascii	"unsigned int\000"
+ 684      676E6564 
+ 684      20696E74 
+ 684      00
+ 685              	.LASF15:
+ 686 0133 44696F64 		.ascii	"Diode_pump_adc_SetDriveMode\000"
+ 686      655F7075 
+ 686      6D705F61 
+ 686      64635F53 
+ 686      65744472 
+ 687              	.LASF7:
+ 688 014f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 688      206C6F6E 
+ 688      6720756E 
+ 688      7369676E 
+ 688      65642069 
+ 689              	.LASF17:
+ 690 0166 6D6F6465 		.ascii	"mode\000"
+ 690      00
+ 691              	.LASF14:
+ 692 016b 44696F64 		.ascii	"Diode_pump_adc_Write\000"
+ 692      655F7075 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cchCcK7c.s 			page 26
+
+
+ 692      6D705F61 
+ 692      64635F57 
+ 692      72697465 
+ 693              	.LASF6:
+ 694 0180 6C6F6E67 		.ascii	"long long int\000"
+ 694      206C6F6E 
+ 694      6720696E 
+ 694      7400
+ 695              	.LASF11:
+ 696 018e 63686172 		.ascii	"char\000"
+ 696      00
+ 697              	.LASF22:
+ 698 0193 433A5C55 		.ascii	"C:\\Users\\Luggi\\Desktop\\Aktuelles Projekt Laser_"
+ 698      73657273 
+ 698      5C4C7567 
+ 698      67695C44 
+ 698      65736B74 
+ 699 01c2 73636875 		.ascii	"schutzschaltung\\Aktuelles Projekt Laser_schutzscha"
+ 699      747A7363 
+ 699      68616C74 
+ 699      756E675C 
+ 699      416B7475 
+ 700 01f4 6C74756E 		.ascii	"ltung\\Laserschutzschaltung.cydsn\000"
+ 700      675C4C61 
+ 700      73657273 
+ 700      63687574 
+ 700      7A736368 
+ 701              	.LASF2:
+ 702 0215 73686F72 		.ascii	"short int\000"
+ 702      7420696E 
+ 702      7400
+ 703              	.LASF12:
+ 704 021f 75696E74 		.ascii	"uint8\000"
+ 704      3800
+ 705              	.LASF4:
+ 706 0225 6C6F6E67 		.ascii	"long int\000"
+ 706      20696E74 
+ 706      00
+ 707              	.LASF0:
+ 708 022e 7369676E 		.ascii	"signed char\000"
+ 708      65642063 
+ 708      68617200 
+ 709              	.LASF19:
+ 710 023a 44696F64 		.ascii	"Diode_pump_adc_ReadDataReg\000"
+ 710      655F7075 
+ 710      6D705F61 
+ 710      64635F52 
+ 710      65616444 
+ 711              		.comm	__gnu_lto_v1,1,1
+ 712              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

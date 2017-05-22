@@ -1,0 +1,966 @@
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Counter_1_PM.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.Counter_1_SaveConfig,"ax",%progbits
+  19              		.align	1
+  20              		.global	Counter_1_SaveConfig
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	Counter_1_SaveConfig, %function
+  24              	Counter_1_SaveConfig:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\Counter_1_PM.c"
+   1:.\Generated_Source\PSoC5/Counter_1_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/Counter_1_PM.c **** * File Name: Counter_1_PM.c  
+   3:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Version 2.40
+   4:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+   5:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  Description:
+   6:.\Generated_Source\PSoC5/Counter_1_PM.c **** *    This file provides the power management source code to API for the
+   7:.\Generated_Source\PSoC5/Counter_1_PM.c **** *    Counter.  
+   8:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+   9:.\Generated_Source\PSoC5/Counter_1_PM.c **** *   Note:
+  10:.\Generated_Source\PSoC5/Counter_1_PM.c **** *     None
+  11:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+  12:.\Generated_Source\PSoC5/Counter_1_PM.c **** *******************************************************************************
+  13:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14:.\Generated_Source\PSoC5/Counter_1_PM.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  15:.\Generated_Source\PSoC5/Counter_1_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  16:.\Generated_Source\PSoC5/Counter_1_PM.c **** * the software package with which this file was provided.
+  17:.\Generated_Source\PSoC5/Counter_1_PM.c **** ********************************************************************************/
+  18:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+  19:.\Generated_Source\PSoC5/Counter_1_PM.c **** #include "Counter_1.h"
+  20:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+  21:.\Generated_Source\PSoC5/Counter_1_PM.c **** static Counter_1_backupStruct Counter_1_backup;
+  22:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+  23:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+  24:.\Generated_Source\PSoC5/Counter_1_PM.c **** /*******************************************************************************
+  25:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Function Name: Counter_1_SaveConfig
+  26:.\Generated_Source\PSoC5/Counter_1_PM.c **** ********************************************************************************
+  27:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Summary:
+  28:.\Generated_Source\PSoC5/Counter_1_PM.c **** *     Save the current user configuration
+  29:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+  30:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Parameters:  
+  31:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  void
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+  33:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Return: 
+  34:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  void
+  35:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+  36:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Global variables:
+  37:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  Counter_1_backup:  Variables of this global structure are modified to 
+  38:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  store the values of non retention configuration registers when Sleep() API is 
+  39:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  called.
+  40:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+  41:.\Generated_Source\PSoC5/Counter_1_PM.c **** *******************************************************************************/
+  42:.\Generated_Source\PSoC5/Counter_1_PM.c **** void Counter_1_SaveConfig(void) 
+  43:.\Generated_Source\PSoC5/Counter_1_PM.c **** {
+  27              		.loc 1 43 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 7047     		bx	lr
+  33              		.cfi_endproc
+  34              	.LFE0:
+  35              		.size	Counter_1_SaveConfig, .-Counter_1_SaveConfig
+  36              		.section	.text.Counter_1_RestoreConfig,"ax",%progbits
+  37              		.align	1
+  38              		.global	Counter_1_RestoreConfig
+  39              		.thumb
+  40              		.thumb_func
+  41              		.type	Counter_1_RestoreConfig, %function
+  42              	Counter_1_RestoreConfig:
+  43              	.LFB1:
+  44:.\Generated_Source\PSoC5/Counter_1_PM.c ****     #if (!Counter_1_UsingFixedFunction)
+  45:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+  46:.\Generated_Source\PSoC5/Counter_1_PM.c ****         Counter_1_backup.CounterUdb = Counter_1_ReadCounter();
+  47:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+  48:.\Generated_Source\PSoC5/Counter_1_PM.c ****         #if (CY_UDB_V0)
+  49:.\Generated_Source\PSoC5/Counter_1_PM.c ****             Counter_1_backup.CounterPeriod = Counter_1_ReadPeriod();
+  50:.\Generated_Source\PSoC5/Counter_1_PM.c ****             Counter_1_backup.CompareValue = Counter_1_ReadCompare();
+  51:.\Generated_Source\PSoC5/Counter_1_PM.c ****             Counter_1_backup.InterruptMaskValue = Counter_1_STATUS_MASK;
+  52:.\Generated_Source\PSoC5/Counter_1_PM.c ****         #endif /* CY_UDB_V0 */
+  53:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+  54:.\Generated_Source\PSoC5/Counter_1_PM.c ****         #if(!Counter_1_ControlRegRemoved)
+  55:.\Generated_Source\PSoC5/Counter_1_PM.c ****             Counter_1_backup.CounterControlRegister = Counter_1_ReadControlRegister();
+  56:.\Generated_Source\PSoC5/Counter_1_PM.c ****         #endif /* (!Counter_1_ControlRegRemoved) */
+  57:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+  58:.\Generated_Source\PSoC5/Counter_1_PM.c ****     #endif /* (!Counter_1_UsingFixedFunction) */
+  59:.\Generated_Source\PSoC5/Counter_1_PM.c **** }
+  60:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+  61:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+  62:.\Generated_Source\PSoC5/Counter_1_PM.c **** /*******************************************************************************
+  63:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Function Name: Counter_1_RestoreConfig
+  64:.\Generated_Source\PSoC5/Counter_1_PM.c **** ********************************************************************************
+  65:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+  66:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Summary:
+  67:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  Restores the current user configuration.
+  68:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+  69:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Parameters:  
+  70:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  void
+  71:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 3
+
+
+  72:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Return: 
+  73:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  void
+  74:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+  75:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Global variables:
+  76:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  Counter_1_backup:  Variables of this global structure are used to 
+  77:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  restore the values of non retention registers on wakeup from sleep mode.
+  78:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+  79:.\Generated_Source\PSoC5/Counter_1_PM.c **** *******************************************************************************/
+  80:.\Generated_Source\PSoC5/Counter_1_PM.c **** void Counter_1_RestoreConfig(void) 
+  81:.\Generated_Source\PSoC5/Counter_1_PM.c **** {      
+  44              		.loc 1 81 0
+  45              		.cfi_startproc
+  46              		@ args = 0, pretend = 0, frame = 0
+  47              		@ frame_needed = 0, uses_anonymous_args = 0
+  48              		@ link register save eliminated.
+  49 0000 7047     		bx	lr
+  50              		.cfi_endproc
+  51              	.LFE1:
+  52              		.size	Counter_1_RestoreConfig, .-Counter_1_RestoreConfig
+  53              		.section	.text.Counter_1_Sleep,"ax",%progbits
+  54              		.align	1
+  55              		.global	Counter_1_Sleep
+  56              		.thumb
+  57              		.thumb_func
+  58              		.type	Counter_1_Sleep, %function
+  59              	Counter_1_Sleep:
+  60              	.LFB2:
+  82:.\Generated_Source\PSoC5/Counter_1_PM.c ****     #if (!Counter_1_UsingFixedFunction)
+  83:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+  84:.\Generated_Source\PSoC5/Counter_1_PM.c ****         #if (CY_UDB_V0)
+  85:.\Generated_Source\PSoC5/Counter_1_PM.c ****             uint8 Counter_1_interruptState;
+  86:.\Generated_Source\PSoC5/Counter_1_PM.c ****         #endif  /* (CY_UDB_V0) */
+  87:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+  88:.\Generated_Source\PSoC5/Counter_1_PM.c ****        Counter_1_WriteCounter(Counter_1_backup.CounterUdb);
+  89:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+  90:.\Generated_Source\PSoC5/Counter_1_PM.c ****         #if (CY_UDB_V0)
+  91:.\Generated_Source\PSoC5/Counter_1_PM.c ****             Counter_1_WritePeriod(Counter_1_backup.CounterPeriod);
+  92:.\Generated_Source\PSoC5/Counter_1_PM.c ****             Counter_1_WriteCompare(Counter_1_backup.CompareValue);
+  93:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+  94:.\Generated_Source\PSoC5/Counter_1_PM.c ****             Counter_1_interruptState = CyEnterCriticalSection();
+  95:.\Generated_Source\PSoC5/Counter_1_PM.c ****             Counter_1_STATUS_AUX_CTRL |= Counter_1_STATUS_ACTL_INT_EN_MASK;
+  96:.\Generated_Source\PSoC5/Counter_1_PM.c ****             CyExitCriticalSection(Counter_1_interruptState);
+  97:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+  98:.\Generated_Source\PSoC5/Counter_1_PM.c ****             Counter_1_STATUS_MASK = Counter_1_backup.InterruptMaskValue;
+  99:.\Generated_Source\PSoC5/Counter_1_PM.c ****         #endif  /* (CY_UDB_V0) */
+ 100:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+ 101:.\Generated_Source\PSoC5/Counter_1_PM.c ****         #if(!Counter_1_ControlRegRemoved)
+ 102:.\Generated_Source\PSoC5/Counter_1_PM.c ****             Counter_1_WriteControlRegister(Counter_1_backup.CounterControlRegister);
+ 103:.\Generated_Source\PSoC5/Counter_1_PM.c ****         #endif /* (!Counter_1_ControlRegRemoved) */
+ 104:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+ 105:.\Generated_Source\PSoC5/Counter_1_PM.c ****     #endif /* (!Counter_1_UsingFixedFunction) */
+ 106:.\Generated_Source\PSoC5/Counter_1_PM.c **** }
+ 107:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+ 108:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+ 109:.\Generated_Source\PSoC5/Counter_1_PM.c **** /*******************************************************************************
+ 110:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Function Name: Counter_1_Sleep
+ 111:.\Generated_Source\PSoC5/Counter_1_PM.c **** ********************************************************************************
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 4
+
+
+ 112:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Summary:
+ 113:.\Generated_Source\PSoC5/Counter_1_PM.c **** *     Stop and Save the user configuration
+ 114:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+ 115:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Parameters:  
+ 116:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  void
+ 117:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+ 118:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Return: 
+ 119:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  void
+ 120:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+ 121:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Global variables:
+ 122:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  Counter_1_backup.enableState:  Is modified depending on the enable 
+ 123:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  state of the block before entering sleep mode.
+ 124:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+ 125:.\Generated_Source\PSoC5/Counter_1_PM.c **** *******************************************************************************/
+ 126:.\Generated_Source\PSoC5/Counter_1_PM.c **** void Counter_1_Sleep(void) 
+ 127:.\Generated_Source\PSoC5/Counter_1_PM.c **** {
+  61              		.loc 1 127 0
+  62              		.cfi_startproc
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65              		@ link register save eliminated.
+ 128:.\Generated_Source\PSoC5/Counter_1_PM.c ****     #if(!Counter_1_ControlRegRemoved)
+ 129:.\Generated_Source\PSoC5/Counter_1_PM.c ****         /* Save Counter's enable state */
+ 130:.\Generated_Source\PSoC5/Counter_1_PM.c ****         if(Counter_1_CTRL_ENABLE == (Counter_1_CONTROL & Counter_1_CTRL_ENABLE))
+  66              		.loc 1 130 0
+  67 0000 044B     		ldr	r3, .L6
+  68 0002 0549     		ldr	r1, .L6+4
+  69 0004 1878     		ldrb	r0, [r3, #0]	@ zero_extendqisi2
+  70 0006 10F00102 		ands	r2, r0, #1
+ 131:.\Generated_Source\PSoC5/Counter_1_PM.c ****         {
+ 132:.\Generated_Source\PSoC5/Counter_1_PM.c ****             /* Counter is enabled */
+ 133:.\Generated_Source\PSoC5/Counter_1_PM.c ****             Counter_1_backup.CounterEnableState = 1u;
+  71              		.loc 1 133 0
+  72 000a 18BF     		it	ne
+  73 000c 0122     		movne	r2, #1
+ 134:.\Generated_Source\PSoC5/Counter_1_PM.c ****         }
+ 135:.\Generated_Source\PSoC5/Counter_1_PM.c ****         else
+ 136:.\Generated_Source\PSoC5/Counter_1_PM.c ****         {
+ 137:.\Generated_Source\PSoC5/Counter_1_PM.c ****             /* Counter is disabled */
+ 138:.\Generated_Source\PSoC5/Counter_1_PM.c ****             Counter_1_backup.CounterEnableState = 0u;
+  74              		.loc 1 138 0
+  75 000e 0A70     		strb	r2, [r1, #0]
+ 139:.\Generated_Source\PSoC5/Counter_1_PM.c ****         }
+ 140:.\Generated_Source\PSoC5/Counter_1_PM.c ****     #else
+ 141:.\Generated_Source\PSoC5/Counter_1_PM.c ****         Counter_1_backup.CounterEnableState = 1u;
+ 142:.\Generated_Source\PSoC5/Counter_1_PM.c ****         if(Counter_1_backup.CounterEnableState != 0u)
+ 143:.\Generated_Source\PSoC5/Counter_1_PM.c ****         {
+ 144:.\Generated_Source\PSoC5/Counter_1_PM.c ****             Counter_1_backup.CounterEnableState = 0u;
+ 145:.\Generated_Source\PSoC5/Counter_1_PM.c ****         }
+ 146:.\Generated_Source\PSoC5/Counter_1_PM.c ****     #endif /* (!Counter_1_ControlRegRemoved) */
+ 147:.\Generated_Source\PSoC5/Counter_1_PM.c ****     
+ 148:.\Generated_Source\PSoC5/Counter_1_PM.c ****     Counter_1_Stop();
+ 149:.\Generated_Source\PSoC5/Counter_1_PM.c ****     Counter_1_SaveConfig();
+ 150:.\Generated_Source\PSoC5/Counter_1_PM.c **** }
+  76              		.loc 1 150 0
+ 148:.\Generated_Source\PSoC5/Counter_1_PM.c ****     Counter_1_Stop();
+  77              		.loc 1 148 0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 5
+
+
+  78 0010 FFF7FEBF 		b	Counter_1_Stop
+  79              	.LVL0:
+  80              	.L7:
+  81              		.align	2
+  82              	.L6:
+  83 0014 004F0040 		.word	1073762048
+  84 0018 00000000 		.word	.LANCHOR0
+  85              		.cfi_endproc
+  86              	.LFE2:
+  87              		.size	Counter_1_Sleep, .-Counter_1_Sleep
+  88              		.section	.text.Counter_1_Wakeup,"ax",%progbits
+  89              		.align	1
+  90              		.global	Counter_1_Wakeup
+  91              		.thumb
+  92              		.thumb_func
+  93              		.type	Counter_1_Wakeup, %function
+  94              	Counter_1_Wakeup:
+  95              	.LFB3:
+ 151:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+ 152:.\Generated_Source\PSoC5/Counter_1_PM.c **** 
+ 153:.\Generated_Source\PSoC5/Counter_1_PM.c **** /*******************************************************************************
+ 154:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Function Name: Counter_1_Wakeup
+ 155:.\Generated_Source\PSoC5/Counter_1_PM.c **** ********************************************************************************
+ 156:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+ 157:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Summary:
+ 158:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  Restores and enables the user configuration
+ 159:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  
+ 160:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Parameters:  
+ 161:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  void
+ 162:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+ 163:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Return: 
+ 164:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  void
+ 165:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+ 166:.\Generated_Source\PSoC5/Counter_1_PM.c **** * Global variables:
+ 167:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  Counter_1_backup.enableState:  Is used to restore the enable state of 
+ 168:.\Generated_Source\PSoC5/Counter_1_PM.c **** *  block on wakeup from sleep mode.
+ 169:.\Generated_Source\PSoC5/Counter_1_PM.c **** *
+ 170:.\Generated_Source\PSoC5/Counter_1_PM.c **** *******************************************************************************/
+ 171:.\Generated_Source\PSoC5/Counter_1_PM.c **** void Counter_1_Wakeup(void) 
+ 172:.\Generated_Source\PSoC5/Counter_1_PM.c **** {
+  96              		.loc 1 172 0
+  97              		.cfi_startproc
+  98              		@ args = 0, pretend = 0, frame = 0
+  99              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100              		@ link register save eliminated.
+ 173:.\Generated_Source\PSoC5/Counter_1_PM.c ****     Counter_1_RestoreConfig();
+ 174:.\Generated_Source\PSoC5/Counter_1_PM.c ****     #if(!Counter_1_ControlRegRemoved)
+ 175:.\Generated_Source\PSoC5/Counter_1_PM.c ****         if(Counter_1_backup.CounterEnableState == 1u)
+ 101              		.loc 1 175 0
+ 102 0000 034B     		ldr	r3, .L11
+ 103 0002 1878     		ldrb	r0, [r3, #0]	@ zero_extendqisi2
+ 104 0004 0128     		cmp	r0, #1
+ 105 0006 01D1     		bne	.L8
+ 176:.\Generated_Source\PSoC5/Counter_1_PM.c ****         {
+ 177:.\Generated_Source\PSoC5/Counter_1_PM.c ****             /* Enable Counter's operation */
+ 178:.\Generated_Source\PSoC5/Counter_1_PM.c ****             Counter_1_Enable();
+ 179:.\Generated_Source\PSoC5/Counter_1_PM.c ****         } /* Do nothing if Counter was disabled before */    
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 6
+
+
+ 180:.\Generated_Source\PSoC5/Counter_1_PM.c ****     #endif /* (!Counter_1_ControlRegRemoved) */
+ 181:.\Generated_Source\PSoC5/Counter_1_PM.c ****     
+ 182:.\Generated_Source\PSoC5/Counter_1_PM.c **** }
+ 106              		.loc 1 182 0
+ 178:.\Generated_Source\PSoC5/Counter_1_PM.c ****             Counter_1_Enable();
+ 107              		.loc 1 178 0
+ 108 0008 FFF7FEBF 		b	Counter_1_Enable
+ 109              	.LVL1:
+ 110              	.L8:
+ 111 000c 7047     		bx	lr
+ 112              	.L12:
+ 113 000e 00BF     		.align	2
+ 114              	.L11:
+ 115 0010 00000000 		.word	.LANCHOR0
+ 116              		.cfi_endproc
+ 117              	.LFE3:
+ 118              		.size	Counter_1_Wakeup, .-Counter_1_Wakeup
+ 119              		.bss
+ 120              		.align	1
+ 121              		.set	.LANCHOR0,. + 0
+ 122              		.type	Counter_1_backup, %object
+ 123              		.size	Counter_1_backup, 6
+ 124              	Counter_1_backup:
+ 125 0000 00000000 		.space	6
+ 125      0000
+ 126              		.text
+ 127              	.Letext0:
+ 128              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 129              		.file 3 ".\\Generated_Source\\PSoC5\\Counter_1.h"
+ 130              		.section	.debug_info,"",%progbits
+ 131              	.Ldebug_info0:
+ 132 0000 8F010000 		.4byte	0x18f
+ 133 0004 0200     		.2byte	0x2
+ 134 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 135 000a 04       		.byte	0x4
+ 136 000b 01       		.uleb128 0x1
+ 137 000c 93010000 		.4byte	.LASF26
+ 138 0010 01       		.byte	0x1
+ 139 0011 11020000 		.4byte	.LASF27
+ 140 0015 A6000000 		.4byte	.LASF28
+ 141 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 142 001d 00000000 		.4byte	0
+ 143 0021 00000000 		.4byte	0
+ 144 0025 00000000 		.4byte	.Ldebug_line0
+ 145 0029 02       		.uleb128 0x2
+ 146 002a 01       		.byte	0x1
+ 147 002b 06       		.byte	0x6
+ 148 002c F6010000 		.4byte	.LASF0
+ 149 0030 02       		.uleb128 0x2
+ 150 0031 01       		.byte	0x1
+ 151 0032 08       		.byte	0x8
+ 152 0033 63000000 		.4byte	.LASF1
+ 153 0037 02       		.uleb128 0x2
+ 154 0038 02       		.byte	0x2
+ 155 0039 05       		.byte	0x5
+ 156 003a 0A010000 		.4byte	.LASF2
+ 157 003e 02       		.uleb128 0x2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 7
+
+
+ 158 003f 02       		.byte	0x2
+ 159 0040 07       		.byte	0x7
+ 160 0041 17000000 		.4byte	.LASF3
+ 161 0045 02       		.uleb128 0x2
+ 162 0046 04       		.byte	0x4
+ 163 0047 05       		.byte	0x5
+ 164 0048 DC010000 		.4byte	.LASF4
+ 165 004c 02       		.uleb128 0x2
+ 166 004d 04       		.byte	0x4
+ 167 004e 07       		.byte	0x7
+ 168 004f 8E000000 		.4byte	.LASF5
+ 169 0053 02       		.uleb128 0x2
+ 170 0054 08       		.byte	0x8
+ 171 0055 05       		.byte	0x5
+ 172 0056 6B010000 		.4byte	.LASF6
+ 173 005a 02       		.uleb128 0x2
+ 174 005b 08       		.byte	0x8
+ 175 005c 07       		.byte	0x7
+ 176 005d 28010000 		.4byte	.LASF7
+ 177 0061 03       		.uleb128 0x3
+ 178 0062 04       		.byte	0x4
+ 179 0063 05       		.byte	0x5
+ 180 0064 696E7400 		.ascii	"int\000"
+ 181 0068 02       		.uleb128 0x2
+ 182 0069 04       		.byte	0x4
+ 183 006a 07       		.byte	0x7
+ 184 006b 1B010000 		.4byte	.LASF8
+ 185 006f 04       		.uleb128 0x4
+ 186 0070 A0000000 		.4byte	.LASF9
+ 187 0074 02       		.byte	0x2
+ 188 0075 5B       		.byte	0x5b
+ 189 0076 30000000 		.4byte	0x30
+ 190 007a 04       		.uleb128 0x4
+ 191 007b 14010000 		.4byte	.LASF10
+ 192 007f 02       		.byte	0x2
+ 193 0080 5C       		.byte	0x5c
+ 194 0081 3E000000 		.4byte	0x3e
+ 195 0085 02       		.uleb128 0x2
+ 196 0086 04       		.byte	0x4
+ 197 0087 04       		.byte	0x4
+ 198 0088 5D000000 		.4byte	.LASF11
+ 199 008c 02       		.uleb128 0x2
+ 200 008d 08       		.byte	0x8
+ 201 008e 04       		.byte	0x4
+ 202 008f F2000000 		.4byte	.LASF12
+ 203 0093 02       		.uleb128 0x2
+ 204 0094 01       		.byte	0x1
+ 205 0095 08       		.byte	0x8
+ 206 0096 79010000 		.4byte	.LASF13
+ 207 009a 04       		.uleb128 0x4
+ 208 009b 89000000 		.4byte	.LASF14
+ 209 009f 02       		.byte	0x2
+ 210 00a0 F0       		.byte	0xf0
+ 211 00a1 A5000000 		.4byte	0xa5
+ 212 00a5 05       		.uleb128 0x5
+ 213 00a6 6F000000 		.4byte	0x6f
+ 214 00aa 02       		.uleb128 0x2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 8
+
+
+ 215 00ab 04       		.byte	0x4
+ 216 00ac 07       		.byte	0x7
+ 217 00ad 4F010000 		.4byte	.LASF15
+ 218 00b1 06       		.uleb128 0x6
+ 219 00b2 06       		.byte	0x6
+ 220 00b3 03       		.byte	0x3
+ 221 00b4 38       		.byte	0x38
+ 222 00b5 E4000000 		.4byte	0xe4
+ 223 00b9 07       		.uleb128 0x7
+ 224 00ba 58010000 		.4byte	.LASF16
+ 225 00be 03       		.byte	0x3
+ 226 00bf 3A       		.byte	0x3a
+ 227 00c0 6F000000 		.4byte	0x6f
+ 228 00c4 02       		.byte	0x2
+ 229 00c5 23       		.byte	0x23
+ 230 00c6 00       		.uleb128 0
+ 231 00c7 07       		.uleb128 0x7
+ 232 00c8 2A000000 		.4byte	.LASF17
+ 233 00cc 03       		.byte	0x3
+ 234 00cd 3B       		.byte	0x3b
+ 235 00ce 7A000000 		.4byte	0x7a
+ 236 00d2 02       		.byte	0x2
+ 237 00d3 23       		.byte	0x23
+ 238 00d4 02       		.uleb128 0x2
+ 239 00d5 07       		.uleb128 0x7
+ 240 00d6 35000000 		.4byte	.LASF18
+ 241 00da 03       		.byte	0x3
+ 242 00db 44       		.byte	0x44
+ 243 00dc 6F000000 		.4byte	0x6f
+ 244 00e0 02       		.byte	0x2
+ 245 00e1 23       		.byte	0x23
+ 246 00e2 04       		.uleb128 0x4
+ 247 00e3 00       		.byte	0
+ 248 00e4 04       		.uleb128 0x4
+ 249 00e5 00000000 		.4byte	.LASF19
+ 250 00e9 03       		.byte	0x3
+ 251 00ea 47       		.byte	0x47
+ 252 00eb B1000000 		.4byte	0xb1
+ 253 00ef 08       		.uleb128 0x8
+ 254 00f0 01       		.byte	0x1
+ 255 00f1 7E010000 		.4byte	.LASF20
+ 256 00f5 01       		.byte	0x1
+ 257 00f6 2A       		.byte	0x2a
+ 258 00f7 01       		.byte	0x1
+ 259 00f8 01       		.byte	0x1
+ 260 00f9 08       		.uleb128 0x8
+ 261 00fa 01       		.byte	0x1
+ 262 00fb 71000000 		.4byte	.LASF21
+ 263 00ff 01       		.byte	0x1
+ 264 0100 50       		.byte	0x50
+ 265 0101 01       		.byte	0x1
+ 266 0102 01       		.byte	0x1
+ 267 0103 09       		.uleb128 0x9
+ 268 0104 EF000000 		.4byte	0xef
+ 269 0108 00000000 		.4byte	.LFB0
+ 270 010c 02000000 		.4byte	.LFE0
+ 271 0110 02       		.byte	0x2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 9
+
+
+ 272 0111 7D       		.byte	0x7d
+ 273 0112 00       		.sleb128 0
+ 274 0113 01       		.byte	0x1
+ 275 0114 09       		.uleb128 0x9
+ 276 0115 F9000000 		.4byte	0xf9
+ 277 0119 00000000 		.4byte	.LFB1
+ 278 011d 02000000 		.4byte	.LFE1
+ 279 0121 02       		.byte	0x2
+ 280 0122 7D       		.byte	0x7d
+ 281 0123 00       		.sleb128 0
+ 282 0124 01       		.byte	0x1
+ 283 0125 0A       		.uleb128 0xa
+ 284 0126 01       		.byte	0x1
+ 285 0127 3F010000 		.4byte	.LASF22
+ 286 012b 01       		.byte	0x1
+ 287 012c 7E       		.byte	0x7e
+ 288 012d 01       		.byte	0x1
+ 289 012e 00000000 		.4byte	.LFB2
+ 290 0132 1C000000 		.4byte	.LFE2
+ 291 0136 02       		.byte	0x2
+ 292 0137 7D       		.byte	0x7d
+ 293 0138 00       		.sleb128 0
+ 294 0139 01       		.byte	0x1
+ 295 013a 49010000 		.4byte	0x149
+ 296 013e 0B       		.uleb128 0xb
+ 297 013f 14000000 		.4byte	.LVL0
+ 298 0143 01       		.byte	0x1
+ 299 0144 7E010000 		.4byte	0x17e
+ 300 0148 00       		.byte	0
+ 301 0149 0A       		.uleb128 0xa
+ 302 014a 01       		.byte	0x1
+ 303 014b F9000000 		.4byte	.LASF23
+ 304 014f 01       		.byte	0x1
+ 305 0150 AB       		.byte	0xab
+ 306 0151 01       		.byte	0x1
+ 307 0152 00000000 		.4byte	.LFB3
+ 308 0156 14000000 		.4byte	.LFE3
+ 309 015a 02       		.byte	0x2
+ 310 015b 7D       		.byte	0x7d
+ 311 015c 00       		.sleb128 0
+ 312 015d 01       		.byte	0x1
+ 313 015e 6D010000 		.4byte	0x16d
+ 314 0162 0B       		.uleb128 0xb
+ 315 0163 0C000000 		.4byte	.LVL1
+ 316 0167 01       		.byte	0x1
+ 317 0168 88010000 		.4byte	0x188
+ 318 016c 00       		.byte	0
+ 319 016d 0C       		.uleb128 0xc
+ 320 016e 4C000000 		.4byte	.LASF29
+ 321 0172 01       		.byte	0x1
+ 322 0173 15       		.byte	0x15
+ 323 0174 E4000000 		.4byte	0xe4
+ 324 0178 05       		.byte	0x5
+ 325 0179 03       		.byte	0x3
+ 326 017a 00000000 		.4byte	Counter_1_backup
+ 327 017e 0D       		.uleb128 0xd
+ 328 017f 01       		.byte	0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 10
+
+
+ 329 0180 02020000 		.4byte	.LASF24
+ 330 0184 03       		.byte	0x3
+ 331 0185 4E       		.byte	0x4e
+ 332 0186 01       		.byte	0x1
+ 333 0187 01       		.byte	0x1
+ 334 0188 0D       		.uleb128 0xd
+ 335 0189 01       		.byte	0x1
+ 336 018a E5010000 		.4byte	.LASF25
+ 337 018e 03       		.byte	0x3
+ 338 018f 6F       		.byte	0x6f
+ 339 0190 01       		.byte	0x1
+ 340 0191 01       		.byte	0x1
+ 341 0192 00       		.byte	0
+ 342              		.section	.debug_abbrev,"",%progbits
+ 343              	.Ldebug_abbrev0:
+ 344 0000 01       		.uleb128 0x1
+ 345 0001 11       		.uleb128 0x11
+ 346 0002 01       		.byte	0x1
+ 347 0003 25       		.uleb128 0x25
+ 348 0004 0E       		.uleb128 0xe
+ 349 0005 13       		.uleb128 0x13
+ 350 0006 0B       		.uleb128 0xb
+ 351 0007 03       		.uleb128 0x3
+ 352 0008 0E       		.uleb128 0xe
+ 353 0009 1B       		.uleb128 0x1b
+ 354 000a 0E       		.uleb128 0xe
+ 355 000b 55       		.uleb128 0x55
+ 356 000c 06       		.uleb128 0x6
+ 357 000d 11       		.uleb128 0x11
+ 358 000e 01       		.uleb128 0x1
+ 359 000f 52       		.uleb128 0x52
+ 360 0010 01       		.uleb128 0x1
+ 361 0011 10       		.uleb128 0x10
+ 362 0012 06       		.uleb128 0x6
+ 363 0013 00       		.byte	0
+ 364 0014 00       		.byte	0
+ 365 0015 02       		.uleb128 0x2
+ 366 0016 24       		.uleb128 0x24
+ 367 0017 00       		.byte	0
+ 368 0018 0B       		.uleb128 0xb
+ 369 0019 0B       		.uleb128 0xb
+ 370 001a 3E       		.uleb128 0x3e
+ 371 001b 0B       		.uleb128 0xb
+ 372 001c 03       		.uleb128 0x3
+ 373 001d 0E       		.uleb128 0xe
+ 374 001e 00       		.byte	0
+ 375 001f 00       		.byte	0
+ 376 0020 03       		.uleb128 0x3
+ 377 0021 24       		.uleb128 0x24
+ 378 0022 00       		.byte	0
+ 379 0023 0B       		.uleb128 0xb
+ 380 0024 0B       		.uleb128 0xb
+ 381 0025 3E       		.uleb128 0x3e
+ 382 0026 0B       		.uleb128 0xb
+ 383 0027 03       		.uleb128 0x3
+ 384 0028 08       		.uleb128 0x8
+ 385 0029 00       		.byte	0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 11
+
+
+ 386 002a 00       		.byte	0
+ 387 002b 04       		.uleb128 0x4
+ 388 002c 16       		.uleb128 0x16
+ 389 002d 00       		.byte	0
+ 390 002e 03       		.uleb128 0x3
+ 391 002f 0E       		.uleb128 0xe
+ 392 0030 3A       		.uleb128 0x3a
+ 393 0031 0B       		.uleb128 0xb
+ 394 0032 3B       		.uleb128 0x3b
+ 395 0033 0B       		.uleb128 0xb
+ 396 0034 49       		.uleb128 0x49
+ 397 0035 13       		.uleb128 0x13
+ 398 0036 00       		.byte	0
+ 399 0037 00       		.byte	0
+ 400 0038 05       		.uleb128 0x5
+ 401 0039 35       		.uleb128 0x35
+ 402 003a 00       		.byte	0
+ 403 003b 49       		.uleb128 0x49
+ 404 003c 13       		.uleb128 0x13
+ 405 003d 00       		.byte	0
+ 406 003e 00       		.byte	0
+ 407 003f 06       		.uleb128 0x6
+ 408 0040 13       		.uleb128 0x13
+ 409 0041 01       		.byte	0x1
+ 410 0042 0B       		.uleb128 0xb
+ 411 0043 0B       		.uleb128 0xb
+ 412 0044 3A       		.uleb128 0x3a
+ 413 0045 0B       		.uleb128 0xb
+ 414 0046 3B       		.uleb128 0x3b
+ 415 0047 0B       		.uleb128 0xb
+ 416 0048 01       		.uleb128 0x1
+ 417 0049 13       		.uleb128 0x13
+ 418 004a 00       		.byte	0
+ 419 004b 00       		.byte	0
+ 420 004c 07       		.uleb128 0x7
+ 421 004d 0D       		.uleb128 0xd
+ 422 004e 00       		.byte	0
+ 423 004f 03       		.uleb128 0x3
+ 424 0050 0E       		.uleb128 0xe
+ 425 0051 3A       		.uleb128 0x3a
+ 426 0052 0B       		.uleb128 0xb
+ 427 0053 3B       		.uleb128 0x3b
+ 428 0054 0B       		.uleb128 0xb
+ 429 0055 49       		.uleb128 0x49
+ 430 0056 13       		.uleb128 0x13
+ 431 0057 38       		.uleb128 0x38
+ 432 0058 0A       		.uleb128 0xa
+ 433 0059 00       		.byte	0
+ 434 005a 00       		.byte	0
+ 435 005b 08       		.uleb128 0x8
+ 436 005c 2E       		.uleb128 0x2e
+ 437 005d 00       		.byte	0
+ 438 005e 3F       		.uleb128 0x3f
+ 439 005f 0C       		.uleb128 0xc
+ 440 0060 03       		.uleb128 0x3
+ 441 0061 0E       		.uleb128 0xe
+ 442 0062 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 12
+
+
+ 443 0063 0B       		.uleb128 0xb
+ 444 0064 3B       		.uleb128 0x3b
+ 445 0065 0B       		.uleb128 0xb
+ 446 0066 27       		.uleb128 0x27
+ 447 0067 0C       		.uleb128 0xc
+ 448 0068 20       		.uleb128 0x20
+ 449 0069 0B       		.uleb128 0xb
+ 450 006a 00       		.byte	0
+ 451 006b 00       		.byte	0
+ 452 006c 09       		.uleb128 0x9
+ 453 006d 2E       		.uleb128 0x2e
+ 454 006e 00       		.byte	0
+ 455 006f 31       		.uleb128 0x31
+ 456 0070 13       		.uleb128 0x13
+ 457 0071 11       		.uleb128 0x11
+ 458 0072 01       		.uleb128 0x1
+ 459 0073 12       		.uleb128 0x12
+ 460 0074 01       		.uleb128 0x1
+ 461 0075 40       		.uleb128 0x40
+ 462 0076 0A       		.uleb128 0xa
+ 463 0077 9742     		.uleb128 0x2117
+ 464 0079 0C       		.uleb128 0xc
+ 465 007a 00       		.byte	0
+ 466 007b 00       		.byte	0
+ 467 007c 0A       		.uleb128 0xa
+ 468 007d 2E       		.uleb128 0x2e
+ 469 007e 01       		.byte	0x1
+ 470 007f 3F       		.uleb128 0x3f
+ 471 0080 0C       		.uleb128 0xc
+ 472 0081 03       		.uleb128 0x3
+ 473 0082 0E       		.uleb128 0xe
+ 474 0083 3A       		.uleb128 0x3a
+ 475 0084 0B       		.uleb128 0xb
+ 476 0085 3B       		.uleb128 0x3b
+ 477 0086 0B       		.uleb128 0xb
+ 478 0087 27       		.uleb128 0x27
+ 479 0088 0C       		.uleb128 0xc
+ 480 0089 11       		.uleb128 0x11
+ 481 008a 01       		.uleb128 0x1
+ 482 008b 12       		.uleb128 0x12
+ 483 008c 01       		.uleb128 0x1
+ 484 008d 40       		.uleb128 0x40
+ 485 008e 0A       		.uleb128 0xa
+ 486 008f 9742     		.uleb128 0x2117
+ 487 0091 0C       		.uleb128 0xc
+ 488 0092 01       		.uleb128 0x1
+ 489 0093 13       		.uleb128 0x13
+ 490 0094 00       		.byte	0
+ 491 0095 00       		.byte	0
+ 492 0096 0B       		.uleb128 0xb
+ 493 0097 898201   		.uleb128 0x4109
+ 494 009a 00       		.byte	0
+ 495 009b 11       		.uleb128 0x11
+ 496 009c 01       		.uleb128 0x1
+ 497 009d 9542     		.uleb128 0x2115
+ 498 009f 0C       		.uleb128 0xc
+ 499 00a0 31       		.uleb128 0x31
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 13
+
+
+ 500 00a1 13       		.uleb128 0x13
+ 501 00a2 00       		.byte	0
+ 502 00a3 00       		.byte	0
+ 503 00a4 0C       		.uleb128 0xc
+ 504 00a5 34       		.uleb128 0x34
+ 505 00a6 00       		.byte	0
+ 506 00a7 03       		.uleb128 0x3
+ 507 00a8 0E       		.uleb128 0xe
+ 508 00a9 3A       		.uleb128 0x3a
+ 509 00aa 0B       		.uleb128 0xb
+ 510 00ab 3B       		.uleb128 0x3b
+ 511 00ac 0B       		.uleb128 0xb
+ 512 00ad 49       		.uleb128 0x49
+ 513 00ae 13       		.uleb128 0x13
+ 514 00af 02       		.uleb128 0x2
+ 515 00b0 0A       		.uleb128 0xa
+ 516 00b1 00       		.byte	0
+ 517 00b2 00       		.byte	0
+ 518 00b3 0D       		.uleb128 0xd
+ 519 00b4 2E       		.uleb128 0x2e
+ 520 00b5 00       		.byte	0
+ 521 00b6 3F       		.uleb128 0x3f
+ 522 00b7 0C       		.uleb128 0xc
+ 523 00b8 03       		.uleb128 0x3
+ 524 00b9 0E       		.uleb128 0xe
+ 525 00ba 3A       		.uleb128 0x3a
+ 526 00bb 0B       		.uleb128 0xb
+ 527 00bc 3B       		.uleb128 0x3b
+ 528 00bd 0B       		.uleb128 0xb
+ 529 00be 27       		.uleb128 0x27
+ 530 00bf 0C       		.uleb128 0xc
+ 531 00c0 3C       		.uleb128 0x3c
+ 532 00c1 0C       		.uleb128 0xc
+ 533 00c2 00       		.byte	0
+ 534 00c3 00       		.byte	0
+ 535 00c4 00       		.byte	0
+ 536              		.section	.debug_aranges,"",%progbits
+ 537 0000 34000000 		.4byte	0x34
+ 538 0004 0200     		.2byte	0x2
+ 539 0006 00000000 		.4byte	.Ldebug_info0
+ 540 000a 04       		.byte	0x4
+ 541 000b 00       		.byte	0
+ 542 000c 0000     		.2byte	0
+ 543 000e 0000     		.2byte	0
+ 544 0010 00000000 		.4byte	.LFB0
+ 545 0014 02000000 		.4byte	.LFE0-.LFB0
+ 546 0018 00000000 		.4byte	.LFB1
+ 547 001c 02000000 		.4byte	.LFE1-.LFB1
+ 548 0020 00000000 		.4byte	.LFB2
+ 549 0024 1C000000 		.4byte	.LFE2-.LFB2
+ 550 0028 00000000 		.4byte	.LFB3
+ 551 002c 14000000 		.4byte	.LFE3-.LFB3
+ 552 0030 00000000 		.4byte	0
+ 553 0034 00000000 		.4byte	0
+ 554              		.section	.debug_ranges,"",%progbits
+ 555              	.Ldebug_ranges0:
+ 556 0000 00000000 		.4byte	.LFB0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 14
+
+
+ 557 0004 02000000 		.4byte	.LFE0
+ 558 0008 00000000 		.4byte	.LFB1
+ 559 000c 02000000 		.4byte	.LFE1
+ 560 0010 00000000 		.4byte	.LFB2
+ 561 0014 1C000000 		.4byte	.LFE2
+ 562 0018 00000000 		.4byte	.LFB3
+ 563 001c 14000000 		.4byte	.LFE3
+ 564 0020 00000000 		.4byte	0
+ 565 0024 00000000 		.4byte	0
+ 566              		.section	.debug_line,"",%progbits
+ 567              	.Ldebug_line0:
+ 568 0000 A9000000 		.section	.debug_str,"MS",%progbits,1
+ 568      02005A00 
+ 568      00000201 
+ 568      FB0E0D00 
+ 568      01010101 
+ 569              	.LASF19:
+ 570 0000 436F756E 		.ascii	"Counter_1_backupStruct\000"
+ 570      7465725F 
+ 570      315F6261 
+ 570      636B7570 
+ 570      53747275 
+ 571              	.LASF3:
+ 572 0017 73686F72 		.ascii	"short unsigned int\000"
+ 572      7420756E 
+ 572      7369676E 
+ 572      65642069 
+ 572      6E7400
+ 573              	.LASF17:
+ 574 002a 436F756E 		.ascii	"CounterUdb\000"
+ 574      74657255 
+ 574      646200
+ 575              	.LASF18:
+ 576 0035 436F756E 		.ascii	"CounterControlRegister\000"
+ 576      74657243 
+ 576      6F6E7472 
+ 576      6F6C5265 
+ 576      67697374 
+ 577              	.LASF29:
+ 578 004c 436F756E 		.ascii	"Counter_1_backup\000"
+ 578      7465725F 
+ 578      315F6261 
+ 578      636B7570 
+ 578      00
+ 579              	.LASF11:
+ 580 005d 666C6F61 		.ascii	"float\000"
+ 580      7400
+ 581              	.LASF1:
+ 582 0063 756E7369 		.ascii	"unsigned char\000"
+ 582      676E6564 
+ 582      20636861 
+ 582      7200
+ 583              	.LASF21:
+ 584 0071 436F756E 		.ascii	"Counter_1_RestoreConfig\000"
+ 584      7465725F 
+ 584      315F5265 
+ 584      73746F72 
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 15
+
+
+ 584      65436F6E 
+ 585              	.LASF14:
+ 586 0089 72656738 		.ascii	"reg8\000"
+ 586      00
+ 587              	.LASF5:
+ 588 008e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 588      20756E73 
+ 588      69676E65 
+ 588      6420696E 
+ 588      7400
+ 589              	.LASF9:
+ 590 00a0 75696E74 		.ascii	"uint8\000"
+ 590      3800
+ 591              	.LASF28:
+ 592 00a6 433A5C55 		.ascii	"C:\\Users\\Luke\\Desktop\\Laserschutzschaltung.cyds"
+ 592      73657273 
+ 592      5C4C756B 
+ 592      655C4465 
+ 592      736B746F 
+ 593 00d5 6E5C4C61 		.ascii	"n\\Laserschutzschaltung.cydsn\000"
+ 593      73657273 
+ 593      63687574 
+ 593      7A736368 
+ 593      616C7475 
+ 594              	.LASF12:
+ 595 00f2 646F7562 		.ascii	"double\000"
+ 595      6C6500
+ 596              	.LASF23:
+ 597 00f9 436F756E 		.ascii	"Counter_1_Wakeup\000"
+ 597      7465725F 
+ 597      315F5761 
+ 597      6B657570 
+ 597      00
+ 598              	.LASF2:
+ 599 010a 73686F72 		.ascii	"short int\000"
+ 599      7420696E 
+ 599      7400
+ 600              	.LASF10:
+ 601 0114 75696E74 		.ascii	"uint16\000"
+ 601      313600
+ 602              	.LASF8:
+ 603 011b 756E7369 		.ascii	"unsigned int\000"
+ 603      676E6564 
+ 603      20696E74 
+ 603      00
+ 604              	.LASF7:
+ 605 0128 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 605      206C6F6E 
+ 605      6720756E 
+ 605      7369676E 
+ 605      65642069 
+ 606              	.LASF22:
+ 607 013f 436F756E 		.ascii	"Counter_1_Sleep\000"
+ 607      7465725F 
+ 607      315F536C 
+ 607      65657000 
+ 608              	.LASF15:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 16
+
+
+ 609 014f 73697A65 		.ascii	"sizetype\000"
+ 609      74797065 
+ 609      00
+ 610              	.LASF16:
+ 611 0158 436F756E 		.ascii	"CounterEnableState\000"
+ 611      74657245 
+ 611      6E61626C 
+ 611      65537461 
+ 611      746500
+ 612              	.LASF6:
+ 613 016b 6C6F6E67 		.ascii	"long long int\000"
+ 613      206C6F6E 
+ 613      6720696E 
+ 613      7400
+ 614              	.LASF13:
+ 615 0179 63686172 		.ascii	"char\000"
+ 615      00
+ 616              	.LASF20:
+ 617 017e 436F756E 		.ascii	"Counter_1_SaveConfig\000"
+ 617      7465725F 
+ 617      315F5361 
+ 617      7665436F 
+ 617      6E666967 
+ 618              	.LASF26:
+ 619 0193 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 619      4320342E 
+ 619      372E3320 
+ 619      32303133 
+ 619      30333132 
+ 620 01c6 616E6368 		.ascii	"anch revision 196615]\000"
+ 620      20726576 
+ 620      6973696F 
+ 620      6E203139 
+ 620      36363135 
+ 621              	.LASF4:
+ 622 01dc 6C6F6E67 		.ascii	"long int\000"
+ 622      20696E74 
+ 622      00
+ 623              	.LASF25:
+ 624 01e5 436F756E 		.ascii	"Counter_1_Enable\000"
+ 624      7465725F 
+ 624      315F456E 
+ 624      61626C65 
+ 624      00
+ 625              	.LASF0:
+ 626 01f6 7369676E 		.ascii	"signed char\000"
+ 626      65642063 
+ 626      68617200 
+ 627              	.LASF24:
+ 628 0202 436F756E 		.ascii	"Counter_1_Stop\000"
+ 628      7465725F 
+ 628      315F5374 
+ 628      6F7000
+ 629              	.LASF27:
+ 630 0211 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Counter_1_PM.c\000"
+ 630      6E657261 
+ 630      7465645F 
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccBtEEbl.s 			page 17
+
+
+ 630      536F7572 
+ 630      63655C50 
+ 631              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

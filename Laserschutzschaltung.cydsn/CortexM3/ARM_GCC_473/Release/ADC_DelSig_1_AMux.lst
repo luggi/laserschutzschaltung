@@ -1,0 +1,973 @@
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"ADC_DelSig_1_AMux.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.ADC_DelSig_1_AMux_Start,"ax",%progbits
+  19              		.align	1
+  20              		.global	ADC_DelSig_1_AMux_Start
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	ADC_DelSig_1_AMux_Start, %function
+  24              	ADC_DelSig_1_AMux_Start:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\ADC_DelSig_1_AMux.c"
+   1:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * File Name: ADC_DelSig_1_AMux.c
+   3:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * Version 1.80
+   4:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *
+   5:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *  Description:
+   6:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *    This file contains all functions required for the analog multiplexer
+   7:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *    AMux User Module.
+   8:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *
+   9:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *   Note:
+  10:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *
+  11:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *******************************************************************************
+  12:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * Copyright 2008-2010, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** ********************************************************************************/
+  17:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** 
+  18:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** #include "ADC_DelSig_1_AMux.h"
+  19:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** 
+  20:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** static uint8 ADC_DelSig_1_AMux_lastChannel = ADC_DelSig_1_AMux_NULL_CHANNEL;
+  21:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** 
+  22:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** 
+  23:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** /*******************************************************************************
+  24:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * Function Name: ADC_DelSig_1_AMux_Start
+  25:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** ********************************************************************************
+  26:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * Summary:
+  27:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *  Disconnect all channels.
+  28:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *
+  29:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * Parameters:
+  30:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *  void
+  31:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * Return:
+  33:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *  void
+  34:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *
+  35:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *******************************************************************************/
+  36:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** void ADC_DelSig_1_AMux_Start(void) 
+  37:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** {
+  27              		.loc 1 37 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  32 0000 08B5     		push	{r3, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  38:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     uint8 chan;
+  39:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** 
+  40:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     for(chan = 0u; chan < ADC_DelSig_1_AMux_CHANNELS ; chan++)
+  41:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     {
+  42:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** #if (ADC_DelSig_1_AMux_MUXTYPE == ADC_DelSig_1_AMux_MUX_SINGLE)
+  43:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****         ADC_DelSig_1_AMux_Unset(chan);
+  37              		.loc 1 43 0
+  38 0002 0020     		movs	r0, #0
+  39 0004 FFF7FEFF 		bl	ADC_DelSig_1_AMux_Unset
+  40              	.LVL1:
+  41 0008 0120     		movs	r0, #1
+  42 000a FFF7FEFF 		bl	ADC_DelSig_1_AMux_Unset
+  43              	.LVL2:
+  44:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** #else
+  45:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****         ADC_DelSig_1_AMux_CYAMUXSIDE_A_Unset(chan);
+  46:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****         ADC_DelSig_1_AMux_CYAMUXSIDE_B_Unset(chan);
+  47:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** #endif
+  48:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     }
+  49:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** 
+  50:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     ADC_DelSig_1_AMux_lastChannel = ADC_DelSig_1_AMux_NULL_CHANNEL;
+  44              		.loc 1 50 0
+  45 000e 024B     		ldr	r3, .L2
+  46 0010 FF22     		movs	r2, #255
+  47 0012 1A70     		strb	r2, [r3, #0]
+  48 0014 08BD     		pop	{r3, pc}
+  49              	.L3:
+  50 0016 00BF     		.align	2
+  51              	.L2:
+  52 0018 00000000 		.word	.LANCHOR0
+  53              		.cfi_endproc
+  54              	.LFE0:
+  55              		.size	ADC_DelSig_1_AMux_Start, .-ADC_DelSig_1_AMux_Start
+  56              		.section	.text.ADC_DelSig_1_AMux_Select,"ax",%progbits
+  57              		.align	1
+  58              		.global	ADC_DelSig_1_AMux_Select
+  59              		.thumb
+  60              		.thumb_func
+  61              		.type	ADC_DelSig_1_AMux_Select, %function
+  62              	ADC_DelSig_1_AMux_Select:
+  63              	.LFB1:
+  51:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** }
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 3
+
+
+  52:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** 
+  53:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** 
+  54:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** #if (!ADC_DelSig_1_AMux_ATMOSTONE)
+  55:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** /*******************************************************************************
+  56:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * Function Name: ADC_DelSig_1_AMux_Select
+  57:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** ********************************************************************************
+  58:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * Summary:
+  59:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *  This functions first disconnects all channels then connects the given
+  60:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *  channel.
+  61:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *
+  62:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * Parameters:
+  63:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *  channel:  The channel to connect to the common terminal.
+  64:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *
+  65:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * Return:
+  66:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *  void
+  67:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *
+  68:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *******************************************************************************/
+  69:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** void ADC_DelSig_1_AMux_Select(uint8 channel) 
+  70:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** {
+  64              		.loc 1 70 0
+  65              		.cfi_startproc
+  66              		@ args = 0, pretend = 0, frame = 0
+  67              		@ frame_needed = 0, uses_anonymous_args = 0
+  68              	.LVL3:
+  69 0000 10B5     		push	{r4, lr}
+  70              	.LCFI1:
+  71              		.cfi_def_cfa_offset 8
+  72              		.cfi_offset 4, -8
+  73              		.cfi_offset 14, -4
+  74              		.loc 1 70 0
+  75 0002 0446     		mov	r4, r0
+  71:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     ADC_DelSig_1_AMux_DisconnectAll();        /* Disconnect all previous connections */
+  76              		.loc 1 71 0
+  77 0004 FFF7FEFF 		bl	ADC_DelSig_1_AMux_Start
+  78              	.LVL4:
+  72:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     ADC_DelSig_1_AMux_Connect(channel);       /* Make the given selection */
+  79              		.loc 1 72 0
+  80 0008 2046     		mov	r0, r4
+  81 000a FFF7FEFF 		bl	ADC_DelSig_1_AMux_Set
+  82              	.LVL5:
+  73:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     ADC_DelSig_1_AMux_lastChannel = channel;  /* Update last channel */
+  83              		.loc 1 73 0
+  84 000e 014B     		ldr	r3, .L5
+  85 0010 1C70     		strb	r4, [r3, #0]
+  86 0012 10BD     		pop	{r4, pc}
+  87              	.L6:
+  88              		.align	2
+  89              	.L5:
+  90 0014 00000000 		.word	.LANCHOR0
+  91              		.cfi_endproc
+  92              	.LFE1:
+  93              		.size	ADC_DelSig_1_AMux_Select, .-ADC_DelSig_1_AMux_Select
+  94              		.section	.text.ADC_DelSig_1_AMux_FastSelect,"ax",%progbits
+  95              		.align	1
+  96              		.global	ADC_DelSig_1_AMux_FastSelect
+  97              		.thumb
+  98              		.thumb_func
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 4
+
+
+  99              		.type	ADC_DelSig_1_AMux_FastSelect, %function
+ 100              	ADC_DelSig_1_AMux_FastSelect:
+ 101              	.LFB2:
+  74:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** }
+  75:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** #endif
+  76:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** 
+  77:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** 
+  78:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** /*******************************************************************************
+  79:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * Function Name: ADC_DelSig_1_AMux_FastSelect
+  80:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** ********************************************************************************
+  81:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * Summary:
+  82:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *  This function first disconnects the last connection made with FastSelect or
+  83:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *  Select, then connects the given channel. The FastSelect function is similar
+  84:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *  to the Select function, except it is faster since it only disconnects the
+  85:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *  last channel selected rather than all channels.
+  86:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *
+  87:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * Parameters:
+  88:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *  channel:  The channel to connect to the common terminal.
+  89:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *
+  90:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** * Return:
+  91:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *  void
+  92:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *
+  93:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** *******************************************************************************/
+  94:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** void ADC_DelSig_1_AMux_FastSelect(uint8 channel) 
+  95:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** {
+ 102              		.loc 1 95 0
+ 103              		.cfi_startproc
+ 104              		@ args = 0, pretend = 0, frame = 0
+ 105              		@ frame_needed = 0, uses_anonymous_args = 0
+ 106              	.LVL6:
+ 107 0000 38B5     		push	{r3, r4, r5, lr}
+ 108              	.LCFI2:
+ 109              		.cfi_def_cfa_offset 16
+ 110              		.cfi_offset 3, -16
+ 111              		.cfi_offset 4, -12
+ 112              		.cfi_offset 5, -8
+ 113              		.cfi_offset 14, -4
+  96:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     /* Disconnect the last valid channel */
+  97:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     if( ADC_DelSig_1_AMux_lastChannel != ADC_DelSig_1_AMux_NULL_CHANNEL)
+ 114              		.loc 1 97 0
+ 115 0002 064B     		ldr	r3, .L13
+  95:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** {
+ 116              		.loc 1 95 0
+ 117 0004 0446     		mov	r4, r0
+ 118              		.loc 1 97 0
+ 119 0006 1878     		ldrb	r0, [r3, #0]	@ zero_extendqisi2
+ 120              	.LVL7:
+ 121 0008 1D46     		mov	r5, r3
+ 122 000a FF28     		cmp	r0, #255
+ 123 000c 01D0     		beq	.L8
+  98:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     {
+  99:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****         ADC_DelSig_1_AMux_Disconnect(ADC_DelSig_1_AMux_lastChannel);
+ 124              		.loc 1 99 0
+ 125 000e FFF7FEFF 		bl	ADC_DelSig_1_AMux_Unset
+ 126              	.LVL8:
+ 127              	.L8:
+ 100:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     }
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 5
+
+
+ 101:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** 
+ 102:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     /* Make the new channel connection */
+ 103:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** #if (ADC_DelSig_1_AMux_MUXTYPE == ADC_DelSig_1_AMux_MUX_SINGLE)
+ 104:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     ADC_DelSig_1_AMux_Set(channel);
+ 128              		.loc 1 104 0
+ 129 0012 2046     		mov	r0, r4
+ 130 0014 FFF7FEFF 		bl	ADC_DelSig_1_AMux_Set
+ 131              	.LVL9:
+ 105:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** #else
+ 106:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     ADC_DelSig_1_AMux_CYAMUXSIDE_A_Set(channel);
+ 107:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     ADC_DelSig_1_AMux_CYAMUXSIDE_B_Set(channel);
+ 108:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** #endif
+ 109:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** 
+ 110:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c **** 
+ 111:.\Generated_Source\PSoC5/ADC_DelSig_1_AMux.c ****     ADC_DelSig_1_AMux_lastChannel = channel;   /* Update last channel */
+ 132              		.loc 1 111 0
+ 133 0018 2C70     		strb	r4, [r5, #0]
+ 134 001a 38BD     		pop	{r3, r4, r5, pc}
+ 135              	.L14:
+ 136              		.align	2
+ 137              	.L13:
+ 138 001c 00000000 		.word	.LANCHOR0
+ 139              		.cfi_endproc
+ 140              	.LFE2:
+ 141              		.size	ADC_DelSig_1_AMux_FastSelect, .-ADC_DelSig_1_AMux_FastSelect
+ 142              		.data
+ 143              		.set	.LANCHOR0,. + 0
+ 144              		.type	ADC_DelSig_1_AMux_lastChannel, %object
+ 145              		.size	ADC_DelSig_1_AMux_lastChannel, 1
+ 146              	ADC_DelSig_1_AMux_lastChannel:
+ 147 0000 FF       		.byte	-1
+ 148              		.text
+ 149              	.Letext0:
+ 150              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 151              		.file 3 ".\\Generated_Source\\PSoC5\\cyfitter_cfg.h"
+ 152              		.section	.debug_info,"",%progbits
+ 153              	.Ldebug_info0:
+ 154 0000 93010000 		.4byte	0x193
+ 155 0004 0200     		.2byte	0x2
+ 156 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 157 000a 04       		.byte	0x4
+ 158 000b 01       		.uleb128 0x1
+ 159 000c 54010000 		.4byte	.LASF18
+ 160 0010 01       		.byte	0x1
+ 161 0011 4D000000 		.4byte	.LASF19
+ 162 0015 9F000000 		.4byte	.LASF20
+ 163 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 164 001d 00000000 		.4byte	0
+ 165 0021 00000000 		.4byte	0
+ 166 0025 00000000 		.4byte	.Ldebug_line0
+ 167 0029 02       		.uleb128 0x2
+ 168 002a 01       		.byte	0x1
+ 169 002b 06       		.byte	0x6
+ 170 002c BE010000 		.4byte	.LASF0
+ 171 0030 02       		.uleb128 0x2
+ 172 0031 01       		.byte	0x1
+ 173 0032 08       		.byte	0x8
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 6
+
+
+ 174 0033 26000000 		.4byte	.LASF1
+ 175 0037 02       		.uleb128 0x2
+ 176 0038 02       		.byte	0x2
+ 177 0039 05       		.byte	0x5
+ 178 003a 44010000 		.4byte	.LASF2
+ 179 003e 02       		.uleb128 0x2
+ 180 003f 02       		.byte	0x2
+ 181 0040 07       		.byte	0x7
+ 182 0041 8C000000 		.4byte	.LASF3
+ 183 0045 02       		.uleb128 0x2
+ 184 0046 04       		.byte	0x4
+ 185 0047 05       		.byte	0x5
+ 186 0048 B5010000 		.4byte	.LASF4
+ 187 004c 02       		.uleb128 0x2
+ 188 004d 04       		.byte	0x4
+ 189 004e 07       		.byte	0x7
+ 190 004f 7A000000 		.4byte	.LASF5
+ 191 0053 02       		.uleb128 0x2
+ 192 0054 08       		.byte	0x8
+ 193 0055 05       		.byte	0x5
+ 194 0056 31010000 		.4byte	.LASF6
+ 195 005a 02       		.uleb128 0x2
+ 196 005b 08       		.byte	0x8
+ 197 005c 07       		.byte	0x7
+ 198 005d 15010000 		.4byte	.LASF7
+ 199 0061 03       		.uleb128 0x3
+ 200 0062 04       		.byte	0x4
+ 201 0063 05       		.byte	0x5
+ 202 0064 696E7400 		.ascii	"int\000"
+ 203 0068 02       		.uleb128 0x2
+ 204 0069 04       		.byte	0x4
+ 205 006a 07       		.byte	0x7
+ 206 006b 08010000 		.4byte	.LASF8
+ 207 006f 04       		.uleb128 0x4
+ 208 0070 4E010000 		.4byte	.LASF21
+ 209 0074 02       		.byte	0x2
+ 210 0075 5B       		.byte	0x5b
+ 211 0076 30000000 		.4byte	0x30
+ 212 007a 02       		.uleb128 0x2
+ 213 007b 04       		.byte	0x4
+ 214 007c 04       		.byte	0x4
+ 215 007d 20000000 		.4byte	.LASF9
+ 216 0081 02       		.uleb128 0x2
+ 217 0082 08       		.byte	0x8
+ 218 0083 04       		.byte	0x4
+ 219 0084 EB000000 		.4byte	.LASF10
+ 220 0088 02       		.uleb128 0x2
+ 221 0089 01       		.byte	0x1
+ 222 008a 08       		.byte	0x8
+ 223 008b 3F010000 		.4byte	.LASF11
+ 224 008f 05       		.uleb128 0x5
+ 225 0090 01       		.byte	0x1
+ 226 0091 08000000 		.4byte	.LASF12
+ 227 0095 01       		.byte	0x1
+ 228 0096 24       		.byte	0x24
+ 229 0097 01       		.byte	0x1
+ 230 0098 00000000 		.4byte	.LFB0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 7
+
+
+ 231 009c 1C000000 		.4byte	.LFE0
+ 232 00a0 00000000 		.4byte	.LLST0
+ 233 00a4 01       		.byte	0x1
+ 234 00a5 DB000000 		.4byte	0xdb
+ 235 00a9 06       		.uleb128 0x6
+ 236 00aa 2C010000 		.4byte	.LASF16
+ 237 00ae 01       		.byte	0x1
+ 238 00af 26       		.byte	0x26
+ 239 00b0 6F000000 		.4byte	0x6f
+ 240 00b4 20000000 		.4byte	.LLST1
+ 241 00b8 07       		.uleb128 0x7
+ 242 00b9 08000000 		.4byte	.LVL1
+ 243 00bd 72010000 		.4byte	0x172
+ 244 00c1 CB000000 		.4byte	0xcb
+ 245 00c5 08       		.uleb128 0x8
+ 246 00c6 01       		.byte	0x1
+ 247 00c7 50       		.byte	0x50
+ 248 00c8 01       		.byte	0x1
+ 249 00c9 30       		.byte	0x30
+ 250 00ca 00       		.byte	0
+ 251 00cb 09       		.uleb128 0x9
+ 252 00cc 0E000000 		.4byte	.LVL2
+ 253 00d0 72010000 		.4byte	0x172
+ 254 00d4 08       		.uleb128 0x8
+ 255 00d5 01       		.byte	0x1
+ 256 00d6 50       		.byte	0x50
+ 257 00d7 01       		.byte	0x1
+ 258 00d8 31       		.byte	0x31
+ 259 00d9 00       		.byte	0
+ 260 00da 00       		.byte	0
+ 261 00db 05       		.uleb128 0x5
+ 262 00dc 01       		.byte	0x1
+ 263 00dd 34000000 		.4byte	.LASF13
+ 264 00e1 01       		.byte	0x1
+ 265 00e2 45       		.byte	0x45
+ 266 00e3 01       		.byte	0x1
+ 267 00e4 00000000 		.4byte	.LFB1
+ 268 00e8 18000000 		.4byte	.LFE1
+ 269 00ec 4C000000 		.4byte	.LLST2
+ 270 00f0 01       		.byte	0x1
+ 271 00f1 1E010000 		.4byte	0x11e
+ 272 00f5 0A       		.uleb128 0xa
+ 273 00f6 00000000 		.4byte	.LASF15
+ 274 00fa 01       		.byte	0x1
+ 275 00fb 45       		.byte	0x45
+ 276 00fc 6F000000 		.4byte	0x6f
+ 277 0100 6C000000 		.4byte	.LLST3
+ 278 0104 0B       		.uleb128 0xb
+ 279 0105 08000000 		.4byte	.LVL4
+ 280 0109 8F000000 		.4byte	0x8f
+ 281 010d 09       		.uleb128 0x9
+ 282 010e 0E000000 		.4byte	.LVL5
+ 283 0112 86010000 		.4byte	0x186
+ 284 0116 08       		.uleb128 0x8
+ 285 0117 01       		.byte	0x1
+ 286 0118 50       		.byte	0x50
+ 287 0119 02       		.byte	0x2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 8
+
+
+ 288 011a 74       		.byte	0x74
+ 289 011b 00       		.sleb128 0
+ 290 011c 00       		.byte	0
+ 291 011d 00       		.byte	0
+ 292 011e 05       		.uleb128 0x5
+ 293 011f 01       		.byte	0x1
+ 294 0120 E8010000 		.4byte	.LASF14
+ 295 0124 01       		.byte	0x1
+ 296 0125 5E       		.byte	0x5e
+ 297 0126 01       		.byte	0x1
+ 298 0127 00000000 		.4byte	.LFB2
+ 299 012b 20000000 		.4byte	.LFE2
+ 300 012f 8D000000 		.4byte	.LLST4
+ 301 0133 01       		.byte	0x1
+ 302 0134 61010000 		.4byte	0x161
+ 303 0138 0A       		.uleb128 0xa
+ 304 0139 00000000 		.4byte	.LASF15
+ 305 013d 01       		.byte	0x1
+ 306 013e 5E       		.byte	0x5e
+ 307 013f 6F000000 		.4byte	0x6f
+ 308 0143 AD000000 		.4byte	.LLST5
+ 309 0147 0B       		.uleb128 0xb
+ 310 0148 12000000 		.4byte	.LVL8
+ 311 014c 72010000 		.4byte	0x172
+ 312 0150 09       		.uleb128 0x9
+ 313 0151 18000000 		.4byte	.LVL9
+ 314 0155 86010000 		.4byte	0x186
+ 315 0159 08       		.uleb128 0x8
+ 316 015a 01       		.byte	0x1
+ 317 015b 50       		.byte	0x50
+ 318 015c 02       		.byte	0x2
+ 319 015d 74       		.byte	0x74
+ 320 015e 00       		.sleb128 0
+ 321 015f 00       		.byte	0
+ 322 0160 00       		.byte	0
+ 323 0161 0C       		.uleb128 0xc
+ 324 0162 CA010000 		.4byte	.LASF17
+ 325 0166 01       		.byte	0x1
+ 326 0167 14       		.byte	0x14
+ 327 0168 6F000000 		.4byte	0x6f
+ 328 016c 05       		.byte	0x5
+ 329 016d 03       		.byte	0x3
+ 330 016e 00000000 		.4byte	ADC_DelSig_1_AMux_lastChannel
+ 331 0172 0D       		.uleb128 0xd
+ 332 0173 01       		.byte	0x1
+ 333 0174 9D010000 		.4byte	.LASF22
+ 334 0178 03       		.byte	0x3
+ 335 0179 19       		.byte	0x19
+ 336 017a 01       		.byte	0x1
+ 337 017b 01       		.byte	0x1
+ 338 017c 86010000 		.4byte	0x186
+ 339 0180 0E       		.uleb128 0xe
+ 340 0181 6F000000 		.4byte	0x6f
+ 341 0185 00       		.byte	0
+ 342 0186 0F       		.uleb128 0xf
+ 343 0187 01       		.byte	0x1
+ 344 0188 F2000000 		.4byte	.LASF23
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 9
+
+
+ 345 018c 03       		.byte	0x3
+ 346 018d 18       		.byte	0x18
+ 347 018e 01       		.byte	0x1
+ 348 018f 01       		.byte	0x1
+ 349 0190 0E       		.uleb128 0xe
+ 350 0191 6F000000 		.4byte	0x6f
+ 351 0195 00       		.byte	0
+ 352 0196 00       		.byte	0
+ 353              		.section	.debug_abbrev,"",%progbits
+ 354              	.Ldebug_abbrev0:
+ 355 0000 01       		.uleb128 0x1
+ 356 0001 11       		.uleb128 0x11
+ 357 0002 01       		.byte	0x1
+ 358 0003 25       		.uleb128 0x25
+ 359 0004 0E       		.uleb128 0xe
+ 360 0005 13       		.uleb128 0x13
+ 361 0006 0B       		.uleb128 0xb
+ 362 0007 03       		.uleb128 0x3
+ 363 0008 0E       		.uleb128 0xe
+ 364 0009 1B       		.uleb128 0x1b
+ 365 000a 0E       		.uleb128 0xe
+ 366 000b 55       		.uleb128 0x55
+ 367 000c 06       		.uleb128 0x6
+ 368 000d 11       		.uleb128 0x11
+ 369 000e 01       		.uleb128 0x1
+ 370 000f 52       		.uleb128 0x52
+ 371 0010 01       		.uleb128 0x1
+ 372 0011 10       		.uleb128 0x10
+ 373 0012 06       		.uleb128 0x6
+ 374 0013 00       		.byte	0
+ 375 0014 00       		.byte	0
+ 376 0015 02       		.uleb128 0x2
+ 377 0016 24       		.uleb128 0x24
+ 378 0017 00       		.byte	0
+ 379 0018 0B       		.uleb128 0xb
+ 380 0019 0B       		.uleb128 0xb
+ 381 001a 3E       		.uleb128 0x3e
+ 382 001b 0B       		.uleb128 0xb
+ 383 001c 03       		.uleb128 0x3
+ 384 001d 0E       		.uleb128 0xe
+ 385 001e 00       		.byte	0
+ 386 001f 00       		.byte	0
+ 387 0020 03       		.uleb128 0x3
+ 388 0021 24       		.uleb128 0x24
+ 389 0022 00       		.byte	0
+ 390 0023 0B       		.uleb128 0xb
+ 391 0024 0B       		.uleb128 0xb
+ 392 0025 3E       		.uleb128 0x3e
+ 393 0026 0B       		.uleb128 0xb
+ 394 0027 03       		.uleb128 0x3
+ 395 0028 08       		.uleb128 0x8
+ 396 0029 00       		.byte	0
+ 397 002a 00       		.byte	0
+ 398 002b 04       		.uleb128 0x4
+ 399 002c 16       		.uleb128 0x16
+ 400 002d 00       		.byte	0
+ 401 002e 03       		.uleb128 0x3
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 10
+
+
+ 402 002f 0E       		.uleb128 0xe
+ 403 0030 3A       		.uleb128 0x3a
+ 404 0031 0B       		.uleb128 0xb
+ 405 0032 3B       		.uleb128 0x3b
+ 406 0033 0B       		.uleb128 0xb
+ 407 0034 49       		.uleb128 0x49
+ 408 0035 13       		.uleb128 0x13
+ 409 0036 00       		.byte	0
+ 410 0037 00       		.byte	0
+ 411 0038 05       		.uleb128 0x5
+ 412 0039 2E       		.uleb128 0x2e
+ 413 003a 01       		.byte	0x1
+ 414 003b 3F       		.uleb128 0x3f
+ 415 003c 0C       		.uleb128 0xc
+ 416 003d 03       		.uleb128 0x3
+ 417 003e 0E       		.uleb128 0xe
+ 418 003f 3A       		.uleb128 0x3a
+ 419 0040 0B       		.uleb128 0xb
+ 420 0041 3B       		.uleb128 0x3b
+ 421 0042 0B       		.uleb128 0xb
+ 422 0043 27       		.uleb128 0x27
+ 423 0044 0C       		.uleb128 0xc
+ 424 0045 11       		.uleb128 0x11
+ 425 0046 01       		.uleb128 0x1
+ 426 0047 12       		.uleb128 0x12
+ 427 0048 01       		.uleb128 0x1
+ 428 0049 40       		.uleb128 0x40
+ 429 004a 06       		.uleb128 0x6
+ 430 004b 9742     		.uleb128 0x2117
+ 431 004d 0C       		.uleb128 0xc
+ 432 004e 01       		.uleb128 0x1
+ 433 004f 13       		.uleb128 0x13
+ 434 0050 00       		.byte	0
+ 435 0051 00       		.byte	0
+ 436 0052 06       		.uleb128 0x6
+ 437 0053 34       		.uleb128 0x34
+ 438 0054 00       		.byte	0
+ 439 0055 03       		.uleb128 0x3
+ 440 0056 0E       		.uleb128 0xe
+ 441 0057 3A       		.uleb128 0x3a
+ 442 0058 0B       		.uleb128 0xb
+ 443 0059 3B       		.uleb128 0x3b
+ 444 005a 0B       		.uleb128 0xb
+ 445 005b 49       		.uleb128 0x49
+ 446 005c 13       		.uleb128 0x13
+ 447 005d 02       		.uleb128 0x2
+ 448 005e 06       		.uleb128 0x6
+ 449 005f 00       		.byte	0
+ 450 0060 00       		.byte	0
+ 451 0061 07       		.uleb128 0x7
+ 452 0062 898201   		.uleb128 0x4109
+ 453 0065 01       		.byte	0x1
+ 454 0066 11       		.uleb128 0x11
+ 455 0067 01       		.uleb128 0x1
+ 456 0068 31       		.uleb128 0x31
+ 457 0069 13       		.uleb128 0x13
+ 458 006a 01       		.uleb128 0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 11
+
+
+ 459 006b 13       		.uleb128 0x13
+ 460 006c 00       		.byte	0
+ 461 006d 00       		.byte	0
+ 462 006e 08       		.uleb128 0x8
+ 463 006f 8A8201   		.uleb128 0x410a
+ 464 0072 00       		.byte	0
+ 465 0073 02       		.uleb128 0x2
+ 466 0074 0A       		.uleb128 0xa
+ 467 0075 9142     		.uleb128 0x2111
+ 468 0077 0A       		.uleb128 0xa
+ 469 0078 00       		.byte	0
+ 470 0079 00       		.byte	0
+ 471 007a 09       		.uleb128 0x9
+ 472 007b 898201   		.uleb128 0x4109
+ 473 007e 01       		.byte	0x1
+ 474 007f 11       		.uleb128 0x11
+ 475 0080 01       		.uleb128 0x1
+ 476 0081 31       		.uleb128 0x31
+ 477 0082 13       		.uleb128 0x13
+ 478 0083 00       		.byte	0
+ 479 0084 00       		.byte	0
+ 480 0085 0A       		.uleb128 0xa
+ 481 0086 05       		.uleb128 0x5
+ 482 0087 00       		.byte	0
+ 483 0088 03       		.uleb128 0x3
+ 484 0089 0E       		.uleb128 0xe
+ 485 008a 3A       		.uleb128 0x3a
+ 486 008b 0B       		.uleb128 0xb
+ 487 008c 3B       		.uleb128 0x3b
+ 488 008d 0B       		.uleb128 0xb
+ 489 008e 49       		.uleb128 0x49
+ 490 008f 13       		.uleb128 0x13
+ 491 0090 02       		.uleb128 0x2
+ 492 0091 06       		.uleb128 0x6
+ 493 0092 00       		.byte	0
+ 494 0093 00       		.byte	0
+ 495 0094 0B       		.uleb128 0xb
+ 496 0095 898201   		.uleb128 0x4109
+ 497 0098 00       		.byte	0
+ 498 0099 11       		.uleb128 0x11
+ 499 009a 01       		.uleb128 0x1
+ 500 009b 31       		.uleb128 0x31
+ 501 009c 13       		.uleb128 0x13
+ 502 009d 00       		.byte	0
+ 503 009e 00       		.byte	0
+ 504 009f 0C       		.uleb128 0xc
+ 505 00a0 34       		.uleb128 0x34
+ 506 00a1 00       		.byte	0
+ 507 00a2 03       		.uleb128 0x3
+ 508 00a3 0E       		.uleb128 0xe
+ 509 00a4 3A       		.uleb128 0x3a
+ 510 00a5 0B       		.uleb128 0xb
+ 511 00a6 3B       		.uleb128 0x3b
+ 512 00a7 0B       		.uleb128 0xb
+ 513 00a8 49       		.uleb128 0x49
+ 514 00a9 13       		.uleb128 0x13
+ 515 00aa 02       		.uleb128 0x2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 12
+
+
+ 516 00ab 0A       		.uleb128 0xa
+ 517 00ac 00       		.byte	0
+ 518 00ad 00       		.byte	0
+ 519 00ae 0D       		.uleb128 0xd
+ 520 00af 2E       		.uleb128 0x2e
+ 521 00b0 01       		.byte	0x1
+ 522 00b1 3F       		.uleb128 0x3f
+ 523 00b2 0C       		.uleb128 0xc
+ 524 00b3 03       		.uleb128 0x3
+ 525 00b4 0E       		.uleb128 0xe
+ 526 00b5 3A       		.uleb128 0x3a
+ 527 00b6 0B       		.uleb128 0xb
+ 528 00b7 3B       		.uleb128 0x3b
+ 529 00b8 0B       		.uleb128 0xb
+ 530 00b9 27       		.uleb128 0x27
+ 531 00ba 0C       		.uleb128 0xc
+ 532 00bb 3C       		.uleb128 0x3c
+ 533 00bc 0C       		.uleb128 0xc
+ 534 00bd 01       		.uleb128 0x1
+ 535 00be 13       		.uleb128 0x13
+ 536 00bf 00       		.byte	0
+ 537 00c0 00       		.byte	0
+ 538 00c1 0E       		.uleb128 0xe
+ 539 00c2 05       		.uleb128 0x5
+ 540 00c3 00       		.byte	0
+ 541 00c4 49       		.uleb128 0x49
+ 542 00c5 13       		.uleb128 0x13
+ 543 00c6 00       		.byte	0
+ 544 00c7 00       		.byte	0
+ 545 00c8 0F       		.uleb128 0xf
+ 546 00c9 2E       		.uleb128 0x2e
+ 547 00ca 01       		.byte	0x1
+ 548 00cb 3F       		.uleb128 0x3f
+ 549 00cc 0C       		.uleb128 0xc
+ 550 00cd 03       		.uleb128 0x3
+ 551 00ce 0E       		.uleb128 0xe
+ 552 00cf 3A       		.uleb128 0x3a
+ 553 00d0 0B       		.uleb128 0xb
+ 554 00d1 3B       		.uleb128 0x3b
+ 555 00d2 0B       		.uleb128 0xb
+ 556 00d3 27       		.uleb128 0x27
+ 557 00d4 0C       		.uleb128 0xc
+ 558 00d5 3C       		.uleb128 0x3c
+ 559 00d6 0C       		.uleb128 0xc
+ 560 00d7 00       		.byte	0
+ 561 00d8 00       		.byte	0
+ 562 00d9 00       		.byte	0
+ 563              		.section	.debug_loc,"",%progbits
+ 564              	.Ldebug_loc0:
+ 565              	.LLST0:
+ 566 0000 00000000 		.4byte	.LFB0
+ 567 0004 02000000 		.4byte	.LCFI0
+ 568 0008 0200     		.2byte	0x2
+ 569 000a 7D       		.byte	0x7d
+ 570 000b 00       		.sleb128 0
+ 571 000c 02000000 		.4byte	.LCFI0
+ 572 0010 1C000000 		.4byte	.LFE0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 13
+
+
+ 573 0014 0200     		.2byte	0x2
+ 574 0016 7D       		.byte	0x7d
+ 575 0017 08       		.sleb128 8
+ 576 0018 00000000 		.4byte	0
+ 577 001c 00000000 		.4byte	0
+ 578              	.LLST1:
+ 579 0020 00000000 		.4byte	.LVL0
+ 580 0024 08000000 		.4byte	.LVL1
+ 581 0028 0200     		.2byte	0x2
+ 582 002a 30       		.byte	0x30
+ 583 002b 9F       		.byte	0x9f
+ 584 002c 08000000 		.4byte	.LVL1
+ 585 0030 0E000000 		.4byte	.LVL2
+ 586 0034 0200     		.2byte	0x2
+ 587 0036 31       		.byte	0x31
+ 588 0037 9F       		.byte	0x9f
+ 589 0038 0E000000 		.4byte	.LVL2
+ 590 003c 1C000000 		.4byte	.LFE0
+ 591 0040 0200     		.2byte	0x2
+ 592 0042 32       		.byte	0x32
+ 593 0043 9F       		.byte	0x9f
+ 594 0044 00000000 		.4byte	0
+ 595 0048 00000000 		.4byte	0
+ 596              	.LLST2:
+ 597 004c 00000000 		.4byte	.LFB1
+ 598 0050 02000000 		.4byte	.LCFI1
+ 599 0054 0200     		.2byte	0x2
+ 600 0056 7D       		.byte	0x7d
+ 601 0057 00       		.sleb128 0
+ 602 0058 02000000 		.4byte	.LCFI1
+ 603 005c 18000000 		.4byte	.LFE1
+ 604 0060 0200     		.2byte	0x2
+ 605 0062 7D       		.byte	0x7d
+ 606 0063 08       		.sleb128 8
+ 607 0064 00000000 		.4byte	0
+ 608 0068 00000000 		.4byte	0
+ 609              	.LLST3:
+ 610 006c 00000000 		.4byte	.LVL3
+ 611 0070 07000000 		.4byte	.LVL4-1
+ 612 0074 0100     		.2byte	0x1
+ 613 0076 50       		.byte	0x50
+ 614 0077 07000000 		.4byte	.LVL4-1
+ 615 007b 18000000 		.4byte	.LFE1
+ 616 007f 0400     		.2byte	0x4
+ 617 0081 F3       		.byte	0xf3
+ 618 0082 01       		.uleb128 0x1
+ 619 0083 50       		.byte	0x50
+ 620 0084 9F       		.byte	0x9f
+ 621 0085 00000000 		.4byte	0
+ 622 0089 00000000 		.4byte	0
+ 623              	.LLST4:
+ 624 008d 00000000 		.4byte	.LFB2
+ 625 0091 02000000 		.4byte	.LCFI2
+ 626 0095 0200     		.2byte	0x2
+ 627 0097 7D       		.byte	0x7d
+ 628 0098 00       		.sleb128 0
+ 629 0099 02000000 		.4byte	.LCFI2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 14
+
+
+ 630 009d 20000000 		.4byte	.LFE2
+ 631 00a1 0200     		.2byte	0x2
+ 632 00a3 7D       		.byte	0x7d
+ 633 00a4 10       		.sleb128 16
+ 634 00a5 00000000 		.4byte	0
+ 635 00a9 00000000 		.4byte	0
+ 636              	.LLST5:
+ 637 00ad 00000000 		.4byte	.LVL6
+ 638 00b1 08000000 		.4byte	.LVL7
+ 639 00b5 0100     		.2byte	0x1
+ 640 00b7 50       		.byte	0x50
+ 641 00b8 08000000 		.4byte	.LVL7
+ 642 00bc 20000000 		.4byte	.LFE2
+ 643 00c0 0400     		.2byte	0x4
+ 644 00c2 F3       		.byte	0xf3
+ 645 00c3 01       		.uleb128 0x1
+ 646 00c4 50       		.byte	0x50
+ 647 00c5 9F       		.byte	0x9f
+ 648 00c6 00000000 		.4byte	0
+ 649 00ca 00000000 		.4byte	0
+ 650              		.section	.debug_aranges,"",%progbits
+ 651 0000 2C000000 		.4byte	0x2c
+ 652 0004 0200     		.2byte	0x2
+ 653 0006 00000000 		.4byte	.Ldebug_info0
+ 654 000a 04       		.byte	0x4
+ 655 000b 00       		.byte	0
+ 656 000c 0000     		.2byte	0
+ 657 000e 0000     		.2byte	0
+ 658 0010 00000000 		.4byte	.LFB0
+ 659 0014 1C000000 		.4byte	.LFE0-.LFB0
+ 660 0018 00000000 		.4byte	.LFB1
+ 661 001c 18000000 		.4byte	.LFE1-.LFB1
+ 662 0020 00000000 		.4byte	.LFB2
+ 663 0024 20000000 		.4byte	.LFE2-.LFB2
+ 664 0028 00000000 		.4byte	0
+ 665 002c 00000000 		.4byte	0
+ 666              		.section	.debug_ranges,"",%progbits
+ 667              	.Ldebug_ranges0:
+ 668 0000 00000000 		.4byte	.LFB0
+ 669 0004 1C000000 		.4byte	.LFE0
+ 670 0008 00000000 		.4byte	.LFB1
+ 671 000c 18000000 		.4byte	.LFE1
+ 672 0010 00000000 		.4byte	.LFB2
+ 673 0014 20000000 		.4byte	.LFE2
+ 674 0018 00000000 		.4byte	0
+ 675 001c 00000000 		.4byte	0
+ 676              		.section	.debug_line,"",%progbits
+ 677              	.Ldebug_line0:
+ 678 0000 A3000000 		.section	.debug_str,"MS",%progbits,1
+ 678      02006200 
+ 678      00000201 
+ 678      FB0E0D00 
+ 678      01010101 
+ 679              	.LASF15:
+ 680 0000 6368616E 		.ascii	"channel\000"
+ 680      6E656C00 
+ 681              	.LASF12:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 15
+
+
+ 682 0008 4144435F 		.ascii	"ADC_DelSig_1_AMux_Start\000"
+ 682      44656C53 
+ 682      69675F31 
+ 682      5F414D75 
+ 682      785F5374 
+ 683              	.LASF9:
+ 684 0020 666C6F61 		.ascii	"float\000"
+ 684      7400
+ 685              	.LASF1:
+ 686 0026 756E7369 		.ascii	"unsigned char\000"
+ 686      676E6564 
+ 686      20636861 
+ 686      7200
+ 687              	.LASF13:
+ 688 0034 4144435F 		.ascii	"ADC_DelSig_1_AMux_Select\000"
+ 688      44656C53 
+ 688      69675F31 
+ 688      5F414D75 
+ 688      785F5365 
+ 689              	.LASF19:
+ 690 004d 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\ADC_DelSig_1_AMux.c\000"
+ 690      6E657261 
+ 690      7465645F 
+ 690      536F7572 
+ 690      63655C50 
+ 691              	.LASF5:
+ 692 007a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 692      20756E73 
+ 692      69676E65 
+ 692      6420696E 
+ 692      7400
+ 693              	.LASF3:
+ 694 008c 73686F72 		.ascii	"short unsigned int\000"
+ 694      7420756E 
+ 694      7369676E 
+ 694      65642069 
+ 694      6E7400
+ 695              	.LASF20:
+ 696 009f 433A5C55 		.ascii	"C:\\Users\\Luke\\Desktop\\Laserschutzschaltung.cyds"
+ 696      73657273 
+ 696      5C4C756B 
+ 696      655C4465 
+ 696      736B746F 
+ 697 00ce 6E5C4C61 		.ascii	"n\\Laserschutzschaltung.cydsn\000"
+ 697      73657273 
+ 697      63687574 
+ 697      7A736368 
+ 697      616C7475 
+ 698              	.LASF10:
+ 699 00eb 646F7562 		.ascii	"double\000"
+ 699      6C6500
+ 700              	.LASF23:
+ 701 00f2 4144435F 		.ascii	"ADC_DelSig_1_AMux_Set\000"
+ 701      44656C53 
+ 701      69675F31 
+ 701      5F414D75 
+ 701      785F5365 
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 16
+
+
+ 702              	.LASF8:
+ 703 0108 756E7369 		.ascii	"unsigned int\000"
+ 703      676E6564 
+ 703      20696E74 
+ 703      00
+ 704              	.LASF7:
+ 705 0115 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 705      206C6F6E 
+ 705      6720756E 
+ 705      7369676E 
+ 705      65642069 
+ 706              	.LASF16:
+ 707 012c 6368616E 		.ascii	"chan\000"
+ 707      00
+ 708              	.LASF6:
+ 709 0131 6C6F6E67 		.ascii	"long long int\000"
+ 709      206C6F6E 
+ 709      6720696E 
+ 709      7400
+ 710              	.LASF11:
+ 711 013f 63686172 		.ascii	"char\000"
+ 711      00
+ 712              	.LASF2:
+ 713 0144 73686F72 		.ascii	"short int\000"
+ 713      7420696E 
+ 713      7400
+ 714              	.LASF21:
+ 715 014e 75696E74 		.ascii	"uint8\000"
+ 715      3800
+ 716              	.LASF18:
+ 717 0154 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 717      4320342E 
+ 717      372E3320 
+ 717      32303133 
+ 717      30333132 
+ 718 0187 616E6368 		.ascii	"anch revision 196615]\000"
+ 718      20726576 
+ 718      6973696F 
+ 718      6E203139 
+ 718      36363135 
+ 719              	.LASF22:
+ 720 019d 4144435F 		.ascii	"ADC_DelSig_1_AMux_Unset\000"
+ 720      44656C53 
+ 720      69675F31 
+ 720      5F414D75 
+ 720      785F556E 
+ 721              	.LASF4:
+ 722 01b5 6C6F6E67 		.ascii	"long int\000"
+ 722      20696E74 
+ 722      00
+ 723              	.LASF0:
+ 724 01be 7369676E 		.ascii	"signed char\000"
+ 724      65642063 
+ 724      68617200 
+ 725              	.LASF17:
+ 726 01ca 4144435F 		.ascii	"ADC_DelSig_1_AMux_lastChannel\000"
+ 726      44656C53 
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccYJrMHj.s 			page 17
+
+
+ 726      69675F31 
+ 726      5F414D75 
+ 726      785F6C61 
+ 727              	.LASF14:
+ 728 01e8 4144435F 		.ascii	"ADC_DelSig_1_AMux_FastSelect\000"
+ 728      44656C53 
+ 728      69675F31 
+ 728      5F414D75 
+ 728      785F4661 
+ 729              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

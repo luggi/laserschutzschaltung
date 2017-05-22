@@ -1,0 +1,3738 @@
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"EEPROM_1.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.EEPROM_1_Enable,"ax",%progbits
+  19              		.align	1
+  20              		.global	EEPROM_1_Enable
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	EEPROM_1_Enable, %function
+  24              	EEPROM_1_Enable:
+  25              	.LFB0:
+  26              		.file 1 "Generated_Source\\PSoC5\\EEPROM_1.c"
+   1:Generated_Source\PSoC5/EEPROM_1.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/EEPROM_1.c **** * File Name: EEPROM_1.c
+   3:Generated_Source\PSoC5/EEPROM_1.c **** * Version 3.0
+   4:Generated_Source\PSoC5/EEPROM_1.c **** *
+   5:Generated_Source\PSoC5/EEPROM_1.c **** *  Description:
+   6:Generated_Source\PSoC5/EEPROM_1.c **** *   Provides the source code to the API for the EEPROM component.
+   7:Generated_Source\PSoC5/EEPROM_1.c **** *
+   8:Generated_Source\PSoC5/EEPROM_1.c **** ********************************************************************************
+   9:Generated_Source\PSoC5/EEPROM_1.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  10:Generated_Source\PSoC5/EEPROM_1.c **** * You may use this file only in accordance with the license, terms, conditions,
+  11:Generated_Source\PSoC5/EEPROM_1.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  12:Generated_Source\PSoC5/EEPROM_1.c **** * the software package with which this file was provided.
+  13:Generated_Source\PSoC5/EEPROM_1.c **** *******************************************************************************/
+  14:Generated_Source\PSoC5/EEPROM_1.c **** 
+  15:Generated_Source\PSoC5/EEPROM_1.c **** #include "EEPROM_1.h"
+  16:Generated_Source\PSoC5/EEPROM_1.c **** 
+  17:Generated_Source\PSoC5/EEPROM_1.c **** 
+  18:Generated_Source\PSoC5/EEPROM_1.c **** /*******************************************************************************
+  19:Generated_Source\PSoC5/EEPROM_1.c **** * Function Name: EEPROM_1_Enable
+  20:Generated_Source\PSoC5/EEPROM_1.c **** ********************************************************************************
+  21:Generated_Source\PSoC5/EEPROM_1.c **** *
+  22:Generated_Source\PSoC5/EEPROM_1.c **** * Summary:
+  23:Generated_Source\PSoC5/EEPROM_1.c **** *  Enable the EEPROM block. Also reads the temperature and stores it for
+  24:Generated_Source\PSoC5/EEPROM_1.c **** *  future writes.
+  25:Generated_Source\PSoC5/EEPROM_1.c **** *
+  26:Generated_Source\PSoC5/EEPROM_1.c **** * Parameters:
+  27:Generated_Source\PSoC5/EEPROM_1.c **** *  None
+  28:Generated_Source\PSoC5/EEPROM_1.c **** *
+  29:Generated_Source\PSoC5/EEPROM_1.c **** * Return:
+  30:Generated_Source\PSoC5/EEPROM_1.c **** *  None
+  31:Generated_Source\PSoC5/EEPROM_1.c **** *
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 2
+
+
+  32:Generated_Source\PSoC5/EEPROM_1.c **** *******************************************************************************/
+  33:Generated_Source\PSoC5/EEPROM_1.c **** void EEPROM_1_Enable(void) 
+  34:Generated_Source\PSoC5/EEPROM_1.c **** {
+  27              		.loc 1 34 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
+  35:Generated_Source\PSoC5/EEPROM_1.c ****     /* Read temperature value */
+  36:Generated_Source\PSoC5/EEPROM_1.c ****     (void)CySetTemp();
+  35              		.loc 1 36 0
+  36 0002 FFF7FEFF 		bl	CySetTemp
+  37              	.LVL0:
+  37:Generated_Source\PSoC5/EEPROM_1.c **** 
+  38:Generated_Source\PSoC5/EEPROM_1.c ****     /* Start EEPROM block */
+  39:Generated_Source\PSoC5/EEPROM_1.c ****     CyEEPROM_Start();
+  40:Generated_Source\PSoC5/EEPROM_1.c **** }
+  38              		.loc 1 40 0
+  39 0006 BDE80840 		pop	{r3, lr}
+  40              		.cfi_restore 14
+  41              		.cfi_restore 3
+  42              		.cfi_def_cfa_offset 0
+  39:Generated_Source\PSoC5/EEPROM_1.c **** }
+  43              		.loc 1 39 0
+  44 000a FFF7FEBF 		b	CyEEPROM_Start
+  45              	.LVL1:
+  46              		.cfi_endproc
+  47              	.LFE0:
+  48              		.size	EEPROM_1_Enable, .-EEPROM_1_Enable
+  49              		.section	.text.EEPROM_1_Start,"ax",%progbits
+  50              		.align	1
+  51              		.global	EEPROM_1_Start
+  52              		.thumb
+  53              		.thumb_func
+  54              		.type	EEPROM_1_Start, %function
+  55              	EEPROM_1_Start:
+  56              	.LFB1:
+  41:Generated_Source\PSoC5/EEPROM_1.c **** 
+  42:Generated_Source\PSoC5/EEPROM_1.c **** 
+  43:Generated_Source\PSoC5/EEPROM_1.c **** /*******************************************************************************
+  44:Generated_Source\PSoC5/EEPROM_1.c **** * Function Name: EEPROM_1_Start
+  45:Generated_Source\PSoC5/EEPROM_1.c **** ********************************************************************************
+  46:Generated_Source\PSoC5/EEPROM_1.c **** *
+  47:Generated_Source\PSoC5/EEPROM_1.c **** * Summary:
+  48:Generated_Source\PSoC5/EEPROM_1.c **** *  Starts EEPROM.
+  49:Generated_Source\PSoC5/EEPROM_1.c **** *
+  50:Generated_Source\PSoC5/EEPROM_1.c **** * Parameters:
+  51:Generated_Source\PSoC5/EEPROM_1.c **** *  None
+  52:Generated_Source\PSoC5/EEPROM_1.c **** *
+  53:Generated_Source\PSoC5/EEPROM_1.c **** * Return:
+  54:Generated_Source\PSoC5/EEPROM_1.c **** *  None
+  55:Generated_Source\PSoC5/EEPROM_1.c **** *
+  56:Generated_Source\PSoC5/EEPROM_1.c **** *******************************************************************************/
+  57:Generated_Source\PSoC5/EEPROM_1.c **** void EEPROM_1_Start(void) 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 3
+
+
+  58:Generated_Source\PSoC5/EEPROM_1.c **** {
+  57              		.loc 1 58 0
+  58              		.cfi_startproc
+  59              		@ args = 0, pretend = 0, frame = 0
+  60              		@ frame_needed = 0, uses_anonymous_args = 0
+  61              		@ link register save eliminated.
+  59:Generated_Source\PSoC5/EEPROM_1.c ****     EEPROM_1_Enable();
+  62              		.loc 1 59 0
+  63 0000 FFF7FEBF 		b	EEPROM_1_Enable
+  64              	.LVL2:
+  65              		.cfi_endproc
+  66              	.LFE1:
+  67              		.size	EEPROM_1_Start, .-EEPROM_1_Start
+  68              		.section	.text.EEPROM_1_Stop,"ax",%progbits
+  69              		.align	1
+  70              		.global	EEPROM_1_Stop
+  71              		.thumb
+  72              		.thumb_func
+  73              		.type	EEPROM_1_Stop, %function
+  74              	EEPROM_1_Stop:
+  75              	.LFB2:
+  60:Generated_Source\PSoC5/EEPROM_1.c **** }
+  61:Generated_Source\PSoC5/EEPROM_1.c **** 
+  62:Generated_Source\PSoC5/EEPROM_1.c **** 
+  63:Generated_Source\PSoC5/EEPROM_1.c **** /*******************************************************************************
+  64:Generated_Source\PSoC5/EEPROM_1.c **** * Function Name: EEPROM_1_Stop
+  65:Generated_Source\PSoC5/EEPROM_1.c **** ********************************************************************************
+  66:Generated_Source\PSoC5/EEPROM_1.c **** *
+  67:Generated_Source\PSoC5/EEPROM_1.c **** * Summary:
+  68:Generated_Source\PSoC5/EEPROM_1.c **** *  Stops and powers down EEPROM.
+  69:Generated_Source\PSoC5/EEPROM_1.c **** *
+  70:Generated_Source\PSoC5/EEPROM_1.c **** * Parameters:
+  71:Generated_Source\PSoC5/EEPROM_1.c **** *  None
+  72:Generated_Source\PSoC5/EEPROM_1.c **** *
+  73:Generated_Source\PSoC5/EEPROM_1.c **** * Return:
+  74:Generated_Source\PSoC5/EEPROM_1.c **** *  None
+  75:Generated_Source\PSoC5/EEPROM_1.c **** *
+  76:Generated_Source\PSoC5/EEPROM_1.c **** *******************************************************************************/
+  77:Generated_Source\PSoC5/EEPROM_1.c **** void EEPROM_1_Stop (void) 
+  78:Generated_Source\PSoC5/EEPROM_1.c **** {
+  76              		.loc 1 78 0
+  77              		.cfi_startproc
+  78              		@ args = 0, pretend = 0, frame = 0
+  79              		@ frame_needed = 0, uses_anonymous_args = 0
+  80              		@ link register save eliminated.
+  79:Generated_Source\PSoC5/EEPROM_1.c ****     /* Stop and power down EEPROM block */
+  80:Generated_Source\PSoC5/EEPROM_1.c ****     CyEEPROM_Stop();
+  81              		.loc 1 80 0
+  82 0000 FFF7FEBF 		b	CyEEPROM_Stop
+  83              	.LVL3:
+  84              		.cfi_endproc
+  85              	.LFE2:
+  86              		.size	EEPROM_1_Stop, .-EEPROM_1_Stop
+  87              		.section	.text.EEPROM_1_WriteByte,"ax",%progbits
+  88              		.align	1
+  89              		.global	EEPROM_1_WriteByte
+  90              		.thumb
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 4
+
+
+  91              		.thumb_func
+  92              		.type	EEPROM_1_WriteByte, %function
+  93              	EEPROM_1_WriteByte:
+  94              	.LFB3:
+  81:Generated_Source\PSoC5/EEPROM_1.c **** }
+  82:Generated_Source\PSoC5/EEPROM_1.c **** 
+  83:Generated_Source\PSoC5/EEPROM_1.c **** 
+  84:Generated_Source\PSoC5/EEPROM_1.c **** /*******************************************************************************
+  85:Generated_Source\PSoC5/EEPROM_1.c **** * Function Name: EEPROM_1_WriteByte
+  86:Generated_Source\PSoC5/EEPROM_1.c **** ********************************************************************************
+  87:Generated_Source\PSoC5/EEPROM_1.c **** *
+  88:Generated_Source\PSoC5/EEPROM_1.c **** * Summary:
+  89:Generated_Source\PSoC5/EEPROM_1.c **** *  Writes a byte of data to the EEPROM. This function blocks until
+  90:Generated_Source\PSoC5/EEPROM_1.c **** *  the function is complete. For a reliable write procedure to occur you should
+  91:Generated_Source\PSoC5/EEPROM_1.c **** *  call EEPROM_1_UpdateTemperature() function if the temperature of the
+  92:Generated_Source\PSoC5/EEPROM_1.c **** *  silicon has been changed for more than 10C since the component was started.
+  93:Generated_Source\PSoC5/EEPROM_1.c **** *
+  94:Generated_Source\PSoC5/EEPROM_1.c **** * Parameters:
+  95:Generated_Source\PSoC5/EEPROM_1.c **** *  dataByte:  The byte of data to write to the EEPROM
+  96:Generated_Source\PSoC5/EEPROM_1.c **** *  address:   The address of data to be written. The maximum address is dependent
+  97:Generated_Source\PSoC5/EEPROM_1.c **** *             on the EEPROM size.
+  98:Generated_Source\PSoC5/EEPROM_1.c **** *
+  99:Generated_Source\PSoC5/EEPROM_1.c **** * Return:
+ 100:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_SUCCESS, if the operation was successful.
+ 101:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_BAD_PARAM, if the parameter sectorNumber is out of range.
+ 102:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_LOCKED, if the SPC is being used.
+ 103:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_UNKNOWN, if there was an SPC error.
+ 104:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 105:Generated_Source\PSoC5/EEPROM_1.c **** *******************************************************************************/
+ 106:Generated_Source\PSoC5/EEPROM_1.c **** cystatus EEPROM_1_WriteByte(uint8 dataByte, uint16 address) 
+ 107:Generated_Source\PSoC5/EEPROM_1.c **** {
+  95              		.loc 1 107 0
+  96              		.cfi_startproc
+  97              		@ args = 0, pretend = 0, frame = 8
+  98              		@ frame_needed = 0, uses_anonymous_args = 0
+  99              	.LVL4:
+ 100 0000 37B5     		push	{r0, r1, r2, r4, r5, lr}
+ 101              		.cfi_def_cfa_offset 24
+ 102              		.cfi_offset 4, -12
+ 103              		.cfi_offset 5, -8
+ 104              		.cfi_offset 14, -4
+ 105              		.loc 1 107 0
+ 106 0002 0C46     		mov	r4, r1
+ 107 0004 8DF80700 		strb	r0, [sp, #7]
+ 108:Generated_Source\PSoC5/EEPROM_1.c ****     cystatus status;
+ 109:Generated_Source\PSoC5/EEPROM_1.c ****     uint16 rowNumber;
+ 110:Generated_Source\PSoC5/EEPROM_1.c ****     uint16 byteNumber;
+ 111:Generated_Source\PSoC5/EEPROM_1.c ****     
+ 112:Generated_Source\PSoC5/EEPROM_1.c ****     CySpcStart();
+ 108              		.loc 1 112 0
+ 109 0008 FFF7FEFF 		bl	CySpcStart
+ 110              	.LVL5:
+ 113:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 114:Generated_Source\PSoC5/EEPROM_1.c ****     if (address < CY_EEPROM_SIZE)
+ 111              		.loc 1 114 0
+ 112 000c B4F5006F 		cmp	r4, #2048
+ 113 0010 24D2     		bcs	.L13
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 5
+
+
+ 114              	.LVL6:
+ 115:Generated_Source\PSoC5/EEPROM_1.c ****     {
+ 116:Generated_Source\PSoC5/EEPROM_1.c ****         rowNumber = address/(uint16)CY_EEPROM_SIZEOF_ROW;
+ 117:Generated_Source\PSoC5/EEPROM_1.c ****         byteNumber = address - (rowNumber * ((uint16)CY_EEPROM_SIZEOF_ROW));
+ 118:Generated_Source\PSoC5/EEPROM_1.c ****         if(CYRET_SUCCESS == CySpcLock())
+ 115              		.loc 1 118 0
+ 116 0012 FFF7FEFF 		bl	CySpcLock
+ 117              	.LVL7:
+ 118 0016 18BB     		cbnz	r0, .L14
+ 116:Generated_Source\PSoC5/EEPROM_1.c ****         byteNumber = address - (rowNumber * ((uint16)CY_EEPROM_SIZEOF_ROW));
+ 119              		.loc 1 116 0
+ 120 0018 2509     		lsrs	r5, r4, #4
+ 117:Generated_Source\PSoC5/EEPROM_1.c ****         if(CYRET_SUCCESS == CySpcLock())
+ 121              		.loc 1 117 0
+ 122 001a C5EB0531 		rsb	r1, r5, r5, lsl #12
+ 123 001e 04EB0111 		add	r1, r4, r1, lsl #4
+ 119:Generated_Source\PSoC5/EEPROM_1.c ****         {
+ 120:Generated_Source\PSoC5/EEPROM_1.c ****             status = CySpcLoadMultiByte(CY_SPC_FIRST_EE_ARRAYID, byteNumber, &dataByte, \
+ 124              		.loc 1 120 0
+ 125 0022 4020     		movs	r0, #64
+ 126 0024 89B2     		uxth	r1, r1
+ 127 0026 0DF10702 		add	r2, sp, #7
+ 128              	.LVL8:
+ 129 002a 0123     		movs	r3, #1
+ 130 002c FFF7FEFF 		bl	CySpcLoadMultiByte
+ 131              	.LVL9:
+ 121:Generated_Source\PSoC5/EEPROM_1.c ****                                                                     EEPROM_1_SPC_BYTE_WRITE_SIZE);
+ 122:Generated_Source\PSoC5/EEPROM_1.c ****             if (CYRET_STARTED == status)
+ 132              		.loc 1 122 0
+ 133 0030 0728     		cmp	r0, #7
+ 120:Generated_Source\PSoC5/EEPROM_1.c ****                                                                     EEPROM_1_SPC_BYTE_WRITE_SIZE);
+ 134              		.loc 1 120 0
+ 135 0032 0446     		mov	r4, r0
+ 136              	.LVL10:
+ 137              		.loc 1 122 0
+ 138 0034 0DD1     		bne	.L6
+ 139              	.L7:
+ 123:Generated_Source\PSoC5/EEPROM_1.c ****             {
+ 124:Generated_Source\PSoC5/EEPROM_1.c ****                 /* Plan for failure */
+ 125:Generated_Source\PSoC5/EEPROM_1.c ****                 status = CYRET_UNKNOWN;
+ 126:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 127:Generated_Source\PSoC5/EEPROM_1.c ****                 while(CY_SPC_BUSY)
+ 140              		.loc 1 127 0 discriminator 1
+ 141 0036 184C     		ldr	r4, .L26
+ 142 0038 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 143 003a 9B07     		lsls	r3, r3, #30
+ 144 003c FBD5     		bpl	.L7
+ 128:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 129:Generated_Source\PSoC5/EEPROM_1.c ****                     /* Wait until SPC becomes idle */
+ 130:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 131:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 132:Generated_Source\PSoC5/EEPROM_1.c ****                 if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 145              		.loc 1 132 0
+ 146 003e 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 147 0040 9807     		lsls	r0, r3, #30
+ 148              	.LVL11:
+ 149 0042 02D4     		bmi	.L8
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 6
+
+
+ 150              	.L11:
+ 133:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 134:Generated_Source\PSoC5/EEPROM_1.c ****                     status = CYRET_SUCCESS;
+ 135:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 136:Generated_Source\PSoC5/EEPROM_1.c ****                 /* Command to erase and program the row. */
+ 137:Generated_Source\PSoC5/EEPROM_1.c ****                 if(CYRET_SUCCESS == status)
+ 138:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 139:Generated_Source\PSoC5/EEPROM_1.c ****                     if(CySpcWriteRow(CY_SPC_FIRST_EE_ARRAYID, (uint16)rowNumber, dieTemperature[0u]
+ 140:Generated_Source\PSoC5/EEPROM_1.c ****                     dieTemperature[1u]) == CYRET_STARTED)
+ 141:Generated_Source\PSoC5/EEPROM_1.c ****                     {
+ 142:Generated_Source\PSoC5/EEPROM_1.c ****                         /* Plan for failure */
+ 143:Generated_Source\PSoC5/EEPROM_1.c ****                         status = CYRET_UNKNOWN;
+ 144:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 145:Generated_Source\PSoC5/EEPROM_1.c ****                         while(CY_SPC_BUSY)
+ 146:Generated_Source\PSoC5/EEPROM_1.c ****                         {
+ 147:Generated_Source\PSoC5/EEPROM_1.c ****                             /* Wait until SPC becomes idle */
+ 148:Generated_Source\PSoC5/EEPROM_1.c ****                         }
+ 149:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 150:Generated_Source\PSoC5/EEPROM_1.c ****                         /* SPC is idle now */
+ 151:Generated_Source\PSoC5/EEPROM_1.c ****                         if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 152:Generated_Source\PSoC5/EEPROM_1.c ****                         {
+ 153:Generated_Source\PSoC5/EEPROM_1.c ****                             status = CYRET_SUCCESS;
+ 154:Generated_Source\PSoC5/EEPROM_1.c ****                         }
+ 155:Generated_Source\PSoC5/EEPROM_1.c ****                     }
+ 156:Generated_Source\PSoC5/EEPROM_1.c ****                     else
+ 157:Generated_Source\PSoC5/EEPROM_1.c ****                     {
+ 158:Generated_Source\PSoC5/EEPROM_1.c ****                         status = CYRET_UNKNOWN;
+ 159:Generated_Source\PSoC5/EEPROM_1.c ****                     }
+ 160:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 161:Generated_Source\PSoC5/EEPROM_1.c ****                 else
+ 162:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 163:Generated_Source\PSoC5/EEPROM_1.c ****                     status = CYRET_UNKNOWN;
+ 151              		.loc 1 163 0
+ 152 0044 4FF0FF34 		mov	r4, #-1
+ 153 0048 05E0     		b	.L9
+ 154              	.L8:
+ 132:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 155              		.loc 1 132 0 discriminator 1
+ 156 004a 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 157 004c 9B08     		lsrs	r3, r3, #2
+ 158 004e 09D0     		beq	.L10
+ 159 0050 F8E7     		b	.L11
+ 160              	.LVL12:
+ 161              	.L6:
+ 164:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 165:Generated_Source\PSoC5/EEPROM_1.c ****             }
+ 166:Generated_Source\PSoC5/EEPROM_1.c ****             else
+ 167:Generated_Source\PSoC5/EEPROM_1.c ****             {
+ 168:Generated_Source\PSoC5/EEPROM_1.c ****                 if (CYRET_BAD_PARAM != status)
+ 162              		.loc 1 168 0
+ 163 0052 0128     		cmp	r0, #1
+ 164 0054 F6D1     		bne	.L11
+ 165              	.LVL13:
+ 166              	.L9:
+ 169:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 170:Generated_Source\PSoC5/EEPROM_1.c ****                     status = CYRET_UNKNOWN;
+ 171:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 7
+
+
+ 172:Generated_Source\PSoC5/EEPROM_1.c ****             }
+ 173:Generated_Source\PSoC5/EEPROM_1.c ****             CySpcUnlock();
+ 167              		.loc 1 173 0
+ 168 0056 FFF7FEFF 		bl	CySpcUnlock
+ 169              	.LVL14:
+ 170 005a 1AE0     		b	.L24
+ 171              	.LVL15:
+ 172              	.L13:
+ 174:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 175:Generated_Source\PSoC5/EEPROM_1.c ****         else
+ 176:Generated_Source\PSoC5/EEPROM_1.c ****         {
+ 177:Generated_Source\PSoC5/EEPROM_1.c ****             status = CYRET_LOCKED;
+ 178:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 179:Generated_Source\PSoC5/EEPROM_1.c ****     }
+ 180:Generated_Source\PSoC5/EEPROM_1.c ****     else
+ 181:Generated_Source\PSoC5/EEPROM_1.c ****     {
+ 182:Generated_Source\PSoC5/EEPROM_1.c ****         status = CYRET_BAD_PARAM;
+ 173              		.loc 1 182 0
+ 174 005c 0124     		movs	r4, #1
+ 175 005e 18E0     		b	.L24
+ 176              	.LVL16:
+ 177              	.L14:
+ 177:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 178              		.loc 1 177 0
+ 179 0060 0424     		movs	r4, #4
+ 180              	.LVL17:
+ 181 0062 16E0     		b	.L24
+ 182              	.LVL18:
+ 183              	.L10:
+ 139:Generated_Source\PSoC5/EEPROM_1.c ****                     dieTemperature[1u]) == CYRET_STARTED)
+ 184              		.loc 1 139 0
+ 185 0064 0D4B     		ldr	r3, .L26+4
+ 186 0066 4020     		movs	r0, #64
+ 187 0068 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 188 006a 2946     		mov	r1, r5
+ 189 006c 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 190 006e FFF7FEFF 		bl	CySpcWriteRow
+ 191              	.LVL19:
+ 192 0072 0728     		cmp	r0, #7
+ 193 0074 E6D1     		bne	.L11
+ 194              	.L12:
+ 145:Generated_Source\PSoC5/EEPROM_1.c ****                         {
+ 195              		.loc 1 145 0 discriminator 1
+ 196 0076 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
+ 197 0078 074B     		ldr	r3, .L26
+ 198 007a 9107     		lsls	r1, r2, #30
+ 199 007c FBD5     		bpl	.L12
+ 151:Generated_Source\PSoC5/EEPROM_1.c ****                         {
+ 200              		.loc 1 151 0
+ 201 007e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 202 0080 9207     		lsls	r2, r2, #30
+ 203 0082 DFD5     		bpl	.L11
+ 151:Generated_Source\PSoC5/EEPROM_1.c ****                         {
+ 204              		.loc 1 151 0 is_stmt 0 discriminator 1
+ 205 0084 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 206 0086 9B08     		lsrs	r3, r3, #2
+ 207 0088 14BF     		ite	ne
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 8
+
+
+ 208 008a 4FF0FF34 		movne	r4, #-1
+ 209 008e 0024     		moveq	r4, #0
+ 210 0090 E1E7     		b	.L9
+ 211              	.LVL20:
+ 212              	.L24:
+ 183:Generated_Source\PSoC5/EEPROM_1.c ****     }
+ 184:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 185:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 186:Generated_Source\PSoC5/EEPROM_1.c ****     return (status);
+ 187:Generated_Source\PSoC5/EEPROM_1.c **** }
+ 213              		.loc 1 187 0 is_stmt 1
+ 214 0092 2046     		mov	r0, r4
+ 215 0094 03B0     		add	sp, sp, #12
+ 216              		.cfi_def_cfa_offset 12
+ 217              		@ sp needed
+ 218 0096 30BD     		pop	{r4, r5, pc}
+ 219              	.LVL21:
+ 220              	.L27:
+ 221              		.align	2
+ 222              	.L26:
+ 223 0098 22470040 		.word	1073760034
+ 224 009c 00000000 		.word	dieTemperature
+ 225              		.cfi_endproc
+ 226              	.LFE3:
+ 227              		.size	EEPROM_1_WriteByte, .-EEPROM_1_WriteByte
+ 228              		.section	.text.EEPROM_1_ReadByte,"ax",%progbits
+ 229              		.align	1
+ 230              		.global	EEPROM_1_ReadByte
+ 231              		.thumb
+ 232              		.thumb_func
+ 233              		.type	EEPROM_1_ReadByte, %function
+ 234              	EEPROM_1_ReadByte:
+ 235              	.LFB4:
+ 188:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 189:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 190:Generated_Source\PSoC5/EEPROM_1.c **** /*******************************************************************************
+ 191:Generated_Source\PSoC5/EEPROM_1.c **** * Function Name: EEPROM_1_ReadByte
+ 192:Generated_Source\PSoC5/EEPROM_1.c **** ********************************************************************************
+ 193:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 194:Generated_Source\PSoC5/EEPROM_1.c **** * Summary:
+ 195:Generated_Source\PSoC5/EEPROM_1.c **** *  Reads and returns a byte of data from the on-chip EEPROM memory. Although
+ 196:Generated_Source\PSoC5/EEPROM_1.c **** *  the data is present in the CPU memory space, this function provides an
+ 197:Generated_Source\PSoC5/EEPROM_1.c **** *  intuitive user interface, addressing the EEPROM memory as a separate block with
+ 198:Generated_Source\PSoC5/EEPROM_1.c **** *  the first EERPOM byte address equal to 0x0000.
+ 199:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 200:Generated_Source\PSoC5/EEPROM_1.c **** * Parameters:
+ 201:Generated_Source\PSoC5/EEPROM_1.c **** *  address:   The address of data to be read. The maximum address is limited by the
+ 202:Generated_Source\PSoC5/EEPROM_1.c **** *             size of the EEPROM array on a specific device.
+ 203:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 204:Generated_Source\PSoC5/EEPROM_1.c **** * Return:
+ 205:Generated_Source\PSoC5/EEPROM_1.c **** *  Data located at an address.
+ 206:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 207:Generated_Source\PSoC5/EEPROM_1.c **** *******************************************************************************/
+ 208:Generated_Source\PSoC5/EEPROM_1.c **** uint8 EEPROM_1_ReadByte(uint16 address) 
+ 209:Generated_Source\PSoC5/EEPROM_1.c **** {
+ 236              		.loc 1 209 0
+ 237              		.cfi_startproc
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 9
+
+
+ 238              		@ args = 0, pretend = 0, frame = 0
+ 239              		@ frame_needed = 0, uses_anonymous_args = 0
+ 240              	.LVL22:
+ 241 0000 38B5     		push	{r3, r4, r5, lr}
+ 242              		.cfi_def_cfa_offset 16
+ 243              		.cfi_offset 3, -16
+ 244              		.cfi_offset 4, -12
+ 245              		.cfi_offset 5, -8
+ 246              		.cfi_offset 14, -4
+ 247              		.loc 1 209 0
+ 248 0002 0446     		mov	r4, r0
+ 210:Generated_Source\PSoC5/EEPROM_1.c ****     uint8 retByte;
+ 211:Generated_Source\PSoC5/EEPROM_1.c ****     uint8 interruptState;
+ 212:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 213:Generated_Source\PSoC5/EEPROM_1.c ****     interruptState = CyEnterCriticalSection();
+ 249              		.loc 1 213 0
+ 250 0004 FFF7FEFF 		bl	CyEnterCriticalSection
+ 251              	.LVL23:
+ 252 0008 0546     		mov	r5, r0
+ 253              	.LVL24:
+ 214:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 215:Generated_Source\PSoC5/EEPROM_1.c ****     /* Request access to EEPROM for reading.
+ 216:Generated_Source\PSoC5/EEPROM_1.c ****     This is needed to reserve PHUB for read operation from EEPROM */
+ 217:Generated_Source\PSoC5/EEPROM_1.c ****     CyEEPROM_ReadReserve();
+ 254              		.loc 1 217 0
+ 255 000a FFF7FEFF 		bl	CyEEPROM_ReadReserve
+ 256              	.LVL25:
+ 218:Generated_Source\PSoC5/EEPROM_1.c ****     
+ 219:Generated_Source\PSoC5/EEPROM_1.c ****     retByte = *((reg8 *) (CYDEV_EE_BASE + address));
+ 257              		.loc 1 219 0
+ 258 000e 04F18043 		add	r3, r4, #1073741824
+ 259 0012 03F50043 		add	r3, r3, #32768
+ 260 0016 1C78     		ldrb	r4, [r3]	@ zero_extendqisi2
+ 220:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 221:Generated_Source\PSoC5/EEPROM_1.c ****     /* Release EEPROM array */
+ 222:Generated_Source\PSoC5/EEPROM_1.c ****     CyEEPROM_ReadRelease();
+ 261              		.loc 1 222 0
+ 262 0018 FFF7FEFF 		bl	CyEEPROM_ReadRelease
+ 263              	.LVL26:
+ 219:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 264              		.loc 1 219 0
+ 265 001c E4B2     		uxtb	r4, r4
+ 266              	.LVL27:
+ 223:Generated_Source\PSoC5/EEPROM_1.c ****     
+ 224:Generated_Source\PSoC5/EEPROM_1.c ****     CyExitCriticalSection(interruptState);
+ 267              		.loc 1 224 0
+ 268 001e 2846     		mov	r0, r5
+ 269 0020 FFF7FEFF 		bl	CyExitCriticalSection
+ 270              	.LVL28:
+ 225:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 226:Generated_Source\PSoC5/EEPROM_1.c ****     return (retByte);
+ 227:Generated_Source\PSoC5/EEPROM_1.c **** }
+ 271              		.loc 1 227 0
+ 272 0024 2046     		mov	r0, r4
+ 273 0026 38BD     		pop	{r3, r4, r5, pc}
+ 274              		.cfi_endproc
+ 275              	.LFE4:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 10
+
+
+ 276              		.size	EEPROM_1_ReadByte, .-EEPROM_1_ReadByte
+ 277              		.section	.text.EEPROM_1_UpdateTemperature,"ax",%progbits
+ 278              		.align	1
+ 279              		.global	EEPROM_1_UpdateTemperature
+ 280              		.thumb
+ 281              		.thumb_func
+ 282              		.type	EEPROM_1_UpdateTemperature, %function
+ 283              	EEPROM_1_UpdateTemperature:
+ 284              	.LFB5:
+ 228:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 229:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 230:Generated_Source\PSoC5/EEPROM_1.c **** /*******************************************************************************
+ 231:Generated_Source\PSoC5/EEPROM_1.c **** * Function Name: EEPROM_1_UpdateTemperature
+ 232:Generated_Source\PSoC5/EEPROM_1.c **** ********************************************************************************
+ 233:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 234:Generated_Source\PSoC5/EEPROM_1.c **** * Summary:
+ 235:Generated_Source\PSoC5/EEPROM_1.c **** *  Updates and stores the temperature value. This function should be called
+ 236:Generated_Source\PSoC5/EEPROM_1.c **** *  before EEPROM writes if the temperature may have been changed by more than
+ 237:Generated_Source\PSoC5/EEPROM_1.c **** *  10 degrees Celsius.
+ 238:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 239:Generated_Source\PSoC5/EEPROM_1.c **** * Parameters:
+ 240:Generated_Source\PSoC5/EEPROM_1.c **** *  None
+ 241:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 242:Generated_Source\PSoC5/EEPROM_1.c **** * Return:
+ 243:Generated_Source\PSoC5/EEPROM_1.c **** *  Status of operation, 0 if operation complete, non-zero value if error
+ 244:Generated_Source\PSoC5/EEPROM_1.c **** *  was detected.
+ 245:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 246:Generated_Source\PSoC5/EEPROM_1.c **** *******************************************************************************/
+ 247:Generated_Source\PSoC5/EEPROM_1.c **** uint8 EEPROM_1_UpdateTemperature(void) 
+ 248:Generated_Source\PSoC5/EEPROM_1.c **** {
+ 285              		.loc 1 248 0
+ 286              		.cfi_startproc
+ 287              		@ args = 0, pretend = 0, frame = 0
+ 288              		@ frame_needed = 0, uses_anonymous_args = 0
+ 289 0000 08B5     		push	{r3, lr}
+ 290              		.cfi_def_cfa_offset 8
+ 291              		.cfi_offset 3, -8
+ 292              		.cfi_offset 14, -4
+ 249:Generated_Source\PSoC5/EEPROM_1.c ****     return ((uint8)CySetTemp());
+ 293              		.loc 1 249 0
+ 294 0002 FFF7FEFF 		bl	CySetTemp
+ 295              	.LVL29:
+ 250:Generated_Source\PSoC5/EEPROM_1.c **** }
+ 296              		.loc 1 250 0
+ 297 0006 C0B2     		uxtb	r0, r0
+ 298 0008 08BD     		pop	{r3, pc}
+ 299              		.cfi_endproc
+ 300              	.LFE5:
+ 301              		.size	EEPROM_1_UpdateTemperature, .-EEPROM_1_UpdateTemperature
+ 302              		.section	.text.EEPROM_1_EraseSector,"ax",%progbits
+ 303              		.align	1
+ 304              		.global	EEPROM_1_EraseSector
+ 305              		.thumb
+ 306              		.thumb_func
+ 307              		.type	EEPROM_1_EraseSector, %function
+ 308              	EEPROM_1_EraseSector:
+ 309              	.LFB6:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 11
+
+
+ 251:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 252:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 253:Generated_Source\PSoC5/EEPROM_1.c **** /*******************************************************************************
+ 254:Generated_Source\PSoC5/EEPROM_1.c **** * Function Name: EEPROM_1_EraseSector
+ 255:Generated_Source\PSoC5/EEPROM_1.c **** ********************************************************************************
+ 256:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 257:Generated_Source\PSoC5/EEPROM_1.c **** * Summary:
+ 258:Generated_Source\PSoC5/EEPROM_1.c **** *  Erase an EEPROM sector (64 rows). This function blocks until the erase
+ 259:Generated_Source\PSoC5/EEPROM_1.c **** *  operation is complete. Using this API helps to erase the EEPROM sector at
+ 260:Generated_Source\PSoC5/EEPROM_1.c **** *  a time. This is faster than using individual writes but affects a cycle
+ 261:Generated_Source\PSoC5/EEPROM_1.c **** *  recourse of the whole EEPROM row.
+ 262:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 263:Generated_Source\PSoC5/EEPROM_1.c **** * Parameters:
+ 264:Generated_Source\PSoC5/EEPROM_1.c **** *  sectorNumber:  The sector number to erase.
+ 265:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 266:Generated_Source\PSoC5/EEPROM_1.c **** * Return:
+ 267:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_SUCCESS, if the operation was successful.
+ 268:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_BAD_PARAM, if the parameter sectorNumber is out of range.
+ 269:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_LOCKED, if the SPC is being used.
+ 270:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_UNKNOWN, if there was an SPC error.
+ 271:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 272:Generated_Source\PSoC5/EEPROM_1.c **** *******************************************************************************/
+ 273:Generated_Source\PSoC5/EEPROM_1.c **** cystatus EEPROM_1_EraseSector(uint8 sectorNumber) 
+ 274:Generated_Source\PSoC5/EEPROM_1.c **** {
+ 310              		.loc 1 274 0
+ 311              		.cfi_startproc
+ 312              		@ args = 0, pretend = 0, frame = 0
+ 313              		@ frame_needed = 0, uses_anonymous_args = 0
+ 314              	.LVL30:
+ 315 0000 10B5     		push	{r4, lr}
+ 316              		.cfi_def_cfa_offset 8
+ 317              		.cfi_offset 4, -8
+ 318              		.cfi_offset 14, -4
+ 319              		.loc 1 274 0
+ 320 0002 0446     		mov	r4, r0
+ 275:Generated_Source\PSoC5/EEPROM_1.c ****     cystatus status;
+ 276:Generated_Source\PSoC5/EEPROM_1.c ****     
+ 277:Generated_Source\PSoC5/EEPROM_1.c ****     CySpcStart();
+ 321              		.loc 1 277 0
+ 322 0004 FFF7FEFF 		bl	CySpcStart
+ 323              	.LVL31:
+ 278:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 279:Generated_Source\PSoC5/EEPROM_1.c ****     if(sectorNumber < (uint8) EEPROM_1_SECTORS_NUMBER)
+ 324              		.loc 1 279 0
+ 325 0008 012C     		cmp	r4, #1
+ 326 000a 1BD8     		bhi	.L34
+ 280:Generated_Source\PSoC5/EEPROM_1.c ****     {
+ 281:Generated_Source\PSoC5/EEPROM_1.c ****         /* See if we can get SPC. */
+ 282:Generated_Source\PSoC5/EEPROM_1.c ****         if(CySpcLock() == CYRET_SUCCESS)
+ 327              		.loc 1 282 0
+ 328 000c FFF7FEFF 		bl	CySpcLock
+ 329              	.LVL32:
+ 330 0010 D0B9     		cbnz	r0, .L35
+ 283:Generated_Source\PSoC5/EEPROM_1.c ****         {
+ 284:Generated_Source\PSoC5/EEPROM_1.c ****             if(CySpcEraseSector(CY_SPC_FIRST_EE_ARRAYID, sectorNumber) == CYRET_STARTED)
+ 331              		.loc 1 284 0
+ 332 0012 4020     		movs	r0, #64
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 12
+
+
+ 333 0014 2146     		mov	r1, r4
+ 334 0016 FFF7FEFF 		bl	CySpcEraseSector
+ 335              	.LVL33:
+ 336 001a 0728     		cmp	r0, #7
+ 337 001c 0DD1     		bne	.L37
+ 338              	.L33:
+ 285:Generated_Source\PSoC5/EEPROM_1.c ****             {
+ 286:Generated_Source\PSoC5/EEPROM_1.c ****                 /* Plan for failure */
+ 287:Generated_Source\PSoC5/EEPROM_1.c ****                 status = CYRET_UNKNOWN;
+ 288:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 289:Generated_Source\PSoC5/EEPROM_1.c ****                 while(CY_SPC_BUSY)
+ 339              		.loc 1 289 0 discriminator 1
+ 340 001e 0C4B     		ldr	r3, .L40
+ 341 0020 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 342 0022 9107     		lsls	r1, r2, #30
+ 343 0024 FBD5     		bpl	.L33
+ 290:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 291:Generated_Source\PSoC5/EEPROM_1.c ****                     /* Wait until SPC becomes idle */
+ 292:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 293:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 294:Generated_Source\PSoC5/EEPROM_1.c ****                 /* SPC is idle now */
+ 295:Generated_Source\PSoC5/EEPROM_1.c ****                 if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 344              		.loc 1 295 0
+ 345 0026 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 346 0028 9207     		lsls	r2, r2, #30
+ 347 002a 06D5     		bpl	.L37
+ 348              		.loc 1 295 0 is_stmt 0 discriminator 1
+ 349 002c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 350 002e 9B08     		lsrs	r3, r3, #2
+ 351 0030 14BF     		ite	ne
+ 352 0032 4FF0FF34 		movne	r4, #-1
+ 353 0036 0024     		moveq	r4, #0
+ 354 0038 01E0     		b	.L32
+ 355              	.L37:
+ 296:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 297:Generated_Source\PSoC5/EEPROM_1.c ****                     status = CYRET_SUCCESS;
+ 298:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 299:Generated_Source\PSoC5/EEPROM_1.c ****             }
+ 300:Generated_Source\PSoC5/EEPROM_1.c ****             else
+ 301:Generated_Source\PSoC5/EEPROM_1.c ****             {
+ 302:Generated_Source\PSoC5/EEPROM_1.c ****                 status = CYRET_UNKNOWN;
+ 356              		.loc 1 302 0 is_stmt 1
+ 357 003a 4FF0FF34 		mov	r4, #-1
+ 358              	.L32:
+ 359              	.LVL34:
+ 303:Generated_Source\PSoC5/EEPROM_1.c ****             }
+ 304:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 305:Generated_Source\PSoC5/EEPROM_1.c ****             /* Unlock SPC so that someone else can use it. */
+ 306:Generated_Source\PSoC5/EEPROM_1.c ****             CySpcUnlock();
+ 360              		.loc 1 306 0
+ 361 003e FFF7FEFF 		bl	CySpcUnlock
+ 362              	.LVL35:
+ 363 0042 02E0     		b	.L31
+ 364              	.LVL36:
+ 365              	.L34:
+ 307:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 308:Generated_Source\PSoC5/EEPROM_1.c ****         else
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 13
+
+
+ 309:Generated_Source\PSoC5/EEPROM_1.c ****         {
+ 310:Generated_Source\PSoC5/EEPROM_1.c ****             status = CYRET_LOCKED;
+ 311:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 312:Generated_Source\PSoC5/EEPROM_1.c ****     }
+ 313:Generated_Source\PSoC5/EEPROM_1.c ****     else
+ 314:Generated_Source\PSoC5/EEPROM_1.c ****     {
+ 315:Generated_Source\PSoC5/EEPROM_1.c ****         status = CYRET_BAD_PARAM;
+ 366              		.loc 1 315 0
+ 367 0044 0124     		movs	r4, #1
+ 368 0046 00E0     		b	.L31
+ 369              	.L35:
+ 310:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 370              		.loc 1 310 0
+ 371 0048 0424     		movs	r4, #4
+ 372              	.L31:
+ 373              	.LVL37:
+ 316:Generated_Source\PSoC5/EEPROM_1.c ****     }
+ 317:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 318:Generated_Source\PSoC5/EEPROM_1.c ****     return(status);
+ 319:Generated_Source\PSoC5/EEPROM_1.c **** }
+ 374              		.loc 1 319 0
+ 375 004a 2046     		mov	r0, r4
+ 376 004c 10BD     		pop	{r4, pc}
+ 377              	.LVL38:
+ 378              	.L41:
+ 379 004e 00BF     		.align	2
+ 380              	.L40:
+ 381 0050 22470040 		.word	1073760034
+ 382              		.cfi_endproc
+ 383              	.LFE6:
+ 384              		.size	EEPROM_1_EraseSector, .-EEPROM_1_EraseSector
+ 385              		.section	.text.EEPROM_1_Write,"ax",%progbits
+ 386              		.align	1
+ 387              		.global	EEPROM_1_Write
+ 388              		.thumb
+ 389              		.thumb_func
+ 390              		.type	EEPROM_1_Write, %function
+ 391              	EEPROM_1_Write:
+ 392              	.LFB7:
+ 320:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 321:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 322:Generated_Source\PSoC5/EEPROM_1.c **** /*******************************************************************************
+ 323:Generated_Source\PSoC5/EEPROM_1.c **** * Function Name: EEPROM_1_Write
+ 324:Generated_Source\PSoC5/EEPROM_1.c **** ********************************************************************************
+ 325:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 326:Generated_Source\PSoC5/EEPROM_1.c **** * Summary:
+ 327:Generated_Source\PSoC5/EEPROM_1.c **** *  Writes a row (16 bytes) of data to the EEPROM. This function blocks until
+ 328:Generated_Source\PSoC5/EEPROM_1.c **** *  the write operation is complete. Compared to functions that write one byte,
+ 329:Generated_Source\PSoC5/EEPROM_1.c **** *  this function allows writing a whole row (16 bytes) at a time. For
+ 330:Generated_Source\PSoC5/EEPROM_1.c **** *  a reliable write procedure to occur you should call the
+ 331:Generated_Source\PSoC5/EEPROM_1.c **** *  EEPROM_1_UpdateTemperature() function if the temperature of the
+ 332:Generated_Source\PSoC5/EEPROM_1.c **** *  silicon has changed for more than 10C since component was started.
+ 333:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 334:Generated_Source\PSoC5/EEPROM_1.c **** * Parameters:
+ 335:Generated_Source\PSoC5/EEPROM_1.c **** *  rowData:    The address of the data to write to the EEPROM.
+ 336:Generated_Source\PSoC5/EEPROM_1.c **** *  rowNumber:  The row number to write.
+ 337:Generated_Source\PSoC5/EEPROM_1.c **** *
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 14
+
+
+ 338:Generated_Source\PSoC5/EEPROM_1.c **** * Return:
+ 339:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_SUCCESS, if the operation was successful.
+ 340:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_BAD_PARAM, if the parameter rowNumber is out of range.
+ 341:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_LOCKED, if the SPC is being used.
+ 342:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_UNKNOWN, if there was an SPC error.
+ 343:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 344:Generated_Source\PSoC5/EEPROM_1.c **** *******************************************************************************/
+ 345:Generated_Source\PSoC5/EEPROM_1.c **** cystatus EEPROM_1_Write(const uint8 * rowData, uint8 rowNumber) 
+ 346:Generated_Source\PSoC5/EEPROM_1.c **** {
+ 393              		.loc 1 346 0
+ 394              		.cfi_startproc
+ 395              		@ args = 0, pretend = 0, frame = 0
+ 396              		@ frame_needed = 0, uses_anonymous_args = 0
+ 397              	.LVL39:
+ 398 0000 38B5     		push	{r3, r4, r5, lr}
+ 399              		.cfi_def_cfa_offset 16
+ 400              		.cfi_offset 3, -16
+ 401              		.cfi_offset 4, -12
+ 402              		.cfi_offset 5, -8
+ 403              		.cfi_offset 14, -4
+ 404              		.loc 1 346 0
+ 405 0002 0D46     		mov	r5, r1
+ 406 0004 0446     		mov	r4, r0
+ 347:Generated_Source\PSoC5/EEPROM_1.c ****     cystatus status;
+ 348:Generated_Source\PSoC5/EEPROM_1.c ****     
+ 349:Generated_Source\PSoC5/EEPROM_1.c ****     CySpcStart();
+ 407              		.loc 1 349 0
+ 408 0006 FFF7FEFF 		bl	CySpcStart
+ 409              	.LVL40:
+ 350:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 351:Generated_Source\PSoC5/EEPROM_1.c ****     if(rowNumber < (uint8) CY_EEPROM_NUMBER_ROWS)
+ 410              		.loc 1 351 0
+ 411 000a 2A06     		lsls	r2, r5, #24
+ 412 000c 30D4     		bmi	.L49
+ 352:Generated_Source\PSoC5/EEPROM_1.c ****     {
+ 353:Generated_Source\PSoC5/EEPROM_1.c ****         /* See if we can get SPC. */
+ 354:Generated_Source\PSoC5/EEPROM_1.c ****         if(CySpcLock() == CYRET_SUCCESS)
+ 413              		.loc 1 354 0
+ 414 000e FFF7FEFF 		bl	CySpcLock
+ 415              	.LVL41:
+ 416 0012 0028     		cmp	r0, #0
+ 417 0014 2ED1     		bne	.L50
+ 418              	.LVL42:
+ 355:Generated_Source\PSoC5/EEPROM_1.c ****         {
+ 356:Generated_Source\PSoC5/EEPROM_1.c ****             /* Plan for failure */
+ 357:Generated_Source\PSoC5/EEPROM_1.c ****             status = CYRET_UNKNOWN;
+ 358:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 359:Generated_Source\PSoC5/EEPROM_1.c ****             /* Command to load a row of data */
+ 360:Generated_Source\PSoC5/EEPROM_1.c ****             if(CySpcLoadRow(CY_SPC_FIRST_EE_ARRAYID, rowData, CYDEV_EEPROM_ROW_SIZE) == CYRET_START
+ 419              		.loc 1 360 0
+ 420 0016 4020     		movs	r0, #64
+ 421 0018 2146     		mov	r1, r4
+ 422 001a 1022     		movs	r2, #16
+ 423 001c FFF7FEFF 		bl	CySpcLoadRow
+ 424              	.LVL43:
+ 425 0020 0728     		cmp	r0, #7
+ 426 0022 02D0     		beq	.L44
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 15
+
+
+ 427              	.LVL44:
+ 428              	.L46:
+ 357:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 429              		.loc 1 357 0
+ 430 0024 4FF0FF34 		mov	r4, #-1
+ 431 0028 1FE0     		b	.L45
+ 432              	.LVL45:
+ 433              	.L44:
+ 361:Generated_Source\PSoC5/EEPROM_1.c ****             {
+ 362:Generated_Source\PSoC5/EEPROM_1.c ****                 while(CY_SPC_BUSY)
+ 434              		.loc 1 362 0 discriminator 1
+ 435 002a 144C     		ldr	r4, .L66
+ 436 002c 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 437 002e 9B07     		lsls	r3, r3, #30
+ 438 0030 FBD5     		bpl	.L44
+ 363:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 364:Generated_Source\PSoC5/EEPROM_1.c ****                     /* Wait until SPC becomes idle */
+ 365:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 366:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 367:Generated_Source\PSoC5/EEPROM_1.c ****                 /* SPC is idle now */
+ 368:Generated_Source\PSoC5/EEPROM_1.c ****                 if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 439              		.loc 1 368 0
+ 440 0032 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 441 0034 9807     		lsls	r0, r3, #30
+ 442 0036 F5D5     		bpl	.L46
+ 443              		.loc 1 368 0 is_stmt 0 discriminator 1
+ 444 0038 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 445 003a 9B08     		lsrs	r3, r3, #2
+ 446 003c F2D1     		bne	.L46
+ 447              	.LVL46:
+ 369:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 370:Generated_Source\PSoC5/EEPROM_1.c ****                     status = CYRET_SUCCESS;
+ 371:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 372:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 373:Generated_Source\PSoC5/EEPROM_1.c ****                 /* Command to erase and program the row. */
+ 374:Generated_Source\PSoC5/EEPROM_1.c ****                 if(status == CYRET_SUCCESS)
+ 375:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 376:Generated_Source\PSoC5/EEPROM_1.c ****                     if(CySpcWriteRow(CY_SPC_FIRST_EE_ARRAYID, (uint16)rowNumber, dieTemperature[0u]
+ 448              		.loc 1 376 0 is_stmt 1
+ 449 003e 104B     		ldr	r3, .L66+4
+ 450 0040 4020     		movs	r0, #64
+ 451 0042 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 452 0044 2946     		mov	r1, r5
+ 453 0046 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 454 0048 FFF7FEFF 		bl	CySpcWriteRow
+ 455              	.LVL47:
+ 456 004c 0728     		cmp	r0, #7
+ 457 004e E9D1     		bne	.L46
+ 458              	.L48:
+ 377:Generated_Source\PSoC5/EEPROM_1.c ****                     dieTemperature[1u]) == CYRET_STARTED)
+ 378:Generated_Source\PSoC5/EEPROM_1.c ****                     {
+ 379:Generated_Source\PSoC5/EEPROM_1.c ****                         /* Plan for failure */
+ 380:Generated_Source\PSoC5/EEPROM_1.c ****                         status = CYRET_UNKNOWN;
+ 381:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 382:Generated_Source\PSoC5/EEPROM_1.c ****                         while(CY_SPC_BUSY)
+ 459              		.loc 1 382 0 discriminator 1
+ 460 0050 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 16
+
+
+ 461 0052 0A4B     		ldr	r3, .L66
+ 462 0054 9107     		lsls	r1, r2, #30
+ 463 0056 FBD5     		bpl	.L48
+ 383:Generated_Source\PSoC5/EEPROM_1.c ****                         {
+ 384:Generated_Source\PSoC5/EEPROM_1.c ****                             /* Wait until SPC becomes idle */
+ 385:Generated_Source\PSoC5/EEPROM_1.c ****                         }
+ 386:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 387:Generated_Source\PSoC5/EEPROM_1.c ****                         /* SPC is idle now */
+ 388:Generated_Source\PSoC5/EEPROM_1.c ****                         if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 464              		.loc 1 388 0
+ 465 0058 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 466 005a 9207     		lsls	r2, r2, #30
+ 467 005c E2D5     		bpl	.L46
+ 468              		.loc 1 388 0 is_stmt 0 discriminator 1
+ 469 005e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 470 0060 9B08     		lsrs	r3, r3, #2
+ 471 0062 14BF     		ite	ne
+ 472 0064 4FF0FF34 		movne	r4, #-1
+ 473 0068 0024     		moveq	r4, #0
+ 474              	.LVL48:
+ 475              	.L45:
+ 389:Generated_Source\PSoC5/EEPROM_1.c ****                         {
+ 390:Generated_Source\PSoC5/EEPROM_1.c ****                             status = CYRET_SUCCESS;
+ 391:Generated_Source\PSoC5/EEPROM_1.c ****                         }
+ 392:Generated_Source\PSoC5/EEPROM_1.c ****                     }
+ 393:Generated_Source\PSoC5/EEPROM_1.c ****                     else
+ 394:Generated_Source\PSoC5/EEPROM_1.c ****                     {
+ 395:Generated_Source\PSoC5/EEPROM_1.c ****                         status = CYRET_UNKNOWN;
+ 396:Generated_Source\PSoC5/EEPROM_1.c ****                     }
+ 397:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 398:Generated_Source\PSoC5/EEPROM_1.c ****                 else
+ 399:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 400:Generated_Source\PSoC5/EEPROM_1.c ****                     status = CYRET_UNKNOWN;
+ 401:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 402:Generated_Source\PSoC5/EEPROM_1.c ****             }
+ 403:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 404:Generated_Source\PSoC5/EEPROM_1.c ****             /* Unlock SPC so that someone else can use it. */
+ 405:Generated_Source\PSoC5/EEPROM_1.c ****             CySpcUnlock();
+ 476              		.loc 1 405 0 is_stmt 1
+ 477 006a FFF7FEFF 		bl	CySpcUnlock
+ 478              	.LVL49:
+ 479 006e 02E0     		b	.L65
+ 480              	.LVL50:
+ 481              	.L49:
+ 406:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 407:Generated_Source\PSoC5/EEPROM_1.c ****         else
+ 408:Generated_Source\PSoC5/EEPROM_1.c ****         {
+ 409:Generated_Source\PSoC5/EEPROM_1.c ****             status = CYRET_LOCKED;
+ 410:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 411:Generated_Source\PSoC5/EEPROM_1.c ****     }
+ 412:Generated_Source\PSoC5/EEPROM_1.c ****     else
+ 413:Generated_Source\PSoC5/EEPROM_1.c ****     {
+ 414:Generated_Source\PSoC5/EEPROM_1.c ****         status = CYRET_BAD_PARAM;
+ 482              		.loc 1 414 0
+ 483 0070 0124     		movs	r4, #1
+ 484              	.LVL51:
+ 485 0072 00E0     		b	.L65
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 17
+
+
+ 486              	.LVL52:
+ 487              	.L50:
+ 409:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 488              		.loc 1 409 0
+ 489 0074 0424     		movs	r4, #4
+ 490              	.LVL53:
+ 491              	.L65:
+ 415:Generated_Source\PSoC5/EEPROM_1.c ****     }
+ 416:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 417:Generated_Source\PSoC5/EEPROM_1.c ****     return(status);
+ 418:Generated_Source\PSoC5/EEPROM_1.c **** }
+ 492              		.loc 1 418 0
+ 493 0076 2046     		mov	r0, r4
+ 494 0078 38BD     		pop	{r3, r4, r5, pc}
+ 495              	.L67:
+ 496 007a 00BF     		.align	2
+ 497              	.L66:
+ 498 007c 22470040 		.word	1073760034
+ 499 0080 00000000 		.word	dieTemperature
+ 500              		.cfi_endproc
+ 501              	.LFE7:
+ 502              		.size	EEPROM_1_Write, .-EEPROM_1_Write
+ 503              		.section	.text.EEPROM_1_StartWrite,"ax",%progbits
+ 504              		.align	1
+ 505              		.global	EEPROM_1_StartWrite
+ 506              		.thumb
+ 507              		.thumb_func
+ 508              		.type	EEPROM_1_StartWrite, %function
+ 509              	EEPROM_1_StartWrite:
+ 510              	.LFB8:
+ 419:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 420:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 421:Generated_Source\PSoC5/EEPROM_1.c **** /*******************************************************************************
+ 422:Generated_Source\PSoC5/EEPROM_1.c **** * Function Name: EEPROM_1_StartWrite
+ 423:Generated_Source\PSoC5/EEPROM_1.c **** ********************************************************************************
+ 424:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 425:Generated_Source\PSoC5/EEPROM_1.c **** * Summary:
+ 426:Generated_Source\PSoC5/EEPROM_1.c **** *  Starts a write of a row (16 bytes) of data to the EEPROM.
+ 427:Generated_Source\PSoC5/EEPROM_1.c **** *  This function does not block. The function returns once the SPC has begun
+ 428:Generated_Source\PSoC5/EEPROM_1.c **** *  writing the data. This function must be used in combination with
+ 429:Generated_Source\PSoC5/EEPROM_1.c **** *  EEPROM_1_Query(). EEPROM_1_Query() must be called
+ 430:Generated_Source\PSoC5/EEPROM_1.c **** *  until it returns a status other than CYRET_STARTED. That indicates that the
+ 431:Generated_Source\PSoC5/EEPROM_1.c **** *  write has completed. Until EEPROM_1_Query() detects that
+ 432:Generated_Source\PSoC5/EEPROM_1.c **** *  the write is complete, the SPC is marked as locked to prevent another
+ 433:Generated_Source\PSoC5/EEPROM_1.c **** *  SPC operation from being performed. For a reliable write procedure to occur
+ 434:Generated_Source\PSoC5/EEPROM_1.c **** *  you should call EEPROM_1_UpdateTemperature() API if the temperature
+ 435:Generated_Source\PSoC5/EEPROM_1.c **** *  of the silicon has changed for more than 10C since component was started.
+ 436:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 437:Generated_Source\PSoC5/EEPROM_1.c **** * Parameters:
+ 438:Generated_Source\PSoC5/EEPROM_1.c **** *  rowData:    The address of the data to write to the EEPROM.
+ 439:Generated_Source\PSoC5/EEPROM_1.c **** *  rowNumber:  The row number to write.
+ 440:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 441:Generated_Source\PSoC5/EEPROM_1.c **** * Return:
+ 442:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_STARTED, if the SPC command to write was successfully started.
+ 443:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_BAD_PARAM, if the parameter rowNumber is out of range.
+ 444:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_LOCKED, if the SPC is being used.
+ 445:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_UNKNOWN, if there was an SPC error.
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 18
+
+
+ 446:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 447:Generated_Source\PSoC5/EEPROM_1.c **** * Side effects:
+ 448:Generated_Source\PSoC5/EEPROM_1.c **** *  After calling this API, the device should not be powered down, reset or switched
+ 449:Generated_Source\PSoC5/EEPROM_1.c **** *  to low power modes until EEPROM operation is complete. 
+ 450:Generated_Source\PSoC5/EEPROM_1.c **** *  Ignoring this recommendation may lead to data corruption or silicon
+ 451:Generated_Source\PSoC5/EEPROM_1.c **** *  unexpected behavior.
+ 452:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 453:Generated_Source\PSoC5/EEPROM_1.c **** *******************************************************************************/
+ 454:Generated_Source\PSoC5/EEPROM_1.c **** cystatus EEPROM_1_StartWrite(const uint8 * rowData, uint8 rowNumber) \
+ 455:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 456:Generated_Source\PSoC5/EEPROM_1.c **** {
+ 511              		.loc 1 456 0
+ 512              		.cfi_startproc
+ 513              		@ args = 0, pretend = 0, frame = 0
+ 514              		@ frame_needed = 0, uses_anonymous_args = 0
+ 515              	.LVL54:
+ 516 0000 38B5     		push	{r3, r4, r5, lr}
+ 517              		.cfi_def_cfa_offset 16
+ 518              		.cfi_offset 3, -16
+ 519              		.cfi_offset 4, -12
+ 520              		.cfi_offset 5, -8
+ 521              		.cfi_offset 14, -4
+ 522              		.loc 1 456 0
+ 523 0002 0C46     		mov	r4, r1
+ 524 0004 0546     		mov	r5, r0
+ 457:Generated_Source\PSoC5/EEPROM_1.c ****     cystatus status;
+ 458:Generated_Source\PSoC5/EEPROM_1.c ****     
+ 459:Generated_Source\PSoC5/EEPROM_1.c ****     CySpcStart();
+ 525              		.loc 1 459 0
+ 526 0006 FFF7FEFF 		bl	CySpcStart
+ 527              	.LVL55:
+ 460:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 461:Generated_Source\PSoC5/EEPROM_1.c ****     if(rowNumber < (uint8) CY_EEPROM_NUMBER_ROWS)
+ 528              		.loc 1 461 0
+ 529 000a 2006     		lsls	r0, r4, #24
+ 530 000c 14D4     		bmi	.L72
+ 462:Generated_Source\PSoC5/EEPROM_1.c ****     {
+ 463:Generated_Source\PSoC5/EEPROM_1.c ****         /* See if we can get SPC. */
+ 464:Generated_Source\PSoC5/EEPROM_1.c ****         if(CySpcLock() == CYRET_SUCCESS)
+ 531              		.loc 1 464 0
+ 532 000e FFF7FEFF 		bl	CySpcLock
+ 533              	.LVL56:
+ 534 0012 98B9     		cbnz	r0, .L73
+ 535              	.LVL57:
+ 465:Generated_Source\PSoC5/EEPROM_1.c ****         {
+ 466:Generated_Source\PSoC5/EEPROM_1.c ****             /* Plan for failure */
+ 467:Generated_Source\PSoC5/EEPROM_1.c ****             status = CYRET_UNKNOWN;
+ 468:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 469:Generated_Source\PSoC5/EEPROM_1.c ****             /* Command to load a row of data */
+ 470:Generated_Source\PSoC5/EEPROM_1.c ****             if(CySpcLoadRow(CY_SPC_FIRST_EE_ARRAYID, rowData, CYDEV_EEPROM_ROW_SIZE) == CYRET_START
+ 536              		.loc 1 470 0
+ 537 0014 4020     		movs	r0, #64
+ 538 0016 2946     		mov	r1, r5
+ 539 0018 1022     		movs	r2, #16
+ 540 001a FFF7FEFF 		bl	CySpcLoadRow
+ 541              	.LVL58:
+ 542 001e 0728     		cmp	r0, #7
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 19
+
+
+ 543 0020 0ED1     		bne	.L75
+ 544              	.L70:
+ 471:Generated_Source\PSoC5/EEPROM_1.c ****             {
+ 472:Generated_Source\PSoC5/EEPROM_1.c ****                 while(CY_SPC_BUSY)
+ 545              		.loc 1 472 0 discriminator 1
+ 546 0022 0F4B     		ldr	r3, .L80
+ 547 0024 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 548 0026 9107     		lsls	r1, r2, #30
+ 549 0028 FBD5     		bpl	.L70
+ 473:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 474:Generated_Source\PSoC5/EEPROM_1.c ****                     /* Wait until SPC becomes idle */
+ 475:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 476:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 477:Generated_Source\PSoC5/EEPROM_1.c ****                 /* SPC is idle now */
+ 478:Generated_Source\PSoC5/EEPROM_1.c ****                 if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 550              		.loc 1 478 0
+ 551 002a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 552 002c 9207     		lsls	r2, r2, #30
+ 553 002e 07D5     		bpl	.L75
+ 554              		.loc 1 478 0 is_stmt 0 discriminator 1
+ 555 0030 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 556 0032 9B08     		lsrs	r3, r3, #2
+ 557 0034 07D0     		beq	.L71
+ 558 0036 03E0     		b	.L75
+ 559              	.LVL59:
+ 560              	.L72:
+ 479:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 480:Generated_Source\PSoC5/EEPROM_1.c ****                     status = CYRET_SUCCESS;
+ 481:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 482:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 483:Generated_Source\PSoC5/EEPROM_1.c ****                 /* Command to erase and program the row. */
+ 484:Generated_Source\PSoC5/EEPROM_1.c ****                 if(status == CYRET_SUCCESS)
+ 485:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 486:Generated_Source\PSoC5/EEPROM_1.c ****                     if(CySpcWriteRow(CY_SPC_FIRST_EE_ARRAYID, (uint16)rowNumber, dieTemperature[0u]
+ 487:Generated_Source\PSoC5/EEPROM_1.c ****                     dieTemperature[1u]) == CYRET_STARTED)
+ 488:Generated_Source\PSoC5/EEPROM_1.c ****                     {
+ 489:Generated_Source\PSoC5/EEPROM_1.c ****                         status = CYRET_STARTED;
+ 490:Generated_Source\PSoC5/EEPROM_1.c ****                     }
+ 491:Generated_Source\PSoC5/EEPROM_1.c ****                     else
+ 492:Generated_Source\PSoC5/EEPROM_1.c ****                     {
+ 493:Generated_Source\PSoC5/EEPROM_1.c ****                         status = CYRET_UNKNOWN;
+ 494:Generated_Source\PSoC5/EEPROM_1.c ****                     }
+ 495:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 496:Generated_Source\PSoC5/EEPROM_1.c ****                 else
+ 497:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 498:Generated_Source\PSoC5/EEPROM_1.c ****                     status = CYRET_UNKNOWN;
+ 499:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 500:Generated_Source\PSoC5/EEPROM_1.c ****             }
+ 501:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 502:Generated_Source\PSoC5/EEPROM_1.c ****         else
+ 503:Generated_Source\PSoC5/EEPROM_1.c ****         {
+ 504:Generated_Source\PSoC5/EEPROM_1.c ****             status = CYRET_LOCKED;
+ 505:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 506:Generated_Source\PSoC5/EEPROM_1.c ****     }
+ 507:Generated_Source\PSoC5/EEPROM_1.c ****     else
+ 508:Generated_Source\PSoC5/EEPROM_1.c ****     {
+ 509:Generated_Source\PSoC5/EEPROM_1.c ****         status = CYRET_BAD_PARAM;
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 20
+
+
+ 561              		.loc 1 509 0 is_stmt 1
+ 562 0038 0120     		movs	r0, #1
+ 563 003a 38BD     		pop	{r3, r4, r5, pc}
+ 564              	.LVL60:
+ 565              	.L73:
+ 504:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 566              		.loc 1 504 0
+ 567 003c 0420     		movs	r0, #4
+ 568 003e 38BD     		pop	{r3, r4, r5, pc}
+ 569              	.LVL61:
+ 570              	.L75:
+ 467:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 571              		.loc 1 467 0
+ 572 0040 4FF0FF30 		mov	r0, #-1
+ 573 0044 38BD     		pop	{r3, r4, r5, pc}
+ 574              	.LVL62:
+ 575              	.L71:
+ 486:Generated_Source\PSoC5/EEPROM_1.c ****                     dieTemperature[1u]) == CYRET_STARTED)
+ 576              		.loc 1 486 0
+ 577 0046 074B     		ldr	r3, .L80+4
+ 578 0048 2146     		mov	r1, r4
+ 579 004a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 580 004c 4020     		movs	r0, #64
+ 581 004e 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 582 0050 FFF7FEFF 		bl	CySpcWriteRow
+ 583              	.LVL63:
+ 493:Generated_Source\PSoC5/EEPROM_1.c ****                     }
+ 584              		.loc 1 493 0
+ 585 0054 0728     		cmp	r0, #7
+ 586 0056 0CBF     		ite	eq
+ 587 0058 0720     		moveq	r0, #7
+ 588 005a 4FF0FF30 		movne	r0, #-1
+ 510:Generated_Source\PSoC5/EEPROM_1.c ****     }
+ 511:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 512:Generated_Source\PSoC5/EEPROM_1.c ****     return(status);
+ 513:Generated_Source\PSoC5/EEPROM_1.c **** }
+ 589              		.loc 1 513 0
+ 590 005e 38BD     		pop	{r3, r4, r5, pc}
+ 591              	.LVL64:
+ 592              	.L81:
+ 593              		.align	2
+ 594              	.L80:
+ 595 0060 22470040 		.word	1073760034
+ 596 0064 00000000 		.word	dieTemperature
+ 597              		.cfi_endproc
+ 598              	.LFE8:
+ 599              		.size	EEPROM_1_StartWrite, .-EEPROM_1_StartWrite
+ 600              		.section	.text.EEPROM_1_StartErase,"ax",%progbits
+ 601              		.align	1
+ 602              		.global	EEPROM_1_StartErase
+ 603              		.thumb
+ 604              		.thumb_func
+ 605              		.type	EEPROM_1_StartErase, %function
+ 606              	EEPROM_1_StartErase:
+ 607              	.LFB9:
+ 514:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 515:Generated_Source\PSoC5/EEPROM_1.c **** 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 21
+
+
+ 516:Generated_Source\PSoC5/EEPROM_1.c **** /*******************************************************************************
+ 517:Generated_Source\PSoC5/EEPROM_1.c **** * Function Name: EEPROM_1_StartErase
+ 518:Generated_Source\PSoC5/EEPROM_1.c **** ********************************************************************************
+ 519:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 520:Generated_Source\PSoC5/EEPROM_1.c **** * Summary:
+ 521:Generated_Source\PSoC5/EEPROM_1.c **** *  Starts the EEPROM sector erase. This function does not block.
+ 522:Generated_Source\PSoC5/EEPROM_1.c **** *  The function returns once the SPC has begun writing the data. This function
+ 523:Generated_Source\PSoC5/EEPROM_1.c **** *  must be used in combination with EEPROM_1_Query().
+ 524:Generated_Source\PSoC5/EEPROM_1.c **** *  EEPROM_1_Query() must be called until it returns a status
+ 525:Generated_Source\PSoC5/EEPROM_1.c **** *  other than CYRET_STARTED. That indicates the erase has been completed.
+ 526:Generated_Source\PSoC5/EEPROM_1.c **** *  Until EEPROM_1_Query() detects that the erase is
+ 527:Generated_Source\PSoC5/EEPROM_1.c **** *  complete, the SPC is marked as locked to prevent another SPC operation
+ 528:Generated_Source\PSoC5/EEPROM_1.c **** *  from being performed.
+ 529:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 530:Generated_Source\PSoC5/EEPROM_1.c **** * Parameters:
+ 531:Generated_Source\PSoC5/EEPROM_1.c **** *  sectorNumber:  The sector number to erase.
+ 532:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 533:Generated_Source\PSoC5/EEPROM_1.c **** * Return:
+ 534:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_STARTED, if the SPC command to erase was successfully started.
+ 535:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_BAD_PARAM, if the parameter sectorNumber is out of range.
+ 536:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_LOCKED, if the SPC is being used.
+ 537:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_UNKNOWN, if there was an SPC error.
+ 538:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 539:Generated_Source\PSoC5/EEPROM_1.c **** * Side effects:
+ 540:Generated_Source\PSoC5/EEPROM_1.c **** *  After calling this API, the device should not be powered down, reset or switched
+ 541:Generated_Source\PSoC5/EEPROM_1.c **** *  to low power modes until EEPROM operation is complete.
+ 542:Generated_Source\PSoC5/EEPROM_1.c **** *  Ignoring this recommendation may lead to data corruption or silicon
+ 543:Generated_Source\PSoC5/EEPROM_1.c **** *  unexpected behavior.
+ 544:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 545:Generated_Source\PSoC5/EEPROM_1.c **** *******************************************************************************/
+ 546:Generated_Source\PSoC5/EEPROM_1.c **** cystatus EEPROM_1_StartErase(uint8 sectorNumber) 
+ 547:Generated_Source\PSoC5/EEPROM_1.c **** {
+ 608              		.loc 1 547 0
+ 609              		.cfi_startproc
+ 610              		@ args = 0, pretend = 0, frame = 0
+ 611              		@ frame_needed = 0, uses_anonymous_args = 0
+ 612              	.LVL65:
+ 613 0000 10B5     		push	{r4, lr}
+ 614              		.cfi_def_cfa_offset 8
+ 615              		.cfi_offset 4, -8
+ 616              		.cfi_offset 14, -4
+ 617              		.loc 1 547 0
+ 618 0002 0446     		mov	r4, r0
+ 548:Generated_Source\PSoC5/EEPROM_1.c ****     cystatus status;
+ 549:Generated_Source\PSoC5/EEPROM_1.c ****     
+ 550:Generated_Source\PSoC5/EEPROM_1.c ****     CySpcStart();
+ 619              		.loc 1 550 0
+ 620 0004 FFF7FEFF 		bl	CySpcStart
+ 621              	.LVL66:
+ 551:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 552:Generated_Source\PSoC5/EEPROM_1.c ****     if(sectorNumber < (uint8) CY_EEPROM_NUMBER_ARRAYS)
+ 622              		.loc 1 552 0
+ 623 0008 5CB9     		cbnz	r4, .L84
+ 553:Generated_Source\PSoC5/EEPROM_1.c ****     {
+ 554:Generated_Source\PSoC5/EEPROM_1.c ****         /* See if we can get SPC. */
+ 555:Generated_Source\PSoC5/EEPROM_1.c ****         if(CySpcLock() == CYRET_SUCCESS)
+ 624              		.loc 1 555 0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 22
+
+
+ 625 000a FFF7FEFF 		bl	CySpcLock
+ 626              	.LVL67:
+ 627 000e 0146     		mov	r1, r0
+ 628 0010 48B9     		cbnz	r0, .L85
+ 629              	.LVL68:
+ 556:Generated_Source\PSoC5/EEPROM_1.c ****         {
+ 557:Generated_Source\PSoC5/EEPROM_1.c ****             /* Plan for failure */
+ 558:Generated_Source\PSoC5/EEPROM_1.c ****             status = CYRET_UNKNOWN;
+ 559:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 560:Generated_Source\PSoC5/EEPROM_1.c ****             /* Command to load a row of data */
+ 561:Generated_Source\PSoC5/EEPROM_1.c ****             if(CySpcEraseSector(CY_SPC_FIRST_EE_ARRAYID, sectorNumber) == CYRET_STARTED)
+ 630              		.loc 1 561 0
+ 631 0012 4020     		movs	r0, #64
+ 632 0014 FFF7FEFF 		bl	CySpcEraseSector
+ 633              	.LVL69:
+ 634 0018 0738     		subs	r0, r0, #7
+ 635 001a 18BF     		it	ne
+ 636 001c 4FF0FF30 		movne	r0, #-1
+ 637 0020 10BD     		pop	{r4, pc}
+ 638              	.LVL70:
+ 639              	.L84:
+ 562:Generated_Source\PSoC5/EEPROM_1.c ****             {
+ 563:Generated_Source\PSoC5/EEPROM_1.c ****                 status = CYRET_SUCCESS;
+ 564:Generated_Source\PSoC5/EEPROM_1.c ****             }
+ 565:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 566:Generated_Source\PSoC5/EEPROM_1.c ****         else
+ 567:Generated_Source\PSoC5/EEPROM_1.c ****         {
+ 568:Generated_Source\PSoC5/EEPROM_1.c ****             status = CYRET_LOCKED;
+ 569:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 570:Generated_Source\PSoC5/EEPROM_1.c ****     }
+ 571:Generated_Source\PSoC5/EEPROM_1.c ****     else
+ 572:Generated_Source\PSoC5/EEPROM_1.c ****     {
+ 573:Generated_Source\PSoC5/EEPROM_1.c ****         status = CYRET_BAD_PARAM;
+ 640              		.loc 1 573 0
+ 641 0022 0120     		movs	r0, #1
+ 642 0024 10BD     		pop	{r4, pc}
+ 643              	.L85:
+ 568:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 644              		.loc 1 568 0
+ 645 0026 0420     		movs	r0, #4
+ 646              	.LVL71:
+ 574:Generated_Source\PSoC5/EEPROM_1.c ****     }
+ 575:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 576:Generated_Source\PSoC5/EEPROM_1.c ****     return(status);
+ 577:Generated_Source\PSoC5/EEPROM_1.c **** }
+ 647              		.loc 1 577 0
+ 648 0028 10BD     		pop	{r4, pc}
+ 649              		.cfi_endproc
+ 650              	.LFE9:
+ 651              		.size	EEPROM_1_StartErase, .-EEPROM_1_StartErase
+ 652              		.section	.text.EEPROM_1_Query,"ax",%progbits
+ 653              		.align	1
+ 654              		.global	EEPROM_1_Query
+ 655              		.thumb
+ 656              		.thumb_func
+ 657              		.type	EEPROM_1_Query, %function
+ 658              	EEPROM_1_Query:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 23
+
+
+ 659              	.LFB10:
+ 578:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 579:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 580:Generated_Source\PSoC5/EEPROM_1.c **** /*******************************************************************************
+ 581:Generated_Source\PSoC5/EEPROM_1.c **** * Function Name: EEPROM_1_Query
+ 582:Generated_Source\PSoC5/EEPROM_1.c **** ********************************************************************************
+ 583:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 584:Generated_Source\PSoC5/EEPROM_1.c **** * Summary:
+ 585:Generated_Source\PSoC5/EEPROM_1.c **** *  Checks the status of an earlier call to EEPROM_1_StartWrite() or
+ 586:Generated_Source\PSoC5/EEPROM_1.c **** *  EEPROM_1_StartErase().
+ 587:Generated_Source\PSoC5/EEPROM_1.c **** *  This function must be called until it returns a value other than
+ 588:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_STARTED. Once that occurs, the write or erase has been completed and
+ 589:Generated_Source\PSoC5/EEPROM_1.c **** *  the SPC is unlocked.
+ 590:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 591:Generated_Source\PSoC5/EEPROM_1.c **** * Parameters:
+ 592:Generated_Source\PSoC5/EEPROM_1.c **** *  None
+ 593:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 594:Generated_Source\PSoC5/EEPROM_1.c **** * Return:
+ 595:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_STARTED, if the SPC command is still processing.
+ 596:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_SUCCESS, if the operation was completed successfully.
+ 597:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_UNKNOWN, if there was an SPC error.
+ 598:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 599:Generated_Source\PSoC5/EEPROM_1.c **** *******************************************************************************/
+ 600:Generated_Source\PSoC5/EEPROM_1.c **** cystatus EEPROM_1_Query(void) 
+ 601:Generated_Source\PSoC5/EEPROM_1.c **** {
+ 660              		.loc 1 601 0
+ 661              		.cfi_startproc
+ 662              		@ args = 0, pretend = 0, frame = 0
+ 663              		@ frame_needed = 0, uses_anonymous_args = 0
+ 664 0000 10B5     		push	{r4, lr}
+ 665              		.cfi_def_cfa_offset 8
+ 666              		.cfi_offset 4, -8
+ 667              		.cfi_offset 14, -4
+ 602:Generated_Source\PSoC5/EEPROM_1.c ****     cystatus status;
+ 603:Generated_Source\PSoC5/EEPROM_1.c ****     
+ 604:Generated_Source\PSoC5/EEPROM_1.c ****     CySpcStart();
+ 668              		.loc 1 604 0
+ 669 0002 FFF7FEFF 		bl	CySpcStart
+ 670              	.LVL72:
+ 605:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 606:Generated_Source\PSoC5/EEPROM_1.c ****     /* Check if SPC is idle */
+ 607:Generated_Source\PSoC5/EEPROM_1.c ****     if(CY_SPC_IDLE)
+ 671              		.loc 1 607 0
+ 672 0006 0B4B     		ldr	r3, .L91
+ 673 0008 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 674 000a 9107     		lsls	r1, r2, #30
+ 675 000c 0ED5     		bpl	.L89
+ 608:Generated_Source\PSoC5/EEPROM_1.c ****     {
+ 609:Generated_Source\PSoC5/EEPROM_1.c ****         /* SPC is idle now */
+ 610:Generated_Source\PSoC5/EEPROM_1.c ****         if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 676              		.loc 1 610 0
+ 677 000e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 678 0010 9207     		lsls	r2, r2, #30
+ 679 0012 06D5     		bpl	.L90
+ 680              		.loc 1 610 0 is_stmt 0 discriminator 1
+ 681 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 682 0016 9B08     		lsrs	r3, r3, #2
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 24
+
+
+ 683 0018 14BF     		ite	ne
+ 684 001a 4FF0FF34 		movne	r4, #-1
+ 685 001e 0024     		moveq	r4, #0
+ 686 0020 01E0     		b	.L88
+ 687              	.L90:
+ 611:Generated_Source\PSoC5/EEPROM_1.c ****         {
+ 612:Generated_Source\PSoC5/EEPROM_1.c ****             status = CYRET_SUCCESS;
+ 613:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 614:Generated_Source\PSoC5/EEPROM_1.c ****         else
+ 615:Generated_Source\PSoC5/EEPROM_1.c ****         {
+ 616:Generated_Source\PSoC5/EEPROM_1.c ****             status = CYRET_UNKNOWN;
+ 688              		.loc 1 616 0 is_stmt 1
+ 689 0022 4FF0FF34 		mov	r4, #-1
+ 690              	.L88:
+ 691              	.LVL73:
+ 617:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 618:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 619:Generated_Source\PSoC5/EEPROM_1.c ****         /* Unlock SPC so that someone else can use it. */
+ 620:Generated_Source\PSoC5/EEPROM_1.c ****         CySpcUnlock();
+ 692              		.loc 1 620 0
+ 693 0026 FFF7FEFF 		bl	CySpcUnlock
+ 694              	.LVL74:
+ 695 002a 00E0     		b	.L87
+ 696              	.LVL75:
+ 697              	.L89:
+ 621:Generated_Source\PSoC5/EEPROM_1.c ****     }
+ 622:Generated_Source\PSoC5/EEPROM_1.c ****     else
+ 623:Generated_Source\PSoC5/EEPROM_1.c ****     {
+ 624:Generated_Source\PSoC5/EEPROM_1.c ****         status = CYRET_STARTED;
+ 698              		.loc 1 624 0
+ 699 002c 0724     		movs	r4, #7
+ 700              	.L87:
+ 701              	.LVL76:
+ 625:Generated_Source\PSoC5/EEPROM_1.c ****     }
+ 626:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 627:Generated_Source\PSoC5/EEPROM_1.c ****     return(status);
+ 628:Generated_Source\PSoC5/EEPROM_1.c **** }
+ 702              		.loc 1 628 0
+ 703 002e 2046     		mov	r0, r4
+ 704 0030 10BD     		pop	{r4, pc}
+ 705              	.LVL77:
+ 706              	.L92:
+ 707 0032 00BF     		.align	2
+ 708              	.L91:
+ 709 0034 22470040 		.word	1073760034
+ 710              		.cfi_endproc
+ 711              	.LFE10:
+ 712              		.size	EEPROM_1_Query, .-EEPROM_1_Query
+ 713              		.section	.text.EEPROM_1_ByteWritePos,"ax",%progbits
+ 714              		.align	1
+ 715              		.global	EEPROM_1_ByteWritePos
+ 716              		.thumb
+ 717              		.thumb_func
+ 718              		.type	EEPROM_1_ByteWritePos, %function
+ 719              	EEPROM_1_ByteWritePos:
+ 720              	.LFB11:
+ 629:Generated_Source\PSoC5/EEPROM_1.c **** 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 25
+
+
+ 630:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 631:Generated_Source\PSoC5/EEPROM_1.c **** /*******************************************************************************
+ 632:Generated_Source\PSoC5/EEPROM_1.c **** * Function Name: EEPROM_1_ByteWritePos
+ 633:Generated_Source\PSoC5/EEPROM_1.c **** ********************************************************************************
+ 634:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 635:Generated_Source\PSoC5/EEPROM_1.c **** * Summary:
+ 636:Generated_Source\PSoC5/EEPROM_1.c **** *  Writes a byte of data to the EEPROM. This is a blocking call. It will not
+ 637:Generated_Source\PSoC5/EEPROM_1.c **** *  return until the write operation succeeds or fails.
+ 638:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 639:Generated_Source\PSoC5/EEPROM_1.c **** * Parameters:
+ 640:Generated_Source\PSoC5/EEPROM_1.c **** *  dataByte:   The byte of data to write to the EEPROM.
+ 641:Generated_Source\PSoC5/EEPROM_1.c **** *  rowNumber:  The EEPROM row number to program.
+ 642:Generated_Source\PSoC5/EEPROM_1.c **** *  byteNumber: The byte number within the row to program.
+ 643:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 644:Generated_Source\PSoC5/EEPROM_1.c **** * Return:
+ 645:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_SUCCESS, if the operation was successful.
+ 646:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_BAD_PARAM, if the parameter rowNumber or byteNumber is out of range.
+ 647:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_LOCKED, if the SPC is being used.
+ 648:Generated_Source\PSoC5/EEPROM_1.c **** *  CYRET_UNKNOWN, if there was an SPC error.
+ 649:Generated_Source\PSoC5/EEPROM_1.c **** *
+ 650:Generated_Source\PSoC5/EEPROM_1.c **** *******************************************************************************/
+ 651:Generated_Source\PSoC5/EEPROM_1.c **** cystatus EEPROM_1_ByteWritePos(uint8 dataByte, uint8 rowNumber, uint8 byteNumber) \
+ 652:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 653:Generated_Source\PSoC5/EEPROM_1.c **** {
+ 721              		.loc 1 653 0
+ 722              		.cfi_startproc
+ 723              		@ args = 0, pretend = 0, frame = 8
+ 724              		@ frame_needed = 0, uses_anonymous_args = 0
+ 725              	.LVL78:
+ 726 0000 37B5     		push	{r0, r1, r2, r4, r5, lr}
+ 727              		.cfi_def_cfa_offset 24
+ 728              		.cfi_offset 4, -12
+ 729              		.cfi_offset 5, -8
+ 730              		.cfi_offset 14, -4
+ 731              		.loc 1 653 0
+ 732 0002 0D46     		mov	r5, r1
+ 733 0004 1446     		mov	r4, r2
+ 734 0006 8DF80700 		strb	r0, [sp, #7]
+ 654:Generated_Source\PSoC5/EEPROM_1.c ****     cystatus status;
+ 655:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 656:Generated_Source\PSoC5/EEPROM_1.c ****     /* Start SPC */
+ 657:Generated_Source\PSoC5/EEPROM_1.c ****     CySpcStart();
+ 735              		.loc 1 657 0
+ 736 000a FFF7FEFF 		bl	CySpcStart
+ 737              	.LVL79:
+ 658:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 659:Generated_Source\PSoC5/EEPROM_1.c ****     if((rowNumber < (uint8) CY_EEPROM_NUMBER_ROWS) && (byteNumber < (uint8) SIZEOF_EEPROM_ROW))
+ 738              		.loc 1 659 0
+ 739 000e 2A06     		lsls	r2, r5, #24
+ 740 0010 34D4     		bmi	.L101
+ 741              		.loc 1 659 0 is_stmt 0 discriminator 1
+ 742 0012 0F2C     		cmp	r4, #15
+ 743 0014 32D8     		bhi	.L101
+ 660:Generated_Source\PSoC5/EEPROM_1.c ****     {
+ 661:Generated_Source\PSoC5/EEPROM_1.c ****         /* See if we can get SPC. */
+ 662:Generated_Source\PSoC5/EEPROM_1.c ****         if(CySpcLock() == CYRET_SUCCESS)
+ 744              		.loc 1 662 0 is_stmt 1
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 26
+
+
+ 745 0016 FFF7FEFF 		bl	CySpcLock
+ 746              	.LVL80:
+ 747 001a 0028     		cmp	r0, #0
+ 748 001c 30D1     		bne	.L102
+ 749              	.LVL81:
+ 663:Generated_Source\PSoC5/EEPROM_1.c ****         {
+ 664:Generated_Source\PSoC5/EEPROM_1.c ****             /* Plan for failure */
+ 665:Generated_Source\PSoC5/EEPROM_1.c ****             status = CYRET_UNKNOWN;
+ 666:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 667:Generated_Source\PSoC5/EEPROM_1.c ****             /* Command to load byte of data */
+ 668:Generated_Source\PSoC5/EEPROM_1.c ****             if(CySpcLoadMultiByte(CY_SPC_FIRST_EE_ARRAYID, (uint16)byteNumber, &dataByte,\
+ 750              		.loc 1 668 0
+ 751 001e 4020     		movs	r0, #64
+ 752 0020 2146     		mov	r1, r4
+ 753 0022 0DF10702 		add	r2, sp, #7
+ 754              	.LVL82:
+ 755 0026 0123     		movs	r3, #1
+ 756 0028 FFF7FEFF 		bl	CySpcLoadMultiByte
+ 757              	.LVL83:
+ 758 002c 0728     		cmp	r0, #7
+ 759 002e 02D0     		beq	.L95
+ 760              	.LVL84:
+ 761              	.L97:
+ 665:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 762              		.loc 1 665 0
+ 763 0030 4FF0FF34 		mov	r4, #-1
+ 764 0034 1FE0     		b	.L96
+ 765              	.LVL85:
+ 766              	.L95:
+ 669:Generated_Source\PSoC5/EEPROM_1.c ****                                                                 EEPROM_1_SPC_BYTE_WRITE_SIZE) == CY
+ 670:Generated_Source\PSoC5/EEPROM_1.c ****             {
+ 671:Generated_Source\PSoC5/EEPROM_1.c ****                 while(CY_SPC_BUSY)
+ 767              		.loc 1 671 0 discriminator 1
+ 768 0036 144C     		ldr	r4, .L118
+ 769 0038 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 770 003a 9B07     		lsls	r3, r3, #30
+ 771 003c FBD5     		bpl	.L95
+ 672:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 673:Generated_Source\PSoC5/EEPROM_1.c ****                     /* Wait until SPC becomes idle */
+ 674:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 675:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 676:Generated_Source\PSoC5/EEPROM_1.c ****                 /* SPC is idle now */
+ 677:Generated_Source\PSoC5/EEPROM_1.c ****                 if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 772              		.loc 1 677 0
+ 773 003e 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 774 0040 9807     		lsls	r0, r3, #30
+ 775 0042 F5D5     		bpl	.L97
+ 776              		.loc 1 677 0 is_stmt 0 discriminator 1
+ 777 0044 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 778 0046 9B08     		lsrs	r3, r3, #2
+ 779 0048 F2D1     		bne	.L97
+ 780              	.LVL86:
+ 678:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 679:Generated_Source\PSoC5/EEPROM_1.c ****                     status = CYRET_SUCCESS;
+ 680:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 681:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 682:Generated_Source\PSoC5/EEPROM_1.c ****                 /* Command to erase and program the row. */
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 27
+
+
+ 683:Generated_Source\PSoC5/EEPROM_1.c ****                 if(status == CYRET_SUCCESS)
+ 684:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 685:Generated_Source\PSoC5/EEPROM_1.c ****                     if(CySpcWriteRow(CY_SPC_FIRST_EE_ARRAYID, (uint16)rowNumber, dieTemperature[0u]
+ 781              		.loc 1 685 0 is_stmt 1
+ 782 004a 104B     		ldr	r3, .L118+4
+ 783 004c 4020     		movs	r0, #64
+ 784 004e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 785 0050 2946     		mov	r1, r5
+ 786 0052 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 787 0054 FFF7FEFF 		bl	CySpcWriteRow
+ 788              	.LVL87:
+ 789 0058 0728     		cmp	r0, #7
+ 790 005a E9D1     		bne	.L97
+ 791              	.L99:
+ 686:Generated_Source\PSoC5/EEPROM_1.c ****                     dieTemperature[1u]) == CYRET_STARTED)
+ 687:Generated_Source\PSoC5/EEPROM_1.c ****                     {
+ 688:Generated_Source\PSoC5/EEPROM_1.c ****                         /* Plan for failure */
+ 689:Generated_Source\PSoC5/EEPROM_1.c ****                         status = CYRET_UNKNOWN;
+ 690:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 691:Generated_Source\PSoC5/EEPROM_1.c ****                         while(CY_SPC_BUSY)
+ 792              		.loc 1 691 0 discriminator 1
+ 793 005c 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
+ 794 005e 0A4B     		ldr	r3, .L118
+ 795 0060 9107     		lsls	r1, r2, #30
+ 796 0062 FBD5     		bpl	.L99
+ 692:Generated_Source\PSoC5/EEPROM_1.c ****                         {
+ 693:Generated_Source\PSoC5/EEPROM_1.c ****                             /* Wait until SPC becomes idle */
+ 694:Generated_Source\PSoC5/EEPROM_1.c ****                         }
+ 695:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 696:Generated_Source\PSoC5/EEPROM_1.c ****                         /* SPC is idle now */
+ 697:Generated_Source\PSoC5/EEPROM_1.c ****                         if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 797              		.loc 1 697 0
+ 798 0064 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 799 0066 9207     		lsls	r2, r2, #30
+ 800 0068 E2D5     		bpl	.L97
+ 801              		.loc 1 697 0 is_stmt 0 discriminator 1
+ 802 006a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 803 006c 9B08     		lsrs	r3, r3, #2
+ 804 006e 14BF     		ite	ne
+ 805 0070 4FF0FF34 		movne	r4, #-1
+ 806 0074 0024     		moveq	r4, #0
+ 807              	.LVL88:
+ 808              	.L96:
+ 698:Generated_Source\PSoC5/EEPROM_1.c ****                         {
+ 699:Generated_Source\PSoC5/EEPROM_1.c ****                             status = CYRET_SUCCESS;
+ 700:Generated_Source\PSoC5/EEPROM_1.c ****                         }
+ 701:Generated_Source\PSoC5/EEPROM_1.c ****                     }
+ 702:Generated_Source\PSoC5/EEPROM_1.c ****                     else
+ 703:Generated_Source\PSoC5/EEPROM_1.c ****                     {
+ 704:Generated_Source\PSoC5/EEPROM_1.c ****                         status = CYRET_UNKNOWN;
+ 705:Generated_Source\PSoC5/EEPROM_1.c ****                     }
+ 706:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 707:Generated_Source\PSoC5/EEPROM_1.c ****                 else
+ 708:Generated_Source\PSoC5/EEPROM_1.c ****                 {
+ 709:Generated_Source\PSoC5/EEPROM_1.c ****                     status = CYRET_UNKNOWN;
+ 710:Generated_Source\PSoC5/EEPROM_1.c ****                 }
+ 711:Generated_Source\PSoC5/EEPROM_1.c ****             }
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 28
+
+
+ 712:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 713:Generated_Source\PSoC5/EEPROM_1.c ****             /* Unlock SPC so that someone else can use it. */
+ 714:Generated_Source\PSoC5/EEPROM_1.c ****             CySpcUnlock();
+ 809              		.loc 1 714 0 is_stmt 1
+ 810 0076 FFF7FEFF 		bl	CySpcUnlock
+ 811              	.LVL89:
+ 812 007a 02E0     		b	.L117
+ 813              	.LVL90:
+ 814              	.L101:
+ 715:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 716:Generated_Source\PSoC5/EEPROM_1.c ****         else
+ 717:Generated_Source\PSoC5/EEPROM_1.c ****         {
+ 718:Generated_Source\PSoC5/EEPROM_1.c ****             status = CYRET_LOCKED;
+ 719:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 720:Generated_Source\PSoC5/EEPROM_1.c ****     }
+ 721:Generated_Source\PSoC5/EEPROM_1.c ****     else
+ 722:Generated_Source\PSoC5/EEPROM_1.c ****     {
+ 723:Generated_Source\PSoC5/EEPROM_1.c ****         status = CYRET_BAD_PARAM;
+ 815              		.loc 1 723 0
+ 816 007c 0124     		movs	r4, #1
+ 817 007e 00E0     		b	.L117
+ 818              	.L102:
+ 718:Generated_Source\PSoC5/EEPROM_1.c ****         }
+ 819              		.loc 1 718 0
+ 820 0080 0424     		movs	r4, #4
+ 821              	.LVL91:
+ 822              	.L117:
+ 724:Generated_Source\PSoC5/EEPROM_1.c ****     }
+ 725:Generated_Source\PSoC5/EEPROM_1.c **** 
+ 726:Generated_Source\PSoC5/EEPROM_1.c ****     return(status);
+ 727:Generated_Source\PSoC5/EEPROM_1.c **** }
+ 823              		.loc 1 727 0
+ 824 0082 2046     		mov	r0, r4
+ 825 0084 03B0     		add	sp, sp, #12
+ 826              		.cfi_def_cfa_offset 12
+ 827              		@ sp needed
+ 828 0086 30BD     		pop	{r4, r5, pc}
+ 829              	.LVL92:
+ 830              	.L119:
+ 831              		.align	2
+ 832              	.L118:
+ 833 0088 22470040 		.word	1073760034
+ 834 008c 00000000 		.word	dieTemperature
+ 835              		.cfi_endproc
+ 836              	.LFE11:
+ 837              		.size	EEPROM_1_ByteWritePos, .-EEPROM_1_ByteWritePos
+ 838              		.text
+ 839              	.Letext0:
+ 840              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 841              		.file 3 "Generated_Source\\PSoC5\\CyFlash.h"
+ 842              		.file 4 "Generated_Source\\PSoC5\\CySpc.h"
+ 843              		.file 5 "Generated_Source\\PSoC5\\CyLib.h"
+ 844              		.section	.debug_info,"",%progbits
+ 845              	.Ldebug_info0:
+ 846 0000 64060000 		.4byte	0x664
+ 847 0004 0400     		.2byte	0x4
+ 848 0006 00000000 		.4byte	.Ldebug_abbrev0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 29
+
+
+ 849 000a 04       		.byte	0x4
+ 850 000b 01       		.uleb128 0x1
+ 851 000c 2D030000 		.4byte	.LASF52
+ 852 0010 01       		.byte	0x1
+ 853 0011 EC000000 		.4byte	.LASF53
+ 854 0015 A1020000 		.4byte	.LASF54
+ 855 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 856 001d 00000000 		.4byte	0
+ 857 0021 00000000 		.4byte	.Ldebug_line0
+ 858 0025 02       		.uleb128 0x2
+ 859 0026 01       		.byte	0x1
+ 860 0027 06       		.byte	0x6
+ 861 0028 DB030000 		.4byte	.LASF0
+ 862 002c 02       		.uleb128 0x2
+ 863 002d 01       		.byte	0x1
+ 864 002e 08       		.byte	0x8
+ 865 002f A7010000 		.4byte	.LASF1
+ 866 0033 02       		.uleb128 0x2
+ 867 0034 02       		.byte	0x2
+ 868 0035 05       		.byte	0x5
+ 869 0036 23030000 		.4byte	.LASF2
+ 870 003a 02       		.uleb128 0x2
+ 871 003b 02       		.byte	0x2
+ 872 003c 07       		.byte	0x7
+ 873 003d E7030000 		.4byte	.LASF3
+ 874 0041 02       		.uleb128 0x2
+ 875 0042 04       		.byte	0x4
+ 876 0043 05       		.byte	0x5
+ 877 0044 C8030000 		.4byte	.LASF4
+ 878 0048 02       		.uleb128 0x2
+ 879 0049 04       		.byte	0x4
+ 880 004a 07       		.byte	0x7
+ 881 004b 62010000 		.4byte	.LASF5
+ 882 004f 02       		.uleb128 0x2
+ 883 0050 08       		.byte	0x8
+ 884 0051 05       		.byte	0x5
+ 885 0052 7A020000 		.4byte	.LASF6
+ 886 0056 02       		.uleb128 0x2
+ 887 0057 08       		.byte	0x8
+ 888 0058 07       		.byte	0x7
+ 889 0059 19010000 		.4byte	.LASF7
+ 890 005d 03       		.uleb128 0x3
+ 891 005e 04       		.byte	0x4
+ 892 005f 05       		.byte	0x5
+ 893 0060 696E7400 		.ascii	"int\000"
+ 894 0064 02       		.uleb128 0x2
+ 895 0065 04       		.byte	0x4
+ 896 0066 07       		.byte	0x7
+ 897 0067 02020000 		.4byte	.LASF8
+ 898 006b 04       		.uleb128 0x4
+ 899 006c 74010000 		.4byte	.LASF9
+ 900 0070 02       		.byte	0x2
+ 901 0071 9201     		.2byte	0x192
+ 902 0073 2C000000 		.4byte	0x2c
+ 903 0077 04       		.uleb128 0x4
+ 904 0078 D1010000 		.4byte	.LASF10
+ 905 007c 02       		.byte	0x2
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 30
+
+
+ 906 007d 9301     		.2byte	0x193
+ 907 007f 3A000000 		.4byte	0x3a
+ 908 0083 02       		.uleb128 0x2
+ 909 0084 04       		.byte	0x4
+ 910 0085 04       		.byte	0x4
+ 911 0086 90000000 		.4byte	.LASF11
+ 912 008a 02       		.uleb128 0x2
+ 913 008b 08       		.byte	0x8
+ 914 008c 04       		.byte	0x4
+ 915 008d B5010000 		.4byte	.LASF12
+ 916 0091 02       		.uleb128 0x2
+ 917 0092 01       		.byte	0x1
+ 918 0093 08       		.byte	0x8
+ 919 0094 9C020000 		.4byte	.LASF13
+ 920 0098 04       		.uleb128 0x4
+ 921 0099 E2010000 		.4byte	.LASF14
+ 922 009d 02       		.byte	0x2
+ 923 009e 3402     		.2byte	0x234
+ 924 00a0 48000000 		.4byte	0x48
+ 925 00a4 04       		.uleb128 0x4
+ 926 00a5 40000000 		.4byte	.LASF15
+ 927 00a9 02       		.byte	0x2
+ 928 00aa 3C02     		.2byte	0x23c
+ 929 00ac B0000000 		.4byte	0xb0
+ 930 00b0 05       		.uleb128 0x5
+ 931 00b1 6B000000 		.4byte	0x6b
+ 932 00b5 02       		.uleb128 0x2
+ 933 00b6 04       		.byte	0x4
+ 934 00b7 07       		.byte	0x7
+ 935 00b8 56020000 		.4byte	.LASF16
+ 936 00bc 06       		.uleb128 0x6
+ 937 00bd BC000000 		.4byte	.LASF17
+ 938 00c1 01       		.byte	0x1
+ 939 00c2 21       		.byte	0x21
+ 940 00c3 00000000 		.4byte	.LFB0
+ 941 00c7 0E000000 		.4byte	.LFE0-.LFB0
+ 942 00cb 01       		.uleb128 0x1
+ 943 00cc 9C       		.byte	0x9c
+ 944 00cd E4000000 		.4byte	0xe4
+ 945 00d1 07       		.uleb128 0x7
+ 946 00d2 06000000 		.4byte	.LVL0
+ 947 00d6 8E050000 		.4byte	0x58e
+ 948 00da 08       		.uleb128 0x8
+ 949 00db 0E000000 		.4byte	.LVL1
+ 950 00df 99050000 		.4byte	0x599
+ 951 00e3 00       		.byte	0
+ 952 00e4 06       		.uleb128 0x6
+ 953 00e5 72000000 		.4byte	.LASF18
+ 954 00e9 01       		.byte	0x1
+ 955 00ea 39       		.byte	0x39
+ 956 00eb 00000000 		.4byte	.LFB1
+ 957 00ef 04000000 		.4byte	.LFE1-.LFB1
+ 958 00f3 01       		.uleb128 0x1
+ 959 00f4 9C       		.byte	0x9c
+ 960 00f5 03010000 		.4byte	0x103
+ 961 00f9 08       		.uleb128 0x8
+ 962 00fa 04000000 		.4byte	.LVL2
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 31
+
+
+ 963 00fe BC000000 		.4byte	0xbc
+ 964 0102 00       		.byte	0
+ 965 0103 06       		.uleb128 0x6
+ 966 0104 DE000000 		.4byte	.LASF19
+ 967 0108 01       		.byte	0x1
+ 968 0109 4D       		.byte	0x4d
+ 969 010a 00000000 		.4byte	.LFB2
+ 970 010e 04000000 		.4byte	.LFE2-.LFB2
+ 971 0112 01       		.uleb128 0x1
+ 972 0113 9C       		.byte	0x9c
+ 973 0114 22010000 		.4byte	0x122
+ 974 0118 08       		.uleb128 0x8
+ 975 0119 04000000 		.4byte	.LVL3
+ 976 011d A0050000 		.4byte	0x5a0
+ 977 0121 00       		.byte	0
+ 978 0122 09       		.uleb128 0x9
+ 979 0123 A9000000 		.4byte	.LASF25
+ 980 0127 01       		.byte	0x1
+ 981 0128 6A       		.byte	0x6a
+ 982 0129 98000000 		.4byte	0x98
+ 983 012d 00000000 		.4byte	.LFB3
+ 984 0131 A0000000 		.4byte	.LFE3-.LFB3
+ 985 0135 01       		.uleb128 0x1
+ 986 0136 9C       		.byte	0x9c
+ 987 0137 E7010000 		.4byte	0x1e7
+ 988 013b 0A       		.uleb128 0xa
+ 989 013c 9E010000 		.4byte	.LASF20
+ 990 0140 01       		.byte	0x1
+ 991 0141 6A       		.byte	0x6a
+ 992 0142 6B000000 		.4byte	0x6b
+ 993 0146 00000000 		.4byte	.LLST0
+ 994 014a 0A       		.uleb128 0xa
+ 995 014b 16020000 		.4byte	.LASF21
+ 996 014f 01       		.byte	0x1
+ 997 0150 6A       		.byte	0x6a
+ 998 0151 77000000 		.4byte	0x77
+ 999 0155 43000000 		.4byte	.LLST1
+ 1000 0159 0B       		.uleb128 0xb
+ 1001 015a 0F020000 		.4byte	.LASF22
+ 1002 015e 01       		.byte	0x1
+ 1003 015f 6C       		.byte	0x6c
+ 1004 0160 98000000 		.4byte	0x98
+ 1005 0164 64000000 		.4byte	.LLST2
+ 1006 0168 0B       		.uleb128 0xb
+ 1007 0169 D1030000 		.4byte	.LASF23
+ 1008 016d 01       		.byte	0x1
+ 1009 016e 6D       		.byte	0x6d
+ 1010 016f 77000000 		.4byte	0x77
+ 1011 0173 A4000000 		.4byte	.LLST3
+ 1012 0177 0B       		.uleb128 0xb
+ 1013 0178 0E010000 		.4byte	.LASF24
+ 1014 017c 01       		.byte	0x1
+ 1015 017d 6E       		.byte	0x6e
+ 1016 017e 77000000 		.4byte	0x77
+ 1017 0182 CA000000 		.4byte	.LLST4
+ 1018 0186 07       		.uleb128 0x7
+ 1019 0187 0C000000 		.4byte	.LVL5
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 32
+
+
+ 1020 018b A7050000 		.4byte	0x5a7
+ 1021 018f 07       		.uleb128 0x7
+ 1022 0190 16000000 		.4byte	.LVL7
+ 1023 0194 AE050000 		.4byte	0x5ae
+ 1024 0198 0C       		.uleb128 0xc
+ 1025 0199 30000000 		.4byte	.LVL9
+ 1026 019d B9050000 		.4byte	0x5b9
+ 1027 01a1 C7010000 		.4byte	0x1c7
+ 1028 01a5 0D       		.uleb128 0xd
+ 1029 01a6 01       		.uleb128 0x1
+ 1030 01a7 53       		.byte	0x53
+ 1031 01a8 01       		.uleb128 0x1
+ 1032 01a9 31       		.byte	0x31
+ 1033 01aa 0D       		.uleb128 0xd
+ 1034 01ab 01       		.uleb128 0x1
+ 1035 01ac 52       		.byte	0x52
+ 1036 01ad 02       		.uleb128 0x2
+ 1037 01ae 91       		.byte	0x91
+ 1038 01af 6F       		.sleb128 -17
+ 1039 01b0 0D       		.uleb128 0xd
+ 1040 01b1 01       		.uleb128 0x1
+ 1041 01b2 51       		.byte	0x51
+ 1042 01b3 0C       		.uleb128 0xc
+ 1043 01b4 75       		.byte	0x75
+ 1044 01b5 00       		.sleb128 0
+ 1045 01b6 3C       		.byte	0x3c
+ 1046 01b7 24       		.byte	0x24
+ 1047 01b8 75       		.byte	0x75
+ 1048 01b9 00       		.sleb128 0
+ 1049 01ba 1C       		.byte	0x1c
+ 1050 01bb 34       		.byte	0x34
+ 1051 01bc 24       		.byte	0x24
+ 1052 01bd 74       		.byte	0x74
+ 1053 01be 00       		.sleb128 0
+ 1054 01bf 22       		.byte	0x22
+ 1055 01c0 0D       		.uleb128 0xd
+ 1056 01c1 01       		.uleb128 0x1
+ 1057 01c2 50       		.byte	0x50
+ 1058 01c3 02       		.uleb128 0x2
+ 1059 01c4 08       		.byte	0x8
+ 1060 01c5 40       		.byte	0x40
+ 1061 01c6 00       		.byte	0
+ 1062 01c7 07       		.uleb128 0x7
+ 1063 01c8 5A000000 		.4byte	.LVL14
+ 1064 01cc DD050000 		.4byte	0x5dd
+ 1065 01d0 0E       		.uleb128 0xe
+ 1066 01d1 72000000 		.4byte	.LVL19
+ 1067 01d5 E4050000 		.4byte	0x5e4
+ 1068 01d9 0D       		.uleb128 0xd
+ 1069 01da 01       		.uleb128 0x1
+ 1070 01db 51       		.byte	0x51
+ 1071 01dc 02       		.uleb128 0x2
+ 1072 01dd 75       		.byte	0x75
+ 1073 01de 00       		.sleb128 0
+ 1074 01df 0D       		.uleb128 0xd
+ 1075 01e0 01       		.uleb128 0x1
+ 1076 01e1 50       		.byte	0x50
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 33
+
+
+ 1077 01e2 02       		.uleb128 0x2
+ 1078 01e3 08       		.byte	0x8
+ 1079 01e4 40       		.byte	0x40
+ 1080 01e5 00       		.byte	0
+ 1081 01e6 00       		.byte	0
+ 1082 01e7 09       		.uleb128 0x9
+ 1083 01e8 CC000000 		.4byte	.LASF26
+ 1084 01ec 01       		.byte	0x1
+ 1085 01ed D0       		.byte	0xd0
+ 1086 01ee 6B000000 		.4byte	0x6b
+ 1087 01f2 00000000 		.4byte	.LFB4
+ 1088 01f6 28000000 		.4byte	.LFE4-.LFB4
+ 1089 01fa 01       		.uleb128 0x1
+ 1090 01fb 9C       		.byte	0x9c
+ 1091 01fc 55020000 		.4byte	0x255
+ 1092 0200 0A       		.uleb128 0xa
+ 1093 0201 16020000 		.4byte	.LASF21
+ 1094 0205 01       		.byte	0x1
+ 1095 0206 D0       		.byte	0xd0
+ 1096 0207 77000000 		.4byte	0x77
+ 1097 020b FC000000 		.4byte	.LLST5
+ 1098 020f 0F       		.uleb128 0xf
+ 1099 0210 08040000 		.4byte	.LASF27
+ 1100 0214 01       		.byte	0x1
+ 1101 0215 D2       		.byte	0xd2
+ 1102 0216 6B000000 		.4byte	0x6b
+ 1103 021a 01       		.uleb128 0x1
+ 1104 021b 54       		.byte	0x54
+ 1105 021c 0F       		.uleb128 0xf
+ 1106 021d 53010000 		.4byte	.LASF28
+ 1107 0221 01       		.byte	0x1
+ 1108 0222 D3       		.byte	0xd3
+ 1109 0223 6B000000 		.4byte	0x6b
+ 1110 0227 01       		.uleb128 0x1
+ 1111 0228 55       		.byte	0x55
+ 1112 0229 07       		.uleb128 0x7
+ 1113 022a 08000000 		.4byte	.LVL23
+ 1114 022e 08060000 		.4byte	0x608
+ 1115 0232 07       		.uleb128 0x7
+ 1116 0233 0E000000 		.4byte	.LVL25
+ 1117 0237 13060000 		.4byte	0x613
+ 1118 023b 07       		.uleb128 0x7
+ 1119 023c 1C000000 		.4byte	.LVL26
+ 1120 0240 1A060000 		.4byte	0x61a
+ 1121 0244 0E       		.uleb128 0xe
+ 1122 0245 24000000 		.4byte	.LVL28
+ 1123 0249 21060000 		.4byte	0x621
+ 1124 024d 0D       		.uleb128 0xd
+ 1125 024e 01       		.uleb128 0x1
+ 1126 024f 50       		.byte	0x50
+ 1127 0250 02       		.uleb128 0x2
+ 1128 0251 75       		.byte	0x75
+ 1129 0252 00       		.sleb128 0
+ 1130 0253 00       		.byte	0
+ 1131 0254 00       		.byte	0
+ 1132 0255 09       		.uleb128 0x9
+ 1133 0256 25000000 		.4byte	.LASF29
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 34
+
+
+ 1134 025a 01       		.byte	0x1
+ 1135 025b F7       		.byte	0xf7
+ 1136 025c 6B000000 		.4byte	0x6b
+ 1137 0260 00000000 		.4byte	.LFB5
+ 1138 0264 0A000000 		.4byte	.LFE5-.LFB5
+ 1139 0268 01       		.uleb128 0x1
+ 1140 0269 9C       		.byte	0x9c
+ 1141 026a 78020000 		.4byte	0x278
+ 1142 026e 07       		.uleb128 0x7
+ 1143 026f 06000000 		.4byte	.LVL29
+ 1144 0273 8E050000 		.4byte	0x58e
+ 1145 0277 00       		.byte	0
+ 1146 0278 10       		.uleb128 0x10
+ 1147 0279 89010000 		.4byte	.LASF30
+ 1148 027d 01       		.byte	0x1
+ 1149 027e 1101     		.2byte	0x111
+ 1150 0280 98000000 		.4byte	0x98
+ 1151 0284 00000000 		.4byte	.LFB6
+ 1152 0288 54000000 		.4byte	.LFE6-.LFB6
+ 1153 028c 01       		.uleb128 0x1
+ 1154 028d 9C       		.byte	0x9c
+ 1155 028e E8020000 		.4byte	0x2e8
+ 1156 0292 11       		.uleb128 0x11
+ 1157 0293 BB030000 		.4byte	.LASF31
+ 1158 0297 01       		.byte	0x1
+ 1159 0298 1101     		.2byte	0x111
+ 1160 029a 6B000000 		.4byte	0x6b
+ 1161 029e 1D010000 		.4byte	.LLST6
+ 1162 02a2 12       		.uleb128 0x12
+ 1163 02a3 0F020000 		.4byte	.LASF22
+ 1164 02a7 01       		.byte	0x1
+ 1165 02a8 1301     		.2byte	0x113
+ 1166 02aa 98000000 		.4byte	0x98
+ 1167 02ae 3E010000 		.4byte	.LLST7
+ 1168 02b2 07       		.uleb128 0x7
+ 1169 02b3 08000000 		.4byte	.LVL31
+ 1170 02b7 A7050000 		.4byte	0x5a7
+ 1171 02bb 07       		.uleb128 0x7
+ 1172 02bc 10000000 		.4byte	.LVL32
+ 1173 02c0 AE050000 		.4byte	0x5ae
+ 1174 02c4 0C       		.uleb128 0xc
+ 1175 02c5 1A000000 		.4byte	.LVL33
+ 1176 02c9 32060000 		.4byte	0x632
+ 1177 02cd DE020000 		.4byte	0x2de
+ 1178 02d1 0D       		.uleb128 0xd
+ 1179 02d2 01       		.uleb128 0x1
+ 1180 02d3 51       		.byte	0x51
+ 1181 02d4 02       		.uleb128 0x2
+ 1182 02d5 74       		.byte	0x74
+ 1183 02d6 00       		.sleb128 0
+ 1184 02d7 0D       		.uleb128 0xd
+ 1185 02d8 01       		.uleb128 0x1
+ 1186 02d9 50       		.byte	0x50
+ 1187 02da 02       		.uleb128 0x2
+ 1188 02db 08       		.byte	0x8
+ 1189 02dc 40       		.byte	0x40
+ 1190 02dd 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 35
+
+
+ 1191 02de 07       		.uleb128 0x7
+ 1192 02df 42000000 		.4byte	.LVL35
+ 1193 02e3 DD050000 		.4byte	0x5dd
+ 1194 02e7 00       		.byte	0
+ 1195 02e8 10       		.uleb128 0x10
+ 1196 02e9 00000000 		.4byte	.LASF32
+ 1197 02ed 01       		.byte	0x1
+ 1198 02ee 5901     		.2byte	0x159
+ 1199 02f0 98000000 		.4byte	0x98
+ 1200 02f4 00000000 		.4byte	.LFB7
+ 1201 02f8 84000000 		.4byte	.LFE7-.LFB7
+ 1202 02fc 01       		.uleb128 0x1
+ 1203 02fd 9C       		.byte	0x9c
+ 1204 02fe 87030000 		.4byte	0x387
+ 1205 0302 11       		.uleb128 0x11
+ 1206 0303 3C010000 		.4byte	.LASF33
+ 1207 0307 01       		.byte	0x1
+ 1208 0308 5901     		.2byte	0x159
+ 1209 030a 87030000 		.4byte	0x387
+ 1210 030e 67010000 		.4byte	.LLST8
+ 1211 0312 11       		.uleb128 0x11
+ 1212 0313 D1030000 		.4byte	.LASF23
+ 1213 0317 01       		.byte	0x1
+ 1214 0318 5901     		.2byte	0x159
+ 1215 031a 6B000000 		.4byte	0x6b
+ 1216 031e C5010000 		.4byte	.LLST9
+ 1217 0322 12       		.uleb128 0x12
+ 1218 0323 0F020000 		.4byte	.LASF22
+ 1219 0327 01       		.byte	0x1
+ 1220 0328 5B01     		.2byte	0x15b
+ 1221 032a 98000000 		.4byte	0x98
+ 1222 032e E6010000 		.4byte	.LLST10
+ 1223 0332 07       		.uleb128 0x7
+ 1224 0333 0A000000 		.4byte	.LVL40
+ 1225 0337 A7050000 		.4byte	0x5a7
+ 1226 033b 07       		.uleb128 0x7
+ 1227 033c 12000000 		.4byte	.LVL41
+ 1228 0340 AE050000 		.4byte	0x5ae
+ 1229 0344 0C       		.uleb128 0xc
+ 1230 0345 20000000 		.4byte	.LVL43
+ 1231 0349 4C060000 		.4byte	0x64c
+ 1232 034d 63030000 		.4byte	0x363
+ 1233 0351 0D       		.uleb128 0xd
+ 1234 0352 01       		.uleb128 0x1
+ 1235 0353 52       		.byte	0x52
+ 1236 0354 01       		.uleb128 0x1
+ 1237 0355 40       		.byte	0x40
+ 1238 0356 0D       		.uleb128 0xd
+ 1239 0357 01       		.uleb128 0x1
+ 1240 0358 51       		.byte	0x51
+ 1241 0359 02       		.uleb128 0x2
+ 1242 035a 74       		.byte	0x74
+ 1243 035b 00       		.sleb128 0
+ 1244 035c 0D       		.uleb128 0xd
+ 1245 035d 01       		.uleb128 0x1
+ 1246 035e 50       		.byte	0x50
+ 1247 035f 02       		.uleb128 0x2
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 36
+
+
+ 1248 0360 08       		.byte	0x8
+ 1249 0361 40       		.byte	0x40
+ 1250 0362 00       		.byte	0
+ 1251 0363 0C       		.uleb128 0xc
+ 1252 0364 4C000000 		.4byte	.LVL47
+ 1253 0368 E4050000 		.4byte	0x5e4
+ 1254 036c 7D030000 		.4byte	0x37d
+ 1255 0370 0D       		.uleb128 0xd
+ 1256 0371 01       		.uleb128 0x1
+ 1257 0372 51       		.byte	0x51
+ 1258 0373 02       		.uleb128 0x2
+ 1259 0374 75       		.byte	0x75
+ 1260 0375 00       		.sleb128 0
+ 1261 0376 0D       		.uleb128 0xd
+ 1262 0377 01       		.uleb128 0x1
+ 1263 0378 50       		.byte	0x50
+ 1264 0379 02       		.uleb128 0x2
+ 1265 037a 08       		.byte	0x8
+ 1266 037b 40       		.byte	0x40
+ 1267 037c 00       		.byte	0
+ 1268 037d 07       		.uleb128 0x7
+ 1269 037e 6E000000 		.4byte	.LVL49
+ 1270 0382 DD050000 		.4byte	0x5dd
+ 1271 0386 00       		.byte	0
+ 1272 0387 13       		.uleb128 0x13
+ 1273 0388 04       		.byte	0x4
+ 1274 0389 8D030000 		.4byte	0x38d
+ 1275 038d 14       		.uleb128 0x14
+ 1276 038e 6B000000 		.4byte	0x6b
+ 1277 0392 10       		.uleb128 0x10
+ 1278 0393 88020000 		.4byte	.LASF34
+ 1279 0397 01       		.byte	0x1
+ 1280 0398 C601     		.2byte	0x1c6
+ 1281 039a 98000000 		.4byte	0x98
+ 1282 039e 00000000 		.4byte	.LFB8
+ 1283 03a2 68000000 		.4byte	.LFE8-.LFB8
+ 1284 03a6 01       		.uleb128 0x1
+ 1285 03a7 9C       		.byte	0x9c
+ 1286 03a8 24040000 		.4byte	0x424
+ 1287 03ac 11       		.uleb128 0x11
+ 1288 03ad 3C010000 		.4byte	.LASF33
+ 1289 03b1 01       		.byte	0x1
+ 1290 03b2 C601     		.2byte	0x1c6
+ 1291 03b4 87030000 		.4byte	0x387
+ 1292 03b8 1F020000 		.4byte	.LLST11
+ 1293 03bc 11       		.uleb128 0x11
+ 1294 03bd D1030000 		.4byte	.LASF23
+ 1295 03c1 01       		.byte	0x1
+ 1296 03c2 C601     		.2byte	0x1c6
+ 1297 03c4 6B000000 		.4byte	0x6b
+ 1298 03c8 4B020000 		.4byte	.LLST12
+ 1299 03cc 12       		.uleb128 0x12
+ 1300 03cd 0F020000 		.4byte	.LASF22
+ 1301 03d1 01       		.byte	0x1
+ 1302 03d2 C901     		.2byte	0x1c9
+ 1303 03d4 98000000 		.4byte	0x98
+ 1304 03d8 6C020000 		.4byte	.LLST13
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 37
+
+
+ 1305 03dc 07       		.uleb128 0x7
+ 1306 03dd 0A000000 		.4byte	.LVL55
+ 1307 03e1 A7050000 		.4byte	0x5a7
+ 1308 03e5 07       		.uleb128 0x7
+ 1309 03e6 12000000 		.4byte	.LVL56
+ 1310 03ea AE050000 		.4byte	0x5ae
+ 1311 03ee 0C       		.uleb128 0xc
+ 1312 03ef 1E000000 		.4byte	.LVL58
+ 1313 03f3 4C060000 		.4byte	0x64c
+ 1314 03f7 0D040000 		.4byte	0x40d
+ 1315 03fb 0D       		.uleb128 0xd
+ 1316 03fc 01       		.uleb128 0x1
+ 1317 03fd 52       		.byte	0x52
+ 1318 03fe 01       		.uleb128 0x1
+ 1319 03ff 40       		.byte	0x40
+ 1320 0400 0D       		.uleb128 0xd
+ 1321 0401 01       		.uleb128 0x1
+ 1322 0402 51       		.byte	0x51
+ 1323 0403 02       		.uleb128 0x2
+ 1324 0404 75       		.byte	0x75
+ 1325 0405 00       		.sleb128 0
+ 1326 0406 0D       		.uleb128 0xd
+ 1327 0407 01       		.uleb128 0x1
+ 1328 0408 50       		.byte	0x50
+ 1329 0409 02       		.uleb128 0x2
+ 1330 040a 08       		.byte	0x8
+ 1331 040b 40       		.byte	0x40
+ 1332 040c 00       		.byte	0
+ 1333 040d 0E       		.uleb128 0xe
+ 1334 040e 54000000 		.4byte	.LVL63
+ 1335 0412 E4050000 		.4byte	0x5e4
+ 1336 0416 0D       		.uleb128 0xd
+ 1337 0417 01       		.uleb128 0x1
+ 1338 0418 51       		.byte	0x51
+ 1339 0419 02       		.uleb128 0x2
+ 1340 041a 74       		.byte	0x74
+ 1341 041b 00       		.sleb128 0
+ 1342 041c 0D       		.uleb128 0xd
+ 1343 041d 01       		.uleb128 0x1
+ 1344 041e 50       		.byte	0x50
+ 1345 041f 02       		.uleb128 0x2
+ 1346 0420 08       		.byte	0x8
+ 1347 0421 40       		.byte	0x40
+ 1348 0422 00       		.byte	0
+ 1349 0423 00       		.byte	0
+ 1350 0424 10       		.uleb128 0x10
+ 1351 0425 45000000 		.4byte	.LASF35
+ 1352 0429 01       		.byte	0x1
+ 1353 042a 2202     		.2byte	0x222
+ 1354 042c 98000000 		.4byte	0x98
+ 1355 0430 00000000 		.4byte	.LFB9
+ 1356 0434 2A000000 		.4byte	.LFE9-.LFB9
+ 1357 0438 01       		.uleb128 0x1
+ 1358 0439 9C       		.byte	0x9c
+ 1359 043a 81040000 		.4byte	0x481
+ 1360 043e 11       		.uleb128 0x11
+ 1361 043f BB030000 		.4byte	.LASF31
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 38
+
+
+ 1362 0443 01       		.byte	0x1
+ 1363 0444 2202     		.2byte	0x222
+ 1364 0446 6B000000 		.4byte	0x6b
+ 1365 044a 9A020000 		.4byte	.LLST14
+ 1366 044e 12       		.uleb128 0x12
+ 1367 044f 0F020000 		.4byte	.LASF22
+ 1368 0453 01       		.byte	0x1
+ 1369 0454 2402     		.2byte	0x224
+ 1370 0456 98000000 		.4byte	0x98
+ 1371 045a BB020000 		.4byte	.LLST15
+ 1372 045e 07       		.uleb128 0x7
+ 1373 045f 08000000 		.4byte	.LVL66
+ 1374 0463 A7050000 		.4byte	0x5a7
+ 1375 0467 07       		.uleb128 0x7
+ 1376 0468 0E000000 		.4byte	.LVL67
+ 1377 046c AE050000 		.4byte	0x5ae
+ 1378 0470 0E       		.uleb128 0xe
+ 1379 0471 18000000 		.4byte	.LVL69
+ 1380 0475 32060000 		.4byte	0x632
+ 1381 0479 0D       		.uleb128 0xd
+ 1382 047a 01       		.uleb128 0x1
+ 1383 047b 50       		.byte	0x50
+ 1384 047c 02       		.uleb128 0x2
+ 1385 047d 08       		.byte	0x8
+ 1386 047e 40       		.byte	0x40
+ 1387 047f 00       		.byte	0
+ 1388 0480 00       		.byte	0
+ 1389 0481 10       		.uleb128 0x10
+ 1390 0482 81000000 		.4byte	.LASF36
+ 1391 0486 01       		.byte	0x1
+ 1392 0487 5802     		.2byte	0x258
+ 1393 0489 98000000 		.4byte	0x98
+ 1394 048d 00000000 		.4byte	.LFB10
+ 1395 0491 38000000 		.4byte	.LFE10-.LFB10
+ 1396 0495 01       		.uleb128 0x1
+ 1397 0496 9C       		.byte	0x9c
+ 1398 0497 BE040000 		.4byte	0x4be
+ 1399 049b 12       		.uleb128 0x12
+ 1400 049c 0F020000 		.4byte	.LASF22
+ 1401 04a0 01       		.byte	0x1
+ 1402 04a1 5A02     		.2byte	0x25a
+ 1403 04a3 98000000 		.4byte	0x98
+ 1404 04a7 DB020000 		.4byte	.LLST16
+ 1405 04ab 07       		.uleb128 0x7
+ 1406 04ac 06000000 		.4byte	.LVL72
+ 1407 04b0 A7050000 		.4byte	0x5a7
+ 1408 04b4 07       		.uleb128 0x7
+ 1409 04b5 2A000000 		.4byte	.LVL74
+ 1410 04b9 DD050000 		.4byte	0x5dd
+ 1411 04bd 00       		.byte	0
+ 1412 04be 10       		.uleb128 0x10
+ 1413 04bf 0F000000 		.4byte	.LASF37
+ 1414 04c3 01       		.byte	0x1
+ 1415 04c4 8B02     		.2byte	0x28b
+ 1416 04c6 98000000 		.4byte	0x98
+ 1417 04ca 00000000 		.4byte	.LFB11
+ 1418 04ce 90000000 		.4byte	.LFE11-.LFB11
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 39
+
+
+ 1419 04d2 01       		.uleb128 0x1
+ 1420 04d3 9C       		.byte	0x9c
+ 1421 04d4 73050000 		.4byte	0x573
+ 1422 04d8 11       		.uleb128 0x11
+ 1423 04d9 9E010000 		.4byte	.LASF20
+ 1424 04dd 01       		.byte	0x1
+ 1425 04de 8B02     		.2byte	0x28b
+ 1426 04e0 6B000000 		.4byte	0x6b
+ 1427 04e4 04030000 		.4byte	.LLST17
+ 1428 04e8 11       		.uleb128 0x11
+ 1429 04e9 D1030000 		.4byte	.LASF23
+ 1430 04ed 01       		.byte	0x1
+ 1431 04ee 8B02     		.2byte	0x28b
+ 1432 04f0 6B000000 		.4byte	0x6b
+ 1433 04f4 47030000 		.4byte	.LLST18
+ 1434 04f8 11       		.uleb128 0x11
+ 1435 04f9 0E010000 		.4byte	.LASF24
+ 1436 04fd 01       		.byte	0x1
+ 1437 04fe 8B02     		.2byte	0x28b
+ 1438 0500 6B000000 		.4byte	0x6b
+ 1439 0504 68030000 		.4byte	.LLST19
+ 1440 0508 12       		.uleb128 0x12
+ 1441 0509 0F020000 		.4byte	.LASF22
+ 1442 050d 01       		.byte	0x1
+ 1443 050e 8E02     		.2byte	0x28e
+ 1444 0510 98000000 		.4byte	0x98
+ 1445 0514 89030000 		.4byte	.LLST20
+ 1446 0518 07       		.uleb128 0x7
+ 1447 0519 0E000000 		.4byte	.LVL79
+ 1448 051d A7050000 		.4byte	0x5a7
+ 1449 0521 07       		.uleb128 0x7
+ 1450 0522 1A000000 		.4byte	.LVL80
+ 1451 0526 AE050000 		.4byte	0x5ae
+ 1452 052a 0C       		.uleb128 0xc
+ 1453 052b 2C000000 		.4byte	.LVL83
+ 1454 052f B9050000 		.4byte	0x5b9
+ 1455 0533 4F050000 		.4byte	0x54f
+ 1456 0537 0D       		.uleb128 0xd
+ 1457 0538 01       		.uleb128 0x1
+ 1458 0539 53       		.byte	0x53
+ 1459 053a 01       		.uleb128 0x1
+ 1460 053b 31       		.byte	0x31
+ 1461 053c 0D       		.uleb128 0xd
+ 1462 053d 01       		.uleb128 0x1
+ 1463 053e 52       		.byte	0x52
+ 1464 053f 02       		.uleb128 0x2
+ 1465 0540 91       		.byte	0x91
+ 1466 0541 6F       		.sleb128 -17
+ 1467 0542 0D       		.uleb128 0xd
+ 1468 0543 01       		.uleb128 0x1
+ 1469 0544 51       		.byte	0x51
+ 1470 0545 02       		.uleb128 0x2
+ 1471 0546 74       		.byte	0x74
+ 1472 0547 00       		.sleb128 0
+ 1473 0548 0D       		.uleb128 0xd
+ 1474 0549 01       		.uleb128 0x1
+ 1475 054a 50       		.byte	0x50
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 40
+
+
+ 1476 054b 02       		.uleb128 0x2
+ 1477 054c 08       		.byte	0x8
+ 1478 054d 40       		.byte	0x40
+ 1479 054e 00       		.byte	0
+ 1480 054f 0C       		.uleb128 0xc
+ 1481 0550 58000000 		.4byte	.LVL87
+ 1482 0554 E4050000 		.4byte	0x5e4
+ 1483 0558 69050000 		.4byte	0x569
+ 1484 055c 0D       		.uleb128 0xd
+ 1485 055d 01       		.uleb128 0x1
+ 1486 055e 51       		.byte	0x51
+ 1487 055f 02       		.uleb128 0x2
+ 1488 0560 75       		.byte	0x75
+ 1489 0561 00       		.sleb128 0
+ 1490 0562 0D       		.uleb128 0xd
+ 1491 0563 01       		.uleb128 0x1
+ 1492 0564 50       		.byte	0x50
+ 1493 0565 02       		.uleb128 0x2
+ 1494 0566 08       		.byte	0x8
+ 1495 0567 40       		.byte	0x40
+ 1496 0568 00       		.byte	0
+ 1497 0569 07       		.uleb128 0x7
+ 1498 056a 7A000000 		.4byte	.LVL89
+ 1499 056e DD050000 		.4byte	0x5dd
+ 1500 0572 00       		.byte	0
+ 1501 0573 15       		.uleb128 0x15
+ 1502 0574 6B000000 		.4byte	0x6b
+ 1503 0578 83050000 		.4byte	0x583
+ 1504 057c 16       		.uleb128 0x16
+ 1505 057d B5000000 		.4byte	0xb5
+ 1506 0581 01       		.byte	0x1
+ 1507 0582 00       		.byte	0
+ 1508 0583 17       		.uleb128 0x17
+ 1509 0584 7A010000 		.4byte	.LASF55
+ 1510 0588 03       		.byte	0x3
+ 1511 0589 1C       		.byte	0x1c
+ 1512 058a 73050000 		.4byte	0x573
+ 1513 058e 18       		.uleb128 0x18
+ 1514 058f 5F020000 		.4byte	.LASF41
+ 1515 0593 03       		.byte	0x3
+ 1516 0594 45       		.byte	0x45
+ 1517 0595 98000000 		.4byte	0x98
+ 1518 0599 19       		.uleb128 0x19
+ 1519 059a 44010000 		.4byte	.LASF38
+ 1520 059e 03       		.byte	0x3
+ 1521 059f 53       		.byte	0x53
+ 1522 05a0 19       		.uleb128 0x19
+ 1523 05a1 59000000 		.4byte	.LASF39
+ 1524 05a5 03       		.byte	0x3
+ 1525 05a6 54       		.byte	0x54
+ 1526 05a7 19       		.uleb128 0x19
+ 1527 05a8 67000000 		.4byte	.LASF40
+ 1528 05ac 04       		.byte	0x4
+ 1529 05ad 22       		.byte	0x22
+ 1530 05ae 18       		.uleb128 0x18
+ 1531 05af D8010000 		.4byte	.LASF42
+ 1532 05b3 04       		.byte	0x4
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 41
+
+
+ 1533 05b4 2F       		.byte	0x2f
+ 1534 05b5 98000000 		.4byte	0x98
+ 1535 05b9 1A       		.uleb128 0x1a
+ 1536 05ba 96000000 		.4byte	.LASF44
+ 1537 05be 04       		.byte	0x4
+ 1538 05bf 25       		.byte	0x25
+ 1539 05c0 98000000 		.4byte	0x98
+ 1540 05c4 DD050000 		.4byte	0x5dd
+ 1541 05c8 1B       		.uleb128 0x1b
+ 1542 05c9 6B000000 		.4byte	0x6b
+ 1543 05cd 1B       		.uleb128 0x1b
+ 1544 05ce 77000000 		.4byte	0x77
+ 1545 05d2 1B       		.uleb128 0x1b
+ 1546 05d3 87030000 		.4byte	0x387
+ 1547 05d7 1B       		.uleb128 0x1b
+ 1548 05d8 6B000000 		.4byte	0x6b
+ 1549 05dc 00       		.byte	0
+ 1550 05dd 19       		.uleb128 0x19
+ 1551 05de 30010000 		.4byte	.LASF43
+ 1552 05e2 04       		.byte	0x4
+ 1553 05e3 30       		.byte	0x30
+ 1554 05e4 1A       		.uleb128 0x1a
+ 1555 05e5 FA030000 		.4byte	.LASF45
+ 1556 05e9 04       		.byte	0x4
+ 1557 05ea 2A       		.byte	0x2a
+ 1558 05eb 98000000 		.4byte	0x98
+ 1559 05ef 08060000 		.4byte	0x608
+ 1560 05f3 1B       		.uleb128 0x1b
+ 1561 05f4 6B000000 		.4byte	0x6b
+ 1562 05f8 1B       		.uleb128 0x1b
+ 1563 05f9 77000000 		.4byte	0x77
+ 1564 05fd 1B       		.uleb128 0x1b
+ 1565 05fe 6B000000 		.4byte	0x6b
+ 1566 0602 1B       		.uleb128 0x1b
+ 1567 0603 6B000000 		.4byte	0x6b
+ 1568 0607 00       		.byte	0
+ 1569 0608 18       		.uleb128 0x18
+ 1570 0609 EB010000 		.4byte	.LASF46
+ 1571 060d 05       		.byte	0x5
+ 1572 060e 7D       		.byte	0x7d
+ 1573 060f 6B000000 		.4byte	0x6b
+ 1574 0613 19       		.uleb128 0x19
+ 1575 0614 34020000 		.4byte	.LASF47
+ 1576 0618 03       		.byte	0x3
+ 1577 0619 56       		.byte	0x56
+ 1578 061a 19       		.uleb128 0x19
+ 1579 061b BC010000 		.4byte	.LASF48
+ 1580 061f 03       		.byte	0x3
+ 1581 0620 57       		.byte	0x57
+ 1582 0621 1C       		.uleb128 0x1c
+ 1583 0622 1E020000 		.4byte	.LASF50
+ 1584 0626 05       		.byte	0x5
+ 1585 0627 7E       		.byte	0x7e
+ 1586 0628 32060000 		.4byte	0x632
+ 1587 062c 1B       		.uleb128 0x1b
+ 1588 062d 6B000000 		.4byte	0x6b
+ 1589 0631 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 42
+
+
+ 1590 0632 1A       		.uleb128 0x1a
+ 1591 0633 69020000 		.4byte	.LASF49
+ 1592 0637 04       		.byte	0x4
+ 1593 0638 2C       		.byte	0x2c
+ 1594 0639 98000000 		.4byte	0x98
+ 1595 063d 4C060000 		.4byte	0x64c
+ 1596 0641 1B       		.uleb128 0x1b
+ 1597 0642 6B000000 		.4byte	0x6b
+ 1598 0646 1B       		.uleb128 0x1b
+ 1599 0647 6B000000 		.4byte	0x6b
+ 1600 064b 00       		.byte	0
+ 1601 064c 1D       		.uleb128 0x1d
+ 1602 064d 49020000 		.4byte	.LASF51
+ 1603 0651 04       		.byte	0x4
+ 1604 0652 27       		.byte	0x27
+ 1605 0653 98000000 		.4byte	0x98
+ 1606 0657 1B       		.uleb128 0x1b
+ 1607 0658 6B000000 		.4byte	0x6b
+ 1608 065c 1B       		.uleb128 0x1b
+ 1609 065d 87030000 		.4byte	0x387
+ 1610 0661 1B       		.uleb128 0x1b
+ 1611 0662 77000000 		.4byte	0x77
+ 1612 0666 00       		.byte	0
+ 1613 0667 00       		.byte	0
+ 1614              		.section	.debug_abbrev,"",%progbits
+ 1615              	.Ldebug_abbrev0:
+ 1616 0000 01       		.uleb128 0x1
+ 1617 0001 11       		.uleb128 0x11
+ 1618 0002 01       		.byte	0x1
+ 1619 0003 25       		.uleb128 0x25
+ 1620 0004 0E       		.uleb128 0xe
+ 1621 0005 13       		.uleb128 0x13
+ 1622 0006 0B       		.uleb128 0xb
+ 1623 0007 03       		.uleb128 0x3
+ 1624 0008 0E       		.uleb128 0xe
+ 1625 0009 1B       		.uleb128 0x1b
+ 1626 000a 0E       		.uleb128 0xe
+ 1627 000b 55       		.uleb128 0x55
+ 1628 000c 17       		.uleb128 0x17
+ 1629 000d 11       		.uleb128 0x11
+ 1630 000e 01       		.uleb128 0x1
+ 1631 000f 10       		.uleb128 0x10
+ 1632 0010 17       		.uleb128 0x17
+ 1633 0011 00       		.byte	0
+ 1634 0012 00       		.byte	0
+ 1635 0013 02       		.uleb128 0x2
+ 1636 0014 24       		.uleb128 0x24
+ 1637 0015 00       		.byte	0
+ 1638 0016 0B       		.uleb128 0xb
+ 1639 0017 0B       		.uleb128 0xb
+ 1640 0018 3E       		.uleb128 0x3e
+ 1641 0019 0B       		.uleb128 0xb
+ 1642 001a 03       		.uleb128 0x3
+ 1643 001b 0E       		.uleb128 0xe
+ 1644 001c 00       		.byte	0
+ 1645 001d 00       		.byte	0
+ 1646 001e 03       		.uleb128 0x3
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 43
+
+
+ 1647 001f 24       		.uleb128 0x24
+ 1648 0020 00       		.byte	0
+ 1649 0021 0B       		.uleb128 0xb
+ 1650 0022 0B       		.uleb128 0xb
+ 1651 0023 3E       		.uleb128 0x3e
+ 1652 0024 0B       		.uleb128 0xb
+ 1653 0025 03       		.uleb128 0x3
+ 1654 0026 08       		.uleb128 0x8
+ 1655 0027 00       		.byte	0
+ 1656 0028 00       		.byte	0
+ 1657 0029 04       		.uleb128 0x4
+ 1658 002a 16       		.uleb128 0x16
+ 1659 002b 00       		.byte	0
+ 1660 002c 03       		.uleb128 0x3
+ 1661 002d 0E       		.uleb128 0xe
+ 1662 002e 3A       		.uleb128 0x3a
+ 1663 002f 0B       		.uleb128 0xb
+ 1664 0030 3B       		.uleb128 0x3b
+ 1665 0031 05       		.uleb128 0x5
+ 1666 0032 49       		.uleb128 0x49
+ 1667 0033 13       		.uleb128 0x13
+ 1668 0034 00       		.byte	0
+ 1669 0035 00       		.byte	0
+ 1670 0036 05       		.uleb128 0x5
+ 1671 0037 35       		.uleb128 0x35
+ 1672 0038 00       		.byte	0
+ 1673 0039 49       		.uleb128 0x49
+ 1674 003a 13       		.uleb128 0x13
+ 1675 003b 00       		.byte	0
+ 1676 003c 00       		.byte	0
+ 1677 003d 06       		.uleb128 0x6
+ 1678 003e 2E       		.uleb128 0x2e
+ 1679 003f 01       		.byte	0x1
+ 1680 0040 3F       		.uleb128 0x3f
+ 1681 0041 19       		.uleb128 0x19
+ 1682 0042 03       		.uleb128 0x3
+ 1683 0043 0E       		.uleb128 0xe
+ 1684 0044 3A       		.uleb128 0x3a
+ 1685 0045 0B       		.uleb128 0xb
+ 1686 0046 3B       		.uleb128 0x3b
+ 1687 0047 0B       		.uleb128 0xb
+ 1688 0048 27       		.uleb128 0x27
+ 1689 0049 19       		.uleb128 0x19
+ 1690 004a 11       		.uleb128 0x11
+ 1691 004b 01       		.uleb128 0x1
+ 1692 004c 12       		.uleb128 0x12
+ 1693 004d 06       		.uleb128 0x6
+ 1694 004e 40       		.uleb128 0x40
+ 1695 004f 18       		.uleb128 0x18
+ 1696 0050 9742     		.uleb128 0x2117
+ 1697 0052 19       		.uleb128 0x19
+ 1698 0053 01       		.uleb128 0x1
+ 1699 0054 13       		.uleb128 0x13
+ 1700 0055 00       		.byte	0
+ 1701 0056 00       		.byte	0
+ 1702 0057 07       		.uleb128 0x7
+ 1703 0058 898201   		.uleb128 0x4109
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 44
+
+
+ 1704 005b 00       		.byte	0
+ 1705 005c 11       		.uleb128 0x11
+ 1706 005d 01       		.uleb128 0x1
+ 1707 005e 31       		.uleb128 0x31
+ 1708 005f 13       		.uleb128 0x13
+ 1709 0060 00       		.byte	0
+ 1710 0061 00       		.byte	0
+ 1711 0062 08       		.uleb128 0x8
+ 1712 0063 898201   		.uleb128 0x4109
+ 1713 0066 00       		.byte	0
+ 1714 0067 11       		.uleb128 0x11
+ 1715 0068 01       		.uleb128 0x1
+ 1716 0069 9542     		.uleb128 0x2115
+ 1717 006b 19       		.uleb128 0x19
+ 1718 006c 31       		.uleb128 0x31
+ 1719 006d 13       		.uleb128 0x13
+ 1720 006e 00       		.byte	0
+ 1721 006f 00       		.byte	0
+ 1722 0070 09       		.uleb128 0x9
+ 1723 0071 2E       		.uleb128 0x2e
+ 1724 0072 01       		.byte	0x1
+ 1725 0073 3F       		.uleb128 0x3f
+ 1726 0074 19       		.uleb128 0x19
+ 1727 0075 03       		.uleb128 0x3
+ 1728 0076 0E       		.uleb128 0xe
+ 1729 0077 3A       		.uleb128 0x3a
+ 1730 0078 0B       		.uleb128 0xb
+ 1731 0079 3B       		.uleb128 0x3b
+ 1732 007a 0B       		.uleb128 0xb
+ 1733 007b 27       		.uleb128 0x27
+ 1734 007c 19       		.uleb128 0x19
+ 1735 007d 49       		.uleb128 0x49
+ 1736 007e 13       		.uleb128 0x13
+ 1737 007f 11       		.uleb128 0x11
+ 1738 0080 01       		.uleb128 0x1
+ 1739 0081 12       		.uleb128 0x12
+ 1740 0082 06       		.uleb128 0x6
+ 1741 0083 40       		.uleb128 0x40
+ 1742 0084 18       		.uleb128 0x18
+ 1743 0085 9742     		.uleb128 0x2117
+ 1744 0087 19       		.uleb128 0x19
+ 1745 0088 01       		.uleb128 0x1
+ 1746 0089 13       		.uleb128 0x13
+ 1747 008a 00       		.byte	0
+ 1748 008b 00       		.byte	0
+ 1749 008c 0A       		.uleb128 0xa
+ 1750 008d 05       		.uleb128 0x5
+ 1751 008e 00       		.byte	0
+ 1752 008f 03       		.uleb128 0x3
+ 1753 0090 0E       		.uleb128 0xe
+ 1754 0091 3A       		.uleb128 0x3a
+ 1755 0092 0B       		.uleb128 0xb
+ 1756 0093 3B       		.uleb128 0x3b
+ 1757 0094 0B       		.uleb128 0xb
+ 1758 0095 49       		.uleb128 0x49
+ 1759 0096 13       		.uleb128 0x13
+ 1760 0097 02       		.uleb128 0x2
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 45
+
+
+ 1761 0098 17       		.uleb128 0x17
+ 1762 0099 00       		.byte	0
+ 1763 009a 00       		.byte	0
+ 1764 009b 0B       		.uleb128 0xb
+ 1765 009c 34       		.uleb128 0x34
+ 1766 009d 00       		.byte	0
+ 1767 009e 03       		.uleb128 0x3
+ 1768 009f 0E       		.uleb128 0xe
+ 1769 00a0 3A       		.uleb128 0x3a
+ 1770 00a1 0B       		.uleb128 0xb
+ 1771 00a2 3B       		.uleb128 0x3b
+ 1772 00a3 0B       		.uleb128 0xb
+ 1773 00a4 49       		.uleb128 0x49
+ 1774 00a5 13       		.uleb128 0x13
+ 1775 00a6 02       		.uleb128 0x2
+ 1776 00a7 17       		.uleb128 0x17
+ 1777 00a8 00       		.byte	0
+ 1778 00a9 00       		.byte	0
+ 1779 00aa 0C       		.uleb128 0xc
+ 1780 00ab 898201   		.uleb128 0x4109
+ 1781 00ae 01       		.byte	0x1
+ 1782 00af 11       		.uleb128 0x11
+ 1783 00b0 01       		.uleb128 0x1
+ 1784 00b1 31       		.uleb128 0x31
+ 1785 00b2 13       		.uleb128 0x13
+ 1786 00b3 01       		.uleb128 0x1
+ 1787 00b4 13       		.uleb128 0x13
+ 1788 00b5 00       		.byte	0
+ 1789 00b6 00       		.byte	0
+ 1790 00b7 0D       		.uleb128 0xd
+ 1791 00b8 8A8201   		.uleb128 0x410a
+ 1792 00bb 00       		.byte	0
+ 1793 00bc 02       		.uleb128 0x2
+ 1794 00bd 18       		.uleb128 0x18
+ 1795 00be 9142     		.uleb128 0x2111
+ 1796 00c0 18       		.uleb128 0x18
+ 1797 00c1 00       		.byte	0
+ 1798 00c2 00       		.byte	0
+ 1799 00c3 0E       		.uleb128 0xe
+ 1800 00c4 898201   		.uleb128 0x4109
+ 1801 00c7 01       		.byte	0x1
+ 1802 00c8 11       		.uleb128 0x11
+ 1803 00c9 01       		.uleb128 0x1
+ 1804 00ca 31       		.uleb128 0x31
+ 1805 00cb 13       		.uleb128 0x13
+ 1806 00cc 00       		.byte	0
+ 1807 00cd 00       		.byte	0
+ 1808 00ce 0F       		.uleb128 0xf
+ 1809 00cf 34       		.uleb128 0x34
+ 1810 00d0 00       		.byte	0
+ 1811 00d1 03       		.uleb128 0x3
+ 1812 00d2 0E       		.uleb128 0xe
+ 1813 00d3 3A       		.uleb128 0x3a
+ 1814 00d4 0B       		.uleb128 0xb
+ 1815 00d5 3B       		.uleb128 0x3b
+ 1816 00d6 0B       		.uleb128 0xb
+ 1817 00d7 49       		.uleb128 0x49
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 46
+
+
+ 1818 00d8 13       		.uleb128 0x13
+ 1819 00d9 02       		.uleb128 0x2
+ 1820 00da 18       		.uleb128 0x18
+ 1821 00db 00       		.byte	0
+ 1822 00dc 00       		.byte	0
+ 1823 00dd 10       		.uleb128 0x10
+ 1824 00de 2E       		.uleb128 0x2e
+ 1825 00df 01       		.byte	0x1
+ 1826 00e0 3F       		.uleb128 0x3f
+ 1827 00e1 19       		.uleb128 0x19
+ 1828 00e2 03       		.uleb128 0x3
+ 1829 00e3 0E       		.uleb128 0xe
+ 1830 00e4 3A       		.uleb128 0x3a
+ 1831 00e5 0B       		.uleb128 0xb
+ 1832 00e6 3B       		.uleb128 0x3b
+ 1833 00e7 05       		.uleb128 0x5
+ 1834 00e8 27       		.uleb128 0x27
+ 1835 00e9 19       		.uleb128 0x19
+ 1836 00ea 49       		.uleb128 0x49
+ 1837 00eb 13       		.uleb128 0x13
+ 1838 00ec 11       		.uleb128 0x11
+ 1839 00ed 01       		.uleb128 0x1
+ 1840 00ee 12       		.uleb128 0x12
+ 1841 00ef 06       		.uleb128 0x6
+ 1842 00f0 40       		.uleb128 0x40
+ 1843 00f1 18       		.uleb128 0x18
+ 1844 00f2 9742     		.uleb128 0x2117
+ 1845 00f4 19       		.uleb128 0x19
+ 1846 00f5 01       		.uleb128 0x1
+ 1847 00f6 13       		.uleb128 0x13
+ 1848 00f7 00       		.byte	0
+ 1849 00f8 00       		.byte	0
+ 1850 00f9 11       		.uleb128 0x11
+ 1851 00fa 05       		.uleb128 0x5
+ 1852 00fb 00       		.byte	0
+ 1853 00fc 03       		.uleb128 0x3
+ 1854 00fd 0E       		.uleb128 0xe
+ 1855 00fe 3A       		.uleb128 0x3a
+ 1856 00ff 0B       		.uleb128 0xb
+ 1857 0100 3B       		.uleb128 0x3b
+ 1858 0101 05       		.uleb128 0x5
+ 1859 0102 49       		.uleb128 0x49
+ 1860 0103 13       		.uleb128 0x13
+ 1861 0104 02       		.uleb128 0x2
+ 1862 0105 17       		.uleb128 0x17
+ 1863 0106 00       		.byte	0
+ 1864 0107 00       		.byte	0
+ 1865 0108 12       		.uleb128 0x12
+ 1866 0109 34       		.uleb128 0x34
+ 1867 010a 00       		.byte	0
+ 1868 010b 03       		.uleb128 0x3
+ 1869 010c 0E       		.uleb128 0xe
+ 1870 010d 3A       		.uleb128 0x3a
+ 1871 010e 0B       		.uleb128 0xb
+ 1872 010f 3B       		.uleb128 0x3b
+ 1873 0110 05       		.uleb128 0x5
+ 1874 0111 49       		.uleb128 0x49
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 47
+
+
+ 1875 0112 13       		.uleb128 0x13
+ 1876 0113 02       		.uleb128 0x2
+ 1877 0114 17       		.uleb128 0x17
+ 1878 0115 00       		.byte	0
+ 1879 0116 00       		.byte	0
+ 1880 0117 13       		.uleb128 0x13
+ 1881 0118 0F       		.uleb128 0xf
+ 1882 0119 00       		.byte	0
+ 1883 011a 0B       		.uleb128 0xb
+ 1884 011b 0B       		.uleb128 0xb
+ 1885 011c 49       		.uleb128 0x49
+ 1886 011d 13       		.uleb128 0x13
+ 1887 011e 00       		.byte	0
+ 1888 011f 00       		.byte	0
+ 1889 0120 14       		.uleb128 0x14
+ 1890 0121 26       		.uleb128 0x26
+ 1891 0122 00       		.byte	0
+ 1892 0123 49       		.uleb128 0x49
+ 1893 0124 13       		.uleb128 0x13
+ 1894 0125 00       		.byte	0
+ 1895 0126 00       		.byte	0
+ 1896 0127 15       		.uleb128 0x15
+ 1897 0128 01       		.uleb128 0x1
+ 1898 0129 01       		.byte	0x1
+ 1899 012a 49       		.uleb128 0x49
+ 1900 012b 13       		.uleb128 0x13
+ 1901 012c 01       		.uleb128 0x1
+ 1902 012d 13       		.uleb128 0x13
+ 1903 012e 00       		.byte	0
+ 1904 012f 00       		.byte	0
+ 1905 0130 16       		.uleb128 0x16
+ 1906 0131 21       		.uleb128 0x21
+ 1907 0132 00       		.byte	0
+ 1908 0133 49       		.uleb128 0x49
+ 1909 0134 13       		.uleb128 0x13
+ 1910 0135 2F       		.uleb128 0x2f
+ 1911 0136 0B       		.uleb128 0xb
+ 1912 0137 00       		.byte	0
+ 1913 0138 00       		.byte	0
+ 1914 0139 17       		.uleb128 0x17
+ 1915 013a 34       		.uleb128 0x34
+ 1916 013b 00       		.byte	0
+ 1917 013c 03       		.uleb128 0x3
+ 1918 013d 0E       		.uleb128 0xe
+ 1919 013e 3A       		.uleb128 0x3a
+ 1920 013f 0B       		.uleb128 0xb
+ 1921 0140 3B       		.uleb128 0x3b
+ 1922 0141 0B       		.uleb128 0xb
+ 1923 0142 49       		.uleb128 0x49
+ 1924 0143 13       		.uleb128 0x13
+ 1925 0144 3F       		.uleb128 0x3f
+ 1926 0145 19       		.uleb128 0x19
+ 1927 0146 3C       		.uleb128 0x3c
+ 1928 0147 19       		.uleb128 0x19
+ 1929 0148 00       		.byte	0
+ 1930 0149 00       		.byte	0
+ 1931 014a 18       		.uleb128 0x18
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 48
+
+
+ 1932 014b 2E       		.uleb128 0x2e
+ 1933 014c 00       		.byte	0
+ 1934 014d 3F       		.uleb128 0x3f
+ 1935 014e 19       		.uleb128 0x19
+ 1936 014f 03       		.uleb128 0x3
+ 1937 0150 0E       		.uleb128 0xe
+ 1938 0151 3A       		.uleb128 0x3a
+ 1939 0152 0B       		.uleb128 0xb
+ 1940 0153 3B       		.uleb128 0x3b
+ 1941 0154 0B       		.uleb128 0xb
+ 1942 0155 27       		.uleb128 0x27
+ 1943 0156 19       		.uleb128 0x19
+ 1944 0157 49       		.uleb128 0x49
+ 1945 0158 13       		.uleb128 0x13
+ 1946 0159 3C       		.uleb128 0x3c
+ 1947 015a 19       		.uleb128 0x19
+ 1948 015b 00       		.byte	0
+ 1949 015c 00       		.byte	0
+ 1950 015d 19       		.uleb128 0x19
+ 1951 015e 2E       		.uleb128 0x2e
+ 1952 015f 00       		.byte	0
+ 1953 0160 3F       		.uleb128 0x3f
+ 1954 0161 19       		.uleb128 0x19
+ 1955 0162 03       		.uleb128 0x3
+ 1956 0163 0E       		.uleb128 0xe
+ 1957 0164 3A       		.uleb128 0x3a
+ 1958 0165 0B       		.uleb128 0xb
+ 1959 0166 3B       		.uleb128 0x3b
+ 1960 0167 0B       		.uleb128 0xb
+ 1961 0168 27       		.uleb128 0x27
+ 1962 0169 19       		.uleb128 0x19
+ 1963 016a 3C       		.uleb128 0x3c
+ 1964 016b 19       		.uleb128 0x19
+ 1965 016c 00       		.byte	0
+ 1966 016d 00       		.byte	0
+ 1967 016e 1A       		.uleb128 0x1a
+ 1968 016f 2E       		.uleb128 0x2e
+ 1969 0170 01       		.byte	0x1
+ 1970 0171 3F       		.uleb128 0x3f
+ 1971 0172 19       		.uleb128 0x19
+ 1972 0173 03       		.uleb128 0x3
+ 1973 0174 0E       		.uleb128 0xe
+ 1974 0175 3A       		.uleb128 0x3a
+ 1975 0176 0B       		.uleb128 0xb
+ 1976 0177 3B       		.uleb128 0x3b
+ 1977 0178 0B       		.uleb128 0xb
+ 1978 0179 27       		.uleb128 0x27
+ 1979 017a 19       		.uleb128 0x19
+ 1980 017b 49       		.uleb128 0x49
+ 1981 017c 13       		.uleb128 0x13
+ 1982 017d 3C       		.uleb128 0x3c
+ 1983 017e 19       		.uleb128 0x19
+ 1984 017f 01       		.uleb128 0x1
+ 1985 0180 13       		.uleb128 0x13
+ 1986 0181 00       		.byte	0
+ 1987 0182 00       		.byte	0
+ 1988 0183 1B       		.uleb128 0x1b
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 49
+
+
+ 1989 0184 05       		.uleb128 0x5
+ 1990 0185 00       		.byte	0
+ 1991 0186 49       		.uleb128 0x49
+ 1992 0187 13       		.uleb128 0x13
+ 1993 0188 00       		.byte	0
+ 1994 0189 00       		.byte	0
+ 1995 018a 1C       		.uleb128 0x1c
+ 1996 018b 2E       		.uleb128 0x2e
+ 1997 018c 01       		.byte	0x1
+ 1998 018d 3F       		.uleb128 0x3f
+ 1999 018e 19       		.uleb128 0x19
+ 2000 018f 03       		.uleb128 0x3
+ 2001 0190 0E       		.uleb128 0xe
+ 2002 0191 3A       		.uleb128 0x3a
+ 2003 0192 0B       		.uleb128 0xb
+ 2004 0193 3B       		.uleb128 0x3b
+ 2005 0194 0B       		.uleb128 0xb
+ 2006 0195 27       		.uleb128 0x27
+ 2007 0196 19       		.uleb128 0x19
+ 2008 0197 3C       		.uleb128 0x3c
+ 2009 0198 19       		.uleb128 0x19
+ 2010 0199 01       		.uleb128 0x1
+ 2011 019a 13       		.uleb128 0x13
+ 2012 019b 00       		.byte	0
+ 2013 019c 00       		.byte	0
+ 2014 019d 1D       		.uleb128 0x1d
+ 2015 019e 2E       		.uleb128 0x2e
+ 2016 019f 01       		.byte	0x1
+ 2017 01a0 3F       		.uleb128 0x3f
+ 2018 01a1 19       		.uleb128 0x19
+ 2019 01a2 03       		.uleb128 0x3
+ 2020 01a3 0E       		.uleb128 0xe
+ 2021 01a4 3A       		.uleb128 0x3a
+ 2022 01a5 0B       		.uleb128 0xb
+ 2023 01a6 3B       		.uleb128 0x3b
+ 2024 01a7 0B       		.uleb128 0xb
+ 2025 01a8 27       		.uleb128 0x27
+ 2026 01a9 19       		.uleb128 0x19
+ 2027 01aa 49       		.uleb128 0x49
+ 2028 01ab 13       		.uleb128 0x13
+ 2029 01ac 3C       		.uleb128 0x3c
+ 2030 01ad 19       		.uleb128 0x19
+ 2031 01ae 00       		.byte	0
+ 2032 01af 00       		.byte	0
+ 2033 01b0 00       		.byte	0
+ 2034              		.section	.debug_loc,"",%progbits
+ 2035              	.Ldebug_loc0:
+ 2036              	.LLST0:
+ 2037 0000 00000000 		.4byte	.LVL4
+ 2038 0004 0B000000 		.4byte	.LVL5-1
+ 2039 0008 0100     		.2byte	0x1
+ 2040 000a 50       		.byte	0x50
+ 2041 000b 0B000000 		.4byte	.LVL5-1
+ 2042 000f 2A000000 		.4byte	.LVL8
+ 2043 0013 0200     		.2byte	0x2
+ 2044 0015 91       		.byte	0x91
+ 2045 0016 6F       		.sleb128 -17
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 50
+
+
+ 2046 0017 2A000000 		.4byte	.LVL8
+ 2047 001b 2F000000 		.4byte	.LVL9-1
+ 2048 001f 0200     		.2byte	0x2
+ 2049 0021 72       		.byte	0x72
+ 2050 0022 00       		.sleb128 0
+ 2051 0023 2F000000 		.4byte	.LVL9-1
+ 2052 0027 98000000 		.4byte	.LVL21
+ 2053 002b 0200     		.2byte	0x2
+ 2054 002d 91       		.byte	0x91
+ 2055 002e 6F       		.sleb128 -17
+ 2056 002f 98000000 		.4byte	.LVL21
+ 2057 0033 A0000000 		.4byte	.LFE3
+ 2058 0037 0200     		.2byte	0x2
+ 2059 0039 7D       		.byte	0x7d
+ 2060 003a 6F       		.sleb128 -17
+ 2061 003b 00000000 		.4byte	0
+ 2062 003f 00000000 		.4byte	0
+ 2063              	.LLST1:
+ 2064 0043 00000000 		.4byte	.LVL4
+ 2065 0047 0B000000 		.4byte	.LVL5-1
+ 2066 004b 0100     		.2byte	0x1
+ 2067 004d 51       		.byte	0x51
+ 2068 004e 0B000000 		.4byte	.LVL5-1
+ 2069 0052 A0000000 		.4byte	.LFE3
+ 2070 0056 0400     		.2byte	0x4
+ 2071 0058 F3       		.byte	0xf3
+ 2072 0059 01       		.uleb128 0x1
+ 2073 005a 51       		.byte	0x51
+ 2074 005b 9F       		.byte	0x9f
+ 2075 005c 00000000 		.4byte	0
+ 2076 0060 00000000 		.4byte	0
+ 2077              	.LLST2:
+ 2078 0064 34000000 		.4byte	.LVL10
+ 2079 0068 42000000 		.4byte	.LVL11
+ 2080 006c 0100     		.2byte	0x1
+ 2081 006e 50       		.byte	0x50
+ 2082 006f 52000000 		.4byte	.LVL12
+ 2083 0073 56000000 		.4byte	.LVL13
+ 2084 0077 0100     		.2byte	0x1
+ 2085 0079 50       		.byte	0x50
+ 2086 007a 56000000 		.4byte	.LVL13
+ 2087 007e 5C000000 		.4byte	.LVL15
+ 2088 0082 0100     		.2byte	0x1
+ 2089 0084 54       		.byte	0x54
+ 2090 0085 62000000 		.4byte	.LVL17
+ 2091 0089 64000000 		.4byte	.LVL18
+ 2092 008d 0100     		.2byte	0x1
+ 2093 008f 54       		.byte	0x54
+ 2094 0090 64000000 		.4byte	.LVL18
+ 2095 0094 92000000 		.4byte	.LVL20
+ 2096 0098 0200     		.2byte	0x2
+ 2097 009a 30       		.byte	0x30
+ 2098 009b 9F       		.byte	0x9f
+ 2099 009c 00000000 		.4byte	0
+ 2100 00a0 00000000 		.4byte	0
+ 2101              	.LLST3:
+ 2102 00a4 12000000 		.4byte	.LVL6
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 51
+
+
+ 2103 00a8 34000000 		.4byte	.LVL10
+ 2104 00ac 0500     		.2byte	0x5
+ 2105 00ae 74       		.byte	0x74
+ 2106 00af 00       		.sleb128 0
+ 2107 00b0 34       		.byte	0x34
+ 2108 00b1 25       		.byte	0x25
+ 2109 00b2 9F       		.byte	0x9f
+ 2110 00b3 60000000 		.4byte	.LVL16
+ 2111 00b7 62000000 		.4byte	.LVL17
+ 2112 00bb 0500     		.2byte	0x5
+ 2113 00bd 74       		.byte	0x74
+ 2114 00be 00       		.sleb128 0
+ 2115 00bf 34       		.byte	0x34
+ 2116 00c0 25       		.byte	0x25
+ 2117 00c1 9F       		.byte	0x9f
+ 2118 00c2 00000000 		.4byte	0
+ 2119 00c6 00000000 		.4byte	0
+ 2120              	.LLST4:
+ 2121 00ca 12000000 		.4byte	.LVL6
+ 2122 00ce 34000000 		.4byte	.LVL10
+ 2123 00d2 0B00     		.2byte	0xb
+ 2124 00d4 74       		.byte	0x74
+ 2125 00d5 00       		.sleb128 0
+ 2126 00d6 34       		.byte	0x34
+ 2127 00d7 25       		.byte	0x25
+ 2128 00d8 09       		.byte	0x9
+ 2129 00d9 F0       		.byte	0xf0
+ 2130 00da 1E       		.byte	0x1e
+ 2131 00db 74       		.byte	0x74
+ 2132 00dc 00       		.sleb128 0
+ 2133 00dd 22       		.byte	0x22
+ 2134 00de 9F       		.byte	0x9f
+ 2135 00df 60000000 		.4byte	.LVL16
+ 2136 00e3 62000000 		.4byte	.LVL17
+ 2137 00e7 0B00     		.2byte	0xb
+ 2138 00e9 74       		.byte	0x74
+ 2139 00ea 00       		.sleb128 0
+ 2140 00eb 34       		.byte	0x34
+ 2141 00ec 25       		.byte	0x25
+ 2142 00ed 09       		.byte	0x9
+ 2143 00ee F0       		.byte	0xf0
+ 2144 00ef 1E       		.byte	0x1e
+ 2145 00f0 74       		.byte	0x74
+ 2146 00f1 00       		.sleb128 0
+ 2147 00f2 22       		.byte	0x22
+ 2148 00f3 9F       		.byte	0x9f
+ 2149 00f4 00000000 		.4byte	0
+ 2150 00f8 00000000 		.4byte	0
+ 2151              	.LLST5:
+ 2152 00fc 00000000 		.4byte	.LVL22
+ 2153 0100 07000000 		.4byte	.LVL23-1
+ 2154 0104 0100     		.2byte	0x1
+ 2155 0106 50       		.byte	0x50
+ 2156 0107 07000000 		.4byte	.LVL23-1
+ 2157 010b 28000000 		.4byte	.LFE4
+ 2158 010f 0400     		.2byte	0x4
+ 2159 0111 F3       		.byte	0xf3
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 52
+
+
+ 2160 0112 01       		.uleb128 0x1
+ 2161 0113 50       		.byte	0x50
+ 2162 0114 9F       		.byte	0x9f
+ 2163 0115 00000000 		.4byte	0
+ 2164 0119 00000000 		.4byte	0
+ 2165              	.LLST6:
+ 2166 011d 00000000 		.4byte	.LVL30
+ 2167 0121 07000000 		.4byte	.LVL31-1
+ 2168 0125 0100     		.2byte	0x1
+ 2169 0127 50       		.byte	0x50
+ 2170 0128 07000000 		.4byte	.LVL31-1
+ 2171 012c 54000000 		.4byte	.LFE6
+ 2172 0130 0400     		.2byte	0x4
+ 2173 0132 F3       		.byte	0xf3
+ 2174 0133 01       		.uleb128 0x1
+ 2175 0134 50       		.byte	0x50
+ 2176 0135 9F       		.byte	0x9f
+ 2177 0136 00000000 		.4byte	0
+ 2178 013a 00000000 		.4byte	0
+ 2179              	.LLST7:
+ 2180 013e 3E000000 		.4byte	.LVL34
+ 2181 0142 44000000 		.4byte	.LVL36
+ 2182 0146 0100     		.2byte	0x1
+ 2183 0148 54       		.byte	0x54
+ 2184 0149 4A000000 		.4byte	.LVL37
+ 2185 014d 4E000000 		.4byte	.LVL38
+ 2186 0151 0100     		.2byte	0x1
+ 2187 0153 54       		.byte	0x54
+ 2188 0154 4E000000 		.4byte	.LVL38
+ 2189 0158 54000000 		.4byte	.LFE6
+ 2190 015c 0100     		.2byte	0x1
+ 2191 015e 50       		.byte	0x50
+ 2192 015f 00000000 		.4byte	0
+ 2193 0163 00000000 		.4byte	0
+ 2194              	.LLST8:
+ 2195 0167 00000000 		.4byte	.LVL39
+ 2196 016b 09000000 		.4byte	.LVL40-1
+ 2197 016f 0100     		.2byte	0x1
+ 2198 0171 50       		.byte	0x50
+ 2199 0172 09000000 		.4byte	.LVL40-1
+ 2200 0176 24000000 		.4byte	.LVL44
+ 2201 017a 0100     		.2byte	0x1
+ 2202 017c 54       		.byte	0x54
+ 2203 017d 24000000 		.4byte	.LVL44
+ 2204 0181 70000000 		.4byte	.LVL50
+ 2205 0185 0400     		.2byte	0x4
+ 2206 0187 F3       		.byte	0xf3
+ 2207 0188 01       		.uleb128 0x1
+ 2208 0189 50       		.byte	0x50
+ 2209 018a 9F       		.byte	0x9f
+ 2210 018b 70000000 		.4byte	.LVL50
+ 2211 018f 72000000 		.4byte	.LVL51
+ 2212 0193 0100     		.2byte	0x1
+ 2213 0195 54       		.byte	0x54
+ 2214 0196 72000000 		.4byte	.LVL51
+ 2215 019a 74000000 		.4byte	.LVL52
+ 2216 019e 0400     		.2byte	0x4
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 53
+
+
+ 2217 01a0 F3       		.byte	0xf3
+ 2218 01a1 01       		.uleb128 0x1
+ 2219 01a2 50       		.byte	0x50
+ 2220 01a3 9F       		.byte	0x9f
+ 2221 01a4 74000000 		.4byte	.LVL52
+ 2222 01a8 76000000 		.4byte	.LVL53
+ 2223 01ac 0100     		.2byte	0x1
+ 2224 01ae 54       		.byte	0x54
+ 2225 01af 76000000 		.4byte	.LVL53
+ 2226 01b3 84000000 		.4byte	.LFE7
+ 2227 01b7 0400     		.2byte	0x4
+ 2228 01b9 F3       		.byte	0xf3
+ 2229 01ba 01       		.uleb128 0x1
+ 2230 01bb 50       		.byte	0x50
+ 2231 01bc 9F       		.byte	0x9f
+ 2232 01bd 00000000 		.4byte	0
+ 2233 01c1 00000000 		.4byte	0
+ 2234              	.LLST9:
+ 2235 01c5 00000000 		.4byte	.LVL39
+ 2236 01c9 09000000 		.4byte	.LVL40-1
+ 2237 01cd 0100     		.2byte	0x1
+ 2238 01cf 51       		.byte	0x51
+ 2239 01d0 09000000 		.4byte	.LVL40-1
+ 2240 01d4 84000000 		.4byte	.LFE7
+ 2241 01d8 0400     		.2byte	0x4
+ 2242 01da F3       		.byte	0xf3
+ 2243 01db 01       		.uleb128 0x1
+ 2244 01dc 51       		.byte	0x51
+ 2245 01dd 9F       		.byte	0x9f
+ 2246 01de 00000000 		.4byte	0
+ 2247 01e2 00000000 		.4byte	0
+ 2248              	.LLST10:
+ 2249 01e6 16000000 		.4byte	.LVL42
+ 2250 01ea 24000000 		.4byte	.LVL44
+ 2251 01ee 0300     		.2byte	0x3
+ 2252 01f0 09       		.byte	0x9
+ 2253 01f1 FF       		.byte	0xff
+ 2254 01f2 9F       		.byte	0x9f
+ 2255 01f3 2A000000 		.4byte	.LVL45
+ 2256 01f7 3E000000 		.4byte	.LVL46
+ 2257 01fb 0300     		.2byte	0x3
+ 2258 01fd 09       		.byte	0x9
+ 2259 01fe FF       		.byte	0xff
+ 2260 01ff 9F       		.byte	0x9f
+ 2261 0200 3E000000 		.4byte	.LVL46
+ 2262 0204 6A000000 		.4byte	.LVL48
+ 2263 0208 0200     		.2byte	0x2
+ 2264 020a 30       		.byte	0x30
+ 2265 020b 9F       		.byte	0x9f
+ 2266 020c 6A000000 		.4byte	.LVL48
+ 2267 0210 70000000 		.4byte	.LVL50
+ 2268 0214 0100     		.2byte	0x1
+ 2269 0216 54       		.byte	0x54
+ 2270 0217 00000000 		.4byte	0
+ 2271 021b 00000000 		.4byte	0
+ 2272              	.LLST11:
+ 2273 021f 00000000 		.4byte	.LVL54
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 54
+
+
+ 2274 0223 09000000 		.4byte	.LVL55-1
+ 2275 0227 0100     		.2byte	0x1
+ 2276 0229 50       		.byte	0x50
+ 2277 022a 09000000 		.4byte	.LVL55-1
+ 2278 022e 60000000 		.4byte	.LVL64
+ 2279 0232 0100     		.2byte	0x1
+ 2280 0234 55       		.byte	0x55
+ 2281 0235 60000000 		.4byte	.LVL64
+ 2282 0239 68000000 		.4byte	.LFE8
+ 2283 023d 0400     		.2byte	0x4
+ 2284 023f F3       		.byte	0xf3
+ 2285 0240 01       		.uleb128 0x1
+ 2286 0241 50       		.byte	0x50
+ 2287 0242 9F       		.byte	0x9f
+ 2288 0243 00000000 		.4byte	0
+ 2289 0247 00000000 		.4byte	0
+ 2290              	.LLST12:
+ 2291 024b 00000000 		.4byte	.LVL54
+ 2292 024f 09000000 		.4byte	.LVL55-1
+ 2293 0253 0100     		.2byte	0x1
+ 2294 0255 51       		.byte	0x51
+ 2295 0256 09000000 		.4byte	.LVL55-1
+ 2296 025a 68000000 		.4byte	.LFE8
+ 2297 025e 0400     		.2byte	0x4
+ 2298 0260 F3       		.byte	0xf3
+ 2299 0261 01       		.uleb128 0x1
+ 2300 0262 51       		.byte	0x51
+ 2301 0263 9F       		.byte	0x9f
+ 2302 0264 00000000 		.4byte	0
+ 2303 0268 00000000 		.4byte	0
+ 2304              	.LLST13:
+ 2305 026c 14000000 		.4byte	.LVL57
+ 2306 0270 38000000 		.4byte	.LVL59
+ 2307 0274 0300     		.2byte	0x3
+ 2308 0276 09       		.byte	0x9
+ 2309 0277 FF       		.byte	0xff
+ 2310 0278 9F       		.byte	0x9f
+ 2311 0279 40000000 		.4byte	.LVL61
+ 2312 027d 46000000 		.4byte	.LVL62
+ 2313 0281 0300     		.2byte	0x3
+ 2314 0283 09       		.byte	0x9
+ 2315 0284 FF       		.byte	0xff
+ 2316 0285 9F       		.byte	0x9f
+ 2317 0286 46000000 		.4byte	.LVL62
+ 2318 028a 68000000 		.4byte	.LFE8
+ 2319 028e 0200     		.2byte	0x2
+ 2320 0290 30       		.byte	0x30
+ 2321 0291 9F       		.byte	0x9f
+ 2322 0292 00000000 		.4byte	0
+ 2323 0296 00000000 		.4byte	0
+ 2324              	.LLST14:
+ 2325 029a 00000000 		.4byte	.LVL65
+ 2326 029e 07000000 		.4byte	.LVL66-1
+ 2327 02a2 0100     		.2byte	0x1
+ 2328 02a4 50       		.byte	0x50
+ 2329 02a5 07000000 		.4byte	.LVL66-1
+ 2330 02a9 2A000000 		.4byte	.LFE9
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 55
+
+
+ 2331 02ad 0400     		.2byte	0x4
+ 2332 02af F3       		.byte	0xf3
+ 2333 02b0 01       		.uleb128 0x1
+ 2334 02b1 50       		.byte	0x50
+ 2335 02b2 9F       		.byte	0x9f
+ 2336 02b3 00000000 		.4byte	0
+ 2337 02b7 00000000 		.4byte	0
+ 2338              	.LLST15:
+ 2339 02bb 12000000 		.4byte	.LVL68
+ 2340 02bf 22000000 		.4byte	.LVL70
+ 2341 02c3 0300     		.2byte	0x3
+ 2342 02c5 09       		.byte	0x9
+ 2343 02c6 FF       		.byte	0xff
+ 2344 02c7 9F       		.byte	0x9f
+ 2345 02c8 28000000 		.4byte	.LVL71
+ 2346 02cc 2A000000 		.4byte	.LFE9
+ 2347 02d0 0100     		.2byte	0x1
+ 2348 02d2 50       		.byte	0x50
+ 2349 02d3 00000000 		.4byte	0
+ 2350 02d7 00000000 		.4byte	0
+ 2351              	.LLST16:
+ 2352 02db 26000000 		.4byte	.LVL73
+ 2353 02df 2C000000 		.4byte	.LVL75
+ 2354 02e3 0100     		.2byte	0x1
+ 2355 02e5 54       		.byte	0x54
+ 2356 02e6 2E000000 		.4byte	.LVL76
+ 2357 02ea 32000000 		.4byte	.LVL77
+ 2358 02ee 0100     		.2byte	0x1
+ 2359 02f0 54       		.byte	0x54
+ 2360 02f1 32000000 		.4byte	.LVL77
+ 2361 02f5 38000000 		.4byte	.LFE10
+ 2362 02f9 0100     		.2byte	0x1
+ 2363 02fb 50       		.byte	0x50
+ 2364 02fc 00000000 		.4byte	0
+ 2365 0300 00000000 		.4byte	0
+ 2366              	.LLST17:
+ 2367 0304 00000000 		.4byte	.LVL78
+ 2368 0308 0D000000 		.4byte	.LVL79-1
+ 2369 030c 0100     		.2byte	0x1
+ 2370 030e 50       		.byte	0x50
+ 2371 030f 0D000000 		.4byte	.LVL79-1
+ 2372 0313 26000000 		.4byte	.LVL82
+ 2373 0317 0200     		.2byte	0x2
+ 2374 0319 91       		.byte	0x91
+ 2375 031a 6F       		.sleb128 -17
+ 2376 031b 26000000 		.4byte	.LVL82
+ 2377 031f 2B000000 		.4byte	.LVL83-1
+ 2378 0323 0200     		.2byte	0x2
+ 2379 0325 72       		.byte	0x72
+ 2380 0326 00       		.sleb128 0
+ 2381 0327 2B000000 		.4byte	.LVL83-1
+ 2382 032b 88000000 		.4byte	.LVL92
+ 2383 032f 0200     		.2byte	0x2
+ 2384 0331 91       		.byte	0x91
+ 2385 0332 6F       		.sleb128 -17
+ 2386 0333 88000000 		.4byte	.LVL92
+ 2387 0337 90000000 		.4byte	.LFE11
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 56
+
+
+ 2388 033b 0200     		.2byte	0x2
+ 2389 033d 7D       		.byte	0x7d
+ 2390 033e 6F       		.sleb128 -17
+ 2391 033f 00000000 		.4byte	0
+ 2392 0343 00000000 		.4byte	0
+ 2393              	.LLST18:
+ 2394 0347 00000000 		.4byte	.LVL78
+ 2395 034b 0D000000 		.4byte	.LVL79-1
+ 2396 034f 0100     		.2byte	0x1
+ 2397 0351 51       		.byte	0x51
+ 2398 0352 0D000000 		.4byte	.LVL79-1
+ 2399 0356 90000000 		.4byte	.LFE11
+ 2400 035a 0400     		.2byte	0x4
+ 2401 035c F3       		.byte	0xf3
+ 2402 035d 01       		.uleb128 0x1
+ 2403 035e 51       		.byte	0x51
+ 2404 035f 9F       		.byte	0x9f
+ 2405 0360 00000000 		.4byte	0
+ 2406 0364 00000000 		.4byte	0
+ 2407              	.LLST19:
+ 2408 0368 00000000 		.4byte	.LVL78
+ 2409 036c 0D000000 		.4byte	.LVL79-1
+ 2410 0370 0100     		.2byte	0x1
+ 2411 0372 52       		.byte	0x52
+ 2412 0373 0D000000 		.4byte	.LVL79-1
+ 2413 0377 90000000 		.4byte	.LFE11
+ 2414 037b 0400     		.2byte	0x4
+ 2415 037d F3       		.byte	0xf3
+ 2416 037e 01       		.uleb128 0x1
+ 2417 037f 52       		.byte	0x52
+ 2418 0380 9F       		.byte	0x9f
+ 2419 0381 00000000 		.4byte	0
+ 2420 0385 00000000 		.4byte	0
+ 2421              	.LLST20:
+ 2422 0389 1E000000 		.4byte	.LVL81
+ 2423 038d 30000000 		.4byte	.LVL84
+ 2424 0391 0300     		.2byte	0x3
+ 2425 0393 09       		.byte	0x9
+ 2426 0394 FF       		.byte	0xff
+ 2427 0395 9F       		.byte	0x9f
+ 2428 0396 36000000 		.4byte	.LVL85
+ 2429 039a 4A000000 		.4byte	.LVL86
+ 2430 039e 0300     		.2byte	0x3
+ 2431 03a0 09       		.byte	0x9
+ 2432 03a1 FF       		.byte	0xff
+ 2433 03a2 9F       		.byte	0x9f
+ 2434 03a3 4A000000 		.4byte	.LVL86
+ 2435 03a7 76000000 		.4byte	.LVL88
+ 2436 03ab 0200     		.2byte	0x2
+ 2437 03ad 30       		.byte	0x30
+ 2438 03ae 9F       		.byte	0x9f
+ 2439 03af 76000000 		.4byte	.LVL88
+ 2440 03b3 7C000000 		.4byte	.LVL90
+ 2441 03b7 0100     		.2byte	0x1
+ 2442 03b9 54       		.byte	0x54
+ 2443 03ba 00000000 		.4byte	0
+ 2444 03be 00000000 		.4byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 57
+
+
+ 2445              		.section	.debug_aranges,"",%progbits
+ 2446 0000 74000000 		.4byte	0x74
+ 2447 0004 0200     		.2byte	0x2
+ 2448 0006 00000000 		.4byte	.Ldebug_info0
+ 2449 000a 04       		.byte	0x4
+ 2450 000b 00       		.byte	0
+ 2451 000c 0000     		.2byte	0
+ 2452 000e 0000     		.2byte	0
+ 2453 0010 00000000 		.4byte	.LFB0
+ 2454 0014 0E000000 		.4byte	.LFE0-.LFB0
+ 2455 0018 00000000 		.4byte	.LFB1
+ 2456 001c 04000000 		.4byte	.LFE1-.LFB1
+ 2457 0020 00000000 		.4byte	.LFB2
+ 2458 0024 04000000 		.4byte	.LFE2-.LFB2
+ 2459 0028 00000000 		.4byte	.LFB3
+ 2460 002c A0000000 		.4byte	.LFE3-.LFB3
+ 2461 0030 00000000 		.4byte	.LFB4
+ 2462 0034 28000000 		.4byte	.LFE4-.LFB4
+ 2463 0038 00000000 		.4byte	.LFB5
+ 2464 003c 0A000000 		.4byte	.LFE5-.LFB5
+ 2465 0040 00000000 		.4byte	.LFB6
+ 2466 0044 54000000 		.4byte	.LFE6-.LFB6
+ 2467 0048 00000000 		.4byte	.LFB7
+ 2468 004c 84000000 		.4byte	.LFE7-.LFB7
+ 2469 0050 00000000 		.4byte	.LFB8
+ 2470 0054 68000000 		.4byte	.LFE8-.LFB8
+ 2471 0058 00000000 		.4byte	.LFB9
+ 2472 005c 2A000000 		.4byte	.LFE9-.LFB9
+ 2473 0060 00000000 		.4byte	.LFB10
+ 2474 0064 38000000 		.4byte	.LFE10-.LFB10
+ 2475 0068 00000000 		.4byte	.LFB11
+ 2476 006c 90000000 		.4byte	.LFE11-.LFB11
+ 2477 0070 00000000 		.4byte	0
+ 2478 0074 00000000 		.4byte	0
+ 2479              		.section	.debug_ranges,"",%progbits
+ 2480              	.Ldebug_ranges0:
+ 2481 0000 00000000 		.4byte	.LFB0
+ 2482 0004 0E000000 		.4byte	.LFE0
+ 2483 0008 00000000 		.4byte	.LFB1
+ 2484 000c 04000000 		.4byte	.LFE1
+ 2485 0010 00000000 		.4byte	.LFB2
+ 2486 0014 04000000 		.4byte	.LFE2
+ 2487 0018 00000000 		.4byte	.LFB3
+ 2488 001c A0000000 		.4byte	.LFE3
+ 2489 0020 00000000 		.4byte	.LFB4
+ 2490 0024 28000000 		.4byte	.LFE4
+ 2491 0028 00000000 		.4byte	.LFB5
+ 2492 002c 0A000000 		.4byte	.LFE5
+ 2493 0030 00000000 		.4byte	.LFB6
+ 2494 0034 54000000 		.4byte	.LFE6
+ 2495 0038 00000000 		.4byte	.LFB7
+ 2496 003c 84000000 		.4byte	.LFE7
+ 2497 0040 00000000 		.4byte	.LFB8
+ 2498 0044 68000000 		.4byte	.LFE8
+ 2499 0048 00000000 		.4byte	.LFB9
+ 2500 004c 2A000000 		.4byte	.LFE9
+ 2501 0050 00000000 		.4byte	.LFB10
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 58
+
+
+ 2502 0054 38000000 		.4byte	.LFE10
+ 2503 0058 00000000 		.4byte	.LFB11
+ 2504 005c 90000000 		.4byte	.LFE11
+ 2505 0060 00000000 		.4byte	0
+ 2506 0064 00000000 		.4byte	0
+ 2507              		.section	.debug_line,"",%progbits
+ 2508              	.Ldebug_line0:
+ 2509 0000 22020000 		.section	.debug_str,"MS",%progbits,1
+ 2509      02006800 
+ 2509      00000201 
+ 2509      FB0E0D00 
+ 2509      01010101 
+ 2510              	.LASF32:
+ 2511 0000 45455052 		.ascii	"EEPROM_1_Write\000"
+ 2511      4F4D5F31 
+ 2511      5F577269 
+ 2511      746500
+ 2512              	.LASF37:
+ 2513 000f 45455052 		.ascii	"EEPROM_1_ByteWritePos\000"
+ 2513      4F4D5F31 
+ 2513      5F427974 
+ 2513      65577269 
+ 2513      7465506F 
+ 2514              	.LASF29:
+ 2515 0025 45455052 		.ascii	"EEPROM_1_UpdateTemperature\000"
+ 2515      4F4D5F31 
+ 2515      5F557064 
+ 2515      61746554 
+ 2515      656D7065 
+ 2516              	.LASF15:
+ 2517 0040 72656738 		.ascii	"reg8\000"
+ 2517      00
+ 2518              	.LASF35:
+ 2519 0045 45455052 		.ascii	"EEPROM_1_StartErase\000"
+ 2519      4F4D5F31 
+ 2519      5F537461 
+ 2519      72744572 
+ 2519      61736500 
+ 2520              	.LASF39:
+ 2521 0059 43794545 		.ascii	"CyEEPROM_Stop\000"
+ 2521      50524F4D 
+ 2521      5F53746F 
+ 2521      7000
+ 2522              	.LASF40:
+ 2523 0067 43795370 		.ascii	"CySpcStart\000"
+ 2523      63537461 
+ 2523      727400
+ 2524              	.LASF18:
+ 2525 0072 45455052 		.ascii	"EEPROM_1_Start\000"
+ 2525      4F4D5F31 
+ 2525      5F537461 
+ 2525      727400
+ 2526              	.LASF36:
+ 2527 0081 45455052 		.ascii	"EEPROM_1_Query\000"
+ 2527      4F4D5F31 
+ 2527      5F517565 
+ 2527      727900
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 59
+
+
+ 2528              	.LASF11:
+ 2529 0090 666C6F61 		.ascii	"float\000"
+ 2529      7400
+ 2530              	.LASF44:
+ 2531 0096 43795370 		.ascii	"CySpcLoadMultiByte\000"
+ 2531      634C6F61 
+ 2531      644D756C 
+ 2531      74694279 
+ 2531      746500
+ 2532              	.LASF25:
+ 2533 00a9 45455052 		.ascii	"EEPROM_1_WriteByte\000"
+ 2533      4F4D5F31 
+ 2533      5F577269 
+ 2533      74654279 
+ 2533      746500
+ 2534              	.LASF17:
+ 2535 00bc 45455052 		.ascii	"EEPROM_1_Enable\000"
+ 2535      4F4D5F31 
+ 2535      5F456E61 
+ 2535      626C6500 
+ 2536              	.LASF26:
+ 2537 00cc 45455052 		.ascii	"EEPROM_1_ReadByte\000"
+ 2537      4F4D5F31 
+ 2537      5F526561 
+ 2537      64427974 
+ 2537      6500
+ 2538              	.LASF19:
+ 2539 00de 45455052 		.ascii	"EEPROM_1_Stop\000"
+ 2539      4F4D5F31 
+ 2539      5F53746F 
+ 2539      7000
+ 2540              	.LASF53:
+ 2541 00ec 47656E65 		.ascii	"Generated_Source\\PSoC5\\EEPROM_1.c\000"
+ 2541      72617465 
+ 2541      645F536F 
+ 2541      75726365 
+ 2541      5C50536F 
+ 2542              	.LASF24:
+ 2543 010e 62797465 		.ascii	"byteNumber\000"
+ 2543      4E756D62 
+ 2543      657200
+ 2544              	.LASF7:
+ 2545 0119 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2545      206C6F6E 
+ 2545      6720756E 
+ 2545      7369676E 
+ 2545      65642069 
+ 2546              	.LASF43:
+ 2547 0130 43795370 		.ascii	"CySpcUnlock\000"
+ 2547      63556E6C 
+ 2547      6F636B00 
+ 2548              	.LASF33:
+ 2549 013c 726F7744 		.ascii	"rowData\000"
+ 2549      61746100 
+ 2550              	.LASF38:
+ 2551 0144 43794545 		.ascii	"CyEEPROM_Start\000"
+ 2551      50524F4D 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 60
+
+
+ 2551      5F537461 
+ 2551      727400
+ 2552              	.LASF28:
+ 2553 0153 696E7465 		.ascii	"interruptState\000"
+ 2553      72727570 
+ 2553      74537461 
+ 2553      746500
+ 2554              	.LASF5:
+ 2555 0162 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2555      20756E73 
+ 2555      69676E65 
+ 2555      6420696E 
+ 2555      7400
+ 2556              	.LASF9:
+ 2557 0174 75696E74 		.ascii	"uint8\000"
+ 2557      3800
+ 2558              	.LASF55:
+ 2559 017a 64696554 		.ascii	"dieTemperature\000"
+ 2559      656D7065 
+ 2559      72617475 
+ 2559      726500
+ 2560              	.LASF30:
+ 2561 0189 45455052 		.ascii	"EEPROM_1_EraseSector\000"
+ 2561      4F4D5F31 
+ 2561      5F457261 
+ 2561      73655365 
+ 2561      63746F72 
+ 2562              	.LASF20:
+ 2563 019e 64617461 		.ascii	"dataByte\000"
+ 2563      42797465 
+ 2563      00
+ 2564              	.LASF1:
+ 2565 01a7 756E7369 		.ascii	"unsigned char\000"
+ 2565      676E6564 
+ 2565      20636861 
+ 2565      7200
+ 2566              	.LASF12:
+ 2567 01b5 646F7562 		.ascii	"double\000"
+ 2567      6C6500
+ 2568              	.LASF48:
+ 2569 01bc 43794545 		.ascii	"CyEEPROM_ReadRelease\000"
+ 2569      50524F4D 
+ 2569      5F526561 
+ 2569      6452656C 
+ 2569      65617365 
+ 2570              	.LASF10:
+ 2571 01d1 75696E74 		.ascii	"uint16\000"
+ 2571      313600
+ 2572              	.LASF42:
+ 2573 01d8 43795370 		.ascii	"CySpcLock\000"
+ 2573      634C6F63 
+ 2573      6B00
+ 2574              	.LASF14:
+ 2575 01e2 63797374 		.ascii	"cystatus\000"
+ 2575      61747573 
+ 2575      00
+ 2576              	.LASF46:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 61
+
+
+ 2577 01eb 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 2577      74657243 
+ 2577      72697469 
+ 2577      63616C53 
+ 2577      65637469 
+ 2578              	.LASF8:
+ 2579 0202 756E7369 		.ascii	"unsigned int\000"
+ 2579      676E6564 
+ 2579      20696E74 
+ 2579      00
+ 2580              	.LASF22:
+ 2581 020f 73746174 		.ascii	"status\000"
+ 2581      757300
+ 2582              	.LASF21:
+ 2583 0216 61646472 		.ascii	"address\000"
+ 2583      65737300 
+ 2584              	.LASF50:
+ 2585 021e 43794578 		.ascii	"CyExitCriticalSection\000"
+ 2585      69744372 
+ 2585      69746963 
+ 2585      616C5365 
+ 2585      6374696F 
+ 2586              	.LASF47:
+ 2587 0234 43794545 		.ascii	"CyEEPROM_ReadReserve\000"
+ 2587      50524F4D 
+ 2587      5F526561 
+ 2587      64526573 
+ 2587      65727665 
+ 2588              	.LASF51:
+ 2589 0249 43795370 		.ascii	"CySpcLoadRow\000"
+ 2589      634C6F61 
+ 2589      64526F77 
+ 2589      00
+ 2590              	.LASF16:
+ 2591 0256 73697A65 		.ascii	"sizetype\000"
+ 2591      74797065 
+ 2591      00
+ 2592              	.LASF41:
+ 2593 025f 43795365 		.ascii	"CySetTemp\000"
+ 2593      7454656D 
+ 2593      7000
+ 2594              	.LASF49:
+ 2595 0269 43795370 		.ascii	"CySpcEraseSector\000"
+ 2595      63457261 
+ 2595      73655365 
+ 2595      63746F72 
+ 2595      00
+ 2596              	.LASF6:
+ 2597 027a 6C6F6E67 		.ascii	"long long int\000"
+ 2597      206C6F6E 
+ 2597      6720696E 
+ 2597      7400
+ 2598              	.LASF34:
+ 2599 0288 45455052 		.ascii	"EEPROM_1_StartWrite\000"
+ 2599      4F4D5F31 
+ 2599      5F537461 
+ 2599      72745772 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 62
+
+
+ 2599      69746500 
+ 2600              	.LASF13:
+ 2601 029c 63686172 		.ascii	"char\000"
+ 2601      00
+ 2602              	.LASF54:
+ 2603 02a1 433A5C55 		.ascii	"C:\\Users\\Luggi\\Desktop\\Aktuelles Projekt Laser_"
+ 2603      73657273 
+ 2603      5C4C7567 
+ 2603      67695C44 
+ 2603      65736B74 
+ 2604 02d0 73636875 		.ascii	"schutzschaltung\\Aktuelles Projekt Laser_schutzscha"
+ 2604      747A7363 
+ 2604      68616C74 
+ 2604      756E675C 
+ 2604      416B7475 
+ 2605 0302 6C74756E 		.ascii	"ltung\\Laserschutzschaltung.cydsn\000"
+ 2605      675C4C61 
+ 2605      73657273 
+ 2605      63687574 
+ 2605      7A736368 
+ 2606              	.LASF2:
+ 2607 0323 73686F72 		.ascii	"short int\000"
+ 2607      7420696E 
+ 2607      7400
+ 2608              	.LASF52:
+ 2609 032d 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 2609      4320342E 
+ 2609      392E3320 
+ 2609      32303135 
+ 2609      30333033 
+ 2610 0360 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 2610      20726576 
+ 2610      6973696F 
+ 2610      6E203232 
+ 2610      31323230 
+ 2611 0393 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 2611      66756E63 
+ 2611      74696F6E 
+ 2611      2D736563 
+ 2611      74696F6E 
+ 2612              	.LASF31:
+ 2613 03bb 73656374 		.ascii	"sectorNumber\000"
+ 2613      6F724E75 
+ 2613      6D626572 
+ 2613      00
+ 2614              	.LASF4:
+ 2615 03c8 6C6F6E67 		.ascii	"long int\000"
+ 2615      20696E74 
+ 2615      00
+ 2616              	.LASF23:
+ 2617 03d1 726F774E 		.ascii	"rowNumber\000"
+ 2617      756D6265 
+ 2617      7200
+ 2618              	.LASF0:
+ 2619 03db 7369676E 		.ascii	"signed char\000"
+ 2619      65642063 
+ 2619      68617200 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccahf4jt.s 			page 63
+
+
+ 2620              	.LASF3:
+ 2621 03e7 73686F72 		.ascii	"short unsigned int\000"
+ 2621      7420756E 
+ 2621      7369676E 
+ 2621      65642069 
+ 2621      6E7400
+ 2622              	.LASF45:
+ 2623 03fa 43795370 		.ascii	"CySpcWriteRow\000"
+ 2623      63577269 
+ 2623      7465526F 
+ 2623      7700
+ 2624              	.LASF27:
+ 2625 0408 72657442 		.ascii	"retByte\000"
+ 2625      79746500 
+ 2626              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

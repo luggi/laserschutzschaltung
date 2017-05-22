@@ -1,0 +1,4928 @@
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.faultISR,"ax",%progbits
+  19              		.align	1
+  20              		.global	faultISR
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	faultISR, %function
+  24              	faultISR:
+  25              	.LFB57:
+  26              		.file 1 ".\\main.c"
+   1:.\main.c      **** /*******************************************************************************
+   2:.\main.c      **** * File Name: main.c
+   3:.\main.c      **** *
+   4:.\main.c      **** * Version: 1.10
+   5:.\main.c      **** *
+   6:.\main.c      **** ********************************************************************************
+   7:.\main.c      **** * Copyright 2012, Cypress Semiconductor Corporation. All rights reserved.
+   8:.\main.c      **** * This software is owned by Cypress Semiconductor Corporation and is protected
+   9:.\main.c      **** * by and subject to worldwide patent and copyright laws and treaties.
+  10:.\main.c      **** * Therefore, you may use this software only as provided in the license agreement
+  11:.\main.c      **** * accompanying the software package from which you obtained this software.
+  12:.\main.c      **** * CYPRESS AND ITS SUPPLIERS MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+  13:.\main.c      **** * WITH REGARD TO THIS SOFTWARE, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT,
+  14:.\main.c      **** * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  15:.\main.c      **** *******************************************************************************/
+  16:.\main.c      **** 
+  17:.\main.c      **** #include <device.h>
+  18:.\main.c      **** #include <stdint.h>
+  19:.\main.c      **** #include <stdio.h>
+  20:.\main.c      **** #include <VDAC8.h>
+  21:.\main.c      **** #include <math.h>
+  22:.\main.c      **** #include "pid.h"
+  23:.\main.c      **** #include "cli.h"
+  24:.\main.c      **** 
+  25:.\main.c      **** #define REQUEST_PER_BURST        (1u)
+  26:.\main.c      **** #define BYTES_PER_BURST          (1u)
+  27:.\main.c      **** #define UPPER_SRC_ADDRESS        CYDEV_PERIPH_BASE
+  28:.\main.c      **** #define UPPER_DEST_ADDRESS       CYDEV_PERIPH_BASE
+  29:.\main.c      **** 
+  30:.\main.c      **** void DMA_Config(void);
+  31:.\main.c      **** float calc_temperature(int32_t adc_input);
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 2
+
+
+  32:.\main.c      **** void pid1_write(int32_t output);
+  33:.\main.c      **** void USB_init(void);
+  34:.\main.c      **** 
+  35:.\main.c      **** uint32_t eventcounter = 0;
+  36:.\main.c      **** uint8_t filterStatus = 0;
+  37:.\main.c      **** uint8_t cliMode = 0;
+  38:.\main.c      **** uint8_t faultStatus = 0;
+  39:.\main.c      **** uint8_t pidStatus = 0;
+  40:.\main.c      **** uint8_t filter_read = 0;
+  41:.\main.c      **** uint8_t filter_readold = 0;
+  42:.\main.c      **** uint8_t dac_offset = 0;
+  43:.\main.c      **** pid pid1;
+  44:.\main.c      **** uint16_t setpoint = 3000;
+  45:.\main.c      **** float Temperature;
+  46:.\main.c      **** 
+  47:.\main.c      **** 
+  48:.\main.c      **** /*******************************************************************************
+  49:.\main.c      **** * Interrupt
+  50:.\main.c      **** ********************************************************************************
+  51:.\main.c      **** * Interrupt generated on Filter sample-ready. Interrupt handle:filterVDAC
+  52:.\main.c      **** *
+  53:.\main.c      **** * Summary:
+  54:.\main.c      **** *  The interrupt performs following functions:
+  55:.\main.c      **** *   1: Reads the left-justified register for Filter Channel A
+  56:.\main.c      **** *   2: Converts it into an unsigned value
+  57:.\main.c      **** *   3: Writes this value to VDAC
+  58:.\main.c      **** *
+  59:.\main.c      **** *******************************************************************************/
+  60:.\main.c      **** CY_ISR(filterVDAC)
+  61:.\main.c      **** {
+  62:.\main.c      ****     /* Convert the 2's complement value to an unsigned 8-bit value
+  63:.\main.c      ****      * The VDAC expects an unsigned 8-bit value as input.
+  64:.\main.c      ****      */
+  65:.\main.c      **** 	filter_read = Filter_HOLDAM_REG;
+  66:.\main.c      **** 	filter_read += dac_offset;
+  67:.\main.c      **** 	VDAC8_SetValue(filter_read);
+  68:.\main.c      **** 	filterStatus = 1;
+  69:.\main.c      **** }
+  70:.\main.c      **** 
+  71:.\main.c      **** /*******************************************************************************
+  72:.\main.c      **** * Interrupt
+  73:.\main.c      **** ********************************************************************************
+  74:.\main.c      **** * Interrupt generated on Filter sample-ready. Interrupt handle:filterVDAC
+  75:.\main.c      **** *
+  76:.\main.c      **** * Summary:
+  77:.\main.c      **** *  The interrupt performs following functions:
+  78:.\main.c      **** *   1: Sets Status flag 1 when Fault is triggered
+  79:.\main.c      **** *
+  80:.\main.c      **** *******************************************************************************/
+  81:.\main.c      **** CY_ISR(faultISR)
+  82:.\main.c      **** {
+  27              		.loc 1 82 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  83:.\main.c      **** 	faultStatus=1;
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 3
+
+
+  32              		.loc 1 83 0
+  33 0000 034B     		ldr	r3, .L2
+  34 0002 0122     		movs	r2, #1
+  84:.\main.c      **** 	eventcounter++;
+  35              		.loc 1 84 0
+  36 0004 5868     		ldr	r0, [r3, #4]
+  83:.\main.c      **** 	faultStatus=1;
+  37              		.loc 1 83 0
+  38 0006 1A70     		strb	r2, [r3, #0]
+  39              		.loc 1 84 0
+  40 0008 411C     		adds	r1, r0, #1
+  41 000a 5960     		str	r1, [r3, #4]
+  42 000c 7047     		bx	lr
+  43              	.L3:
+  44 000e 00BF     		.align	2
+  45              	.L2:
+  46 0010 00000000 		.word	.LANCHOR0
+  47              		.cfi_endproc
+  48              	.LFE57:
+  49              		.size	faultISR, .-faultISR
+  50              		.section	.text.pid1_write,"ax",%progbits
+  51              		.align	1
+  52              		.global	pid1_write
+  53              		.thumb
+  54              		.thumb_func
+  55              		.type	pid1_write, %function
+  56              	pid1_write:
+  57              	.LFB62:
+  85:.\main.c      **** }
+  86:.\main.c      **** 
+  87:.\main.c      **** /*******************************************************************************
+  88:.\main.c      **** * Interrupt
+  89:.\main.c      **** ********************************************************************************
+  90:.\main.c      **** * Interrupt generated on timer overflow(specified for pid sample time). Interrupt handle:pidISR
+  91:.\main.c      **** *
+  92:.\main.c      **** * Summary:
+  93:.\main.c      **** *  The interrupt performs following functions:
+  94:.\main.c      **** *   1: Sets Status flag 1 when Timerinterrupt is triggered
+  95:.\main.c      **** *
+  96:.\main.c      **** *******************************************************************************/
+  97:.\main.c      **** CY_ISR(pidISR)
+  98:.\main.c      **** {
+  99:.\main.c      **** 	Counter_1_ReadStatusRegister();
+ 100:.\main.c      **** 	pidStatus=1;
+ 101:.\main.c      **** }
+ 102:.\main.c      **** 
+ 103:.\main.c      **** /*******************************************************************************
+ 104:.\main.c      **** * Function Name: main
+ 105:.\main.c      **** ********************************************************************************
+ 106:.\main.c      **** *
+ 107:.\main.c      **** * Summary:
+ 108:.\main.c      **** *  Main function performs following functions:
+ 109:.\main.c      **** *   1: Enables global interrupts
+ 110:.\main.c      **** *   2: Start all components on the schematic
+ 111:.\main.c      **** *   3: Calls a function to configure DMA
+ 112:.\main.c      **** 
+ 113:.\main.c      **** * Parameters:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 4
+
+
+ 114:.\main.c      **** *  None.
+ 115:.\main.c      **** *
+ 116:.\main.c      **** * Return:
+ 117:.\main.c      **** *  None.
+ 118:.\main.c      **** *
+ 119:.\main.c      **** *******************************************************************************/
+ 120:.\main.c      **** void main(void)
+ 121:.\main.c      **** {
+ 122:.\main.c      **** 	char buffer[40];
+ 123:.\main.c      **** 	uint8_t filterRead;
+ 124:.\main.c      ****     uint8_t temp;
+ 125:.\main.c      **** 	int counter = 0;
+ 126:.\main.c      **** 	int32_t ADCtemp_read;
+ 127:.\main.c      ****     /* Start all components used on schematic */
+ 128:.\main.c      ****     //ADC_DelSig_IRQ_Start();
+ 129:.\main.c      ****     isr_StartEx(filterVDAC);
+ 130:.\main.c      ****     //ADC_DelSig_Start();
+ 131:.\main.c      ****     //ADC_DelSig_StartConvert();
+ 132:.\main.c      **** 	ADC_SAR_1_Start();
+ 133:.\main.c      **** 	ADC_SAR_2_Start();
+ 134:.\main.c      **** 	ADC_DelSig_1_Start();
+ 135:.\main.c      **** 	ADC_SAR_1_StartConvert();
+ 136:.\main.c      **** 	ADC_SAR_2_StartConvert();
+ 137:.\main.c      **** 	ADC_DelSig_1_StartConvert();
+ 138:.\main.c      **** 	Fault_isr_StartEx(faultISR);
+ 139:.\main.c      **** 	Fault_isr_SetPriority(0u);
+ 140:.\main.c      **** 	PID_isr_StartEx(pidISR);
+ 141:.\main.c      **** 	PID_isr_SetPriority(7u);
+ 142:.\main.c      **** 	Comp_1_Start();
+ 143:.\main.c      **** 	Comp_2_Start();
+ 144:.\main.c      **** 	Comp_3_Start();
+ 145:.\main.c      ****     VDAC8_Start();
+ 146:.\main.c      **** 	IDAC8_1_Start();
+ 147:.\main.c      **** 	IDAC8_2_Start();
+ 148:.\main.c      **** 	PGA_1_Start();
+ 149:.\main.c      ****     PGA_1_SetGain(PGA_1_GAIN_02);
+ 150:.\main.c      ****     Filter_Start();
+ 151:.\main.c      **** 	Filter_SetCoherency(Filter_CHANNEL_A,Filter_KEY_MID);
+ 152:.\main.c      **** 	LCD_Start();
+ 153:.\main.c      **** 	Counter_1_Start();
+ 154:.\main.c      **** 	
+ 155:.\main.c      ****     /* User-implemented function to set-up DMA */
+ 156:.\main.c      ****     DMA_Config();
+ 157:.\main.c      **** 	
+ 158:.\main.c      **** 	/* initialize pid controller */
+ 159:.\main.c      **** 	pid_init(&pid1, 50, 10, 10, 100000, pid1_write);
+ 160:.\main.c      **** 	
+ 161:.\main.c      ****     /* Enable Global Interrupts */
+ 162:.\main.c      ****     CYGlobalIntEnable;
+ 163:.\main.c      **** 	
+ 164:.\main.c      **** 
+ 165:.\main.c      ****     for(;;)
+ 166:.\main.c      ****     {
+ 167:.\main.c      **** 		if(filterStatus)
+ 168:.\main.c      **** 		{
+ 169:.\main.c      **** 			LCD_Position(1u, 0u);
+ 170:.\main.c      **** 			
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 5
+
+
+ 171:.\main.c      **** 			//filterRead = Filter_Read8(Filter_CHANNEL_A);
+ 172:.\main.c      **** 			filterRead = filter_read;
+ 173:.\main.c      **** 			
+ 174:.\main.c      **** 			if(filterRead < 10) {
+ 175:.\main.c      **** 			LCD_PrintString("  ");			
+ 176:.\main.c      **** 			} else if(filterRead < 100) {
+ 177:.\main.c      **** 			LCD_PrintString(" ");			
+ 178:.\main.c      **** 			} else {}
+ 179:.\main.c      **** 			
+ 180:.\main.c      **** 			sprintf(buffer, "%i", filterRead);
+ 181:.\main.c      **** 			LCD_PrintString(buffer);
+ 182:.\main.c      **** 			filterStatus=0;
+ 183:.\main.c      **** 		}
+ 184:.\main.c      **** 		
+ 185:.\main.c      **** 		if(faultStatus) {
+ 186:.\main.c      **** 			LCD_Position(0u, 0u);
+ 187:.\main.c      **** 			LCD_PrintString("ERROR");
+ 188:.\main.c      **** 			LCD_Position(1u,5u);
+ 189:.\main.c      **** 			sprintf(buffer, "%u", (unsigned int)eventcounter);
+ 190:.\main.c      **** 			LCD_PrintString(buffer);
+ 191:.\main.c      **** 			//faultStatus=0;
+ 192:.\main.c      **** 			
+ 193:.\main.c      **** 		} else {
+ 194:.\main.c      **** 			LCD_Position(0u, 0u);
+ 195:.\main.c      **** 			LCD_PrintString("OK   ");
+ 196:.\main.c      **** 		}
+ 197:.\main.c      **** 		
+ 198:.\main.c      **** 		if(pidStatus) { // executes every second, driven by a timer interrupt
+ 199:.\main.c      **** 			ADCtemp_read = ADC_DelSig_1_GetResult32();
+ 200:.\main.c      **** 			Temperature = calc_temperature(ADCtemp_read);
+ 201:.\main.c      **** 			
+ 202:.\main.c      **** 			pid_calc(&pid1, setpoint,(int32_t)(Temperature*100),1000);
+ 203:.\main.c      **** 			
+ 204:.\main.c      **** 			LCD_Position(0u,5u);
+ 205:.\main.c      **** 			buffer[0] = ((int)Temperature / 100) % 10 + '0';
+ 206:.\main.c      **** 			buffer[1] = ((int)Temperature / 10) % 10 + '0';
+ 207:.\main.c      **** 			buffer[2] = ((int)Temperature  % 10) + '0';
+ 208:.\main.c      **** 			buffer[3] = '.';
+ 209:.\main.c      **** 			buffer[4] = (int)(Temperature * 10) % 10 + '0';
+ 210:.\main.c      **** 			buffer[5] = (int)(Temperature * 100) % 10 + '0';
+ 211:.\main.c      **** 			buffer[6] = '\0';
+ 212:.\main.c      **** 				
+ 213:.\main.c      **** 			LCD_PrintString(buffer);
+ 214:.\main.c      **** 			
+ 215:.\main.c      **** 			pidStatus=0;
+ 216:.\main.c      **** 			if(faultStatus)
+ 217:.\main.c      **** 				counter++;
+ 218:.\main.c      **** 			if(counter >= 10) {
+ 219:.\main.c      **** 				faultStatus = 0;
+ 220:.\main.c      **** 				counter = 0;
+ 221:.\main.c      **** 				Control_RS_Write(0xff);
+ 222:.\main.c      **** 				CyDelayUs(10);
+ 223:.\main.c      **** 				Control_RS_Write(0x00);
+ 224:.\main.c      **** 			}
+ 225:.\main.c      **** 			
+ 226:.\main.c      **** 			
+ 227:.\main.c      **** 		}
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 6
+
+
+ 228:.\main.c      **** 		// USB-CDC Communication
+ 229:.\main.c      ****         temp = VUSB_Read();
+ 230:.\main.c      ****         if(temp) {
+ 231:.\main.c      ****             temp = '0' + temp;
+ 232:.\main.c      ****             LCD_Position(1u,5u);
+ 233:.\main.c      ****             LCD_PutChar(temp);
+ 234:.\main.c      ****             
+ 235:.\main.c      ****             if(USBUART_1_initVar == 0u)
+ 236:.\main.c      ****                 USB_init();
+ 237:.\main.c      ****             cliProcess();
+ 238:.\main.c      ****         }  
+ 239:.\main.c      ****         else {
+ 240:.\main.c      ****             if(USBUART_1_initVar)
+ 241:.\main.c      ****                 USBUART_1_Stop();
+ 242:.\main.c      ****                 
+ 243:.\main.c      ****             LCD_Position(1u,5u);
+ 244:.\main.c      ****             temp = '0' + temp;
+ 245:.\main.c      ****             LCD_PutChar(temp);
+ 246:.\main.c      **** 		}
+ 247:.\main.c      **** 		
+ 248:.\main.c      **** 		dac_offset = ADC_SAR_2_GetResult8();
+ 249:.\main.c      **** 		
+ 250:.\main.c      ****     }
+ 251:.\main.c      **** } /* End of main */
+ 252:.\main.c      **** 
+ 253:.\main.c      **** void USB_init(void) 
+ 254:.\main.c      **** {
+ 255:.\main.c      ****     /* Start USBFS Operation with 5V operation */
+ 256:.\main.c      **** 	USBUART_1_Start(0u, USBUART_1_5V_OPERATION);
+ 257:.\main.c      **** 	while(!USBUART_1_GetConfiguration()){};
+ 258:.\main.c      **** 	USBUART_1_CDC_Init();
+ 259:.\main.c      ****     USBUART_1_SetPowerStatus(USBUART_1_DEVICE_STATUS_SELF_POWERED);
+ 260:.\main.c      **** }
+ 261:.\main.c      **** 
+ 262:.\main.c      **** 
+ 263:.\main.c      **** /*******************************************************************************
+ 264:.\main.c      **** * Function Name: DMA_Config
+ 265:.\main.c      **** ********************************************************************************
+ 266:.\main.c      **** *
+ 267:.\main.c      **** * Summary:
+ 268:.\main.c      **** *  Initializes and sets up DMA for use (generated by DMA Wizard)
+ 269:.\main.c      **** *
+ 270:.\main.c      **** * Parameters:
+ 271:.\main.c      **** *  None.
+ 272:.\main.c      **** *
+ 273:.\main.c      **** * Return:
+ 274:.\main.c      **** *  None.
+ 275:.\main.c      **** *
+ 276:.\main.c      **** *******************************************************************************/
+ 277:.\main.c      **** void DMA_Config(void)
+ 278:.\main.c      **** {
+ 279:.\main.c      ****     /* Declare variable to hold the handle for DMA channel */
+ 280:.\main.c      ****     uint8 channelHandle;
+ 281:.\main.c      **** 
+ 282:.\main.c      ****     /* Declare DMA Transaction Descriptor for memory transfer into
+ 283:.\main.c      ****      * Filter Channel.
+ 284:.\main.c      ****      */
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 7
+
+
+ 285:.\main.c      ****     uint8 tdChanA;
+ 286:.\main.c      **** 
+ 287:.\main.c      ****     /* Configure the DMA to Transfer the data in 1 burst with individual trigger
+ 288:.\main.c      ****      * for each burst.
+ 289:.\main.c      ****      */
+ 290:.\main.c      ****     channelHandle = DMA_DmaInitialize(BYTES_PER_BURST, REQUEST_PER_BURST,
+ 291:.\main.c      ****                                         HI16(UPPER_SRC_ADDRESS), HI16(UPPER_DEST_ADDRESS));
+ 292:.\main.c      **** 
+ 293:.\main.c      ****     /* This function allocates a TD for use with an initialized DMA channel */
+ 294:.\main.c      ****     tdChanA = CyDmaTdAllocate();
+ 295:.\main.c      **** 
+ 296:.\main.c      ****     /* Configure the tdChanA to transfer 1 byte with no next TD */
+ 297:.\main.c      ****     CyDmaTdSetConfiguration(tdChanA, 1u, DMA_INVALID_TD, 0u);
+ 298:.\main.c      **** 
+ 299:.\main.c      ****     /* Set the source address as ADC_DelSig and the destination as
+ 300:.\main.c      ****      * Filter Channel A.
+ 301:.\main.c      ****      */
+ 302:.\main.c      ****     CyDmaTdSetAddress(tdChanA, LO16((uint32)ADC_SAR_1_SAR_WRK0_PTR), LO16((uint32)Filter_STAGEAM_PT
+ 303:.\main.c      **** 
+ 304:.\main.c      ****     /* Set tdChanA to be the initial TD associated with channelHandle */
+ 305:.\main.c      ****     CyDmaChSetInitialTd(channelHandle, tdChanA);
+ 306:.\main.c      **** 
+ 307:.\main.c      ****     /* Enable the DMA channel represented by channelHandle and preserve the TD */
+ 308:.\main.c      ****     CyDmaChEnable(channelHandle, 1u);
+ 309:.\main.c      **** }
+ 310:.\main.c      **** 
+ 311:.\main.c      **** /*******************************************************************************
+ 312:.\main.c      **** * Function Name: pid1_write
+ 313:.\main.c      **** ********************************************************************************
+ 314:.\main.c      **** *
+ 315:.\main.c      **** * Summary:
+ 316:.\main.c      **** *  writes pid output to a peripheral needs to be passed to pid struct
+ 317:.\main.c      **** *
+ 318:.\main.c      **** * Parameters:
+ 319:.\main.c      **** *  int32_t output given by the pid library
+ 320:.\main.c      **** *
+ 321:.\main.c      **** * Return:
+ 322:.\main.c      **** *  None.
+ 323:.\main.c      **** *
+ 324:.\main.c      **** *******************************************************************************/
+ 325:.\main.c      **** void pid1_write(int32_t output) //incomplete
+ 326:.\main.c      **** {
+  58              		.loc 1 326 0
+  59              		.cfi_startproc
+  60              		@ args = 0, pretend = 0, frame = 0
+  61              		@ frame_needed = 0, uses_anonymous_args = 0
+  62              	.LVL0:
+  63 0000 40F6FF73 		movw	r3, #4095
+  64 0004 20EAE070 		bic	r0, r0, r0, asr #31
+  65              	.LVL1:
+  66 0008 10B5     		push	{r4, lr}
+  67              	.LCFI0:
+  68              		.cfi_def_cfa_offset 8
+  69              		.cfi_offset 4, -8
+  70              		.cfi_offset 14, -4
+  71 000a 9842     		cmp	r0, r3
+  72 000c B4BF     		ite	lt
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 8
+
+
+  73 000e 0446     		movlt	r4, r0
+  74 0010 1C46     		movge	r4, r3
+  75              	.LVL2:
+ 327:.\main.c      **** 	uint8_t temp1, temp2;
+ 328:.\main.c      **** 	
+ 329:.\main.c      **** 	if(output > 4095)
+ 330:.\main.c      **** 		output = 4095;
+ 331:.\main.c      **** 	else if(output < 0)
+ 332:.\main.c      **** 		output = 0;
+ 333:.\main.c      **** 	
+ 334:.\main.c      **** 	temp1 = output >> 4;
+ 335:.\main.c      **** 	temp2 = (output & 0x000F) << 2;
+ 336:.\main.c      **** 	
+ 337:.\main.c      **** 	IDAC8_1_SetValue(temp1);
+  76              		.loc 1 337 0
+  77 0012 C4F30710 		ubfx	r0, r4, #4, #8
+  78 0016 FFF7FEFF 		bl	IDAC8_1_SetValue
+  79              	.LVL3:
+ 335:.\main.c      **** 	temp2 = (output & 0x000F) << 2;
+  80              		.loc 1 335 0
+  81 001a 04F00F01 		and	r1, r4, #15
+ 338:.\main.c      **** 	IDAC8_2_SetValue(temp2);
+  82              		.loc 1 338 0
+  83 001e 8800     		lsls	r0, r1, #2
+ 339:.\main.c      **** }
+  84              		.loc 1 339 0
+  85 0020 BDE81040 		pop	{r4, lr}
+ 338:.\main.c      **** 	IDAC8_2_SetValue(temp2);
+  86              		.loc 1 338 0
+  87 0024 FFF7FEBF 		b	IDAC8_2_SetValue
+  88              	.LVL4:
+  89              		.cfi_endproc
+  90              	.LFE62:
+  91              		.size	pid1_write, .-pid1_write
+  92              		.section	.text.pidISR,"ax",%progbits
+  93              		.align	1
+  94              		.global	pidISR
+  95              		.thumb
+  96              		.thumb_func
+  97              		.type	pidISR, %function
+  98              	pidISR:
+  99              	.LFB58:
+  98:.\main.c      **** {
+ 100              		.loc 1 98 0
+ 101              		.cfi_startproc
+ 102              		@ args = 0, pretend = 0, frame = 0
+ 103              		@ frame_needed = 0, uses_anonymous_args = 0
+ 104 0000 08B5     		push	{r3, lr}
+ 105              	.LCFI1:
+ 106              		.cfi_def_cfa_offset 8
+ 107              		.cfi_offset 3, -8
+ 108              		.cfi_offset 14, -4
+  99:.\main.c      **** 	Counter_1_ReadStatusRegister();
+ 109              		.loc 1 99 0
+ 110 0002 FFF7FEFF 		bl	Counter_1_ReadStatusRegister
+ 111              	.LVL5:
+ 100:.\main.c      **** 	pidStatus=1;
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 9
+
+
+ 112              		.loc 1 100 0
+ 113 0006 024B     		ldr	r3, .L6
+ 114 0008 0122     		movs	r2, #1
+ 115 000a 1A72     		strb	r2, [r3, #8]
+ 116 000c 08BD     		pop	{r3, pc}
+ 117              	.L7:
+ 118 000e 00BF     		.align	2
+ 119              	.L6:
+ 120 0010 00000000 		.word	.LANCHOR0
+ 121              		.cfi_endproc
+ 122              	.LFE58:
+ 123              		.size	pidISR, .-pidISR
+ 124              		.section	.text.filterVDAC,"ax",%progbits
+ 125              		.align	1
+ 126              		.global	filterVDAC
+ 127              		.thumb
+ 128              		.thumb_func
+ 129              		.type	filterVDAC, %function
+ 130              	filterVDAC:
+ 131              	.LFB56:
+  61:.\main.c      **** {
+ 132              		.loc 1 61 0
+ 133              		.cfi_startproc
+ 134              		@ args = 0, pretend = 0, frame = 0
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136 0000 10B5     		push	{r4, lr}
+ 137              	.LCFI2:
+ 138              		.cfi_def_cfa_offset 8
+ 139              		.cfi_offset 4, -8
+ 140              		.cfi_offset 14, -4
+  65:.\main.c      **** 	filter_read = Filter_HOLDAM_REG;
+ 141              		.loc 1 65 0
+ 142 0002 064B     		ldr	r3, .L9
+  66:.\main.c      **** 	filter_read += dac_offset;
+ 143              		.loc 1 66 0
+ 144 0004 064C     		ldr	r4, .L9+4
+  65:.\main.c      **** 	filter_read = Filter_HOLDAM_REG;
+ 145              		.loc 1 65 0
+ 146 0006 1878     		ldrb	r0, [r3, #0]	@ zero_extendqisi2
+  66:.\main.c      **** 	filter_read += dac_offset;
+ 147              		.loc 1 66 0
+ 148 0008 617A     		ldrb	r1, [r4, #9]	@ zero_extendqisi2
+ 149 000a 4218     		adds	r2, r0, r1
+ 150 000c D0B2     		uxtb	r0, r2
+ 151 000e A072     		strb	r0, [r4, #10]
+  67:.\main.c      **** 	VDAC8_SetValue(filter_read);
+ 152              		.loc 1 67 0
+ 153 0010 FFF7FEFF 		bl	VDAC8_SetValue
+ 154              	.LVL6:
+  68:.\main.c      **** 	filterStatus = 1;
+ 155              		.loc 1 68 0
+ 156 0014 0123     		movs	r3, #1
+ 157 0016 E372     		strb	r3, [r4, #11]
+ 158 0018 10BD     		pop	{r4, pc}
+ 159              	.L10:
+ 160 001a 00BF     		.align	2
+ 161              	.L9:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 10
+
+
+ 162 001c A9C70040 		.word	1073792937
+ 163 0020 00000000 		.word	.LANCHOR0
+ 164              		.cfi_endproc
+ 165              	.LFE56:
+ 166              		.size	filterVDAC, .-filterVDAC
+ 167              		.section	.text.USB_init,"ax",%progbits
+ 168              		.align	1
+ 169              		.global	USB_init
+ 170              		.thumb
+ 171              		.thumb_func
+ 172              		.type	USB_init, %function
+ 173              	USB_init:
+ 174              	.LFB60:
+ 254:.\main.c      **** {
+ 175              		.loc 1 254 0
+ 176              		.cfi_startproc
+ 177              		@ args = 0, pretend = 0, frame = 0
+ 178              		@ frame_needed = 0, uses_anonymous_args = 0
+ 179 0000 08B5     		push	{r3, lr}
+ 180              	.LCFI3:
+ 181              		.cfi_def_cfa_offset 8
+ 182              		.cfi_offset 3, -8
+ 183              		.cfi_offset 14, -4
+ 256:.\main.c      **** 	USBUART_1_Start(0u, USBUART_1_5V_OPERATION);
+ 184              		.loc 1 256 0
+ 185 0002 0020     		movs	r0, #0
+ 186 0004 0121     		movs	r1, #1
+ 187 0006 FFF7FEFF 		bl	USBUART_1_Start
+ 188              	.LVL7:
+ 189              	.L12:
+ 257:.\main.c      **** 	while(!USBUART_1_GetConfiguration()){};
+ 190              		.loc 1 257 0 discriminator 1
+ 191 000a FFF7FEFF 		bl	USBUART_1_GetConfiguration
+ 192              	.LVL8:
+ 193 000e 0028     		cmp	r0, #0
+ 194 0010 FBD0     		beq	.L12
+ 258:.\main.c      **** 	USBUART_1_CDC_Init();
+ 195              		.loc 1 258 0
+ 196 0012 FFF7FEFF 		bl	USBUART_1_CDC_Init
+ 197              	.LVL9:
+ 259:.\main.c      ****     USBUART_1_SetPowerStatus(USBUART_1_DEVICE_STATUS_SELF_POWERED);
+ 198              		.loc 1 259 0
+ 199 0016 0120     		movs	r0, #1
+ 260:.\main.c      **** }
+ 200              		.loc 1 260 0
+ 201 0018 BDE80840 		pop	{r3, lr}
+ 259:.\main.c      ****     USBUART_1_SetPowerStatus(USBUART_1_DEVICE_STATUS_SELF_POWERED);
+ 202              		.loc 1 259 0
+ 203 001c FFF7FEBF 		b	USBUART_1_SetPowerStatus
+ 204              	.LVL10:
+ 205              		.cfi_endproc
+ 206              	.LFE60:
+ 207              		.size	USB_init, .-USB_init
+ 208              		.section	.text.DMA_Config,"ax",%progbits
+ 209              		.align	1
+ 210              		.global	DMA_Config
+ 211              		.thumb
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 11
+
+
+ 212              		.thumb_func
+ 213              		.type	DMA_Config, %function
+ 214              	DMA_Config:
+ 215              	.LFB61:
+ 278:.\main.c      **** {
+ 216              		.loc 1 278 0
+ 217              		.cfi_startproc
+ 218              		@ args = 0, pretend = 0, frame = 0
+ 219              		@ frame_needed = 0, uses_anonymous_args = 0
+ 290:.\main.c      ****     channelHandle = DMA_DmaInitialize(BYTES_PER_BURST, REQUEST_PER_BURST,
+ 220              		.loc 1 290 0
+ 221 0000 4FF48042 		mov	r2, #16384
+ 222 0004 0120     		movs	r0, #1
+ 278:.\main.c      **** {
+ 223              		.loc 1 278 0
+ 224 0006 38B5     		push	{r3, r4, r5, lr}
+ 225              	.LCFI4:
+ 226              		.cfi_def_cfa_offset 16
+ 227              		.cfi_offset 3, -16
+ 228              		.cfi_offset 4, -12
+ 229              		.cfi_offset 5, -8
+ 230              		.cfi_offset 14, -4
+ 290:.\main.c      ****     channelHandle = DMA_DmaInitialize(BYTES_PER_BURST, REQUEST_PER_BURST,
+ 231              		.loc 1 290 0
+ 232 0008 0146     		mov	r1, r0
+ 233 000a 1346     		mov	r3, r2
+ 234 000c FFF7FEFF 		bl	DMA_DmaInitialize
+ 235              	.LVL11:
+ 236 0010 0446     		mov	r4, r0
+ 237              	.LVL12:
+ 294:.\main.c      ****     tdChanA = CyDmaTdAllocate();
+ 238              		.loc 1 294 0
+ 239 0012 FFF7FEFF 		bl	CyDmaTdAllocate
+ 240              	.LVL13:
+ 297:.\main.c      ****     CyDmaTdSetConfiguration(tdChanA, 1u, DMA_INVALID_TD, 0u);
+ 241              		.loc 1 297 0
+ 242 0016 0023     		movs	r3, #0
+ 294:.\main.c      ****     tdChanA = CyDmaTdAllocate();
+ 243              		.loc 1 294 0
+ 244 0018 0546     		mov	r5, r0
+ 245              	.LVL14:
+ 297:.\main.c      ****     CyDmaTdSetConfiguration(tdChanA, 1u, DMA_INVALID_TD, 0u);
+ 246              		.loc 1 297 0
+ 247 001a 0121     		movs	r1, #1
+ 248 001c FF22     		movs	r2, #255
+ 249 001e FFF7FEFF 		bl	CyDmaTdSetConfiguration
+ 250              	.LVL15:
+ 302:.\main.c      ****     CyDmaTdSetAddress(tdChanA, LO16((uint32)ADC_SAR_1_SAR_WRK0_PTR), LO16((uint32)Filter_STAGEAM_PT
+ 251              		.loc 1 302 0
+ 252 0022 4CF2A172 		movw	r2, #51105
+ 253 0026 2846     		mov	r0, r5
+ 254 0028 45F6A231 		movw	r1, #23458
+ 255 002c FFF7FEFF 		bl	CyDmaTdSetAddress
+ 256              	.LVL16:
+ 305:.\main.c      ****     CyDmaChSetInitialTd(channelHandle, tdChanA);
+ 257              		.loc 1 305 0
+ 258 0030 2946     		mov	r1, r5
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 12
+
+
+ 259 0032 2046     		mov	r0, r4
+ 260 0034 FFF7FEFF 		bl	CyDmaChSetInitialTd
+ 261              	.LVL17:
+ 308:.\main.c      ****     CyDmaChEnable(channelHandle, 1u);
+ 262              		.loc 1 308 0
+ 263 0038 2046     		mov	r0, r4
+ 264 003a 0121     		movs	r1, #1
+ 309:.\main.c      **** }
+ 265              		.loc 1 309 0
+ 266 003c BDE83840 		pop	{r3, r4, r5, lr}
+ 308:.\main.c      ****     CyDmaChEnable(channelHandle, 1u);
+ 267              		.loc 1 308 0
+ 268 0040 FFF7FEBF 		b	CyDmaChEnable
+ 269              	.LVL18:
+ 270              		.cfi_endproc
+ 271              	.LFE61:
+ 272              		.size	DMA_Config, .-DMA_Config
+ 273              		.global	__aeabi_i2f
+ 274              		.global	__aeabi_fdiv
+ 275              		.global	__aeabi_fsub
+ 276              		.global	__aeabi_fmul
+ 277              		.global	__aeabi_fadd
+ 278              		.section	.text.calc_temperature,"ax",%progbits
+ 279              		.align	1
+ 280              		.global	calc_temperature
+ 281              		.thumb
+ 282              		.thumb_func
+ 283              		.type	calc_temperature, %function
+ 284              	calc_temperature:
+ 285              	.LFB63:
+ 340:.\main.c      **** 
+ 341:.\main.c      **** /*******************************************************************************
+ 342:.\main.c      **** * Function Name: calc_temperature
+ 343:.\main.c      **** ********************************************************************************
+ 344:.\main.c      **** *
+ 345:.\main.c      **** * Summary:
+ 346:.\main.c      **** *  calculates the temperature from adc for a 10k ntc
+ 347:.\main.c      **** *
+ 348:.\main.c      **** * Parameters:
+ 349:.\main.c      **** *  int32_t output given by the pid library
+ 350:.\main.c      **** *
+ 351:.\main.c      **** * Return:
+ 352:.\main.c      **** *  None.
+ 353:.\main.c      **** *
+ 354:.\main.c      **** *******************************************************************************/
+ 355:.\main.c      **** 
+ 356:.\main.c      **** 
+ 357:.\main.c      **** float calc_temperature(int32_t adc_input)
+ 358:.\main.c      **** {
+ 286              		.loc 1 358 0
+ 287              		.cfi_startproc
+ 288              		@ args = 0, pretend = 0, frame = 0
+ 289              		@ frame_needed = 0, uses_anonymous_args = 0
+ 290              	.LVL19:
+ 291 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, sl, lr}
+ 292              	.LCFI5:
+ 293              		.cfi_def_cfa_offset 32
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 13
+
+
+ 294              		.cfi_offset 4, -32
+ 295              		.cfi_offset 5, -28
+ 296              		.cfi_offset 6, -24
+ 297              		.cfi_offset 7, -20
+ 298              		.cfi_offset 8, -16
+ 299              		.cfi_offset 9, -12
+ 300              		.cfi_offset 10, -8
+ 301              		.cfi_offset 14, -4
+ 359:.\main.c      **** 	float A1,B1,C1,D1;
+ 360:.\main.c      **** 	float Temp,Res;
+ 361:.\main.c      **** 
+ 362:.\main.c      **** 	A1 = 3.354016e-3f;
+ 363:.\main.c      **** 	B1 = 2.569850e-4f;
+ 364:.\main.c      **** 	C1 = 2.62013e-6f;
+ 365:.\main.c      **** 	D1 = 6.38309e-8f;
+ 366:.\main.c      **** 	
+ 367:.\main.c      **** 	Res = (float) 10000 / (float)(((float)0xffff / (float)adc_input) - 1); 
+ 302              		.loc 1 367 0
+ 303 0004 FFF7FEFF 		bl	__aeabi_i2f
+ 304              	.LVL20:
+ 305 0008 0146     		mov	r1, r0
+ 306 000a 2948     		ldr	r0, .L20
+ 307 000c FFF7FEFF 		bl	__aeabi_fdiv
+ 308              	.LVL21:
+ 309 0010 4FF07E51 		mov	r1, #1065353216
+ 310 0014 FFF7FEFF 		bl	__aeabi_fsub
+ 311              	.LVL22:
+ 312 0018 0146     		mov	r1, r0
+ 313 001a 2648     		ldr	r0, .L20+4
+ 314 001c FFF7FEFF 		bl	__aeabi_fdiv
+ 315              	.LVL23:
+ 368:.\main.c      **** 	
+ 369:.\main.c      **** 	Temp = 1.0f / (A1 + B1 * logf(Res/10000.0f) + C1 * logf(Res/10000.0f) * logf(Res/10000.0f) + D1 * 
+ 316              		.loc 1 369 0
+ 317 0020 2449     		ldr	r1, .L20+4
+ 318 0022 FFF7FEFF 		bl	__aeabi_fdiv
+ 319              	.LVL24:
+ 320 0026 0446     		mov	r4, r0
+ 321 0028 FFF7FEFF 		bl	logf
+ 322              	.LVL25:
+ 323 002c 8246     		mov	sl, r0
+ 324 002e 2046     		mov	r0, r4
+ 325 0030 FFF7FEFF 		bl	logf
+ 326              	.LVL26:
+ 327 0034 8146     		mov	r9, r0
+ 328 0036 2046     		mov	r0, r4
+ 329 0038 FFF7FEFF 		bl	logf
+ 330              	.LVL27:
+ 331 003c 8046     		mov	r8, r0
+ 332 003e 2046     		mov	r0, r4
+ 333 0040 FFF7FEFF 		bl	logf
+ 334              	.LVL28:
+ 335 0044 0746     		mov	r7, r0
+ 336 0046 2046     		mov	r0, r4
+ 337 0048 FFF7FEFF 		bl	logf
+ 338              	.LVL29:
+ 339 004c 0646     		mov	r6, r0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 14
+
+
+ 340 004e 2046     		mov	r0, r4
+ 341 0050 FFF7FEFF 		bl	logf
+ 342              	.LVL30:
+ 343 0054 1849     		ldr	r1, .L20+8
+ 344 0056 0546     		mov	r5, r0
+ 345 0058 5046     		mov	r0, sl
+ 346 005a FFF7FEFF 		bl	__aeabi_fmul
+ 347              	.LVL31:
+ 348 005e 1749     		ldr	r1, .L20+12
+ 349 0060 FFF7FEFF 		bl	__aeabi_fadd
+ 350              	.LVL32:
+ 351 0064 1649     		ldr	r1, .L20+16
+ 352 0066 0446     		mov	r4, r0
+ 353 0068 4846     		mov	r0, r9
+ 354 006a FFF7FEFF 		bl	__aeabi_fmul
+ 355              	.LVL33:
+ 356 006e 4146     		mov	r1, r8
+ 357 0070 FFF7FEFF 		bl	__aeabi_fmul
+ 358              	.LVL34:
+ 359 0074 0146     		mov	r1, r0
+ 360 0076 2046     		mov	r0, r4
+ 361 0078 FFF7FEFF 		bl	__aeabi_fadd
+ 362              	.LVL35:
+ 363 007c 1149     		ldr	r1, .L20+20
+ 364 007e 0446     		mov	r4, r0
+ 365 0080 3846     		mov	r0, r7
+ 366 0082 FFF7FEFF 		bl	__aeabi_fmul
+ 367              	.LVL36:
+ 368 0086 3146     		mov	r1, r6
+ 369 0088 FFF7FEFF 		bl	__aeabi_fmul
+ 370              	.LVL37:
+ 371 008c 2946     		mov	r1, r5
+ 372 008e FFF7FEFF 		bl	__aeabi_fmul
+ 373              	.LVL38:
+ 374 0092 0146     		mov	r1, r0
+ 375 0094 2046     		mov	r0, r4
+ 376 0096 FFF7FEFF 		bl	__aeabi_fadd
+ 377              	.LVL39:
+ 378 009a 0146     		mov	r1, r0
+ 379 009c 4FF07E50 		mov	r0, #1065353216
+ 380 00a0 FFF7FEFF 		bl	__aeabi_fdiv
+ 381              	.LVL40:
+ 370:.\main.c      **** 	Temp -= 273.15f;
+ 382              		.loc 1 370 0
+ 383 00a4 0849     		ldr	r1, .L20+24
+ 384 00a6 FFF7FEFF 		bl	__aeabi_fsub
+ 385              	.LVL41:
+ 371:.\main.c      **** 	return Temp;
+ 372:.\main.c      **** }
+ 386              		.loc 1 372 0
+ 387 00aa BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, sl, pc}
+ 388              	.L21:
+ 389 00ae 00BF     		.align	2
+ 390              	.L20:
+ 391 00b0 00FF7F47 		.word	1199570688
+ 392 00b4 00401C46 		.word	1176256512
+ 393 00b8 F1BB8639 		.word	965131249
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 15
+
+
+ 394 00bc 0DCF5B3B 		.word	995872525
+ 395 00c0 7ED52F36 		.word	909104510
+ 396 00c4 69138933 		.word	864621417
+ 397 00c8 33938843 		.word	1133024051
+ 398              		.cfi_endproc
+ 399              	.LFE63:
+ 400              		.size	calc_temperature, .-calc_temperature
+ 401              		.global	__aeabi_f2iz
+ 402              		.section	.text.startup.main,"ax",%progbits
+ 403              		.align	1
+ 404              		.global	main
+ 405              		.thumb
+ 406              		.thumb_func
+ 407              		.type	main, %function
+ 408              	main:
+ 409              	.LFB59:
+ 121:.\main.c      **** {
+ 410              		.loc 1 121 0
+ 411              		.cfi_startproc
+ 412              		@ args = 0, pretend = 0, frame = 40
+ 413              		@ frame_needed = 0, uses_anonymous_args = 0
+ 414              	.LVL42:
+ 415 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 416              	.LCFI6:
+ 417              		.cfi_def_cfa_offset 20
+ 418              		.cfi_offset 4, -20
+ 419              		.cfi_offset 5, -16
+ 420              		.cfi_offset 6, -12
+ 421              		.cfi_offset 7, -8
+ 422              		.cfi_offset 14, -4
+ 129:.\main.c      ****     isr_StartEx(filterVDAC);
+ 423              		.loc 1 129 0
+ 424 0002 8848     		ldr	r0, .L49
+ 121:.\main.c      **** {
+ 425              		.loc 1 121 0
+ 426 0004 8DB0     		sub	sp, sp, #52
+ 427              	.LCFI7:
+ 428              		.cfi_def_cfa_offset 72
+ 129:.\main.c      ****     isr_StartEx(filterVDAC);
+ 429              		.loc 1 129 0
+ 430 0006 FFF7FEFF 		bl	isr_StartEx
+ 431              	.LVL43:
+ 132:.\main.c      **** 	ADC_SAR_1_Start();
+ 432              		.loc 1 132 0
+ 433 000a FFF7FEFF 		bl	ADC_SAR_1_Start
+ 434              	.LVL44:
+ 133:.\main.c      **** 	ADC_SAR_2_Start();
+ 435              		.loc 1 133 0
+ 436 000e FFF7FEFF 		bl	ADC_SAR_2_Start
+ 437              	.LVL45:
+ 134:.\main.c      **** 	ADC_DelSig_1_Start();
+ 438              		.loc 1 134 0
+ 439 0012 FFF7FEFF 		bl	ADC_DelSig_1_Start
+ 440              	.LVL46:
+ 135:.\main.c      **** 	ADC_SAR_1_StartConvert();
+ 441              		.loc 1 135 0
+ 442 0016 FFF7FEFF 		bl	ADC_SAR_1_StartConvert
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 16
+
+
+ 443              	.LVL47:
+ 136:.\main.c      **** 	ADC_SAR_2_StartConvert();
+ 444              		.loc 1 136 0
+ 445 001a FFF7FEFF 		bl	ADC_SAR_2_StartConvert
+ 446              	.LVL48:
+ 137:.\main.c      **** 	ADC_DelSig_1_StartConvert();
+ 447              		.loc 1 137 0
+ 448 001e FFF7FEFF 		bl	ADC_DelSig_1_StartConvert
+ 449              	.LVL49:
+ 138:.\main.c      **** 	Fault_isr_StartEx(faultISR);
+ 450              		.loc 1 138 0
+ 451 0022 8148     		ldr	r0, .L49+4
+ 452 0024 FFF7FEFF 		bl	Fault_isr_StartEx
+ 453              	.LVL50:
+ 139:.\main.c      **** 	Fault_isr_SetPriority(0u);
+ 454              		.loc 1 139 0
+ 455 0028 0020     		movs	r0, #0
+ 456 002a FFF7FEFF 		bl	Fault_isr_SetPriority
+ 457              	.LVL51:
+ 140:.\main.c      **** 	PID_isr_StartEx(pidISR);
+ 458              		.loc 1 140 0
+ 459 002e 7F48     		ldr	r0, .L49+8
+ 460 0030 FFF7FEFF 		bl	PID_isr_StartEx
+ 461              	.LVL52:
+ 141:.\main.c      **** 	PID_isr_SetPriority(7u);
+ 462              		.loc 1 141 0
+ 463 0034 0720     		movs	r0, #7
+ 464 0036 FFF7FEFF 		bl	PID_isr_SetPriority
+ 465              	.LVL53:
+ 142:.\main.c      **** 	Comp_1_Start();
+ 466              		.loc 1 142 0
+ 467 003a FFF7FEFF 		bl	Comp_1_Start
+ 468              	.LVL54:
+ 143:.\main.c      **** 	Comp_2_Start();
+ 469              		.loc 1 143 0
+ 470 003e FFF7FEFF 		bl	Comp_2_Start
+ 471              	.LVL55:
+ 144:.\main.c      **** 	Comp_3_Start();
+ 472              		.loc 1 144 0
+ 473 0042 FFF7FEFF 		bl	Comp_3_Start
+ 474              	.LVL56:
+ 145:.\main.c      ****     VDAC8_Start();
+ 475              		.loc 1 145 0
+ 476 0046 FFF7FEFF 		bl	VDAC8_Start
+ 477              	.LVL57:
+ 146:.\main.c      **** 	IDAC8_1_Start();
+ 478              		.loc 1 146 0
+ 479 004a FFF7FEFF 		bl	IDAC8_1_Start
+ 480              	.LVL58:
+ 147:.\main.c      **** 	IDAC8_2_Start();
+ 481              		.loc 1 147 0
+ 482 004e FFF7FEFF 		bl	IDAC8_2_Start
+ 483              	.LVL59:
+ 148:.\main.c      **** 	PGA_1_Start();
+ 484              		.loc 1 148 0
+ 485 0052 FFF7FEFF 		bl	PGA_1_Start
+ 486              	.LVL60:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 17
+
+
+ 149:.\main.c      ****     PGA_1_SetGain(PGA_1_GAIN_02);
+ 487              		.loc 1 149 0
+ 488 0056 0120     		movs	r0, #1
+ 489 0058 FFF7FEFF 		bl	PGA_1_SetGain
+ 490              	.LVL61:
+ 150:.\main.c      ****     Filter_Start();
+ 491              		.loc 1 150 0
+ 492 005c FFF7FEFF 		bl	Filter_Start
+ 493              	.LVL62:
+ 151:.\main.c      **** 	Filter_SetCoherency(Filter_CHANNEL_A,Filter_KEY_MID);
+ 494              		.loc 1 151 0
+ 495 0060 0020     		movs	r0, #0
+ 496 0062 0121     		movs	r1, #1
+ 497 0064 FFF7FEFF 		bl	Filter_SetCoherency
+ 498              	.LVL63:
+ 152:.\main.c      **** 	LCD_Start();
+ 499              		.loc 1 152 0
+ 500 0068 FFF7FEFF 		bl	LCD_Start
+ 501              	.LVL64:
+ 153:.\main.c      **** 	Counter_1_Start();
+ 502              		.loc 1 153 0
+ 503 006c FFF7FEFF 		bl	Counter_1_Start
+ 504              	.LVL65:
+ 156:.\main.c      ****     DMA_Config();
+ 505              		.loc 1 156 0
+ 506 0070 FFF7FEFF 		bl	DMA_Config
+ 507              	.LVL66:
+ 159:.\main.c      **** 	pid_init(&pid1, 50, 10, 10, 100000, pid1_write);
+ 508              		.loc 1 159 0
+ 509 0074 6E4B     		ldr	r3, .L49+12
+ 510 0076 6F48     		ldr	r0, .L49+16
+ 511 0078 0A22     		movs	r2, #10
+ 512 007a 0093     		str	r3, [sp, #0]
+ 513 007c 0190     		str	r0, [sp, #4]
+ 514 007e 3221     		movs	r1, #50
+ 515 0080 6D48     		ldr	r0, .L49+20
+ 516 0082 1346     		mov	r3, r2
+ 517 0084 FFF7FEFF 		bl	pid_init
+ 518              	.LVL67:
+ 162:.\main.c      ****     CYGlobalIntEnable;
+ 519              		.loc 1 162 0
+ 520              	@ 162 ".\main.c" 1
+ 521 0088 62B6     		CPSIE   i
+ 522              	@ 0 "" 2
+ 125:.\main.c      **** 	int counter = 0;
+ 523              		.loc 1 125 0
+ 524              		.thumb
+ 525 008a 0025     		movs	r5, #0
+ 526              	.LVL68:
+ 527              	.L34:
+ 167:.\main.c      **** 		if(filterStatus)
+ 528              		.loc 1 167 0
+ 529 008c 6B4C     		ldr	r4, .L49+24
+ 530 008e E17A     		ldrb	r1, [r4, #11]	@ zero_extendqisi2
+ 531 0090 C1B1     		cbz	r1, .L23
+ 169:.\main.c      **** 			LCD_Position(1u, 0u);
+ 532              		.loc 1 169 0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 18
+
+
+ 533 0092 0120     		movs	r0, #1
+ 534 0094 0021     		movs	r1, #0
+ 535 0096 FFF7FEFF 		bl	LCD_Position
+ 536              	.LVL69:
+ 172:.\main.c      **** 			filterRead = filter_read;
+ 537              		.loc 1 172 0
+ 538 009a A67A     		ldrb	r6, [r4, #10]	@ zero_extendqisi2
+ 539              	.LVL70:
+ 174:.\main.c      **** 			if(filterRead < 10) {
+ 540              		.loc 1 174 0
+ 541 009c 092E     		cmp	r6, #9
+ 542 009e 01D8     		bhi	.L24
+ 175:.\main.c      **** 			LCD_PrintString("  ");			
+ 543              		.loc 1 175 0
+ 544 00a0 6748     		ldr	r0, .L49+28
+ 545 00a2 02E0     		b	.L47
+ 546              	.L24:
+ 176:.\main.c      **** 			} else if(filterRead < 100) {
+ 547              		.loc 1 176 0
+ 548 00a4 632E     		cmp	r6, #99
+ 549 00a6 02D8     		bhi	.L25
+ 177:.\main.c      **** 			LCD_PrintString(" ");			
+ 550              		.loc 1 177 0
+ 551 00a8 6648     		ldr	r0, .L49+32
+ 552              	.L47:
+ 553 00aa FFF7FEFF 		bl	LCD_PrintString
+ 554              	.LVL71:
+ 555              	.L25:
+ 180:.\main.c      **** 			sprintf(buffer, "%i", filterRead);
+ 556              		.loc 1 180 0
+ 557 00ae 3246     		mov	r2, r6
+ 558 00b0 6549     		ldr	r1, .L49+36
+ 559 00b2 02A8     		add	r0, sp, #8
+ 560 00b4 FFF7FEFF 		bl	sprintf
+ 561              	.LVL72:
+ 182:.\main.c      **** 			filterStatus=0;
+ 562              		.loc 1 182 0
+ 563 00b8 604F     		ldr	r7, .L49+24
+ 181:.\main.c      **** 			LCD_PrintString(buffer);
+ 564              		.loc 1 181 0
+ 565 00ba 02A8     		add	r0, sp, #8
+ 566 00bc FFF7FEFF 		bl	LCD_PrintString
+ 567              	.LVL73:
+ 182:.\main.c      **** 			filterStatus=0;
+ 568              		.loc 1 182 0
+ 569 00c0 0022     		movs	r2, #0
+ 570 00c2 FA72     		strb	r2, [r7, #11]
+ 571              	.LVL74:
+ 572              	.L23:
+ 185:.\main.c      **** 		if(faultStatus) {
+ 573              		.loc 1 185 0
+ 574 00c4 5D4C     		ldr	r4, .L49+24
+ 575 00c6 2078     		ldrb	r0, [r4, #0]	@ zero_extendqisi2
+ 576 00c8 88B1     		cbz	r0, .L26
+ 186:.\main.c      **** 			LCD_Position(0u, 0u);
+ 577              		.loc 1 186 0
+ 578 00ca 0020     		movs	r0, #0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 19
+
+
+ 579 00cc 0146     		mov	r1, r0
+ 580 00ce FFF7FEFF 		bl	LCD_Position
+ 581              	.LVL75:
+ 187:.\main.c      **** 			LCD_PrintString("ERROR");
+ 582              		.loc 1 187 0
+ 583 00d2 5E48     		ldr	r0, .L49+40
+ 584 00d4 FFF7FEFF 		bl	LCD_PrintString
+ 585              	.LVL76:
+ 188:.\main.c      **** 			LCD_Position(1u,5u);
+ 586              		.loc 1 188 0
+ 587 00d8 0120     		movs	r0, #1
+ 588 00da 0521     		movs	r1, #5
+ 589 00dc FFF7FEFF 		bl	LCD_Position
+ 590              	.LVL77:
+ 189:.\main.c      **** 			sprintf(buffer, "%u", (unsigned int)eventcounter);
+ 591              		.loc 1 189 0
+ 592 00e0 02A8     		add	r0, sp, #8
+ 593 00e2 5B49     		ldr	r1, .L49+44
+ 594 00e4 6268     		ldr	r2, [r4, #4]
+ 595 00e6 FFF7FEFF 		bl	sprintf
+ 596              	.LVL78:
+ 190:.\main.c      **** 			LCD_PrintString(buffer);
+ 597              		.loc 1 190 0
+ 598 00ea 02A8     		add	r0, sp, #8
+ 599 00ec 03E0     		b	.L48
+ 600              	.L26:
+ 194:.\main.c      **** 			LCD_Position(0u, 0u);
+ 601              		.loc 1 194 0
+ 602 00ee 0146     		mov	r1, r0
+ 603 00f0 FFF7FEFF 		bl	LCD_Position
+ 604              	.LVL79:
+ 195:.\main.c      **** 			LCD_PrintString("OK   ");
+ 605              		.loc 1 195 0
+ 606 00f4 5748     		ldr	r0, .L49+48
+ 607              	.L48:
+ 198:.\main.c      **** 		if(pidStatus) { // executes every second, driven by a timer interrupt
+ 608              		.loc 1 198 0
+ 609 00f6 514E     		ldr	r6, .L49+24
+ 195:.\main.c      **** 			LCD_PrintString("OK   ");
+ 610              		.loc 1 195 0
+ 611 00f8 FFF7FEFF 		bl	LCD_PrintString
+ 612              	.LVL80:
+ 198:.\main.c      **** 		if(pidStatus) { // executes every second, driven by a timer interrupt
+ 613              		.loc 1 198 0
+ 614 00fc 337A     		ldrb	r3, [r6, #8]	@ zero_extendqisi2
+ 615 00fe 002B     		cmp	r3, #0
+ 616 0100 6BD0     		beq	.L28
+ 199:.\main.c      **** 			ADCtemp_read = ADC_DelSig_1_GetResult32();
+ 617              		.loc 1 199 0
+ 618 0102 FFF7FEFF 		bl	ADC_DelSig_1_GetResult32
+ 619              	.LVL81:
+ 200:.\main.c      **** 			Temperature = calc_temperature(ADCtemp_read);
+ 620              		.loc 1 200 0
+ 621 0106 FFF7FEFF 		bl	calc_temperature
+ 622              	.LVL82:
+ 623 010a 534C     		ldr	r4, .L49+52
+ 202:.\main.c      **** 			pid_calc(&pid1, setpoint,(int32_t)(Temperature*100),1000);
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 20
+
+
+ 624              		.loc 1 202 0
+ 625 010c 5349     		ldr	r1, .L49+56
+ 200:.\main.c      **** 			Temperature = calc_temperature(ADCtemp_read);
+ 626              		.loc 1 200 0
+ 627 010e 2060     		str	r0, [r4, #0]	@ float
+ 202:.\main.c      **** 			pid_calc(&pid1, setpoint,(int32_t)(Temperature*100),1000);
+ 628              		.loc 1 202 0
+ 629 0110 0F88     		ldrh	r7, [r1, #0]
+ 630 0112 5349     		ldr	r1, .L49+60
+ 631 0114 FFF7FEFF 		bl	__aeabi_fmul
+ 632              	.LVL83:
+ 633 0118 FFF7FEFF 		bl	__aeabi_f2iz
+ 634              	.LVL84:
+ 635 011c 4FF47A73 		mov	r3, #1000
+ 636 0120 0246     		mov	r2, r0
+ 637 0122 3946     		mov	r1, r7
+ 638 0124 4448     		ldr	r0, .L49+20
+ 639 0126 FFF7FEFF 		bl	pid_calc
+ 640              	.LVL85:
+ 204:.\main.c      **** 			LCD_Position(0u,5u);
+ 641              		.loc 1 204 0
+ 642 012a 0521     		movs	r1, #5
+ 643 012c 0020     		movs	r0, #0
+ 644 012e FFF7FEFF 		bl	LCD_Position
+ 645              	.LVL86:
+ 205:.\main.c      **** 			buffer[0] = ((int)Temperature / 100) % 10 + '0';
+ 646              		.loc 1 205 0
+ 647 0132 2768     		ldr	r7, [r4, #0]	@ float
+ 648 0134 0A24     		movs	r4, #10
+ 649 0136 3846     		mov	r0, r7
+ 650 0138 FFF7FEFF 		bl	__aeabi_f2iz
+ 651              	.LVL87:
+ 652 013c 6422     		movs	r2, #100
+ 653 013e 90FBF2F3 		sdiv	r3, r0, r2
+ 654 0142 93FBF4F1 		sdiv	r1, r3, r4
+ 655 0146 04FB1132 		mls	r2, r4, r1, r3
+ 206:.\main.c      **** 			buffer[1] = ((int)Temperature / 10) % 10 + '0';
+ 656              		.loc 1 206 0
+ 657 014a 90FBF4F3 		sdiv	r3, r0, r4
+ 658 014e 93FBF4F1 		sdiv	r1, r3, r4
+ 207:.\main.c      **** 			buffer[2] = ((int)Temperature  % 10) + '0';
+ 659              		.loc 1 207 0
+ 660 0152 04FB1300 		mls	r0, r4, r3, r0
+ 205:.\main.c      **** 			buffer[0] = ((int)Temperature / 100) % 10 + '0';
+ 661              		.loc 1 205 0
+ 662 0156 3032     		adds	r2, r2, #48
+ 663 0158 8DF80820 		strb	r2, [sp, #8]
+ 206:.\main.c      **** 			buffer[1] = ((int)Temperature / 10) % 10 + '0';
+ 664              		.loc 1 206 0
+ 665 015c 04FB1132 		mls	r2, r4, r1, r3
+ 207:.\main.c      **** 			buffer[2] = ((int)Temperature  % 10) + '0';
+ 666              		.loc 1 207 0
+ 667 0160 3030     		adds	r0, r0, #48
+ 208:.\main.c      **** 			buffer[3] = '.';
+ 668              		.loc 1 208 0
+ 669 0162 2E23     		movs	r3, #46
+ 206:.\main.c      **** 			buffer[1] = ((int)Temperature / 10) % 10 + '0';
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 21
+
+
+ 670              		.loc 1 206 0
+ 671 0164 3032     		adds	r2, r2, #48
+ 209:.\main.c      **** 			buffer[4] = (int)(Temperature * 10) % 10 + '0';
+ 672              		.loc 1 209 0
+ 673 0166 3F49     		ldr	r1, .L49+64
+ 207:.\main.c      **** 			buffer[2] = ((int)Temperature  % 10) + '0';
+ 674              		.loc 1 207 0
+ 675 0168 8DF80A00 		strb	r0, [sp, #10]
+ 209:.\main.c      **** 			buffer[4] = (int)(Temperature * 10) % 10 + '0';
+ 676              		.loc 1 209 0
+ 677 016c 3846     		mov	r0, r7
+ 208:.\main.c      **** 			buffer[3] = '.';
+ 678              		.loc 1 208 0
+ 679 016e 8DF80B30 		strb	r3, [sp, #11]
+ 206:.\main.c      **** 			buffer[1] = ((int)Temperature / 10) % 10 + '0';
+ 680              		.loc 1 206 0
+ 681 0172 8DF80920 		strb	r2, [sp, #9]
+ 209:.\main.c      **** 			buffer[4] = (int)(Temperature * 10) % 10 + '0';
+ 682              		.loc 1 209 0
+ 683 0176 FFF7FEFF 		bl	__aeabi_fmul
+ 684              	.LVL88:
+ 685 017a FFF7FEFF 		bl	__aeabi_f2iz
+ 686              	.LVL89:
+ 687 017e 90FBF4F1 		sdiv	r1, r0, r4
+ 688 0182 01FB1402 		mls	r2, r1, r4, r0
+ 689 0186 02F13000 		add	r0, r2, #48
+ 210:.\main.c      **** 			buffer[5] = (int)(Temperature * 100) % 10 + '0';
+ 690              		.loc 1 210 0
+ 691 018a 3549     		ldr	r1, .L49+60
+ 209:.\main.c      **** 			buffer[4] = (int)(Temperature * 10) % 10 + '0';
+ 692              		.loc 1 209 0
+ 693 018c 8DF80C00 		strb	r0, [sp, #12]
+ 210:.\main.c      **** 			buffer[5] = (int)(Temperature * 100) % 10 + '0';
+ 694              		.loc 1 210 0
+ 695 0190 3846     		mov	r0, r7
+ 696 0192 FFF7FEFF 		bl	__aeabi_fmul
+ 697              	.LVL90:
+ 698 0196 FFF7FEFF 		bl	__aeabi_f2iz
+ 699              	.LVL91:
+ 700 019a 90FBF4F7 		sdiv	r7, r0, r4
+ 701 019e 07FB1404 		mls	r4, r7, r4, r0
+ 211:.\main.c      **** 			buffer[6] = '\0';
+ 702              		.loc 1 211 0
+ 703 01a2 0027     		movs	r7, #0
+ 210:.\main.c      **** 			buffer[5] = (int)(Temperature * 100) % 10 + '0';
+ 704              		.loc 1 210 0
+ 705 01a4 04F13003 		add	r3, r4, #48
+ 213:.\main.c      **** 			LCD_PrintString(buffer);
+ 706              		.loc 1 213 0
+ 707 01a8 02A8     		add	r0, sp, #8
+ 210:.\main.c      **** 			buffer[5] = (int)(Temperature * 100) % 10 + '0';
+ 708              		.loc 1 210 0
+ 709 01aa 8DF80D30 		strb	r3, [sp, #13]
+ 211:.\main.c      **** 			buffer[6] = '\0';
+ 710              		.loc 1 211 0
+ 711 01ae 8DF80E70 		strb	r7, [sp, #14]
+ 213:.\main.c      **** 			LCD_PrintString(buffer);
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 22
+
+
+ 712              		.loc 1 213 0
+ 713 01b2 FFF7FEFF 		bl	LCD_PrintString
+ 714              	.LVL92:
+ 215:.\main.c      **** 			pidStatus=0;
+ 715              		.loc 1 215 0
+ 716 01b6 3772     		strb	r7, [r6, #8]
+ 216:.\main.c      **** 			if(faultStatus)
+ 717              		.loc 1 216 0
+ 718 01b8 3678     		ldrb	r6, [r6, #0]	@ zero_extendqisi2
+ 719 01ba 06B1     		cbz	r6, .L29
+ 217:.\main.c      **** 				counter++;
+ 720              		.loc 1 217 0
+ 721 01bc 0135     		adds	r5, r5, #1
+ 722              	.LVL93:
+ 723              	.L29:
+ 218:.\main.c      **** 			if(counter >= 10) {
+ 724              		.loc 1 218 0
+ 725 01be 092D     		cmp	r5, #9
+ 726 01c0 0BDD     		ble	.L28
+ 219:.\main.c      **** 				faultStatus = 0;
+ 727              		.loc 1 219 0
+ 728 01c2 1E49     		ldr	r1, .L49+24
+ 729 01c4 0025     		movs	r5, #0
+ 730              	.LVL94:
+ 221:.\main.c      **** 				Control_RS_Write(0xff);
+ 731              		.loc 1 221 0
+ 732 01c6 FF20     		movs	r0, #255
+ 219:.\main.c      **** 				faultStatus = 0;
+ 733              		.loc 1 219 0
+ 734 01c8 0D70     		strb	r5, [r1, #0]
+ 735              	.LVL95:
+ 221:.\main.c      **** 				Control_RS_Write(0xff);
+ 736              		.loc 1 221 0
+ 737 01ca FFF7FEFF 		bl	Control_RS_Write
+ 738              	.LVL96:
+ 222:.\main.c      **** 				CyDelayUs(10);
+ 739              		.loc 1 222 0
+ 740 01ce 0A20     		movs	r0, #10
+ 741 01d0 FFF7FEFF 		bl	CyDelayUs
+ 742              	.LVL97:
+ 223:.\main.c      **** 				Control_RS_Write(0x00);
+ 743              		.loc 1 223 0
+ 744 01d4 2846     		mov	r0, r5
+ 745 01d6 FFF7FEFF 		bl	Control_RS_Write
+ 746              	.LVL98:
+ 747              	.L28:
+ 229:.\main.c      ****         temp = VUSB_Read();
+ 748              		.loc 1 229 0
+ 749 01da FFF7FEFF 		bl	VUSB_Read
+ 750              	.LVL99:
+ 751 01de 224C     		ldr	r4, .L49+68
+ 230:.\main.c      ****         if(temp) {
+ 752              		.loc 1 230 0
+ 753 01e0 0746     		mov	r7, r0
+ 754 01e2 78B1     		cbz	r0, .L30
+ 755              	.LVL100:
+ 232:.\main.c      ****             LCD_Position(1u,5u);
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 23
+
+
+ 756              		.loc 1 232 0
+ 757 01e4 0120     		movs	r0, #1
+ 758              	.LVL101:
+ 759 01e6 0521     		movs	r1, #5
+ 760 01e8 FFF7FEFF 		bl	LCD_Position
+ 761              	.LVL102:
+ 231:.\main.c      ****             temp = '0' + temp;
+ 762              		.loc 1 231 0
+ 763 01ec 07F13000 		add	r0, r7, #48
+ 233:.\main.c      ****             LCD_PutChar(temp);
+ 764              		.loc 1 233 0
+ 765 01f0 C0B2     		uxtb	r0, r0
+ 766 01f2 FFF7FEFF 		bl	LCD_PutChar
+ 767              	.LVL103:
+ 235:.\main.c      ****             if(USBUART_1_initVar == 0u)
+ 768              		.loc 1 235 0
+ 769 01f6 2378     		ldrb	r3, [r4, #0]	@ zero_extendqisi2
+ 770 01f8 0BB9     		cbnz	r3, .L31
+ 236:.\main.c      ****                 USB_init();
+ 771              		.loc 1 236 0
+ 772 01fa FFF7FEFF 		bl	USB_init
+ 773              	.LVL104:
+ 774              	.L31:
+ 237:.\main.c      ****             cliProcess();
+ 775              		.loc 1 237 0
+ 776 01fe FFF7FEFF 		bl	cliProcess
+ 777              	.LVL105:
+ 778 0202 0AE0     		b	.L32
+ 779              	.LVL106:
+ 780              	.L30:
+ 240:.\main.c      ****             if(USBUART_1_initVar)
+ 781              		.loc 1 240 0
+ 782 0204 2278     		ldrb	r2, [r4, #0]	@ zero_extendqisi2
+ 783 0206 0AB1     		cbz	r2, .L33
+ 241:.\main.c      ****                 USBUART_1_Stop();
+ 784              		.loc 1 241 0
+ 785 0208 FFF7FEFF 		bl	USBUART_1_Stop
+ 786              	.LVL107:
+ 787              	.L33:
+ 243:.\main.c      ****             LCD_Position(1u,5u);
+ 788              		.loc 1 243 0
+ 789 020c 0120     		movs	r0, #1
+ 790 020e 0521     		movs	r1, #5
+ 791 0210 FFF7FEFF 		bl	LCD_Position
+ 792              	.LVL108:
+ 245:.\main.c      ****             LCD_PutChar(temp);
+ 793              		.loc 1 245 0
+ 794 0214 3020     		movs	r0, #48
+ 795 0216 FFF7FEFF 		bl	LCD_PutChar
+ 796              	.LVL109:
+ 797              	.L32:
+ 248:.\main.c      **** 		dac_offset = ADC_SAR_2_GetResult8();
+ 798              		.loc 1 248 0
+ 799 021a FFF7FEFF 		bl	ADC_SAR_2_GetResult8
+ 800              	.LVL110:
+ 801 021e 074E     		ldr	r6, .L49+24
+ 802 0220 7072     		strb	r0, [r6, #9]
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 24
+
+
+ 250:.\main.c      ****     }
+ 803              		.loc 1 250 0
+ 804 0222 33E7     		b	.L34
+ 805              	.L50:
+ 806              		.align	2
+ 807              	.L49:
+ 808 0224 00000000 		.word	filterVDAC
+ 809 0228 00000000 		.word	faultISR
+ 810 022c 00000000 		.word	pidISR
+ 811 0230 A0860100 		.word	100000
+ 812 0234 00000000 		.word	pid1_write
+ 813 0238 00000000 		.word	pid1
+ 814 023c 00000000 		.word	.LANCHOR0
+ 815 0240 00000000 		.word	.LC0
+ 816 0244 03000000 		.word	.LC1
+ 817 0248 05000000 		.word	.LC2
+ 818 024c 08000000 		.word	.LC3
+ 819 0250 0E000000 		.word	.LC4
+ 820 0254 11000000 		.word	.LC5
+ 821 0258 00000000 		.word	Temperature
+ 822 025c 00000000 		.word	.LANCHOR1
+ 823 0260 0000C842 		.word	1120403456
+ 824 0264 00002041 		.word	1092616192
+ 825 0268 00000000 		.word	USBUART_1_initVar
+ 826              		.cfi_endproc
+ 827              	.LFE59:
+ 828              		.size	main, .-main
+ 829              		.comm	Temperature,4,4
+ 830              		.global	setpoint
+ 831              		.comm	pid1,28,4
+ 832              		.global	dac_offset
+ 833              		.global	filter_readold
+ 834              		.global	filter_read
+ 835              		.global	pidStatus
+ 836              		.global	faultStatus
+ 837              		.global	cliMode
+ 838              		.global	filterStatus
+ 839              		.global	eventcounter
+ 840              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 841              	.LC0:
+ 842 0000 202000   		.ascii	"  \000"
+ 843              	.LC1:
+ 844 0003 2000     		.ascii	" \000"
+ 845              	.LC2:
+ 846 0005 256900   		.ascii	"%i\000"
+ 847              	.LC3:
+ 848 0008 4552524F 		.ascii	"ERROR\000"
+ 848      5200
+ 849              	.LC4:
+ 850 000e 257500   		.ascii	"%u\000"
+ 851              	.LC5:
+ 852 0011 4F4B2020 		.ascii	"OK   \000"
+ 852      2000
+ 853              		.data
+ 854              		.align	1
+ 855              		.set	.LANCHOR1,. + 0
+ 856              		.type	setpoint, %object
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 25
+
+
+ 857              		.size	setpoint, 2
+ 858              	setpoint:
+ 859 0000 B80B     		.short	3000
+ 860              		.bss
+ 861              		.align	2
+ 862              		.set	.LANCHOR0,. + 0
+ 863              		.type	faultStatus, %object
+ 864              		.size	faultStatus, 1
+ 865              	faultStatus:
+ 866 0000 00       		.space	1
+ 867 0001 000000   		.space	3
+ 868              		.type	eventcounter, %object
+ 869              		.size	eventcounter, 4
+ 870              	eventcounter:
+ 871 0004 00000000 		.space	4
+ 872              		.type	pidStatus, %object
+ 873              		.size	pidStatus, 1
+ 874              	pidStatus:
+ 875 0008 00       		.space	1
+ 876              		.type	dac_offset, %object
+ 877              		.size	dac_offset, 1
+ 878              	dac_offset:
+ 879 0009 00       		.space	1
+ 880              		.type	filter_read, %object
+ 881              		.size	filter_read, 1
+ 882              	filter_read:
+ 883 000a 00       		.space	1
+ 884              		.type	filterStatus, %object
+ 885              		.size	filterStatus, 1
+ 886              	filterStatus:
+ 887 000b 00       		.space	1
+ 888              		.type	filter_readold, %object
+ 889              		.size	filter_readold, 1
+ 890              	filter_readold:
+ 891 000c 00       		.space	1
+ 892              		.type	cliMode, %object
+ 893              		.size	cliMode, 1
+ 894              	cliMode:
+ 895 000d 00       		.space	1
+ 896 000e 0000     		.text
+ 897              	.Letext0:
+ 898              		.file 2 "c:\\program files\\cypress\\psoc creator\\3.0\\psoc creator\\import\\gnu_cs\\arm\\4.7.3\\
+ 899              		.file 3 "./Generated_Source/PSoC5/cytypes.h"
+ 900              		.file 4 ".\\pid.h"
+ 901              		.file 5 "./Generated_Source/PSoC5/USBUART_1.h"
+ 902              		.file 6 "./Generated_Source/PSoC5/core_cm3.h"
+ 903              		.file 7 "./Generated_Source/PSoC5/IDAC8_1.h"
+ 904              		.file 8 "./Generated_Source/PSoC5/IDAC8_2.h"
+ 905              		.file 9 "./Generated_Source/PSoC5/VDAC8.h"
+ 906              		.file 10 "./Generated_Source/PSoC5/Counter_1.h"
+ 907              		.file 11 "./Generated_Source/PSoC5/CYDMAC.H"
+ 908              		.file 12 "./Generated_Source/PSoC5/DMA_dma.h"
+ 909              		.file 13 "c:\\program files\\cypress\\psoc creator\\3.0\\psoc creator\\import\\gnu_cs\\arm\\4.7.3\
+ 910              		.file 14 "./Generated_Source/PSoC5/isr.h"
+ 911              		.file 15 "./Generated_Source/PSoC5/USBUART_1_cdc.h"
+ 912              		.file 16 "./Generated_Source/PSoC5/ADC_SAR_1.h"
+ 913              		.file 17 "./Generated_Source/PSoC5/ADC_SAR_2.h"
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 26
+
+
+ 914              		.file 18 "./Generated_Source/PSoC5/ADC_DelSig_1.h"
+ 915              		.file 19 "./Generated_Source/PSoC5/Fault_isr.h"
+ 916              		.file 20 "./Generated_Source/PSoC5/PID_isr.h"
+ 917              		.file 21 "./Generated_Source/PSoC5/Comp_1.h"
+ 918              		.file 22 "./Generated_Source/PSoC5/Comp_2.h"
+ 919              		.file 23 "./Generated_Source/PSoC5/Comp_3.h"
+ 920              		.file 24 "./Generated_Source/PSoC5/PGA_1.h"
+ 921              		.file 25 "./Generated_Source/PSoC5/Filter.h"
+ 922              		.file 26 "./Generated_Source/PSoC5/LCD.h"
+ 923              		.file 27 "c:\\program files\\cypress\\psoc creator\\3.0\\psoc creator\\import\\gnu_cs\\arm\\4.7.3\
+ 924              		.file 28 "./Generated_Source/PSoC5/Control_RS.h"
+ 925              		.file 29 "./Generated_Source/PSoC5/CyLib.h"
+ 926              		.file 30 "./Generated_Source/PSoC5/VUSB.h"
+ 927              		.file 31 ".\\cli.h"
+ 928              		.section	.debug_info,"",%progbits
+ 929              	.Ldebug_info0:
+ 930 0000 510D0000 		.4byte	0xd51
+ 931 0004 0200     		.2byte	0x2
+ 932 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 933 000a 04       		.byte	0x4
+ 934 000b 01       		.uleb128 0x1
+ 935 000c CB050000 		.4byte	.LASF44
+ 936 0010 01       		.byte	0x1
+ 937 0011 4C060000 		.4byte	.LASF45
+ 938 0015 DB040000 		.4byte	.LASF46
+ 939 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 940 001d 00000000 		.4byte	0
+ 941 0021 00000000 		.4byte	0
+ 942 0025 00000000 		.4byte	.Ldebug_line0
+ 943 0029 02       		.uleb128 0x2
+ 944 002a 04       		.byte	0x4
+ 945 002b 04       		.byte	0x4
+ 946 002c FA000000 		.4byte	.LASF0
+ 947 0030 02       		.uleb128 0x2
+ 948 0031 01       		.byte	0x1
+ 949 0032 06       		.byte	0x6
+ 950 0033 98050000 		.4byte	.LASF1
+ 951 0037 03       		.uleb128 0x3
+ 952 0038 47020000 		.4byte	.LASF4
+ 953 003c 02       		.byte	0x2
+ 954 003d 2A       		.byte	0x2a
+ 955 003e 42000000 		.4byte	0x42
+ 956 0042 02       		.uleb128 0x2
+ 957 0043 01       		.byte	0x1
+ 958 0044 08       		.byte	0x8
+ 959 0045 CD040000 		.4byte	.LASF2
+ 960 0049 02       		.uleb128 0x2
+ 961 004a 02       		.byte	0x2
+ 962 004b 05       		.byte	0x5
+ 963 004c E6030000 		.4byte	.LASF3
+ 964 0050 03       		.uleb128 0x3
+ 965 0051 61030000 		.4byte	.LASF5
+ 966 0055 02       		.byte	0x2
+ 967 0056 36       		.byte	0x36
+ 968 0057 5B000000 		.4byte	0x5b
+ 969 005b 02       		.uleb128 0x2
+ 970 005c 02       		.byte	0x2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 27
+
+
+ 971 005d 07       		.byte	0x7
+ 972 005e B8050000 		.4byte	.LASF6
+ 973 0062 03       		.uleb128 0x3
+ 974 0063 A4040000 		.4byte	.LASF7
+ 975 0067 02       		.byte	0x2
+ 976 0068 4F       		.byte	0x4f
+ 977 0069 6D000000 		.4byte	0x6d
+ 978 006d 02       		.uleb128 0x2
+ 979 006e 04       		.byte	0x4
+ 980 006f 05       		.byte	0x5
+ 981 0070 F0030000 		.4byte	.LASF8
+ 982 0074 03       		.uleb128 0x3
+ 983 0075 E5000000 		.4byte	.LASF9
+ 984 0079 02       		.byte	0x2
+ 985 007a 50       		.byte	0x50
+ 986 007b 7F000000 		.4byte	0x7f
+ 987 007f 02       		.uleb128 0x2
+ 988 0080 04       		.byte	0x4
+ 989 0081 07       		.byte	0x7
+ 990 0082 92040000 		.4byte	.LASF10
+ 991 0086 02       		.uleb128 0x2
+ 992 0087 08       		.byte	0x8
+ 993 0088 05       		.byte	0x5
+ 994 0089 70020000 		.4byte	.LASF11
+ 995 008d 02       		.uleb128 0x2
+ 996 008e 08       		.byte	0x8
+ 997 008f 07       		.byte	0x7
+ 998 0090 19010000 		.4byte	.LASF12
+ 999 0094 04       		.uleb128 0x4
+ 1000 0095 04       		.byte	0x4
+ 1001 0096 05       		.byte	0x5
+ 1002 0097 696E7400 		.ascii	"int\000"
+ 1003 009b 02       		.uleb128 0x2
+ 1004 009c 04       		.byte	0x4
+ 1005 009d 07       		.byte	0x7
+ 1006 009e 54000000 		.4byte	.LASF13
+ 1007 00a2 03       		.uleb128 0x3
+ 1008 00a3 20060000 		.4byte	.LASF14
+ 1009 00a7 03       		.byte	0x3
+ 1010 00a8 5B       		.byte	0x5b
+ 1011 00a9 42000000 		.4byte	0x42
+ 1012 00ad 03       		.uleb128 0x3
+ 1013 00ae 3B020000 		.4byte	.LASF15
+ 1014 00b2 03       		.byte	0x3
+ 1015 00b3 5C       		.byte	0x5c
+ 1016 00b4 5B000000 		.4byte	0x5b
+ 1017 00b8 03       		.uleb128 0x3
+ 1018 00b9 CD020000 		.4byte	.LASF16
+ 1019 00bd 03       		.byte	0x3
+ 1020 00be 5D       		.byte	0x5d
+ 1021 00bf 7F000000 		.4byte	0x7f
+ 1022 00c3 03       		.uleb128 0x3
+ 1023 00c4 42020000 		.4byte	.LASF17
+ 1024 00c8 03       		.byte	0x3
+ 1025 00c9 5E       		.byte	0x5e
+ 1026 00ca 30000000 		.4byte	0x30
+ 1027 00ce 03       		.uleb128 0x3
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 28
+
+
+ 1028 00cf 09010000 		.4byte	.LASF18
+ 1029 00d3 03       		.byte	0x3
+ 1030 00d4 60       		.byte	0x60
+ 1031 00d5 6D000000 		.4byte	0x6d
+ 1032 00d9 02       		.uleb128 0x2
+ 1033 00da 08       		.byte	0x8
+ 1034 00db 04       		.byte	0x4
+ 1035 00dc 26060000 		.4byte	.LASF19
+ 1036 00e0 03       		.uleb128 0x3
+ 1037 00e1 4F020000 		.4byte	.LASF20
+ 1038 00e5 03       		.byte	0x3
+ 1039 00e6 6C       		.byte	0x6c
+ 1040 00e7 EB000000 		.4byte	0xeb
+ 1041 00eb 02       		.uleb128 0x2
+ 1042 00ec 01       		.byte	0x1
+ 1043 00ed 08       		.byte	0x8
+ 1044 00ee 1C020000 		.4byte	.LASF21
+ 1045 00f2 03       		.uleb128 0x3
+ 1046 00f3 B7040000 		.4byte	.LASF22
+ 1047 00f7 03       		.byte	0x3
+ 1048 00f8 E8       		.byte	0xe8
+ 1049 00f9 7F000000 		.4byte	0x7f
+ 1050 00fd 03       		.uleb128 0x3
+ 1051 00fe 99000000 		.4byte	.LASF23
+ 1052 0102 03       		.byte	0x3
+ 1053 0103 F0       		.byte	0xf0
+ 1054 0104 08010000 		.4byte	0x108
+ 1055 0108 05       		.uleb128 0x5
+ 1056 0109 A2000000 		.4byte	0xa2
+ 1057 010d 06       		.uleb128 0x6
+ 1058 010e B1020000 		.4byte	.LASF24
+ 1059 0112 03       		.byte	0x3
+ 1060 0113 0201     		.2byte	0x102
+ 1061 0115 19010000 		.4byte	0x119
+ 1062 0119 07       		.uleb128 0x7
+ 1063 011a 04       		.byte	0x4
+ 1064 011b 1F010000 		.4byte	0x11f
+ 1065 011f 08       		.uleb128 0x8
+ 1066 0120 01       		.byte	0x1
+ 1067 0121 02       		.uleb128 0x2
+ 1068 0122 04       		.byte	0x4
+ 1069 0123 07       		.byte	0x7
+ 1070 0124 89040000 		.4byte	.LASF25
+ 1071 0128 07       		.uleb128 0x7
+ 1072 0129 04       		.byte	0x4
+ 1073 012a EB000000 		.4byte	0xeb
+ 1074 012e 07       		.uleb128 0x7
+ 1075 012f 04       		.byte	0x4
+ 1076 0130 34010000 		.4byte	0x134
+ 1077 0134 09       		.uleb128 0x9
+ 1078 0135 EB000000 		.4byte	0xeb
+ 1079 0139 02       		.uleb128 0x2
+ 1080 013a 08       		.byte	0x8
+ 1081 013b 04       		.byte	0x4
+ 1082 013c 4D030000 		.4byte	.LASF26
+ 1083 0140 03       		.uleb128 0x3
+ 1084 0141 58040000 		.4byte	.LASF27
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 29
+
+
+ 1085 0145 04       		.byte	0x4
+ 1086 0146 0E       		.byte	0xe
+ 1087 0147 4B010000 		.4byte	0x14b
+ 1088 014b 07       		.uleb128 0x7
+ 1089 014c 04       		.byte	0x4
+ 1090 014d 51010000 		.4byte	0x151
+ 1091 0151 0A       		.uleb128 0xa
+ 1092 0152 01       		.byte	0x1
+ 1093 0153 5D010000 		.4byte	0x15d
+ 1094 0157 0B       		.uleb128 0xb
+ 1095 0158 62000000 		.4byte	0x62
+ 1096 015c 00       		.byte	0
+ 1097 015d 0C       		.uleb128 0xc
+ 1098 015e 70696400 		.ascii	"pid\000"
+ 1099 0162 1C       		.byte	0x1c
+ 1100 0163 04       		.byte	0x4
+ 1101 0164 10       		.byte	0x10
+ 1102 0165 C6010000 		.4byte	0x1c6
+ 1103 0169 0D       		.uleb128 0xd
+ 1104 016a 5000     		.ascii	"P\000"
+ 1105 016c 04       		.byte	0x4
+ 1106 016d 12       		.byte	0x12
+ 1107 016e 74000000 		.4byte	0x74
+ 1108 0172 02       		.byte	0x2
+ 1109 0173 23       		.byte	0x23
+ 1110 0174 00       		.uleb128 0
+ 1111 0175 0D       		.uleb128 0xd
+ 1112 0176 4900     		.ascii	"I\000"
+ 1113 0178 04       		.byte	0x4
+ 1114 0179 13       		.byte	0x13
+ 1115 017a 74000000 		.4byte	0x74
+ 1116 017e 02       		.byte	0x2
+ 1117 017f 23       		.byte	0x23
+ 1118 0180 04       		.uleb128 0x4
+ 1119 0181 0D       		.uleb128 0xd
+ 1120 0182 4400     		.ascii	"D\000"
+ 1121 0184 04       		.byte	0x4
+ 1122 0185 14       		.byte	0x14
+ 1123 0186 74000000 		.4byte	0x74
+ 1124 018a 02       		.byte	0x2
+ 1125 018b 23       		.byte	0x23
+ 1126 018c 08       		.uleb128 0x8
+ 1127 018d 0E       		.uleb128 0xe
+ 1128 018e 76000000 		.4byte	.LASF28
+ 1129 0192 04       		.byte	0x4
+ 1130 0193 15       		.byte	0x15
+ 1131 0194 62000000 		.4byte	0x62
+ 1132 0198 02       		.byte	0x2
+ 1133 0199 23       		.byte	0x23
+ 1134 019a 0C       		.uleb128 0xc
+ 1135 019b 0E       		.uleb128 0xe
+ 1136 019c 44050000 		.4byte	.LASF29
+ 1137 01a0 04       		.byte	0x4
+ 1138 01a1 16       		.byte	0x16
+ 1139 01a2 62000000 		.4byte	0x62
+ 1140 01a6 02       		.byte	0x2
+ 1141 01a7 23       		.byte	0x23
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 30
+
+
+ 1142 01a8 10       		.uleb128 0x10
+ 1143 01a9 0E       		.uleb128 0xe
+ 1144 01aa 7E050000 		.4byte	.LASF30
+ 1145 01ae 04       		.byte	0x4
+ 1146 01af 17       		.byte	0x17
+ 1147 01b0 62000000 		.4byte	0x62
+ 1148 01b4 02       		.byte	0x2
+ 1149 01b5 23       		.byte	0x23
+ 1150 01b6 14       		.uleb128 0x14
+ 1151 01b7 0E       		.uleb128 0xe
+ 1152 01b8 7E020000 		.4byte	.LASF31
+ 1153 01bc 04       		.byte	0x4
+ 1154 01bd 18       		.byte	0x18
+ 1155 01be 40010000 		.4byte	0x140
+ 1156 01c2 02       		.byte	0x2
+ 1157 01c3 23       		.byte	0x23
+ 1158 01c4 18       		.uleb128 0x18
+ 1159 01c5 00       		.byte	0
+ 1160 01c6 0F       		.uleb128 0xf
+ 1161 01c7 70696400 		.ascii	"pid\000"
+ 1162 01cb 04       		.byte	0x4
+ 1163 01cc 19       		.byte	0x19
+ 1164 01cd 5D010000 		.4byte	0x15d
+ 1165 01d1 10       		.uleb128 0x10
+ 1166 01d2 01       		.byte	0x1
+ 1167 01d3 00010000 		.4byte	.LASF117
+ 1168 01d7 01       		.byte	0x1
+ 1169 01d8 51       		.byte	0x51
+ 1170 01d9 01       		.byte	0x1
+ 1171 01da 00000000 		.4byte	.LFB57
+ 1172 01de 14000000 		.4byte	.LFE57
+ 1173 01e2 02       		.byte	0x2
+ 1174 01e3 7D       		.byte	0x7d
+ 1175 01e4 00       		.sleb128 0
+ 1176 01e5 01       		.byte	0x1
+ 1177 01e6 11       		.uleb128 0x11
+ 1178 01e7 01       		.byte	0x1
+ 1179 01e8 79040000 		.4byte	.LASF34
+ 1180 01ec 01       		.byte	0x1
+ 1181 01ed 4501     		.2byte	0x145
+ 1182 01ef 01       		.byte	0x1
+ 1183 01f0 00000000 		.4byte	.LFB62
+ 1184 01f4 28000000 		.4byte	.LFE62
+ 1185 01f8 00000000 		.4byte	.LLST0
+ 1186 01fc 01       		.byte	0x1
+ 1187 01fd 67020000 		.4byte	0x267
+ 1188 0201 12       		.uleb128 0x12
+ 1189 0202 21000000 		.4byte	.LASF41
+ 1190 0206 01       		.byte	0x1
+ 1191 0207 4501     		.2byte	0x145
+ 1192 0209 62000000 		.4byte	0x62
+ 1193 020d 20000000 		.4byte	.LLST1
+ 1194 0211 13       		.uleb128 0x13
+ 1195 0212 A5010000 		.4byte	.LASF32
+ 1196 0216 01       		.byte	0x1
+ 1197 0217 4701     		.2byte	0x147
+ 1198 0219 37000000 		.4byte	0x37
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 31
+
+
+ 1199 021d 05       		.byte	0x5
+ 1200 021e 74       		.byte	0x74
+ 1201 021f 00       		.sleb128 0
+ 1202 0220 34       		.byte	0x34
+ 1203 0221 26       		.byte	0x26
+ 1204 0222 9F       		.byte	0x9f
+ 1205 0223 13       		.uleb128 0x13
+ 1206 0224 AB010000 		.4byte	.LASF33
+ 1207 0228 01       		.byte	0x1
+ 1208 0229 4701     		.2byte	0x147
+ 1209 022b 37000000 		.4byte	0x37
+ 1210 022f 07       		.byte	0x7
+ 1211 0230 74       		.byte	0x74
+ 1212 0231 00       		.sleb128 0
+ 1213 0232 3F       		.byte	0x3f
+ 1214 0233 1A       		.byte	0x1a
+ 1215 0234 32       		.byte	0x32
+ 1216 0235 24       		.byte	0x24
+ 1217 0236 9F       		.byte	0x9f
+ 1218 0237 14       		.uleb128 0x14
+ 1219 0238 1A000000 		.4byte	.LVL3
+ 1220 023c 9D090000 		.4byte	0x99d
+ 1221 0240 51020000 		.4byte	0x251
+ 1222 0244 15       		.uleb128 0x15
+ 1223 0245 01       		.byte	0x1
+ 1224 0246 50       		.byte	0x50
+ 1225 0247 08       		.byte	0x8
+ 1226 0248 74       		.byte	0x74
+ 1227 0249 00       		.sleb128 0
+ 1228 024a 09       		.byte	0x9
+ 1229 024b F8       		.byte	0xf8
+ 1230 024c 24       		.byte	0x24
+ 1231 024d 09       		.byte	0x9
+ 1232 024e FC       		.byte	0xfc
+ 1233 024f 25       		.byte	0x25
+ 1234 0250 00       		.byte	0
+ 1235 0251 16       		.uleb128 0x16
+ 1236 0252 28000000 		.4byte	.LVL4
+ 1237 0256 01       		.byte	0x1
+ 1238 0257 B1090000 		.4byte	0x9b1
+ 1239 025b 15       		.uleb128 0x15
+ 1240 025c 01       		.byte	0x1
+ 1241 025d 50       		.byte	0x50
+ 1242 025e 06       		.byte	0x6
+ 1243 025f 74       		.byte	0x74
+ 1244 0260 00       		.sleb128 0
+ 1245 0261 3F       		.byte	0x3f
+ 1246 0262 1A       		.byte	0x1a
+ 1247 0263 32       		.byte	0x32
+ 1248 0264 24       		.byte	0x24
+ 1249 0265 00       		.byte	0
+ 1250 0266 00       		.byte	0
+ 1251 0267 17       		.uleb128 0x17
+ 1252 0268 01       		.byte	0x1
+ 1253 0269 85050000 		.4byte	.LASF35
+ 1254 026d 01       		.byte	0x1
+ 1255 026e 61       		.byte	0x61
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 32
+
+
+ 1256 026f 01       		.byte	0x1
+ 1257 0270 00000000 		.4byte	.LFB58
+ 1258 0274 14000000 		.4byte	.LFE58
+ 1259 0278 4C000000 		.4byte	.LLST2
+ 1260 027c 01       		.byte	0x1
+ 1261 027d 8B020000 		.4byte	0x28b
+ 1262 0281 18       		.uleb128 0x18
+ 1263 0282 06000000 		.4byte	.LVL5
+ 1264 0286 C5090000 		.4byte	0x9c5
+ 1265 028a 00       		.byte	0
+ 1266 028b 17       		.uleb128 0x17
+ 1267 028c 01       		.byte	0x1
+ 1268 028d AC040000 		.4byte	.LASF36
+ 1269 0291 01       		.byte	0x1
+ 1270 0292 3C       		.byte	0x3c
+ 1271 0293 01       		.byte	0x1
+ 1272 0294 00000000 		.4byte	.LFB56
+ 1273 0298 24000000 		.4byte	.LFE56
+ 1274 029c 6C000000 		.4byte	.LLST3
+ 1275 02a0 01       		.byte	0x1
+ 1276 02a1 AF020000 		.4byte	0x2af
+ 1277 02a5 18       		.uleb128 0x18
+ 1278 02a6 14000000 		.4byte	.LVL6
+ 1279 02aa D3090000 		.4byte	0x9d3
+ 1280 02ae 00       		.byte	0
+ 1281 02af 17       		.uleb128 0x17
+ 1282 02b0 01       		.byte	0x1
+ 1283 02b1 4F040000 		.4byte	.LASF37
+ 1284 02b5 01       		.byte	0x1
+ 1285 02b6 FD       		.byte	0xfd
+ 1286 02b7 01       		.byte	0x1
+ 1287 02b8 00000000 		.4byte	.LFB60
+ 1288 02bc 20000000 		.4byte	.LFE60
+ 1289 02c0 8C000000 		.4byte	.LLST4
+ 1290 02c4 01       		.byte	0x1
+ 1291 02c5 04030000 		.4byte	0x304
+ 1292 02c9 14       		.uleb128 0x14
+ 1293 02ca 0A000000 		.4byte	.LVL7
+ 1294 02ce E7090000 		.4byte	0x9e7
+ 1295 02d2 E1020000 		.4byte	0x2e1
+ 1296 02d6 15       		.uleb128 0x15
+ 1297 02d7 01       		.byte	0x1
+ 1298 02d8 51       		.byte	0x51
+ 1299 02d9 01       		.byte	0x1
+ 1300 02da 31       		.byte	0x31
+ 1301 02db 15       		.uleb128 0x15
+ 1302 02dc 01       		.byte	0x1
+ 1303 02dd 50       		.byte	0x50
+ 1304 02de 01       		.byte	0x1
+ 1305 02df 30       		.byte	0x30
+ 1306 02e0 00       		.byte	0
+ 1307 02e1 18       		.uleb128 0x18
+ 1308 02e2 0E000000 		.4byte	.LVL8
+ 1309 02e6 000A0000 		.4byte	0xa00
+ 1310 02ea 18       		.uleb128 0x18
+ 1311 02eb 16000000 		.4byte	.LVL9
+ 1312 02ef 0E0A0000 		.4byte	0xa0e
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 33
+
+
+ 1313 02f3 16       		.uleb128 0x16
+ 1314 02f4 20000000 		.4byte	.LVL10
+ 1315 02f8 01       		.byte	0x1
+ 1316 02f9 180A0000 		.4byte	0xa18
+ 1317 02fd 15       		.uleb128 0x15
+ 1318 02fe 01       		.byte	0x1
+ 1319 02ff 50       		.byte	0x50
+ 1320 0300 01       		.byte	0x1
+ 1321 0301 31       		.byte	0x31
+ 1322 0302 00       		.byte	0
+ 1323 0303 00       		.byte	0
+ 1324 0304 11       		.uleb128 0x11
+ 1325 0305 01       		.byte	0x1
+ 1326 0306 73050000 		.4byte	.LASF38
+ 1327 030a 01       		.byte	0x1
+ 1328 030b 1501     		.2byte	0x115
+ 1329 030d 01       		.byte	0x1
+ 1330 030e 00000000 		.4byte	.LFB61
+ 1331 0312 44000000 		.4byte	.LFE61
+ 1332 0316 AC000000 		.4byte	.LLST5
+ 1333 031a 01       		.byte	0x1
+ 1334 031b E5030000 		.4byte	0x3e5
+ 1335 031f 19       		.uleb128 0x19
+ 1336 0320 3A030000 		.4byte	.LASF39
+ 1337 0324 01       		.byte	0x1
+ 1338 0325 1801     		.2byte	0x118
+ 1339 0327 A2000000 		.4byte	0xa2
+ 1340 032b CC000000 		.4byte	.LLST6
+ 1341 032f 19       		.uleb128 0x19
+ 1342 0330 B8000000 		.4byte	.LASF40
+ 1343 0334 01       		.byte	0x1
+ 1344 0335 1D01     		.2byte	0x11d
+ 1345 0337 A2000000 		.4byte	0xa2
+ 1346 033b EA000000 		.4byte	.LLST7
+ 1347 033f 14       		.uleb128 0x14
+ 1348 0340 10000000 		.4byte	.LVL11
+ 1349 0344 2C0A0000 		.4byte	0xa2c
+ 1350 0348 65030000 		.4byte	0x365
+ 1351 034c 15       		.uleb128 0x15
+ 1352 034d 01       		.byte	0x1
+ 1353 034e 53       		.byte	0x53
+ 1354 034f 03       		.byte	0x3
+ 1355 0350 0A       		.byte	0xa
+ 1356 0351 0040     		.2byte	0x4000
+ 1357 0353 15       		.uleb128 0x15
+ 1358 0354 01       		.byte	0x1
+ 1359 0355 52       		.byte	0x52
+ 1360 0356 03       		.byte	0x3
+ 1361 0357 0A       		.byte	0xa
+ 1362 0358 0040     		.2byte	0x4000
+ 1363 035a 15       		.uleb128 0x15
+ 1364 035b 01       		.byte	0x1
+ 1365 035c 51       		.byte	0x51
+ 1366 035d 01       		.byte	0x1
+ 1367 035e 31       		.byte	0x31
+ 1368 035f 15       		.uleb128 0x15
+ 1369 0360 01       		.byte	0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 34
+
+
+ 1370 0361 50       		.byte	0x50
+ 1371 0362 01       		.byte	0x1
+ 1372 0363 31       		.byte	0x31
+ 1373 0364 00       		.byte	0
+ 1374 0365 18       		.uleb128 0x18
+ 1375 0366 16000000 		.4byte	.LVL13
+ 1376 036a 530A0000 		.4byte	0xa53
+ 1377 036e 14       		.uleb128 0x14
+ 1378 036f 22000000 		.4byte	.LVL15
+ 1379 0373 610A0000 		.4byte	0xa61
+ 1380 0377 92030000 		.4byte	0x392
+ 1381 037b 15       		.uleb128 0x15
+ 1382 037c 01       		.byte	0x1
+ 1383 037d 53       		.byte	0x53
+ 1384 037e 01       		.byte	0x1
+ 1385 037f 30       		.byte	0x30
+ 1386 0380 15       		.uleb128 0x15
+ 1387 0381 01       		.byte	0x1
+ 1388 0382 52       		.byte	0x52
+ 1389 0383 02       		.byte	0x2
+ 1390 0384 09       		.byte	0x9
+ 1391 0385 FF       		.byte	0xff
+ 1392 0386 15       		.uleb128 0x15
+ 1393 0387 01       		.byte	0x1
+ 1394 0388 51       		.byte	0x51
+ 1395 0389 01       		.byte	0x1
+ 1396 038a 31       		.byte	0x31
+ 1397 038b 15       		.uleb128 0x15
+ 1398 038c 01       		.byte	0x1
+ 1399 038d 50       		.byte	0x50
+ 1400 038e 02       		.byte	0x2
+ 1401 038f 75       		.byte	0x75
+ 1402 0390 00       		.sleb128 0
+ 1403 0391 00       		.byte	0
+ 1404 0392 14       		.uleb128 0x14
+ 1405 0393 30000000 		.4byte	.LVL16
+ 1406 0397 880A0000 		.4byte	0xa88
+ 1407 039b B4030000 		.4byte	0x3b4
+ 1408 039f 15       		.uleb128 0x15
+ 1409 03a0 01       		.byte	0x1
+ 1410 03a1 52       		.byte	0x52
+ 1411 03a2 03       		.byte	0x3
+ 1412 03a3 0B       		.byte	0xb
+ 1413 03a4 A1C7     		.2byte	0xc7a1
+ 1414 03a6 15       		.uleb128 0x15
+ 1415 03a7 01       		.byte	0x1
+ 1416 03a8 51       		.byte	0x51
+ 1417 03a9 03       		.byte	0x3
+ 1418 03aa 0A       		.byte	0xa
+ 1419 03ab A25B     		.2byte	0x5ba2
+ 1420 03ad 15       		.uleb128 0x15
+ 1421 03ae 01       		.byte	0x1
+ 1422 03af 50       		.byte	0x50
+ 1423 03b0 02       		.byte	0x2
+ 1424 03b1 75       		.byte	0x75
+ 1425 03b2 00       		.sleb128 0
+ 1426 03b3 00       		.byte	0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 35
+
+
+ 1427 03b4 14       		.uleb128 0x14
+ 1428 03b5 38000000 		.4byte	.LVL17
+ 1429 03b9 AA0A0000 		.4byte	0xaaa
+ 1430 03bd CE030000 		.4byte	0x3ce
+ 1431 03c1 15       		.uleb128 0x15
+ 1432 03c2 01       		.byte	0x1
+ 1433 03c3 51       		.byte	0x51
+ 1434 03c4 02       		.byte	0x2
+ 1435 03c5 75       		.byte	0x75
+ 1436 03c6 00       		.sleb128 0
+ 1437 03c7 15       		.uleb128 0x15
+ 1438 03c8 01       		.byte	0x1
+ 1439 03c9 50       		.byte	0x50
+ 1440 03ca 02       		.byte	0x2
+ 1441 03cb 74       		.byte	0x74
+ 1442 03cc 00       		.sleb128 0
+ 1443 03cd 00       		.byte	0
+ 1444 03ce 16       		.uleb128 0x16
+ 1445 03cf 44000000 		.4byte	.LVL18
+ 1446 03d3 01       		.byte	0x1
+ 1447 03d4 C70A0000 		.4byte	0xac7
+ 1448 03d8 15       		.uleb128 0x15
+ 1449 03d9 01       		.byte	0x1
+ 1450 03da 51       		.byte	0x51
+ 1451 03db 01       		.byte	0x1
+ 1452 03dc 31       		.byte	0x31
+ 1453 03dd 15       		.uleb128 0x15
+ 1454 03de 01       		.byte	0x1
+ 1455 03df 50       		.byte	0x50
+ 1456 03e0 02       		.byte	0x2
+ 1457 03e1 74       		.byte	0x74
+ 1458 03e2 00       		.sleb128 0
+ 1459 03e3 00       		.byte	0
+ 1460 03e4 00       		.byte	0
+ 1461 03e5 1A       		.uleb128 0x1a
+ 1462 03e6 01       		.byte	0x1
+ 1463 03e7 0B020000 		.4byte	.LASF118
+ 1464 03eb 01       		.byte	0x1
+ 1465 03ec 6501     		.2byte	0x165
+ 1466 03ee 01       		.byte	0x1
+ 1467 03ef 29000000 		.4byte	0x29
+ 1468 03f3 00000000 		.4byte	.LFB63
+ 1469 03f7 CC000000 		.4byte	.LFE63
+ 1470 03fb 08010000 		.4byte	.LLST8
+ 1471 03ff 01       		.byte	0x1
+ 1472 0400 EB040000 		.4byte	0x4eb
+ 1473 0404 12       		.uleb128 0x12
+ 1474 0405 00000000 		.4byte	.LASF42
+ 1475 0409 01       		.byte	0x1
+ 1476 040a 6501     		.2byte	0x165
+ 1477 040c 62000000 		.4byte	0x62
+ 1478 0410 28010000 		.4byte	.LLST9
+ 1479 0414 1B       		.uleb128 0x1b
+ 1480 0415 413100   		.ascii	"A1\000"
+ 1481 0418 01       		.byte	0x1
+ 1482 0419 6701     		.2byte	0x167
+ 1483 041b 29000000 		.4byte	0x29
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 36
+
+
+ 1484 041f 04       		.byte	0x4
+ 1485 0420 0DCF5B3B 		.4byte	0x3b5bcf0d
+ 1486 0424 1B       		.uleb128 0x1b
+ 1487 0425 423100   		.ascii	"B1\000"
+ 1488 0428 01       		.byte	0x1
+ 1489 0429 6701     		.2byte	0x167
+ 1490 042b 29000000 		.4byte	0x29
+ 1491 042f 04       		.byte	0x4
+ 1492 0430 F1BB8639 		.4byte	0x3986bbf1
+ 1493 0434 1B       		.uleb128 0x1b
+ 1494 0435 433100   		.ascii	"C1\000"
+ 1495 0438 01       		.byte	0x1
+ 1496 0439 6701     		.2byte	0x167
+ 1497 043b 29000000 		.4byte	0x29
+ 1498 043f 04       		.byte	0x4
+ 1499 0440 7ED52F36 		.4byte	0x362fd57e
+ 1500 0444 1B       		.uleb128 0x1b
+ 1501 0445 443100   		.ascii	"D1\000"
+ 1502 0448 01       		.byte	0x1
+ 1503 0449 6701     		.2byte	0x167
+ 1504 044b 29000000 		.4byte	0x29
+ 1505 044f 04       		.byte	0x4
+ 1506 0450 69138933 		.4byte	0x33891369
+ 1507 0454 19       		.uleb128 0x19
+ 1508 0455 E9010000 		.4byte	.LASF43
+ 1509 0459 01       		.byte	0x1
+ 1510 045a 6801     		.2byte	0x168
+ 1511 045c 29000000 		.4byte	0x29
+ 1512 0460 49010000 		.4byte	.LLST10
+ 1513 0464 1C       		.uleb128 0x1c
+ 1514 0465 52657300 		.ascii	"Res\000"
+ 1515 0469 01       		.byte	0x1
+ 1516 046a 6801     		.2byte	0x168
+ 1517 046c 29000000 		.4byte	0x29
+ 1518 0470 14       		.uleb128 0x14
+ 1519 0471 2C000000 		.4byte	.LVL25
+ 1520 0475 E40A0000 		.4byte	0xae4
+ 1521 0479 85040000 		.4byte	0x485
+ 1522 047d 15       		.uleb128 0x15
+ 1523 047e 01       		.byte	0x1
+ 1524 047f 50       		.byte	0x50
+ 1525 0480 03       		.byte	0x3
+ 1526 0481 F5       		.byte	0xf5
+ 1527 0482 04       		.uleb128 0x4
+ 1528 0483 29       		.uleb128 0x29
+ 1529 0484 00       		.byte	0
+ 1530 0485 14       		.uleb128 0x14
+ 1531 0486 34000000 		.4byte	.LVL26
+ 1532 048a E40A0000 		.4byte	0xae4
+ 1533 048e 9A040000 		.4byte	0x49a
+ 1534 0492 15       		.uleb128 0x15
+ 1535 0493 01       		.byte	0x1
+ 1536 0494 50       		.byte	0x50
+ 1537 0495 03       		.byte	0x3
+ 1538 0496 F5       		.byte	0xf5
+ 1539 0497 04       		.uleb128 0x4
+ 1540 0498 29       		.uleb128 0x29
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 37
+
+
+ 1541 0499 00       		.byte	0
+ 1542 049a 14       		.uleb128 0x14
+ 1543 049b 3C000000 		.4byte	.LVL27
+ 1544 049f E40A0000 		.4byte	0xae4
+ 1545 04a3 AF040000 		.4byte	0x4af
+ 1546 04a7 15       		.uleb128 0x15
+ 1547 04a8 01       		.byte	0x1
+ 1548 04a9 50       		.byte	0x50
+ 1549 04aa 03       		.byte	0x3
+ 1550 04ab F5       		.byte	0xf5
+ 1551 04ac 04       		.uleb128 0x4
+ 1552 04ad 29       		.uleb128 0x29
+ 1553 04ae 00       		.byte	0
+ 1554 04af 14       		.uleb128 0x14
+ 1555 04b0 44000000 		.4byte	.LVL28
+ 1556 04b4 E40A0000 		.4byte	0xae4
+ 1557 04b8 C4040000 		.4byte	0x4c4
+ 1558 04bc 15       		.uleb128 0x15
+ 1559 04bd 01       		.byte	0x1
+ 1560 04be 50       		.byte	0x50
+ 1561 04bf 03       		.byte	0x3
+ 1562 04c0 F5       		.byte	0xf5
+ 1563 04c1 04       		.uleb128 0x4
+ 1564 04c2 29       		.uleb128 0x29
+ 1565 04c3 00       		.byte	0
+ 1566 04c4 14       		.uleb128 0x14
+ 1567 04c5 4C000000 		.4byte	.LVL29
+ 1568 04c9 E40A0000 		.4byte	0xae4
+ 1569 04cd D9040000 		.4byte	0x4d9
+ 1570 04d1 15       		.uleb128 0x15
+ 1571 04d2 01       		.byte	0x1
+ 1572 04d3 50       		.byte	0x50
+ 1573 04d4 03       		.byte	0x3
+ 1574 04d5 F5       		.byte	0xf5
+ 1575 04d6 04       		.uleb128 0x4
+ 1576 04d7 29       		.uleb128 0x29
+ 1577 04d8 00       		.byte	0
+ 1578 04d9 1D       		.uleb128 0x1d
+ 1579 04da 54000000 		.4byte	.LVL30
+ 1580 04de E40A0000 		.4byte	0xae4
+ 1581 04e2 15       		.uleb128 0x15
+ 1582 04e3 01       		.byte	0x1
+ 1583 04e4 50       		.byte	0x50
+ 1584 04e5 03       		.byte	0x3
+ 1585 04e6 F5       		.byte	0xf5
+ 1586 04e7 04       		.uleb128 0x4
+ 1587 04e8 29       		.uleb128 0x29
+ 1588 04e9 00       		.byte	0
+ 1589 04ea 00       		.byte	0
+ 1590 04eb 1E       		.uleb128 0x1e
+ 1591 04ec 01       		.byte	0x1
+ 1592 04ed 84040000 		.4byte	.LASF47
+ 1593 04f1 01       		.byte	0x1
+ 1594 04f2 78       		.byte	0x78
+ 1595 04f3 01       		.byte	0x1
+ 1596 04f4 00000000 		.4byte	.LFB59
+ 1597 04f8 6C020000 		.4byte	.LFE59
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 38
+
+
+ 1598 04fc 67010000 		.4byte	.LLST11
+ 1599 0500 01       		.byte	0x1
+ 1600 0501 A6080000 		.4byte	0x8a6
+ 1601 0505 1F       		.uleb128 0x1f
+ 1602 0506 36000000 		.4byte	.LASF48
+ 1603 050a 01       		.byte	0x1
+ 1604 050b 7A       		.byte	0x7a
+ 1605 050c A6080000 		.4byte	0x8a6
+ 1606 0510 02       		.byte	0x2
+ 1607 0511 91       		.byte	0x91
+ 1608 0512 40       		.sleb128 -64
+ 1609 0513 20       		.uleb128 0x20
+ 1610 0514 44040000 		.4byte	.LASF49
+ 1611 0518 01       		.byte	0x1
+ 1612 0519 7B       		.byte	0x7b
+ 1613 051a 37000000 		.4byte	0x37
+ 1614 051e 94010000 		.4byte	.LLST12
+ 1615 0522 20       		.uleb128 0x20
+ 1616 0523 24040000 		.4byte	.LASF50
+ 1617 0527 01       		.byte	0x1
+ 1618 0528 7C       		.byte	0x7c
+ 1619 0529 37000000 		.4byte	0x37
+ 1620 052d B6010000 		.4byte	.LLST13
+ 1621 0531 20       		.uleb128 0x20
+ 1622 0532 9D010000 		.4byte	.LASF51
+ 1623 0536 01       		.byte	0x1
+ 1624 0537 7D       		.byte	0x7d
+ 1625 0538 94000000 		.4byte	0x94
+ 1626 053c FB010000 		.4byte	.LLST14
+ 1627 0540 21       		.uleb128 0x21
+ 1628 0541 B1010000 		.4byte	.LASF52
+ 1629 0545 01       		.byte	0x1
+ 1630 0546 7E       		.byte	0x7e
+ 1631 0547 62000000 		.4byte	0x62
+ 1632 054b 14       		.uleb128 0x14
+ 1633 054c 0A000000 		.4byte	.LVL43
+ 1634 0550 FD0A0000 		.4byte	0xafd
+ 1635 0554 62050000 		.4byte	0x562
+ 1636 0558 15       		.uleb128 0x15
+ 1637 0559 01       		.byte	0x1
+ 1638 055a 50       		.byte	0x50
+ 1639 055b 05       		.byte	0x5
+ 1640 055c 03       		.byte	0x3
+ 1641 055d 00000000 		.4byte	filterVDAC
+ 1642 0561 00       		.byte	0
+ 1643 0562 18       		.uleb128 0x18
+ 1644 0563 0E000000 		.4byte	.LVL44
+ 1645 0567 110B0000 		.4byte	0xb11
+ 1646 056b 18       		.uleb128 0x18
+ 1647 056c 12000000 		.4byte	.LVL45
+ 1648 0570 1B0B0000 		.4byte	0xb1b
+ 1649 0574 18       		.uleb128 0x18
+ 1650 0575 16000000 		.4byte	.LVL46
+ 1651 0579 250B0000 		.4byte	0xb25
+ 1652 057d 18       		.uleb128 0x18
+ 1653 057e 1A000000 		.4byte	.LVL47
+ 1654 0582 2F0B0000 		.4byte	0xb2f
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 39
+
+
+ 1655 0586 18       		.uleb128 0x18
+ 1656 0587 1E000000 		.4byte	.LVL48
+ 1657 058b 390B0000 		.4byte	0xb39
+ 1658 058f 18       		.uleb128 0x18
+ 1659 0590 22000000 		.4byte	.LVL49
+ 1660 0594 430B0000 		.4byte	0xb43
+ 1661 0598 14       		.uleb128 0x14
+ 1662 0599 28000000 		.4byte	.LVL50
+ 1663 059d 4D0B0000 		.4byte	0xb4d
+ 1664 05a1 AF050000 		.4byte	0x5af
+ 1665 05a5 15       		.uleb128 0x15
+ 1666 05a6 01       		.byte	0x1
+ 1667 05a7 50       		.byte	0x50
+ 1668 05a8 05       		.byte	0x5
+ 1669 05a9 03       		.byte	0x3
+ 1670 05aa 00000000 		.4byte	faultISR
+ 1671 05ae 00       		.byte	0
+ 1672 05af 14       		.uleb128 0x14
+ 1673 05b0 2E000000 		.4byte	.LVL51
+ 1674 05b4 610B0000 		.4byte	0xb61
+ 1675 05b8 C2050000 		.4byte	0x5c2
+ 1676 05bc 15       		.uleb128 0x15
+ 1677 05bd 01       		.byte	0x1
+ 1678 05be 50       		.byte	0x50
+ 1679 05bf 01       		.byte	0x1
+ 1680 05c0 30       		.byte	0x30
+ 1681 05c1 00       		.byte	0
+ 1682 05c2 14       		.uleb128 0x14
+ 1683 05c3 34000000 		.4byte	.LVL52
+ 1684 05c7 750B0000 		.4byte	0xb75
+ 1685 05cb D9050000 		.4byte	0x5d9
+ 1686 05cf 15       		.uleb128 0x15
+ 1687 05d0 01       		.byte	0x1
+ 1688 05d1 50       		.byte	0x50
+ 1689 05d2 05       		.byte	0x5
+ 1690 05d3 03       		.byte	0x3
+ 1691 05d4 00000000 		.4byte	pidISR
+ 1692 05d8 00       		.byte	0
+ 1693 05d9 14       		.uleb128 0x14
+ 1694 05da 3A000000 		.4byte	.LVL53
+ 1695 05de 890B0000 		.4byte	0xb89
+ 1696 05e2 EC050000 		.4byte	0x5ec
+ 1697 05e6 15       		.uleb128 0x15
+ 1698 05e7 01       		.byte	0x1
+ 1699 05e8 50       		.byte	0x50
+ 1700 05e9 01       		.byte	0x1
+ 1701 05ea 37       		.byte	0x37
+ 1702 05eb 00       		.byte	0
+ 1703 05ec 18       		.uleb128 0x18
+ 1704 05ed 3E000000 		.4byte	.LVL54
+ 1705 05f1 9D0B0000 		.4byte	0xb9d
+ 1706 05f5 18       		.uleb128 0x18
+ 1707 05f6 42000000 		.4byte	.LVL55
+ 1708 05fa A70B0000 		.4byte	0xba7
+ 1709 05fe 18       		.uleb128 0x18
+ 1710 05ff 46000000 		.4byte	.LVL56
+ 1711 0603 B10B0000 		.4byte	0xbb1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 40
+
+
+ 1712 0607 18       		.uleb128 0x18
+ 1713 0608 4A000000 		.4byte	.LVL57
+ 1714 060c BB0B0000 		.4byte	0xbbb
+ 1715 0610 18       		.uleb128 0x18
+ 1716 0611 4E000000 		.4byte	.LVL58
+ 1717 0615 C50B0000 		.4byte	0xbc5
+ 1718 0619 18       		.uleb128 0x18
+ 1719 061a 52000000 		.4byte	.LVL59
+ 1720 061e CF0B0000 		.4byte	0xbcf
+ 1721 0622 18       		.uleb128 0x18
+ 1722 0623 56000000 		.4byte	.LVL60
+ 1723 0627 D90B0000 		.4byte	0xbd9
+ 1724 062b 14       		.uleb128 0x14
+ 1725 062c 5C000000 		.4byte	.LVL61
+ 1726 0630 E30B0000 		.4byte	0xbe3
+ 1727 0634 3E060000 		.4byte	0x63e
+ 1728 0638 15       		.uleb128 0x15
+ 1729 0639 01       		.byte	0x1
+ 1730 063a 50       		.byte	0x50
+ 1731 063b 01       		.byte	0x1
+ 1732 063c 31       		.byte	0x31
+ 1733 063d 00       		.byte	0
+ 1734 063e 18       		.uleb128 0x18
+ 1735 063f 60000000 		.4byte	.LVL62
+ 1736 0643 F70B0000 		.4byte	0xbf7
+ 1737 0647 14       		.uleb128 0x14
+ 1738 0648 68000000 		.4byte	.LVL63
+ 1739 064c 010C0000 		.4byte	0xc01
+ 1740 0650 5F060000 		.4byte	0x65f
+ 1741 0654 15       		.uleb128 0x15
+ 1742 0655 01       		.byte	0x1
+ 1743 0656 51       		.byte	0x51
+ 1744 0657 01       		.byte	0x1
+ 1745 0658 31       		.byte	0x31
+ 1746 0659 15       		.uleb128 0x15
+ 1747 065a 01       		.byte	0x1
+ 1748 065b 50       		.byte	0x50
+ 1749 065c 01       		.byte	0x1
+ 1750 065d 30       		.byte	0x30
+ 1751 065e 00       		.byte	0
+ 1752 065f 18       		.uleb128 0x18
+ 1753 0660 6C000000 		.4byte	.LVL64
+ 1754 0664 1A0C0000 		.4byte	0xc1a
+ 1755 0668 18       		.uleb128 0x18
+ 1756 0669 70000000 		.4byte	.LVL65
+ 1757 066d 240C0000 		.4byte	0xc24
+ 1758 0671 18       		.uleb128 0x18
+ 1759 0672 74000000 		.4byte	.LVL66
+ 1760 0676 04030000 		.4byte	0x304
+ 1761 067a 14       		.uleb128 0x14
+ 1762 067b 88000000 		.4byte	.LVL67
+ 1763 067f 2E0C0000 		.4byte	0xc2e
+ 1764 0683 B5060000 		.4byte	0x6b5
+ 1765 0687 15       		.uleb128 0x15
+ 1766 0688 01       		.byte	0x1
+ 1767 0689 53       		.byte	0x53
+ 1768 068a 01       		.byte	0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 41
+
+
+ 1769 068b 3A       		.byte	0x3a
+ 1770 068c 15       		.uleb128 0x15
+ 1771 068d 01       		.byte	0x1
+ 1772 068e 52       		.byte	0x52
+ 1773 068f 01       		.byte	0x1
+ 1774 0690 3A       		.byte	0x3a
+ 1775 0691 15       		.uleb128 0x15
+ 1776 0692 01       		.byte	0x1
+ 1777 0693 51       		.byte	0x51
+ 1778 0694 02       		.byte	0x2
+ 1779 0695 08       		.byte	0x8
+ 1780 0696 32       		.byte	0x32
+ 1781 0697 15       		.uleb128 0x15
+ 1782 0698 01       		.byte	0x1
+ 1783 0699 50       		.byte	0x50
+ 1784 069a 05       		.byte	0x5
+ 1785 069b 03       		.byte	0x3
+ 1786 069c 00000000 		.4byte	pid1
+ 1787 06a0 15       		.uleb128 0x15
+ 1788 06a1 02       		.byte	0x2
+ 1789 06a2 7D       		.byte	0x7d
+ 1790 06a3 04       		.sleb128 4
+ 1791 06a4 05       		.byte	0x5
+ 1792 06a5 03       		.byte	0x3
+ 1793 06a6 00000000 		.4byte	pid1_write
+ 1794 06aa 15       		.uleb128 0x15
+ 1795 06ab 02       		.byte	0x2
+ 1796 06ac 7D       		.byte	0x7d
+ 1797 06ad 00       		.sleb128 0
+ 1798 06ae 05       		.byte	0x5
+ 1799 06af 0C       		.byte	0xc
+ 1800 06b0 A0860100 		.4byte	0x186a0
+ 1801 06b4 00       		.byte	0
+ 1802 06b5 14       		.uleb128 0x14
+ 1803 06b6 9A000000 		.4byte	.LVL69
+ 1804 06ba 610C0000 		.4byte	0xc61
+ 1805 06be CD060000 		.4byte	0x6cd
+ 1806 06c2 15       		.uleb128 0x15
+ 1807 06c3 01       		.byte	0x1
+ 1808 06c4 51       		.byte	0x51
+ 1809 06c5 01       		.byte	0x1
+ 1810 06c6 30       		.byte	0x30
+ 1811 06c7 15       		.uleb128 0x15
+ 1812 06c8 01       		.byte	0x1
+ 1813 06c9 50       		.byte	0x50
+ 1814 06ca 01       		.byte	0x1
+ 1815 06cb 31       		.byte	0x31
+ 1816 06cc 00       		.byte	0
+ 1817 06cd 18       		.uleb128 0x18
+ 1818 06ce AE000000 		.4byte	.LVL71
+ 1819 06d2 7A0C0000 		.4byte	0xc7a
+ 1820 06d6 14       		.uleb128 0x14
+ 1821 06d7 B8000000 		.4byte	.LVL72
+ 1822 06db 990C0000 		.4byte	0xc99
+ 1823 06df F9060000 		.4byte	0x6f9
+ 1824 06e3 15       		.uleb128 0x15
+ 1825 06e4 01       		.byte	0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 42
+
+
+ 1826 06e5 52       		.byte	0x52
+ 1827 06e6 02       		.byte	0x2
+ 1828 06e7 76       		.byte	0x76
+ 1829 06e8 00       		.sleb128 0
+ 1830 06e9 15       		.uleb128 0x15
+ 1831 06ea 01       		.byte	0x1
+ 1832 06eb 51       		.byte	0x51
+ 1833 06ec 05       		.byte	0x5
+ 1834 06ed 03       		.byte	0x3
+ 1835 06ee 05000000 		.4byte	.LC2
+ 1836 06f2 15       		.uleb128 0x15
+ 1837 06f3 01       		.byte	0x1
+ 1838 06f4 50       		.byte	0x50
+ 1839 06f5 02       		.byte	0x2
+ 1840 06f6 91       		.byte	0x91
+ 1841 06f7 40       		.sleb128 -64
+ 1842 06f8 00       		.byte	0
+ 1843 06f9 14       		.uleb128 0x14
+ 1844 06fa C0000000 		.4byte	.LVL73
+ 1845 06fe 7A0C0000 		.4byte	0xc7a
+ 1846 0702 0D070000 		.4byte	0x70d
+ 1847 0706 15       		.uleb128 0x15
+ 1848 0707 01       		.byte	0x1
+ 1849 0708 50       		.byte	0x50
+ 1850 0709 02       		.byte	0x2
+ 1851 070a 91       		.byte	0x91
+ 1852 070b 40       		.sleb128 -64
+ 1853 070c 00       		.byte	0
+ 1854 070d 14       		.uleb128 0x14
+ 1855 070e D2000000 		.4byte	.LVL75
+ 1856 0712 610C0000 		.4byte	0xc61
+ 1857 0716 25070000 		.4byte	0x725
+ 1858 071a 15       		.uleb128 0x15
+ 1859 071b 01       		.byte	0x1
+ 1860 071c 51       		.byte	0x51
+ 1861 071d 01       		.byte	0x1
+ 1862 071e 30       		.byte	0x30
+ 1863 071f 15       		.uleb128 0x15
+ 1864 0720 01       		.byte	0x1
+ 1865 0721 50       		.byte	0x50
+ 1866 0722 01       		.byte	0x1
+ 1867 0723 30       		.byte	0x30
+ 1868 0724 00       		.byte	0
+ 1869 0725 14       		.uleb128 0x14
+ 1870 0726 D8000000 		.4byte	.LVL76
+ 1871 072a 7A0C0000 		.4byte	0xc7a
+ 1872 072e 3C070000 		.4byte	0x73c
+ 1873 0732 15       		.uleb128 0x15
+ 1874 0733 01       		.byte	0x1
+ 1875 0734 50       		.byte	0x50
+ 1876 0735 05       		.byte	0x5
+ 1877 0736 03       		.byte	0x3
+ 1878 0737 08000000 		.4byte	.LC3
+ 1879 073b 00       		.byte	0
+ 1880 073c 14       		.uleb128 0x14
+ 1881 073d E0000000 		.4byte	.LVL77
+ 1882 0741 610C0000 		.4byte	0xc61
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 43
+
+
+ 1883 0745 54070000 		.4byte	0x754
+ 1884 0749 15       		.uleb128 0x15
+ 1885 074a 01       		.byte	0x1
+ 1886 074b 51       		.byte	0x51
+ 1887 074c 01       		.byte	0x1
+ 1888 074d 35       		.byte	0x35
+ 1889 074e 15       		.uleb128 0x15
+ 1890 074f 01       		.byte	0x1
+ 1891 0750 50       		.byte	0x50
+ 1892 0751 01       		.byte	0x1
+ 1893 0752 31       		.byte	0x31
+ 1894 0753 00       		.byte	0
+ 1895 0754 14       		.uleb128 0x14
+ 1896 0755 EA000000 		.4byte	.LVL78
+ 1897 0759 990C0000 		.4byte	0xc99
+ 1898 075d 71070000 		.4byte	0x771
+ 1899 0761 15       		.uleb128 0x15
+ 1900 0762 01       		.byte	0x1
+ 1901 0763 51       		.byte	0x51
+ 1902 0764 05       		.byte	0x5
+ 1903 0765 03       		.byte	0x3
+ 1904 0766 0E000000 		.4byte	.LC4
+ 1905 076a 15       		.uleb128 0x15
+ 1906 076b 01       		.byte	0x1
+ 1907 076c 50       		.byte	0x50
+ 1908 076d 02       		.byte	0x2
+ 1909 076e 91       		.byte	0x91
+ 1910 076f 40       		.sleb128 -64
+ 1911 0770 00       		.byte	0
+ 1912 0771 18       		.uleb128 0x18
+ 1913 0772 F4000000 		.4byte	.LVL79
+ 1914 0776 610C0000 		.4byte	0xc61
+ 1915 077a 18       		.uleb128 0x18
+ 1916 077b FC000000 		.4byte	.LVL80
+ 1917 077f 7A0C0000 		.4byte	0xc7a
+ 1918 0783 18       		.uleb128 0x18
+ 1919 0784 06010000 		.4byte	.LVL81
+ 1920 0788 B70C0000 		.4byte	0xcb7
+ 1921 078c 18       		.uleb128 0x18
+ 1922 078d 0A010000 		.4byte	.LVL82
+ 1923 0791 E5030000 		.4byte	0x3e5
+ 1924 0795 14       		.uleb128 0x14
+ 1925 0796 2A010000 		.4byte	.LVL85
+ 1926 079a C50C0000 		.4byte	0xcc5
+ 1927 079e B9070000 		.4byte	0x7b9
+ 1928 07a2 15       		.uleb128 0x15
+ 1929 07a3 01       		.byte	0x1
+ 1930 07a4 53       		.byte	0x53
+ 1931 07a5 03       		.byte	0x3
+ 1932 07a6 0A       		.byte	0xa
+ 1933 07a7 E803     		.2byte	0x3e8
+ 1934 07a9 15       		.uleb128 0x15
+ 1935 07aa 01       		.byte	0x1
+ 1936 07ab 51       		.byte	0x51
+ 1937 07ac 02       		.byte	0x2
+ 1938 07ad 77       		.byte	0x77
+ 1939 07ae 00       		.sleb128 0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 44
+
+
+ 1940 07af 15       		.uleb128 0x15
+ 1941 07b0 01       		.byte	0x1
+ 1942 07b1 50       		.byte	0x50
+ 1943 07b2 05       		.byte	0x5
+ 1944 07b3 03       		.byte	0x3
+ 1945 07b4 00000000 		.4byte	pid1
+ 1946 07b8 00       		.byte	0
+ 1947 07b9 14       		.uleb128 0x14
+ 1948 07ba 32010000 		.4byte	.LVL86
+ 1949 07be 610C0000 		.4byte	0xc61
+ 1950 07c2 D1070000 		.4byte	0x7d1
+ 1951 07c6 15       		.uleb128 0x15
+ 1952 07c7 01       		.byte	0x1
+ 1953 07c8 51       		.byte	0x51
+ 1954 07c9 01       		.byte	0x1
+ 1955 07ca 35       		.byte	0x35
+ 1956 07cb 15       		.uleb128 0x15
+ 1957 07cc 01       		.byte	0x1
+ 1958 07cd 50       		.byte	0x50
+ 1959 07ce 01       		.byte	0x1
+ 1960 07cf 30       		.byte	0x30
+ 1961 07d0 00       		.byte	0
+ 1962 07d1 14       		.uleb128 0x14
+ 1963 07d2 B6010000 		.4byte	.LVL92
+ 1964 07d6 7A0C0000 		.4byte	0xc7a
+ 1965 07da E5070000 		.4byte	0x7e5
+ 1966 07de 15       		.uleb128 0x15
+ 1967 07df 01       		.byte	0x1
+ 1968 07e0 50       		.byte	0x50
+ 1969 07e1 02       		.byte	0x2
+ 1970 07e2 91       		.byte	0x91
+ 1971 07e3 40       		.sleb128 -64
+ 1972 07e4 00       		.byte	0
+ 1973 07e5 14       		.uleb128 0x14
+ 1974 07e6 CE010000 		.4byte	.LVL96
+ 1975 07ea E80C0000 		.4byte	0xce8
+ 1976 07ee F9070000 		.4byte	0x7f9
+ 1977 07f2 15       		.uleb128 0x15
+ 1978 07f3 01       		.byte	0x1
+ 1979 07f4 50       		.byte	0x50
+ 1980 07f5 02       		.byte	0x2
+ 1981 07f6 09       		.byte	0x9
+ 1982 07f7 FF       		.byte	0xff
+ 1983 07f8 00       		.byte	0
+ 1984 07f9 14       		.uleb128 0x14
+ 1985 07fa D4010000 		.4byte	.LVL97
+ 1986 07fe FC0C0000 		.4byte	0xcfc
+ 1987 0802 0C080000 		.4byte	0x80c
+ 1988 0806 15       		.uleb128 0x15
+ 1989 0807 01       		.byte	0x1
+ 1990 0808 50       		.byte	0x50
+ 1991 0809 01       		.byte	0x1
+ 1992 080a 3A       		.byte	0x3a
+ 1993 080b 00       		.byte	0
+ 1994 080c 14       		.uleb128 0x14
+ 1995 080d DA010000 		.4byte	.LVL98
+ 1996 0811 E80C0000 		.4byte	0xce8
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 45
+
+
+ 1997 0815 20080000 		.4byte	0x820
+ 1998 0819 15       		.uleb128 0x15
+ 1999 081a 01       		.byte	0x1
+ 2000 081b 50       		.byte	0x50
+ 2001 081c 02       		.byte	0x2
+ 2002 081d 75       		.byte	0x75
+ 2003 081e 00       		.sleb128 0
+ 2004 081f 00       		.byte	0
+ 2005 0820 18       		.uleb128 0x18
+ 2006 0821 DE010000 		.4byte	.LVL99
+ 2007 0825 100D0000 		.4byte	0xd10
+ 2008 0829 14       		.uleb128 0x14
+ 2009 082a EC010000 		.4byte	.LVL102
+ 2010 082e 610C0000 		.4byte	0xc61
+ 2011 0832 41080000 		.4byte	0x841
+ 2012 0836 15       		.uleb128 0x15
+ 2013 0837 01       		.byte	0x1
+ 2014 0838 51       		.byte	0x51
+ 2015 0839 01       		.byte	0x1
+ 2016 083a 35       		.byte	0x35
+ 2017 083b 15       		.uleb128 0x15
+ 2018 083c 01       		.byte	0x1
+ 2019 083d 50       		.byte	0x50
+ 2020 083e 01       		.byte	0x1
+ 2021 083f 31       		.byte	0x31
+ 2022 0840 00       		.byte	0
+ 2023 0841 14       		.uleb128 0x14
+ 2024 0842 F6010000 		.4byte	.LVL103
+ 2025 0846 1E0D0000 		.4byte	0xd1e
+ 2026 084a 55080000 		.4byte	0x855
+ 2027 084e 15       		.uleb128 0x15
+ 2028 084f 01       		.byte	0x1
+ 2029 0850 50       		.byte	0x50
+ 2030 0851 02       		.byte	0x2
+ 2031 0852 77       		.byte	0x77
+ 2032 0853 30       		.sleb128 48
+ 2033 0854 00       		.byte	0
+ 2034 0855 18       		.uleb128 0x18
+ 2035 0856 FE010000 		.4byte	.LVL104
+ 2036 085a AF020000 		.4byte	0x2af
+ 2037 085e 18       		.uleb128 0x18
+ 2038 085f 02020000 		.4byte	.LVL105
+ 2039 0863 320D0000 		.4byte	0xd32
+ 2040 0867 18       		.uleb128 0x18
+ 2041 0868 0C020000 		.4byte	.LVL107
+ 2042 086c 3C0D0000 		.4byte	0xd3c
+ 2043 0870 14       		.uleb128 0x14
+ 2044 0871 14020000 		.4byte	.LVL108
+ 2045 0875 610C0000 		.4byte	0xc61
+ 2046 0879 88080000 		.4byte	0x888
+ 2047 087d 15       		.uleb128 0x15
+ 2048 087e 01       		.byte	0x1
+ 2049 087f 51       		.byte	0x51
+ 2050 0880 01       		.byte	0x1
+ 2051 0881 35       		.byte	0x35
+ 2052 0882 15       		.uleb128 0x15
+ 2053 0883 01       		.byte	0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 46
+
+
+ 2054 0884 50       		.byte	0x50
+ 2055 0885 01       		.byte	0x1
+ 2056 0886 31       		.byte	0x31
+ 2057 0887 00       		.byte	0
+ 2058 0888 14       		.uleb128 0x14
+ 2059 0889 1A020000 		.4byte	.LVL109
+ 2060 088d 1E0D0000 		.4byte	0xd1e
+ 2061 0891 9C080000 		.4byte	0x89c
+ 2062 0895 15       		.uleb128 0x15
+ 2063 0896 01       		.byte	0x1
+ 2064 0897 50       		.byte	0x50
+ 2065 0898 02       		.byte	0x2
+ 2066 0899 08       		.byte	0x8
+ 2067 089a 30       		.byte	0x30
+ 2068 089b 00       		.byte	0
+ 2069 089c 18       		.uleb128 0x18
+ 2070 089d 1E020000 		.4byte	.LVL110
+ 2071 08a1 460D0000 		.4byte	0xd46
+ 2072 08a5 00       		.byte	0
+ 2073 08a6 22       		.uleb128 0x22
+ 2074 08a7 EB000000 		.4byte	0xeb
+ 2075 08ab B6080000 		.4byte	0x8b6
+ 2076 08af 23       		.uleb128 0x23
+ 2077 08b0 21010000 		.4byte	0x121
+ 2078 08b4 27       		.byte	0x27
+ 2079 08b5 00       		.byte	0
+ 2080 08b6 24       		.uleb128 0x24
+ 2081 08b7 29040000 		.4byte	.LASF53
+ 2082 08bb 05       		.byte	0x5
+ 2083 08bc 1202     		.2byte	0x212
+ 2084 08be A2000000 		.4byte	0xa2
+ 2085 08c2 01       		.byte	0x1
+ 2086 08c3 01       		.byte	0x1
+ 2087 08c4 24       		.uleb128 0x24
+ 2088 08c5 09040000 		.4byte	.LASF54
+ 2089 08c9 06       		.byte	0x6
+ 2090 08ca 1606     		.2byte	0x616
+ 2091 08cc D2080000 		.4byte	0x8d2
+ 2092 08d0 01       		.byte	0x1
+ 2093 08d1 01       		.byte	0x1
+ 2094 08d2 05       		.uleb128 0x5
+ 2095 08d3 62000000 		.4byte	0x62
+ 2096 08d7 25       		.uleb128 0x25
+ 2097 08d8 C7030000 		.4byte	.LASF55
+ 2098 08dc 01       		.byte	0x1
+ 2099 08dd 23       		.byte	0x23
+ 2100 08de 74000000 		.4byte	0x74
+ 2101 08e2 01       		.byte	0x1
+ 2102 08e3 05       		.byte	0x5
+ 2103 08e4 03       		.byte	0x3
+ 2104 08e5 00000000 		.4byte	eventcounter
+ 2105 08e9 25       		.uleb128 0x25
+ 2106 08ea 63020000 		.4byte	.LASF56
+ 2107 08ee 01       		.byte	0x1
+ 2108 08ef 24       		.byte	0x24
+ 2109 08f0 37000000 		.4byte	0x37
+ 2110 08f4 01       		.byte	0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 47
+
+
+ 2111 08f5 05       		.byte	0x5
+ 2112 08f6 03       		.byte	0x3
+ 2113 08f7 00000000 		.4byte	filterStatus
+ 2114 08fb 25       		.uleb128 0x25
+ 2115 08fc F0020000 		.4byte	.LASF57
+ 2116 0900 01       		.byte	0x1
+ 2117 0901 25       		.byte	0x25
+ 2118 0902 37000000 		.4byte	0x37
+ 2119 0906 01       		.byte	0x1
+ 2120 0907 05       		.byte	0x5
+ 2121 0908 03       		.byte	0x3
+ 2122 0909 00000000 		.4byte	cliMode
+ 2123 090d 25       		.uleb128 0x25
+ 2124 090e AC000000 		.4byte	.LASF58
+ 2125 0912 01       		.byte	0x1
+ 2126 0913 26       		.byte	0x26
+ 2127 0914 37000000 		.4byte	0x37
+ 2128 0918 01       		.byte	0x1
+ 2129 0919 05       		.byte	0x5
+ 2130 091a 03       		.byte	0x3
+ 2131 091b 00000000 		.4byte	faultStatus
+ 2132 091f 25       		.uleb128 0x25
+ 2133 0920 BD030000 		.4byte	.LASF59
+ 2134 0924 01       		.byte	0x1
+ 2135 0925 27       		.byte	0x27
+ 2136 0926 37000000 		.4byte	0x37
+ 2137 092a 01       		.byte	0x1
+ 2138 092b 05       		.byte	0x5
+ 2139 092c 03       		.byte	0x3
+ 2140 092d 00000000 		.4byte	pidStatus
+ 2141 0931 25       		.uleb128 0x25
+ 2142 0932 83030000 		.4byte	.LASF60
+ 2143 0936 01       		.byte	0x1
+ 2144 0937 28       		.byte	0x28
+ 2145 0938 37000000 		.4byte	0x37
+ 2146 093c 01       		.byte	0x1
+ 2147 093d 05       		.byte	0x5
+ 2148 093e 03       		.byte	0x3
+ 2149 093f 00000000 		.4byte	filter_read
+ 2150 0943 25       		.uleb128 0x25
+ 2151 0944 C0000000 		.4byte	.LASF61
+ 2152 0948 01       		.byte	0x1
+ 2153 0949 29       		.byte	0x29
+ 2154 094a 37000000 		.4byte	0x37
+ 2155 094e 01       		.byte	0x1
+ 2156 094f 05       		.byte	0x5
+ 2157 0950 03       		.byte	0x3
+ 2158 0951 00000000 		.4byte	filter_readold
+ 2159 0955 25       		.uleb128 0x25
+ 2160 0956 E5020000 		.4byte	.LASF62
+ 2161 095a 01       		.byte	0x1
+ 2162 095b 2A       		.byte	0x2a
+ 2163 095c 37000000 		.4byte	0x37
+ 2164 0960 01       		.byte	0x1
+ 2165 0961 05       		.byte	0x5
+ 2166 0962 03       		.byte	0x3
+ 2167 0963 00000000 		.4byte	dac_offset
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 48
+
+
+ 2168 0967 25       		.uleb128 0x25
+ 2169 0968 48030000 		.4byte	.LASF63
+ 2170 096c 01       		.byte	0x1
+ 2171 096d 2B       		.byte	0x2b
+ 2172 096e C6010000 		.4byte	0x1c6
+ 2173 0972 01       		.byte	0x1
+ 2174 0973 05       		.byte	0x5
+ 2175 0974 03       		.byte	0x3
+ 2176 0975 00000000 		.4byte	pid1
+ 2177 0979 25       		.uleb128 0x25
+ 2178 097a 3B040000 		.4byte	.LASF64
+ 2179 097e 01       		.byte	0x1
+ 2180 097f 2C       		.byte	0x2c
+ 2181 0980 50000000 		.4byte	0x50
+ 2182 0984 01       		.byte	0x1
+ 2183 0985 05       		.byte	0x5
+ 2184 0986 03       		.byte	0x3
+ 2185 0987 00000000 		.4byte	setpoint
+ 2186 098b 25       		.uleb128 0x25
+ 2187 098c 2E030000 		.4byte	.LASF65
+ 2188 0990 01       		.byte	0x1
+ 2189 0991 2D       		.byte	0x2d
+ 2190 0992 29000000 		.4byte	0x29
+ 2191 0996 01       		.byte	0x1
+ 2192 0997 05       		.byte	0x5
+ 2193 0998 03       		.byte	0x3
+ 2194 0999 00000000 		.4byte	Temperature
+ 2195 099d 26       		.uleb128 0x26
+ 2196 099e 01       		.byte	0x1
+ 2197 099f D4020000 		.4byte	.LASF66
+ 2198 09a3 07       		.byte	0x7
+ 2199 09a4 41       		.byte	0x41
+ 2200 09a5 01       		.byte	0x1
+ 2201 09a6 01       		.byte	0x1
+ 2202 09a7 B1090000 		.4byte	0x9b1
+ 2203 09ab 0B       		.uleb128 0xb
+ 2204 09ac A2000000 		.4byte	0xa2
+ 2205 09b0 00       		.byte	0
+ 2206 09b1 26       		.uleb128 0x26
+ 2207 09b2 01       		.byte	0x1
+ 2208 09b3 69010000 		.4byte	.LASF67
+ 2209 09b7 08       		.byte	0x8
+ 2210 09b8 41       		.byte	0x41
+ 2211 09b9 01       		.byte	0x1
+ 2212 09ba 01       		.byte	0x1
+ 2213 09bb C5090000 		.4byte	0x9c5
+ 2214 09bf 0B       		.uleb128 0xb
+ 2215 09c0 A2000000 		.4byte	0xa2
+ 2216 09c4 00       		.byte	0
+ 2217 09c5 27       		.uleb128 0x27
+ 2218 09c6 01       		.byte	0x1
+ 2219 09c7 7C000000 		.4byte	.LASF70
+ 2220 09cb 0A       		.byte	0xa
+ 2221 09cc 50       		.byte	0x50
+ 2222 09cd 01       		.byte	0x1
+ 2223 09ce A2000000 		.4byte	0xa2
+ 2224 09d2 01       		.byte	0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 49
+
+
+ 2225 09d3 26       		.uleb128 0x26
+ 2226 09d4 01       		.byte	0x1
+ 2227 09d5 BE020000 		.4byte	.LASF68
+ 2228 09d9 09       		.byte	0x9
+ 2229 09da 37       		.byte	0x37
+ 2230 09db 01       		.byte	0x1
+ 2231 09dc 01       		.byte	0x1
+ 2232 09dd E7090000 		.4byte	0x9e7
+ 2233 09e1 0B       		.uleb128 0xb
+ 2234 09e2 A2000000 		.4byte	0xa2
+ 2235 09e6 00       		.byte	0
+ 2236 09e7 26       		.uleb128 0x26
+ 2237 09e8 01       		.byte	0x1
+ 2238 09e9 AD030000 		.4byte	.LASF69
+ 2239 09ed 05       		.byte	0x5
+ 2240 09ee BA       		.byte	0xba
+ 2241 09ef 01       		.byte	0x1
+ 2242 09f0 01       		.byte	0x1
+ 2243 09f1 000A0000 		.4byte	0xa00
+ 2244 09f5 0B       		.uleb128 0xb
+ 2245 09f6 A2000000 		.4byte	0xa2
+ 2246 09fa 0B       		.uleb128 0xb
+ 2247 09fb A2000000 		.4byte	0xa2
+ 2248 09ff 00       		.byte	0
+ 2249 0a00 27       		.uleb128 0x27
+ 2250 0a01 01       		.byte	0x1
+ 2251 0a02 BE010000 		.4byte	.LASF71
+ 2252 0a06 05       		.byte	0x5
+ 2253 0a07 BF       		.byte	0xbf
+ 2254 0a08 01       		.byte	0x1
+ 2255 0a09 A2000000 		.4byte	0xa2
+ 2256 0a0d 01       		.byte	0x1
+ 2257 0a0e 28       		.uleb128 0x28
+ 2258 0a0f 01       		.byte	0x1
+ 2259 0a10 30010000 		.4byte	.LASF81
+ 2260 0a14 0F       		.byte	0xf
+ 2261 0a15 1B       		.byte	0x1b
+ 2262 0a16 01       		.byte	0x1
+ 2263 0a17 01       		.byte	0x1
+ 2264 0a18 26       		.uleb128 0x26
+ 2265 0a19 01       		.byte	0x1
+ 2266 0a1a 84020000 		.4byte	.LASF72
+ 2267 0a1e 05       		.byte	0x5
+ 2268 0a1f CD       		.byte	0xcd
+ 2269 0a20 01       		.byte	0x1
+ 2270 0a21 01       		.byte	0x1
+ 2271 0a22 2C0A0000 		.4byte	0xa2c
+ 2272 0a26 0B       		.uleb128 0xb
+ 2273 0a27 A2000000 		.4byte	0xa2
+ 2274 0a2b 00       		.byte	0
+ 2275 0a2c 29       		.uleb128 0x29
+ 2276 0a2d 01       		.byte	0x1
+ 2277 0a2e 3A060000 		.4byte	.LASF74
+ 2278 0a32 0C       		.byte	0xc
+ 2279 0a33 1E       		.byte	0x1e
+ 2280 0a34 01       		.byte	0x1
+ 2281 0a35 A2000000 		.4byte	0xa2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 50
+
+
+ 2282 0a39 01       		.byte	0x1
+ 2283 0a3a 530A0000 		.4byte	0xa53
+ 2284 0a3e 0B       		.uleb128 0xb
+ 2285 0a3f A2000000 		.4byte	0xa2
+ 2286 0a43 0B       		.uleb128 0xb
+ 2287 0a44 A2000000 		.4byte	0xa2
+ 2288 0a48 0B       		.uleb128 0xb
+ 2289 0a49 AD000000 		.4byte	0xad
+ 2290 0a4d 0B       		.uleb128 0xb
+ 2291 0a4e AD000000 		.4byte	0xad
+ 2292 0a52 00       		.byte	0
+ 2293 0a53 27       		.uleb128 0x27
+ 2294 0a54 01       		.byte	0x1
+ 2295 0a55 EE010000 		.4byte	.LASF73
+ 2296 0a59 0B       		.byte	0xb
+ 2297 0a5a 39       		.byte	0x39
+ 2298 0a5b 01       		.byte	0x1
+ 2299 0a5c A2000000 		.4byte	0xa2
+ 2300 0a60 01       		.byte	0x1
+ 2301 0a61 29       		.uleb128 0x29
+ 2302 0a62 01       		.byte	0x1
+ 2303 0a63 5B050000 		.4byte	.LASF75
+ 2304 0a67 0B       		.byte	0xb
+ 2305 0a68 3C       		.byte	0x3c
+ 2306 0a69 01       		.byte	0x1
+ 2307 0a6a F2000000 		.4byte	0xf2
+ 2308 0a6e 01       		.byte	0x1
+ 2309 0a6f 880A0000 		.4byte	0xa88
+ 2310 0a73 0B       		.uleb128 0xb
+ 2311 0a74 A2000000 		.4byte	0xa2
+ 2312 0a78 0B       		.uleb128 0xb
+ 2313 0a79 AD000000 		.4byte	0xad
+ 2314 0a7d 0B       		.uleb128 0xb
+ 2315 0a7e A2000000 		.4byte	0xa2
+ 2316 0a82 0B       		.uleb128 0xb
+ 2317 0a83 A2000000 		.4byte	0xa2
+ 2318 0a87 00       		.byte	0
+ 2319 0a88 29       		.uleb128 0x29
+ 2320 0a89 01       		.byte	0x1
+ 2321 0a8a D4030000 		.4byte	.LASF76
+ 2322 0a8e 0B       		.byte	0xb
+ 2323 0a8f 40       		.byte	0x40
+ 2324 0a90 01       		.byte	0x1
+ 2325 0a91 F2000000 		.4byte	0xf2
+ 2326 0a95 01       		.byte	0x1
+ 2327 0a96 AA0A0000 		.4byte	0xaaa
+ 2328 0a9a 0B       		.uleb128 0xb
+ 2329 0a9b A2000000 		.4byte	0xa2
+ 2330 0a9f 0B       		.uleb128 0xb
+ 2331 0aa0 AD000000 		.4byte	0xad
+ 2332 0aa4 0B       		.uleb128 0xb
+ 2333 0aa5 AD000000 		.4byte	0xad
+ 2334 0aa9 00       		.byte	0
+ 2335 0aaa 29       		.uleb128 0x29
+ 2336 0aab 01       		.byte	0x1
+ 2337 0aac A4050000 		.4byte	.LASF77
+ 2338 0ab0 0B       		.byte	0xb
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 51
+
+
+ 2339 0ab1 30       		.byte	0x30
+ 2340 0ab2 01       		.byte	0x1
+ 2341 0ab3 F2000000 		.4byte	0xf2
+ 2342 0ab7 01       		.byte	0x1
+ 2343 0ab8 C70A0000 		.4byte	0xac7
+ 2344 0abc 0B       		.uleb128 0xb
+ 2345 0abd A2000000 		.4byte	0xa2
+ 2346 0ac1 0B       		.uleb128 0xb
+ 2347 0ac2 A2000000 		.4byte	0xa2
+ 2348 0ac6 00       		.byte	0
+ 2349 0ac7 29       		.uleb128 0x29
+ 2350 0ac8 01       		.byte	0x1
+ 2351 0ac9 16040000 		.4byte	.LASF78
+ 2352 0acd 0B       		.byte	0xb
+ 2353 0ace 2A       		.byte	0x2a
+ 2354 0acf 01       		.byte	0x1
+ 2355 0ad0 F2000000 		.4byte	0xf2
+ 2356 0ad4 01       		.byte	0x1
+ 2357 0ad5 E40A0000 		.4byte	0xae4
+ 2358 0ad9 0B       		.uleb128 0xb
+ 2359 0ada A2000000 		.4byte	0xa2
+ 2360 0ade 0B       		.uleb128 0xb
+ 2361 0adf A2000000 		.4byte	0xa2
+ 2362 0ae3 00       		.byte	0
+ 2363 0ae4 2A       		.uleb128 0x2a
+ 2364 0ae5 01       		.byte	0x1
+ 2365 0ae6 74040000 		.4byte	.LASF79
+ 2366 0aea 0D       		.byte	0xd
+ 2367 0aeb 3201     		.2byte	0x132
+ 2368 0aed 01       		.byte	0x1
+ 2369 0aee 29000000 		.4byte	0x29
+ 2370 0af2 01       		.byte	0x1
+ 2371 0af3 FD0A0000 		.4byte	0xafd
+ 2372 0af7 0B       		.uleb128 0xb
+ 2373 0af8 29000000 		.4byte	0x29
+ 2374 0afc 00       		.byte	0
+ 2375 0afd 26       		.uleb128 0x26
+ 2376 0afe 01       		.byte	0x1
+ 2377 0aff EE000000 		.4byte	.LASF80
+ 2378 0b03 0E       		.byte	0xe
+ 2379 0b04 18       		.byte	0x18
+ 2380 0b05 01       		.byte	0x1
+ 2381 0b06 01       		.byte	0x1
+ 2382 0b07 110B0000 		.4byte	0xb11
+ 2383 0b0b 0B       		.uleb128 0xb
+ 2384 0b0c 0D010000 		.4byte	0x10d
+ 2385 0b10 00       		.byte	0
+ 2386 0b11 28       		.uleb128 0x28
+ 2387 0b12 01       		.byte	0x1
+ 2388 0b13 8D010000 		.4byte	.LASF82
+ 2389 0b17 10       		.byte	0x10
+ 2390 0b18 34       		.byte	0x34
+ 2391 0b19 01       		.byte	0x1
+ 2392 0b1a 01       		.byte	0x1
+ 2393 0b1b 28       		.uleb128 0x28
+ 2394 0b1c 01       		.byte	0x1
+ 2395 0b1d 4B050000 		.4byte	.LASF83
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 52
+
+
+ 2396 0b21 11       		.byte	0x11
+ 2397 0b22 34       		.byte	0x34
+ 2398 0b23 01       		.byte	0x1
+ 2399 0b24 01       		.byte	0x1
+ 2400 0b25 28       		.uleb128 0x28
+ 2401 0b26 01       		.byte	0x1
+ 2402 0b27 7A010000 		.4byte	.LASF84
+ 2403 0b2b 12       		.byte	0x12
+ 2404 0b2c 3A       		.byte	0x3a
+ 2405 0b2d 01       		.byte	0x1
+ 2406 0b2e 01       		.byte	0x1
+ 2407 0b2f 28       		.uleb128 0x28
+ 2408 0b30 01       		.byte	0x1
+ 2409 0b31 3D000000 		.4byte	.LASF85
+ 2410 0b35 10       		.byte	0x10
+ 2411 0b36 D1       		.byte	0xd1
+ 2412 0b37 01       		.byte	0x1
+ 2413 0b38 01       		.byte	0x1
+ 2414 0b39 28       		.uleb128 0x28
+ 2415 0b3a 01       		.byte	0x1
+ 2416 0b3b 0A000000 		.4byte	.LASF86
+ 2417 0b3f 11       		.byte	0x11
+ 2418 0b40 D1       		.byte	0xd1
+ 2419 0b41 01       		.byte	0x1
+ 2420 0b42 01       		.byte	0x1
+ 2421 0b43 28       		.uleb128 0x28
+ 2422 0b44 01       		.byte	0x1
+ 2423 0b45 21020000 		.4byte	.LASF87
+ 2424 0b49 12       		.byte	0x12
+ 2425 0b4a 3D       		.byte	0x3d
+ 2426 0b4b 01       		.byte	0x1
+ 2427 0b4c 01       		.byte	0x1
+ 2428 0b4d 26       		.uleb128 0x26
+ 2429 0b4e 01       		.byte	0x1
+ 2430 0b4f 11030000 		.4byte	.LASF88
+ 2431 0b53 13       		.byte	0x13
+ 2432 0b54 18       		.byte	0x18
+ 2433 0b55 01       		.byte	0x1
+ 2434 0b56 01       		.byte	0x1
+ 2435 0b57 610B0000 		.4byte	0xb61
+ 2436 0b5b 0B       		.uleb128 0xb
+ 2437 0b5c 0D010000 		.4byte	0x10d
+ 2438 0b60 00       		.byte	0
+ 2439 0b61 26       		.uleb128 0x26
+ 2440 0b62 01       		.byte	0x1
+ 2441 0b63 CF000000 		.4byte	.LASF89
+ 2442 0b67 13       		.byte	0x13
+ 2443 0b68 20       		.byte	0x20
+ 2444 0b69 01       		.byte	0x1
+ 2445 0b6a 01       		.byte	0x1
+ 2446 0b6b 750B0000 		.4byte	0xb75
+ 2447 0b6f 0B       		.uleb128 0xb
+ 2448 0b70 A2000000 		.4byte	0xa2
+ 2449 0b74 00       		.byte	0
+ 2450 0b75 26       		.uleb128 0x26
+ 2451 0b76 01       		.byte	0x1
+ 2452 0b77 43010000 		.4byte	.LASF90
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 53
+
+
+ 2453 0b7b 14       		.byte	0x14
+ 2454 0b7c 18       		.byte	0x18
+ 2455 0b7d 01       		.byte	0x1
+ 2456 0b7e 01       		.byte	0x1
+ 2457 0b7f 890B0000 		.4byte	0xb89
+ 2458 0b83 0B       		.uleb128 0xb
+ 2459 0b84 0D010000 		.4byte	0x10d
+ 2460 0b88 00       		.byte	0
+ 2461 0b89 26       		.uleb128 0x26
+ 2462 0b8a 01       		.byte	0x1
+ 2463 0b8b 30050000 		.4byte	.LASF91
+ 2464 0b8f 14       		.byte	0x14
+ 2465 0b90 20       		.byte	0x20
+ 2466 0b91 01       		.byte	0x1
+ 2467 0b92 01       		.byte	0x1
+ 2468 0b93 9D0B0000 		.4byte	0xb9d
+ 2469 0b97 0B       		.uleb128 0xb
+ 2470 0b98 A2000000 		.4byte	0xa2
+ 2471 0b9c 00       		.byte	0
+ 2472 0b9d 28       		.uleb128 0x28
+ 2473 0b9e 01       		.byte	0x1
+ 2474 0b9f C0040000 		.4byte	.LASF92
+ 2475 0ba3 15       		.byte	0x15
+ 2476 0ba4 3F       		.byte	0x3f
+ 2477 0ba5 01       		.byte	0x1
+ 2478 0ba6 01       		.byte	0x1
+ 2479 0ba7 28       		.uleb128 0x28
+ 2480 0ba8 01       		.byte	0x1
+ 2481 0ba9 FE010000 		.4byte	.LASF93
+ 2482 0bad 16       		.byte	0x16
+ 2483 0bae 3F       		.byte	0x3f
+ 2484 0baf 01       		.byte	0x1
+ 2485 0bb0 01       		.byte	0x1
+ 2486 0bb1 28       		.uleb128 0x28
+ 2487 0bb2 01       		.byte	0x1
+ 2488 0bb3 2D060000 		.4byte	.LASF94
+ 2489 0bb7 17       		.byte	0x17
+ 2490 0bb8 3F       		.byte	0x3f
+ 2491 0bb9 01       		.byte	0x1
+ 2492 0bba 01       		.byte	0x1
+ 2493 0bbb 28       		.uleb128 0x28
+ 2494 0bbc 01       		.byte	0x1
+ 2495 0bbd 14060000 		.4byte	.LASF95
+ 2496 0bc1 09       		.byte	0x9
+ 2497 0bc2 33       		.byte	0x33
+ 2498 0bc3 01       		.byte	0x1
+ 2499 0bc4 01       		.byte	0x1
+ 2500 0bc5 28       		.uleb128 0x28
+ 2501 0bc6 01       		.byte	0x1
+ 2502 0bc7 55020000 		.4byte	.LASF96
+ 2503 0bcb 07       		.byte	0x7
+ 2504 0bcc 3C       		.byte	0x3c
+ 2505 0bcd 01       		.byte	0x1
+ 2506 0bce 01       		.byte	0x1
+ 2507 0bcf 28       		.uleb128 0x28
+ 2508 0bd0 01       		.byte	0x1
+ 2509 0bd1 28000000 		.4byte	.LASF97
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 54
+
+
+ 2510 0bd5 08       		.byte	0x8
+ 2511 0bd6 3C       		.byte	0x3c
+ 2512 0bd7 01       		.byte	0x1
+ 2513 0bd8 01       		.byte	0x1
+ 2514 0bd9 28       		.uleb128 0x28
+ 2515 0bda 01       		.byte	0x1
+ 2516 0bdb 8C050000 		.4byte	.LASF98
+ 2517 0bdf 18       		.byte	0x18
+ 2518 0be0 3E       		.byte	0x3e
+ 2519 0be1 01       		.byte	0x1
+ 2520 0be2 01       		.byte	0x1
+ 2521 0be3 26       		.uleb128 0x26
+ 2522 0be4 01       		.byte	0x1
+ 2523 0be5 9E000000 		.4byte	.LASF99
+ 2524 0be9 18       		.byte	0x18
+ 2525 0bea 41       		.byte	0x41
+ 2526 0beb 01       		.byte	0x1
+ 2527 0bec 01       		.byte	0x1
+ 2528 0bed F70B0000 		.4byte	0xbf7
+ 2529 0bf1 0B       		.uleb128 0xb
+ 2530 0bf2 A2000000 		.4byte	0xa2
+ 2531 0bf6 00       		.byte	0
+ 2532 0bf7 28       		.uleb128 0x28
+ 2533 0bf8 01       		.byte	0x1
+ 2534 0bf9 5C010000 		.4byte	.LASF100
+ 2535 0bfd 19       		.byte	0x19
+ 2536 0bfe 3C       		.byte	0x3c
+ 2537 0bff 01       		.byte	0x1
+ 2538 0c00 01       		.byte	0x1
+ 2539 0c01 26       		.uleb128 0x26
+ 2540 0c02 01       		.byte	0x1
+ 2541 0c03 9D020000 		.4byte	.LASF101
+ 2542 0c07 19       		.byte	0x19
+ 2543 0c08 4A       		.byte	0x4a
+ 2544 0c09 01       		.byte	0x1
+ 2545 0c0a 01       		.byte	0x1
+ 2546 0c0b 1A0C0000 		.4byte	0xc1a
+ 2547 0c0f 0B       		.uleb128 0xb
+ 2548 0c10 A2000000 		.4byte	0xa2
+ 2549 0c14 0B       		.uleb128 0xb
+ 2550 0c15 A2000000 		.4byte	0xa2
+ 2551 0c19 00       		.byte	0
+ 2552 0c1a 28       		.uleb128 0x28
+ 2553 0c1b 01       		.byte	0x1
+ 2554 0c1c 6A040000 		.4byte	.LASF102
+ 2555 0c20 1A       		.byte	0x1a
+ 2556 0c21 38       		.byte	0x38
+ 2557 0c22 01       		.byte	0x1
+ 2558 0c23 01       		.byte	0x1
+ 2559 0c24 28       		.uleb128 0x28
+ 2560 0c25 01       		.byte	0x1
+ 2561 0c26 D9010000 		.4byte	.LASF103
+ 2562 0c2a 0A       		.byte	0xa
+ 2563 0c2b 4D       		.byte	0x4d
+ 2564 0c2c 01       		.byte	0x1
+ 2565 0c2d 01       		.byte	0x1
+ 2566 0c2e 26       		.uleb128 0x26
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 55
+
+
+ 2567 0c2f 01       		.byte	0x1
+ 2568 0c30 53010000 		.4byte	.LASF104
+ 2569 0c34 04       		.byte	0x4
+ 2570 0c35 1C       		.byte	0x1c
+ 2571 0c36 01       		.byte	0x1
+ 2572 0c37 01       		.byte	0x1
+ 2573 0c38 5B0C0000 		.4byte	0xc5b
+ 2574 0c3c 0B       		.uleb128 0xb
+ 2575 0c3d 5B0C0000 		.4byte	0xc5b
+ 2576 0c41 0B       		.uleb128 0xb
+ 2577 0c42 74000000 		.4byte	0x74
+ 2578 0c46 0B       		.uleb128 0xb
+ 2579 0c47 74000000 		.4byte	0x74
+ 2580 0c4b 0B       		.uleb128 0xb
+ 2581 0c4c 74000000 		.4byte	0x74
+ 2582 0c50 0B       		.uleb128 0xb
+ 2583 0c51 62000000 		.4byte	0x62
+ 2584 0c55 0B       		.uleb128 0xb
+ 2585 0c56 40010000 		.4byte	0x140
+ 2586 0c5a 00       		.byte	0
+ 2587 0c5b 07       		.uleb128 0x7
+ 2588 0c5c 04       		.byte	0x4
+ 2589 0c5d C6010000 		.4byte	0x1c6
+ 2590 0c61 26       		.uleb128 0x26
+ 2591 0c62 01       		.byte	0x1
+ 2592 0c63 8F030000 		.4byte	.LASF105
+ 2593 0c67 1A       		.byte	0x1a
+ 2594 0c68 3D       		.byte	0x3d
+ 2595 0c69 01       		.byte	0x1
+ 2596 0c6a 01       		.byte	0x1
+ 2597 0c6b 7A0C0000 		.4byte	0xc7a
+ 2598 0c6f 0B       		.uleb128 0xb
+ 2599 0c70 A2000000 		.4byte	0xa2
+ 2600 0c74 0B       		.uleb128 0xb
+ 2601 0c75 A2000000 		.4byte	0xa2
+ 2602 0c79 00       		.byte	0
+ 2603 0c7a 26       		.uleb128 0x26
+ 2604 0c7b 01       		.byte	0x1
+ 2605 0c7c F9030000 		.4byte	.LASF106
+ 2606 0c80 1A       		.byte	0x1a
+ 2607 0c81 3C       		.byte	0x3c
+ 2608 0c82 01       		.byte	0x1
+ 2609 0c83 01       		.byte	0x1
+ 2610 0c84 8E0C0000 		.4byte	0xc8e
+ 2611 0c88 0B       		.uleb128 0xb
+ 2612 0c89 8E0C0000 		.4byte	0xc8e
+ 2613 0c8d 00       		.byte	0
+ 2614 0c8e 07       		.uleb128 0x7
+ 2615 0c8f 04       		.byte	0x4
+ 2616 0c90 940C0000 		.4byte	0xc94
+ 2617 0c94 09       		.uleb128 0x9
+ 2618 0c95 E0000000 		.4byte	0xe0
+ 2619 0c99 29       		.uleb128 0x29
+ 2620 0c9a 01       		.byte	0x1
+ 2621 0c9b 59030000 		.4byte	.LASF107
+ 2622 0c9f 1B       		.byte	0x1b
+ 2623 0ca0 E2       		.byte	0xe2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 56
+
+
+ 2624 0ca1 01       		.byte	0x1
+ 2625 0ca2 94000000 		.4byte	0x94
+ 2626 0ca6 01       		.byte	0x1
+ 2627 0ca7 B70C0000 		.4byte	0xcb7
+ 2628 0cab 0B       		.uleb128 0xb
+ 2629 0cac 28010000 		.4byte	0x128
+ 2630 0cb0 0B       		.uleb128 0xb
+ 2631 0cb1 2E010000 		.4byte	0x12e
+ 2632 0cb5 2B       		.uleb128 0x2b
+ 2633 0cb6 00       		.byte	0
+ 2634 0cb7 27       		.uleb128 0x27
+ 2635 0cb8 01       		.byte	0x1
+ 2636 0cb9 6A030000 		.4byte	.LASF108
+ 2637 0cbd 12       		.byte	0x12
+ 2638 0cbe 42       		.byte	0x42
+ 2639 0cbf 01       		.byte	0x1
+ 2640 0cc0 CE000000 		.4byte	0xce
+ 2641 0cc4 01       		.byte	0x1
+ 2642 0cc5 26       		.uleb128 0x26
+ 2643 0cc6 01       		.byte	0x1
+ 2644 0cc7 27050000 		.4byte	.LASF109
+ 2645 0ccb 04       		.byte	0x4
+ 2646 0ccc 1D       		.byte	0x1d
+ 2647 0ccd 01       		.byte	0x1
+ 2648 0cce 01       		.byte	0x1
+ 2649 0ccf E80C0000 		.4byte	0xce8
+ 2650 0cd3 0B       		.uleb128 0xb
+ 2651 0cd4 5B0C0000 		.4byte	0xc5b
+ 2652 0cd8 0B       		.uleb128 0xb
+ 2653 0cd9 62000000 		.4byte	0x62
+ 2654 0cdd 0B       		.uleb128 0xb
+ 2655 0cde 62000000 		.4byte	0x62
+ 2656 0ce2 0B       		.uleb128 0xb
+ 2657 0ce3 74000000 		.4byte	0x74
+ 2658 0ce7 00       		.byte	0
+ 2659 0ce8 26       		.uleb128 0x26
+ 2660 0ce9 01       		.byte	0x1
+ 2661 0cea 9C030000 		.4byte	.LASF110
+ 2662 0cee 1C       		.byte	0x1c
+ 2663 0cef 1B       		.byte	0x1b
+ 2664 0cf0 01       		.byte	0x1
+ 2665 0cf1 01       		.byte	0x1
+ 2666 0cf2 FC0C0000 		.4byte	0xcfc
+ 2667 0cf6 0B       		.uleb128 0xb
+ 2668 0cf7 A2000000 		.4byte	0xa2
+ 2669 0cfb 00       		.byte	0
+ 2670 0cfc 26       		.uleb128 0x26
+ 2671 0cfd 01       		.byte	0x1
+ 2672 0cfe 0F010000 		.4byte	.LASF111
+ 2673 0d02 1D       		.byte	0x1d
+ 2674 0d03 78       		.byte	0x78
+ 2675 0d04 01       		.byte	0x1
+ 2676 0d05 01       		.byte	0x1
+ 2677 0d06 100D0000 		.4byte	0xd10
+ 2678 0d0a 0B       		.uleb128 0xb
+ 2679 0d0b AD000000 		.4byte	0xad
+ 2680 0d0f 00       		.byte	0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 57
+
+
+ 2681 0d10 27       		.uleb128 0x27
+ 2682 0d11 01       		.byte	0x1
+ 2683 0d12 07030000 		.4byte	.LASF112
+ 2684 0d16 1E       		.byte	0x1e
+ 2685 0d17 2B       		.byte	0x2b
+ 2686 0d18 01       		.byte	0x1
+ 2687 0d19 A2000000 		.4byte	0xa2
+ 2688 0d1d 01       		.byte	0x1
+ 2689 0d1e 26       		.uleb128 0x26
+ 2690 0d1f 01       		.byte	0x1
+ 2691 0d20 55060000 		.4byte	.LASF113
+ 2692 0d24 1A       		.byte	0x1a
+ 2693 0d25 3E       		.byte	0x3e
+ 2694 0d26 01       		.byte	0x1
+ 2695 0d27 01       		.byte	0x1
+ 2696 0d28 320D0000 		.4byte	0xd32
+ 2697 0d2c 0B       		.uleb128 0xb
+ 2698 0d2d E0000000 		.4byte	0xe0
+ 2699 0d31 00       		.byte	0
+ 2700 0d32 28       		.uleb128 0x28
+ 2701 0d33 01       		.byte	0x1
+ 2702 0d34 23030000 		.4byte	.LASF114
+ 2703 0d38 1F       		.byte	0x1f
+ 2704 0d39 0F       		.byte	0xf
+ 2705 0d3a 01       		.byte	0x1
+ 2706 0d3b 01       		.byte	0x1
+ 2707 0d3c 28       		.uleb128 0x28
+ 2708 0d3d 01       		.byte	0x1
+ 2709 0d3e F8020000 		.4byte	.LASF115
+ 2710 0d42 05       		.byte	0x5
+ 2711 0d43 BD       		.byte	0xbd
+ 2712 0d44 01       		.byte	0x1
+ 2713 0d45 01       		.byte	0x1
+ 2714 0d46 27       		.uleb128 0x27
+ 2715 0d47 01       		.byte	0x1
+ 2716 0d48 61000000 		.4byte	.LASF116
+ 2717 0d4c 11       		.byte	0x11
+ 2718 0d4d 3A       		.byte	0x3a
+ 2719 0d4e 01       		.byte	0x1
+ 2720 0d4f C3000000 		.4byte	0xc3
+ 2721 0d53 01       		.byte	0x1
+ 2722 0d54 00       		.byte	0
+ 2723              		.section	.debug_abbrev,"",%progbits
+ 2724              	.Ldebug_abbrev0:
+ 2725 0000 01       		.uleb128 0x1
+ 2726 0001 11       		.uleb128 0x11
+ 2727 0002 01       		.byte	0x1
+ 2728 0003 25       		.uleb128 0x25
+ 2729 0004 0E       		.uleb128 0xe
+ 2730 0005 13       		.uleb128 0x13
+ 2731 0006 0B       		.uleb128 0xb
+ 2732 0007 03       		.uleb128 0x3
+ 2733 0008 0E       		.uleb128 0xe
+ 2734 0009 1B       		.uleb128 0x1b
+ 2735 000a 0E       		.uleb128 0xe
+ 2736 000b 55       		.uleb128 0x55
+ 2737 000c 06       		.uleb128 0x6
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 58
+
+
+ 2738 000d 11       		.uleb128 0x11
+ 2739 000e 01       		.uleb128 0x1
+ 2740 000f 52       		.uleb128 0x52
+ 2741 0010 01       		.uleb128 0x1
+ 2742 0011 10       		.uleb128 0x10
+ 2743 0012 06       		.uleb128 0x6
+ 2744 0013 00       		.byte	0
+ 2745 0014 00       		.byte	0
+ 2746 0015 02       		.uleb128 0x2
+ 2747 0016 24       		.uleb128 0x24
+ 2748 0017 00       		.byte	0
+ 2749 0018 0B       		.uleb128 0xb
+ 2750 0019 0B       		.uleb128 0xb
+ 2751 001a 3E       		.uleb128 0x3e
+ 2752 001b 0B       		.uleb128 0xb
+ 2753 001c 03       		.uleb128 0x3
+ 2754 001d 0E       		.uleb128 0xe
+ 2755 001e 00       		.byte	0
+ 2756 001f 00       		.byte	0
+ 2757 0020 03       		.uleb128 0x3
+ 2758 0021 16       		.uleb128 0x16
+ 2759 0022 00       		.byte	0
+ 2760 0023 03       		.uleb128 0x3
+ 2761 0024 0E       		.uleb128 0xe
+ 2762 0025 3A       		.uleb128 0x3a
+ 2763 0026 0B       		.uleb128 0xb
+ 2764 0027 3B       		.uleb128 0x3b
+ 2765 0028 0B       		.uleb128 0xb
+ 2766 0029 49       		.uleb128 0x49
+ 2767 002a 13       		.uleb128 0x13
+ 2768 002b 00       		.byte	0
+ 2769 002c 00       		.byte	0
+ 2770 002d 04       		.uleb128 0x4
+ 2771 002e 24       		.uleb128 0x24
+ 2772 002f 00       		.byte	0
+ 2773 0030 0B       		.uleb128 0xb
+ 2774 0031 0B       		.uleb128 0xb
+ 2775 0032 3E       		.uleb128 0x3e
+ 2776 0033 0B       		.uleb128 0xb
+ 2777 0034 03       		.uleb128 0x3
+ 2778 0035 08       		.uleb128 0x8
+ 2779 0036 00       		.byte	0
+ 2780 0037 00       		.byte	0
+ 2781 0038 05       		.uleb128 0x5
+ 2782 0039 35       		.uleb128 0x35
+ 2783 003a 00       		.byte	0
+ 2784 003b 49       		.uleb128 0x49
+ 2785 003c 13       		.uleb128 0x13
+ 2786 003d 00       		.byte	0
+ 2787 003e 00       		.byte	0
+ 2788 003f 06       		.uleb128 0x6
+ 2789 0040 16       		.uleb128 0x16
+ 2790 0041 00       		.byte	0
+ 2791 0042 03       		.uleb128 0x3
+ 2792 0043 0E       		.uleb128 0xe
+ 2793 0044 3A       		.uleb128 0x3a
+ 2794 0045 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 59
+
+
+ 2795 0046 3B       		.uleb128 0x3b
+ 2796 0047 05       		.uleb128 0x5
+ 2797 0048 49       		.uleb128 0x49
+ 2798 0049 13       		.uleb128 0x13
+ 2799 004a 00       		.byte	0
+ 2800 004b 00       		.byte	0
+ 2801 004c 07       		.uleb128 0x7
+ 2802 004d 0F       		.uleb128 0xf
+ 2803 004e 00       		.byte	0
+ 2804 004f 0B       		.uleb128 0xb
+ 2805 0050 0B       		.uleb128 0xb
+ 2806 0051 49       		.uleb128 0x49
+ 2807 0052 13       		.uleb128 0x13
+ 2808 0053 00       		.byte	0
+ 2809 0054 00       		.byte	0
+ 2810 0055 08       		.uleb128 0x8
+ 2811 0056 15       		.uleb128 0x15
+ 2812 0057 00       		.byte	0
+ 2813 0058 27       		.uleb128 0x27
+ 2814 0059 0C       		.uleb128 0xc
+ 2815 005a 00       		.byte	0
+ 2816 005b 00       		.byte	0
+ 2817 005c 09       		.uleb128 0x9
+ 2818 005d 26       		.uleb128 0x26
+ 2819 005e 00       		.byte	0
+ 2820 005f 49       		.uleb128 0x49
+ 2821 0060 13       		.uleb128 0x13
+ 2822 0061 00       		.byte	0
+ 2823 0062 00       		.byte	0
+ 2824 0063 0A       		.uleb128 0xa
+ 2825 0064 15       		.uleb128 0x15
+ 2826 0065 01       		.byte	0x1
+ 2827 0066 27       		.uleb128 0x27
+ 2828 0067 0C       		.uleb128 0xc
+ 2829 0068 01       		.uleb128 0x1
+ 2830 0069 13       		.uleb128 0x13
+ 2831 006a 00       		.byte	0
+ 2832 006b 00       		.byte	0
+ 2833 006c 0B       		.uleb128 0xb
+ 2834 006d 05       		.uleb128 0x5
+ 2835 006e 00       		.byte	0
+ 2836 006f 49       		.uleb128 0x49
+ 2837 0070 13       		.uleb128 0x13
+ 2838 0071 00       		.byte	0
+ 2839 0072 00       		.byte	0
+ 2840 0073 0C       		.uleb128 0xc
+ 2841 0074 13       		.uleb128 0x13
+ 2842 0075 01       		.byte	0x1
+ 2843 0076 03       		.uleb128 0x3
+ 2844 0077 08       		.uleb128 0x8
+ 2845 0078 0B       		.uleb128 0xb
+ 2846 0079 0B       		.uleb128 0xb
+ 2847 007a 3A       		.uleb128 0x3a
+ 2848 007b 0B       		.uleb128 0xb
+ 2849 007c 3B       		.uleb128 0x3b
+ 2850 007d 0B       		.uleb128 0xb
+ 2851 007e 01       		.uleb128 0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 60
+
+
+ 2852 007f 13       		.uleb128 0x13
+ 2853 0080 00       		.byte	0
+ 2854 0081 00       		.byte	0
+ 2855 0082 0D       		.uleb128 0xd
+ 2856 0083 0D       		.uleb128 0xd
+ 2857 0084 00       		.byte	0
+ 2858 0085 03       		.uleb128 0x3
+ 2859 0086 08       		.uleb128 0x8
+ 2860 0087 3A       		.uleb128 0x3a
+ 2861 0088 0B       		.uleb128 0xb
+ 2862 0089 3B       		.uleb128 0x3b
+ 2863 008a 0B       		.uleb128 0xb
+ 2864 008b 49       		.uleb128 0x49
+ 2865 008c 13       		.uleb128 0x13
+ 2866 008d 38       		.uleb128 0x38
+ 2867 008e 0A       		.uleb128 0xa
+ 2868 008f 00       		.byte	0
+ 2869 0090 00       		.byte	0
+ 2870 0091 0E       		.uleb128 0xe
+ 2871 0092 0D       		.uleb128 0xd
+ 2872 0093 00       		.byte	0
+ 2873 0094 03       		.uleb128 0x3
+ 2874 0095 0E       		.uleb128 0xe
+ 2875 0096 3A       		.uleb128 0x3a
+ 2876 0097 0B       		.uleb128 0xb
+ 2877 0098 3B       		.uleb128 0x3b
+ 2878 0099 0B       		.uleb128 0xb
+ 2879 009a 49       		.uleb128 0x49
+ 2880 009b 13       		.uleb128 0x13
+ 2881 009c 38       		.uleb128 0x38
+ 2882 009d 0A       		.uleb128 0xa
+ 2883 009e 00       		.byte	0
+ 2884 009f 00       		.byte	0
+ 2885 00a0 0F       		.uleb128 0xf
+ 2886 00a1 16       		.uleb128 0x16
+ 2887 00a2 00       		.byte	0
+ 2888 00a3 03       		.uleb128 0x3
+ 2889 00a4 08       		.uleb128 0x8
+ 2890 00a5 3A       		.uleb128 0x3a
+ 2891 00a6 0B       		.uleb128 0xb
+ 2892 00a7 3B       		.uleb128 0x3b
+ 2893 00a8 0B       		.uleb128 0xb
+ 2894 00a9 49       		.uleb128 0x49
+ 2895 00aa 13       		.uleb128 0x13
+ 2896 00ab 00       		.byte	0
+ 2897 00ac 00       		.byte	0
+ 2898 00ad 10       		.uleb128 0x10
+ 2899 00ae 2E       		.uleb128 0x2e
+ 2900 00af 00       		.byte	0
+ 2901 00b0 3F       		.uleb128 0x3f
+ 2902 00b1 0C       		.uleb128 0xc
+ 2903 00b2 03       		.uleb128 0x3
+ 2904 00b3 0E       		.uleb128 0xe
+ 2905 00b4 3A       		.uleb128 0x3a
+ 2906 00b5 0B       		.uleb128 0xb
+ 2907 00b6 3B       		.uleb128 0x3b
+ 2908 00b7 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 61
+
+
+ 2909 00b8 27       		.uleb128 0x27
+ 2910 00b9 0C       		.uleb128 0xc
+ 2911 00ba 11       		.uleb128 0x11
+ 2912 00bb 01       		.uleb128 0x1
+ 2913 00bc 12       		.uleb128 0x12
+ 2914 00bd 01       		.uleb128 0x1
+ 2915 00be 40       		.uleb128 0x40
+ 2916 00bf 0A       		.uleb128 0xa
+ 2917 00c0 9742     		.uleb128 0x2117
+ 2918 00c2 0C       		.uleb128 0xc
+ 2919 00c3 00       		.byte	0
+ 2920 00c4 00       		.byte	0
+ 2921 00c5 11       		.uleb128 0x11
+ 2922 00c6 2E       		.uleb128 0x2e
+ 2923 00c7 01       		.byte	0x1
+ 2924 00c8 3F       		.uleb128 0x3f
+ 2925 00c9 0C       		.uleb128 0xc
+ 2926 00ca 03       		.uleb128 0x3
+ 2927 00cb 0E       		.uleb128 0xe
+ 2928 00cc 3A       		.uleb128 0x3a
+ 2929 00cd 0B       		.uleb128 0xb
+ 2930 00ce 3B       		.uleb128 0x3b
+ 2931 00cf 05       		.uleb128 0x5
+ 2932 00d0 27       		.uleb128 0x27
+ 2933 00d1 0C       		.uleb128 0xc
+ 2934 00d2 11       		.uleb128 0x11
+ 2935 00d3 01       		.uleb128 0x1
+ 2936 00d4 12       		.uleb128 0x12
+ 2937 00d5 01       		.uleb128 0x1
+ 2938 00d6 40       		.uleb128 0x40
+ 2939 00d7 06       		.uleb128 0x6
+ 2940 00d8 9742     		.uleb128 0x2117
+ 2941 00da 0C       		.uleb128 0xc
+ 2942 00db 01       		.uleb128 0x1
+ 2943 00dc 13       		.uleb128 0x13
+ 2944 00dd 00       		.byte	0
+ 2945 00de 00       		.byte	0
+ 2946 00df 12       		.uleb128 0x12
+ 2947 00e0 05       		.uleb128 0x5
+ 2948 00e1 00       		.byte	0
+ 2949 00e2 03       		.uleb128 0x3
+ 2950 00e3 0E       		.uleb128 0xe
+ 2951 00e4 3A       		.uleb128 0x3a
+ 2952 00e5 0B       		.uleb128 0xb
+ 2953 00e6 3B       		.uleb128 0x3b
+ 2954 00e7 05       		.uleb128 0x5
+ 2955 00e8 49       		.uleb128 0x49
+ 2956 00e9 13       		.uleb128 0x13
+ 2957 00ea 02       		.uleb128 0x2
+ 2958 00eb 06       		.uleb128 0x6
+ 2959 00ec 00       		.byte	0
+ 2960 00ed 00       		.byte	0
+ 2961 00ee 13       		.uleb128 0x13
+ 2962 00ef 34       		.uleb128 0x34
+ 2963 00f0 00       		.byte	0
+ 2964 00f1 03       		.uleb128 0x3
+ 2965 00f2 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 62
+
+
+ 2966 00f3 3A       		.uleb128 0x3a
+ 2967 00f4 0B       		.uleb128 0xb
+ 2968 00f5 3B       		.uleb128 0x3b
+ 2969 00f6 05       		.uleb128 0x5
+ 2970 00f7 49       		.uleb128 0x49
+ 2971 00f8 13       		.uleb128 0x13
+ 2972 00f9 02       		.uleb128 0x2
+ 2973 00fa 0A       		.uleb128 0xa
+ 2974 00fb 00       		.byte	0
+ 2975 00fc 00       		.byte	0
+ 2976 00fd 14       		.uleb128 0x14
+ 2977 00fe 898201   		.uleb128 0x4109
+ 2978 0101 01       		.byte	0x1
+ 2979 0102 11       		.uleb128 0x11
+ 2980 0103 01       		.uleb128 0x1
+ 2981 0104 31       		.uleb128 0x31
+ 2982 0105 13       		.uleb128 0x13
+ 2983 0106 01       		.uleb128 0x1
+ 2984 0107 13       		.uleb128 0x13
+ 2985 0108 00       		.byte	0
+ 2986 0109 00       		.byte	0
+ 2987 010a 15       		.uleb128 0x15
+ 2988 010b 8A8201   		.uleb128 0x410a
+ 2989 010e 00       		.byte	0
+ 2990 010f 02       		.uleb128 0x2
+ 2991 0110 0A       		.uleb128 0xa
+ 2992 0111 9142     		.uleb128 0x2111
+ 2993 0113 0A       		.uleb128 0xa
+ 2994 0114 00       		.byte	0
+ 2995 0115 00       		.byte	0
+ 2996 0116 16       		.uleb128 0x16
+ 2997 0117 898201   		.uleb128 0x4109
+ 2998 011a 01       		.byte	0x1
+ 2999 011b 11       		.uleb128 0x11
+ 3000 011c 01       		.uleb128 0x1
+ 3001 011d 9542     		.uleb128 0x2115
+ 3002 011f 0C       		.uleb128 0xc
+ 3003 0120 31       		.uleb128 0x31
+ 3004 0121 13       		.uleb128 0x13
+ 3005 0122 00       		.byte	0
+ 3006 0123 00       		.byte	0
+ 3007 0124 17       		.uleb128 0x17
+ 3008 0125 2E       		.uleb128 0x2e
+ 3009 0126 01       		.byte	0x1
+ 3010 0127 3F       		.uleb128 0x3f
+ 3011 0128 0C       		.uleb128 0xc
+ 3012 0129 03       		.uleb128 0x3
+ 3013 012a 0E       		.uleb128 0xe
+ 3014 012b 3A       		.uleb128 0x3a
+ 3015 012c 0B       		.uleb128 0xb
+ 3016 012d 3B       		.uleb128 0x3b
+ 3017 012e 0B       		.uleb128 0xb
+ 3018 012f 27       		.uleb128 0x27
+ 3019 0130 0C       		.uleb128 0xc
+ 3020 0131 11       		.uleb128 0x11
+ 3021 0132 01       		.uleb128 0x1
+ 3022 0133 12       		.uleb128 0x12
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 63
+
+
+ 3023 0134 01       		.uleb128 0x1
+ 3024 0135 40       		.uleb128 0x40
+ 3025 0136 06       		.uleb128 0x6
+ 3026 0137 9742     		.uleb128 0x2117
+ 3027 0139 0C       		.uleb128 0xc
+ 3028 013a 01       		.uleb128 0x1
+ 3029 013b 13       		.uleb128 0x13
+ 3030 013c 00       		.byte	0
+ 3031 013d 00       		.byte	0
+ 3032 013e 18       		.uleb128 0x18
+ 3033 013f 898201   		.uleb128 0x4109
+ 3034 0142 00       		.byte	0
+ 3035 0143 11       		.uleb128 0x11
+ 3036 0144 01       		.uleb128 0x1
+ 3037 0145 31       		.uleb128 0x31
+ 3038 0146 13       		.uleb128 0x13
+ 3039 0147 00       		.byte	0
+ 3040 0148 00       		.byte	0
+ 3041 0149 19       		.uleb128 0x19
+ 3042 014a 34       		.uleb128 0x34
+ 3043 014b 00       		.byte	0
+ 3044 014c 03       		.uleb128 0x3
+ 3045 014d 0E       		.uleb128 0xe
+ 3046 014e 3A       		.uleb128 0x3a
+ 3047 014f 0B       		.uleb128 0xb
+ 3048 0150 3B       		.uleb128 0x3b
+ 3049 0151 05       		.uleb128 0x5
+ 3050 0152 49       		.uleb128 0x49
+ 3051 0153 13       		.uleb128 0x13
+ 3052 0154 02       		.uleb128 0x2
+ 3053 0155 06       		.uleb128 0x6
+ 3054 0156 00       		.byte	0
+ 3055 0157 00       		.byte	0
+ 3056 0158 1A       		.uleb128 0x1a
+ 3057 0159 2E       		.uleb128 0x2e
+ 3058 015a 01       		.byte	0x1
+ 3059 015b 3F       		.uleb128 0x3f
+ 3060 015c 0C       		.uleb128 0xc
+ 3061 015d 03       		.uleb128 0x3
+ 3062 015e 0E       		.uleb128 0xe
+ 3063 015f 3A       		.uleb128 0x3a
+ 3064 0160 0B       		.uleb128 0xb
+ 3065 0161 3B       		.uleb128 0x3b
+ 3066 0162 05       		.uleb128 0x5
+ 3067 0163 27       		.uleb128 0x27
+ 3068 0164 0C       		.uleb128 0xc
+ 3069 0165 49       		.uleb128 0x49
+ 3070 0166 13       		.uleb128 0x13
+ 3071 0167 11       		.uleb128 0x11
+ 3072 0168 01       		.uleb128 0x1
+ 3073 0169 12       		.uleb128 0x12
+ 3074 016a 01       		.uleb128 0x1
+ 3075 016b 40       		.uleb128 0x40
+ 3076 016c 06       		.uleb128 0x6
+ 3077 016d 9642     		.uleb128 0x2116
+ 3078 016f 0C       		.uleb128 0xc
+ 3079 0170 01       		.uleb128 0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 64
+
+
+ 3080 0171 13       		.uleb128 0x13
+ 3081 0172 00       		.byte	0
+ 3082 0173 00       		.byte	0
+ 3083 0174 1B       		.uleb128 0x1b
+ 3084 0175 34       		.uleb128 0x34
+ 3085 0176 00       		.byte	0
+ 3086 0177 03       		.uleb128 0x3
+ 3087 0178 08       		.uleb128 0x8
+ 3088 0179 3A       		.uleb128 0x3a
+ 3089 017a 0B       		.uleb128 0xb
+ 3090 017b 3B       		.uleb128 0x3b
+ 3091 017c 05       		.uleb128 0x5
+ 3092 017d 49       		.uleb128 0x49
+ 3093 017e 13       		.uleb128 0x13
+ 3094 017f 1C       		.uleb128 0x1c
+ 3095 0180 0A       		.uleb128 0xa
+ 3096 0181 00       		.byte	0
+ 3097 0182 00       		.byte	0
+ 3098 0183 1C       		.uleb128 0x1c
+ 3099 0184 34       		.uleb128 0x34
+ 3100 0185 00       		.byte	0
+ 3101 0186 03       		.uleb128 0x3
+ 3102 0187 08       		.uleb128 0x8
+ 3103 0188 3A       		.uleb128 0x3a
+ 3104 0189 0B       		.uleb128 0xb
+ 3105 018a 3B       		.uleb128 0x3b
+ 3106 018b 05       		.uleb128 0x5
+ 3107 018c 49       		.uleb128 0x49
+ 3108 018d 13       		.uleb128 0x13
+ 3109 018e 00       		.byte	0
+ 3110 018f 00       		.byte	0
+ 3111 0190 1D       		.uleb128 0x1d
+ 3112 0191 898201   		.uleb128 0x4109
+ 3113 0194 01       		.byte	0x1
+ 3114 0195 11       		.uleb128 0x11
+ 3115 0196 01       		.uleb128 0x1
+ 3116 0197 31       		.uleb128 0x31
+ 3117 0198 13       		.uleb128 0x13
+ 3118 0199 00       		.byte	0
+ 3119 019a 00       		.byte	0
+ 3120 019b 1E       		.uleb128 0x1e
+ 3121 019c 2E       		.uleb128 0x2e
+ 3122 019d 01       		.byte	0x1
+ 3123 019e 3F       		.uleb128 0x3f
+ 3124 019f 0C       		.uleb128 0xc
+ 3125 01a0 03       		.uleb128 0x3
+ 3126 01a1 0E       		.uleb128 0xe
+ 3127 01a2 3A       		.uleb128 0x3a
+ 3128 01a3 0B       		.uleb128 0xb
+ 3129 01a4 3B       		.uleb128 0x3b
+ 3130 01a5 0B       		.uleb128 0xb
+ 3131 01a6 27       		.uleb128 0x27
+ 3132 01a7 0C       		.uleb128 0xc
+ 3133 01a8 11       		.uleb128 0x11
+ 3134 01a9 01       		.uleb128 0x1
+ 3135 01aa 12       		.uleb128 0x12
+ 3136 01ab 01       		.uleb128 0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 65
+
+
+ 3137 01ac 40       		.uleb128 0x40
+ 3138 01ad 06       		.uleb128 0x6
+ 3139 01ae 9642     		.uleb128 0x2116
+ 3140 01b0 0C       		.uleb128 0xc
+ 3141 01b1 01       		.uleb128 0x1
+ 3142 01b2 13       		.uleb128 0x13
+ 3143 01b3 00       		.byte	0
+ 3144 01b4 00       		.byte	0
+ 3145 01b5 1F       		.uleb128 0x1f
+ 3146 01b6 34       		.uleb128 0x34
+ 3147 01b7 00       		.byte	0
+ 3148 01b8 03       		.uleb128 0x3
+ 3149 01b9 0E       		.uleb128 0xe
+ 3150 01ba 3A       		.uleb128 0x3a
+ 3151 01bb 0B       		.uleb128 0xb
+ 3152 01bc 3B       		.uleb128 0x3b
+ 3153 01bd 0B       		.uleb128 0xb
+ 3154 01be 49       		.uleb128 0x49
+ 3155 01bf 13       		.uleb128 0x13
+ 3156 01c0 02       		.uleb128 0x2
+ 3157 01c1 0A       		.uleb128 0xa
+ 3158 01c2 00       		.byte	0
+ 3159 01c3 00       		.byte	0
+ 3160 01c4 20       		.uleb128 0x20
+ 3161 01c5 34       		.uleb128 0x34
+ 3162 01c6 00       		.byte	0
+ 3163 01c7 03       		.uleb128 0x3
+ 3164 01c8 0E       		.uleb128 0xe
+ 3165 01c9 3A       		.uleb128 0x3a
+ 3166 01ca 0B       		.uleb128 0xb
+ 3167 01cb 3B       		.uleb128 0x3b
+ 3168 01cc 0B       		.uleb128 0xb
+ 3169 01cd 49       		.uleb128 0x49
+ 3170 01ce 13       		.uleb128 0x13
+ 3171 01cf 02       		.uleb128 0x2
+ 3172 01d0 06       		.uleb128 0x6
+ 3173 01d1 00       		.byte	0
+ 3174 01d2 00       		.byte	0
+ 3175 01d3 21       		.uleb128 0x21
+ 3176 01d4 34       		.uleb128 0x34
+ 3177 01d5 00       		.byte	0
+ 3178 01d6 03       		.uleb128 0x3
+ 3179 01d7 0E       		.uleb128 0xe
+ 3180 01d8 3A       		.uleb128 0x3a
+ 3181 01d9 0B       		.uleb128 0xb
+ 3182 01da 3B       		.uleb128 0x3b
+ 3183 01db 0B       		.uleb128 0xb
+ 3184 01dc 49       		.uleb128 0x49
+ 3185 01dd 13       		.uleb128 0x13
+ 3186 01de 00       		.byte	0
+ 3187 01df 00       		.byte	0
+ 3188 01e0 22       		.uleb128 0x22
+ 3189 01e1 01       		.uleb128 0x1
+ 3190 01e2 01       		.byte	0x1
+ 3191 01e3 49       		.uleb128 0x49
+ 3192 01e4 13       		.uleb128 0x13
+ 3193 01e5 01       		.uleb128 0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 66
+
+
+ 3194 01e6 13       		.uleb128 0x13
+ 3195 01e7 00       		.byte	0
+ 3196 01e8 00       		.byte	0
+ 3197 01e9 23       		.uleb128 0x23
+ 3198 01ea 21       		.uleb128 0x21
+ 3199 01eb 00       		.byte	0
+ 3200 01ec 49       		.uleb128 0x49
+ 3201 01ed 13       		.uleb128 0x13
+ 3202 01ee 2F       		.uleb128 0x2f
+ 3203 01ef 0B       		.uleb128 0xb
+ 3204 01f0 00       		.byte	0
+ 3205 01f1 00       		.byte	0
+ 3206 01f2 24       		.uleb128 0x24
+ 3207 01f3 34       		.uleb128 0x34
+ 3208 01f4 00       		.byte	0
+ 3209 01f5 03       		.uleb128 0x3
+ 3210 01f6 0E       		.uleb128 0xe
+ 3211 01f7 3A       		.uleb128 0x3a
+ 3212 01f8 0B       		.uleb128 0xb
+ 3213 01f9 3B       		.uleb128 0x3b
+ 3214 01fa 05       		.uleb128 0x5
+ 3215 01fb 49       		.uleb128 0x49
+ 3216 01fc 13       		.uleb128 0x13
+ 3217 01fd 3F       		.uleb128 0x3f
+ 3218 01fe 0C       		.uleb128 0xc
+ 3219 01ff 3C       		.uleb128 0x3c
+ 3220 0200 0C       		.uleb128 0xc
+ 3221 0201 00       		.byte	0
+ 3222 0202 00       		.byte	0
+ 3223 0203 25       		.uleb128 0x25
+ 3224 0204 34       		.uleb128 0x34
+ 3225 0205 00       		.byte	0
+ 3226 0206 03       		.uleb128 0x3
+ 3227 0207 0E       		.uleb128 0xe
+ 3228 0208 3A       		.uleb128 0x3a
+ 3229 0209 0B       		.uleb128 0xb
+ 3230 020a 3B       		.uleb128 0x3b
+ 3231 020b 0B       		.uleb128 0xb
+ 3232 020c 49       		.uleb128 0x49
+ 3233 020d 13       		.uleb128 0x13
+ 3234 020e 3F       		.uleb128 0x3f
+ 3235 020f 0C       		.uleb128 0xc
+ 3236 0210 02       		.uleb128 0x2
+ 3237 0211 0A       		.uleb128 0xa
+ 3238 0212 00       		.byte	0
+ 3239 0213 00       		.byte	0
+ 3240 0214 26       		.uleb128 0x26
+ 3241 0215 2E       		.uleb128 0x2e
+ 3242 0216 01       		.byte	0x1
+ 3243 0217 3F       		.uleb128 0x3f
+ 3244 0218 0C       		.uleb128 0xc
+ 3245 0219 03       		.uleb128 0x3
+ 3246 021a 0E       		.uleb128 0xe
+ 3247 021b 3A       		.uleb128 0x3a
+ 3248 021c 0B       		.uleb128 0xb
+ 3249 021d 3B       		.uleb128 0x3b
+ 3250 021e 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 67
+
+
+ 3251 021f 27       		.uleb128 0x27
+ 3252 0220 0C       		.uleb128 0xc
+ 3253 0221 3C       		.uleb128 0x3c
+ 3254 0222 0C       		.uleb128 0xc
+ 3255 0223 01       		.uleb128 0x1
+ 3256 0224 13       		.uleb128 0x13
+ 3257 0225 00       		.byte	0
+ 3258 0226 00       		.byte	0
+ 3259 0227 27       		.uleb128 0x27
+ 3260 0228 2E       		.uleb128 0x2e
+ 3261 0229 00       		.byte	0
+ 3262 022a 3F       		.uleb128 0x3f
+ 3263 022b 0C       		.uleb128 0xc
+ 3264 022c 03       		.uleb128 0x3
+ 3265 022d 0E       		.uleb128 0xe
+ 3266 022e 3A       		.uleb128 0x3a
+ 3267 022f 0B       		.uleb128 0xb
+ 3268 0230 3B       		.uleb128 0x3b
+ 3269 0231 0B       		.uleb128 0xb
+ 3270 0232 27       		.uleb128 0x27
+ 3271 0233 0C       		.uleb128 0xc
+ 3272 0234 49       		.uleb128 0x49
+ 3273 0235 13       		.uleb128 0x13
+ 3274 0236 3C       		.uleb128 0x3c
+ 3275 0237 0C       		.uleb128 0xc
+ 3276 0238 00       		.byte	0
+ 3277 0239 00       		.byte	0
+ 3278 023a 28       		.uleb128 0x28
+ 3279 023b 2E       		.uleb128 0x2e
+ 3280 023c 00       		.byte	0
+ 3281 023d 3F       		.uleb128 0x3f
+ 3282 023e 0C       		.uleb128 0xc
+ 3283 023f 03       		.uleb128 0x3
+ 3284 0240 0E       		.uleb128 0xe
+ 3285 0241 3A       		.uleb128 0x3a
+ 3286 0242 0B       		.uleb128 0xb
+ 3287 0243 3B       		.uleb128 0x3b
+ 3288 0244 0B       		.uleb128 0xb
+ 3289 0245 27       		.uleb128 0x27
+ 3290 0246 0C       		.uleb128 0xc
+ 3291 0247 3C       		.uleb128 0x3c
+ 3292 0248 0C       		.uleb128 0xc
+ 3293 0249 00       		.byte	0
+ 3294 024a 00       		.byte	0
+ 3295 024b 29       		.uleb128 0x29
+ 3296 024c 2E       		.uleb128 0x2e
+ 3297 024d 01       		.byte	0x1
+ 3298 024e 3F       		.uleb128 0x3f
+ 3299 024f 0C       		.uleb128 0xc
+ 3300 0250 03       		.uleb128 0x3
+ 3301 0251 0E       		.uleb128 0xe
+ 3302 0252 3A       		.uleb128 0x3a
+ 3303 0253 0B       		.uleb128 0xb
+ 3304 0254 3B       		.uleb128 0x3b
+ 3305 0255 0B       		.uleb128 0xb
+ 3306 0256 27       		.uleb128 0x27
+ 3307 0257 0C       		.uleb128 0xc
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 68
+
+
+ 3308 0258 49       		.uleb128 0x49
+ 3309 0259 13       		.uleb128 0x13
+ 3310 025a 3C       		.uleb128 0x3c
+ 3311 025b 0C       		.uleb128 0xc
+ 3312 025c 01       		.uleb128 0x1
+ 3313 025d 13       		.uleb128 0x13
+ 3314 025e 00       		.byte	0
+ 3315 025f 00       		.byte	0
+ 3316 0260 2A       		.uleb128 0x2a
+ 3317 0261 2E       		.uleb128 0x2e
+ 3318 0262 01       		.byte	0x1
+ 3319 0263 3F       		.uleb128 0x3f
+ 3320 0264 0C       		.uleb128 0xc
+ 3321 0265 03       		.uleb128 0x3
+ 3322 0266 0E       		.uleb128 0xe
+ 3323 0267 3A       		.uleb128 0x3a
+ 3324 0268 0B       		.uleb128 0xb
+ 3325 0269 3B       		.uleb128 0x3b
+ 3326 026a 05       		.uleb128 0x5
+ 3327 026b 27       		.uleb128 0x27
+ 3328 026c 0C       		.uleb128 0xc
+ 3329 026d 49       		.uleb128 0x49
+ 3330 026e 13       		.uleb128 0x13
+ 3331 026f 3C       		.uleb128 0x3c
+ 3332 0270 0C       		.uleb128 0xc
+ 3333 0271 01       		.uleb128 0x1
+ 3334 0272 13       		.uleb128 0x13
+ 3335 0273 00       		.byte	0
+ 3336 0274 00       		.byte	0
+ 3337 0275 2B       		.uleb128 0x2b
+ 3338 0276 18       		.uleb128 0x18
+ 3339 0277 00       		.byte	0
+ 3340 0278 00       		.byte	0
+ 3341 0279 00       		.byte	0
+ 3342 027a 00       		.byte	0
+ 3343              		.section	.debug_loc,"",%progbits
+ 3344              	.Ldebug_loc0:
+ 3345              	.LLST0:
+ 3346 0000 00000000 		.4byte	.LFB62
+ 3347 0004 0A000000 		.4byte	.LCFI0
+ 3348 0008 0200     		.2byte	0x2
+ 3349 000a 7D       		.byte	0x7d
+ 3350 000b 00       		.sleb128 0
+ 3351 000c 0A000000 		.4byte	.LCFI0
+ 3352 0010 28000000 		.4byte	.LFE62
+ 3353 0014 0200     		.2byte	0x2
+ 3354 0016 7D       		.byte	0x7d
+ 3355 0017 08       		.sleb128 8
+ 3356 0018 00000000 		.4byte	0
+ 3357 001c 00000000 		.4byte	0
+ 3358              	.LLST1:
+ 3359 0020 00000000 		.4byte	.LVL0
+ 3360 0024 08000000 		.4byte	.LVL1
+ 3361 0028 0100     		.2byte	0x1
+ 3362 002a 50       		.byte	0x50
+ 3363 002b 08000000 		.4byte	.LVL1
+ 3364 002f 12000000 		.4byte	.LVL2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 69
+
+
+ 3365 0033 0400     		.2byte	0x4
+ 3366 0035 F3       		.byte	0xf3
+ 3367 0036 01       		.uleb128 0x1
+ 3368 0037 50       		.byte	0x50
+ 3369 0038 9F       		.byte	0x9f
+ 3370 0039 12000000 		.4byte	.LVL2
+ 3371 003d 28000000 		.4byte	.LFE62
+ 3372 0041 0100     		.2byte	0x1
+ 3373 0043 54       		.byte	0x54
+ 3374 0044 00000000 		.4byte	0
+ 3375 0048 00000000 		.4byte	0
+ 3376              	.LLST2:
+ 3377 004c 00000000 		.4byte	.LFB58
+ 3378 0050 02000000 		.4byte	.LCFI1
+ 3379 0054 0200     		.2byte	0x2
+ 3380 0056 7D       		.byte	0x7d
+ 3381 0057 00       		.sleb128 0
+ 3382 0058 02000000 		.4byte	.LCFI1
+ 3383 005c 14000000 		.4byte	.LFE58
+ 3384 0060 0200     		.2byte	0x2
+ 3385 0062 7D       		.byte	0x7d
+ 3386 0063 08       		.sleb128 8
+ 3387 0064 00000000 		.4byte	0
+ 3388 0068 00000000 		.4byte	0
+ 3389              	.LLST3:
+ 3390 006c 00000000 		.4byte	.LFB56
+ 3391 0070 02000000 		.4byte	.LCFI2
+ 3392 0074 0200     		.2byte	0x2
+ 3393 0076 7D       		.byte	0x7d
+ 3394 0077 00       		.sleb128 0
+ 3395 0078 02000000 		.4byte	.LCFI2
+ 3396 007c 24000000 		.4byte	.LFE56
+ 3397 0080 0200     		.2byte	0x2
+ 3398 0082 7D       		.byte	0x7d
+ 3399 0083 08       		.sleb128 8
+ 3400 0084 00000000 		.4byte	0
+ 3401 0088 00000000 		.4byte	0
+ 3402              	.LLST4:
+ 3403 008c 00000000 		.4byte	.LFB60
+ 3404 0090 02000000 		.4byte	.LCFI3
+ 3405 0094 0200     		.2byte	0x2
+ 3406 0096 7D       		.byte	0x7d
+ 3407 0097 00       		.sleb128 0
+ 3408 0098 02000000 		.4byte	.LCFI3
+ 3409 009c 20000000 		.4byte	.LFE60
+ 3410 00a0 0200     		.2byte	0x2
+ 3411 00a2 7D       		.byte	0x7d
+ 3412 00a3 08       		.sleb128 8
+ 3413 00a4 00000000 		.4byte	0
+ 3414 00a8 00000000 		.4byte	0
+ 3415              	.LLST5:
+ 3416 00ac 00000000 		.4byte	.LFB61
+ 3417 00b0 08000000 		.4byte	.LCFI4
+ 3418 00b4 0200     		.2byte	0x2
+ 3419 00b6 7D       		.byte	0x7d
+ 3420 00b7 00       		.sleb128 0
+ 3421 00b8 08000000 		.4byte	.LCFI4
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 70
+
+
+ 3422 00bc 44000000 		.4byte	.LFE61
+ 3423 00c0 0200     		.2byte	0x2
+ 3424 00c2 7D       		.byte	0x7d
+ 3425 00c3 10       		.sleb128 16
+ 3426 00c4 00000000 		.4byte	0
+ 3427 00c8 00000000 		.4byte	0
+ 3428              	.LLST6:
+ 3429 00cc 12000000 		.4byte	.LVL12
+ 3430 00d0 15000000 		.4byte	.LVL13-1
+ 3431 00d4 0100     		.2byte	0x1
+ 3432 00d6 50       		.byte	0x50
+ 3433 00d7 15000000 		.4byte	.LVL13-1
+ 3434 00db 44000000 		.4byte	.LFE61
+ 3435 00df 0100     		.2byte	0x1
+ 3436 00e1 54       		.byte	0x54
+ 3437 00e2 00000000 		.4byte	0
+ 3438 00e6 00000000 		.4byte	0
+ 3439              	.LLST7:
+ 3440 00ea 1A000000 		.4byte	.LVL14
+ 3441 00ee 21000000 		.4byte	.LVL15-1
+ 3442 00f2 0100     		.2byte	0x1
+ 3443 00f4 50       		.byte	0x50
+ 3444 00f5 21000000 		.4byte	.LVL15-1
+ 3445 00f9 44000000 		.4byte	.LFE61
+ 3446 00fd 0100     		.2byte	0x1
+ 3447 00ff 55       		.byte	0x55
+ 3448 0100 00000000 		.4byte	0
+ 3449 0104 00000000 		.4byte	0
+ 3450              	.LLST8:
+ 3451 0108 00000000 		.4byte	.LFB63
+ 3452 010c 04000000 		.4byte	.LCFI5
+ 3453 0110 0200     		.2byte	0x2
+ 3454 0112 7D       		.byte	0x7d
+ 3455 0113 00       		.sleb128 0
+ 3456 0114 04000000 		.4byte	.LCFI5
+ 3457 0118 CC000000 		.4byte	.LFE63
+ 3458 011c 0200     		.2byte	0x2
+ 3459 011e 7D       		.byte	0x7d
+ 3460 011f 20       		.sleb128 32
+ 3461 0120 00000000 		.4byte	0
+ 3462 0124 00000000 		.4byte	0
+ 3463              	.LLST9:
+ 3464 0128 00000000 		.4byte	.LVL19
+ 3465 012c 07000000 		.4byte	.LVL20-1
+ 3466 0130 0100     		.2byte	0x1
+ 3467 0132 50       		.byte	0x50
+ 3468 0133 07000000 		.4byte	.LVL20-1
+ 3469 0137 CC000000 		.4byte	.LFE63
+ 3470 013b 0400     		.2byte	0x4
+ 3471 013d F3       		.byte	0xf3
+ 3472 013e 01       		.uleb128 0x1
+ 3473 013f 50       		.byte	0x50
+ 3474 0140 9F       		.byte	0x9f
+ 3475 0141 00000000 		.4byte	0
+ 3476 0145 00000000 		.4byte	0
+ 3477              	.LLST10:
+ 3478 0149 A4000000 		.4byte	.LVL40
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 71
+
+
+ 3479 014d A9000000 		.4byte	.LVL41-1
+ 3480 0151 0C00     		.2byte	0xc
+ 3481 0153 F5       		.byte	0xf5
+ 3482 0154 00       		.uleb128 0
+ 3483 0155 29       		.uleb128 0x29
+ 3484 0156 F4       		.byte	0xf4
+ 3485 0157 29       		.uleb128 0x29
+ 3486 0158 04       		.byte	0x4
+ 3487 0159 33938843 		.4byte	0x43889333
+ 3488 015d 1C       		.byte	0x1c
+ 3489 015e 9F       		.byte	0x9f
+ 3490 015f 00000000 		.4byte	0
+ 3491 0163 00000000 		.4byte	0
+ 3492              	.LLST11:
+ 3493 0167 00000000 		.4byte	.LFB59
+ 3494 016b 02000000 		.4byte	.LCFI6
+ 3495 016f 0200     		.2byte	0x2
+ 3496 0171 7D       		.byte	0x7d
+ 3497 0172 00       		.sleb128 0
+ 3498 0173 02000000 		.4byte	.LCFI6
+ 3499 0177 06000000 		.4byte	.LCFI7
+ 3500 017b 0200     		.2byte	0x2
+ 3501 017d 7D       		.byte	0x7d
+ 3502 017e 14       		.sleb128 20
+ 3503 017f 06000000 		.4byte	.LCFI7
+ 3504 0183 6C020000 		.4byte	.LFE59
+ 3505 0187 0300     		.2byte	0x3
+ 3506 0189 7D       		.byte	0x7d
+ 3507 018a C800     		.sleb128 72
+ 3508 018c 00000000 		.4byte	0
+ 3509 0190 00000000 		.4byte	0
+ 3510              	.LLST12:
+ 3511 0194 9C000000 		.4byte	.LVL70
+ 3512 0198 AD000000 		.4byte	.LVL71-1
+ 3513 019c 0500     		.2byte	0x5
+ 3514 019e 03       		.byte	0x3
+ 3515 019f 00000000 		.4byte	filter_read
+ 3516 01a3 AD000000 		.4byte	.LVL71-1
+ 3517 01a7 C4000000 		.4byte	.LVL74
+ 3518 01ab 0100     		.2byte	0x1
+ 3519 01ad 56       		.byte	0x56
+ 3520 01ae 00000000 		.4byte	0
+ 3521 01b2 00000000 		.4byte	0
+ 3522              	.LLST13:
+ 3523 01b6 DE010000 		.4byte	.LVL99
+ 3524 01ba E4010000 		.4byte	.LVL100
+ 3525 01be 0100     		.2byte	0x1
+ 3526 01c0 50       		.byte	0x50
+ 3527 01c1 E4010000 		.4byte	.LVL100
+ 3528 01c5 E6010000 		.4byte	.LVL101
+ 3529 01c9 0300     		.2byte	0x3
+ 3530 01cb 70       		.byte	0x70
+ 3531 01cc 30       		.sleb128 48
+ 3532 01cd 9F       		.byte	0x9f
+ 3533 01ce E6010000 		.4byte	.LVL101
+ 3534 01d2 04020000 		.4byte	.LVL106
+ 3535 01d6 0300     		.2byte	0x3
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 72
+
+
+ 3536 01d8 77       		.byte	0x77
+ 3537 01d9 30       		.sleb128 48
+ 3538 01da 9F       		.byte	0x9f
+ 3539 01db 04020000 		.4byte	.LVL106
+ 3540 01df 0B020000 		.4byte	.LVL107-1
+ 3541 01e3 0100     		.2byte	0x1
+ 3542 01e5 50       		.byte	0x50
+ 3543 01e6 14020000 		.4byte	.LVL108
+ 3544 01ea 1A020000 		.4byte	.LVL109
+ 3545 01ee 0300     		.2byte	0x3
+ 3546 01f0 08       		.byte	0x8
+ 3547 01f1 30       		.byte	0x30
+ 3548 01f2 9F       		.byte	0x9f
+ 3549 01f3 00000000 		.4byte	0
+ 3550 01f7 00000000 		.4byte	0
+ 3551              	.LLST14:
+ 3552 01fb 00000000 		.4byte	.LVL42
+ 3553 01ff 8C000000 		.4byte	.LVL68
+ 3554 0203 0200     		.2byte	0x2
+ 3555 0205 30       		.byte	0x30
+ 3556 0206 9F       		.byte	0x9f
+ 3557 0207 8C000000 		.4byte	.LVL68
+ 3558 020b C6010000 		.4byte	.LVL94
+ 3559 020f 0100     		.2byte	0x1
+ 3560 0211 55       		.byte	0x55
+ 3561 0212 CA010000 		.4byte	.LVL95
+ 3562 0216 DA010000 		.4byte	.LVL98
+ 3563 021a 0200     		.2byte	0x2
+ 3564 021c 30       		.byte	0x30
+ 3565 021d 9F       		.byte	0x9f
+ 3566 021e DA010000 		.4byte	.LVL98
+ 3567 0222 6C020000 		.4byte	.LFE59
+ 3568 0226 0100     		.2byte	0x1
+ 3569 0228 55       		.byte	0x55
+ 3570 0229 00000000 		.4byte	0
+ 3571 022d 00000000 		.4byte	0
+ 3572              		.section	.debug_aranges,"",%progbits
+ 3573 0000 54000000 		.4byte	0x54
+ 3574 0004 0200     		.2byte	0x2
+ 3575 0006 00000000 		.4byte	.Ldebug_info0
+ 3576 000a 04       		.byte	0x4
+ 3577 000b 00       		.byte	0
+ 3578 000c 0000     		.2byte	0
+ 3579 000e 0000     		.2byte	0
+ 3580 0010 00000000 		.4byte	.LFB57
+ 3581 0014 14000000 		.4byte	.LFE57-.LFB57
+ 3582 0018 00000000 		.4byte	.LFB62
+ 3583 001c 28000000 		.4byte	.LFE62-.LFB62
+ 3584 0020 00000000 		.4byte	.LFB58
+ 3585 0024 14000000 		.4byte	.LFE58-.LFB58
+ 3586 0028 00000000 		.4byte	.LFB56
+ 3587 002c 24000000 		.4byte	.LFE56-.LFB56
+ 3588 0030 00000000 		.4byte	.LFB60
+ 3589 0034 20000000 		.4byte	.LFE60-.LFB60
+ 3590 0038 00000000 		.4byte	.LFB61
+ 3591 003c 44000000 		.4byte	.LFE61-.LFB61
+ 3592 0040 00000000 		.4byte	.LFB63
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 73
+
+
+ 3593 0044 CC000000 		.4byte	.LFE63-.LFB63
+ 3594 0048 00000000 		.4byte	.LFB59
+ 3595 004c 6C020000 		.4byte	.LFE59-.LFB59
+ 3596 0050 00000000 		.4byte	0
+ 3597 0054 00000000 		.4byte	0
+ 3598              		.section	.debug_ranges,"",%progbits
+ 3599              	.Ldebug_ranges0:
+ 3600 0000 00000000 		.4byte	.LFB57
+ 3601 0004 14000000 		.4byte	.LFE57
+ 3602 0008 00000000 		.4byte	.LFB62
+ 3603 000c 28000000 		.4byte	.LFE62
+ 3604 0010 00000000 		.4byte	.LFB58
+ 3605 0014 14000000 		.4byte	.LFE58
+ 3606 0018 00000000 		.4byte	.LFB56
+ 3607 001c 24000000 		.4byte	.LFE56
+ 3608 0020 00000000 		.4byte	.LFB60
+ 3609 0024 20000000 		.4byte	.LFE60
+ 3610 0028 00000000 		.4byte	.LFB61
+ 3611 002c 44000000 		.4byte	.LFE61
+ 3612 0030 00000000 		.4byte	.LFB63
+ 3613 0034 CC000000 		.4byte	.LFE63
+ 3614 0038 00000000 		.4byte	.LFB59
+ 3615 003c 6C020000 		.4byte	.LFE59
+ 3616 0040 00000000 		.4byte	0
+ 3617 0044 00000000 		.4byte	0
+ 3618              		.section	.debug_line,"",%progbits
+ 3619              	.Ldebug_line0:
+ 3620 0000 74030000 		.section	.debug_str,"MS",%progbits,1
+ 3620      02004B02 
+ 3620      00000201 
+ 3620      FB0E0D00 
+ 3620      01010101 
+ 3621              	.LASF42:
+ 3622 0000 6164635F 		.ascii	"adc_input\000"
+ 3622      696E7075 
+ 3622      7400
+ 3623              	.LASF86:
+ 3624 000a 4144435F 		.ascii	"ADC_SAR_2_StartConvert\000"
+ 3624      5341525F 
+ 3624      325F5374 
+ 3624      61727443 
+ 3624      6F6E7665 
+ 3625              	.LASF41:
+ 3626 0021 6F757470 		.ascii	"output\000"
+ 3626      757400
+ 3627              	.LASF97:
+ 3628 0028 49444143 		.ascii	"IDAC8_2_Start\000"
+ 3628      385F325F 
+ 3628      53746172 
+ 3628      7400
+ 3629              	.LASF48:
+ 3630 0036 62756666 		.ascii	"buffer\000"
+ 3630      657200
+ 3631              	.LASF85:
+ 3632 003d 4144435F 		.ascii	"ADC_SAR_1_StartConvert\000"
+ 3632      5341525F 
+ 3632      315F5374 
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 74
+
+
+ 3632      61727443 
+ 3632      6F6E7665 
+ 3633              	.LASF13:
+ 3634 0054 756E7369 		.ascii	"unsigned int\000"
+ 3634      676E6564 
+ 3634      20696E74 
+ 3634      00
+ 3635              	.LASF116:
+ 3636 0061 4144435F 		.ascii	"ADC_SAR_2_GetResult8\000"
+ 3636      5341525F 
+ 3636      325F4765 
+ 3636      74526573 
+ 3636      756C7438 
+ 3637              	.LASF28:
+ 3638 0076 49746572 		.ascii	"Iterm\000"
+ 3638      6D00
+ 3639              	.LASF70:
+ 3640 007c 436F756E 		.ascii	"Counter_1_ReadStatusRegister\000"
+ 3640      7465725F 
+ 3640      315F5265 
+ 3640      61645374 
+ 3640      61747573 
+ 3641              	.LASF23:
+ 3642 0099 72656738 		.ascii	"reg8\000"
+ 3642      00
+ 3643              	.LASF99:
+ 3644 009e 5047415F 		.ascii	"PGA_1_SetGain\000"
+ 3644      315F5365 
+ 3644      74476169 
+ 3644      6E00
+ 3645              	.LASF58:
+ 3646 00ac 6661756C 		.ascii	"faultStatus\000"
+ 3646      74537461 
+ 3646      74757300 
+ 3647              	.LASF40:
+ 3648 00b8 74644368 		.ascii	"tdChanA\000"
+ 3648      616E4100 
+ 3649              	.LASF61:
+ 3650 00c0 66696C74 		.ascii	"filter_readold\000"
+ 3650      65725F72 
+ 3650      6561646F 
+ 3650      6C6400
+ 3651              	.LASF89:
+ 3652 00cf 4661756C 		.ascii	"Fault_isr_SetPriority\000"
+ 3652      745F6973 
+ 3652      725F5365 
+ 3652      74507269 
+ 3652      6F726974 
+ 3653              	.LASF9:
+ 3654 00e5 75696E74 		.ascii	"uint32_t\000"
+ 3654      33325F74 
+ 3654      00
+ 3655              	.LASF80:
+ 3656 00ee 6973725F 		.ascii	"isr_StartEx\000"
+ 3656      53746172 
+ 3656      74457800 
+ 3657              	.LASF0:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 75
+
+
+ 3658 00fa 666C6F61 		.ascii	"float\000"
+ 3658      7400
+ 3659              	.LASF117:
+ 3660 0100 6661756C 		.ascii	"faultISR\000"
+ 3660      74495352 
+ 3660      00
+ 3661              	.LASF18:
+ 3662 0109 696E7433 		.ascii	"int32\000"
+ 3662      3200
+ 3663              	.LASF111:
+ 3664 010f 43794465 		.ascii	"CyDelayUs\000"
+ 3664      6C617955 
+ 3664      7300
+ 3665              	.LASF12:
+ 3666 0119 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3666      206C6F6E 
+ 3666      6720756E 
+ 3666      7369676E 
+ 3666      65642069 
+ 3667              	.LASF81:
+ 3668 0130 55534255 		.ascii	"USBUART_1_CDC_Init\000"
+ 3668      4152545F 
+ 3668      315F4344 
+ 3668      435F496E 
+ 3668      697400
+ 3669              	.LASF90:
+ 3670 0143 5049445F 		.ascii	"PID_isr_StartEx\000"
+ 3670      6973725F 
+ 3670      53746172 
+ 3670      74457800 
+ 3671              	.LASF104:
+ 3672 0153 7069645F 		.ascii	"pid_init\000"
+ 3672      696E6974 
+ 3672      00
+ 3673              	.LASF100:
+ 3674 015c 46696C74 		.ascii	"Filter_Start\000"
+ 3674      65725F53 
+ 3674      74617274 
+ 3674      00
+ 3675              	.LASF67:
+ 3676 0169 49444143 		.ascii	"IDAC8_2_SetValue\000"
+ 3676      385F325F 
+ 3676      53657456 
+ 3676      616C7565 
+ 3676      00
+ 3677              	.LASF84:
+ 3678 017a 4144435F 		.ascii	"ADC_DelSig_1_Start\000"
+ 3678      44656C53 
+ 3678      69675F31 
+ 3678      5F537461 
+ 3678      727400
+ 3679              	.LASF82:
+ 3680 018d 4144435F 		.ascii	"ADC_SAR_1_Start\000"
+ 3680      5341525F 
+ 3680      315F5374 
+ 3680      61727400 
+ 3681              	.LASF51:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 76
+
+
+ 3682 019d 636F756E 		.ascii	"counter\000"
+ 3682      74657200 
+ 3683              	.LASF32:
+ 3684 01a5 74656D70 		.ascii	"temp1\000"
+ 3684      3100
+ 3685              	.LASF33:
+ 3686 01ab 74656D70 		.ascii	"temp2\000"
+ 3686      3200
+ 3687              	.LASF52:
+ 3688 01b1 41444374 		.ascii	"ADCtemp_read\000"
+ 3688      656D705F 
+ 3688      72656164 
+ 3688      00
+ 3689              	.LASF71:
+ 3690 01be 55534255 		.ascii	"USBUART_1_GetConfiguration\000"
+ 3690      4152545F 
+ 3690      315F4765 
+ 3690      74436F6E 
+ 3690      66696775 
+ 3691              	.LASF103:
+ 3692 01d9 436F756E 		.ascii	"Counter_1_Start\000"
+ 3692      7465725F 
+ 3692      315F5374 
+ 3692      61727400 
+ 3693              	.LASF43:
+ 3694 01e9 54656D70 		.ascii	"Temp\000"
+ 3694      00
+ 3695              	.LASF73:
+ 3696 01ee 4379446D 		.ascii	"CyDmaTdAllocate\000"
+ 3696      61546441 
+ 3696      6C6C6F63 
+ 3696      61746500 
+ 3697              	.LASF93:
+ 3698 01fe 436F6D70 		.ascii	"Comp_2_Start\000"
+ 3698      5F325F53 
+ 3698      74617274 
+ 3698      00
+ 3699              	.LASF118:
+ 3700 020b 63616C63 		.ascii	"calc_temperature\000"
+ 3700      5F74656D 
+ 3700      70657261 
+ 3700      74757265 
+ 3700      00
+ 3701              	.LASF21:
+ 3702 021c 63686172 		.ascii	"char\000"
+ 3702      00
+ 3703              	.LASF87:
+ 3704 0221 4144435F 		.ascii	"ADC_DelSig_1_StartConvert\000"
+ 3704      44656C53 
+ 3704      69675F31 
+ 3704      5F537461 
+ 3704      7274436F 
+ 3705              	.LASF15:
+ 3706 023b 75696E74 		.ascii	"uint16\000"
+ 3706      313600
+ 3707              	.LASF17:
+ 3708 0242 696E7438 		.ascii	"int8\000"
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 77
+
+
+ 3708      00
+ 3709              	.LASF4:
+ 3710 0247 75696E74 		.ascii	"uint8_t\000"
+ 3710      385F7400 
+ 3711              	.LASF20:
+ 3712 024f 63686172 		.ascii	"char8\000"
+ 3712      3800
+ 3713              	.LASF96:
+ 3714 0255 49444143 		.ascii	"IDAC8_1_Start\000"
+ 3714      385F315F 
+ 3714      53746172 
+ 3714      7400
+ 3715              	.LASF56:
+ 3716 0263 66696C74 		.ascii	"filterStatus\000"
+ 3716      65725374 
+ 3716      61747573 
+ 3716      00
+ 3717              	.LASF11:
+ 3718 0270 6C6F6E67 		.ascii	"long long int\000"
+ 3718      206C6F6E 
+ 3718      6720696E 
+ 3718      7400
+ 3719              	.LASF31:
+ 3720 027e 77726974 		.ascii	"write\000"
+ 3720      6500
+ 3721              	.LASF72:
+ 3722 0284 55534255 		.ascii	"USBUART_1_SetPowerStatus\000"
+ 3722      4152545F 
+ 3722      315F5365 
+ 3722      74506F77 
+ 3722      65725374 
+ 3723              	.LASF101:
+ 3724 029d 46696C74 		.ascii	"Filter_SetCoherency\000"
+ 3724      65725F53 
+ 3724      6574436F 
+ 3724      68657265 
+ 3724      6E637900 
+ 3725              	.LASF24:
+ 3726 02b1 63796973 		.ascii	"cyisraddress\000"
+ 3726      72616464 
+ 3726      72657373 
+ 3726      00
+ 3727              	.LASF68:
+ 3728 02be 56444143 		.ascii	"VDAC8_SetValue\000"
+ 3728      385F5365 
+ 3728      7456616C 
+ 3728      756500
+ 3729              	.LASF16:
+ 3730 02cd 75696E74 		.ascii	"uint32\000"
+ 3730      333200
+ 3731              	.LASF66:
+ 3732 02d4 49444143 		.ascii	"IDAC8_1_SetValue\000"
+ 3732      385F315F 
+ 3732      53657456 
+ 3732      616C7565 
+ 3732      00
+ 3733              	.LASF62:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 78
+
+
+ 3734 02e5 6461635F 		.ascii	"dac_offset\000"
+ 3734      6F666673 
+ 3734      657400
+ 3735              	.LASF57:
+ 3736 02f0 636C694D 		.ascii	"cliMode\000"
+ 3736      6F646500 
+ 3737              	.LASF115:
+ 3738 02f8 55534255 		.ascii	"USBUART_1_Stop\000"
+ 3738      4152545F 
+ 3738      315F5374 
+ 3738      6F7000
+ 3739              	.LASF112:
+ 3740 0307 56555342 		.ascii	"VUSB_Read\000"
+ 3740      5F526561 
+ 3740      6400
+ 3741              	.LASF88:
+ 3742 0311 4661756C 		.ascii	"Fault_isr_StartEx\000"
+ 3742      745F6973 
+ 3742      725F5374 
+ 3742      61727445 
+ 3742      7800
+ 3743              	.LASF114:
+ 3744 0323 636C6950 		.ascii	"cliProcess\000"
+ 3744      726F6365 
+ 3744      737300
+ 3745              	.LASF65:
+ 3746 032e 54656D70 		.ascii	"Temperature\000"
+ 3746      65726174 
+ 3746      75726500 
+ 3747              	.LASF39:
+ 3748 033a 6368616E 		.ascii	"channelHandle\000"
+ 3748      6E656C48 
+ 3748      616E646C 
+ 3748      6500
+ 3749              	.LASF63:
+ 3750 0348 70696431 		.ascii	"pid1\000"
+ 3750      00
+ 3751              	.LASF26:
+ 3752 034d 6C6F6E67 		.ascii	"long double\000"
+ 3752      20646F75 
+ 3752      626C6500 
+ 3753              	.LASF107:
+ 3754 0359 73707269 		.ascii	"sprintf\000"
+ 3754      6E746600 
+ 3755              	.LASF5:
+ 3756 0361 75696E74 		.ascii	"uint16_t\000"
+ 3756      31365F74 
+ 3756      00
+ 3757              	.LASF108:
+ 3758 036a 4144435F 		.ascii	"ADC_DelSig_1_GetResult32\000"
+ 3758      44656C53 
+ 3758      69675F31 
+ 3758      5F476574 
+ 3758      52657375 
+ 3759              	.LASF60:
+ 3760 0383 66696C74 		.ascii	"filter_read\000"
+ 3760      65725F72 
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 79
+
+
+ 3760      65616400 
+ 3761              	.LASF105:
+ 3762 038f 4C43445F 		.ascii	"LCD_Position\000"
+ 3762      506F7369 
+ 3762      74696F6E 
+ 3762      00
+ 3763              	.LASF110:
+ 3764 039c 436F6E74 		.ascii	"Control_RS_Write\000"
+ 3764      726F6C5F 
+ 3764      52535F57 
+ 3764      72697465 
+ 3764      00
+ 3765              	.LASF69:
+ 3766 03ad 55534255 		.ascii	"USBUART_1_Start\000"
+ 3766      4152545F 
+ 3766      315F5374 
+ 3766      61727400 
+ 3767              	.LASF59:
+ 3768 03bd 70696453 		.ascii	"pidStatus\000"
+ 3768      74617475 
+ 3768      7300
+ 3769              	.LASF55:
+ 3770 03c7 6576656E 		.ascii	"eventcounter\000"
+ 3770      74636F75 
+ 3770      6E746572 
+ 3770      00
+ 3771              	.LASF76:
+ 3772 03d4 4379446D 		.ascii	"CyDmaTdSetAddress\000"
+ 3772      61546453 
+ 3772      65744164 
+ 3772      64726573 
+ 3772      7300
+ 3773              	.LASF3:
+ 3774 03e6 73686F72 		.ascii	"short int\000"
+ 3774      7420696E 
+ 3774      7400
+ 3775              	.LASF8:
+ 3776 03f0 6C6F6E67 		.ascii	"long int\000"
+ 3776      20696E74 
+ 3776      00
+ 3777              	.LASF106:
+ 3778 03f9 4C43445F 		.ascii	"LCD_PrintString\000"
+ 3778      5072696E 
+ 3778      74537472 
+ 3778      696E6700 
+ 3779              	.LASF54:
+ 3780 0409 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 3780      52784275 
+ 3780      66666572 
+ 3780      00
+ 3781              	.LASF78:
+ 3782 0416 4379446D 		.ascii	"CyDmaChEnable\000"
+ 3782      61436845 
+ 3782      6E61626C 
+ 3782      6500
+ 3783              	.LASF50:
+ 3784 0424 74656D70 		.ascii	"temp\000"
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 80
+
+
+ 3784      00
+ 3785              	.LASF53:
+ 3786 0429 55534255 		.ascii	"USBUART_1_initVar\000"
+ 3786      4152545F 
+ 3786      315F696E 
+ 3786      69745661 
+ 3786      7200
+ 3787              	.LASF64:
+ 3788 043b 73657470 		.ascii	"setpoint\000"
+ 3788      6F696E74 
+ 3788      00
+ 3789              	.LASF49:
+ 3790 0444 66696C74 		.ascii	"filterRead\000"
+ 3790      65725265 
+ 3790      616400
+ 3791              	.LASF37:
+ 3792 044f 5553425F 		.ascii	"USB_init\000"
+ 3792      696E6974 
+ 3792      00
+ 3793              	.LASF27:
+ 3794 0458 6F757470 		.ascii	"outputFunctionPtr\000"
+ 3794      75744675 
+ 3794      6E637469 
+ 3794      6F6E5074 
+ 3794      7200
+ 3795              	.LASF102:
+ 3796 046a 4C43445F 		.ascii	"LCD_Start\000"
+ 3796      53746172 
+ 3796      7400
+ 3797              	.LASF79:
+ 3798 0474 6C6F6766 		.ascii	"logf\000"
+ 3798      00
+ 3799              	.LASF34:
+ 3800 0479 70696431 		.ascii	"pid1_write\000"
+ 3800      5F777269 
+ 3800      746500
+ 3801              	.LASF47:
+ 3802 0484 6D61696E 		.ascii	"main\000"
+ 3802      00
+ 3803              	.LASF25:
+ 3804 0489 73697A65 		.ascii	"sizetype\000"
+ 3804      74797065 
+ 3804      00
+ 3805              	.LASF10:
+ 3806 0492 6C6F6E67 		.ascii	"long unsigned int\000"
+ 3806      20756E73 
+ 3806      69676E65 
+ 3806      6420696E 
+ 3806      7400
+ 3807              	.LASF7:
+ 3808 04a4 696E7433 		.ascii	"int32_t\000"
+ 3808      325F7400 
+ 3809              	.LASF36:
+ 3810 04ac 66696C74 		.ascii	"filterVDAC\000"
+ 3810      65725644 
+ 3810      414300
+ 3811              	.LASF22:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 81
+
+
+ 3812 04b7 63797374 		.ascii	"cystatus\000"
+ 3812      61747573 
+ 3812      00
+ 3813              	.LASF92:
+ 3814 04c0 436F6D70 		.ascii	"Comp_1_Start\000"
+ 3814      5F315F53 
+ 3814      74617274 
+ 3814      00
+ 3815              	.LASF2:
+ 3816 04cd 756E7369 		.ascii	"unsigned char\000"
+ 3816      676E6564 
+ 3816      20636861 
+ 3816      7200
+ 3817              	.LASF46:
+ 3818 04db 433A5C55 		.ascii	"C:\\Users\\Luke\\Desktop\\Laserschutzschaltung.cyds"
+ 3818      73657273 
+ 3818      5C4C756B 
+ 3818      655C4465 
+ 3818      736B746F 
+ 3819 050a 6E5C4C61 		.ascii	"n\\Laserschutzschaltung.cydsn\000"
+ 3819      73657273 
+ 3819      63687574 
+ 3819      7A736368 
+ 3819      616C7475 
+ 3820              	.LASF109:
+ 3821 0527 7069645F 		.ascii	"pid_calc\000"
+ 3821      63616C63 
+ 3821      00
+ 3822              	.LASF91:
+ 3823 0530 5049445F 		.ascii	"PID_isr_SetPriority\000"
+ 3823      6973725F 
+ 3823      53657450 
+ 3823      72696F72 
+ 3823      69747900 
+ 3824              	.LASF29:
+ 3825 0544 6F6C645F 		.ascii	"old_pv\000"
+ 3825      707600
+ 3826              	.LASF83:
+ 3827 054b 4144435F 		.ascii	"ADC_SAR_2_Start\000"
+ 3827      5341525F 
+ 3827      325F5374 
+ 3827      61727400 
+ 3828              	.LASF75:
+ 3829 055b 4379446D 		.ascii	"CyDmaTdSetConfiguration\000"
+ 3829      61546453 
+ 3829      6574436F 
+ 3829      6E666967 
+ 3829      75726174 
+ 3830              	.LASF38:
+ 3831 0573 444D415F 		.ascii	"DMA_Config\000"
+ 3831      436F6E66 
+ 3831      696700
+ 3832              	.LASF30:
+ 3833 057e 77696E64 		.ascii	"windup\000"
+ 3833      757000
+ 3834              	.LASF35:
+ 3835 0585 70696449 		.ascii	"pidISR\000"
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 82
+
+
+ 3835      535200
+ 3836              	.LASF98:
+ 3837 058c 5047415F 		.ascii	"PGA_1_Start\000"
+ 3837      315F5374 
+ 3837      61727400 
+ 3838              	.LASF1:
+ 3839 0598 7369676E 		.ascii	"signed char\000"
+ 3839      65642063 
+ 3839      68617200 
+ 3840              	.LASF77:
+ 3841 05a4 4379446D 		.ascii	"CyDmaChSetInitialTd\000"
+ 3841      61436853 
+ 3841      6574496E 
+ 3841      69746961 
+ 3841      6C546400 
+ 3842              	.LASF6:
+ 3843 05b8 73686F72 		.ascii	"short unsigned int\000"
+ 3843      7420756E 
+ 3843      7369676E 
+ 3843      65642069 
+ 3843      6E7400
+ 3844              	.LASF44:
+ 3845 05cb 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 3845      4320342E 
+ 3845      372E3320 
+ 3845      32303133 
+ 3845      30333132 
+ 3846 05fe 616E6368 		.ascii	"anch revision 196615]\000"
+ 3846      20726576 
+ 3846      6973696F 
+ 3846      6E203139 
+ 3846      36363135 
+ 3847              	.LASF95:
+ 3848 0614 56444143 		.ascii	"VDAC8_Start\000"
+ 3848      385F5374 
+ 3848      61727400 
+ 3849              	.LASF14:
+ 3850 0620 75696E74 		.ascii	"uint8\000"
+ 3850      3800
+ 3851              	.LASF19:
+ 3852 0626 646F7562 		.ascii	"double\000"
+ 3852      6C6500
+ 3853              	.LASF94:
+ 3854 062d 436F6D70 		.ascii	"Comp_3_Start\000"
+ 3854      5F335F53 
+ 3854      74617274 
+ 3854      00
+ 3855              	.LASF74:
+ 3856 063a 444D415F 		.ascii	"DMA_DmaInitialize\000"
+ 3856      446D6149 
+ 3856      6E697469 
+ 3856      616C697A 
+ 3856      6500
+ 3857              	.LASF45:
+ 3858 064c 2E5C6D61 		.ascii	".\\main.c\000"
+ 3858      696E2E63 
+ 3858      00
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\cc9oaS4c.s 			page 83
+
+
+ 3859              	.LASF113:
+ 3860 0655 4C43445F 		.ascii	"LCD_PutChar\000"
+ 3860      50757443 
+ 3860      68617200 
+ 3861              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

@@ -1,0 +1,1029 @@
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"USBUART_1_vnd.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.section	.gnu.lto_.profile.d237ab5,"",%progbits
+  18 0000 789C6366 		.ascii	"x\234cf```a\200\000F\0066V\000\000\205\000\024"
+  18      60606061 
+  18      80004606 
+  18      36560000 
+  18      850014
+  19              		.text
+  20              		.section	.gnu.lto_.inline.d237ab5,"",%progbits
+  21 0000 789C6366 		.ascii	"x\234cf\300\016D\2414#\003\003;+#\003\023\307\031\023"
+  21      C00E44A1 
+  21      34230303 
+  21      3B2B2303 
+  21      13C71913 
+  22 0014 06B605F2 		.ascii	"\006\266\005\362L`A\000\026\230\001\370"
+  22      4C604100 
+  22      169801F8 
+  23              		.text
+  24              		.section	.gnu.lto_.jmpfuncs.d237ab5,"",%progbits
+  25 0000 789C6366 		.ascii	"x\234cf\300\016X\2414#\210\000\000\000\332\000\012"
+  25      C00E58A1 
+  25      34238800 
+  25      0000DA00 
+  25      0A
+  26              		.text
+  27              		.section	.gnu.lto_.pureconst.d237ab5,"",%progbits
+  28 0000 789C6366 		.ascii	"x\234cf```f\200\000F\006)\000\000z\000\""
+  28      60606066 
+  28      80004606 
+  28      2900007A 
+  28      0022
+  29              		.text
+  30              		.section	.gnu.lto_USBUART_1_HandleVendorRqst.d237ab5,"",%progbits
+  31 0000 789C9591 		.ascii	"x\234\225\221OHTQ\024\306\317w\357\235\031I)q9\270s"
+  31      4F485451 
+  31      14C6CF77 
+  31      EF9D1949 
+  31      297139B8 
+  32 0015 3119A948 		.ascii	"1\031\251H\004m\253E\201\033qr70\250\363v5\322\244m"
+  32      046DAB45 
+  32      811B7172 
+  32      3730A8F3 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 2
+
+
+  32      7635D2A4 
+  33 002a BD6F1A68 		.ascii	"\275o\032h\221P\270\025#\027\2455\331\344\337\322\210"
+  33      9150B815 
+  33      2317A535 
+  33      D9E4DFD2 
+  33      88
+  34 003b 5E11B591 		.ascii	"^\021\265\221b\210\324\024\247\210\011\224\022R\203"
+  34      6288D414 
+  34      A7880994 
+  34      125283
+  35 004a 1A42A773 		.ascii	"\032B\247s\357\0141\320\252\013\357\235\363\356\375"
+  35      EF0C31D0 
+  35      AA0BEF9D 
+  35      F3EEFD
+  36 0059 CEF77EE7 		.ascii	"\316\367~\347\\I\377\256c\374\264\011\242\023\034\341"
+  36      5C49FFAE 
+  36      63FCB409 
+  36      A2131CE1 
+  37 0069 23881B6F 		.ascii	"#\210\033o\210\334*!d\266\236\364\001\365\254\225t\215"
+  37      88DC2A21 
+  37      64B69EF4 
+  37      01F5AC95 
+  37      748D
+  38 007b 842A6D2B 		.ascii	"\204*m+\300$\004\032\020Ra\000\233b[`q~\377\035B\267"
+  38      C024041A 
+  38      10526100 
+  38      9B625B60 
+  38      717EFF1D 
+  39 0091 B54E7E1F 		.ascii	"\265N~\037\332Zo\367P`\303]A8\032Dc\320\310\307\020"
+  39      DA5A6FF7 
+  39      5060C35D 
+  39      41381A44 
+  39      63D0C8C7 
+  40 00a6 2216AE3C 		.ascii	"\"\026\256<^\033\252\221G`\362\245\227\363Z4\214r\321"
+  40      5E1BAA91 
+  40      4760F2A5 
+  40      97F35A34 
+  40      8C72D1
+  41 00b9 A7AF7311 		.ascii	"\247\257s\021\317\275\245\367\213ES\211q\310\312b\263"
+  41      CFBDA5F7 
+  41      8B455389 
+  41      71C8CA62 
+  41      B3
+  42 00ca 58BF9DDA 		.ascii	"X\277\235\332[\256\366\247\264\326\265\270\213\006\343"
+  42      5BAEF6A7 
+  42      B4D6B5B8 
+  42      8B06E3
+  43 00d9 CFC6F7E0 		.ascii	"\317\306\367\340\007\307L\235\247\213\305\351\331\347"
+  43      07C74C9D 
+  43      A78BC5E9 
+  43      D9E7
+  44 00e7 AB7E9FA0 		.ascii	"\253~\237\240\202\200\344\227P&#\312\263\322P\177\021"
+  44      8280E497 
+  44      502623CA 
+  44      B3D2507F 
+  44      11
+  45 00f8 C244B984 		.ascii	"\302D\271\204\244\267|\301\226\262\021[\177\314\277"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 3
+
+
+  45      A4B77CC1 
+  45      96B2115B 
+  45      7FCCBF
+  46 0107 CD566D88 		.ascii	"\315Vm\210\202uL#H\253x\2610\371\350\260\221\374\024"
+  46      82754C23 
+  46      48AB78B1 
+  46      30F9E8B0 
+  46      91FC14
+  47 011a A6C385F1 		.ascii	"\246\303\205\361\265\315CF!\265\347jE\225E\322\342m"
+  47      B5CD4346 
+  47      21B5E76A 
+  47      459545D2 
+  47      E26D
+  48 012c AD5FDBC3 		.ascii	"\255_\333\303\010\206\335\024\367\240p\037AL\260\223"
+  48      0886DD14 
+  48      F7A0701F 
+  48      414CB093 
+  49 013c 39FAFDD9 		.ascii	"9\372\375\331\275Y\335\224\326\346\304\207\007\254\332"
+  49      BD59DD94 
+  49      D6E6C487 
+  49      07ACDA
+  50 014b 11E5A6DC 		.ascii	"\021\345\246\334;O\006\003\306\304o?\177\3452\315-\023"
+  50      3B4F0603 
+  50      C6C46F3F 
+  50      7FE532CD 
+  50      2D13
+  51 015d 56184006 		.ascii	"V\030@\006Mx\010;\001L\242\205\241\222\271\253y\224"
+  51      4D78083B 
+  51      014CA285 
+  51      A192B9AB 
+  51      7994
+  52 016f A02473D1 		.ascii	"\240$s\321{\244\026\257t\2277*\221\330\036S\245R\356"
+  52      7BA416AF 
+  52      7497372A 
+  52      91D81E53 
+  52      A552EE
+  53 0182 5A52B65E 		.ascii	"ZR\266^\332\226\2366\226\304\352\177\200\247+\201_\217"
+  53      DA969E36 
+  53      96C4EA7F 
+  53      80A72B81 
+  53      5F8F
+  54 0194 6C4C290B 		.ascii	"lL)\013l/\361\333\365\341t\340/\361\014\023\317\226"
+  54      6C2FF1DB 
+  54      F5E174E0 
+  54      2FF10C13 
+  54      CF96
+  55 01a6 89E798D8 		.ascii	"\211\347\230\330\374\\\331\221\257\300\255\245\037l"
+  55      FC5CD991 
+  55      AFC0ADA5 
+  55      1F6C
+  56 01b4 9283EB7D 		.ascii	"\222\203\353}x%\354\360\323V\232\347+b\011\237\205\316"
+  56      7825ECF0 
+  56      D3569AE7 
+  56      2B62099F 
+  56      85CE
+  57 01c6 387127D1 		.ascii	"8q'\321\325\347\304\242\341\336\376D\217\023i\017\367"
+  57      D5E7C4A2 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 4
+
+
+  57      E1DEFE44 
+  57      8F13690F 
+  57      F7
+  58 01d7 9E3E1EE9 		.ascii	"\236>\036\351\014\237\352<\331q.\332\032\275\034\217"
+  58      0C9FEA3C 
+  58      D9712EDA 
+  58      1ABD1C8F 
+  59 01e7 35F7D0C1 		.ascii	"5\367\320\301\204s\261\337\271\324w\266+\036;\357\304"
+  59      8473B1DF 
+  59      B9D477B6 
+  59      2B1E3BEF 
+  59      C4
+  60 01f8 FE0089D3 		.ascii	"\376\000\211\323\341\203"
+  60      E183
+  61              		.text
+  62              		.section	.gnu.lto_.symbol_nodes.d237ab5,"",%progbits
+  63 0000 789C6366 		.ascii	"x\234cf``\020b\200\002&\206z\006\206\011\347\030\030"
+  63      60601062 
+  63      80022686 
+  63      7A068609 
+  63      E71818
+  64 0013 EAEB19A6 		.ascii	"\352\353\031\246-\340``\000\000&p\0041"
+  64      2DE06060 
+  64      00002670 
+  64      0431
+  65              		.text
+  66              		.section	.gnu.lto_.refs.d237ab5,"",%progbits
+  67 0000 789C6366 		.ascii	"x\234cf```d\200\002\000\000=\000\005"
+  67      60606064 
+  67      80020000 
+  67      3D0005
+  68              		.text
+  69              		.section	.gnu.lto_.decls.d237ab5,"",%progbits
+  70 0000 789C8D53 		.ascii	"x\234\215S_HSa\024\377\316\256n\363j\031\016\324F\320"
+  70      5F485361 
+  70      14FFCEAE 
+  70      6EF36A19 
+  70      0ED446D0 
+  71 0014 34B03F88 		.ascii	"4\260?\210\344C\320\243i\240O!\232A$\214\261]*\210i"
+  71      E443D0A3 
+  71      69A04F21 
+  71      9A41248C 
+  71      B15D2A88 
+  72 0029 F31AF8D4 		.ascii	"\363\032\370\324\247\006.\261R\311\230Qn0\315\277\255"
+  72      A7062EB1 
+  72      52C99851 
+  72      6E30CDBF 
+  72      AD
+  73 003a 696AF34F 		.ascii	"ij\363O9\335\024)z\010%R|P|\021|\231\364\037\313u\276"
+  73      39DD1429 
+  73      7A082552 
+  73      7C507C11 
+  73      7C99F41F 
+  74 0051 6FD38DD2 		.ascii	"o\323\215\322\352\300\271\367;\337=\277\363;\377\256"
+  74      EAC0B9F7 
+  74      3BDF3DBF 
+  74      F33BFFAE 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 5
+
+
+  75 0061 40089151 		.ascii	"@\010\221Q\203(K\002!\036<+P\013ID\000\265\237\374)"
+  75      83284B02 
+  75      211E3C2B 
+  75      500B4944 
+  75      00B59FFC 
+  76 0076 EC4E8DDA 		.ascii	"\354N\215\332\213\232\214:\210:\205:\211\352G-@\365"
+  76      8B9A8C3A 
+  76      883A853A 
+  76      89EA472D 
+  76      40F5
+  77 0088 85F16351 		.ascii	"\205\361cQq\330{\372\267X\033\012x?QW\247\026\024\300"
+  77      71D87BFA 
+  77      B7581B0A 
+  77      783F5157 
+  77      A71614C0 
+  78 009c CE4EDBCA 		.ascii	"\316N\333\312\274\230\331C)\265R\257\027\"N\325O\306"
+  78      BC98D943 
+  78      29B552AF 
+  78      17224ED5 
+  78      4FC6
+  79 00ae 1A546B0A 		.ascii	"\032Tk\012H\026\271y\367\315\303I\201\233A\206S,,\334"
+  79      4816B979 
+  79      F7CDC349 
+  79      819B4186 
+  79      532C2CDC 
+  80 00c2 FF2E8098 		.ascii	"\377.\200\230a\245\264\206\006\232\251\220J S\013\307"
+  80      61A5B486 
+  80      069AA990 
+  80      4A20530B 
+  80      C7
+  81 00d3 B504FA20 		.ascii	"\265\004\372 \003\335\240\0132\011t\203\026z@K\332\221"
+  81      03DDA00B 
+  81      32097483 
+  81      167A404B 
+  81      DA91
+  82 00e5 20609F5F 		.ascii	" `\237_<Di\014\364\202\010\235 p\017L\2221\204IG\\\237"
+  82      3C44690C 
+  82      F482089D 
+  82      20700F4C 
+  82      92318449 
+  83 00fc DEC623CB 		.ascii	"\336\306#\313~Q\307\314\321\346Y\233\022\315\0041\206"
+  83      7E51C7CC 
+  83      D1E6599B 
+  83      12CD0431 
+  83      86
+  84 010d 99B76FB9 		.ascii	"\231\267o\271\205\224\026\214D\033k\351\201P\234\247"
+  84      8594168C 
+  84      441B6BE9 
+  84      81509CA7 
+  85 011d 48E04202 		.ascii	"H\340B\002\002\317 \005\237\227bB\221~\364\373\273\324"
+  85      02CF2005 
+  85      9F976242 
+  85      917EF4FB 
+  85      BBD4
+  86 012f 4236AFF1 		.ascii	"B6\257\361g\353\343\217\211\2726\352p\007\0369\027\205"
+  86      67EBE38F 
+  86      89BA36EA 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 6
+
+
+  86      70071E39 
+  86      1785
+  87 0141 56EAA8A1 		.ascii	"V\352\250\241[A\254\203a\300\275\223\011a\347\320 \372"
+  87      5B41AC83 
+  87      61C0BD93 
+  87      0961E7D0 
+  87      20FA
+  88 0153 41B7A110 		.ascii	"A\267\241\020\\\357&\332\024\240\325\2126\354\316\267"
+  88      5CEF26DA 
+  88      14A0D58A 
+  88      36ECCEB7 
+  89 0163 C3300822 		.ascii	"\3030\010\"aG\357Z0x3\030\222{*~mei\005j\242\372@\370"
+  89      6147EF5A 
+  89      30783318 
+  89      927B2A7E 
+  89      6D656905 
+  90 017c 3D81E798 		.ascii	"=\201\347\230\341\000f\310LLf\300\3311\034\307K\314"
+  90      E10066C8 
+  90      4C4C66C0 
+  90      D9311CC7 
+  90      4BCC
+  91 018e 61B9B5B7 		.ascii	"a\271\265\267<\350\213\345%\252\231\371\325\271\274"
+  91      3CE88BE5 
+  91      25AA99F9 
+  91      D5B9BC
+  92 019d 0EDC5431 		.ascii	"\016\334T1s\3353>\033/Z\303%\307\025\340}T\305\036\036"
+  92      73DD333E 
+  92      1B2F5AC3 
+  92      25C715E0 
+  92      7D54C51E 
+  93 01b2 FF98165E 		.ascii	"\377\230\026^\240\211\336\365\233\315K\212\244F\356"
+  93      A089DEF5 
+  93      9BCD4B8A 
+  93      A446EE
+  94 01c1 EDA03AE0 		.ascii	"\355\240:\340\015\032B\367a\356>\002I\333 N57\367\032"
+  94      0D1A42F7 
+  94      61EE3E02 
+  94      49DB204E 
+  94      3537F71A 
+  95 01d5 04997548 		.ascii	"\004\231uH\230\361o\004\001\3225\031\016V\305\346\352"
+  95      98F16F04 
+  95      01D23519 
+  95      0E56C5E6 
+  95      EA
+  96 01e6 EAC5264A 		.ascii	"\352\305&J\033R\031\004F\261?\343\240\331\011\204\204"
+  96      1B521904 
+  96      46B13FE3 
+  96      A0D90984 
+  96      84
+  97 01f7 18E6043E 		.ascii	"\030\346\004>HS\230*\007[\031\341a\316\330Px\211{0\006"
+  97      4853982A 
+  97      075B19E1 
+  97      61CED850 
+  97      78897B30 
+  98 020c E9BCA16C 		.ascii	"\351\274\241l\376\313w:\225\024\330g\262\335\360\235"
+  98      FECB773A 
+  98      9514D867 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 7
+
+
+  98      B2DDF09D 
+  99 021c C17B6626 		.ascii	"\301{f&gU\202\035\370n\325\333\273=J\310\320p\220\355"
+  99      6755821D 
+  99      F86ED5DB 
+  99      BB3D4AC8 
+  99      D07090ED 
+ 100 0230 B21ABC18 		.ascii	"\262\032\274\030\361UdaX\004.\273\361\303\004\322\356"
+ 100      F1556461 
+ 100      58042EBB 
+ 100      F1C304D2 
+ 100      EE
+ 101 0241 96025B8A 		.ascii	"\226\002[\212\025\237C\245AT\365\337P$\032\342\332\352"
+ 101      159F43A5 
+ 101      4154F5DF 
+ 101      50241AE2 
+ 101      DAEA
+ 102 0253 72AB12EA 		.ascii	"r\253\022\352\331\226\207&0\211N\221\021LA\002\337\027"
+ 102      D9968726 
+ 102      30894E91 
+ 102      114C4102 
+ 102      DF17
+ 103 0265 7CA3F3D0 		.ascii	"|\243\363\320\227\372\221}l\\\265\377\361K\240\377\340"
+ 103      97FA917D 
+ 103      6C5CB5FF 
+ 103      F14BA0FF 
+ 103      E0
+ 104 0276 F8BC2D31 		.ascii	"\370\274-1z`\276=\007\006~HBD\307\347\017\276\3044;"
+ 104      7A60BE3D 
+ 104      07067E48 
+ 104      4244C7E7 
+ 104      0FBEC434 
+ 105 028b FB5DBDB9 		.ascii	"\373]\275\271P\230\31475\264\262\323\220Fb+\257\232"
+ 105      5098CC37 
+ 105      35B4B2D3 
+ 105      9046622B 
+ 105      AF9A
+ 106 029d E5D3CAFC 		.ascii	"\345\323\312\374s%\272<\222\226/\231%\213A\226L\372"
+ 106      7325BA3C 
+ 106      92962F99 
+ 106      258B4196 
+ 106      4CFA
+ 107 02af E2B24A8B 		.ascii	"\342\262J\213Q*-,.\313;Uj\254\222\253\312\245\212\254"
+ 107      512A2D2C 
+ 107      2ECB3B55 
+ 107      6AAC92AB 
+ 107      CAA58AAC 
+ 108 02c3 2B445B52 		.ascii	"+D[R\234[r\246\350\274>[_`0\233\256I\027$\263\251\314"
+ 108      9C5B72A6 
+ 108      E8BC3E5B 
+ 108      5F60309B 
+ 108      AE491724 
+ 109 02da 5274BD42 		.ascii	"Rt\275B>\272\0078\202\270a6e\031\211R*?k\220\015G\376"
+ 109      3EBA0738 
+ 109      82B86136 
+ 109      65198952 
+ 109      2A3F6B90 
+ 110 02f1 E58E6C07 		.ascii	"\345\216l\007#X\251\374\244\336\2040}\205l\2514\312"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 8
+
+
+ 110      2358A9FC 
+ 110      A4DE8430 
+ 110      7D856CA9 
+ 110      34CA
+ 111 0303 BF00DE49 		.ascii	"\277\000\336Ij\313"
+ 111      6ACB
+ 112              		.text
+ 113              		.section	.gnu.lto_.symtab.d237ab5,"",%progbits
+ 114 0000 55534255 		.ascii	"USBUART_1_HandleVendorRqst\000\000\000\000\000\000\000"
+ 114      4152545F 
+ 114      315F4861 
+ 114      6E646C65 
+ 114      56656E64 
+ 115 0021 00000000 		.ascii	"\000\000\000\000\000\261\000\000\000"
+ 115      00B10000 
+ 115      00
+ 116              		.text
+ 117              		.section	.gnu.lto_.opts,"",%progbits
+ 118 0000 272D666E 		.ascii	"'-fno-trapv' '-fno-strict-overflow' '-mcpu=cortex-m"
+ 118      6F2D7472 
+ 118      61707627 
+ 118      20272D66 
+ 118      6E6F2D73 
+ 119 0033 33272027 		.ascii	"3' '-mthumb' '-g' '-Og' '-ffunction-sections' '-flt"
+ 119      2D6D7468 
+ 119      756D6227 
+ 119      20272D67 
+ 119      2720272D 
+ 120 0066 6F272027 		.ascii	"o' '-ffat-lto-objects'\000"
+ 120      2D666661 
+ 120      742D6C74 
+ 120      6F2D6F62 
+ 120      6A656374 
+ 121              		.text
+ 122              		.cfi_sections	.debug_frame
+ 123              		.section	.text.USBUART_1_HandleVendorRqst,"ax",%progbits
+ 124              		.align	2
+ 125              		.global	USBUART_1_HandleVendorRqst
+ 126              		.thumb
+ 127              		.thumb_func
+ 128              		.type	USBUART_1_HandleVendorRqst, %function
+ 129              	USBUART_1_HandleVendorRqst:
+ 130              	.LFB0:
+ 131              		.file 1 "Generated_Source\\PSoC5\\USBUART_1_vnd.c"
+   1:Generated_Source\PSoC5/USBUART_1_vnd.c **** /***************************************************************************//**
+   2:Generated_Source\PSoC5/USBUART_1_vnd.c **** * \file USBUART_1_vnd.c
+   3:Generated_Source\PSoC5/USBUART_1_vnd.c **** * \version 3.10
+   4:Generated_Source\PSoC5/USBUART_1_vnd.c **** *
+   5:Generated_Source\PSoC5/USBUART_1_vnd.c **** * \brief
+   6:Generated_Source\PSoC5/USBUART_1_vnd.c **** *  This file contains the  USB vendor request handler.
+   7:Generated_Source\PSoC5/USBUART_1_vnd.c **** *
+   8:Generated_Source\PSoC5/USBUART_1_vnd.c **** ********************************************************************************
+   9:Generated_Source\PSoC5/USBUART_1_vnd.c **** * \copyright
+  10:Generated_Source\PSoC5/USBUART_1_vnd.c **** * Copyright 2008-2016, Cypress Semiconductor Corporation.  All rights reserved.
+  11:Generated_Source\PSoC5/USBUART_1_vnd.c **** * You may use this file only in accordance with the license, terms, conditions,
+  12:Generated_Source\PSoC5/USBUART_1_vnd.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  13:Generated_Source\PSoC5/USBUART_1_vnd.c **** * the software package with which this file was provided.
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 9
+
+
+  14:Generated_Source\PSoC5/USBUART_1_vnd.c **** *******************************************************************************/
+  15:Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  16:Generated_Source\PSoC5/USBUART_1_vnd.c **** #include "USBUART_1_pvt.h"
+  17:Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  18:Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  19:Generated_Source\PSoC5/USBUART_1_vnd.c **** #if(USBUART_1_EXTERN_VND == USBUART_1_FALSE)
+  20:Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  21:Generated_Source\PSoC5/USBUART_1_vnd.c **** /***************************************
+  22:Generated_Source\PSoC5/USBUART_1_vnd.c **** * Vendor Specific Declarations
+  23:Generated_Source\PSoC5/USBUART_1_vnd.c **** ***************************************/
+  24:Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  25:Generated_Source\PSoC5/USBUART_1_vnd.c **** /* `#START VENDOR_SPECIFIC_DECLARATIONS` Place your declaration here */
+  26:Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  27:Generated_Source\PSoC5/USBUART_1_vnd.c **** /* `#END` */
+  28:Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  29:Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  30:Generated_Source\PSoC5/USBUART_1_vnd.c **** /*******************************************************************************
+  31:Generated_Source\PSoC5/USBUART_1_vnd.c **** * Function Name: USBUART_1_HandleVendorRqst
+  32:Generated_Source\PSoC5/USBUART_1_vnd.c **** ****************************************************************************//**
+  33:Generated_Source\PSoC5/USBUART_1_vnd.c **** *
+  34:Generated_Source\PSoC5/USBUART_1_vnd.c **** *  This routine provide users with a method to implement vendor specific
+  35:Generated_Source\PSoC5/USBUART_1_vnd.c **** *  requests.
+  36:Generated_Source\PSoC5/USBUART_1_vnd.c **** *
+  37:Generated_Source\PSoC5/USBUART_1_vnd.c **** *  To implement vendor specific requests, add your code in this function to
+  38:Generated_Source\PSoC5/USBUART_1_vnd.c **** *  decode and disposition the request.  If the request is handled, your code
+  39:Generated_Source\PSoC5/USBUART_1_vnd.c **** *  must set the variable "requestHandled" to TRUE, indicating that the
+  40:Generated_Source\PSoC5/USBUART_1_vnd.c **** *  request has been handled.
+  41:Generated_Source\PSoC5/USBUART_1_vnd.c **** *
+  42:Generated_Source\PSoC5/USBUART_1_vnd.c **** * \return
+  43:Generated_Source\PSoC5/USBUART_1_vnd.c **** *  requestHandled.
+  44:Generated_Source\PSoC5/USBUART_1_vnd.c **** *
+  45:Generated_Source\PSoC5/USBUART_1_vnd.c **** * \reentrant
+  46:Generated_Source\PSoC5/USBUART_1_vnd.c **** *  No.
+  47:Generated_Source\PSoC5/USBUART_1_vnd.c **** *
+  48:Generated_Source\PSoC5/USBUART_1_vnd.c **** *******************************************************************************/
+  49:Generated_Source\PSoC5/USBUART_1_vnd.c **** uint8 USBUART_1_HandleVendorRqst(void) 
+  50:Generated_Source\PSoC5/USBUART_1_vnd.c **** {
+ 132              		.loc 1 50 0
+ 133              		.cfi_startproc
+ 134              		@ args = 0, pretend = 0, frame = 0
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136              		@ link register save eliminated.
+ 137              	.LVL0:
+  51:Generated_Source\PSoC5/USBUART_1_vnd.c ****     uint8 requestHandled = USBUART_1_FALSE;
+  52:Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  53:Generated_Source\PSoC5/USBUART_1_vnd.c ****     /* Check request direction: D2H or H2D. */
+  54:Generated_Source\PSoC5/USBUART_1_vnd.c ****     if (0u != (USBUART_1_bmRequestTypeReg & USBUART_1_RQST_DIR_D2H))
+ 138              		.loc 1 54 0
+ 139 0000 044B     		ldr	r3, .L3
+ 140 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 141 0004 13F0800F 		tst	r3, #128
+ 142 0008 01D0     		beq	.L2
+  55:Generated_Source\PSoC5/USBUART_1_vnd.c ****     {
+  56:Generated_Source\PSoC5/USBUART_1_vnd.c ****         /* Handle direction from device to host. */
+  57:Generated_Source\PSoC5/USBUART_1_vnd.c ****         
+  58:Generated_Source\PSoC5/USBUART_1_vnd.c ****         switch (USBUART_1_bRequestReg)
+ 143              		.loc 1 58 0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 10
+
+
+ 144 000a 024B     		ldr	r3, .L3
+ 145 000c 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 146              	.L2:
+  59:Generated_Source\PSoC5/USBUART_1_vnd.c ****         {
+  60:Generated_Source\PSoC5/USBUART_1_vnd.c ****             case USBUART_1_GET_EXTENDED_CONFIG_DESCRIPTOR:
+  61:Generated_Source\PSoC5/USBUART_1_vnd.c ****             #if defined(USBUART_1_ENABLE_MSOS_STRING)
+  62:Generated_Source\PSoC5/USBUART_1_vnd.c ****                 USBUART_1_currentTD.pData = (volatile uint8 *) &USBUART_1_MSOS_CONFIGURATION_DESCR[
+  63:Generated_Source\PSoC5/USBUART_1_vnd.c ****                 USBUART_1_currentTD.count = USBUART_1_MSOS_CONFIGURATION_DESCR[0u];
+  64:Generated_Source\PSoC5/USBUART_1_vnd.c ****                 requestHandled  = USBUART_1_InitControlRead();
+  65:Generated_Source\PSoC5/USBUART_1_vnd.c ****             #endif /* (USBUART_1_ENABLE_MSOS_STRING) */
+  66:Generated_Source\PSoC5/USBUART_1_vnd.c ****                 break;
+  67:Generated_Source\PSoC5/USBUART_1_vnd.c ****             
+  68:Generated_Source\PSoC5/USBUART_1_vnd.c ****             default:
+  69:Generated_Source\PSoC5/USBUART_1_vnd.c ****                 break;
+  70:Generated_Source\PSoC5/USBUART_1_vnd.c ****         }
+  71:Generated_Source\PSoC5/USBUART_1_vnd.c ****     }
+  72:Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  73:Generated_Source\PSoC5/USBUART_1_vnd.c ****     /* `#START VENDOR_SPECIFIC_CODE` Place your vendor specific request here */
+  74:Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  75:Generated_Source\PSoC5/USBUART_1_vnd.c ****     /* `#END` */
+  76:Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  77:Generated_Source\PSoC5/USBUART_1_vnd.c **** #ifdef USBUART_1_HANDLE_VENDOR_RQST_CALLBACK
+  78:Generated_Source\PSoC5/USBUART_1_vnd.c ****     if (USBUART_1_FALSE == requestHandled)
+  79:Generated_Source\PSoC5/USBUART_1_vnd.c ****     {
+  80:Generated_Source\PSoC5/USBUART_1_vnd.c ****         requestHandled = USBUART_1_HandleVendorRqst_Callback();
+  81:Generated_Source\PSoC5/USBUART_1_vnd.c ****     }
+  82:Generated_Source\PSoC5/USBUART_1_vnd.c **** #endif /* (USBUART_1_HANDLE_VENDOR_RQST_CALLBACK) */
+  83:Generated_Source\PSoC5/USBUART_1_vnd.c **** 
+  84:Generated_Source\PSoC5/USBUART_1_vnd.c ****     return (requestHandled);
+  85:Generated_Source\PSoC5/USBUART_1_vnd.c **** }
+ 147              		.loc 1 85 0
+ 148 000e 0020     		movs	r0, #0
+ 149 0010 7047     		bx	lr
+ 150              	.L4:
+ 151 0012 00BF     		.align	2
+ 152              	.L3:
+ 153 0014 00600040 		.word	1073766400
+ 154              		.cfi_endproc
+ 155              	.LFE0:
+ 156              		.size	USBUART_1_HandleVendorRqst, .-USBUART_1_HandleVendorRqst
+ 157              		.text
+ 158              	.Letext0:
+ 159              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 160              		.file 3 "Generated_Source\\PSoC5\\USBUART_1.h"
+ 161              		.section	.debug_info,"",%progbits
+ 162              	.Ldebug_info0:
+ 163 0000 E2000000 		.4byte	0xe2
+ 164 0004 0400     		.2byte	0x4
+ 165 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 166 000a 04       		.byte	0x4
+ 167 000b 01       		.uleb128 0x1
+ 168 000c 99010000 		.4byte	.LASF15
+ 169 0010 01       		.byte	0x1
+ 170 0011 BE000000 		.4byte	.LASF16
+ 171 0015 22000000 		.4byte	.LASF17
+ 172 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 173 001d 00000000 		.4byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 11
+
+
+ 174 0021 00000000 		.4byte	.Ldebug_line0
+ 175 0025 02       		.uleb128 0x2
+ 176 0026 01       		.byte	0x1
+ 177 0027 06       		.byte	0x6
+ 178 0028 74010000 		.4byte	.LASF0
+ 179 002c 02       		.uleb128 0x2
+ 180 002d 01       		.byte	0x1
+ 181 002e 08       		.byte	0x8
+ 182 002f 23010000 		.4byte	.LASF1
+ 183 0033 02       		.uleb128 0x2
+ 184 0034 02       		.byte	0x2
+ 185 0035 05       		.byte	0x5
+ 186 0036 86010000 		.4byte	.LASF2
+ 187 003a 02       		.uleb128 0x2
+ 188 003b 02       		.byte	0x2
+ 189 003c 07       		.byte	0x7
+ 190 003d 61010000 		.4byte	.LASF3
+ 191 0041 02       		.uleb128 0x2
+ 192 0042 04       		.byte	0x4
+ 193 0043 05       		.byte	0x5
+ 194 0044 51010000 		.4byte	.LASF4
+ 195 0048 02       		.uleb128 0x2
+ 196 0049 04       		.byte	0x4
+ 197 004a 07       		.byte	0x7
+ 198 004b EB000000 		.4byte	.LASF5
+ 199 004f 02       		.uleb128 0x2
+ 200 0050 08       		.byte	0x8
+ 201 0051 05       		.byte	0x5
+ 202 0052 00000000 		.4byte	.LASF6
+ 203 0056 02       		.uleb128 0x2
+ 204 0057 08       		.byte	0x8
+ 205 0058 07       		.byte	0x7
+ 206 0059 0C010000 		.4byte	.LASF7
+ 207 005d 03       		.uleb128 0x3
+ 208 005e 04       		.byte	0x4
+ 209 005f 05       		.byte	0x5
+ 210 0060 696E7400 		.ascii	"int\000"
+ 211 0064 02       		.uleb128 0x2
+ 212 0065 04       		.byte	0x4
+ 213 0066 07       		.byte	0x7
+ 214 0067 15000000 		.4byte	.LASF8
+ 215 006b 04       		.uleb128 0x4
+ 216 006c E5000000 		.4byte	.LASF13
+ 217 0070 02       		.byte	0x2
+ 218 0071 9201     		.2byte	0x192
+ 219 0073 2C000000 		.4byte	0x2c
+ 220 0077 02       		.uleb128 0x2
+ 221 0078 04       		.byte	0x4
+ 222 0079 04       		.byte	0x4
+ 223 007a 80010000 		.4byte	.LASF9
+ 224 007e 02       		.uleb128 0x2
+ 225 007f 08       		.byte	0x8
+ 226 0080 04       		.byte	0x4
+ 227 0081 5A010000 		.4byte	.LASF10
+ 228 0085 02       		.uleb128 0x2
+ 229 0086 01       		.byte	0x1
+ 230 0087 08       		.byte	0x8
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 12
+
+
+ 231 0088 31010000 		.4byte	.LASF11
+ 232 008c 02       		.uleb128 0x2
+ 233 008d 04       		.byte	0x4
+ 234 008e 07       		.byte	0x7
+ 235 008f 90010000 		.4byte	.LASF12
+ 236 0093 05       		.uleb128 0x5
+ 237 0094 08       		.byte	0x8
+ 238 0095 03       		.byte	0x3
+ 239 0096 C5       		.byte	0xc5
+ 240 0097 A8000000 		.4byte	0xa8
+ 241 009b 06       		.uleb128 0x6
+ 242 009c 0E000000 		.4byte	.LASF18
+ 243 00a0 03       		.byte	0x3
+ 244 00a1 C7       		.byte	0xc7
+ 245 00a2 A8000000 		.4byte	0xa8
+ 246 00a6 00       		.byte	0
+ 247 00a7 00       		.byte	0
+ 248 00a8 07       		.uleb128 0x7
+ 249 00a9 6B000000 		.4byte	0x6b
+ 250 00ad B8000000 		.4byte	0xb8
+ 251 00b1 08       		.uleb128 0x8
+ 252 00b2 8C000000 		.4byte	0x8c
+ 253 00b6 07       		.byte	0x7
+ 254 00b7 00       		.byte	0
+ 255 00b8 09       		.uleb128 0x9
+ 256 00b9 A4000000 		.4byte	.LASF14
+ 257 00bd 03       		.byte	0x3
+ 258 00be C8       		.byte	0xc8
+ 259 00bf 93000000 		.4byte	0x93
+ 260 00c3 0A       		.uleb128 0xa
+ 261 00c4 36010000 		.4byte	.LASF19
+ 262 00c8 01       		.byte	0x1
+ 263 00c9 31       		.byte	0x31
+ 264 00ca 6B000000 		.4byte	0x6b
+ 265 00ce 00000000 		.4byte	.LFB0
+ 266 00d2 18000000 		.4byte	.LFE0-.LFB0
+ 267 00d6 01       		.uleb128 0x1
+ 268 00d7 9C       		.byte	0x9c
+ 269 00d8 0B       		.uleb128 0xb
+ 270 00d9 FD000000 		.4byte	.LASF20
+ 271 00dd 01       		.byte	0x1
+ 272 00de 33       		.byte	0x33
+ 273 00df 6B000000 		.4byte	0x6b
+ 274 00e3 00       		.byte	0
+ 275 00e4 00       		.byte	0
+ 276 00e5 00       		.byte	0
+ 277              		.section	.debug_abbrev,"",%progbits
+ 278              	.Ldebug_abbrev0:
+ 279 0000 01       		.uleb128 0x1
+ 280 0001 11       		.uleb128 0x11
+ 281 0002 01       		.byte	0x1
+ 282 0003 25       		.uleb128 0x25
+ 283 0004 0E       		.uleb128 0xe
+ 284 0005 13       		.uleb128 0x13
+ 285 0006 0B       		.uleb128 0xb
+ 286 0007 03       		.uleb128 0x3
+ 287 0008 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 13
+
+
+ 288 0009 1B       		.uleb128 0x1b
+ 289 000a 0E       		.uleb128 0xe
+ 290 000b 55       		.uleb128 0x55
+ 291 000c 17       		.uleb128 0x17
+ 292 000d 11       		.uleb128 0x11
+ 293 000e 01       		.uleb128 0x1
+ 294 000f 10       		.uleb128 0x10
+ 295 0010 17       		.uleb128 0x17
+ 296 0011 00       		.byte	0
+ 297 0012 00       		.byte	0
+ 298 0013 02       		.uleb128 0x2
+ 299 0014 24       		.uleb128 0x24
+ 300 0015 00       		.byte	0
+ 301 0016 0B       		.uleb128 0xb
+ 302 0017 0B       		.uleb128 0xb
+ 303 0018 3E       		.uleb128 0x3e
+ 304 0019 0B       		.uleb128 0xb
+ 305 001a 03       		.uleb128 0x3
+ 306 001b 0E       		.uleb128 0xe
+ 307 001c 00       		.byte	0
+ 308 001d 00       		.byte	0
+ 309 001e 03       		.uleb128 0x3
+ 310 001f 24       		.uleb128 0x24
+ 311 0020 00       		.byte	0
+ 312 0021 0B       		.uleb128 0xb
+ 313 0022 0B       		.uleb128 0xb
+ 314 0023 3E       		.uleb128 0x3e
+ 315 0024 0B       		.uleb128 0xb
+ 316 0025 03       		.uleb128 0x3
+ 317 0026 08       		.uleb128 0x8
+ 318 0027 00       		.byte	0
+ 319 0028 00       		.byte	0
+ 320 0029 04       		.uleb128 0x4
+ 321 002a 16       		.uleb128 0x16
+ 322 002b 00       		.byte	0
+ 323 002c 03       		.uleb128 0x3
+ 324 002d 0E       		.uleb128 0xe
+ 325 002e 3A       		.uleb128 0x3a
+ 326 002f 0B       		.uleb128 0xb
+ 327 0030 3B       		.uleb128 0x3b
+ 328 0031 05       		.uleb128 0x5
+ 329 0032 49       		.uleb128 0x49
+ 330 0033 13       		.uleb128 0x13
+ 331 0034 00       		.byte	0
+ 332 0035 00       		.byte	0
+ 333 0036 05       		.uleb128 0x5
+ 334 0037 13       		.uleb128 0x13
+ 335 0038 01       		.byte	0x1
+ 336 0039 0B       		.uleb128 0xb
+ 337 003a 0B       		.uleb128 0xb
+ 338 003b 3A       		.uleb128 0x3a
+ 339 003c 0B       		.uleb128 0xb
+ 340 003d 3B       		.uleb128 0x3b
+ 341 003e 0B       		.uleb128 0xb
+ 342 003f 01       		.uleb128 0x1
+ 343 0040 13       		.uleb128 0x13
+ 344 0041 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 14
+
+
+ 345 0042 00       		.byte	0
+ 346 0043 06       		.uleb128 0x6
+ 347 0044 0D       		.uleb128 0xd
+ 348 0045 00       		.byte	0
+ 349 0046 03       		.uleb128 0x3
+ 350 0047 0E       		.uleb128 0xe
+ 351 0048 3A       		.uleb128 0x3a
+ 352 0049 0B       		.uleb128 0xb
+ 353 004a 3B       		.uleb128 0x3b
+ 354 004b 0B       		.uleb128 0xb
+ 355 004c 49       		.uleb128 0x49
+ 356 004d 13       		.uleb128 0x13
+ 357 004e 38       		.uleb128 0x38
+ 358 004f 0B       		.uleb128 0xb
+ 359 0050 00       		.byte	0
+ 360 0051 00       		.byte	0
+ 361 0052 07       		.uleb128 0x7
+ 362 0053 01       		.uleb128 0x1
+ 363 0054 01       		.byte	0x1
+ 364 0055 49       		.uleb128 0x49
+ 365 0056 13       		.uleb128 0x13
+ 366 0057 01       		.uleb128 0x1
+ 367 0058 13       		.uleb128 0x13
+ 368 0059 00       		.byte	0
+ 369 005a 00       		.byte	0
+ 370 005b 08       		.uleb128 0x8
+ 371 005c 21       		.uleb128 0x21
+ 372 005d 00       		.byte	0
+ 373 005e 49       		.uleb128 0x49
+ 374 005f 13       		.uleb128 0x13
+ 375 0060 2F       		.uleb128 0x2f
+ 376 0061 0B       		.uleb128 0xb
+ 377 0062 00       		.byte	0
+ 378 0063 00       		.byte	0
+ 379 0064 09       		.uleb128 0x9
+ 380 0065 16       		.uleb128 0x16
+ 381 0066 00       		.byte	0
+ 382 0067 03       		.uleb128 0x3
+ 383 0068 0E       		.uleb128 0xe
+ 384 0069 3A       		.uleb128 0x3a
+ 385 006a 0B       		.uleb128 0xb
+ 386 006b 3B       		.uleb128 0x3b
+ 387 006c 0B       		.uleb128 0xb
+ 388 006d 49       		.uleb128 0x49
+ 389 006e 13       		.uleb128 0x13
+ 390 006f 00       		.byte	0
+ 391 0070 00       		.byte	0
+ 392 0071 0A       		.uleb128 0xa
+ 393 0072 2E       		.uleb128 0x2e
+ 394 0073 01       		.byte	0x1
+ 395 0074 3F       		.uleb128 0x3f
+ 396 0075 19       		.uleb128 0x19
+ 397 0076 03       		.uleb128 0x3
+ 398 0077 0E       		.uleb128 0xe
+ 399 0078 3A       		.uleb128 0x3a
+ 400 0079 0B       		.uleb128 0xb
+ 401 007a 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 15
+
+
+ 402 007b 0B       		.uleb128 0xb
+ 403 007c 27       		.uleb128 0x27
+ 404 007d 19       		.uleb128 0x19
+ 405 007e 49       		.uleb128 0x49
+ 406 007f 13       		.uleb128 0x13
+ 407 0080 11       		.uleb128 0x11
+ 408 0081 01       		.uleb128 0x1
+ 409 0082 12       		.uleb128 0x12
+ 410 0083 06       		.uleb128 0x6
+ 411 0084 40       		.uleb128 0x40
+ 412 0085 18       		.uleb128 0x18
+ 413 0086 9742     		.uleb128 0x2117
+ 414 0088 19       		.uleb128 0x19
+ 415 0089 00       		.byte	0
+ 416 008a 00       		.byte	0
+ 417 008b 0B       		.uleb128 0xb
+ 418 008c 34       		.uleb128 0x34
+ 419 008d 00       		.byte	0
+ 420 008e 03       		.uleb128 0x3
+ 421 008f 0E       		.uleb128 0xe
+ 422 0090 3A       		.uleb128 0x3a
+ 423 0091 0B       		.uleb128 0xb
+ 424 0092 3B       		.uleb128 0x3b
+ 425 0093 0B       		.uleb128 0xb
+ 426 0094 49       		.uleb128 0x49
+ 427 0095 13       		.uleb128 0x13
+ 428 0096 1C       		.uleb128 0x1c
+ 429 0097 0B       		.uleb128 0xb
+ 430 0098 00       		.byte	0
+ 431 0099 00       		.byte	0
+ 432 009a 00       		.byte	0
+ 433              		.section	.debug_aranges,"",%progbits
+ 434 0000 1C000000 		.4byte	0x1c
+ 435 0004 0200     		.2byte	0x2
+ 436 0006 00000000 		.4byte	.Ldebug_info0
+ 437 000a 04       		.byte	0x4
+ 438 000b 00       		.byte	0
+ 439 000c 0000     		.2byte	0
+ 440 000e 0000     		.2byte	0
+ 441 0010 00000000 		.4byte	.LFB0
+ 442 0014 18000000 		.4byte	.LFE0-.LFB0
+ 443 0018 00000000 		.4byte	0
+ 444 001c 00000000 		.4byte	0
+ 445              		.section	.debug_ranges,"",%progbits
+ 446              	.Ldebug_ranges0:
+ 447 0000 00000000 		.4byte	.LFB0
+ 448 0004 18000000 		.4byte	.LFE0
+ 449 0008 00000000 		.4byte	0
+ 450 000c 00000000 		.4byte	0
+ 451              		.section	.debug_line,"",%progbits
+ 452              	.Ldebug_line0:
+ 453 0000 73000000 		.section	.debug_str,"MS",%progbits,1
+ 453      02005900 
+ 453      00000201 
+ 453      FB0E0D00 
+ 453      01010101 
+ 454              	.LASF6:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 16
+
+
+ 455 0000 6C6F6E67 		.ascii	"long long int\000"
+ 455      206C6F6E 
+ 455      6720696E 
+ 455      7400
+ 456              	.LASF18:
+ 457 000e 65704461 		.ascii	"epData\000"
+ 457      746100
+ 458              	.LASF8:
+ 459 0015 756E7369 		.ascii	"unsigned int\000"
+ 459      676E6564 
+ 459      20696E74 
+ 459      00
+ 460              	.LASF17:
+ 461 0022 433A5C55 		.ascii	"C:\\Users\\Luggi\\Desktop\\Aktuelles Projekt Laser_"
+ 461      73657273 
+ 461      5C4C7567 
+ 461      67695C44 
+ 461      65736B74 
+ 462 0051 73636875 		.ascii	"schutzschaltung\\Aktuelles Projekt Laser_schutzscha"
+ 462      747A7363 
+ 462      68616C74 
+ 462      756E675C 
+ 462      416B7475 
+ 463 0083 6C74756E 		.ascii	"ltung\\Laserschutzschaltung.cydsn\000"
+ 463      675C4C61 
+ 463      73657273 
+ 463      63687574 
+ 463      7A736368 
+ 464              	.LASF14:
+ 465 00a4 55534255 		.ascii	"USBUART_1_ep0_data_struct\000"
+ 465      4152545F 
+ 465      315F6570 
+ 465      305F6461 
+ 465      74615F73 
+ 466              	.LASF16:
+ 467 00be 47656E65 		.ascii	"Generated_Source\\PSoC5\\USBUART_1_vnd.c\000"
+ 467      72617465 
+ 467      645F536F 
+ 467      75726365 
+ 467      5C50536F 
+ 468              	.LASF13:
+ 469 00e5 75696E74 		.ascii	"uint8\000"
+ 469      3800
+ 470              	.LASF5:
+ 471 00eb 6C6F6E67 		.ascii	"long unsigned int\000"
+ 471      20756E73 
+ 471      69676E65 
+ 471      6420696E 
+ 471      7400
+ 472              	.LASF20:
+ 473 00fd 72657175 		.ascii	"requestHandled\000"
+ 473      65737448 
+ 473      616E646C 
+ 473      656400
+ 474              	.LASF7:
+ 475 010c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 475      206C6F6E 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 17
+
+
+ 475      6720756E 
+ 475      7369676E 
+ 475      65642069 
+ 476              	.LASF1:
+ 477 0123 756E7369 		.ascii	"unsigned char\000"
+ 477      676E6564 
+ 477      20636861 
+ 477      7200
+ 478              	.LASF11:
+ 479 0131 63686172 		.ascii	"char\000"
+ 479      00
+ 480              	.LASF19:
+ 481 0136 55534255 		.ascii	"USBUART_1_HandleVendorRqst\000"
+ 481      4152545F 
+ 481      315F4861 
+ 481      6E646C65 
+ 481      56656E64 
+ 482              	.LASF4:
+ 483 0151 6C6F6E67 		.ascii	"long int\000"
+ 483      20696E74 
+ 483      00
+ 484              	.LASF10:
+ 485 015a 646F7562 		.ascii	"double\000"
+ 485      6C6500
+ 486              	.LASF3:
+ 487 0161 73686F72 		.ascii	"short unsigned int\000"
+ 487      7420756E 
+ 487      7369676E 
+ 487      65642069 
+ 487      6E7400
+ 488              	.LASF0:
+ 489 0174 7369676E 		.ascii	"signed char\000"
+ 489      65642063 
+ 489      68617200 
+ 490              	.LASF9:
+ 491 0180 666C6F61 		.ascii	"float\000"
+ 491      7400
+ 492              	.LASF2:
+ 493 0186 73686F72 		.ascii	"short int\000"
+ 493      7420696E 
+ 493      7400
+ 494              	.LASF12:
+ 495 0190 73697A65 		.ascii	"sizetype\000"
+ 495      74797065 
+ 495      00
+ 496              	.LASF15:
+ 497 0199 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 497      4320342E 
+ 497      392E3320 
+ 497      32303135 
+ 497      30333033 
+ 498 01cc 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 498      20726576 
+ 498      6973696F 
+ 498      6E203232 
+ 498      31323230 
+ 499 01ff 67202D66 		.ascii	"g -ffunction-sections -flto -ffat-lto-objects\000"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccxFZVId.s 			page 18
+
+
+ 499      66756E63 
+ 499      74696F6E 
+ 499      2D736563 
+ 499      74696F6E 
+ 500              		.comm	__gnu_lto_v1,1,1
+ 501              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

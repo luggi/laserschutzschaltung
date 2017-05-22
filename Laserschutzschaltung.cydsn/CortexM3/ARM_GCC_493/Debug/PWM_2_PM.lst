@@ -1,0 +1,1662 @@
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"PWM_2_PM.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.section	.gnu.lto_.profile.d204776,"",%progbits
+  18 0000 789C6366 		.ascii	"x\234cf```a\200\000F\006U~\000\000\315\000="
+  18      60606061 
+  18      80004606 
+  18      557E0000 
+  18      CD003D
+  19              		.text
+  20              		.section	.gnu.lto_.inline.d204776,"",%progbits
+  21 0000 789C6366 		.ascii	"x\234cf\300\016\302\2404\013\003\0033\023#\003\023\220"
+  21      C00EC2A0 
+  21      340B0303 
+  21      33132303 
+  21      1390
+  22 0012 C9B6401E 		.ascii	"\311\266@\036D10b\21001p\011\002Ex&\370!\024q\2015\263"
+  22      44313062 
+  22      88303170 
+  22      09024578 
+  22      26F82114 
+  23 002a 7302C5D9 		.ascii	"s\002\305\331>\350\241\2123\000\000\364\302\005\346"
+  23      3EE8A18A 
+  23      330000F4 
+  23      C205E6
+  24              		.text
+  25              		.section	.gnu.lto_.jmpfuncs.d204776,"",%progbits
+  26 0000 789C6366 		.ascii	"x\234cf\300\016\004\2404\013\0203200A\231\014\000\002"
+  26      C00E04A0 
+  26      340B1033 
+  26      32303041 
+  26      990C0002 
+  27 0014 B2001F   		.ascii	"\262\000\037"
+  28              		.text
+  29              		.section	.gnu.lto_.pureconst.d204776,"",%progbits
+  30 0000 789C6366 		.ascii	"x\234cf``\340d\200\000\026\006\006F\006&)\026\011\000"
+  30      6060E064 
+  30      80001606 
+  30      06460626 
+  30      29160900 
+  31 0014 018D004A 		.ascii	"\001\215\000J"
+  32              		.text
+  33              		.section	.gnu.lto_PWM_2_SaveConfig.d204776,"",%progbits
+  34 0000 789C6366 		.ascii	"x\234cf\300\004R@\\\012\304*@\314\310\314\300\3104\341"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 2
+
+
+  34      C0045240 
+  34      5C0AC42A 
+  34      40CCC8CC 
+  34      C0C834E1 
+  35 0014 1C034323 		.ascii	"\034\003C#\007\023##\210\301\300\310P\317\304X\317\370"
+  35      07132323 
+  35      88C1C0C8 
+  35      50CFC458 
+  35      CFF8
+  36 0026 92E92313 		.ascii	"\222\351#\023\343\204\003\253gp\253/mhh\370\260\350"
+  36      E38403AB 
+  36      6770AB2F 
+  36      6D6868F8 
+  36      B0E8
+  37 0038 7463C001 		.ascii	"tc\300\001\306\237L\014\014\237\231 \3460.gTg\000*\372"
+  37      C69F4C0C 
+  37      0C9F9920 
+  37      E6302E67 
+  37      5467002A 
+  38 004d D8F2F73A 		.ascii	"\330\362\367:7[\013P\221\000D\216q\005#\033#\220^/t"
+  38      375B0B50 
+  38      9100448E 
+  38      7105231B 
+  38      23905E2F 
+  39 0062 A0E1FFFF 		.ascii	"\240\341\377\377\317k\017Nc\003\012?\001b\220\005O\231"
+  39      CF6B0F4E 
+  39      63030A3F 
+  39      01629005 
+  39      4F99
+  40 0074 984034F3 		.ascii	"\230@4\363=FF\220B\220IO\230\030AB@\005J\356\251y\251"
+  40      3D464690 
+  40      4290494F 
+  40      98184142 
+  40      40054AEE 
+  41 008b 458925A9 		.ascii	"E\211%\251)\361\301\371\245E\311\2511\001\301\371\316"
+  41      29F1C1F9 
+  41      A545C9A9 
+  41      3101C1F9 
+  41      CE
+  42 009c A63101E1 		.ascii	"\2461\001\341\276\361F\361\001\276z\311\014\000\355"
+  42      BEF146F1 
+  42      01BE7AC9 
+  42      0C00ED
+  43 00ab 6235C2   		.ascii	"b5\302"
+  44              		.text
+  45              		.section	.gnu.lto_PWM_2_RestoreConfig.d204776,"",%progbits
+  46 0000 789C6366 		.ascii	"x\234cf\300\004R@\\\012\304*@\314\310\314\300\3104\341"
+  46      C0045240 
+  46      5C0AC42A 
+  46      40CCC8CC 
+  46      C0C834E1 
+  47 0014 1C034323 		.ascii	"\034\003C#\007\023##\210\301\300\310P\317\304X\317\370"
+  47      07132323 
+  47      88C1C0C8 
+  47      50CFC458 
+  47      CFF8
+  48 0026 92E92313 		.ascii	"\222\351#\023\343\204\003\253gp\253/mhh\370\320\264"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 3
+
+
+  48      E38403AB 
+  48      6770AB2F 
+  48      6D6868F8 
+  48      D0B4
+  49 0038 5DA255E2 		.ascii	"]\242U\342'\023\003\303g&\2101\214\313\031\325\031\200"
+  49      271303C3 
+  49      67268831 
+  49      8CCB19D5 
+  49      1980
+  50 004a 6A3EB6FC 		.ascii	"j>\266\374\275\316\315\326\002T#\000\221c\\\301\310"
+  50      BDCECDD6 
+  50      02542300 
+  50      91635CC1 
+  50      C8
+  51 005b C608A4D7 		.ascii	"\306\010\244\327\013\035h\370\377\377\363\235\2117\254"
+  51      0B1D68F8 
+  51      FFFFF39D 
+  51      8937AC
+  52 006a 0281E24F 		.ascii	"\002\201\342O\200\030d\301S&&\020\315|\217\221\021\244"
+  52      801864C1 
+  52      53262610 
+  52      CD7C8F91 
+  52      11A4
+  53 007c 1264D413 		.ascii	"\022d\324\023&F\220\020P\201\222{j^jQbIjJ|p~iQrjL@p"
+  53      26469010 
+  53      5081927B 
+  53      6A5E6A51 
+  53      62496A4A 
+  54 009a BEB3694C 		.ascii	"\276\263iL@\270o\274Q|\200\257^2\003\000\253\2455w"
+  54      40B86FBC 
+  54      517C80AF 
+  54      5E320300 
+  54      ABA53577 
+  55              		.text
+  56              		.section	.gnu.lto_PWM_2_Sleep.d204776,"",%progbits
+  57 0000 789C8591 		.ascii	"x\234\205\221MH\024a\030\307\237\3773\263\343\320\006"
+  57      4D481461 
+  57      18C79FFF 
+  57      33B3E3D0 
+  57      06
+  58 0011 4527F1E0 		.ascii	"E'\361\340!\002O\266\020t\350\320\251C\020\010\013\036"
+  58      21024FB6 
+  58      1074E8D0 
+  58      A9431008 
+  58      0B1E
+  59 0023 221096B0 		.ascii	"\"\020\226\260\275*H\035\027\337q\247\220\210\022\351"
+  59      BD2A481D 
+  59      17DF71A7 
+  59      908812E9 
+  60 0033 20E57ACB 		.ascii	" \345z\313\217\326\324\266/!\017C\004BD&*\221\204]\024"
+  60      8FD6D4B6 
+  60      2F210F43 
+  60      04424426 
+  60      2A91845D 
+  61 0048 B6DB6E0B 		.ascii	"\266\333n\013\325\020f\317\363\216}\240P\0033\317\373"
+  61      D51066CF 
+  61      F38E7DA0 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 4
+
+
+  61      500333CF 
+  61      FB
+  62 0059 F19BFFFF 		.ascii	"\361\233\377\377\377>\257C\373\237\323\362^`\242cR\341"
+  62      FF3EAF43 
+  62      FB9FD3F2 
+  62      5E60A263 
+  62      52E1
+  63 006b 1178E80D 		.ascii	"\021x\350\015Q\3403;\013\255d\016\270\253\0312\007\035"
+  63      51E0333B 
+  63      0BAD640E 
+  63      B8AB1932 
+  63      071D
+  64 007d A49265F7 		.ascii	"\244\222e\367\327 \005\350\200@\375\354\270)\364\343"
+  64      D72005E8 
+  64      8040FDEC 
+  64      B829F4E3 
+  65 008d 13D71943 		.ascii	"\023\327\031CQy$\335v\317\030S\033Xi\276\332\034\213"
+  65      517924DD 
+  65      76CF1853 
+  65      1B5869BE 
+  65      DA1C8B
+  66 00a0 72831327 		.ascii	"r\203\023'L\240\215\204\251\207\333\357\322^(\314\341"
+  66      4CA08D84 
+  66      A987DBEF 
+  66      D25E28CC 
+  66      E1
+  67 00b1 640F93F0 		.ascii	"d\017\223\360 u\366Hdvv\032\257\207\0073\3543\305\014"
+  67      2075F648 
+  67      6476761A 
+  67      AF870733 
+  67      EC33C50C 
+  68 00c5 573F449B 		.ascii	"W?D\233B\251\333\026\263Vg\035/\276\\\337\230\272\015"
+  68      42A9DB16 
+  68      B356671D 
+  68      2FBE5CDF 
+  68      98BA0D
+  69 00d8 FDF32BBB 		.ascii	"\375\363+\273\":_\231X\344*\307\314#c\201q\325\347\343"
+  69      223A5F99 
+  69      58E42AC7 
+  69      CC236381 
+  69      71D5E7E3 
+  70 00ec E6D2B26F 		.ascii	"\346\322\262o\227H\247o\347\253\241S\302\335 D\314\016"
+  70      9748A76F 
+  70      E7ABA153 
+  70      C2DD2044 
+  70      CC0E
+  71 00fe A6D082FB 		.ascii	"\246\320\202\373h\021\3672J\240u\024\277]{\351%\202"
+  71      6811F732 
+  71      4AA07514 
+  71      BF5D7BE9 
+  71      2582
+  72 0110 9C682E96 		.ascii	"\234h.\226\252\025W\005\000\302\264\260k\010\337\027"
+  72      AA155705 
+  72      00C2B4B0 
+  72      6B08DF17 
+  73 0120 7B761901 		.ascii	"{v\031\001\202\361\3477\232, 2\017T\2144\244C\013\255"
+  73      82F1E737 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 5
+
+
+  73      9A2C2032 
+  73      0F548C34 
+  73      A4430BAD 
+  74 0134 9271A036 		.ascii	"\222q\2406\2674\234VZ\320\261\225\2333\\\370n\006\215"
+  74      B7349C56 
+  74      5AD0B195 
+  74      9B335CF8 
+  74      6E068D
+  75 0147 1FB3BBAD 		.ascii	"\037\263\273\255\307\376;\242k\247\223A8\012\215h\224"
+  75      C7FE3BA2 
+  75      6BA79341 
+  75      380A8D68 
+  75      94
+  76 0158 4A610605 		.ascii	"Ja\006\005\314\252\254\354\375\230\276U\361\332\313"
+  76      CCAAACEC 
+  76      FD98BE55 
+  76      F1DACB
+  77 0167 D2B5E854 		.ascii	"\322\265\350T\314\036\346\004\374l;\213\207h\027`\371"
+  77      CC1EE604 
+  77      FC6C3B8B 
+  77      87681760 
+  77      F9
+  78 0178 CE78F190 		.ascii	"\316x\361\220jI/Q\261a\266Dw5c\243\324\326\376\023e"
+  78      6A492F51 
+  78      B161B644 
+  78      773563A3 
+  78      D4D6FE13 
+  79 018d AFF7A37F 		.ascii	"\257\367\243\177x?\376\343\375\304z\377>\207'KOw\275"
+  79      783FFEE3 
+  79      FDC47AFF 
+  79      3E87274B 
+  79      4F77BD
+  80 01a0 53F6AE3E 		.ascii	"S\366\256>\240\030\325_\261z\323^\363\246\206\355\334"
+  80      A018D55F 
+  80      B17AD35E 
+  80      F3A686ED 
+  80      DC
+  81 01b1 3314E49E 		.ascii	"3\024\344\236}\332@\020\305\347,Iz\351P\001\2619z6\337"
+  81      7DDA4010 
+  81      C5E72C49 
+  81      7AE95001 
+  81      B1397A36 
+  82 01c6 93EFBB78 		.ascii	"\223\357\273x9\177)\327\331{\245\257;\337\225\355\354"
+  82      397F29D7 
+  82      D97BA5AF 
+  82      3BDF95ED 
+  82      EC
+  83 01d7 3D73B22B 		.ascii	"=s\262+{\276#w\"\227\3558\336M?\001\343\223\344\357"
+  83      7BBE2377 
+  83      2297ED38 
+  83      DE4D3F01 
+  83      E393E4EF 
+  84              		.text
+  85              		.section	.gnu.lto_PWM_2_Wakeup.d204776,"",%progbits
+  86 0000 789C654F 		.ascii	"x\234eO=HBQ\024>\347\334\367^\222\016\321$\015\016\021"
+  86      3D484251 
+  86      143EE7DC 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 6
+
+
+  86      F75E920E 
+  86      D1240D0E 
+  87 0015 38840545 		.ascii	"8\204\005EsCC\203\010\202C\213\360\010{k\202\324(\336"
+  87      73434383 
+  87      0882438B 
+  87      F0087B6B 
+  87      82D428DE 
+  88 0029 972F6888 		.ascii	"\227/h\210\222\246\240\237!\250,\315\240\241\301\226"
+  88      92A6A09F 
+  88      21A82CCD 
+  88      A0A1C196 
+  89 0039 476B5044 		.ascii	"GkPDT\024\375,\006\265e\"\362\020\263{\237CP\027.\347"
+  89      5414FD2C 
+  89      06B56522 
+  89      F210B37B 
+  89      9F435017 
+  90 004f DEEF7CDF 		.ascii	"\336\357|\337\371\276\303\340\377\031\0257\214\000\003"
+  90      F9BEC3E0 
+  90      FF191537 
+  90      8C0003
+  91 005e A2A20A48 		.ascii	"\242\242\012H\271K\000\323C\304\312\001\340\335\312"
+  91      B94B00D3 
+  91      43C4CA01 
+  91      E0DDCA
+  92 006d DD30701F 		.ascii	"\3350p\037C\245\003+\210\362\001\010\031b\012f\360\203"
+  92      43A5032B 
+  92      88F20108 
+  92      19620A66 
+  92      F083
+  93 007f AA8439BB 		.ascii	"\252\2049\273\260\356\015\356r\316?w\236\375\213~\207"
+  93      B0EE0DEE 
+  93      72CE3F77 
+  93      9EFD8B7E 
+  93      87
+  94 0090 006AD499 		.ascii	"\000j\324\231\217\373\030\004\301\251Z\255{\257f\011"
+  94      8FFB1804 
+  94      C1A95AAD 
+  94      7BAF6609 
+  95 00a0 4E4FA787 		.ascii	"NO\247\207y\324\204/\034\367\332\274\335\256\325\327"
+  95      79D4842F 
+  95      1CF7DABC 
+  95      DDAED5D7 
+  96 00b0 F2E3A432 		.ascii	"\362\343\2442pH\200\025A\220>oD\262\262G\\8\2556\316"
+  96      70488015 
+  96      41903E6F 
+  96      44B2B247 
+  96      5C38AD36 
+  97 00c5 55A96910 		.ascii	"U\251i\020\023\343\266oVJ\224n\362%\356q\210Zr\240@"
+  97      13E3B66F 
+  97      564A946E 
+  97      F225EE71 
+  97      885A72A0 
+  98 00da 5F2B57D7 		.ascii	"_+W\327\236w\022\210\373\315\233\326&n\341\206\311%"
+  98      9E771288 
+  98      FBCD9BD6 
+  98      266EE186 
+  98      C925
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 7
+
+
+  99 00ec 8BE101A6 		.ascii	"\213\341\001\246\361\020\373\334\336wq\365D\013\015"
+  99      F110FBDC 
+  99      DE7771F5 
+  99      440B0D
+ 100 00fb 3AA46041 		.ascii	":\244`Ap\276\334\270X\304\020\334\242\365\220\015\374"
+ 100      70BEDCB8 
+ 100      58C410DC 
+ 100      A2F5900D 
+ 100      FC
+ 101 010c 5A997B67 		.ascii	"Z\231{g\313]r\250\010\206GR\0162\031\203r\200=a\326"
+ 101      CB5D72A8 
+ 101      08864752 
+ 101      0E321983 
+ 101      72803D61 
+ 102 0121 AE5FF824 		.ascii	"\256_\370$\031\376\246Rk\256\242\204i\261\224\346j\024"
+ 102      19FEA652 
+ 102      6BAEA284 
+ 102      69B194E6 
+ 102      6A14
+ 103 0133 779B1734 		.ascii	"w\233\0274\355f\330\325\200\334\025%*\374\373'\215Y"
+ 103      ED66D8D5 
+ 103      80DC1525 
+ 103      2AFCFB27 
+ 103      8D59
+ 104 0145 23353D67 		.ascii	"#5=g\314\350\261\344|*a\304\243\261\344\304X<:\025\321"
+ 104      CCE8B1E4 
+ 104      7C2A61C4 
+ 104      A3B1E4C4 
+ 104      583C3A15 
+ 105 015a 47F46864 		.ascii	"G\364hd(\001?\205\233\202~"
+ 105      28013F85 
+ 105      9B827E
+ 106              		.text
+ 107              		.section	.gnu.lto_.symbol_nodes.d204776,"",%progbits
+ 108 0000 789C55C8 		.ascii	"x\234U\310\261\015\2000\014\005\321\213\035G\014\304"
+ 108      B10D8030 
+ 108      0C05D18B 
+ 108      1D470CC4 
+ 109 0010 6CB43F23 		.ascii	"l\264?#PQg\010F\240f\007$\346@ A\021\256{\347\300\304"
+ 109      50516708 
+ 109      46A06607 
+ 109      24E64020 
+ 109      4111AE7B 
+ 110 0027 9725C1BC 		.ascii	"\227%\301\274\203\304\322\006\314\224~vY\357\200fr\313"
+ 110      83C4D206 
+ 110      CC947E76 
+ 110      59EF8066 
+ 110      72CB
+ 111 0039 F27EA750 		.ascii	"\362~\247P~M\255\017\213\242\243[\260\035W\362\\8\327"
+ 111      7E4DAD0F 
+ 111      8BA2A35B 
+ 111      B01D57F2 
+ 111      5C38D7
+ 112 004c 911BDAD0 		.ascii	"\221\033\332\320\035\204"
+ 112      1D84
+ 113              		.text
+ 114              		.section	.gnu.lto_.refs.d204776,"",%progbits
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 8
+
+
+ 115 0000 789C6366 		.ascii	"x\234cf``\340c\200\000&&Ff\026FfVF\026\006fF\006\000"
+ 115      6060E063 
+ 115      80002626 
+ 115      46661646 
+ 115      66564616 
+ 116 0019 02900030 		.ascii	"\002\220\0000"
+ 117              		.text
+ 118              		.section	.gnu.lto_.decls.d204776,"",%progbits
+ 119 0000 789C8D94 		.ascii	"x\234\215\224\177h[U\024\307\357\311}\313\322\344\271"
+ 119      7F685B55 
+ 119      14C7EFC9 
+ 119      7DCBD2E4 
+ 119      B9
+ 120 0011 0E0BDDE8 		.ascii	"\016\013\335\350?\253\035\024\2252D\020\366\217(\224"
+ 120      3FAB1D14 
+ 120      95324410 
+ 120      F68F2894 
+ 121 0021 314526D1 		.ascii	"1E&\321 \023\234\224,>\347\334hB\226\010\373\357\232"
+ 121      20139C94 
+ 121      2C3EE7DC 
+ 121      68429608 
+ 121      FBEF9A
+ 122 0034 5657BAA2 		.ascii	"VW\272\242\335\314Xu\270E[\177,\266i\3275uM\252m\326"
+ 122      DDCC5875 
+ 122      B8455B7F 
+ 122      2CB669D7 
+ 122      35754DAA 
+ 123 004a 6E69137F 		.ascii	"ni\023\177\024\026\307J\021S\013\262\237\356\015d\243"
+ 123      1416C74A 
+ 123      11530BB2 
+ 123      9FEE0D64 
+ 123      A3
+ 124 005b 5489E7DE 		.ascii	"T\211\347\336\373\336\3626\332\351\205\363r\357\273"
+ 124      FBDEF236 
+ 124      DAE985F3 
+ 124      72EFBB
+ 125 006a E7FB39E7 		.ascii	"\347\3739\347\334s\363(!\344\011 \244\204\343\274B\310"
+ 125      DC73F328 
+ 125      21E40920 
+ 125      A484E3BC 
+ 125      42C8
+ 126 007c 3FB85E85 		.ascii	"?\270^\205\346&\345aG\353EK\240\015\240\015\242\015"
+ 126      E626E561 
+ 126      47EB454B 
+ 126      A00DA00D 
+ 126      A20D
+ 127 008e A10DA3A1 		.ascii	"\241\015\243\241\224L\222{G\257\361\336d\200\361\356"
+ 127      944C927B 
+ 127      47AFF1DE 
+ 127      6480F1EE 
+ 128 009e FE9158C6 		.ascii	"\376\221X\306/\261\214\037\217Ya\370U\243M\243e\321"
+ 128      2FB18C1F 
+ 128      8F5961F8 
+ 128      55A34DA3 
+ 128      65D1
+ 129 00b0 726819B4 		.ascii	"rh\031\2644Z\036\355\244\301\030C\263\031\272\241\025"
+ 129      345A1EED 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 9
+
+
+ 129      A4C11843 
+ 129      B319BAA1 
+ 129      15
+ 130 00c1 72E435AC 		.ascii	"r\3445\254\2660\377\2135\370\200zo\331`$\361\327\217"
+ 130      B630FF8B 
+ 130      35F8807A 
+ 130      6FD96024 
+ 130      F1D78F
+ 131 00d4 AECB3658 		.ascii	"\256\3136X\343\254\345\313\324\341\251.;.U\247\302\227"
+ 131      E3ACE5CB 
+ 131      D4E1A92E 
+ 131      3B2E55A7 
+ 131      C297
+ 132 00e6 E9A5DF0B 		.ascii	"\351\245\337\013\312\272#\014Gg\013[\253\200\273\032"
+ 132      CABA230C 
+ 132      47670B5B 
+ 132      AB80BB1A 
+ 133 00f6 BE821AF8 		.ascii	"\276\202\032\370\032j\220x\022\326\341\3635E\222R\007"
+ 133      1A6A9078 
+ 133      12D6E1F3 
+ 133      35459252 
+ 133      07
+ 134 0107 AFFD5049 		.ascii	"\257\375PIm\300\347\335]\363\005gC\034eml\374\222\255"
+ 134      6DC0E7DD 
+ 134      5DF30567 
+ 134      431C656D 
+ 134      6CFC92AD 
+ 135 011b 1C2EB510 		.ascii	"\034.\265\020\275\352\252=\316\364\001=54\253\262)6"
+ 135      BDEAAA3D 
+ 135      CEF4013D 
+ 135      3534ABB2 
+ 135      2936
+ 136 012d 5E2A3D23 		.ascii	"^*=#P\020\007\012\337@\2038P\234\313\223\355\205Z\224"
+ 136      5010070A 
+ 136      DF408338 
+ 136      509CCB93 
+ 136      ED855A94 
+ 137 0141 CDCFDFFC 		.ascii	"\315\317\337\374Y\241O\013v\357\205\236\005E bg\272"
+ 137      59A14F0B 
+ 137      76EF859E 
+ 137      05452062 
+ 137      67BA
+ 138 0153 ED1220F4 		.ascii	"\355\022 \364}\026}\237\251O\010}tr\264H\351KB\377\333"
+ 138      7D167D9F 
+ 138      A94F087D 
+ 138      7472B448 
+ 138      E94B42FF 
+ 139 0168 706B5E45 		.ascii	"pk^E}l \326\365\205U\337o\321\367\233\372\001\241\277"
+ 139      7D6C20D6 
+ 139      F58555DF 
+ 139      6FD1F79B 
+ 139      FA01A1BF 
+ 140 017c F2C7CCB4 		.ascii	"\362\307\314\264\235\276.\364},;j\227\372\253\367\350"
+ 140      9DBE2EF4 
+ 140      7D2C3B6A 
+ 140      97FAABF7 
+ 140      E8
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 10
+
+
+ 141 018d 4F59F4A7 		.ascii	"OY\364\247L\375\240\320\277\377q\246\325N\337\026z}"
+ 141      4CFDA0D0 
+ 141      BFFF71A6 
+ 141      D54EDF16 
+ 141      7A7D
+ 142 019f 7032EB40 		.ascii	"p2\353@}\221\3517\026\342\317\037j\351\354a\305Ri\203"
+ 142      7D91E937 
+ 142      16E2CF1F 
+ 142      6AE9EC61 
+ 142      C5526983 
+ 143 01b3 3C84D316 		.ascii	"<\204\323\026\310i\0232$ \254\363x\206\322# (K'\332"
+ 143      C8691332 
+ 143      2420ACF3 
+ 143      7886D223 
+ 143      20284B27 
+ 144 01c8 72AAA014 		.ascii	"r\252\240\024\323Y\355l+\373\273T\242\022\221\264 \222"
+ 144      D359ED6C 
+ 144      2BFBBB54 
+ 144      A21291B4 
+ 144      2092
+ 145 01da 26625820 		.ascii	"&bX >\372\363\323\\\005\375\\\".\216\0358\340\240I\271"
+ 145      3EFAF3D3 
+ 145      5C05FD5C 
+ 145      222E8E1D 
+ 145      38E0A049 
+ 146 01ef 78F7CB74 		.ascii	"x\367\313t\307jl|\265S\364\351\203\374'\031*\226%\276"
+ 146      C76A6C7C 
+ 146      B553F4E9 
+ 146      83FC2719 
+ 146      2A9625BE 
+ 147 0203 6D9B9D8D 		.ascii	"m\233\235\215.Rp\326\2671\026a\372aF\327\023h\250\201"
+ 147      2E5270D6 
+ 147      B7311661 
+ 147      FA6146D7 
+ 147      1368A881 
+ 148 0217 C76A088C 		.ascii	"\307j\010\214B=\272\211\2100\202w#\205w\243\007;\257"
+ 148      423DBA89 
+ 148      88308277 
+ 148      238577A3 
+ 148      073BAF
+ 149 022a 2F9D8BBF 		.ascii	"/\235\213\277\320\302\236\20548\341\314\335\234D\004"
+ 149      D0C29E85 
+ 149      3438E1CC 
+ 149      DD9C4404 
+ 150 023a E336442F 		.ascii	"\3436D/$G]\364W\221\001=\026\355jU\240\252\256\376\020"
+ 150      24475DF4 
+ 150      5791013D 
+ 150      16ED6A55 
+ 150      A0AAAEFE 
+ 151 024f BF6E7A04 		.ascii	"\277nz\004\225f\014\002\337C\025\327\3038\006\033\203"
+ 151      95660C02 
+ 151      DF4315D7 
+ 151      C338061B 
+ 151      83
+ 152 0260 3A018861 		.ascii	":\001\210a.\372\215\211;\257\336\212\260\216\365\"\314"
+ 152      2EFA8D89 
+ 152      3BAFDE8A 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 11
+
+
+ 152      B08EF522 
+ 152      CC
+ 153 0271 771886BB 		.ascii	"w\030\206\273\032\251=\312\245\217\343C$T\234\353\266"
+ 153      1AA93DCA 
+ 153      A58FE343 
+ 153      24549CEB 
+ 153      B6
+ 154 0282 33E0FBC4 		.ascii	"3\340\373\304<\0373\023\333\314\211\305\271J\250Z&6"
+ 154      3C1F3313 
+ 154      DBCC89C5 
+ 154      B94AA85A 
+ 154      2636
+ 155 0294 9CC590CB 		.ascii	"\234\305\220\313\205\027\310c[\034\220\301\315o\313"
+ 155      8517C863 
+ 155      5B1C90C1 
+ 155      CD6FCB
+ 156 02a3 F571BE59 		.ascii	"\365q\276Y\340\235_\256|\350\240\327\345\021_[\2749"
+ 156      E09D5FAE 
+ 156      7CE8A0D7 
+ 156      E5115F5B 
+ 156      BC39
+ 157 02b5 5CB9F133 		.ascii	"\\\271\3613\306bz\352\322u8\312b\021\306\370\345\021"
+ 157      C6627AEA 
+ 157      D27538CA 
+ 157      6211C6F8 
+ 157      E511
+ 158 02c7 840949B8 		.ascii	"\204\011I\270[\361\204\354\034L\302F\336\373\243\007"
+ 158      5BF184EC 
+ 158      1C4CC246 
+ 158      DEFBA307 
+ 159 02d7 7B1C7451 		.ascii	"{\034tQ\202\222\267\333G\036rb+Z\376G+\260\270\302O"
+ 159      8292B7DB 
+ 159      471E7262 
+ 159      2B5AFE47 
+ 159      2BB0B8C2 
+ 160 02ec ED172B64 		.ascii	"\355\027+d\363\356WL\255\330\274\367\306\324i\306\034"
+ 160      F3EE574C 
+ 160      ADD8BCF7 
+ 160      C6D469C6 
+ 160      1C
+ 161 02fd 90C5633D 		.ascii	"\220\305c=W\256\356<\224\333W\310G\346\250\332\316\257"
+ 161      57AEEE3C 
+ 161      94DB57C8 
+ 161      47E6A8DA 
+ 161      CEAF
+ 162 030f 047E1D2A 		.ascii	"\004~\035*\236\023\276\345\317\3034\250\242\002\374"
+ 162      9E13BEE5 
+ 162      CFC334A8 
+ 162      A202FC
+ 163 031e E57FBB8E 		.ascii	"\345\177\273\216\313\005\260:\363\242\313\3169\3039"
+ 163      CB05B03A 
+ 163      F3A2CBCE 
+ 163      39C339
+ 164 032d 279CFB6F 		.ascii	"'\234\373o\317\304]Vg~\257\313\316yP\315|pJ\326\272"
+ 164      CFC45D56 
+ 164      677EAFCB 
+ 164      CE7950CD 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 12
+
+
+ 164      7C704AD6 
+ 165 0342 B76F6B7A 		.ascii	"\267okz\262\311\343}Gk\3647\277\271{\227}\353\213\257"
+ 165      B2C9E37D 
+ 165      476BF437 
+ 165      BFB97B97 
+ 165      7DEB8BAF 
+ 166 0356 D43692BA 		.ascii	"\3246\222\272\255Z\263\026\364\206\2647\232<\376p\320"
+ 166      AD5AB316 
+ 166      F486B437 
+ 166      9A3CFE70 
+ 166      D0
+ 167 0367 A7ED707B 		.ascii	"\247\355p{\374\215O\355\220\356\356m\233|\244J\316_"
+ 167      FC8D4FED 
+ 167      90EEEE6D 
+ 167      9B7CA44A 
+ 167      CE5F
+ 168 0379 D6F685FC 		.ascii	"\326\366\205\374AC\3552p{5-\240\312\371v\357\036-\034"
+ 168      4143ED32 
+ 168      707B352D 
+ 168      A0CAF976 
+ 168      EF1E2D1C 
+ 169 038d 701A1B21 		.ascii	"p\032\033!\177`\303\203\320\233\336\"\206nK\263w\347"
+ 169      7F60C383 
+ 169      D09BDE22 
+ 169      866E4BB3 
+ 169      77E7
+ 170 039f 5EED61B9 		.ascii	"^\355a\271\330\351\365\355\011\007<\241`\330\027Z\025"
+ 170      D8E9F5ED 
+ 170      09073CA1 
+ 170      60D8175A 
+ 170      15
+ 171 03b0 DEDD1CDA 		.ascii	"\336\335\034\332\374\310\012\024\337\376\320\376\200"
+ 171      FCC80A14 
+ 171      DFFED0FE 
+ 171      80
+ 172 03bd B60F396B 		.ascii	"\266\0179kP*!\236\020\372\251V\222\022\324vm\376\027"
+ 172      502A219E 
+ 172      10FAA956 
+ 172      9212D476 
+ 172      6DFE17
+ 173 03d0 F4DFE40A 		.ascii	"\364\337\344\012"
+ 174              		.text
+ 175              		.section	.gnu.lto_.symtab.d204776,"",%progbits
+ 176 0000 50574D5F 		.ascii	"PWM_2_SaveConfig\000\000\000\000\000\000\000\000\000"
+ 176      325F5361 
+ 176      7665436F 
+ 176      6E666967 
+ 176      00000000 
+ 177 0019 000000AC 		.ascii	"\000\000\000\254\000\000\000PWM_2_RestoreConfig\000"
+ 177      00000050 
+ 177      574D5F32 
+ 177      5F526573 
+ 177      746F7265 
+ 178 0034 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\256\000"
+ 178      00000000 
+ 178      000000AE 
+ 178      00
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 13
+
+
+ 179 0041 00005057 		.ascii	"\000\000PWM_2_Sleep\000\000\000\000\000\000\000\000"
+ 179      4D5F325F 
+ 179      536C6565 
+ 179      70000000 
+ 179      00000000 
+ 180 0056 00000000 		.ascii	"\000\000\000\000\260\000\000\000PWM_2_Wakeup\000\000"
+ 180      B0000000 
+ 180      50574D5F 
+ 180      325F5761 
+ 180      6B657570 
+ 181 006c 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\262\000\000"
+ 181      00000000 
+ 181      0000B200 
+ 181      00
+ 182 0079 0050574D 		.ascii	"\000PWM_2_Stop\000\000\002\000\000\000\000\000\000\000"
+ 182      5F325F53 
+ 182      746F7000 
+ 182      00020000 
+ 182      00000000 
+ 183 008e 0000B400 		.ascii	"\000\000\264\000\000\000PWM_2_Enable\000\000\002\000"
+ 183      00005057 
+ 183      4D5F325F 
+ 183      456E6162 
+ 183      6C650000 
+ 184 00a4 00000000 		.ascii	"\000\000\000\000\000\000\000\000\266\000\000\000"
+ 184      00000000 
+ 184      B6000000 
+ 185              		.text
+ 186              		.section	.gnu.lto_.opts,"",%progbits
+ 187 0000 272D666E 		.ascii	"'-fno-trapv' '-fno-strict-overflow' '-mcpu=cortex-m"
+ 187      6F2D7472 
+ 187      61707627 
+ 187      20272D66 
+ 187      6E6F2D73 
+ 188 0033 33272027 		.ascii	"3' '-mthumb' '-g' '-Og' '-ffunction-sections' '-flt"
+ 188      2D6D7468 
+ 188      756D6227 
+ 188      20272D67 
+ 188      2720272D 
+ 189 0066 6F272027 		.ascii	"o' '-ffat-lto-objects'\000"
+ 189      2D666661 
+ 189      742D6C74 
+ 189      6F2D6F62 
+ 189      6A656374 
+ 190              		.text
+ 191              		.cfi_sections	.debug_frame
+ 192              		.section	.text.PWM_2_SaveConfig,"ax",%progbits
+ 193              		.align	2
+ 194              		.global	PWM_2_SaveConfig
+ 195              		.thumb
+ 196              		.thumb_func
+ 197              		.type	PWM_2_SaveConfig, %function
+ 198              	PWM_2_SaveConfig:
+ 199              	.LFB0:
+ 200              		.file 1 "Generated_Source\\PSoC5\\PWM_2_PM.c"
+   1:Generated_Source\PSoC5/PWM_2_PM.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/PWM_2_PM.c **** * File Name: PWM_2_PM.c
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 14
+
+
+   3:Generated_Source\PSoC5/PWM_2_PM.c **** * Version 3.30
+   4:Generated_Source\PSoC5/PWM_2_PM.c **** *
+   5:Generated_Source\PSoC5/PWM_2_PM.c **** * Description:
+   6:Generated_Source\PSoC5/PWM_2_PM.c **** *  This file provides the power management source code to API for the
+   7:Generated_Source\PSoC5/PWM_2_PM.c **** *  PWM.
+   8:Generated_Source\PSoC5/PWM_2_PM.c **** *
+   9:Generated_Source\PSoC5/PWM_2_PM.c **** * Note:
+  10:Generated_Source\PSoC5/PWM_2_PM.c **** *
+  11:Generated_Source\PSoC5/PWM_2_PM.c **** ********************************************************************************
+  12:Generated_Source\PSoC5/PWM_2_PM.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC5/PWM_2_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:Generated_Source\PSoC5/PWM_2_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  15:Generated_Source\PSoC5/PWM_2_PM.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC5/PWM_2_PM.c **** *******************************************************************************/
+  17:Generated_Source\PSoC5/PWM_2_PM.c **** 
+  18:Generated_Source\PSoC5/PWM_2_PM.c **** #include "PWM_2.h"
+  19:Generated_Source\PSoC5/PWM_2_PM.c **** 
+  20:Generated_Source\PSoC5/PWM_2_PM.c **** static PWM_2_backupStruct PWM_2_backup;
+  21:Generated_Source\PSoC5/PWM_2_PM.c **** 
+  22:Generated_Source\PSoC5/PWM_2_PM.c **** 
+  23:Generated_Source\PSoC5/PWM_2_PM.c **** /*******************************************************************************
+  24:Generated_Source\PSoC5/PWM_2_PM.c **** * Function Name: PWM_2_SaveConfig
+  25:Generated_Source\PSoC5/PWM_2_PM.c **** ********************************************************************************
+  26:Generated_Source\PSoC5/PWM_2_PM.c **** *
+  27:Generated_Source\PSoC5/PWM_2_PM.c **** * Summary:
+  28:Generated_Source\PSoC5/PWM_2_PM.c **** *  Saves the current user configuration of the component.
+  29:Generated_Source\PSoC5/PWM_2_PM.c **** *
+  30:Generated_Source\PSoC5/PWM_2_PM.c **** * Parameters:
+  31:Generated_Source\PSoC5/PWM_2_PM.c **** *  None
+  32:Generated_Source\PSoC5/PWM_2_PM.c **** *
+  33:Generated_Source\PSoC5/PWM_2_PM.c **** * Return:
+  34:Generated_Source\PSoC5/PWM_2_PM.c **** *  None
+  35:Generated_Source\PSoC5/PWM_2_PM.c **** *
+  36:Generated_Source\PSoC5/PWM_2_PM.c **** * Global variables:
+  37:Generated_Source\PSoC5/PWM_2_PM.c **** *  PWM_2_backup:  Variables of this global structure are modified to
+  38:Generated_Source\PSoC5/PWM_2_PM.c **** *  store the values of non retention configuration registers when Sleep() API is
+  39:Generated_Source\PSoC5/PWM_2_PM.c **** *  called.
+  40:Generated_Source\PSoC5/PWM_2_PM.c **** *
+  41:Generated_Source\PSoC5/PWM_2_PM.c **** *******************************************************************************/
+  42:Generated_Source\PSoC5/PWM_2_PM.c **** void PWM_2_SaveConfig(void) 
+  43:Generated_Source\PSoC5/PWM_2_PM.c **** {
+ 201              		.loc 1 43 0
+ 202              		.cfi_startproc
+ 203              		@ args = 0, pretend = 0, frame = 0
+ 204              		@ frame_needed = 0, uses_anonymous_args = 0
+ 205              		@ link register save eliminated.
+ 206 0000 7047     		bx	lr
+ 207              		.cfi_endproc
+ 208              	.LFE0:
+ 209              		.size	PWM_2_SaveConfig, .-PWM_2_SaveConfig
+ 210 0002 00BF     		.section	.text.PWM_2_RestoreConfig,"ax",%progbits
+ 211              		.align	2
+ 212              		.global	PWM_2_RestoreConfig
+ 213              		.thumb
+ 214              		.thumb_func
+ 215              		.type	PWM_2_RestoreConfig, %function
+ 216              	PWM_2_RestoreConfig:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 15
+
+
+ 217              	.LFB1:
+  44:Generated_Source\PSoC5/PWM_2_PM.c **** 
+  45:Generated_Source\PSoC5/PWM_2_PM.c ****     #if(!PWM_2_UsingFixedFunction)
+  46:Generated_Source\PSoC5/PWM_2_PM.c ****         #if(!PWM_2_PWMModeIsCenterAligned)
+  47:Generated_Source\PSoC5/PWM_2_PM.c ****             PWM_2_backup.PWMPeriod = PWM_2_ReadPeriod();
+  48:Generated_Source\PSoC5/PWM_2_PM.c ****         #endif /* (!PWM_2_PWMModeIsCenterAligned) */
+  49:Generated_Source\PSoC5/PWM_2_PM.c ****         PWM_2_backup.PWMUdb = PWM_2_ReadCounter();
+  50:Generated_Source\PSoC5/PWM_2_PM.c ****         #if (PWM_2_UseStatus)
+  51:Generated_Source\PSoC5/PWM_2_PM.c ****             PWM_2_backup.InterruptMaskValue = PWM_2_STATUS_MASK;
+  52:Generated_Source\PSoC5/PWM_2_PM.c ****         #endif /* (PWM_2_UseStatus) */
+  53:Generated_Source\PSoC5/PWM_2_PM.c **** 
+  54:Generated_Source\PSoC5/PWM_2_PM.c ****         #if(PWM_2_DeadBandMode == PWM_2__B_PWM__DBM_256_CLOCKS || \
+  55:Generated_Source\PSoC5/PWM_2_PM.c ****             PWM_2_DeadBandMode == PWM_2__B_PWM__DBM_2_4_CLOCKS)
+  56:Generated_Source\PSoC5/PWM_2_PM.c ****             PWM_2_backup.PWMdeadBandValue = PWM_2_ReadDeadTime();
+  57:Generated_Source\PSoC5/PWM_2_PM.c ****         #endif /*  deadband count is either 2-4 clocks or 256 clocks */
+  58:Generated_Source\PSoC5/PWM_2_PM.c **** 
+  59:Generated_Source\PSoC5/PWM_2_PM.c ****         #if(PWM_2_KillModeMinTime)
+  60:Generated_Source\PSoC5/PWM_2_PM.c ****              PWM_2_backup.PWMKillCounterPeriod = PWM_2_ReadKillTime();
+  61:Generated_Source\PSoC5/PWM_2_PM.c ****         #endif /* (PWM_2_KillModeMinTime) */
+  62:Generated_Source\PSoC5/PWM_2_PM.c **** 
+  63:Generated_Source\PSoC5/PWM_2_PM.c ****         #if(PWM_2_UseControl)
+  64:Generated_Source\PSoC5/PWM_2_PM.c ****             PWM_2_backup.PWMControlRegister = PWM_2_ReadControlRegister();
+  65:Generated_Source\PSoC5/PWM_2_PM.c ****         #endif /* (PWM_2_UseControl) */
+  66:Generated_Source\PSoC5/PWM_2_PM.c ****     #endif  /* (!PWM_2_UsingFixedFunction) */
+  67:Generated_Source\PSoC5/PWM_2_PM.c **** }
+  68:Generated_Source\PSoC5/PWM_2_PM.c **** 
+  69:Generated_Source\PSoC5/PWM_2_PM.c **** 
+  70:Generated_Source\PSoC5/PWM_2_PM.c **** /*******************************************************************************
+  71:Generated_Source\PSoC5/PWM_2_PM.c **** * Function Name: PWM_2_RestoreConfig
+  72:Generated_Source\PSoC5/PWM_2_PM.c **** ********************************************************************************
+  73:Generated_Source\PSoC5/PWM_2_PM.c **** *
+  74:Generated_Source\PSoC5/PWM_2_PM.c **** * Summary:
+  75:Generated_Source\PSoC5/PWM_2_PM.c **** *  Restores the current user configuration of the component.
+  76:Generated_Source\PSoC5/PWM_2_PM.c **** *
+  77:Generated_Source\PSoC5/PWM_2_PM.c **** * Parameters:
+  78:Generated_Source\PSoC5/PWM_2_PM.c **** *  None
+  79:Generated_Source\PSoC5/PWM_2_PM.c **** *
+  80:Generated_Source\PSoC5/PWM_2_PM.c **** * Return:
+  81:Generated_Source\PSoC5/PWM_2_PM.c **** *  None
+  82:Generated_Source\PSoC5/PWM_2_PM.c **** *
+  83:Generated_Source\PSoC5/PWM_2_PM.c **** * Global variables:
+  84:Generated_Source\PSoC5/PWM_2_PM.c **** *  PWM_2_backup:  Variables of this global structure are used to
+  85:Generated_Source\PSoC5/PWM_2_PM.c **** *  restore the values of non retention registers on wakeup from sleep mode.
+  86:Generated_Source\PSoC5/PWM_2_PM.c **** *
+  87:Generated_Source\PSoC5/PWM_2_PM.c **** *******************************************************************************/
+  88:Generated_Source\PSoC5/PWM_2_PM.c **** void PWM_2_RestoreConfig(void) 
+  89:Generated_Source\PSoC5/PWM_2_PM.c **** {
+ 218              		.loc 1 89 0
+ 219              		.cfi_startproc
+ 220              		@ args = 0, pretend = 0, frame = 0
+ 221              		@ frame_needed = 0, uses_anonymous_args = 0
+ 222              		@ link register save eliminated.
+ 223 0000 7047     		bx	lr
+ 224              		.cfi_endproc
+ 225              	.LFE1:
+ 226              		.size	PWM_2_RestoreConfig, .-PWM_2_RestoreConfig
+ 227 0002 00BF     		.section	.text.PWM_2_Sleep,"ax",%progbits
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 16
+
+
+ 228              		.align	2
+ 229              		.global	PWM_2_Sleep
+ 230              		.thumb
+ 231              		.thumb_func
+ 232              		.type	PWM_2_Sleep, %function
+ 233              	PWM_2_Sleep:
+ 234              	.LFB2:
+  90:Generated_Source\PSoC5/PWM_2_PM.c ****         #if(!PWM_2_UsingFixedFunction)
+  91:Generated_Source\PSoC5/PWM_2_PM.c ****             #if(!PWM_2_PWMModeIsCenterAligned)
+  92:Generated_Source\PSoC5/PWM_2_PM.c ****                 PWM_2_WritePeriod(PWM_2_backup.PWMPeriod);
+  93:Generated_Source\PSoC5/PWM_2_PM.c ****             #endif /* (!PWM_2_PWMModeIsCenterAligned) */
+  94:Generated_Source\PSoC5/PWM_2_PM.c **** 
+  95:Generated_Source\PSoC5/PWM_2_PM.c ****             PWM_2_WriteCounter(PWM_2_backup.PWMUdb);
+  96:Generated_Source\PSoC5/PWM_2_PM.c **** 
+  97:Generated_Source\PSoC5/PWM_2_PM.c ****             #if (PWM_2_UseStatus)
+  98:Generated_Source\PSoC5/PWM_2_PM.c ****                 PWM_2_STATUS_MASK = PWM_2_backup.InterruptMaskValue;
+  99:Generated_Source\PSoC5/PWM_2_PM.c ****             #endif /* (PWM_2_UseStatus) */
+ 100:Generated_Source\PSoC5/PWM_2_PM.c **** 
+ 101:Generated_Source\PSoC5/PWM_2_PM.c ****             #if(PWM_2_DeadBandMode == PWM_2__B_PWM__DBM_256_CLOCKS || \
+ 102:Generated_Source\PSoC5/PWM_2_PM.c ****                 PWM_2_DeadBandMode == PWM_2__B_PWM__DBM_2_4_CLOCKS)
+ 103:Generated_Source\PSoC5/PWM_2_PM.c ****                 PWM_2_WriteDeadTime(PWM_2_backup.PWMdeadBandValue);
+ 104:Generated_Source\PSoC5/PWM_2_PM.c ****             #endif /* deadband count is either 2-4 clocks or 256 clocks */
+ 105:Generated_Source\PSoC5/PWM_2_PM.c **** 
+ 106:Generated_Source\PSoC5/PWM_2_PM.c ****             #if(PWM_2_KillModeMinTime)
+ 107:Generated_Source\PSoC5/PWM_2_PM.c ****                 PWM_2_WriteKillTime(PWM_2_backup.PWMKillCounterPeriod);
+ 108:Generated_Source\PSoC5/PWM_2_PM.c ****             #endif /* (PWM_2_KillModeMinTime) */
+ 109:Generated_Source\PSoC5/PWM_2_PM.c **** 
+ 110:Generated_Source\PSoC5/PWM_2_PM.c ****             #if(PWM_2_UseControl)
+ 111:Generated_Source\PSoC5/PWM_2_PM.c ****                 PWM_2_WriteControlRegister(PWM_2_backup.PWMControlRegister);
+ 112:Generated_Source\PSoC5/PWM_2_PM.c ****             #endif /* (PWM_2_UseControl) */
+ 113:Generated_Source\PSoC5/PWM_2_PM.c ****         #endif  /* (!PWM_2_UsingFixedFunction) */
+ 114:Generated_Source\PSoC5/PWM_2_PM.c ****     }
+ 115:Generated_Source\PSoC5/PWM_2_PM.c **** 
+ 116:Generated_Source\PSoC5/PWM_2_PM.c **** 
+ 117:Generated_Source\PSoC5/PWM_2_PM.c **** /*******************************************************************************
+ 118:Generated_Source\PSoC5/PWM_2_PM.c **** * Function Name: PWM_2_Sleep
+ 119:Generated_Source\PSoC5/PWM_2_PM.c **** ********************************************************************************
+ 120:Generated_Source\PSoC5/PWM_2_PM.c **** *
+ 121:Generated_Source\PSoC5/PWM_2_PM.c **** * Summary:
+ 122:Generated_Source\PSoC5/PWM_2_PM.c **** *  Disables block's operation and saves the user configuration. Should be called
+ 123:Generated_Source\PSoC5/PWM_2_PM.c **** *  just prior to entering sleep.
+ 124:Generated_Source\PSoC5/PWM_2_PM.c **** *
+ 125:Generated_Source\PSoC5/PWM_2_PM.c **** * Parameters:
+ 126:Generated_Source\PSoC5/PWM_2_PM.c **** *  None
+ 127:Generated_Source\PSoC5/PWM_2_PM.c **** *
+ 128:Generated_Source\PSoC5/PWM_2_PM.c **** * Return:
+ 129:Generated_Source\PSoC5/PWM_2_PM.c **** *  None
+ 130:Generated_Source\PSoC5/PWM_2_PM.c **** *
+ 131:Generated_Source\PSoC5/PWM_2_PM.c **** * Global variables:
+ 132:Generated_Source\PSoC5/PWM_2_PM.c **** *  PWM_2_backup.PWMEnableState:  Is modified depending on the enable
+ 133:Generated_Source\PSoC5/PWM_2_PM.c **** *  state of the block before entering sleep mode.
+ 134:Generated_Source\PSoC5/PWM_2_PM.c **** *
+ 135:Generated_Source\PSoC5/PWM_2_PM.c **** *******************************************************************************/
+ 136:Generated_Source\PSoC5/PWM_2_PM.c **** void PWM_2_Sleep(void) 
+ 137:Generated_Source\PSoC5/PWM_2_PM.c **** {
+ 235              		.loc 1 137 0
+ 236              		.cfi_startproc
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 17
+
+
+ 237              		@ args = 0, pretend = 0, frame = 0
+ 238              		@ frame_needed = 0, uses_anonymous_args = 0
+ 239              		.loc 1 137 0
+ 240 0000 08B5     		push	{r3, lr}
+ 241              		.cfi_def_cfa_offset 8
+ 242              		.cfi_offset 3, -8
+ 243              		.cfi_offset 14, -4
+ 138:Generated_Source\PSoC5/PWM_2_PM.c ****     #if(PWM_2_UseControl)
+ 139:Generated_Source\PSoC5/PWM_2_PM.c ****         if(PWM_2_CTRL_ENABLE == (PWM_2_CONTROL & PWM_2_CTRL_ENABLE))
+ 244              		.loc 1 139 0
+ 245 0002 074B     		ldr	r3, .L7
+ 246 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 247 0006 13F0010F 		tst	r3, #1
+ 248 000a 03D0     		beq	.L4
+ 140:Generated_Source\PSoC5/PWM_2_PM.c ****         {
+ 141:Generated_Source\PSoC5/PWM_2_PM.c ****             /*Component is enabled */
+ 142:Generated_Source\PSoC5/PWM_2_PM.c ****             PWM_2_backup.PWMEnableState = 1u;
+ 249              		.loc 1 142 0
+ 250 000c 0122     		movs	r2, #1
+ 251 000e 054B     		ldr	r3, .L7+4
+ 252 0010 1A70     		strb	r2, [r3]
+ 253 0012 02E0     		b	.L5
+ 254              	.L4:
+ 143:Generated_Source\PSoC5/PWM_2_PM.c ****         }
+ 144:Generated_Source\PSoC5/PWM_2_PM.c ****         else
+ 145:Generated_Source\PSoC5/PWM_2_PM.c ****         {
+ 146:Generated_Source\PSoC5/PWM_2_PM.c ****             /* Component is disabled */
+ 147:Generated_Source\PSoC5/PWM_2_PM.c ****             PWM_2_backup.PWMEnableState = 0u;
+ 255              		.loc 1 147 0
+ 256 0014 0022     		movs	r2, #0
+ 257 0016 034B     		ldr	r3, .L7+4
+ 258 0018 1A70     		strb	r2, [r3]
+ 259              	.L5:
+ 148:Generated_Source\PSoC5/PWM_2_PM.c ****         }
+ 149:Generated_Source\PSoC5/PWM_2_PM.c ****     #endif /* (PWM_2_UseControl) */
+ 150:Generated_Source\PSoC5/PWM_2_PM.c **** 
+ 151:Generated_Source\PSoC5/PWM_2_PM.c ****     /* Stop component */
+ 152:Generated_Source\PSoC5/PWM_2_PM.c ****     PWM_2_Stop();
+ 260              		.loc 1 152 0
+ 261 001a FFF7FEFF 		bl	PWM_2_Stop
+ 262              	.LVL0:
+ 263 001e 08BD     		pop	{r3, pc}
+ 264              	.L8:
+ 265              		.align	2
+ 266              	.L7:
+ 267 0020 184F0040 		.word	1073762072
+ 268 0024 00000000 		.word	.LANCHOR0
+ 269              		.cfi_endproc
+ 270              	.LFE2:
+ 271              		.size	PWM_2_Sleep, .-PWM_2_Sleep
+ 272              		.section	.text.PWM_2_Wakeup,"ax",%progbits
+ 273              		.align	2
+ 274              		.global	PWM_2_Wakeup
+ 275              		.thumb
+ 276              		.thumb_func
+ 277              		.type	PWM_2_Wakeup, %function
+ 278              	PWM_2_Wakeup:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 18
+
+
+ 279              	.LFB3:
+ 153:Generated_Source\PSoC5/PWM_2_PM.c **** 
+ 154:Generated_Source\PSoC5/PWM_2_PM.c ****     /* Save registers configuration */
+ 155:Generated_Source\PSoC5/PWM_2_PM.c ****     PWM_2_SaveConfig();
+ 156:Generated_Source\PSoC5/PWM_2_PM.c **** }
+ 157:Generated_Source\PSoC5/PWM_2_PM.c **** 
+ 158:Generated_Source\PSoC5/PWM_2_PM.c **** 
+ 159:Generated_Source\PSoC5/PWM_2_PM.c **** /*******************************************************************************
+ 160:Generated_Source\PSoC5/PWM_2_PM.c **** * Function Name: PWM_2_Wakeup
+ 161:Generated_Source\PSoC5/PWM_2_PM.c **** ********************************************************************************
+ 162:Generated_Source\PSoC5/PWM_2_PM.c **** *
+ 163:Generated_Source\PSoC5/PWM_2_PM.c **** * Summary:
+ 164:Generated_Source\PSoC5/PWM_2_PM.c **** *  Restores and enables the user configuration. Should be called just after
+ 165:Generated_Source\PSoC5/PWM_2_PM.c **** *  awaking from sleep.
+ 166:Generated_Source\PSoC5/PWM_2_PM.c **** *
+ 167:Generated_Source\PSoC5/PWM_2_PM.c **** * Parameters:
+ 168:Generated_Source\PSoC5/PWM_2_PM.c **** *  None
+ 169:Generated_Source\PSoC5/PWM_2_PM.c **** *
+ 170:Generated_Source\PSoC5/PWM_2_PM.c **** * Return:
+ 171:Generated_Source\PSoC5/PWM_2_PM.c **** *  None
+ 172:Generated_Source\PSoC5/PWM_2_PM.c **** *
+ 173:Generated_Source\PSoC5/PWM_2_PM.c **** * Global variables:
+ 174:Generated_Source\PSoC5/PWM_2_PM.c **** *  PWM_2_backup.pwmEnable:  Is used to restore the enable state of
+ 175:Generated_Source\PSoC5/PWM_2_PM.c **** *  block on wakeup from sleep mode.
+ 176:Generated_Source\PSoC5/PWM_2_PM.c **** *
+ 177:Generated_Source\PSoC5/PWM_2_PM.c **** *******************************************************************************/
+ 178:Generated_Source\PSoC5/PWM_2_PM.c **** void PWM_2_Wakeup(void) 
+ 179:Generated_Source\PSoC5/PWM_2_PM.c **** {
+ 280              		.loc 1 179 0
+ 281              		.cfi_startproc
+ 282              		@ args = 0, pretend = 0, frame = 0
+ 283              		@ frame_needed = 0, uses_anonymous_args = 0
+ 284 0000 08B5     		push	{r3, lr}
+ 285              		.cfi_def_cfa_offset 8
+ 286              		.cfi_offset 3, -8
+ 287              		.cfi_offset 14, -4
+ 180:Generated_Source\PSoC5/PWM_2_PM.c ****      /* Restore registers values */
+ 181:Generated_Source\PSoC5/PWM_2_PM.c ****     PWM_2_RestoreConfig();
+ 182:Generated_Source\PSoC5/PWM_2_PM.c **** 
+ 183:Generated_Source\PSoC5/PWM_2_PM.c ****     if(PWM_2_backup.PWMEnableState != 0u)
+ 288              		.loc 1 183 0
+ 289 0002 034B     		ldr	r3, .L12
+ 290 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 291 0006 0BB1     		cbz	r3, .L9
+ 184:Generated_Source\PSoC5/PWM_2_PM.c ****     {
+ 185:Generated_Source\PSoC5/PWM_2_PM.c ****         /* Enable component's operation */
+ 186:Generated_Source\PSoC5/PWM_2_PM.c ****         PWM_2_Enable();
+ 292              		.loc 1 186 0
+ 293 0008 FFF7FEFF 		bl	PWM_2_Enable
+ 294              	.LVL1:
+ 295              	.L9:
+ 296 000c 08BD     		pop	{r3, pc}
+ 297              	.L13:
+ 298 000e 00BF     		.align	2
+ 299              	.L12:
+ 300 0010 00000000 		.word	.LANCHOR0
+ 301              		.cfi_endproc
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 19
+
+
+ 302              	.LFE3:
+ 303              		.size	PWM_2_Wakeup, .-PWM_2_Wakeup
+ 304              		.bss
+ 305              		.align	2
+ 306              		.set	.LANCHOR0,. + 0
+ 307              		.type	PWM_2_backup, %object
+ 308              		.size	PWM_2_backup, 1
+ 309              	PWM_2_backup:
+ 310 0000 00       		.space	1
+ 311 0001 000000   		.text
+ 312              	.Letext0:
+ 313              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 314              		.file 3 "Generated_Source\\PSoC5\\PWM_2.h"
+ 315              		.section	.debug_info,"",%progbits
+ 316              	.Ldebug_info0:
+ 317 0000 40010000 		.4byte	0x140
+ 318 0004 0400     		.2byte	0x4
+ 319 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 320 000a 04       		.byte	0x4
+ 321 000b 01       		.uleb128 0x1
+ 322 000c D3010000 		.4byte	.LASF22
+ 323 0010 01       		.byte	0x1
+ 324 0011 BA000000 		.4byte	.LASF23
+ 325 0015 1B000000 		.4byte	.LASF24
+ 326 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 327 001d 00000000 		.4byte	0
+ 328 0021 00000000 		.4byte	.Ldebug_line0
+ 329 0025 02       		.uleb128 0x2
+ 330 0026 01       		.byte	0x1
+ 331 0027 06       		.byte	0x6
+ 332 0028 A9010000 		.4byte	.LASF0
+ 333 002c 02       		.uleb128 0x2
+ 334 002d 01       		.byte	0x1
+ 335 002e 08       		.byte	0x8
+ 336 002f 39010000 		.4byte	.LASF1
+ 337 0033 02       		.uleb128 0x2
+ 338 0034 02       		.byte	0x2
+ 339 0035 05       		.byte	0x5
+ 340 0036 BB010000 		.4byte	.LASF2
+ 341 003a 02       		.uleb128 0x2
+ 342 003b 02       		.byte	0x2
+ 343 003c 07       		.byte	0x7
+ 344 003d 96010000 		.4byte	.LASF3
+ 345 0041 02       		.uleb128 0x2
+ 346 0042 04       		.byte	0x4
+ 347 0043 05       		.byte	0x5
+ 348 0044 66010000 		.4byte	.LASF4
+ 349 0048 02       		.uleb128 0x2
+ 350 0049 04       		.byte	0x4
+ 351 004a 07       		.byte	0x7
+ 352 004b F6000000 		.4byte	.LASF5
+ 353 004f 02       		.uleb128 0x2
+ 354 0050 08       		.byte	0x8
+ 355 0051 05       		.byte	0x5
+ 356 0052 00000000 		.4byte	.LASF6
+ 357 0056 02       		.uleb128 0x2
+ 358 0057 08       		.byte	0x8
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 20
+
+
+ 359 0058 07       		.byte	0x7
+ 360 0059 15010000 		.4byte	.LASF7
+ 361 005d 03       		.uleb128 0x3
+ 362 005e 04       		.byte	0x4
+ 363 005f 05       		.byte	0x5
+ 364 0060 696E7400 		.ascii	"int\000"
+ 365 0064 02       		.uleb128 0x2
+ 366 0065 04       		.byte	0x4
+ 367 0066 07       		.byte	0x7
+ 368 0067 0E000000 		.4byte	.LASF8
+ 369 006b 04       		.uleb128 0x4
+ 370 006c F0000000 		.4byte	.LASF12
+ 371 0070 02       		.byte	0x2
+ 372 0071 9201     		.2byte	0x192
+ 373 0073 2C000000 		.4byte	0x2c
+ 374 0077 02       		.uleb128 0x2
+ 375 0078 04       		.byte	0x4
+ 376 0079 04       		.byte	0x4
+ 377 007a B5010000 		.4byte	.LASF9
+ 378 007e 02       		.uleb128 0x2
+ 379 007f 08       		.byte	0x8
+ 380 0080 04       		.byte	0x4
+ 381 0081 6F010000 		.4byte	.LASF10
+ 382 0085 02       		.uleb128 0x2
+ 383 0086 01       		.byte	0x1
+ 384 0087 08       		.byte	0x8
+ 385 0088 56010000 		.4byte	.LASF11
+ 386 008c 04       		.uleb128 0x4
+ 387 008d C5010000 		.4byte	.LASF13
+ 388 0091 02       		.byte	0x2
+ 389 0092 3C02     		.2byte	0x23c
+ 390 0094 98000000 		.4byte	0x98
+ 391 0098 05       		.uleb128 0x5
+ 392 0099 6B000000 		.4byte	0x6b
+ 393 009d 02       		.uleb128 0x2
+ 394 009e 04       		.byte	0x4
+ 395 009f 07       		.byte	0x7
+ 396 00a0 CA010000 		.4byte	.LASF14
+ 397 00a4 06       		.uleb128 0x6
+ 398 00a5 01       		.byte	0x1
+ 399 00a6 03       		.byte	0x3
+ 400 00a7 6B       		.byte	0x6b
+ 401 00a8 B9000000 		.4byte	0xb9
+ 402 00ac 07       		.uleb128 0x7
+ 403 00ad 47010000 		.4byte	.LASF25
+ 404 00b1 03       		.byte	0x3
+ 405 00b2 6E       		.byte	0x6e
+ 406 00b3 6B000000 		.4byte	0x6b
+ 407 00b7 00       		.byte	0
+ 408 00b8 00       		.byte	0
+ 409 00b9 08       		.uleb128 0x8
+ 410 00ba 76010000 		.4byte	.LASF15
+ 411 00be 03       		.byte	0x3
+ 412 00bf 8B       		.byte	0x8b
+ 413 00c0 A4000000 		.4byte	0xa4
+ 414 00c4 09       		.uleb128 0x9
+ 415 00c5 A9000000 		.4byte	.LASF16
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 21
+
+
+ 416 00c9 01       		.byte	0x1
+ 417 00ca 2A       		.byte	0x2a
+ 418 00cb 00000000 		.4byte	.LFB0
+ 419 00cf 02000000 		.4byte	.LFE0-.LFB0
+ 420 00d3 01       		.uleb128 0x1
+ 421 00d4 9C       		.byte	0x9c
+ 422 00d5 09       		.uleb128 0x9
+ 423 00d6 DC000000 		.4byte	.LASF17
+ 424 00da 01       		.byte	0x1
+ 425 00db 58       		.byte	0x58
+ 426 00dc 00000000 		.4byte	.LFB1
+ 427 00e0 02000000 		.4byte	.LFE1-.LFB1
+ 428 00e4 01       		.uleb128 0x1
+ 429 00e5 9C       		.byte	0x9c
+ 430 00e6 0A       		.uleb128 0xa
+ 431 00e7 9D000000 		.4byte	.LASF18
+ 432 00eb 01       		.byte	0x1
+ 433 00ec 88       		.byte	0x88
+ 434 00ed 00000000 		.4byte	.LFB2
+ 435 00f1 28000000 		.4byte	.LFE2-.LFB2
+ 436 00f5 01       		.uleb128 0x1
+ 437 00f6 9C       		.byte	0x9c
+ 438 00f7 05010000 		.4byte	0x105
+ 439 00fb 0B       		.uleb128 0xb
+ 440 00fc 1E000000 		.4byte	.LVL0
+ 441 0100 35010000 		.4byte	0x135
+ 442 0104 00       		.byte	0
+ 443 0105 0A       		.uleb128 0xa
+ 444 0106 89010000 		.4byte	.LASF19
+ 445 010a 01       		.byte	0x1
+ 446 010b B2       		.byte	0xb2
+ 447 010c 00000000 		.4byte	.LFB3
+ 448 0110 14000000 		.4byte	.LFE3-.LFB3
+ 449 0114 01       		.uleb128 0x1
+ 450 0115 9C       		.byte	0x9c
+ 451 0116 24010000 		.4byte	0x124
+ 452 011a 0B       		.uleb128 0xb
+ 453 011b 0C000000 		.4byte	.LVL1
+ 454 011f 3C010000 		.4byte	0x13c
+ 455 0123 00       		.byte	0
+ 456 0124 0C       		.uleb128 0xc
+ 457 0125 08010000 		.4byte	.LASF26
+ 458 0129 01       		.byte	0x1
+ 459 012a 14       		.byte	0x14
+ 460 012b B9000000 		.4byte	0xb9
+ 461 012f 05       		.uleb128 0x5
+ 462 0130 03       		.byte	0x3
+ 463 0131 00000000 		.4byte	PWM_2_backup
+ 464 0135 0D       		.uleb128 0xd
+ 465 0136 5B010000 		.4byte	.LASF20
+ 466 013a 03       		.byte	0x3
+ 467 013b 93       		.byte	0x93
+ 468 013c 0D       		.uleb128 0xd
+ 469 013d 2C010000 		.4byte	.LASF21
+ 470 0141 03       		.byte	0x3
+ 471 0142 DB       		.byte	0xdb
+ 472 0143 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 22
+
+
+ 473              		.section	.debug_abbrev,"",%progbits
+ 474              	.Ldebug_abbrev0:
+ 475 0000 01       		.uleb128 0x1
+ 476 0001 11       		.uleb128 0x11
+ 477 0002 01       		.byte	0x1
+ 478 0003 25       		.uleb128 0x25
+ 479 0004 0E       		.uleb128 0xe
+ 480 0005 13       		.uleb128 0x13
+ 481 0006 0B       		.uleb128 0xb
+ 482 0007 03       		.uleb128 0x3
+ 483 0008 0E       		.uleb128 0xe
+ 484 0009 1B       		.uleb128 0x1b
+ 485 000a 0E       		.uleb128 0xe
+ 486 000b 55       		.uleb128 0x55
+ 487 000c 17       		.uleb128 0x17
+ 488 000d 11       		.uleb128 0x11
+ 489 000e 01       		.uleb128 0x1
+ 490 000f 10       		.uleb128 0x10
+ 491 0010 17       		.uleb128 0x17
+ 492 0011 00       		.byte	0
+ 493 0012 00       		.byte	0
+ 494 0013 02       		.uleb128 0x2
+ 495 0014 24       		.uleb128 0x24
+ 496 0015 00       		.byte	0
+ 497 0016 0B       		.uleb128 0xb
+ 498 0017 0B       		.uleb128 0xb
+ 499 0018 3E       		.uleb128 0x3e
+ 500 0019 0B       		.uleb128 0xb
+ 501 001a 03       		.uleb128 0x3
+ 502 001b 0E       		.uleb128 0xe
+ 503 001c 00       		.byte	0
+ 504 001d 00       		.byte	0
+ 505 001e 03       		.uleb128 0x3
+ 506 001f 24       		.uleb128 0x24
+ 507 0020 00       		.byte	0
+ 508 0021 0B       		.uleb128 0xb
+ 509 0022 0B       		.uleb128 0xb
+ 510 0023 3E       		.uleb128 0x3e
+ 511 0024 0B       		.uleb128 0xb
+ 512 0025 03       		.uleb128 0x3
+ 513 0026 08       		.uleb128 0x8
+ 514 0027 00       		.byte	0
+ 515 0028 00       		.byte	0
+ 516 0029 04       		.uleb128 0x4
+ 517 002a 16       		.uleb128 0x16
+ 518 002b 00       		.byte	0
+ 519 002c 03       		.uleb128 0x3
+ 520 002d 0E       		.uleb128 0xe
+ 521 002e 3A       		.uleb128 0x3a
+ 522 002f 0B       		.uleb128 0xb
+ 523 0030 3B       		.uleb128 0x3b
+ 524 0031 05       		.uleb128 0x5
+ 525 0032 49       		.uleb128 0x49
+ 526 0033 13       		.uleb128 0x13
+ 527 0034 00       		.byte	0
+ 528 0035 00       		.byte	0
+ 529 0036 05       		.uleb128 0x5
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 23
+
+
+ 530 0037 35       		.uleb128 0x35
+ 531 0038 00       		.byte	0
+ 532 0039 49       		.uleb128 0x49
+ 533 003a 13       		.uleb128 0x13
+ 534 003b 00       		.byte	0
+ 535 003c 00       		.byte	0
+ 536 003d 06       		.uleb128 0x6
+ 537 003e 13       		.uleb128 0x13
+ 538 003f 01       		.byte	0x1
+ 539 0040 0B       		.uleb128 0xb
+ 540 0041 0B       		.uleb128 0xb
+ 541 0042 3A       		.uleb128 0x3a
+ 542 0043 0B       		.uleb128 0xb
+ 543 0044 3B       		.uleb128 0x3b
+ 544 0045 0B       		.uleb128 0xb
+ 545 0046 01       		.uleb128 0x1
+ 546 0047 13       		.uleb128 0x13
+ 547 0048 00       		.byte	0
+ 548 0049 00       		.byte	0
+ 549 004a 07       		.uleb128 0x7
+ 550 004b 0D       		.uleb128 0xd
+ 551 004c 00       		.byte	0
+ 552 004d 03       		.uleb128 0x3
+ 553 004e 0E       		.uleb128 0xe
+ 554 004f 3A       		.uleb128 0x3a
+ 555 0050 0B       		.uleb128 0xb
+ 556 0051 3B       		.uleb128 0x3b
+ 557 0052 0B       		.uleb128 0xb
+ 558 0053 49       		.uleb128 0x49
+ 559 0054 13       		.uleb128 0x13
+ 560 0055 38       		.uleb128 0x38
+ 561 0056 0B       		.uleb128 0xb
+ 562 0057 00       		.byte	0
+ 563 0058 00       		.byte	0
+ 564 0059 08       		.uleb128 0x8
+ 565 005a 16       		.uleb128 0x16
+ 566 005b 00       		.byte	0
+ 567 005c 03       		.uleb128 0x3
+ 568 005d 0E       		.uleb128 0xe
+ 569 005e 3A       		.uleb128 0x3a
+ 570 005f 0B       		.uleb128 0xb
+ 571 0060 3B       		.uleb128 0x3b
+ 572 0061 0B       		.uleb128 0xb
+ 573 0062 49       		.uleb128 0x49
+ 574 0063 13       		.uleb128 0x13
+ 575 0064 00       		.byte	0
+ 576 0065 00       		.byte	0
+ 577 0066 09       		.uleb128 0x9
+ 578 0067 2E       		.uleb128 0x2e
+ 579 0068 00       		.byte	0
+ 580 0069 3F       		.uleb128 0x3f
+ 581 006a 19       		.uleb128 0x19
+ 582 006b 03       		.uleb128 0x3
+ 583 006c 0E       		.uleb128 0xe
+ 584 006d 3A       		.uleb128 0x3a
+ 585 006e 0B       		.uleb128 0xb
+ 586 006f 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 24
+
+
+ 587 0070 0B       		.uleb128 0xb
+ 588 0071 27       		.uleb128 0x27
+ 589 0072 19       		.uleb128 0x19
+ 590 0073 11       		.uleb128 0x11
+ 591 0074 01       		.uleb128 0x1
+ 592 0075 12       		.uleb128 0x12
+ 593 0076 06       		.uleb128 0x6
+ 594 0077 40       		.uleb128 0x40
+ 595 0078 18       		.uleb128 0x18
+ 596 0079 9742     		.uleb128 0x2117
+ 597 007b 19       		.uleb128 0x19
+ 598 007c 00       		.byte	0
+ 599 007d 00       		.byte	0
+ 600 007e 0A       		.uleb128 0xa
+ 601 007f 2E       		.uleb128 0x2e
+ 602 0080 01       		.byte	0x1
+ 603 0081 3F       		.uleb128 0x3f
+ 604 0082 19       		.uleb128 0x19
+ 605 0083 03       		.uleb128 0x3
+ 606 0084 0E       		.uleb128 0xe
+ 607 0085 3A       		.uleb128 0x3a
+ 608 0086 0B       		.uleb128 0xb
+ 609 0087 3B       		.uleb128 0x3b
+ 610 0088 0B       		.uleb128 0xb
+ 611 0089 27       		.uleb128 0x27
+ 612 008a 19       		.uleb128 0x19
+ 613 008b 11       		.uleb128 0x11
+ 614 008c 01       		.uleb128 0x1
+ 615 008d 12       		.uleb128 0x12
+ 616 008e 06       		.uleb128 0x6
+ 617 008f 40       		.uleb128 0x40
+ 618 0090 18       		.uleb128 0x18
+ 619 0091 9742     		.uleb128 0x2117
+ 620 0093 19       		.uleb128 0x19
+ 621 0094 01       		.uleb128 0x1
+ 622 0095 13       		.uleb128 0x13
+ 623 0096 00       		.byte	0
+ 624 0097 00       		.byte	0
+ 625 0098 0B       		.uleb128 0xb
+ 626 0099 898201   		.uleb128 0x4109
+ 627 009c 00       		.byte	0
+ 628 009d 11       		.uleb128 0x11
+ 629 009e 01       		.uleb128 0x1
+ 630 009f 31       		.uleb128 0x31
+ 631 00a0 13       		.uleb128 0x13
+ 632 00a1 00       		.byte	0
+ 633 00a2 00       		.byte	0
+ 634 00a3 0C       		.uleb128 0xc
+ 635 00a4 34       		.uleb128 0x34
+ 636 00a5 00       		.byte	0
+ 637 00a6 03       		.uleb128 0x3
+ 638 00a7 0E       		.uleb128 0xe
+ 639 00a8 3A       		.uleb128 0x3a
+ 640 00a9 0B       		.uleb128 0xb
+ 641 00aa 3B       		.uleb128 0x3b
+ 642 00ab 0B       		.uleb128 0xb
+ 643 00ac 49       		.uleb128 0x49
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 25
+
+
+ 644 00ad 13       		.uleb128 0x13
+ 645 00ae 02       		.uleb128 0x2
+ 646 00af 18       		.uleb128 0x18
+ 647 00b0 00       		.byte	0
+ 648 00b1 00       		.byte	0
+ 649 00b2 0D       		.uleb128 0xd
+ 650 00b3 2E       		.uleb128 0x2e
+ 651 00b4 00       		.byte	0
+ 652 00b5 3F       		.uleb128 0x3f
+ 653 00b6 19       		.uleb128 0x19
+ 654 00b7 03       		.uleb128 0x3
+ 655 00b8 0E       		.uleb128 0xe
+ 656 00b9 3A       		.uleb128 0x3a
+ 657 00ba 0B       		.uleb128 0xb
+ 658 00bb 3B       		.uleb128 0x3b
+ 659 00bc 0B       		.uleb128 0xb
+ 660 00bd 27       		.uleb128 0x27
+ 661 00be 19       		.uleb128 0x19
+ 662 00bf 3C       		.uleb128 0x3c
+ 663 00c0 19       		.uleb128 0x19
+ 664 00c1 00       		.byte	0
+ 665 00c2 00       		.byte	0
+ 666 00c3 00       		.byte	0
+ 667              		.section	.debug_aranges,"",%progbits
+ 668 0000 34000000 		.4byte	0x34
+ 669 0004 0200     		.2byte	0x2
+ 670 0006 00000000 		.4byte	.Ldebug_info0
+ 671 000a 04       		.byte	0x4
+ 672 000b 00       		.byte	0
+ 673 000c 0000     		.2byte	0
+ 674 000e 0000     		.2byte	0
+ 675 0010 00000000 		.4byte	.LFB0
+ 676 0014 02000000 		.4byte	.LFE0-.LFB0
+ 677 0018 00000000 		.4byte	.LFB1
+ 678 001c 02000000 		.4byte	.LFE1-.LFB1
+ 679 0020 00000000 		.4byte	.LFB2
+ 680 0024 28000000 		.4byte	.LFE2-.LFB2
+ 681 0028 00000000 		.4byte	.LFB3
+ 682 002c 14000000 		.4byte	.LFE3-.LFB3
+ 683 0030 00000000 		.4byte	0
+ 684 0034 00000000 		.4byte	0
+ 685              		.section	.debug_ranges,"",%progbits
+ 686              	.Ldebug_ranges0:
+ 687 0000 00000000 		.4byte	.LFB0
+ 688 0004 02000000 		.4byte	.LFE0
+ 689 0008 00000000 		.4byte	.LFB1
+ 690 000c 02000000 		.4byte	.LFE1
+ 691 0010 00000000 		.4byte	.LFB2
+ 692 0014 28000000 		.4byte	.LFE2
+ 693 0018 00000000 		.4byte	.LFB3
+ 694 001c 14000000 		.4byte	.LFE3
+ 695 0020 00000000 		.4byte	0
+ 696 0024 00000000 		.4byte	0
+ 697              		.section	.debug_line,"",%progbits
+ 698              	.Ldebug_line0:
+ 699 0000 9C000000 		.section	.debug_str,"MS",%progbits,1
+ 699      02005000 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 26
+
+
+ 699      00000201 
+ 699      FB0E0D00 
+ 699      01010101 
+ 700              	.LASF6:
+ 701 0000 6C6F6E67 		.ascii	"long long int\000"
+ 701      206C6F6E 
+ 701      6720696E 
+ 701      7400
+ 702              	.LASF8:
+ 703 000e 756E7369 		.ascii	"unsigned int\000"
+ 703      676E6564 
+ 703      20696E74 
+ 703      00
+ 704              	.LASF24:
+ 705 001b 433A5C55 		.ascii	"C:\\Users\\Luggi\\Desktop\\Aktuelles Projekt Laser_"
+ 705      73657273 
+ 705      5C4C7567 
+ 705      67695C44 
+ 705      65736B74 
+ 706 004a 73636875 		.ascii	"schutzschaltung\\Aktuelles Projekt Laser_schutzscha"
+ 706      747A7363 
+ 706      68616C74 
+ 706      756E675C 
+ 706      416B7475 
+ 707 007c 6C74756E 		.ascii	"ltung\\Laserschutzschaltung.cydsn\000"
+ 707      675C4C61 
+ 707      73657273 
+ 707      63687574 
+ 707      7A736368 
+ 708              	.LASF18:
+ 709 009d 50574D5F 		.ascii	"PWM_2_Sleep\000"
+ 709      325F536C 
+ 709      65657000 
+ 710              	.LASF16:
+ 711 00a9 50574D5F 		.ascii	"PWM_2_SaveConfig\000"
+ 711      325F5361 
+ 711      7665436F 
+ 711      6E666967 
+ 711      00
+ 712              	.LASF23:
+ 713 00ba 47656E65 		.ascii	"Generated_Source\\PSoC5\\PWM_2_PM.c\000"
+ 713      72617465 
+ 713      645F536F 
+ 713      75726365 
+ 713      5C50536F 
+ 714              	.LASF17:
+ 715 00dc 50574D5F 		.ascii	"PWM_2_RestoreConfig\000"
+ 715      325F5265 
+ 715      73746F72 
+ 715      65436F6E 
+ 715      66696700 
+ 716              	.LASF12:
+ 717 00f0 75696E74 		.ascii	"uint8\000"
+ 717      3800
+ 718              	.LASF5:
+ 719 00f6 6C6F6E67 		.ascii	"long unsigned int\000"
+ 719      20756E73 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 27
+
+
+ 719      69676E65 
+ 719      6420696E 
+ 719      7400
+ 720              	.LASF26:
+ 721 0108 50574D5F 		.ascii	"PWM_2_backup\000"
+ 721      325F6261 
+ 721      636B7570 
+ 721      00
+ 722              	.LASF7:
+ 723 0115 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 723      206C6F6E 
+ 723      6720756E 
+ 723      7369676E 
+ 723      65642069 
+ 724              	.LASF21:
+ 725 012c 50574D5F 		.ascii	"PWM_2_Enable\000"
+ 725      325F456E 
+ 725      61626C65 
+ 725      00
+ 726              	.LASF1:
+ 727 0139 756E7369 		.ascii	"unsigned char\000"
+ 727      676E6564 
+ 727      20636861 
+ 727      7200
+ 728              	.LASF25:
+ 729 0147 50574D45 		.ascii	"PWMEnableState\000"
+ 729      6E61626C 
+ 729      65537461 
+ 729      746500
+ 730              	.LASF11:
+ 731 0156 63686172 		.ascii	"char\000"
+ 731      00
+ 732              	.LASF20:
+ 733 015b 50574D5F 		.ascii	"PWM_2_Stop\000"
+ 733      325F5374 
+ 733      6F7000
+ 734              	.LASF4:
+ 735 0166 6C6F6E67 		.ascii	"long int\000"
+ 735      20696E74 
+ 735      00
+ 736              	.LASF10:
+ 737 016f 646F7562 		.ascii	"double\000"
+ 737      6C6500
+ 738              	.LASF15:
+ 739 0176 50574D5F 		.ascii	"PWM_2_backupStruct\000"
+ 739      325F6261 
+ 739      636B7570 
+ 739      53747275 
+ 739      637400
+ 740              	.LASF19:
+ 741 0189 50574D5F 		.ascii	"PWM_2_Wakeup\000"
+ 741      325F5761 
+ 741      6B657570 
+ 741      00
+ 742              	.LASF3:
+ 743 0196 73686F72 		.ascii	"short unsigned int\000"
+ 743      7420756E 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccAfXP7g.s 			page 28
+
+
+ 743      7369676E 
+ 743      65642069 
+ 743      6E7400
+ 744              	.LASF0:
+ 745 01a9 7369676E 		.ascii	"signed char\000"
+ 745      65642063 
+ 745      68617200 
+ 746              	.LASF9:
+ 747 01b5 666C6F61 		.ascii	"float\000"
+ 747      7400
+ 748              	.LASF2:
+ 749 01bb 73686F72 		.ascii	"short int\000"
+ 749      7420696E 
+ 749      7400
+ 750              	.LASF13:
+ 751 01c5 72656738 		.ascii	"reg8\000"
+ 751      00
+ 752              	.LASF14:
+ 753 01ca 73697A65 		.ascii	"sizetype\000"
+ 753      74797065 
+ 753      00
+ 754              	.LASF22:
+ 755 01d3 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 755      4320342E 
+ 755      392E3320 
+ 755      32303135 
+ 755      30333033 
+ 756 0206 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 756      20726576 
+ 756      6973696F 
+ 756      6E203232 
+ 756      31323230 
+ 757 0239 67202D66 		.ascii	"g -ffunction-sections -flto -ffat-lto-objects\000"
+ 757      66756E63 
+ 757      74696F6E 
+ 757      2D736563 
+ 757      74696F6E 
+ 758              		.comm	__gnu_lto_v1,1,1
+ 759              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

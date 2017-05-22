@@ -1,0 +1,1692 @@
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"IDAC8_1.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.IDAC8_1_Enable,"ax",%progbits
+  19              		.align	1
+  20              		.global	IDAC8_1_Enable
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	IDAC8_1_Enable, %function
+  24              	IDAC8_1_Enable:
+  25              	.LFB1:
+  26              		.file 1 "Generated_Source\\PSoC5\\IDAC8_1.c"
+   1:Generated_Source\PSoC5/IDAC8_1.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/IDAC8_1.c **** * File Name: IDAC8_1.c
+   3:Generated_Source\PSoC5/IDAC8_1.c **** * Version 2.0
+   4:Generated_Source\PSoC5/IDAC8_1.c **** *
+   5:Generated_Source\PSoC5/IDAC8_1.c **** * Description:
+   6:Generated_Source\PSoC5/IDAC8_1.c **** *  This file provides the source code to the API for the 8-bit Current 
+   7:Generated_Source\PSoC5/IDAC8_1.c **** *  DAC (IDAC8) User Module.
+   8:Generated_Source\PSoC5/IDAC8_1.c **** *
+   9:Generated_Source\PSoC5/IDAC8_1.c **** * Note:
+  10:Generated_Source\PSoC5/IDAC8_1.c **** *  None
+  11:Generated_Source\PSoC5/IDAC8_1.c **** *
+  12:Generated_Source\PSoC5/IDAC8_1.c **** ********************************************************************************
+  13:Generated_Source\PSoC5/IDAC8_1.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14:Generated_Source\PSoC5/IDAC8_1.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  15:Generated_Source\PSoC5/IDAC8_1.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  16:Generated_Source\PSoC5/IDAC8_1.c **** * the software package with which this file was provided.
+  17:Generated_Source\PSoC5/IDAC8_1.c **** *******************************************************************************/
+  18:Generated_Source\PSoC5/IDAC8_1.c **** 
+  19:Generated_Source\PSoC5/IDAC8_1.c **** #include "cytypes.h"
+  20:Generated_Source\PSoC5/IDAC8_1.c **** #include "IDAC8_1.h"   
+  21:Generated_Source\PSoC5/IDAC8_1.c **** 
+  22:Generated_Source\PSoC5/IDAC8_1.c **** #if (CY_PSOC5A)
+  23:Generated_Source\PSoC5/IDAC8_1.c ****     #include <CyLib.h>
+  24:Generated_Source\PSoC5/IDAC8_1.c **** #endif /* CY_PSOC5A */
+  25:Generated_Source\PSoC5/IDAC8_1.c **** 
+  26:Generated_Source\PSoC5/IDAC8_1.c **** 
+  27:Generated_Source\PSoC5/IDAC8_1.c **** uint8 IDAC8_1_initVar = 0u;
+  28:Generated_Source\PSoC5/IDAC8_1.c **** 
+  29:Generated_Source\PSoC5/IDAC8_1.c **** 
+  30:Generated_Source\PSoC5/IDAC8_1.c **** #if (CY_PSOC5A)
+  31:Generated_Source\PSoC5/IDAC8_1.c ****     static IDAC8_1_LOWPOWER_BACKUP_STRUCT  IDAC8_1_lowPowerBackup;
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 2
+
+
+  32:Generated_Source\PSoC5/IDAC8_1.c **** #endif /* CY_PSOC5A */
+  33:Generated_Source\PSoC5/IDAC8_1.c **** 
+  34:Generated_Source\PSoC5/IDAC8_1.c **** /* Variable to decide whether or not to restore control register in Enable()
+  35:Generated_Source\PSoC5/IDAC8_1.c ****    API. This valid only for PSoC5A */
+  36:Generated_Source\PSoC5/IDAC8_1.c **** #if (CY_PSOC5A)
+  37:Generated_Source\PSoC5/IDAC8_1.c ****     static uint8 IDAC8_1_restoreReg = 0u;
+  38:Generated_Source\PSoC5/IDAC8_1.c **** #endif /* CY_PSOC5A */
+  39:Generated_Source\PSoC5/IDAC8_1.c **** 
+  40:Generated_Source\PSoC5/IDAC8_1.c **** 
+  41:Generated_Source\PSoC5/IDAC8_1.c **** /*******************************************************************************
+  42:Generated_Source\PSoC5/IDAC8_1.c **** * Function Name: IDAC8_1_Init
+  43:Generated_Source\PSoC5/IDAC8_1.c **** ********************************************************************************
+  44:Generated_Source\PSoC5/IDAC8_1.c **** * Summary:
+  45:Generated_Source\PSoC5/IDAC8_1.c **** *  Initialize to the schematic state.
+  46:Generated_Source\PSoC5/IDAC8_1.c **** * 
+  47:Generated_Source\PSoC5/IDAC8_1.c **** * Parameters:
+  48:Generated_Source\PSoC5/IDAC8_1.c **** *  void:
+  49:Generated_Source\PSoC5/IDAC8_1.c **** *
+  50:Generated_Source\PSoC5/IDAC8_1.c **** * Return:
+  51:Generated_Source\PSoC5/IDAC8_1.c **** *  (void)
+  52:Generated_Source\PSoC5/IDAC8_1.c **** *
+  53:Generated_Source\PSoC5/IDAC8_1.c **** * Theory:
+  54:Generated_Source\PSoC5/IDAC8_1.c **** *
+  55:Generated_Source\PSoC5/IDAC8_1.c **** * Side Effects:
+  56:Generated_Source\PSoC5/IDAC8_1.c **** *
+  57:Generated_Source\PSoC5/IDAC8_1.c **** *******************************************************************************/
+  58:Generated_Source\PSoC5/IDAC8_1.c **** void IDAC8_1_Init(void) 
+  59:Generated_Source\PSoC5/IDAC8_1.c **** {
+  60:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_CR0 = (IDAC8_1_MODE_I | IDAC8_1_DEFAULT_RANGE );
+  61:Generated_Source\PSoC5/IDAC8_1.c **** 
+  62:Generated_Source\PSoC5/IDAC8_1.c ****     /* Set default data source */
+  63:Generated_Source\PSoC5/IDAC8_1.c ****     #if(IDAC8_1_DEFAULT_DATA_SRC != 0u )    
+  64:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_CR1 = (IDAC8_1_DEFAULT_CNTL | IDAC8_1_DACBUS_ENABLE);
+  65:Generated_Source\PSoC5/IDAC8_1.c ****     #else
+  66:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_CR1 = (IDAC8_1_DEFAULT_CNTL | IDAC8_1_DACBUS_DISABLE);
+  67:Generated_Source\PSoC5/IDAC8_1.c ****     #endif /* (IDAC8_1_DEFAULT_DATA_SRC != 0u ) */
+  68:Generated_Source\PSoC5/IDAC8_1.c ****     
+  69:Generated_Source\PSoC5/IDAC8_1.c ****     /*Controls polarity from UDB Control*/
+  70:Generated_Source\PSoC5/IDAC8_1.c ****     #if(IDAC8_1_DEFAULT_POLARITY == IDAC8_1_HARDWARE_CONTROLLED)
+  71:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_CR1 |= IDAC8_1_IDIR_SRC_UDB;
+  72:Generated_Source\PSoC5/IDAC8_1.c ****     #else
+  73:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_CR1 |= IDAC8_1_DEFAULT_POLARITY;
+  74:Generated_Source\PSoC5/IDAC8_1.c ****     #endif/* (IDAC8_1_DEFAULT_POLARITY == IDAC8_1_HARDWARE_CONTROLLED) */
+  75:Generated_Source\PSoC5/IDAC8_1.c ****     /*Controls Current Source from UDB Control*/
+  76:Generated_Source\PSoC5/IDAC8_1.c ****     #if(IDAC8_1_HARDWARE_ENABLE != 0u ) 
+  77:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_CR1 |= IDAC8_1_IDIR_CTL_UDB;
+  78:Generated_Source\PSoC5/IDAC8_1.c ****     #endif /* (IDAC8_1_HARDWARE_ENABLE != 0u ) */ 
+  79:Generated_Source\PSoC5/IDAC8_1.c ****     
+  80:Generated_Source\PSoC5/IDAC8_1.c ****     /* Set default strobe mode */
+  81:Generated_Source\PSoC5/IDAC8_1.c ****     #if(IDAC8_1_DEFAULT_STRB != 0u)
+  82:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_Strobe |= IDAC8_1_STRB_EN;
+  83:Generated_Source\PSoC5/IDAC8_1.c ****     #endif /* (IDAC8_1_DEFAULT_STRB != 0u) */
+  84:Generated_Source\PSoC5/IDAC8_1.c ****     
+  85:Generated_Source\PSoC5/IDAC8_1.c ****     /* Set default speed */
+  86:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_SetSpeed(IDAC8_1_DEFAULT_SPEED);
+  87:Generated_Source\PSoC5/IDAC8_1.c ****     
+  88:Generated_Source\PSoC5/IDAC8_1.c ****     /* Set proper DAC trim */
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 3
+
+
+  89:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_DacTrim();
+  90:Generated_Source\PSoC5/IDAC8_1.c ****     
+  91:Generated_Source\PSoC5/IDAC8_1.c **** }
+  92:Generated_Source\PSoC5/IDAC8_1.c **** 
+  93:Generated_Source\PSoC5/IDAC8_1.c **** 
+  94:Generated_Source\PSoC5/IDAC8_1.c **** /*******************************************************************************
+  95:Generated_Source\PSoC5/IDAC8_1.c **** * Function Name: IDAC8_1_Enable
+  96:Generated_Source\PSoC5/IDAC8_1.c **** ********************************************************************************
+  97:Generated_Source\PSoC5/IDAC8_1.c **** * Summary:
+  98:Generated_Source\PSoC5/IDAC8_1.c **** *  Enable the IDAC8
+  99:Generated_Source\PSoC5/IDAC8_1.c **** * 
+ 100:Generated_Source\PSoC5/IDAC8_1.c **** * Parameters:
+ 101:Generated_Source\PSoC5/IDAC8_1.c **** *  void:
+ 102:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 103:Generated_Source\PSoC5/IDAC8_1.c **** * Return:
+ 104:Generated_Source\PSoC5/IDAC8_1.c **** *  (void)
+ 105:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 106:Generated_Source\PSoC5/IDAC8_1.c **** * Theory:
+ 107:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 108:Generated_Source\PSoC5/IDAC8_1.c **** * Side Effects:
+ 109:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 110:Generated_Source\PSoC5/IDAC8_1.c **** *******************************************************************************/
+ 111:Generated_Source\PSoC5/IDAC8_1.c **** void IDAC8_1_Enable(void) 
+ 112:Generated_Source\PSoC5/IDAC8_1.c **** {
+  27              		.loc 1 112 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+ 113:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_PWRMGR |= IDAC8_1_ACT_PWR_EN;
+  32              		.loc 1 113 0
+  33 0000 044A     		ldr	r2, .L2
+  34 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  35 0004 43F00803 		orr	r3, r3, #8
+  36 0008 1370     		strb	r3, [r2]
+ 114:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_STBY_PWRMGR |= IDAC8_1_STBY_PWR_EN;
+  37              		.loc 1 114 0
+  38 000a 137C     		ldrb	r3, [r2, #16]	@ zero_extendqisi2
+  39 000c 43F00803 		orr	r3, r3, #8
+  40 0010 1374     		strb	r3, [r2, #16]
+  41 0012 7047     		bx	lr
+  42              	.L3:
+  43              		.align	2
+  44              	.L2:
+  45 0014 A8430040 		.word	1073759144
+  46              		.cfi_endproc
+  47              	.LFE1:
+  48              		.size	IDAC8_1_Enable, .-IDAC8_1_Enable
+  49              		.section	.text.IDAC8_1_Stop,"ax",%progbits
+  50              		.align	1
+  51              		.global	IDAC8_1_Stop
+  52              		.thumb
+  53              		.thumb_func
+  54              		.type	IDAC8_1_Stop, %function
+  55              	IDAC8_1_Stop:
+  56              	.LFB3:
+ 115:Generated_Source\PSoC5/IDAC8_1.c **** 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 4
+
+
+ 116:Generated_Source\PSoC5/IDAC8_1.c ****     /* This is to restore the value of register CR0 which is saved 
+ 117:Generated_Source\PSoC5/IDAC8_1.c ****       in prior to the modification in stop() API */
+ 118:Generated_Source\PSoC5/IDAC8_1.c ****     #if (CY_PSOC5A)
+ 119:Generated_Source\PSoC5/IDAC8_1.c ****         if(IDAC8_1_restoreReg == 1u)
+ 120:Generated_Source\PSoC5/IDAC8_1.c ****         {
+ 121:Generated_Source\PSoC5/IDAC8_1.c ****             IDAC8_1_CR0 = IDAC8_1_lowPowerBackup.DACCR0Reg;
+ 122:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 123:Generated_Source\PSoC5/IDAC8_1.c ****             /* Clear the flag */
+ 124:Generated_Source\PSoC5/IDAC8_1.c ****             IDAC8_1_restoreReg = 0u;
+ 125:Generated_Source\PSoC5/IDAC8_1.c ****         }
+ 126:Generated_Source\PSoC5/IDAC8_1.c ****     #endif /* CY_PSOC5A */
+ 127:Generated_Source\PSoC5/IDAC8_1.c **** }
+ 128:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 129:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 130:Generated_Source\PSoC5/IDAC8_1.c **** /*******************************************************************************
+ 131:Generated_Source\PSoC5/IDAC8_1.c **** * Function Name: IDAC8_1_Start
+ 132:Generated_Source\PSoC5/IDAC8_1.c **** ********************************************************************************
+ 133:Generated_Source\PSoC5/IDAC8_1.c **** * Summary:
+ 134:Generated_Source\PSoC5/IDAC8_1.c **** *  Set power level then turn on IDAC8.
+ 135:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 136:Generated_Source\PSoC5/IDAC8_1.c **** * Parameters:  
+ 137:Generated_Source\PSoC5/IDAC8_1.c **** *  power: Sets power level between off (0) and (3) high power
+ 138:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 139:Generated_Source\PSoC5/IDAC8_1.c **** * Return:
+ 140:Generated_Source\PSoC5/IDAC8_1.c **** *  (void)
+ 141:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 142:Generated_Source\PSoC5/IDAC8_1.c **** * Global variables:
+ 143:Generated_Source\PSoC5/IDAC8_1.c **** *  IDAC8_1_initVar: Is modified when this function is called for 
+ 144:Generated_Source\PSoC5/IDAC8_1.c **** *   the first time. Is used to ensure that initialization happens only once.
+ 145:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 146:Generated_Source\PSoC5/IDAC8_1.c **** *******************************************************************************/
+ 147:Generated_Source\PSoC5/IDAC8_1.c **** void IDAC8_1_Start(void) 
+ 148:Generated_Source\PSoC5/IDAC8_1.c **** {
+ 149:Generated_Source\PSoC5/IDAC8_1.c ****     /* Hardware initiazation only needs to occur the first time */
+ 150:Generated_Source\PSoC5/IDAC8_1.c ****     if ( IDAC8_1_initVar == 0u)  
+ 151:Generated_Source\PSoC5/IDAC8_1.c ****     {
+ 152:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_Init();
+ 153:Generated_Source\PSoC5/IDAC8_1.c ****         
+ 154:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_initVar = 1u;
+ 155:Generated_Source\PSoC5/IDAC8_1.c ****     }
+ 156:Generated_Source\PSoC5/IDAC8_1.c ****    
+ 157:Generated_Source\PSoC5/IDAC8_1.c ****     /* Enable power to DAC */
+ 158:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_Enable();
+ 159:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 160:Generated_Source\PSoC5/IDAC8_1.c ****     /* Set default value */
+ 161:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_SetValue(IDAC8_1_DEFAULT_DATA);
+ 162:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 163:Generated_Source\PSoC5/IDAC8_1.c **** }
+ 164:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 165:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 166:Generated_Source\PSoC5/IDAC8_1.c **** /*******************************************************************************
+ 167:Generated_Source\PSoC5/IDAC8_1.c **** * Function Name: IDAC8_1_Stop
+ 168:Generated_Source\PSoC5/IDAC8_1.c **** ********************************************************************************
+ 169:Generated_Source\PSoC5/IDAC8_1.c **** * Summary:
+ 170:Generated_Source\PSoC5/IDAC8_1.c **** *  Powers down IDAC8 to lowest power state.
+ 171:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 172:Generated_Source\PSoC5/IDAC8_1.c **** * Parameters:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 5
+
+
+ 173:Generated_Source\PSoC5/IDAC8_1.c **** *  (void)
+ 174:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 175:Generated_Source\PSoC5/IDAC8_1.c **** * Return:
+ 176:Generated_Source\PSoC5/IDAC8_1.c **** *  (void)
+ 177:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 178:Generated_Source\PSoC5/IDAC8_1.c **** * Theory:
+ 179:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 180:Generated_Source\PSoC5/IDAC8_1.c **** * Side Effects:
+ 181:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 182:Generated_Source\PSoC5/IDAC8_1.c **** *******************************************************************************/
+ 183:Generated_Source\PSoC5/IDAC8_1.c **** void IDAC8_1_Stop(void) 
+ 184:Generated_Source\PSoC5/IDAC8_1.c **** {
+  57              		.loc 1 184 0
+  58              		.cfi_startproc
+  59              		@ args = 0, pretend = 0, frame = 0
+  60              		@ frame_needed = 0, uses_anonymous_args = 0
+  61              		@ link register save eliminated.
+ 185:Generated_Source\PSoC5/IDAC8_1.c ****     /* Disble power to DAC */
+ 186:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_PWRMGR &= (uint8)(~IDAC8_1_ACT_PWR_EN);
+  62              		.loc 1 186 0
+  63 0000 044A     		ldr	r2, .L5
+  64 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  65 0004 03F0F703 		and	r3, r3, #247
+  66 0008 1370     		strb	r3, [r2]
+ 187:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_STBY_PWRMGR &= (uint8)(~IDAC8_1_STBY_PWR_EN);
+  67              		.loc 1 187 0
+  68 000a 137C     		ldrb	r3, [r2, #16]	@ zero_extendqisi2
+  69 000c 03F0F703 		and	r3, r3, #247
+  70 0010 1374     		strb	r3, [r2, #16]
+  71 0012 7047     		bx	lr
+  72              	.L6:
+  73              		.align	2
+  74              	.L5:
+  75 0014 A8430040 		.word	1073759144
+  76              		.cfi_endproc
+  77              	.LFE3:
+  78              		.size	IDAC8_1_Stop, .-IDAC8_1_Stop
+  79              		.section	.text.IDAC8_1_SetSpeed,"ax",%progbits
+  80              		.align	1
+  81              		.global	IDAC8_1_SetSpeed
+  82              		.thumb
+  83              		.thumb_func
+  84              		.type	IDAC8_1_SetSpeed, %function
+  85              	IDAC8_1_SetSpeed:
+  86              	.LFB4:
+ 188:Generated_Source\PSoC5/IDAC8_1.c ****     
+ 189:Generated_Source\PSoC5/IDAC8_1.c ****     #if (CY_PSOC5A)
+ 190:Generated_Source\PSoC5/IDAC8_1.c ****     
+ 191:Generated_Source\PSoC5/IDAC8_1.c ****         /* Set the global variable  */
+ 192:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_restoreReg = 1u;
+ 193:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 194:Generated_Source\PSoC5/IDAC8_1.c ****         /* Save the control register and then Clear it. */
+ 195:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_lowPowerBackup.DACCR0Reg = IDAC8_1_CR0;
+ 196:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_CR0 = (IDAC8_1_MODE_I | IDAC8_1_RANGE_3 | IDAC8_1_HS_HIGHSPEED);
+ 197:Generated_Source\PSoC5/IDAC8_1.c ****     #endif /* CY_PSOC5A */
+ 198:Generated_Source\PSoC5/IDAC8_1.c **** }
+ 199:Generated_Source\PSoC5/IDAC8_1.c **** 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 6
+
+
+ 200:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 201:Generated_Source\PSoC5/IDAC8_1.c **** /*******************************************************************************
+ 202:Generated_Source\PSoC5/IDAC8_1.c **** * Function Name: IDAC8_1_SetSpeed
+ 203:Generated_Source\PSoC5/IDAC8_1.c **** ********************************************************************************
+ 204:Generated_Source\PSoC5/IDAC8_1.c **** * Summary:
+ 205:Generated_Source\PSoC5/IDAC8_1.c **** *  Set DAC speed
+ 206:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 207:Generated_Source\PSoC5/IDAC8_1.c **** * Parameters:
+ 208:Generated_Source\PSoC5/IDAC8_1.c **** *  power: Sets speed value
+ 209:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 210:Generated_Source\PSoC5/IDAC8_1.c **** * Return:
+ 211:Generated_Source\PSoC5/IDAC8_1.c **** *  (void)
+ 212:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 213:Generated_Source\PSoC5/IDAC8_1.c **** * Theory:
+ 214:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 215:Generated_Source\PSoC5/IDAC8_1.c **** * Side Effects:
+ 216:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 217:Generated_Source\PSoC5/IDAC8_1.c **** *******************************************************************************/
+ 218:Generated_Source\PSoC5/IDAC8_1.c **** void IDAC8_1_SetSpeed(uint8 speed) 
+ 219:Generated_Source\PSoC5/IDAC8_1.c **** {
+  87              		.loc 1 219 0
+  88              		.cfi_startproc
+  89              		@ args = 0, pretend = 0, frame = 0
+  90              		@ frame_needed = 0, uses_anonymous_args = 0
+  91              		@ link register save eliminated.
+  92              	.LVL0:
+ 220:Generated_Source\PSoC5/IDAC8_1.c ****     /* Clear power mask then write in new value */
+ 221:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_CR0 &= (uint8)(~IDAC8_1_HS_MASK);
+  93              		.loc 1 221 0
+  94 0000 054B     		ldr	r3, .L8
+ 222:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_CR0 |=  ( speed & IDAC8_1_HS_MASK);
+  95              		.loc 1 222 0
+  96 0002 00F00200 		and	r0, r0, #2
+  97              	.LVL1:
+ 221:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_CR0 |=  ( speed & IDAC8_1_HS_MASK);
+  98              		.loc 1 221 0
+  99 0006 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 100 0008 02F0FD02 		and	r2, r2, #253
+ 101 000c 1A70     		strb	r2, [r3]
+ 102              		.loc 1 222 0
+ 103 000e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 104 0010 1043     		orrs	r0, r0, r2
+ 105 0012 1870     		strb	r0, [r3]
+ 106 0014 7047     		bx	lr
+ 107              	.L9:
+ 108 0016 00BF     		.align	2
+ 109              	.L8:
+ 110 0018 2C580040 		.word	1073764396
+ 111              		.cfi_endproc
+ 112              	.LFE4:
+ 113              		.size	IDAC8_1_SetSpeed, .-IDAC8_1_SetSpeed
+ 114              		.section	.text.IDAC8_1_SetValue,"ax",%progbits
+ 115              		.align	1
+ 116              		.global	IDAC8_1_SetValue
+ 117              		.thumb
+ 118              		.thumb_func
+ 119              		.type	IDAC8_1_SetValue, %function
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 7
+
+
+ 120              	IDAC8_1_SetValue:
+ 121              	.LFB7:
+ 223:Generated_Source\PSoC5/IDAC8_1.c **** }
+ 224:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 225:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 226:Generated_Source\PSoC5/IDAC8_1.c **** /*******************************************************************************
+ 227:Generated_Source\PSoC5/IDAC8_1.c **** * Function Name: IDAC8_1_SetPolarity
+ 228:Generated_Source\PSoC5/IDAC8_1.c **** ********************************************************************************
+ 229:Generated_Source\PSoC5/IDAC8_1.c **** * Summary:
+ 230:Generated_Source\PSoC5/IDAC8_1.c **** *  Sets IDAC to Sink or Source current.
+ 231:Generated_Source\PSoC5/IDAC8_1.c **** *  
+ 232:Generated_Source\PSoC5/IDAC8_1.c **** * Parameters:
+ 233:Generated_Source\PSoC5/IDAC8_1.c **** *  Polarity: Sets the IDAC to Sink or Source 
+ 234:Generated_Source\PSoC5/IDAC8_1.c **** *  0x00 - Source
+ 235:Generated_Source\PSoC5/IDAC8_1.c **** *  0x04 - Sink
+ 236:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 237:Generated_Source\PSoC5/IDAC8_1.c **** * Return:
+ 238:Generated_Source\PSoC5/IDAC8_1.c **** *  (void)
+ 239:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 240:Generated_Source\PSoC5/IDAC8_1.c **** * Theory:
+ 241:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 242:Generated_Source\PSoC5/IDAC8_1.c **** * Side Effects:
+ 243:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 244:Generated_Source\PSoC5/IDAC8_1.c **** *******************************************************************************/
+ 245:Generated_Source\PSoC5/IDAC8_1.c **** #if(IDAC8_1_DEFAULT_POLARITY != IDAC8_1_HARDWARE_CONTROLLED)
+ 246:Generated_Source\PSoC5/IDAC8_1.c ****     void IDAC8_1_SetPolarity(uint8 polarity) 
+ 247:Generated_Source\PSoC5/IDAC8_1.c ****     {
+ 248:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_CR1 &= (uint8)(~IDAC8_1_IDIR_MASK);                /* clear polarity bit */
+ 249:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_CR1 |= (polarity & IDAC8_1_IDIR_MASK);             /* set new value */
+ 250:Generated_Source\PSoC5/IDAC8_1.c ****     
+ 251:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_DacTrim();
+ 252:Generated_Source\PSoC5/IDAC8_1.c ****     }
+ 253:Generated_Source\PSoC5/IDAC8_1.c **** #endif/*(IDAC8_1_DEFAULT_POLARITY != IDAC8_1_HARDWARE_CONTROLLED)*/
+ 254:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 255:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 256:Generated_Source\PSoC5/IDAC8_1.c **** /*******************************************************************************
+ 257:Generated_Source\PSoC5/IDAC8_1.c **** * Function Name: IDAC8_1_SetRange
+ 258:Generated_Source\PSoC5/IDAC8_1.c **** ********************************************************************************
+ 259:Generated_Source\PSoC5/IDAC8_1.c **** * Summary:
+ 260:Generated_Source\PSoC5/IDAC8_1.c **** *  Set current range
+ 261:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 262:Generated_Source\PSoC5/IDAC8_1.c **** * Parameters:
+ 263:Generated_Source\PSoC5/IDAC8_1.c **** *  Range: Sets on of four valid ranges.
+ 264:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 265:Generated_Source\PSoC5/IDAC8_1.c **** * Return:
+ 266:Generated_Source\PSoC5/IDAC8_1.c **** *  (void)
+ 267:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 268:Generated_Source\PSoC5/IDAC8_1.c **** * Theory:
+ 269:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 270:Generated_Source\PSoC5/IDAC8_1.c **** * Side Effects:
+ 271:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 272:Generated_Source\PSoC5/IDAC8_1.c **** *******************************************************************************/
+ 273:Generated_Source\PSoC5/IDAC8_1.c **** void IDAC8_1_SetRange(uint8 range) 
+ 274:Generated_Source\PSoC5/IDAC8_1.c **** {
+ 275:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_CR0 &= (uint8)(~IDAC8_1_RANGE_MASK);       /* Clear existing mode */
+ 276:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_CR0 |= ( range & IDAC8_1_RANGE_MASK );     /*  Set Range  */
+ 277:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_DacTrim();
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 8
+
+
+ 278:Generated_Source\PSoC5/IDAC8_1.c **** }
+ 279:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 280:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 281:Generated_Source\PSoC5/IDAC8_1.c **** /*******************************************************************************
+ 282:Generated_Source\PSoC5/IDAC8_1.c **** * Function Name: IDAC8_1_SetValue
+ 283:Generated_Source\PSoC5/IDAC8_1.c **** ********************************************************************************
+ 284:Generated_Source\PSoC5/IDAC8_1.c **** * Summary:
+ 285:Generated_Source\PSoC5/IDAC8_1.c **** *  Set DAC value
+ 286:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 287:Generated_Source\PSoC5/IDAC8_1.c **** * Parameters:
+ 288:Generated_Source\PSoC5/IDAC8_1.c **** *  value: Sets DAC value between 0 and 255.
+ 289:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 290:Generated_Source\PSoC5/IDAC8_1.c **** * Return:
+ 291:Generated_Source\PSoC5/IDAC8_1.c **** *  (void)
+ 292:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 293:Generated_Source\PSoC5/IDAC8_1.c **** * Theory:
+ 294:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 295:Generated_Source\PSoC5/IDAC8_1.c **** * Side Effects:
+ 296:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 297:Generated_Source\PSoC5/IDAC8_1.c **** *******************************************************************************/
+ 298:Generated_Source\PSoC5/IDAC8_1.c **** void IDAC8_1_SetValue(uint8 value) 
+ 299:Generated_Source\PSoC5/IDAC8_1.c **** {
+ 122              		.loc 1 299 0
+ 123              		.cfi_startproc
+ 124              		@ args = 0, pretend = 0, frame = 0
+ 125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126              		@ link register save eliminated.
+ 127              	.LVL2:
+ 300:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 301:Generated_Source\PSoC5/IDAC8_1.c ****     #if (CY_PSOC5A)
+ 302:Generated_Source\PSoC5/IDAC8_1.c ****         uint8 IDAC8_1_intrStatus = CyEnterCriticalSection();
+ 303:Generated_Source\PSoC5/IDAC8_1.c ****     #endif /* CY_PSOC5A */
+ 304:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 305:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_Data = value;         /*  Set Value  */
+ 128              		.loc 1 305 0
+ 129 0000 014B     		ldr	r3, .L11
+ 130 0002 1870     		strb	r0, [r3]
+ 131 0004 7047     		bx	lr
+ 132              	.L12:
+ 133 0006 00BF     		.align	2
+ 134              	.L11:
+ 135 0008 835B0040 		.word	1073765251
+ 136              		.cfi_endproc
+ 137              	.LFE7:
+ 138              		.size	IDAC8_1_SetValue, .-IDAC8_1_SetValue
+ 139              		.section	.text.IDAC8_1_DacTrim,"ax",%progbits
+ 140              		.align	1
+ 141              		.global	IDAC8_1_DacTrim
+ 142              		.thumb
+ 143              		.thumb_func
+ 144              		.type	IDAC8_1_DacTrim, %function
+ 145              	IDAC8_1_DacTrim:
+ 146              	.LFB8:
+ 306:Generated_Source\PSoC5/IDAC8_1.c ****     
+ 307:Generated_Source\PSoC5/IDAC8_1.c ****     /* PSOC5A silicons require a double write */
+ 308:Generated_Source\PSoC5/IDAC8_1.c ****     #if (CY_PSOC5A)
+ 309:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_Data = value;
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 9
+
+
+ 310:Generated_Source\PSoC5/IDAC8_1.c ****         CyExitCriticalSection(IDAC8_1_intrStatus);
+ 311:Generated_Source\PSoC5/IDAC8_1.c ****     #endif /* CY_PSOC5A */
+ 312:Generated_Source\PSoC5/IDAC8_1.c **** }
+ 313:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 314:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 315:Generated_Source\PSoC5/IDAC8_1.c **** /*******************************************************************************
+ 316:Generated_Source\PSoC5/IDAC8_1.c **** * Function Name: IDAC8_1_DacTrim
+ 317:Generated_Source\PSoC5/IDAC8_1.c **** ********************************************************************************
+ 318:Generated_Source\PSoC5/IDAC8_1.c **** * Summary:
+ 319:Generated_Source\PSoC5/IDAC8_1.c **** *  Set the trim value for the given range.
+ 320:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 321:Generated_Source\PSoC5/IDAC8_1.c **** * Parameters:
+ 322:Generated_Source\PSoC5/IDAC8_1.c **** *  None
+ 323:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 324:Generated_Source\PSoC5/IDAC8_1.c **** * Return:
+ 325:Generated_Source\PSoC5/IDAC8_1.c **** *  (void) 
+ 326:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 327:Generated_Source\PSoC5/IDAC8_1.c **** * Theory:
+ 328:Generated_Source\PSoC5/IDAC8_1.c **** *  Trim values for the IDAC blocks are stored in the "Customer Table" area in 
+ 329:Generated_Source\PSoC5/IDAC8_1.c **** *  Row 1 of the Hidden Flash.  There are 8 bytes of trim data for each 
+ 330:Generated_Source\PSoC5/IDAC8_1.c **** *  IDAC block.
+ 331:Generated_Source\PSoC5/IDAC8_1.c **** *  The values are:
+ 332:Generated_Source\PSoC5/IDAC8_1.c **** *       I Gain offset, min range, Sourcing
+ 333:Generated_Source\PSoC5/IDAC8_1.c **** *       I Gain offset, min range, Sinking
+ 334:Generated_Source\PSoC5/IDAC8_1.c **** *       I Gain offset, med range, Sourcing
+ 335:Generated_Source\PSoC5/IDAC8_1.c **** *       I Gain offset, med range, Sinking
+ 336:Generated_Source\PSoC5/IDAC8_1.c **** *       I Gain offset, max range, Sourcing
+ 337:Generated_Source\PSoC5/IDAC8_1.c **** *       I Gain offset, max range, Sinking
+ 338:Generated_Source\PSoC5/IDAC8_1.c **** *       V Gain offset, 1V range
+ 339:Generated_Source\PSoC5/IDAC8_1.c **** *       V Gain offset, 4V range
+ 340:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 341:Generated_Source\PSoC5/IDAC8_1.c **** * Side Effects:
+ 342:Generated_Source\PSoC5/IDAC8_1.c **** *
+ 343:Generated_Source\PSoC5/IDAC8_1.c **** *******************************************************************************/
+ 344:Generated_Source\PSoC5/IDAC8_1.c **** void IDAC8_1_DacTrim(void) 
+ 345:Generated_Source\PSoC5/IDAC8_1.c **** {
+ 147              		.loc 1 345 0
+ 148              		.cfi_startproc
+ 149              		@ args = 0, pretend = 0, frame = 0
+ 150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 151              		@ link register save eliminated.
+ 346:Generated_Source\PSoC5/IDAC8_1.c ****     uint8 mode;
+ 347:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 348:Generated_Source\PSoC5/IDAC8_1.c ****     mode = ((IDAC8_1_CR0 & IDAC8_1_RANGE_MASK) >> 1u);
+ 152              		.loc 1 348 0
+ 153 0000 084B     		ldr	r3, .L18
+ 349:Generated_Source\PSoC5/IDAC8_1.c ****     
+ 350:Generated_Source\PSoC5/IDAC8_1.c ****     if((IDAC8_1_IDIR_MASK & IDAC8_1_CR1) == IDAC8_1_IDIR_SINK)
+ 154              		.loc 1 350 0
+ 155 0002 094A     		ldr	r2, .L18+4
+ 348:Generated_Source\PSoC5/IDAC8_1.c ****     
+ 156              		.loc 1 348 0
+ 157 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 158              		.loc 1 350 0
+ 159 0006 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 348:Generated_Source\PSoC5/IDAC8_1.c ****     
+ 160              		.loc 1 348 0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 10
+
+
+ 161 0008 03F00C03 		and	r3, r3, #12
+ 162 000c 5B08     		lsrs	r3, r3, #1
+ 163              	.LVL3:
+ 164              		.loc 1 350 0
+ 165 000e 5207     		lsls	r2, r2, #29
+ 351:Generated_Source\PSoC5/IDAC8_1.c ****     {
+ 352:Generated_Source\PSoC5/IDAC8_1.c ****         mode++;
+ 166              		.loc 1 352 0
+ 167 0010 48BF     		it	mi
+ 168 0012 0133     		addmi	r3, r3, #1
+ 169              	.LVL4:
+ 353:Generated_Source\PSoC5/IDAC8_1.c ****     }
+ 354:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 355:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_TR = CY_GET_XTND_REG8((uint8 *)(IDAC8_1_DAC_TRIM_BASE + mode));
+ 170              		.loc 1 355 0
+ 171 0014 03F19243 		add	r3, r3, #1224736768
+ 172              	.LVL5:
+ 173 0018 93F83831 		ldrb	r3, [r3, #312]	@ zero_extendqisi2
+ 174              	.LVL6:
+ 175 001c 034A     		ldr	r2, .L18+8
+ 176 001e DBB2     		uxtb	r3, r3
+ 177 0020 1370     		strb	r3, [r2]
+ 178 0022 7047     		bx	lr
+ 179              	.L19:
+ 180              		.align	2
+ 181              	.L18:
+ 182 0024 2C580040 		.word	1073764396
+ 183 0028 2D580040 		.word	1073764397
+ 184 002c 0B460040 		.word	1073759755
+ 185              		.cfi_endproc
+ 186              	.LFE8:
+ 187              		.size	IDAC8_1_DacTrim, .-IDAC8_1_DacTrim
+ 188              		.section	.text.IDAC8_1_Init,"ax",%progbits
+ 189              		.align	1
+ 190              		.global	IDAC8_1_Init
+ 191              		.thumb
+ 192              		.thumb_func
+ 193              		.type	IDAC8_1_Init, %function
+ 194              	IDAC8_1_Init:
+ 195              	.LFB0:
+  59:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_CR0 = (IDAC8_1_MODE_I | IDAC8_1_DEFAULT_RANGE );
+ 196              		.loc 1 59 0
+ 197              		.cfi_startproc
+ 198              		@ args = 0, pretend = 0, frame = 0
+ 199              		@ frame_needed = 0, uses_anonymous_args = 0
+ 200 0000 08B5     		push	{r3, lr}
+ 201              		.cfi_def_cfa_offset 8
+ 202              		.cfi_offset 3, -8
+ 203              		.cfi_offset 14, -4
+  60:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 204              		.loc 1 60 0
+ 205 0002 074B     		ldr	r3, .L21
+ 206 0004 1822     		movs	r2, #24
+ 207 0006 1A70     		strb	r2, [r3]
+  66:Generated_Source\PSoC5/IDAC8_1.c ****     #endif /* (IDAC8_1_DEFAULT_DATA_SRC != 0u ) */
+ 208              		.loc 1 66 0
+ 209 0008 0022     		movs	r2, #0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 11
+
+
+ 210 000a 5A70     		strb	r2, [r3, #1]
+  73:Generated_Source\PSoC5/IDAC8_1.c ****     #endif/* (IDAC8_1_DEFAULT_POLARITY == IDAC8_1_HARDWARE_CONTROLLED) */
+ 211              		.loc 1 73 0
+ 212 000c 5A78     		ldrb	r2, [r3, #1]	@ zero_extendqisi2
+  86:Generated_Source\PSoC5/IDAC8_1.c ****     
+ 213              		.loc 1 86 0
+ 214 000e 0220     		movs	r0, #2
+  73:Generated_Source\PSoC5/IDAC8_1.c ****     #endif/* (IDAC8_1_DEFAULT_POLARITY == IDAC8_1_HARDWARE_CONTROLLED) */
+ 215              		.loc 1 73 0
+ 216 0010 D2B2     		uxtb	r2, r2
+ 217 0012 5A70     		strb	r2, [r3, #1]
+  86:Generated_Source\PSoC5/IDAC8_1.c ****     
+ 218              		.loc 1 86 0
+ 219 0014 FFF7FEFF 		bl	IDAC8_1_SetSpeed
+ 220              	.LVL7:
+  91:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 221              		.loc 1 91 0
+ 222 0018 BDE80840 		pop	{r3, lr}
+ 223              		.cfi_restore 14
+ 224              		.cfi_restore 3
+ 225              		.cfi_def_cfa_offset 0
+  89:Generated_Source\PSoC5/IDAC8_1.c ****     
+ 226              		.loc 1 89 0
+ 227 001c FFF7FEBF 		b	IDAC8_1_DacTrim
+ 228              	.LVL8:
+ 229              	.L22:
+ 230              		.align	2
+ 231              	.L21:
+ 232 0020 2C580040 		.word	1073764396
+ 233              		.cfi_endproc
+ 234              	.LFE0:
+ 235              		.size	IDAC8_1_Init, .-IDAC8_1_Init
+ 236              		.section	.text.IDAC8_1_Start,"ax",%progbits
+ 237              		.align	1
+ 238              		.global	IDAC8_1_Start
+ 239              		.thumb
+ 240              		.thumb_func
+ 241              		.type	IDAC8_1_Start, %function
+ 242              	IDAC8_1_Start:
+ 243              	.LFB2:
+ 148:Generated_Source\PSoC5/IDAC8_1.c ****     /* Hardware initiazation only needs to occur the first time */
+ 244              		.loc 1 148 0
+ 245              		.cfi_startproc
+ 246              		@ args = 0, pretend = 0, frame = 0
+ 247              		@ frame_needed = 0, uses_anonymous_args = 0
+ 248 0000 10B5     		push	{r4, lr}
+ 249              		.cfi_def_cfa_offset 8
+ 250              		.cfi_offset 4, -8
+ 251              		.cfi_offset 14, -4
+ 150:Generated_Source\PSoC5/IDAC8_1.c ****     {
+ 252              		.loc 1 150 0
+ 253 0002 064C     		ldr	r4, .L26
+ 254 0004 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 255 0006 1BB9     		cbnz	r3, .L24
+ 152:Generated_Source\PSoC5/IDAC8_1.c ****         
+ 256              		.loc 1 152 0
+ 257 0008 FFF7FEFF 		bl	IDAC8_1_Init
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 12
+
+
+ 258              	.LVL9:
+ 154:Generated_Source\PSoC5/IDAC8_1.c ****     }
+ 259              		.loc 1 154 0
+ 260 000c 0123     		movs	r3, #1
+ 261 000e 2370     		strb	r3, [r4]
+ 262              	.L24:
+ 158:Generated_Source\PSoC5/IDAC8_1.c **** 
+ 263              		.loc 1 158 0
+ 264 0010 FFF7FEFF 		bl	IDAC8_1_Enable
+ 265              	.LVL10:
+ 266              	.LBB4:
+ 267              	.LBB5:
+ 305:Generated_Source\PSoC5/IDAC8_1.c ****     
+ 268              		.loc 1 305 0
+ 269 0014 024B     		ldr	r3, .L26+4
+ 270 0016 3F22     		movs	r2, #63
+ 271 0018 1A70     		strb	r2, [r3]
+ 272 001a 10BD     		pop	{r4, pc}
+ 273              	.L27:
+ 274              		.align	2
+ 275              	.L26:
+ 276 001c 00000000 		.word	.LANCHOR0
+ 277 0020 835B0040 		.word	1073765251
+ 278              	.LBE5:
+ 279              	.LBE4:
+ 280              		.cfi_endproc
+ 281              	.LFE2:
+ 282              		.size	IDAC8_1_Start, .-IDAC8_1_Start
+ 283              		.section	.text.IDAC8_1_SetPolarity,"ax",%progbits
+ 284              		.align	1
+ 285              		.global	IDAC8_1_SetPolarity
+ 286              		.thumb
+ 287              		.thumb_func
+ 288              		.type	IDAC8_1_SetPolarity, %function
+ 289              	IDAC8_1_SetPolarity:
+ 290              	.LFB5:
+ 247:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_CR1 &= (uint8)(~IDAC8_1_IDIR_MASK);                /* clear polarity bit */
+ 291              		.loc 1 247 0
+ 292              		.cfi_startproc
+ 293              		@ args = 0, pretend = 0, frame = 0
+ 294              		@ frame_needed = 0, uses_anonymous_args = 0
+ 295              		@ link register save eliminated.
+ 296              	.LVL11:
+ 248:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_CR1 |= (polarity & IDAC8_1_IDIR_MASK);             /* set new value */
+ 297              		.loc 1 248 0
+ 298 0000 054B     		ldr	r3, .L29
+ 249:Generated_Source\PSoC5/IDAC8_1.c ****     
+ 299              		.loc 1 249 0
+ 300 0002 00F00400 		and	r0, r0, #4
+ 301              	.LVL12:
+ 248:Generated_Source\PSoC5/IDAC8_1.c ****         IDAC8_1_CR1 |= (polarity & IDAC8_1_IDIR_MASK);             /* set new value */
+ 302              		.loc 1 248 0
+ 303 0006 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 304 0008 02F0FB02 		and	r2, r2, #251
+ 305 000c 1A70     		strb	r2, [r3]
+ 249:Generated_Source\PSoC5/IDAC8_1.c ****     
+ 306              		.loc 1 249 0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 13
+
+
+ 307 000e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 308 0010 1043     		orrs	r0, r0, r2
+ 309 0012 1870     		strb	r0, [r3]
+ 251:Generated_Source\PSoC5/IDAC8_1.c ****     }
+ 310              		.loc 1 251 0
+ 311 0014 FFF7FEBF 		b	IDAC8_1_DacTrim
+ 312              	.LVL13:
+ 313              	.L30:
+ 314              		.align	2
+ 315              	.L29:
+ 316 0018 2D580040 		.word	1073764397
+ 317              		.cfi_endproc
+ 318              	.LFE5:
+ 319              		.size	IDAC8_1_SetPolarity, .-IDAC8_1_SetPolarity
+ 320              		.section	.text.IDAC8_1_SetRange,"ax",%progbits
+ 321              		.align	1
+ 322              		.global	IDAC8_1_SetRange
+ 323              		.thumb
+ 324              		.thumb_func
+ 325              		.type	IDAC8_1_SetRange, %function
+ 326              	IDAC8_1_SetRange:
+ 327              	.LFB6:
+ 274:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_CR0 &= (uint8)(~IDAC8_1_RANGE_MASK);       /* Clear existing mode */
+ 328              		.loc 1 274 0
+ 329              		.cfi_startproc
+ 330              		@ args = 0, pretend = 0, frame = 0
+ 331              		@ frame_needed = 0, uses_anonymous_args = 0
+ 332              		@ link register save eliminated.
+ 333              	.LVL14:
+ 275:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_CR0 |= ( range & IDAC8_1_RANGE_MASK );     /*  Set Range  */
+ 334              		.loc 1 275 0
+ 335 0000 054B     		ldr	r3, .L32
+ 276:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_DacTrim();
+ 336              		.loc 1 276 0
+ 337 0002 00F00C00 		and	r0, r0, #12
+ 338              	.LVL15:
+ 275:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_CR0 |= ( range & IDAC8_1_RANGE_MASK );     /*  Set Range  */
+ 339              		.loc 1 275 0
+ 340 0006 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 341 0008 02F0F302 		and	r2, r2, #243
+ 342 000c 1A70     		strb	r2, [r3]
+ 276:Generated_Source\PSoC5/IDAC8_1.c ****     IDAC8_1_DacTrim();
+ 343              		.loc 1 276 0
+ 344 000e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 345 0010 1043     		orrs	r0, r0, r2
+ 346 0012 1870     		strb	r0, [r3]
+ 277:Generated_Source\PSoC5/IDAC8_1.c **** }
+ 347              		.loc 1 277 0
+ 348 0014 FFF7FEBF 		b	IDAC8_1_DacTrim
+ 349              	.LVL16:
+ 350              	.L33:
+ 351              		.align	2
+ 352              	.L32:
+ 353 0018 2C580040 		.word	1073764396
+ 354              		.cfi_endproc
+ 355              	.LFE6:
+ 356              		.size	IDAC8_1_SetRange, .-IDAC8_1_SetRange
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 14
+
+
+ 357              		.global	IDAC8_1_initVar
+ 358              		.bss
+ 359              		.set	.LANCHOR0,. + 0
+ 360              		.type	IDAC8_1_initVar, %object
+ 361              		.size	IDAC8_1_initVar, 1
+ 362              	IDAC8_1_initVar:
+ 363 0000 00       		.space	1
+ 364              		.text
+ 365              	.Letext0:
+ 366              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 367              		.section	.debug_info,"",%progbits
+ 368              	.Ldebug_info0:
+ 369 0000 20020000 		.4byte	0x220
+ 370 0004 0400     		.2byte	0x4
+ 371 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 372 000a 04       		.byte	0x4
+ 373 000b 01       		.uleb128 0x1
+ 374 000c FE000000 		.4byte	.LASF25
+ 375 0010 01       		.byte	0x1
+ 376 0011 9C000000 		.4byte	.LASF26
+ 377 0015 1A000000 		.4byte	.LASF27
+ 378 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 379 001d 00000000 		.4byte	0
+ 380 0021 00000000 		.4byte	.Ldebug_line0
+ 381 0025 02       		.uleb128 0x2
+ 382 0026 01       		.byte	0x1
+ 383 0027 06       		.byte	0x6
+ 384 0028 D1010000 		.4byte	.LASF0
+ 385 002c 02       		.uleb128 0x2
+ 386 002d 01       		.byte	0x1
+ 387 002e 08       		.byte	0x8
+ 388 002f A9010000 		.4byte	.LASF1
+ 389 0033 02       		.uleb128 0x2
+ 390 0034 02       		.byte	0x2
+ 391 0035 05       		.byte	0x5
+ 392 0036 10000000 		.4byte	.LASF2
+ 393 003a 02       		.uleb128 0x2
+ 394 003b 02       		.byte	0x2
+ 395 003c 07       		.byte	0x7
+ 396 003d 15020000 		.4byte	.LASF3
+ 397 0041 02       		.uleb128 0x2
+ 398 0042 04       		.byte	0x4
+ 399 0043 05       		.byte	0x5
+ 400 0044 A0010000 		.4byte	.LASF4
+ 401 0048 02       		.uleb128 0x2
+ 402 0049 04       		.byte	0x4
+ 403 004a 07       		.byte	0x7
+ 404 004b 50020000 		.4byte	.LASF5
+ 405 004f 02       		.uleb128 0x2
+ 406 0050 08       		.byte	0x8
+ 407 0051 05       		.byte	0x5
+ 408 0052 92010000 		.4byte	.LASF6
+ 409 0056 02       		.uleb128 0x2
+ 410 0057 08       		.byte	0x8
+ 411 0058 07       		.byte	0x7
+ 412 0059 DD010000 		.4byte	.LASF7
+ 413 005d 03       		.uleb128 0x3
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 15
+
+
+ 414 005e 04       		.byte	0x4
+ 415 005f 05       		.byte	0x5
+ 416 0060 696E7400 		.ascii	"int\000"
+ 417 0064 02       		.uleb128 0x2
+ 418 0065 04       		.byte	0x4
+ 419 0066 07       		.byte	0x7
+ 420 0067 02020000 		.4byte	.LASF8
+ 421 006b 04       		.uleb128 0x4
+ 422 006c E9000000 		.4byte	.LASF12
+ 423 0070 02       		.byte	0x2
+ 424 0071 9201     		.2byte	0x192
+ 425 0073 2C000000 		.4byte	0x2c
+ 426 0077 02       		.uleb128 0x2
+ 427 0078 04       		.byte	0x4
+ 428 0079 04       		.byte	0x4
+ 429 007a 8C010000 		.4byte	.LASF9
+ 430 007e 02       		.uleb128 0x2
+ 431 007f 08       		.byte	0x8
+ 432 0080 04       		.byte	0x4
+ 433 0081 62020000 		.4byte	.LASF10
+ 434 0085 02       		.uleb128 0x2
+ 435 0086 01       		.byte	0x1
+ 436 0087 08       		.byte	0x8
+ 437 0088 28020000 		.4byte	.LASF11
+ 438 008c 04       		.uleb128 0x4
+ 439 008d 4B020000 		.4byte	.LASF13
+ 440 0091 02       		.byte	0x2
+ 441 0092 3C02     		.2byte	0x23c
+ 442 0094 98000000 		.4byte	0x98
+ 443 0098 05       		.uleb128 0x5
+ 444 0099 6B000000 		.4byte	0x6b
+ 445 009d 06       		.uleb128 0x6
+ 446 009e 3A020000 		.4byte	.LASF28
+ 447 00a2 01       		.byte	0x1
+ 448 00a3 2A01     		.2byte	0x12a
+ 449 00a5 01       		.byte	0x1
+ 450 00a6 B7000000 		.4byte	0xb7
+ 451 00aa 07       		.uleb128 0x7
+ 452 00ab E3000000 		.4byte	.LASF29
+ 453 00af 01       		.byte	0x1
+ 454 00b0 2A01     		.2byte	0x12a
+ 455 00b2 6B000000 		.4byte	0x6b
+ 456 00b6 00       		.byte	0
+ 457 00b7 08       		.uleb128 0x8
+ 458 00b8 EF000000 		.4byte	.LASF14
+ 459 00bc 01       		.byte	0x1
+ 460 00bd 6F       		.byte	0x6f
+ 461 00be 00000000 		.4byte	.LFB1
+ 462 00c2 18000000 		.4byte	.LFE1-.LFB1
+ 463 00c6 01       		.uleb128 0x1
+ 464 00c7 9C       		.byte	0x9c
+ 465 00c8 08       		.uleb128 0x8
+ 466 00c9 C2000000 		.4byte	.LASF15
+ 467 00cd 01       		.byte	0x1
+ 468 00ce B7       		.byte	0xb7
+ 469 00cf 00000000 		.4byte	.LFB3
+ 470 00d3 18000000 		.4byte	.LFE3-.LFB3
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 16
+
+
+ 471 00d7 01       		.uleb128 0x1
+ 472 00d8 9C       		.byte	0x9c
+ 473 00d9 09       		.uleb128 0x9
+ 474 00da 7F020000 		.4byte	.LASF16
+ 475 00de 01       		.byte	0x1
+ 476 00df DA       		.byte	0xda
+ 477 00e0 00000000 		.4byte	.LFB4
+ 478 00e4 1C000000 		.4byte	.LFE4-.LFB4
+ 479 00e8 01       		.uleb128 0x1
+ 480 00e9 9C       		.byte	0x9c
+ 481 00ea FE000000 		.4byte	0xfe
+ 482 00ee 0A       		.uleb128 0xa
+ 483 00ef 0F020000 		.4byte	.LASF21
+ 484 00f3 01       		.byte	0x1
+ 485 00f4 DA       		.byte	0xda
+ 486 00f5 6B000000 		.4byte	0x6b
+ 487 00f9 00000000 		.4byte	.LLST0
+ 488 00fd 00       		.byte	0
+ 489 00fe 0B       		.uleb128 0xb
+ 490 00ff 9D000000 		.4byte	0x9d
+ 491 0103 00000000 		.4byte	.LFB7
+ 492 0107 0C000000 		.4byte	.LFE7-.LFB7
+ 493 010b 01       		.uleb128 0x1
+ 494 010c 9C       		.byte	0x9c
+ 495 010d 19010000 		.4byte	0x119
+ 496 0111 0C       		.uleb128 0xc
+ 497 0112 AA000000 		.4byte	0xaa
+ 498 0116 01       		.uleb128 0x1
+ 499 0117 50       		.byte	0x50
+ 500 0118 00       		.byte	0
+ 501 0119 0D       		.uleb128 0xd
+ 502 011a 69020000 		.4byte	.LASF17
+ 503 011e 01       		.byte	0x1
+ 504 011f 5801     		.2byte	0x158
+ 505 0121 00000000 		.4byte	.LFB8
+ 506 0125 30000000 		.4byte	.LFE8-.LFB8
+ 507 0129 01       		.uleb128 0x1
+ 508 012a 9C       		.byte	0x9c
+ 509 012b 40010000 		.4byte	0x140
+ 510 012f 0E       		.uleb128 0xe
+ 511 0130 BD000000 		.4byte	.LASF30
+ 512 0134 01       		.byte	0x1
+ 513 0135 5A01     		.2byte	0x15a
+ 514 0137 6B000000 		.4byte	0x6b
+ 515 013b 21000000 		.4byte	.LLST1
+ 516 013f 00       		.byte	0
+ 517 0140 09       		.uleb128 0x9
+ 518 0141 2D020000 		.4byte	.LASF18
+ 519 0145 01       		.byte	0x1
+ 520 0146 3A       		.byte	0x3a
+ 521 0147 00000000 		.4byte	.LFB0
+ 522 014b 24000000 		.4byte	.LFE0-.LFB0
+ 523 014f 01       		.uleb128 0x1
+ 524 0150 9C       		.byte	0x9c
+ 525 0151 72010000 		.4byte	0x172
+ 526 0155 0F       		.uleb128 0xf
+ 527 0156 18000000 		.4byte	.LVL7
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 17
+
+
+ 528 015a D9000000 		.4byte	0xd9
+ 529 015e 68010000 		.4byte	0x168
+ 530 0162 10       		.uleb128 0x10
+ 531 0163 01       		.uleb128 0x1
+ 532 0164 50       		.byte	0x50
+ 533 0165 01       		.uleb128 0x1
+ 534 0166 32       		.byte	0x32
+ 535 0167 00       		.byte	0
+ 536 0168 11       		.uleb128 0x11
+ 537 0169 20000000 		.4byte	.LVL8
+ 538 016d 19010000 		.4byte	0x119
+ 539 0171 00       		.byte	0
+ 540 0172 09       		.uleb128 0x9
+ 541 0173 F4010000 		.4byte	.LASF19
+ 542 0177 01       		.byte	0x1
+ 543 0178 93       		.byte	0x93
+ 544 0179 00000000 		.4byte	.LFB2
+ 545 017d 24000000 		.4byte	.LFE2-.LFB2
+ 546 0181 01       		.uleb128 0x1
+ 547 0182 9C       		.byte	0x9c
+ 548 0183 B4010000 		.4byte	0x1b4
+ 549 0187 12       		.uleb128 0x12
+ 550 0188 9D000000 		.4byte	0x9d
+ 551 018c 14000000 		.4byte	.LBB4
+ 552 0190 10000000 		.4byte	.LBE4-.LBB4
+ 553 0194 01       		.byte	0x1
+ 554 0195 A1       		.byte	0xa1
+ 555 0196 A1010000 		.4byte	0x1a1
+ 556 019a 13       		.uleb128 0x13
+ 557 019b AA000000 		.4byte	0xaa
+ 558 019f 3F       		.byte	0x3f
+ 559 01a0 00       		.byte	0
+ 560 01a1 14       		.uleb128 0x14
+ 561 01a2 0C000000 		.4byte	.LVL9
+ 562 01a6 40010000 		.4byte	0x140
+ 563 01aa 14       		.uleb128 0x14
+ 564 01ab 14000000 		.4byte	.LVL10
+ 565 01af B7000000 		.4byte	0xb7
+ 566 01b3 00       		.byte	0
+ 567 01b4 09       		.uleb128 0x9
+ 568 01b5 CF000000 		.4byte	.LASF20
+ 569 01b9 01       		.byte	0x1
+ 570 01ba F6       		.byte	0xf6
+ 571 01bb 00000000 		.4byte	.LFB5
+ 572 01bf 1C000000 		.4byte	.LFE5-.LFB5
+ 573 01c3 01       		.uleb128 0x1
+ 574 01c4 9C       		.byte	0x9c
+ 575 01c5 E2010000 		.4byte	0x1e2
+ 576 01c9 0A       		.uleb128 0xa
+ 577 01ca B7010000 		.4byte	.LASF22
+ 578 01ce 01       		.byte	0x1
+ 579 01cf F6       		.byte	0xf6
+ 580 01d0 6B000000 		.4byte	0x6b
+ 581 01d4 45000000 		.4byte	.LLST2
+ 582 01d8 11       		.uleb128 0x11
+ 583 01d9 18000000 		.4byte	.LVL13
+ 584 01dd 19010000 		.4byte	0x119
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 18
+
+
+ 585 01e1 00       		.byte	0
+ 586 01e2 0D       		.uleb128 0xd
+ 587 01e3 C0010000 		.4byte	.LASF23
+ 588 01e7 01       		.byte	0x1
+ 589 01e8 1101     		.2byte	0x111
+ 590 01ea 00000000 		.4byte	.LFB6
+ 591 01ee 1C000000 		.4byte	.LFE6-.LFB6
+ 592 01f2 01       		.uleb128 0x1
+ 593 01f3 9C       		.byte	0x9c
+ 594 01f4 12020000 		.4byte	0x212
+ 595 01f8 15       		.uleb128 0x15
+ 596 01f9 79020000 		.4byte	.LASF24
+ 597 01fd 01       		.byte	0x1
+ 598 01fe 1101     		.2byte	0x111
+ 599 0200 6B000000 		.4byte	0x6b
+ 600 0204 66000000 		.4byte	.LLST3
+ 601 0208 11       		.uleb128 0x11
+ 602 0209 18000000 		.4byte	.LVL16
+ 603 020d 19010000 		.4byte	0x119
+ 604 0211 00       		.byte	0
+ 605 0212 16       		.uleb128 0x16
+ 606 0213 00000000 		.4byte	.LASF31
+ 607 0217 01       		.byte	0x1
+ 608 0218 1B       		.byte	0x1b
+ 609 0219 6B000000 		.4byte	0x6b
+ 610 021d 05       		.uleb128 0x5
+ 611 021e 03       		.byte	0x3
+ 612 021f 00000000 		.4byte	IDAC8_1_initVar
+ 613 0223 00       		.byte	0
+ 614              		.section	.debug_abbrev,"",%progbits
+ 615              	.Ldebug_abbrev0:
+ 616 0000 01       		.uleb128 0x1
+ 617 0001 11       		.uleb128 0x11
+ 618 0002 01       		.byte	0x1
+ 619 0003 25       		.uleb128 0x25
+ 620 0004 0E       		.uleb128 0xe
+ 621 0005 13       		.uleb128 0x13
+ 622 0006 0B       		.uleb128 0xb
+ 623 0007 03       		.uleb128 0x3
+ 624 0008 0E       		.uleb128 0xe
+ 625 0009 1B       		.uleb128 0x1b
+ 626 000a 0E       		.uleb128 0xe
+ 627 000b 55       		.uleb128 0x55
+ 628 000c 17       		.uleb128 0x17
+ 629 000d 11       		.uleb128 0x11
+ 630 000e 01       		.uleb128 0x1
+ 631 000f 10       		.uleb128 0x10
+ 632 0010 17       		.uleb128 0x17
+ 633 0011 00       		.byte	0
+ 634 0012 00       		.byte	0
+ 635 0013 02       		.uleb128 0x2
+ 636 0014 24       		.uleb128 0x24
+ 637 0015 00       		.byte	0
+ 638 0016 0B       		.uleb128 0xb
+ 639 0017 0B       		.uleb128 0xb
+ 640 0018 3E       		.uleb128 0x3e
+ 641 0019 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 19
+
+
+ 642 001a 03       		.uleb128 0x3
+ 643 001b 0E       		.uleb128 0xe
+ 644 001c 00       		.byte	0
+ 645 001d 00       		.byte	0
+ 646 001e 03       		.uleb128 0x3
+ 647 001f 24       		.uleb128 0x24
+ 648 0020 00       		.byte	0
+ 649 0021 0B       		.uleb128 0xb
+ 650 0022 0B       		.uleb128 0xb
+ 651 0023 3E       		.uleb128 0x3e
+ 652 0024 0B       		.uleb128 0xb
+ 653 0025 03       		.uleb128 0x3
+ 654 0026 08       		.uleb128 0x8
+ 655 0027 00       		.byte	0
+ 656 0028 00       		.byte	0
+ 657 0029 04       		.uleb128 0x4
+ 658 002a 16       		.uleb128 0x16
+ 659 002b 00       		.byte	0
+ 660 002c 03       		.uleb128 0x3
+ 661 002d 0E       		.uleb128 0xe
+ 662 002e 3A       		.uleb128 0x3a
+ 663 002f 0B       		.uleb128 0xb
+ 664 0030 3B       		.uleb128 0x3b
+ 665 0031 05       		.uleb128 0x5
+ 666 0032 49       		.uleb128 0x49
+ 667 0033 13       		.uleb128 0x13
+ 668 0034 00       		.byte	0
+ 669 0035 00       		.byte	0
+ 670 0036 05       		.uleb128 0x5
+ 671 0037 35       		.uleb128 0x35
+ 672 0038 00       		.byte	0
+ 673 0039 49       		.uleb128 0x49
+ 674 003a 13       		.uleb128 0x13
+ 675 003b 00       		.byte	0
+ 676 003c 00       		.byte	0
+ 677 003d 06       		.uleb128 0x6
+ 678 003e 2E       		.uleb128 0x2e
+ 679 003f 01       		.byte	0x1
+ 680 0040 3F       		.uleb128 0x3f
+ 681 0041 19       		.uleb128 0x19
+ 682 0042 03       		.uleb128 0x3
+ 683 0043 0E       		.uleb128 0xe
+ 684 0044 3A       		.uleb128 0x3a
+ 685 0045 0B       		.uleb128 0xb
+ 686 0046 3B       		.uleb128 0x3b
+ 687 0047 05       		.uleb128 0x5
+ 688 0048 27       		.uleb128 0x27
+ 689 0049 19       		.uleb128 0x19
+ 690 004a 20       		.uleb128 0x20
+ 691 004b 0B       		.uleb128 0xb
+ 692 004c 01       		.uleb128 0x1
+ 693 004d 13       		.uleb128 0x13
+ 694 004e 00       		.byte	0
+ 695 004f 00       		.byte	0
+ 696 0050 07       		.uleb128 0x7
+ 697 0051 05       		.uleb128 0x5
+ 698 0052 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 20
+
+
+ 699 0053 03       		.uleb128 0x3
+ 700 0054 0E       		.uleb128 0xe
+ 701 0055 3A       		.uleb128 0x3a
+ 702 0056 0B       		.uleb128 0xb
+ 703 0057 3B       		.uleb128 0x3b
+ 704 0058 05       		.uleb128 0x5
+ 705 0059 49       		.uleb128 0x49
+ 706 005a 13       		.uleb128 0x13
+ 707 005b 00       		.byte	0
+ 708 005c 00       		.byte	0
+ 709 005d 08       		.uleb128 0x8
+ 710 005e 2E       		.uleb128 0x2e
+ 711 005f 00       		.byte	0
+ 712 0060 3F       		.uleb128 0x3f
+ 713 0061 19       		.uleb128 0x19
+ 714 0062 03       		.uleb128 0x3
+ 715 0063 0E       		.uleb128 0xe
+ 716 0064 3A       		.uleb128 0x3a
+ 717 0065 0B       		.uleb128 0xb
+ 718 0066 3B       		.uleb128 0x3b
+ 719 0067 0B       		.uleb128 0xb
+ 720 0068 27       		.uleb128 0x27
+ 721 0069 19       		.uleb128 0x19
+ 722 006a 11       		.uleb128 0x11
+ 723 006b 01       		.uleb128 0x1
+ 724 006c 12       		.uleb128 0x12
+ 725 006d 06       		.uleb128 0x6
+ 726 006e 40       		.uleb128 0x40
+ 727 006f 18       		.uleb128 0x18
+ 728 0070 9742     		.uleb128 0x2117
+ 729 0072 19       		.uleb128 0x19
+ 730 0073 00       		.byte	0
+ 731 0074 00       		.byte	0
+ 732 0075 09       		.uleb128 0x9
+ 733 0076 2E       		.uleb128 0x2e
+ 734 0077 01       		.byte	0x1
+ 735 0078 3F       		.uleb128 0x3f
+ 736 0079 19       		.uleb128 0x19
+ 737 007a 03       		.uleb128 0x3
+ 738 007b 0E       		.uleb128 0xe
+ 739 007c 3A       		.uleb128 0x3a
+ 740 007d 0B       		.uleb128 0xb
+ 741 007e 3B       		.uleb128 0x3b
+ 742 007f 0B       		.uleb128 0xb
+ 743 0080 27       		.uleb128 0x27
+ 744 0081 19       		.uleb128 0x19
+ 745 0082 11       		.uleb128 0x11
+ 746 0083 01       		.uleb128 0x1
+ 747 0084 12       		.uleb128 0x12
+ 748 0085 06       		.uleb128 0x6
+ 749 0086 40       		.uleb128 0x40
+ 750 0087 18       		.uleb128 0x18
+ 751 0088 9742     		.uleb128 0x2117
+ 752 008a 19       		.uleb128 0x19
+ 753 008b 01       		.uleb128 0x1
+ 754 008c 13       		.uleb128 0x13
+ 755 008d 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 21
+
+
+ 756 008e 00       		.byte	0
+ 757 008f 0A       		.uleb128 0xa
+ 758 0090 05       		.uleb128 0x5
+ 759 0091 00       		.byte	0
+ 760 0092 03       		.uleb128 0x3
+ 761 0093 0E       		.uleb128 0xe
+ 762 0094 3A       		.uleb128 0x3a
+ 763 0095 0B       		.uleb128 0xb
+ 764 0096 3B       		.uleb128 0x3b
+ 765 0097 0B       		.uleb128 0xb
+ 766 0098 49       		.uleb128 0x49
+ 767 0099 13       		.uleb128 0x13
+ 768 009a 02       		.uleb128 0x2
+ 769 009b 17       		.uleb128 0x17
+ 770 009c 00       		.byte	0
+ 771 009d 00       		.byte	0
+ 772 009e 0B       		.uleb128 0xb
+ 773 009f 2E       		.uleb128 0x2e
+ 774 00a0 01       		.byte	0x1
+ 775 00a1 31       		.uleb128 0x31
+ 776 00a2 13       		.uleb128 0x13
+ 777 00a3 11       		.uleb128 0x11
+ 778 00a4 01       		.uleb128 0x1
+ 779 00a5 12       		.uleb128 0x12
+ 780 00a6 06       		.uleb128 0x6
+ 781 00a7 40       		.uleb128 0x40
+ 782 00a8 18       		.uleb128 0x18
+ 783 00a9 9742     		.uleb128 0x2117
+ 784 00ab 19       		.uleb128 0x19
+ 785 00ac 01       		.uleb128 0x1
+ 786 00ad 13       		.uleb128 0x13
+ 787 00ae 00       		.byte	0
+ 788 00af 00       		.byte	0
+ 789 00b0 0C       		.uleb128 0xc
+ 790 00b1 05       		.uleb128 0x5
+ 791 00b2 00       		.byte	0
+ 792 00b3 31       		.uleb128 0x31
+ 793 00b4 13       		.uleb128 0x13
+ 794 00b5 02       		.uleb128 0x2
+ 795 00b6 18       		.uleb128 0x18
+ 796 00b7 00       		.byte	0
+ 797 00b8 00       		.byte	0
+ 798 00b9 0D       		.uleb128 0xd
+ 799 00ba 2E       		.uleb128 0x2e
+ 800 00bb 01       		.byte	0x1
+ 801 00bc 3F       		.uleb128 0x3f
+ 802 00bd 19       		.uleb128 0x19
+ 803 00be 03       		.uleb128 0x3
+ 804 00bf 0E       		.uleb128 0xe
+ 805 00c0 3A       		.uleb128 0x3a
+ 806 00c1 0B       		.uleb128 0xb
+ 807 00c2 3B       		.uleb128 0x3b
+ 808 00c3 05       		.uleb128 0x5
+ 809 00c4 27       		.uleb128 0x27
+ 810 00c5 19       		.uleb128 0x19
+ 811 00c6 11       		.uleb128 0x11
+ 812 00c7 01       		.uleb128 0x1
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 22
+
+
+ 813 00c8 12       		.uleb128 0x12
+ 814 00c9 06       		.uleb128 0x6
+ 815 00ca 40       		.uleb128 0x40
+ 816 00cb 18       		.uleb128 0x18
+ 817 00cc 9742     		.uleb128 0x2117
+ 818 00ce 19       		.uleb128 0x19
+ 819 00cf 01       		.uleb128 0x1
+ 820 00d0 13       		.uleb128 0x13
+ 821 00d1 00       		.byte	0
+ 822 00d2 00       		.byte	0
+ 823 00d3 0E       		.uleb128 0xe
+ 824 00d4 34       		.uleb128 0x34
+ 825 00d5 00       		.byte	0
+ 826 00d6 03       		.uleb128 0x3
+ 827 00d7 0E       		.uleb128 0xe
+ 828 00d8 3A       		.uleb128 0x3a
+ 829 00d9 0B       		.uleb128 0xb
+ 830 00da 3B       		.uleb128 0x3b
+ 831 00db 05       		.uleb128 0x5
+ 832 00dc 49       		.uleb128 0x49
+ 833 00dd 13       		.uleb128 0x13
+ 834 00de 02       		.uleb128 0x2
+ 835 00df 17       		.uleb128 0x17
+ 836 00e0 00       		.byte	0
+ 837 00e1 00       		.byte	0
+ 838 00e2 0F       		.uleb128 0xf
+ 839 00e3 898201   		.uleb128 0x4109
+ 840 00e6 01       		.byte	0x1
+ 841 00e7 11       		.uleb128 0x11
+ 842 00e8 01       		.uleb128 0x1
+ 843 00e9 31       		.uleb128 0x31
+ 844 00ea 13       		.uleb128 0x13
+ 845 00eb 01       		.uleb128 0x1
+ 846 00ec 13       		.uleb128 0x13
+ 847 00ed 00       		.byte	0
+ 848 00ee 00       		.byte	0
+ 849 00ef 10       		.uleb128 0x10
+ 850 00f0 8A8201   		.uleb128 0x410a
+ 851 00f3 00       		.byte	0
+ 852 00f4 02       		.uleb128 0x2
+ 853 00f5 18       		.uleb128 0x18
+ 854 00f6 9142     		.uleb128 0x2111
+ 855 00f8 18       		.uleb128 0x18
+ 856 00f9 00       		.byte	0
+ 857 00fa 00       		.byte	0
+ 858 00fb 11       		.uleb128 0x11
+ 859 00fc 898201   		.uleb128 0x4109
+ 860 00ff 00       		.byte	0
+ 861 0100 11       		.uleb128 0x11
+ 862 0101 01       		.uleb128 0x1
+ 863 0102 9542     		.uleb128 0x2115
+ 864 0104 19       		.uleb128 0x19
+ 865 0105 31       		.uleb128 0x31
+ 866 0106 13       		.uleb128 0x13
+ 867 0107 00       		.byte	0
+ 868 0108 00       		.byte	0
+ 869 0109 12       		.uleb128 0x12
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 23
+
+
+ 870 010a 1D       		.uleb128 0x1d
+ 871 010b 01       		.byte	0x1
+ 872 010c 31       		.uleb128 0x31
+ 873 010d 13       		.uleb128 0x13
+ 874 010e 11       		.uleb128 0x11
+ 875 010f 01       		.uleb128 0x1
+ 876 0110 12       		.uleb128 0x12
+ 877 0111 06       		.uleb128 0x6
+ 878 0112 58       		.uleb128 0x58
+ 879 0113 0B       		.uleb128 0xb
+ 880 0114 59       		.uleb128 0x59
+ 881 0115 0B       		.uleb128 0xb
+ 882 0116 01       		.uleb128 0x1
+ 883 0117 13       		.uleb128 0x13
+ 884 0118 00       		.byte	0
+ 885 0119 00       		.byte	0
+ 886 011a 13       		.uleb128 0x13
+ 887 011b 05       		.uleb128 0x5
+ 888 011c 00       		.byte	0
+ 889 011d 31       		.uleb128 0x31
+ 890 011e 13       		.uleb128 0x13
+ 891 011f 1C       		.uleb128 0x1c
+ 892 0120 0B       		.uleb128 0xb
+ 893 0121 00       		.byte	0
+ 894 0122 00       		.byte	0
+ 895 0123 14       		.uleb128 0x14
+ 896 0124 898201   		.uleb128 0x4109
+ 897 0127 00       		.byte	0
+ 898 0128 11       		.uleb128 0x11
+ 899 0129 01       		.uleb128 0x1
+ 900 012a 31       		.uleb128 0x31
+ 901 012b 13       		.uleb128 0x13
+ 902 012c 00       		.byte	0
+ 903 012d 00       		.byte	0
+ 904 012e 15       		.uleb128 0x15
+ 905 012f 05       		.uleb128 0x5
+ 906 0130 00       		.byte	0
+ 907 0131 03       		.uleb128 0x3
+ 908 0132 0E       		.uleb128 0xe
+ 909 0133 3A       		.uleb128 0x3a
+ 910 0134 0B       		.uleb128 0xb
+ 911 0135 3B       		.uleb128 0x3b
+ 912 0136 05       		.uleb128 0x5
+ 913 0137 49       		.uleb128 0x49
+ 914 0138 13       		.uleb128 0x13
+ 915 0139 02       		.uleb128 0x2
+ 916 013a 17       		.uleb128 0x17
+ 917 013b 00       		.byte	0
+ 918 013c 00       		.byte	0
+ 919 013d 16       		.uleb128 0x16
+ 920 013e 34       		.uleb128 0x34
+ 921 013f 00       		.byte	0
+ 922 0140 03       		.uleb128 0x3
+ 923 0141 0E       		.uleb128 0xe
+ 924 0142 3A       		.uleb128 0x3a
+ 925 0143 0B       		.uleb128 0xb
+ 926 0144 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 24
+
+
+ 927 0145 0B       		.uleb128 0xb
+ 928 0146 49       		.uleb128 0x49
+ 929 0147 13       		.uleb128 0x13
+ 930 0148 3F       		.uleb128 0x3f
+ 931 0149 19       		.uleb128 0x19
+ 932 014a 02       		.uleb128 0x2
+ 933 014b 18       		.uleb128 0x18
+ 934 014c 00       		.byte	0
+ 935 014d 00       		.byte	0
+ 936 014e 00       		.byte	0
+ 937              		.section	.debug_loc,"",%progbits
+ 938              	.Ldebug_loc0:
+ 939              	.LLST0:
+ 940 0000 00000000 		.4byte	.LVL0
+ 941 0004 06000000 		.4byte	.LVL1
+ 942 0008 0100     		.2byte	0x1
+ 943 000a 50       		.byte	0x50
+ 944 000b 06000000 		.4byte	.LVL1
+ 945 000f 1C000000 		.4byte	.LFE4
+ 946 0013 0400     		.2byte	0x4
+ 947 0015 F3       		.byte	0xf3
+ 948 0016 01       		.uleb128 0x1
+ 949 0017 50       		.byte	0x50
+ 950 0018 9F       		.byte	0x9f
+ 951 0019 00000000 		.4byte	0
+ 952 001d 00000000 		.4byte	0
+ 953              	.LLST1:
+ 954 0021 0E000000 		.4byte	.LVL3
+ 955 0025 18000000 		.4byte	.LVL5
+ 956 0029 0100     		.2byte	0x1
+ 957 002b 53       		.byte	0x53
+ 958 002c 18000000 		.4byte	.LVL5
+ 959 0030 1C000000 		.4byte	.LVL6
+ 960 0034 0700     		.2byte	0x7
+ 961 0036 73       		.byte	0x73
+ 962 0037 808080B8 		.sleb128 -1224736768
+ 962      7B
+ 963 003c 9F       		.byte	0x9f
+ 964 003d 00000000 		.4byte	0
+ 965 0041 00000000 		.4byte	0
+ 966              	.LLST2:
+ 967 0045 00000000 		.4byte	.LVL11
+ 968 0049 06000000 		.4byte	.LVL12
+ 969 004d 0100     		.2byte	0x1
+ 970 004f 50       		.byte	0x50
+ 971 0050 06000000 		.4byte	.LVL12
+ 972 0054 1C000000 		.4byte	.LFE5
+ 973 0058 0400     		.2byte	0x4
+ 974 005a F3       		.byte	0xf3
+ 975 005b 01       		.uleb128 0x1
+ 976 005c 50       		.byte	0x50
+ 977 005d 9F       		.byte	0x9f
+ 978 005e 00000000 		.4byte	0
+ 979 0062 00000000 		.4byte	0
+ 980              	.LLST3:
+ 981 0066 00000000 		.4byte	.LVL14
+ 982 006a 06000000 		.4byte	.LVL15
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 25
+
+
+ 983 006e 0100     		.2byte	0x1
+ 984 0070 50       		.byte	0x50
+ 985 0071 06000000 		.4byte	.LVL15
+ 986 0075 1C000000 		.4byte	.LFE6
+ 987 0079 0400     		.2byte	0x4
+ 988 007b F3       		.byte	0xf3
+ 989 007c 01       		.uleb128 0x1
+ 990 007d 50       		.byte	0x50
+ 991 007e 9F       		.byte	0x9f
+ 992 007f 00000000 		.4byte	0
+ 993 0083 00000000 		.4byte	0
+ 994              		.section	.debug_aranges,"",%progbits
+ 995 0000 5C000000 		.4byte	0x5c
+ 996 0004 0200     		.2byte	0x2
+ 997 0006 00000000 		.4byte	.Ldebug_info0
+ 998 000a 04       		.byte	0x4
+ 999 000b 00       		.byte	0
+ 1000 000c 0000     		.2byte	0
+ 1001 000e 0000     		.2byte	0
+ 1002 0010 00000000 		.4byte	.LFB1
+ 1003 0014 18000000 		.4byte	.LFE1-.LFB1
+ 1004 0018 00000000 		.4byte	.LFB3
+ 1005 001c 18000000 		.4byte	.LFE3-.LFB3
+ 1006 0020 00000000 		.4byte	.LFB4
+ 1007 0024 1C000000 		.4byte	.LFE4-.LFB4
+ 1008 0028 00000000 		.4byte	.LFB7
+ 1009 002c 0C000000 		.4byte	.LFE7-.LFB7
+ 1010 0030 00000000 		.4byte	.LFB8
+ 1011 0034 30000000 		.4byte	.LFE8-.LFB8
+ 1012 0038 00000000 		.4byte	.LFB0
+ 1013 003c 24000000 		.4byte	.LFE0-.LFB0
+ 1014 0040 00000000 		.4byte	.LFB2
+ 1015 0044 24000000 		.4byte	.LFE2-.LFB2
+ 1016 0048 00000000 		.4byte	.LFB5
+ 1017 004c 1C000000 		.4byte	.LFE5-.LFB5
+ 1018 0050 00000000 		.4byte	.LFB6
+ 1019 0054 1C000000 		.4byte	.LFE6-.LFB6
+ 1020 0058 00000000 		.4byte	0
+ 1021 005c 00000000 		.4byte	0
+ 1022              		.section	.debug_ranges,"",%progbits
+ 1023              	.Ldebug_ranges0:
+ 1024 0000 00000000 		.4byte	.LFB1
+ 1025 0004 18000000 		.4byte	.LFE1
+ 1026 0008 00000000 		.4byte	.LFB3
+ 1027 000c 18000000 		.4byte	.LFE3
+ 1028 0010 00000000 		.4byte	.LFB4
+ 1029 0014 1C000000 		.4byte	.LFE4
+ 1030 0018 00000000 		.4byte	.LFB7
+ 1031 001c 0C000000 		.4byte	.LFE7
+ 1032 0020 00000000 		.4byte	.LFB8
+ 1033 0024 30000000 		.4byte	.LFE8
+ 1034 0028 00000000 		.4byte	.LFB0
+ 1035 002c 24000000 		.4byte	.LFE0
+ 1036 0030 00000000 		.4byte	.LFB2
+ 1037 0034 24000000 		.4byte	.LFE2
+ 1038 0038 00000000 		.4byte	.LFB5
+ 1039 003c 1C000000 		.4byte	.LFE5
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 26
+
+
+ 1040 0040 00000000 		.4byte	.LFB6
+ 1041 0044 1C000000 		.4byte	.LFE6
+ 1042 0048 00000000 		.4byte	0
+ 1043 004c 00000000 		.4byte	0
+ 1044              		.section	.debug_line,"",%progbits
+ 1045              	.Ldebug_line0:
+ 1046 0000 0A010000 		.section	.debug_str,"MS",%progbits,1
+ 1046      02004400 
+ 1046      00000201 
+ 1046      FB0E0D00 
+ 1046      01010101 
+ 1047              	.LASF31:
+ 1048 0000 49444143 		.ascii	"IDAC8_1_initVar\000"
+ 1048      385F315F 
+ 1048      696E6974 
+ 1048      56617200 
+ 1049              	.LASF2:
+ 1050 0010 73686F72 		.ascii	"short int\000"
+ 1050      7420696E 
+ 1050      7400
+ 1051              	.LASF27:
+ 1052 001a 433A5C55 		.ascii	"C:\\Users\\Luggi\\Desktop\\Aktuelles Projekt Laser_"
+ 1052      73657273 
+ 1052      5C4C7567 
+ 1052      67695C44 
+ 1052      65736B74 
+ 1053 0049 73636875 		.ascii	"schutzschaltung\\Aktuelles Projekt Laser_schutzscha"
+ 1053      747A7363 
+ 1053      68616C74 
+ 1053      756E675C 
+ 1053      416B7475 
+ 1054 007b 6C74756E 		.ascii	"ltung\\Laserschutzschaltung.cydsn\000"
+ 1054      675C4C61 
+ 1054      73657273 
+ 1054      63687574 
+ 1054      7A736368 
+ 1055              	.LASF26:
+ 1056 009c 47656E65 		.ascii	"Generated_Source\\PSoC5\\IDAC8_1.c\000"
+ 1056      72617465 
+ 1056      645F536F 
+ 1056      75726365 
+ 1056      5C50536F 
+ 1057              	.LASF30:
+ 1058 00bd 6D6F6465 		.ascii	"mode\000"
+ 1058      00
+ 1059              	.LASF15:
+ 1060 00c2 49444143 		.ascii	"IDAC8_1_Stop\000"
+ 1060      385F315F 
+ 1060      53746F70 
+ 1060      00
+ 1061              	.LASF20:
+ 1062 00cf 49444143 		.ascii	"IDAC8_1_SetPolarity\000"
+ 1062      385F315F 
+ 1062      53657450 
+ 1062      6F6C6172 
+ 1062      69747900 
+ 1063              	.LASF29:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 27
+
+
+ 1064 00e3 76616C75 		.ascii	"value\000"
+ 1064      6500
+ 1065              	.LASF12:
+ 1066 00e9 75696E74 		.ascii	"uint8\000"
+ 1066      3800
+ 1067              	.LASF14:
+ 1068 00ef 49444143 		.ascii	"IDAC8_1_Enable\000"
+ 1068      385F315F 
+ 1068      456E6162 
+ 1068      6C6500
+ 1069              	.LASF25:
+ 1070 00fe 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1070      4320342E 
+ 1070      392E3320 
+ 1070      32303135 
+ 1070      30333033 
+ 1071 0131 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1071      20726576 
+ 1071      6973696F 
+ 1071      6E203232 
+ 1071      31323230 
+ 1072 0164 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 1072      66756E63 
+ 1072      74696F6E 
+ 1072      2D736563 
+ 1072      74696F6E 
+ 1073              	.LASF9:
+ 1074 018c 666C6F61 		.ascii	"float\000"
+ 1074      7400
+ 1075              	.LASF6:
+ 1076 0192 6C6F6E67 		.ascii	"long long int\000"
+ 1076      206C6F6E 
+ 1076      6720696E 
+ 1076      7400
+ 1077              	.LASF4:
+ 1078 01a0 6C6F6E67 		.ascii	"long int\000"
+ 1078      20696E74 
+ 1078      00
+ 1079              	.LASF1:
+ 1080 01a9 756E7369 		.ascii	"unsigned char\000"
+ 1080      676E6564 
+ 1080      20636861 
+ 1080      7200
+ 1081              	.LASF22:
+ 1082 01b7 706F6C61 		.ascii	"polarity\000"
+ 1082      72697479 
+ 1082      00
+ 1083              	.LASF23:
+ 1084 01c0 49444143 		.ascii	"IDAC8_1_SetRange\000"
+ 1084      385F315F 
+ 1084      53657452 
+ 1084      616E6765 
+ 1084      00
+ 1085              	.LASF0:
+ 1086 01d1 7369676E 		.ascii	"signed char\000"
+ 1086      65642063 
+ 1086      68617200 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 28
+
+
+ 1087              	.LASF7:
+ 1088 01dd 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1088      206C6F6E 
+ 1088      6720756E 
+ 1088      7369676E 
+ 1088      65642069 
+ 1089              	.LASF19:
+ 1090 01f4 49444143 		.ascii	"IDAC8_1_Start\000"
+ 1090      385F315F 
+ 1090      53746172 
+ 1090      7400
+ 1091              	.LASF8:
+ 1092 0202 756E7369 		.ascii	"unsigned int\000"
+ 1092      676E6564 
+ 1092      20696E74 
+ 1092      00
+ 1093              	.LASF21:
+ 1094 020f 73706565 		.ascii	"speed\000"
+ 1094      6400
+ 1095              	.LASF3:
+ 1096 0215 73686F72 		.ascii	"short unsigned int\000"
+ 1096      7420756E 
+ 1096      7369676E 
+ 1096      65642069 
+ 1096      6E7400
+ 1097              	.LASF11:
+ 1098 0228 63686172 		.ascii	"char\000"
+ 1098      00
+ 1099              	.LASF18:
+ 1100 022d 49444143 		.ascii	"IDAC8_1_Init\000"
+ 1100      385F315F 
+ 1100      496E6974 
+ 1100      00
+ 1101              	.LASF28:
+ 1102 023a 49444143 		.ascii	"IDAC8_1_SetValue\000"
+ 1102      385F315F 
+ 1102      53657456 
+ 1102      616C7565 
+ 1102      00
+ 1103              	.LASF13:
+ 1104 024b 72656738 		.ascii	"reg8\000"
+ 1104      00
+ 1105              	.LASF5:
+ 1106 0250 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1106      20756E73 
+ 1106      69676E65 
+ 1106      6420696E 
+ 1106      7400
+ 1107              	.LASF10:
+ 1108 0262 646F7562 		.ascii	"double\000"
+ 1108      6C6500
+ 1109              	.LASF17:
+ 1110 0269 49444143 		.ascii	"IDAC8_1_DacTrim\000"
+ 1110      385F315F 
+ 1110      44616354 
+ 1110      72696D00 
+ 1111              	.LASF24:
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\ccu3NXnd.s 			page 29
+
+
+ 1112 0279 72616E67 		.ascii	"range\000"
+ 1112      6500
+ 1113              	.LASF16:
+ 1114 027f 49444143 		.ascii	"IDAC8_1_SetSpeed\000"
+ 1114      385F315F 
+ 1114      53657453 
+ 1114      70656564 
+ 1114      00
+ 1115              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

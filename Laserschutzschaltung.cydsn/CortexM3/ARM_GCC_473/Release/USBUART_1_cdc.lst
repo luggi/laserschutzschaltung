@@ -1,0 +1,4203 @@
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"USBUART_1_cdc.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.USBUART_1_DispatchCDCClassRqst,"ax",%progbits
+  19              		.align	1
+  20              		.global	USBUART_1_DispatchCDCClassRqst
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	USBUART_1_DispatchCDCClassRqst, %function
+  24              	USBUART_1_DispatchCDCClassRqst:
+  25              	.LFB0:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\USBUART_1_cdc.c"
+   1:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** * File Name: USBUART_1_cdc.c
+   3:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** * Version 2.60
+   4:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *
+   5:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** * Description:
+   6:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *  USB HID Class request handler.
+   7:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *
+   8:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** * Note:
+   9:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *
+  10:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** ********************************************************************************
+  11:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** * Copyright 2012-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  12:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** * You may use this file only in accordance with the license, terms, conditions,
+  13:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  14:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** * the software package with which this file was provided.
+  15:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *******************************************************************************/
+  16:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  17:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** #include "USBUART_1.h"
+  18:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  19:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** #if defined(USBUART_1_ENABLE_CDC_CLASS)
+  20:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  21:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** #include "USBUART_1_cdc.h"
+  22:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** #include "USBUART_1_pvt.h"
+  23:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  24:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  25:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** /***************************************
+  26:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *    CDC Variables
+  27:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** ***************************************/
+  28:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  29:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** volatile uint8 USBUART_1_lineCoding[USBUART_1_LINE_CODING_SIZE];
+  30:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** volatile uint8 USBUART_1_lineChanged;
+  31:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** volatile uint16 USBUART_1_lineControlBitmap;
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** volatile uint8 USBUART_1_cdc_data_in_ep;
+  33:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** volatile uint8 USBUART_1_cdc_data_out_ep;
+  34:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  35:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  36:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** /***************************************
+  37:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *     Static Function Prototypes
+  38:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** ***************************************/
+  39:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** static uint16 USBUART_1_StrLen(const char8 string[]) ;
+  40:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  41:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  42:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** /***************************************
+  43:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** * Custom Declarations
+  44:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** ***************************************/
+  45:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  46:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** /* `#START CDC_CUSTOM_DECLARATIONS` Place your declaration here */
+  47:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  48:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** /* `#END` */
+  49:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  50:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  51:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** /*******************************************************************************
+  52:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** * Function Name: USBUART_1_DispatchCDCClassRqst
+  53:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** ********************************************************************************
+  54:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *
+  55:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** * Summary:
+  56:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *  This routine dispatches CDC class requests.
+  57:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *
+  58:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** * Parameters:
+  59:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *  None.
+  60:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *
+  61:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** * Return:
+  62:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *  requestHandled
+  63:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *
+  64:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** * Global variables:
+  65:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *   USBUART_1_lineCoding: Contains the current line coding structure.
+  66:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *     It is set by the Host using SET_LINE_CODING request and returned to the
+  67:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *     user code by the USBFS_GetDTERate(), USBFS_GetCharFormat(),
+  68:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *     USBFS_GetParityType(), USBFS_GetDataBits() APIs.
+  69:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *   USBUART_1_lineControlBitmap: Contains the current control signal
+  70:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *     bitmap. It is set by the Host using SET_CONTROL_LINE request and returned
+  71:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *     to the user code by the USBFS_GetLineControl() API.
+  72:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *   USBUART_1_lineChanged: This variable is used as a flag for the
+  73:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *     USBFS_IsLineChanged() API, to be aware that Host has been sent request
+  74:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *     for changing Line Coding or Control Bitmap.
+  75:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *
+  76:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** * Reentrant:
+  77:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *  No.
+  78:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *
+  79:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** *******************************************************************************/
+  80:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** uint8 USBUART_1_DispatchCDCClassRqst(void) 
+  81:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** {
+  27              		.loc 1 81 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  82:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     uint8 requestHandled = USBUART_1_FALSE;
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 3
+
+
+  83:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  84:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     if ((CY_GET_REG8(USBUART_1_bmRequestType) & USBUART_1_RQST_DIR_MASK) == USBUART_1_RQST_DIR_D2H)
+  33              		.loc 1 84 0
+  34 0000 184B     		ldr	r3, .L11
+  35 0002 1A78     		ldrb	r2, [r3, #0]	@ zero_extendqisi2
+  36 0004 1206     		lsls	r2, r2, #24
+  37 0006 0AD5     		bpl	.L2
+  85:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {   /* Control Read */
+  86:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         switch (CY_GET_REG8(USBUART_1_bRequest))
+  38              		.loc 1 86 0
+  39 0008 5A1C     		adds	r2, r3, #1
+  40 000a 1078     		ldrb	r0, [r2, #0]	@ zero_extendqisi2
+  41 000c 2128     		cmp	r0, #33
+  42 000e 26D1     		bne	.L3
+  87:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         {
+  88:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             case USBUART_1_CDC_GET_LINE_CODING:
+  89:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_currentTD.count = USBUART_1_LINE_CODING_SIZE;
+  43              		.loc 1 89 0
+  44 0010 1549     		ldr	r1, .L11+4
+  90:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_currentTD.pData = USBUART_1_lineCoding;
+  45              		.loc 1 90 0
+  46 0012 164A     		ldr	r2, .L11+8
+  89:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_currentTD.count = USBUART_1_LINE_CODING_SIZE;
+  47              		.loc 1 89 0
+  48 0014 0723     		movs	r3, #7
+  49 0016 0B80     		strh	r3, [r1, #0]	@ movhi
+  50              		.loc 1 90 0
+  51 0018 4A60     		str	r2, [r1, #4]
+  91:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 requestHandled  = USBUART_1_InitControlRead();
+  92:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 break;
+  93:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  94:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             /* `#START CDC_READ_REQUESTS` Place other request handler here */
+  95:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  96:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             /* `#END` */
+  97:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+  98:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             default:    /* requestHandled is initialized as FALSE by default */
+  99:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 break;
+ 100:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         }
+ 101:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 102:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     else if ((CY_GET_REG8(USBUART_1_bmRequestType) & USBUART_1_RQST_DIR_MASK) == \
+ 103:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                                                                             USBUART_1_RQST_DIR_H2D)
+ 104:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {   /* Control Write */
+ 105:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         switch (CY_GET_REG8(USBUART_1_bRequest))
+ 106:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         {
+ 107:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             case USBUART_1_CDC_SET_LINE_CODING:
+ 108:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_currentTD.count = USBUART_1_LINE_CODING_SIZE;
+ 109:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_currentTD.pData = USBUART_1_lineCoding;
+ 110:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_lineChanged |= USBUART_1_LINE_CODING_CHANGED;
+ 111:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 requestHandled = USBUART_1_InitControlWrite();
+ 112:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 break;
+ 113:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 114:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             case USBUART_1_CDC_SET_CONTROL_LINE_STATE:
+ 115:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_lineControlBitmap = CY_GET_REG8(USBUART_1_wValueLo);
+ 116:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_lineChanged |= USBUART_1_LINE_CONTROL_CHANGED;
+ 117:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 requestHandled = USBUART_1_InitNoDataControlTransfer();
+ 118:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 break;
+ 119:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 4
+
+
+ 120:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             /* `#START CDC_WRITE_REQUESTS` Place other request handler here */
+ 121:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 122:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             /* `#END` */
+ 123:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 124:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             default:    /* requestHandled is initialized as FALSE by default */
+ 125:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 break;
+ 126:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         }
+ 127:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 128:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     else
+ 129:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {   /* requestHandled is initialized as FALSE by default */
+ 130:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 131:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 132:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     return(requestHandled);
+ 133:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** }
+  52              		.loc 1 133 0
+  91:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 requestHandled  = USBUART_1_InitControlRead();
+  53              		.loc 1 91 0
+  54 001a FFF7FEBF 		b	USBUART_1_InitControlRead
+  55              	.LVL1:
+  56              	.L2:
+ 102:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     else if ((CY_GET_REG8(USBUART_1_bmRequestType) & USBUART_1_RQST_DIR_MASK) == \
+  57              		.loc 1 102 0
+  58 001e 1878     		ldrb	r0, [r3, #0]	@ zero_extendqisi2
+  59 0020 0306     		lsls	r3, r0, #24
+  60 0022 1CD4     		bmi	.L3
+ 105:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         switch (CY_GET_REG8(USBUART_1_bRequest))
+  61              		.loc 1 105 0
+  62 0024 1249     		ldr	r1, .L11+12
+  63 0026 0B78     		ldrb	r3, [r1, #0]	@ zero_extendqisi2
+  64 0028 202B     		cmp	r3, #32
+  65 002a 0CD0     		beq	.L5
+  66 002c 222B     		cmp	r3, #34
+  67 002e 16D1     		bne	.L3
+ 115:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_lineControlBitmap = CY_GET_REG8(USBUART_1_wValueLo);
+  68              		.loc 1 115 0
+  69 0030 104A     		ldr	r2, .L11+16
+  70 0032 1149     		ldr	r1, .L11+20
+  71 0034 1078     		ldrb	r0, [r2, #0]	@ zero_extendqisi2
+ 116:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_lineChanged |= USBUART_1_LINE_CONTROL_CHANGED;
+  72              		.loc 1 116 0
+  73 0036 114B     		ldr	r3, .L11+24
+ 115:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_lineControlBitmap = CY_GET_REG8(USBUART_1_wValueLo);
+  74              		.loc 1 115 0
+  75 0038 0880     		strh	r0, [r1, #0]	@ movhi
+ 116:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_lineChanged |= USBUART_1_LINE_CONTROL_CHANGED;
+  76              		.loc 1 116 0
+  77 003a 1A78     		ldrb	r2, [r3, #0]	@ zero_extendqisi2
+  78 003c 42F00200 		orr	r0, r2, #2
+  79 0040 1870     		strb	r0, [r3, #0]
+  80              		.loc 1 133 0
+ 117:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 requestHandled = USBUART_1_InitNoDataControlTransfer();
+  81              		.loc 1 117 0
+  82 0042 FFF7FEBF 		b	USBUART_1_InitNoDataControlTransfer
+  83              	.LVL2:
+  84              	.L5:
+ 108:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_currentTD.count = USBUART_1_LINE_CODING_SIZE;
+  85              		.loc 1 108 0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 5
+
+
+  86 0046 0849     		ldr	r1, .L11+4
+ 109:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_currentTD.pData = USBUART_1_lineCoding;
+  87              		.loc 1 109 0
+  88 0048 084A     		ldr	r2, .L11+8
+ 108:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_currentTD.count = USBUART_1_LINE_CODING_SIZE;
+  89              		.loc 1 108 0
+  90 004a 0723     		movs	r3, #7
+ 110:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_lineChanged |= USBUART_1_LINE_CODING_CHANGED;
+  91              		.loc 1 110 0
+  92 004c 0B48     		ldr	r0, .L11+24
+ 108:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_currentTD.count = USBUART_1_LINE_CODING_SIZE;
+  93              		.loc 1 108 0
+  94 004e 0B80     		strh	r3, [r1, #0]	@ movhi
+ 109:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_currentTD.pData = USBUART_1_lineCoding;
+  95              		.loc 1 109 0
+  96 0050 4A60     		str	r2, [r1, #4]
+ 110:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_lineChanged |= USBUART_1_LINE_CODING_CHANGED;
+  97              		.loc 1 110 0
+  98 0052 0178     		ldrb	r1, [r0, #0]	@ zero_extendqisi2
+  99 0054 41F00103 		orr	r3, r1, #1
+ 100 0058 0370     		strb	r3, [r0, #0]
+ 101              		.loc 1 133 0
+ 111:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 requestHandled = USBUART_1_InitControlWrite();
+ 102              		.loc 1 111 0
+ 103 005a FFF7FEBF 		b	USBUART_1_InitControlWrite
+ 104              	.LVL3:
+ 105              	.L3:
+ 106              		.loc 1 133 0
+ 107 005e 0020     		movs	r0, #0
+ 108 0060 7047     		bx	lr
+ 109              	.L12:
+ 110 0062 00BF     		.align	2
+ 111              	.L11:
+ 112 0064 00600040 		.word	1073766400
+ 113 0068 00000000 		.word	USBUART_1_currentTD
+ 114 006c 00000000 		.word	USBUART_1_lineCoding
+ 115 0070 01600040 		.word	1073766401
+ 116 0074 02600040 		.word	1073766402
+ 117 0078 00000000 		.word	USBUART_1_lineControlBitmap
+ 118 007c 00000000 		.word	USBUART_1_lineChanged
+ 119              		.cfi_endproc
+ 120              	.LFE0:
+ 121              		.size	USBUART_1_DispatchCDCClassRqst, .-USBUART_1_DispatchCDCClassRqst
+ 122              		.section	.text.USBUART_1_CDC_Init,"ax",%progbits
+ 123              		.align	1
+ 124              		.global	USBUART_1_CDC_Init
+ 125              		.thumb
+ 126              		.thumb_func
+ 127              		.type	USBUART_1_CDC_Init, %function
+ 128              	USBUART_1_CDC_Init:
+ 129              	.LFB1:
+ 134:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 135:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 136:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** /***************************************
+ 137:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** * Optional CDC APIs
+ 138:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** ***************************************/
+ 139:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** #if (USBUART_1_ENABLE_CDC_CLASS_API != 0u)
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 6
+
+
+ 140:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 141:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 142:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 143:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_CDC_Init
+ 144:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 145:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 146:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 147:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  This function initialize the CDC interface to be ready for the receive data
+ 148:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  from the PC.
+ 149:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 150:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 151:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 152:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 153:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ 154:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 155:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 156:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 157:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *   USBUART_1_lineChanged: Initialized to zero.
+ 158:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *   USBUART_1_cdc_data_out_ep: Used as an OUT endpoint number.
+ 159:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 160:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Reentrant:
+ 161:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  No.
+ 162:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 163:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 164:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     void USBUART_1_CDC_Init(void) 
+ 165:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 130              		.loc 1 165 0
+ 131              		.cfi_startproc
+ 132              		@ args = 0, pretend = 0, frame = 0
+ 133              		@ frame_needed = 0, uses_anonymous_args = 0
+ 134              		@ link register save eliminated.
+ 166:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         USBUART_1_lineChanged = 0u;
+ 135              		.loc 1 166 0
+ 136 0000 034B     		ldr	r3, .L14
+ 137 0002 0022     		movs	r2, #0
+ 167:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         USBUART_1_EnableOutEP(USBUART_1_cdc_data_out_ep);
+ 138              		.loc 1 167 0
+ 139 0004 0348     		ldr	r0, .L14+4
+ 166:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         USBUART_1_lineChanged = 0u;
+ 140              		.loc 1 166 0
+ 141 0006 1A70     		strb	r2, [r3, #0]
+ 142              		.loc 1 167 0
+ 143 0008 0078     		ldrb	r0, [r0, #0]	@ zero_extendqisi2
+ 168:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 144              		.loc 1 168 0
+ 167:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         USBUART_1_EnableOutEP(USBUART_1_cdc_data_out_ep);
+ 145              		.loc 1 167 0
+ 146 000a FFF7FEBF 		b	USBUART_1_EnableOutEP
+ 147              	.LVL4:
+ 148              	.L15:
+ 149 000e 00BF     		.align	2
+ 150              	.L14:
+ 151 0010 00000000 		.word	USBUART_1_lineChanged
+ 152 0014 00000000 		.word	USBUART_1_cdc_data_out_ep
+ 153              		.cfi_endproc
+ 154              	.LFE1:
+ 155              		.size	USBUART_1_CDC_Init, .-USBUART_1_CDC_Init
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 7
+
+
+ 156              		.section	.text.USBUART_1_PutData,"ax",%progbits
+ 157              		.align	1
+ 158              		.global	USBUART_1_PutData
+ 159              		.thumb
+ 160              		.thumb_func
+ 161              		.type	USBUART_1_PutData, %function
+ 162              	USBUART_1_PutData:
+ 163              	.LFB2:
+ 169:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 170:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 171:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 172:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_PutData
+ 173:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 174:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 175:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 176:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Sends a specified number of bytes from the location specified by a
+ 177:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  pointer to the PC.
+ 178:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 179:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 180:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  pData: pointer to the buffer containing data to be sent.
+ 181:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  length: Specifies the number of bytes to send from the pData
+ 182:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  buffer. Maximum length will be limited by the maximum packet
+ 183:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  size for the endpoint.
+ 184:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 185:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ 186:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 187:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 188:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 189:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *   USBUART_1_cdc_data_in_ep: CDC IN endpoint number used for sending
+ 190:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *     data.
+ 191:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 192:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Reentrant:
+ 193:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  No.
+ 194:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 195:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 196:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     void USBUART_1_PutData(const uint8* pData, uint16 length) 
+ 197:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 164              		.loc 1 197 0
+ 165              		.cfi_startproc
+ 166              		@ args = 0, pretend = 0, frame = 0
+ 167              		@ frame_needed = 0, uses_anonymous_args = 0
+ 168              	.LVL5:
+ 169 0000 70B5     		push	{r4, r5, r6, lr}
+ 170              	.LCFI0:
+ 171              		.cfi_def_cfa_offset 16
+ 172              		.cfi_offset 4, -16
+ 173              		.cfi_offset 5, -12
+ 174              		.cfi_offset 6, -8
+ 175              		.cfi_offset 14, -4
+ 198:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         /* Limits length to maximum packet size for the EP */
+ 199:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         if(length > USBUART_1_EP[USBUART_1_cdc_data_in_ep].bufferSize)
+ 176              		.loc 1 199 0
+ 177 0002 0B4B     		ldr	r3, .L18
+ 197:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 178              		.loc 1 197 0
+ 179 0004 0A46     		mov	r2, r1
+ 180              		.loc 1 199 0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 8
+
+
+ 181 0006 0B4C     		ldr	r4, .L18+4
+ 182 0008 1978     		ldrb	r1, [r3, #0]	@ zero_extendqisi2
+ 183              	.LVL6:
+ 184 000a 0C25     		movs	r5, #12
+ 197:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 185              		.loc 1 197 0
+ 186 000c 0646     		mov	r6, r0
+ 187              		.loc 1 199 0
+ 188 000e 05FB0140 		mla	r0, r5, r1, r4
+ 189              	.LVL7:
+ 190 0012 0189     		ldrh	r1, [r0, #8]
+ 191 0014 88B2     		uxth	r0, r1
+ 192 0016 8242     		cmp	r2, r0
+ 193 0018 04D9     		bls	.L17
+ 200:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         {
+ 201:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             /* Caution: Data will be lost if length is greater than Max Packet Length */
+ 202:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             length = USBUART_1_EP[USBUART_1_cdc_data_in_ep].bufferSize;
+ 194              		.loc 1 202 0
+ 195 001a 1A78     		ldrb	r2, [r3, #0]	@ zero_extendqisi2
+ 196 001c 05FB0244 		mla	r4, r5, r2, r4
+ 197 0020 2189     		ldrh	r1, [r4, #8]
+ 198 0022 8AB2     		uxth	r2, r1
+ 199              	.LVL8:
+ 200              	.L17:
+ 203:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****              /* Halt CPU in debug mode */
+ 204:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             CYASSERT(0u != 0u);
+ 205:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         }
+ 206:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         USBUART_1_LoadInEP(USBUART_1_cdc_data_in_ep, pData, length);
+ 201              		.loc 1 206 0
+ 202 0024 1878     		ldrb	r0, [r3, #0]	@ zero_extendqisi2
+ 203 0026 3146     		mov	r1, r6
+ 207:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 204              		.loc 1 207 0
+ 205 0028 BDE87040 		pop	{r4, r5, r6, lr}
+ 206:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         USBUART_1_LoadInEP(USBUART_1_cdc_data_in_ep, pData, length);
+ 206              		.loc 1 206 0
+ 207 002c FFF7FEBF 		b	USBUART_1_LoadInEP
+ 208              	.LVL9:
+ 209              	.L19:
+ 210              		.align	2
+ 211              	.L18:
+ 212 0030 00000000 		.word	USBUART_1_cdc_data_in_ep
+ 213 0034 00000000 		.word	USBUART_1_EP
+ 214              		.cfi_endproc
+ 215              	.LFE2:
+ 216              		.size	USBUART_1_PutData, .-USBUART_1_PutData
+ 217              		.section	.text.USBUART_1_PutString,"ax",%progbits
+ 218              		.align	1
+ 219              		.global	USBUART_1_PutString
+ 220              		.thumb
+ 221              		.thumb_func
+ 222              		.type	USBUART_1_PutString, %function
+ 223              	USBUART_1_PutString:
+ 224              	.LFB4:
+ 208:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 209:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 210:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 9
+
+
+ 211:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_StrLen
+ 212:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 213:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 214:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 215:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Calculates length of a null terminated string.
+ 216:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 217:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 218:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  string: pointer to the string.
+ 219:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 220:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ 221:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Length of the string
+ 222:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 223:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 224:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     static uint16 USBUART_1_StrLen(const char8 string[]) 
+ 225:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 226:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         uint16 len = 0u;
+ 227:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 228:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         while (string[len] != (char8)0)
+ 229:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         {
+ 230:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             len++;
+ 231:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         }
+ 232:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 233:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         return (len);
+ 234:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 235:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 236:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 237:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 238:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_PutString
+ 239:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 240:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 241:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 242:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Sends a null terminated string to the PC.
+ 243:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 244:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 245:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  string: pointer to the string to be sent to the PC
+ 246:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 247:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ 248:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 249:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 250:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 251:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *   USBUART_1_cdc_data_in_ep: CDC IN endpoint number used for sending
+ 252:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *     data.
+ 253:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 254:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Reentrant:
+ 255:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  No.
+ 256:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 257:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Theory:
+ 258:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  This function will block if there is not enough memory to place the whole
+ 259:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  string, it will block until the entire string has been written to the
+ 260:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  transmit buffer.
+ 261:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 262:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 263:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     void USBUART_1_PutString(const char8 string[]) 
+ 264:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 225              		.loc 1 264 0
+ 226              		.cfi_startproc
+ 227              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 10
+
+
+ 228              		@ frame_needed = 0, uses_anonymous_args = 0
+ 229              	.LVL10:
+ 230 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 231              	.LCFI1:
+ 232              		.cfi_def_cfa_offset 24
+ 233              		.cfi_offset 3, -24
+ 234              		.cfi_offset 4, -20
+ 235              		.cfi_offset 5, -16
+ 236              		.cfi_offset 6, -12
+ 237              		.cfi_offset 7, -8
+ 238              		.cfi_offset 14, -4
+ 239              		.loc 1 264 0
+ 240 0002 0746     		mov	r7, r0
+ 241              	.LVL11:
+ 226:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         uint16 len = 0u;
+ 242              		.loc 1 226 0
+ 243 0004 0024     		movs	r4, #0
+ 244              	.LVL12:
+ 245              	.L21:
+ 246              	.LBB4:
+ 247              	.LBB5:
+ 228:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         while (string[len] != (char8)0)
+ 248              		.loc 1 228 0
+ 249 0006 3E5D     		ldrb	r6, [r7, r4]	@ zero_extendqisi2
+ 250 0008 BEB1     		cbz	r6, .L26
+ 251              	.L22:
+ 230:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             len++;
+ 252              		.loc 1 230 0
+ 253 000a 0134     		adds	r4, r4, #1
+ 254              	.LVL13:
+ 255 000c A4B2     		uxth	r4, r4
+ 256              	.LVL14:
+ 257 000e FAE7     		b	.L21
+ 258              	.LVL15:
+ 259              	.L27:
+ 260              	.LBE5:
+ 261              	.LBE4:
+ 265:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         uint16 str_length;
+ 266:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         uint16 send_length;
+ 267:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         uint16 buf_index = 0u;
+ 268:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 269:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         /* Get length of the null terminated string */
+ 270:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         str_length = USBUART_1_StrLen(string);
+ 271:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         do
+ 272:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         {
+ 273:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             /* Limits length to maximum packet size for the EP */
+ 274:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             send_length = (str_length > USBUART_1_EP[USBUART_1_cdc_data_in_ep].bufferSize) ?
+ 262              		.loc 1 274 0
+ 263 0010 2546     		mov	r5, r4
+ 264              	.L23:
+ 265              	.LVL16:
+ 275:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                           USBUART_1_EP[USBUART_1_cdc_data_in_ep].bufferSize : str_length;
+ 276:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****              /* Enable IN transfer */
+ 277:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             USBUART_1_LoadInEP(USBUART_1_cdc_data_in_ep, (const uint8 *)&string[buf_index], send_le
+ 266              		.loc 1 277 0 discriminator 2
+ 267 0012 1248     		ldr	r0, .L32
+ 278:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             str_length -= send_length;
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 11
+
+
+ 268              		.loc 1 278 0 discriminator 2
+ 269 0014 641B     		subs	r4, r4, r5
+ 270              	.LVL17:
+ 277:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             USBUART_1_LoadInEP(USBUART_1_cdc_data_in_ep, (const uint8 *)&string[buf_index], send_le
+ 271              		.loc 1 277 0 discriminator 2
+ 272 0016 0078     		ldrb	r0, [r0, #0]	@ zero_extendqisi2
+ 273 0018 B919     		adds	r1, r7, r6
+ 274 001a 2A46     		mov	r2, r5
+ 275              		.loc 1 278 0 discriminator 2
+ 276 001c A4B2     		uxth	r4, r4
+ 277:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             USBUART_1_LoadInEP(USBUART_1_cdc_data_in_ep, (const uint8 *)&string[buf_index], send_le
+ 277              		.loc 1 277 0 discriminator 2
+ 278 001e FFF7FEFF 		bl	USBUART_1_LoadInEP
+ 279              	.LVL18:
+ 279:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 280:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             /* If more data are present to send */
+ 281:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             if(str_length > 0u)
+ 280              		.loc 1 281 0 discriminator 2
+ 281 0022 D4B1     		cbz	r4, .L20
+ 282:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             {
+ 283:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 buf_index += send_length;
+ 282              		.loc 1 283 0
+ 283 0024 AE19     		adds	r6, r5, r6
+ 284              	.LVL19:
+ 285 0026 B6B2     		uxth	r6, r6
+ 286              	.LVL20:
+ 287              	.L25:
+ 284:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 /* Wait for the Host to read it. */
+ 285:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 while(USBUART_1_EP[USBUART_1_cdc_data_in_ep].apiEpState ==
+ 288              		.loc 1 285 0 discriminator 1
+ 289 0028 0C4D     		ldr	r5, .L32
+ 290 002a 0D4A     		ldr	r2, .L32+4
+ 291 002c 2B78     		ldrb	r3, [r5, #0]	@ zero_extendqisi2
+ 292 002e 0C21     		movs	r1, #12
+ 293 0030 01FB0320 		mla	r0, r1, r3, r2
+ 294 0034 4578     		ldrb	r5, [r0, #1]	@ zero_extendqisi2
+ 295 0036 002D     		cmp	r5, #0
+ 296 0038 F6D0     		beq	.L25
+ 297              	.LVL21:
+ 298              	.L26:
+ 274:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             send_length = (str_length > USBUART_1_EP[USBUART_1_cdc_data_in_ep].bufferSize) ?
+ 299              		.loc 1 274 0
+ 300 003a 0849     		ldr	r1, .L32
+ 301 003c 084B     		ldr	r3, .L32+4
+ 302 003e 0878     		ldrb	r0, [r1, #0]	@ zero_extendqisi2
+ 303 0040 0C22     		movs	r2, #12
+ 304 0042 02FB0035 		mla	r5, r2, r0, r3
+ 305 0046 2889     		ldrh	r0, [r5, #8]
+ 306 0048 85B2     		uxth	r5, r0
+ 307 004a AC42     		cmp	r4, r5
+ 308 004c E0D9     		bls	.L27
+ 275:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                           USBUART_1_EP[USBUART_1_cdc_data_in_ep].bufferSize : str_length;
+ 309              		.loc 1 275 0
+ 310 004e 0978     		ldrb	r1, [r1, #0]	@ zero_extendqisi2
+ 274:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             send_length = (str_length > USBUART_1_EP[USBUART_1_cdc_data_in_ep].bufferSize) ?
+ 311              		.loc 1 274 0
+ 312 0050 02FB0133 		mla	r3, r2, r1, r3
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 12
+
+
+ 313 0054 1A89     		ldrh	r2, [r3, #8]
+ 314 0056 95B2     		uxth	r5, r2
+ 315 0058 DBE7     		b	.L23
+ 316              	.LVL22:
+ 317              	.L20:
+ 318 005a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 319              	.L33:
+ 320              		.align	2
+ 321              	.L32:
+ 322 005c 00000000 		.word	USBUART_1_cdc_data_in_ep
+ 323 0060 00000000 		.word	USBUART_1_EP
+ 324              		.cfi_endproc
+ 325              	.LFE4:
+ 326              		.size	USBUART_1_PutString, .-USBUART_1_PutString
+ 327              		.section	.text.USBUART_1_PutChar,"ax",%progbits
+ 328              		.align	1
+ 329              		.global	USBUART_1_PutChar
+ 330              		.thumb
+ 331              		.thumb_func
+ 332              		.type	USBUART_1_PutChar, %function
+ 333              	USBUART_1_PutChar:
+ 334              	.LFB5:
+ 286:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                                           USBUART_1_IN_BUFFER_FULL)
+ 287:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 {
+ 288:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                     ;
+ 289:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 }
+ 290:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             }
+ 291:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         }while(str_length > 0u);
+ 292:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 293:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 294:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 295:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 296:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_PutChar
+ 297:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 298:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 299:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 300:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Writes a single character to the PC.
+ 301:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 302:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 303:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  txDataByte: Character to be sent to the PC.
+ 304:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 305:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ 306:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 307:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 308:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 309:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *   USBUART_1_cdc_data_in_ep: CDC IN endpoint number used for sending
+ 310:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *     data.
+ 311:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 312:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Reentrant:
+ 313:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  No.
+ 314:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 315:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 316:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     void USBUART_1_PutChar(char8 txDataByte) 
+ 317:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 335              		.loc 1 317 0
+ 336              		.cfi_startproc
+ 337              		@ args = 0, pretend = 0, frame = 8
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 13
+
+
+ 338              		@ frame_needed = 0, uses_anonymous_args = 0
+ 339              	.LVL23:
+ 340 0000 07B5     		push	{r0, r1, r2, lr}
+ 341              	.LCFI2:
+ 342              		.cfi_def_cfa_offset 16
+ 343              		.cfi_offset 0, -16
+ 344              		.cfi_offset 1, -12
+ 345              		.cfi_offset 2, -8
+ 346              		.cfi_offset 14, -4
+ 318:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         uint8 dataByte;
+ 319:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         dataByte = (uint8)txDataByte;
+ 320:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 321:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         USBUART_1_LoadInEP(USBUART_1_cdc_data_in_ep, &dataByte, 1u);
+ 347              		.loc 1 321 0
+ 348 0002 044B     		ldr	r3, .L35
+ 319:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         dataByte = (uint8)txDataByte;
+ 349              		.loc 1 319 0
+ 350 0004 02A9     		add	r1, sp, #8
+ 351 0006 01F8010D 		strb	r0, [r1, #-1]!
+ 352              	.LVL24:
+ 353              		.loc 1 321 0
+ 354 000a 0122     		movs	r2, #1
+ 355 000c 1878     		ldrb	r0, [r3, #0]	@ zero_extendqisi2
+ 356              	.LVL25:
+ 357 000e FFF7FEFF 		bl	USBUART_1_LoadInEP
+ 358              	.LVL26:
+ 322:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 359              		.loc 1 322 0
+ 360 0012 0EBD     		pop	{r1, r2, r3, pc}
+ 361              	.L36:
+ 362              		.align	2
+ 363              	.L35:
+ 364 0014 00000000 		.word	USBUART_1_cdc_data_in_ep
+ 365              		.cfi_endproc
+ 366              	.LFE5:
+ 367              		.size	USBUART_1_PutChar, .-USBUART_1_PutChar
+ 368              		.section	.text.USBUART_1_PutCRLF,"ax",%progbits
+ 369              		.align	1
+ 370              		.global	USBUART_1_PutCRLF
+ 371              		.thumb
+ 372              		.thumb_func
+ 373              		.type	USBUART_1_PutCRLF, %function
+ 374              	USBUART_1_PutCRLF:
+ 375              	.LFB6:
+ 323:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 324:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 325:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 326:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_PutCRLF
+ 327:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 328:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 329:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 330:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Sends a carriage return (0x0D) and line feed (0x0A) to the PC
+ 331:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 332:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 333:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 334:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 335:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 14
+
+
+ 336:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 337:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 338:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 339:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *   USBUART_1_cdc_data_in_ep: CDC IN endpoint number used for sending
+ 340:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *     data.
+ 341:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 342:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Reentrant:
+ 343:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  No.
+ 344:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 345:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 346:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     void USBUART_1_PutCRLF(void) 
+ 347:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 376              		.loc 1 347 0
+ 377              		.cfi_startproc
+ 378              		@ args = 0, pretend = 0, frame = 8
+ 379              		@ frame_needed = 0, uses_anonymous_args = 0
+ 380 0000 07B5     		push	{r0, r1, r2, lr}
+ 381              	.LCFI3:
+ 382              		.cfi_def_cfa_offset 16
+ 383              		.cfi_offset 0, -16
+ 384              		.cfi_offset 1, -12
+ 385              		.cfi_offset 2, -8
+ 386              		.cfi_offset 14, -4
+ 348:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         const uint8 CYCODE txData[] = {0x0Du, 0x0Au};
+ 387              		.loc 1 348 0
+ 388 0002 054B     		ldr	r3, .L38
+ 349:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 350:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         USBUART_1_LoadInEP(USBUART_1_cdc_data_in_ep, (const uint8 *)txData, 2u);
+ 389              		.loc 1 350 0
+ 390 0004 0549     		ldr	r1, .L38+4
+ 348:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         const uint8 CYCODE txData[] = {0x0Du, 0x0Au};
+ 391              		.loc 1 348 0
+ 392 0006 1888     		ldrh	r0, [r3, #0]	@ unaligned
+ 393              		.loc 1 350 0
+ 394 0008 0222     		movs	r2, #2
+ 348:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         const uint8 CYCODE txData[] = {0x0Du, 0x0Au};
+ 395              		.loc 1 348 0
+ 396 000a ADF80400 		strh	r0, [sp, #4]	@ unaligned
+ 397              		.loc 1 350 0
+ 398 000e 0878     		ldrb	r0, [r1, #0]	@ zero_extendqisi2
+ 399 0010 01A9     		add	r1, sp, #4
+ 400 0012 FFF7FEFF 		bl	USBUART_1_LoadInEP
+ 401              	.LVL27:
+ 351:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 402              		.loc 1 351 0
+ 403 0016 0EBD     		pop	{r1, r2, r3, pc}
+ 404              	.L39:
+ 405              		.align	2
+ 406              	.L38:
+ 407 0018 00000000 		.word	.LANCHOR0
+ 408 001c 00000000 		.word	USBUART_1_cdc_data_in_ep
+ 409              		.cfi_endproc
+ 410              	.LFE6:
+ 411              		.size	USBUART_1_PutCRLF, .-USBUART_1_PutCRLF
+ 412              		.section	.text.USBUART_1_GetCount,"ax",%progbits
+ 413              		.align	1
+ 414              		.global	USBUART_1_GetCount
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 15
+
+
+ 415              		.thumb
+ 416              		.thumb_func
+ 417              		.type	USBUART_1_GetCount, %function
+ 418              	USBUART_1_GetCount:
+ 419              	.LFB7:
+ 352:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 353:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 354:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 355:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_GetCount
+ 356:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 357:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 358:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 359:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  This function returns the number of bytes that were received from the PC.
+ 360:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 361:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 362:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 363:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 364:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ 365:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Returns the number of received bytes.
+ 366:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 367:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 368:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *   USBUART_1_cdc_data_out_ep: CDC OUT endpoint number used.
+ 369:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 370:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 371:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     uint16 USBUART_1_GetCount(void) 
+ 372:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 420              		.loc 1 372 0
+ 421              		.cfi_startproc
+ 422              		@ args = 0, pretend = 0, frame = 0
+ 423              		@ frame_needed = 0, uses_anonymous_args = 0
+ 424              		@ link register save eliminated.
+ 425              	.LVL28:
+ 373:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         uint16 bytesCount = 0u;
+ 374:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 375:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         if (USBUART_1_EP[USBUART_1_cdc_data_out_ep].apiEpState == USBUART_1_OUT_BUFFER_FULL)
+ 426              		.loc 1 375 0
+ 427 0000 064B     		ldr	r3, .L42
+ 428 0002 0749     		ldr	r1, .L42+4
+ 429 0004 1A78     		ldrb	r2, [r3, #0]	@ zero_extendqisi2
+ 430 0006 0C20     		movs	r0, #12
+ 431 0008 00FB0212 		mla	r2, r0, r2, r1
+ 432 000c 5078     		ldrb	r0, [r2, #1]	@ zero_extendqisi2
+ 433 000e 0128     		cmp	r0, #1
+ 434 0010 02D1     		bne	.L41
+ 376:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         {
+ 377:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             bytesCount = USBUART_1_GetEPCount(USBUART_1_cdc_data_out_ep);
+ 435              		.loc 1 377 0
+ 436 0012 1878     		ldrb	r0, [r3, #0]	@ zero_extendqisi2
+ 378:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         }
+ 379:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 380:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         return(bytesCount);
+ 381:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 437              		.loc 1 381 0
+ 377:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             bytesCount = USBUART_1_GetEPCount(USBUART_1_cdc_data_out_ep);
+ 438              		.loc 1 377 0
+ 439 0014 FFF7FEBF 		b	USBUART_1_GetEPCount
+ 440              	.LVL29:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 16
+
+
+ 441              	.L41:
+ 442              		.loc 1 381 0
+ 443 0018 0020     		movs	r0, #0
+ 444 001a 7047     		bx	lr
+ 445              	.L43:
+ 446              		.align	2
+ 447              	.L42:
+ 448 001c 00000000 		.word	USBUART_1_cdc_data_out_ep
+ 449 0020 00000000 		.word	USBUART_1_EP
+ 450              		.cfi_endproc
+ 451              	.LFE7:
+ 452              		.size	USBUART_1_GetCount, .-USBUART_1_GetCount
+ 453              		.section	.text.USBUART_1_DataIsReady,"ax",%progbits
+ 454              		.align	1
+ 455              		.global	USBUART_1_DataIsReady
+ 456              		.thumb
+ 457              		.thumb_func
+ 458              		.type	USBUART_1_DataIsReady, %function
+ 459              	USBUART_1_DataIsReady:
+ 460              	.LFB8:
+ 382:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 383:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 384:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 385:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_DataIsReady
+ 386:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 387:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 388:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 389:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Returns a nonzero value if the component received data or received
+ 390:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  zero-length packet. The GetAll() or GetData() API should be called to read
+ 391:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  data from the buffer and re-init OUT endpoint even when zero-length packet
+ 392:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  received.
+ 393:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 394:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 395:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 396:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 397:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ 398:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  If the OUT packet received this function returns a nonzero value.
+ 399:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Otherwise zero is returned.
+ 400:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 401:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 402:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *   USBUART_1_cdc_data_out_ep: CDC OUT endpoint number used.
+ 403:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 404:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 405:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     uint8 USBUART_1_DataIsReady(void) 
+ 406:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 461              		.loc 1 406 0
+ 462              		.cfi_startproc
+ 463              		@ args = 0, pretend = 0, frame = 0
+ 464              		@ frame_needed = 0, uses_anonymous_args = 0
+ 465              		@ link register save eliminated.
+ 407:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         return(USBUART_1_EP[USBUART_1_cdc_data_out_ep].apiEpState);
+ 466              		.loc 1 407 0
+ 467 0000 034B     		ldr	r3, .L45
+ 468 0002 044A     		ldr	r2, .L45+4
+ 469 0004 1878     		ldrb	r0, [r3, #0]	@ zero_extendqisi2
+ 470 0006 0C21     		movs	r1, #12
+ 471 0008 01FB0023 		mla	r3, r1, r0, r2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 17
+
+
+ 472 000c 5878     		ldrb	r0, [r3, #1]	@ zero_extendqisi2
+ 408:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 473              		.loc 1 408 0
+ 474 000e 7047     		bx	lr
+ 475              	.L46:
+ 476              		.align	2
+ 477              	.L45:
+ 478 0010 00000000 		.word	USBUART_1_cdc_data_out_ep
+ 479 0014 00000000 		.word	USBUART_1_EP
+ 480              		.cfi_endproc
+ 481              	.LFE8:
+ 482              		.size	USBUART_1_DataIsReady, .-USBUART_1_DataIsReady
+ 483              		.section	.text.USBUART_1_CDCIsReady,"ax",%progbits
+ 484              		.align	1
+ 485              		.global	USBUART_1_CDCIsReady
+ 486              		.thumb
+ 487              		.thumb_func
+ 488              		.type	USBUART_1_CDCIsReady, %function
+ 489              	USBUART_1_CDCIsReady:
+ 490              	.LFB9:
+ 409:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 410:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 411:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 412:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_CDCIsReady
+ 413:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 414:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 415:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 416:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Returns a nonzero value if the component is ready to send more data to the
+ 417:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  PC. Otherwise returns zero. Should be called before sending new data to
+ 418:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  ensure the previous data has finished sending.This function returns the
+ 419:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  number of bytes that were received from the PC.
+ 420:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 421:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 422:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 423:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 424:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ 425:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  If the buffer can accept new data then this function returns a nonzero value.
+ 426:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Otherwise zero is returned.
+ 427:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 428:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 429:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *   USBUART_1_cdc_data_in_ep: CDC IN endpoint number used.
+ 430:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 431:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 432:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     uint8 USBUART_1_CDCIsReady(void) 
+ 433:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 491              		.loc 1 433 0
+ 492              		.cfi_startproc
+ 493              		@ args = 0, pretend = 0, frame = 0
+ 494              		@ frame_needed = 0, uses_anonymous_args = 0
+ 495              		@ link register save eliminated.
+ 434:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         return(USBUART_1_EP[USBUART_1_cdc_data_in_ep].apiEpState);
+ 496              		.loc 1 434 0
+ 497 0000 034B     		ldr	r3, .L48
+ 498 0002 044A     		ldr	r2, .L48+4
+ 499 0004 1878     		ldrb	r0, [r3, #0]	@ zero_extendqisi2
+ 500 0006 0C21     		movs	r1, #12
+ 501 0008 01FB0023 		mla	r3, r1, r0, r2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 18
+
+
+ 502 000c 5878     		ldrb	r0, [r3, #1]	@ zero_extendqisi2
+ 435:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 503              		.loc 1 435 0
+ 504 000e 7047     		bx	lr
+ 505              	.L49:
+ 506              		.align	2
+ 507              	.L48:
+ 508 0010 00000000 		.word	USBUART_1_cdc_data_in_ep
+ 509 0014 00000000 		.word	USBUART_1_EP
+ 510              		.cfi_endproc
+ 511              	.LFE9:
+ 512              		.size	USBUART_1_CDCIsReady, .-USBUART_1_CDCIsReady
+ 513              		.section	.text.USBUART_1_GetData,"ax",%progbits
+ 514              		.align	1
+ 515              		.global	USBUART_1_GetData
+ 516              		.thumb
+ 517              		.thumb_func
+ 518              		.type	USBUART_1_GetData, %function
+ 519              	USBUART_1_GetData:
+ 520              	.LFB10:
+ 436:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 437:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 438:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 439:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_GetData
+ 440:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 441:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 442:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 443:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Gets a specified number of bytes from the input buffer and places it in a
+ 444:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  data array specified by the passed pointer.
+ 445:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  USBUART_1_DataIsReady() API should be called before, to be sure
+ 446:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  that data is received from the Host.
+ 447:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 448:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 449:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  pData: Pointer to the data array where data will be placed.
+ 450:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Length: Number of bytes to read into the data array from the RX buffer.
+ 451:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *          Maximum length is limited by the the number of received bytes.
+ 452:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 453:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ 454:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Number of bytes received.
+ 455:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 456:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 457:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *   USBUART_1_cdc_data_out_ep: CDC OUT endpoint number used.
+ 458:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 459:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Reentrant:
+ 460:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  No.
+ 461:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 462:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 463:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     uint16 USBUART_1_GetData(uint8* pData, uint16 length) 
+ 464:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 521              		.loc 1 464 0
+ 522              		.cfi_startproc
+ 523              		@ args = 0, pretend = 0, frame = 0
+ 524              		@ frame_needed = 0, uses_anonymous_args = 0
+ 525              		@ link register save eliminated.
+ 526              	.LVL30:
+ 527              		.loc 1 464 0
+ 528 0000 0A46     		mov	r2, r1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 19
+
+
+ 465:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         return(USBUART_1_ReadOutEP(USBUART_1_cdc_data_out_ep, pData, length));
+ 529              		.loc 1 465 0
+ 530 0002 0349     		ldr	r1, .L51
+ 531              	.LVL31:
+ 464:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 532              		.loc 1 464 0
+ 533 0004 0346     		mov	r3, r0
+ 534              		.loc 1 465 0
+ 535 0006 0878     		ldrb	r0, [r1, #0]	@ zero_extendqisi2
+ 536              	.LVL32:
+ 537 0008 1946     		mov	r1, r3
+ 466:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 538              		.loc 1 466 0
+ 465:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         return(USBUART_1_ReadOutEP(USBUART_1_cdc_data_out_ep, pData, length));
+ 539              		.loc 1 465 0
+ 540 000a FFF7FEBF 		b	USBUART_1_ReadOutEP
+ 541              	.LVL33:
+ 542              	.L52:
+ 543 000e 00BF     		.align	2
+ 544              	.L51:
+ 545 0010 00000000 		.word	USBUART_1_cdc_data_out_ep
+ 546              		.cfi_endproc
+ 547              	.LFE10:
+ 548              		.size	USBUART_1_GetData, .-USBUART_1_GetData
+ 549              		.section	.text.USBUART_1_GetAll,"ax",%progbits
+ 550              		.align	1
+ 551              		.global	USBUART_1_GetAll
+ 552              		.thumb
+ 553              		.thumb_func
+ 554              		.type	USBUART_1_GetAll, %function
+ 555              	USBUART_1_GetAll:
+ 556              	.LFB11:
+ 467:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 468:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 469:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 470:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_GetAll
+ 471:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 472:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 473:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 474:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Gets all bytes of received data from the input buffer and places it into a
+ 475:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  specified data array. USBUART_1_DataIsReady() API should be called
+ 476:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  before, to be sure that data is received from the Host.
+ 477:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 478:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 479:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  pData: Pointer to the data array where data will be placed.
+ 480:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 481:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ 482:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Number of bytes received.
+ 483:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 484:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 485:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *   USBUART_1_cdc_data_out_ep: CDC OUT endpoint number used.
+ 486:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *   USBUART_1_EP[].bufferSize: EP max packet size is used as a length
+ 487:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *     to read all data from the EP buffer.
+ 488:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 489:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Reentrant:
+ 490:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  No.
+ 491:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 20
+
+
+ 492:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 493:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     uint16 USBUART_1_GetAll(uint8* pData) 
+ 494:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 557              		.loc 1 494 0
+ 558              		.cfi_startproc
+ 559              		@ args = 0, pretend = 0, frame = 0
+ 560              		@ frame_needed = 0, uses_anonymous_args = 0
+ 561              	.LVL34:
+ 562 0000 10B5     		push	{r4, lr}
+ 563              	.LCFI4:
+ 564              		.cfi_def_cfa_offset 8
+ 565              		.cfi_offset 4, -8
+ 566              		.cfi_offset 14, -4
+ 495:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         return (USBUART_1_ReadOutEP(USBUART_1_cdc_data_out_ep, pData,
+ 567              		.loc 1 495 0
+ 568 0002 074B     		ldr	r3, .L54
+ 494:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 569              		.loc 1 494 0
+ 570 0004 0146     		mov	r1, r0
+ 571              		.loc 1 495 0
+ 572 0006 074A     		ldr	r2, .L54+4
+ 573 0008 1878     		ldrb	r0, [r3, #0]	@ zero_extendqisi2
+ 574              	.LVL35:
+ 575 000a 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 576 000c 0C24     		movs	r4, #12
+ 577 000e 04FB0323 		mla	r3, r4, r3, r2
+ 578 0012 1A89     		ldrh	r2, [r3, #8]
+ 579 0014 92B2     		uxth	r2, r2
+ 496:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                                            USBUART_1_EP[USBUART_1_cdc_data_out_ep].bufferSize));
+ 497:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 580              		.loc 1 497 0
+ 581 0016 BDE81040 		pop	{r4, lr}
+ 495:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         return (USBUART_1_ReadOutEP(USBUART_1_cdc_data_out_ep, pData,
+ 582              		.loc 1 495 0
+ 583 001a FFF7FEBF 		b	USBUART_1_ReadOutEP
+ 584              	.LVL36:
+ 585              	.L55:
+ 586 001e 00BF     		.align	2
+ 587              	.L54:
+ 588 0020 00000000 		.word	USBUART_1_cdc_data_out_ep
+ 589 0024 00000000 		.word	USBUART_1_EP
+ 590              		.cfi_endproc
+ 591              	.LFE11:
+ 592              		.size	USBUART_1_GetAll, .-USBUART_1_GetAll
+ 593              		.section	.text.USBUART_1_GetChar,"ax",%progbits
+ 594              		.align	1
+ 595              		.global	USBUART_1_GetChar
+ 596              		.thumb
+ 597              		.thumb_func
+ 598              		.type	USBUART_1_GetChar, %function
+ 599              	USBUART_1_GetChar:
+ 600              	.LFB12:
+ 498:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 499:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 500:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 501:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_GetChar
+ 502:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 21
+
+
+ 503:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 504:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 505:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Reads one byte of received data from the buffer.
+ 506:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 507:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 508:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 509:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 510:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ 511:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Received one character.
+ 512:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 513:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 514:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *   USBUART_1_cdc_data_out_ep: CDC OUT endpoint number used.
+ 515:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 516:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Reentrant:
+ 517:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  No.
+ 518:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 519:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 520:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     uint8 USBUART_1_GetChar(void) 
+ 521:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 601              		.loc 1 521 0
+ 602              		.cfi_startproc
+ 603              		@ args = 0, pretend = 0, frame = 8
+ 604              		@ frame_needed = 0, uses_anonymous_args = 0
+ 605 0000 07B5     		push	{r0, r1, r2, lr}
+ 606              	.LCFI5:
+ 607              		.cfi_def_cfa_offset 16
+ 608              		.cfi_offset 0, -16
+ 609              		.cfi_offset 1, -12
+ 610              		.cfi_offset 2, -8
+ 611              		.cfi_offset 14, -4
+ 522:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****          uint8 rxData;
+ 523:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 524:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         (void) USBUART_1_ReadOutEP(USBUART_1_cdc_data_out_ep, &rxData, 1u);
+ 612              		.loc 1 524 0
+ 613 0002 054B     		ldr	r3, .L57
+ 614 0004 0DF10701 		add	r1, sp, #7
+ 615 0008 1878     		ldrb	r0, [r3, #0]	@ zero_extendqisi2
+ 616 000a 0122     		movs	r2, #1
+ 617 000c FFF7FEFF 		bl	USBUART_1_ReadOutEP
+ 618              	.LVL37:
+ 525:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 526:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         return(rxData);
+ 527:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 619              		.loc 1 527 0
+ 620 0010 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+ 621 0014 0EBD     		pop	{r1, r2, r3, pc}
+ 622              	.L58:
+ 623 0016 00BF     		.align	2
+ 624              	.L57:
+ 625 0018 00000000 		.word	USBUART_1_cdc_data_out_ep
+ 626              		.cfi_endproc
+ 627              	.LFE12:
+ 628              		.size	USBUART_1_GetChar, .-USBUART_1_GetChar
+ 629              		.section	.text.USBUART_1_IsLineChanged,"ax",%progbits
+ 630              		.align	1
+ 631              		.global	USBUART_1_IsLineChanged
+ 632              		.thumb
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 22
+
+
+ 633              		.thumb_func
+ 634              		.type	USBUART_1_IsLineChanged, %function
+ 635              	USBUART_1_IsLineChanged:
+ 636              	.LFB13:
+ 528:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 529:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 530:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_IsLineChanged
+ 531:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 532:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 533:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 534:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  This function returns clear on read status of the line.
+ 535:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 536:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 537:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 538:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 539:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ 540:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  If SET_LINE_CODING or CDC_SET_CONTROL_LINE_STATE request received then not
+ 541:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  zero value returned. Otherwise zero is returned.
+ 542:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 543:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 544:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  USBUART_1_transferState - it is checked to be sure then OUT data
+ 545:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *    phase has been complete, and data written to the lineCoding or Control
+ 546:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *    Bitmap buffer.
+ 547:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  USBUART_1_lineChanged: used as a flag to be aware that Host has been
+ 548:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *    sent request for changing Line Coding or Control Bitmap.
+ 549:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 550:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 551:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     uint8 USBUART_1_IsLineChanged(void) 
+ 552:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 637              		.loc 1 552 0
+ 638              		.cfi_startproc
+ 639              		@ args = 0, pretend = 0, frame = 0
+ 640              		@ frame_needed = 0, uses_anonymous_args = 0
+ 641              		@ link register save eliminated.
+ 642              	.LVL38:
+ 553:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         uint8 state = 0u;
+ 554:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 555:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         /* transferState is checked to be sure then OUT data phase has been complete */
+ 556:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         if(USBUART_1_transferState == USBUART_1_TRANS_STATE_IDLE)
+ 643              		.loc 1 556 0
+ 644 0000 054B     		ldr	r3, .L63
+ 645 0002 1A78     		ldrb	r2, [r3, #0]	@ zero_extendqisi2
+ 646 0004 2AB9     		cbnz	r2, .L61
+ 557:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         {
+ 558:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             if(USBUART_1_lineChanged != 0u)
+ 647              		.loc 1 558 0
+ 648 0006 0549     		ldr	r1, .L63+4
+ 649 0008 0878     		ldrb	r0, [r1, #0]	@ zero_extendqisi2
+ 650 000a 18B1     		cbz	r0, .L60
+ 559:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             {
+ 560:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 state = USBUART_1_lineChanged;
+ 651              		.loc 1 560 0
+ 652 000c 0878     		ldrb	r0, [r1, #0]	@ zero_extendqisi2
+ 653              	.LVL39:
+ 561:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****                 USBUART_1_lineChanged = 0u;
+ 654              		.loc 1 561 0
+ 655 000e 0A70     		strb	r2, [r1, #0]
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 23
+
+
+ 656 0010 7047     		bx	lr
+ 657              	.LVL40:
+ 658              	.L61:
+ 553:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         uint8 state = 0u;
+ 659              		.loc 1 553 0
+ 660 0012 0020     		movs	r0, #0
+ 661              	.L60:
+ 662              	.LVL41:
+ 562:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****             }
+ 563:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         }
+ 564:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 565:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         return(state);
+ 566:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 663              		.loc 1 566 0
+ 664 0014 7047     		bx	lr
+ 665              	.L64:
+ 666 0016 00BF     		.align	2
+ 667              	.L63:
+ 668 0018 00000000 		.word	USBUART_1_transferState
+ 669 001c 00000000 		.word	USBUART_1_lineChanged
+ 670              		.cfi_endproc
+ 671              	.LFE13:
+ 672              		.size	USBUART_1_IsLineChanged, .-USBUART_1_IsLineChanged
+ 673              		.section	.text.USBUART_1_GetDTERate,"ax",%progbits
+ 674              		.align	1
+ 675              		.global	USBUART_1_GetDTERate
+ 676              		.thumb
+ 677              		.thumb_func
+ 678              		.type	USBUART_1_GetDTERate, %function
+ 679              	USBUART_1_GetDTERate:
+ 680              	.LFB14:
+ 567:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 568:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 569:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 570:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_GetDTERate
+ 571:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 572:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 573:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 574:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Returns the data terminal rate set for this port in bits per second.
+ 575:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 576:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 577:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 578:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 579:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ 580:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Returns a uint32 value of the data rate in bits per second.
+ 581:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 582:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 583:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  USBUART_1_lineCoding: First four bytes converted to uint32
+ 584:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *    depend on compiler, and returned as a data rate.
+ 585:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 586:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 587:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     uint32 USBUART_1_GetDTERate(void) 
+ 588:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 681              		.loc 1 588 0
+ 682              		.cfi_startproc
+ 683              		@ args = 0, pretend = 0, frame = 0
+ 684              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 24
+
+
+ 685              		@ link register save eliminated.
+ 589:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         uint32 rate;
+ 590:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 591:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         rate = USBUART_1_lineCoding[USBUART_1_LINE_CODING_RATE + 3u];
+ 686              		.loc 1 591 0
+ 687 0000 054B     		ldr	r3, .L66
+ 688 0002 D878     		ldrb	r0, [r3, #3]	@ zero_extendqisi2
+ 689              	.LVL42:
+ 592:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         rate = (rate << 8u) | USBUART_1_lineCoding[USBUART_1_LINE_CODING_RATE + 2u];
+ 690              		.loc 1 592 0
+ 691 0004 9A78     		ldrb	r2, [r3, #2]	@ zero_extendqisi2
+ 692 0006 42EA0021 		orr	r1, r2, r0, lsl #8
+ 693              	.LVL43:
+ 593:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         rate = (rate << 8u) | USBUART_1_lineCoding[USBUART_1_LINE_CODING_RATE + 1u];
+ 694              		.loc 1 593 0
+ 695 000a 5878     		ldrb	r0, [r3, #1]	@ zero_extendqisi2
+ 594:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         rate = (rate << 8u) | USBUART_1_lineCoding[USBUART_1_LINE_CODING_RATE];
+ 696              		.loc 1 594 0
+ 697 000c 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 593:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         rate = (rate << 8u) | USBUART_1_lineCoding[USBUART_1_LINE_CODING_RATE + 1u];
+ 698              		.loc 1 593 0
+ 699 000e 40EA0122 		orr	r2, r0, r1, lsl #8
+ 700              	.LVL44:
+ 595:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 596:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         return(rate);
+ 597:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 701              		.loc 1 597 0
+ 702 0012 43EA0220 		orr	r0, r3, r2, lsl #8
+ 703 0016 7047     		bx	lr
+ 704              	.L67:
+ 705              		.align	2
+ 706              	.L66:
+ 707 0018 00000000 		.word	USBUART_1_lineCoding
+ 708              		.cfi_endproc
+ 709              	.LFE14:
+ 710              		.size	USBUART_1_GetDTERate, .-USBUART_1_GetDTERate
+ 711              		.section	.text.USBUART_1_GetCharFormat,"ax",%progbits
+ 712              		.align	1
+ 713              		.global	USBUART_1_GetCharFormat
+ 714              		.thumb
+ 715              		.thumb_func
+ 716              		.type	USBUART_1_GetCharFormat, %function
+ 717              	USBUART_1_GetCharFormat:
+ 718              	.LFB15:
+ 598:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 599:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 600:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 601:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_GetCharFormat
+ 602:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 603:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 604:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 605:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Returns the number of stop bits.
+ 606:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 607:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 608:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 609:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 610:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 25
+
+
+ 611:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Returns the number of stop bits.
+ 612:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 613:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 614:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  USBUART_1_lineCoding: used to get a parameter.
+ 615:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 616:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 617:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     uint8 USBUART_1_GetCharFormat(void) 
+ 618:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 719              		.loc 1 618 0
+ 720              		.cfi_startproc
+ 721              		@ args = 0, pretend = 0, frame = 0
+ 722              		@ frame_needed = 0, uses_anonymous_args = 0
+ 723              		@ link register save eliminated.
+ 619:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         return(USBUART_1_lineCoding[USBUART_1_LINE_CODING_STOP_BITS]);
+ 724              		.loc 1 619 0
+ 725 0000 014B     		ldr	r3, .L69
+ 726 0002 1879     		ldrb	r0, [r3, #4]	@ zero_extendqisi2
+ 620:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 727              		.loc 1 620 0
+ 728 0004 7047     		bx	lr
+ 729              	.L70:
+ 730 0006 00BF     		.align	2
+ 731              	.L69:
+ 732 0008 00000000 		.word	USBUART_1_lineCoding
+ 733              		.cfi_endproc
+ 734              	.LFE15:
+ 735              		.size	USBUART_1_GetCharFormat, .-USBUART_1_GetCharFormat
+ 736              		.section	.text.USBUART_1_GetParityType,"ax",%progbits
+ 737              		.align	1
+ 738              		.global	USBUART_1_GetParityType
+ 739              		.thumb
+ 740              		.thumb_func
+ 741              		.type	USBUART_1_GetParityType, %function
+ 742              	USBUART_1_GetParityType:
+ 743              	.LFB16:
+ 621:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 622:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 623:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 624:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_GetParityType
+ 625:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 626:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 627:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 628:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Returns the parity type for the CDC port.
+ 629:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 630:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 631:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 632:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 633:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ 634:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Returns the parity type.
+ 635:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 636:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 637:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  USBUART_1_lineCoding: used to get a parameter.
+ 638:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 639:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 640:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     uint8 USBUART_1_GetParityType(void) 
+ 641:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 744              		.loc 1 641 0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 26
+
+
+ 745              		.cfi_startproc
+ 746              		@ args = 0, pretend = 0, frame = 0
+ 747              		@ frame_needed = 0, uses_anonymous_args = 0
+ 748              		@ link register save eliminated.
+ 642:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         return(USBUART_1_lineCoding[USBUART_1_LINE_CODING_PARITY]);
+ 749              		.loc 1 642 0
+ 750 0000 014B     		ldr	r3, .L72
+ 751 0002 5879     		ldrb	r0, [r3, #5]	@ zero_extendqisi2
+ 643:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 752              		.loc 1 643 0
+ 753 0004 7047     		bx	lr
+ 754              	.L73:
+ 755 0006 00BF     		.align	2
+ 756              	.L72:
+ 757 0008 00000000 		.word	USBUART_1_lineCoding
+ 758              		.cfi_endproc
+ 759              	.LFE16:
+ 760              		.size	USBUART_1_GetParityType, .-USBUART_1_GetParityType
+ 761              		.section	.text.USBUART_1_GetDataBits,"ax",%progbits
+ 762              		.align	1
+ 763              		.global	USBUART_1_GetDataBits
+ 764              		.thumb
+ 765              		.thumb_func
+ 766              		.type	USBUART_1_GetDataBits, %function
+ 767              	USBUART_1_GetDataBits:
+ 768              	.LFB17:
+ 644:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 645:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 646:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 647:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_GetDataBits
+ 648:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 649:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 650:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 651:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Returns the number of data bits for the CDC port.
+ 652:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 653:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 654:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 655:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 656:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ 657:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Returns the number of data bits.
+ 658:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  The number of data bits can be 5, 6, 7, 8 or 16.
+ 659:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 660:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 661:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  USBUART_1_lineCoding: used to get a parameter.
+ 662:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 663:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 664:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     uint8 USBUART_1_GetDataBits(void) 
+ 665:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 769              		.loc 1 665 0
+ 770              		.cfi_startproc
+ 771              		@ args = 0, pretend = 0, frame = 0
+ 772              		@ frame_needed = 0, uses_anonymous_args = 0
+ 773              		@ link register save eliminated.
+ 666:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         return(USBUART_1_lineCoding[USBUART_1_LINE_CODING_DATA_BITS]);
+ 774              		.loc 1 666 0
+ 775 0000 014B     		ldr	r3, .L75
+ 776 0002 9879     		ldrb	r0, [r3, #6]	@ zero_extendqisi2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 27
+
+
+ 667:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 777              		.loc 1 667 0
+ 778 0004 7047     		bx	lr
+ 779              	.L76:
+ 780 0006 00BF     		.align	2
+ 781              	.L75:
+ 782 0008 00000000 		.word	USBUART_1_lineCoding
+ 783              		.cfi_endproc
+ 784              	.LFE17:
+ 785              		.size	USBUART_1_GetDataBits, .-USBUART_1_GetDataBits
+ 786              		.section	.text.USBUART_1_GetLineControl,"ax",%progbits
+ 787              		.align	1
+ 788              		.global	USBUART_1_GetLineControl
+ 789              		.thumb
+ 790              		.thumb_func
+ 791              		.type	USBUART_1_GetLineControl, %function
+ 792              	USBUART_1_GetLineControl:
+ 793              	.LFB18:
+ 668:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 669:.\Generated_Source\PSoC5/USBUART_1_cdc.c **** 
+ 670:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     /*******************************************************************************
+ 671:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Function Name: USBUART_1_GetLineControl
+ 672:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     ********************************************************************************
+ 673:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 674:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Summary:
+ 675:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Returns Line control bitmap.
+ 676:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 677:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Parameters:
+ 678:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  None.
+ 679:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 680:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Return:
+ 681:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  Returns Line control bitmap.
+ 682:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 683:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     * Global variables:
+ 684:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *  USBUART_1_lineControlBitmap: used to get a parameter.
+ 685:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *
+ 686:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     *******************************************************************************/
+ 687:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     uint16 USBUART_1_GetLineControl(void) 
+ 688:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     {
+ 794              		.loc 1 688 0
+ 795              		.cfi_startproc
+ 796              		@ args = 0, pretend = 0, frame = 0
+ 797              		@ frame_needed = 0, uses_anonymous_args = 0
+ 798              		@ link register save eliminated.
+ 689:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****         return(USBUART_1_lineControlBitmap);
+ 799              		.loc 1 689 0
+ 800 0000 014B     		ldr	r3, .L78
+ 801 0002 1888     		ldrh	r0, [r3, #0]
+ 690:.\Generated_Source\PSoC5/USBUART_1_cdc.c ****     }
+ 802              		.loc 1 690 0
+ 803 0004 80B2     		uxth	r0, r0
+ 804 0006 7047     		bx	lr
+ 805              	.L79:
+ 806              		.align	2
+ 807              	.L78:
+ 808 0008 00000000 		.word	USBUART_1_lineControlBitmap
+ 809              		.cfi_endproc
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 28
+
+
+ 810              	.LFE18:
+ 811              		.size	USBUART_1_GetLineControl, .-USBUART_1_GetLineControl
+ 812              		.comm	USBUART_1_cdc_data_out_ep,1,1
+ 813              		.comm	USBUART_1_cdc_data_in_ep,1,1
+ 814              		.comm	USBUART_1_lineControlBitmap,2,2
+ 815              		.comm	USBUART_1_lineChanged,1,1
+ 816              		.comm	USBUART_1_lineCoding,7,1
+ 817              		.section	.rodata
+ 818              		.set	.LANCHOR0,. + 0
+ 819              	.LC0:
+ 820 0000 0D       		.byte	13
+ 821 0001 0A       		.byte	10
+ 822              		.text
+ 823              	.Letext0:
+ 824              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 825              		.file 3 ".\\Generated_Source\\PSoC5\\USBUART_1.h"
+ 826              		.file 4 ".\\Generated_Source\\PSoC5\\USBUART_1_pvt.h"
+ 827              		.section	.debug_info,"",%progbits
+ 828              	.Ldebug_info0:
+ 829 0000 67070000 		.4byte	0x767
+ 830 0004 0200     		.2byte	0x2
+ 831 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 832 000a 04       		.byte	0x4
+ 833 000b 01       		.uleb128 0x1
+ 834 000c BF030000 		.4byte	.LASF79
+ 835 0010 01       		.byte	0x1
+ 836 0011 7A020000 		.4byte	.LASF80
+ 837 0015 2E000000 		.4byte	.LASF81
+ 838 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 839 001d 00000000 		.4byte	0
+ 840 0021 00000000 		.4byte	0
+ 841 0025 00000000 		.4byte	.Ldebug_line0
+ 842 0029 02       		.uleb128 0x2
+ 843 002a 01       		.byte	0x1
+ 844 002b 06       		.byte	0x6
+ 845 002c D9000000 		.4byte	.LASF0
+ 846 0030 02       		.uleb128 0x2
+ 847 0031 01       		.byte	0x1
+ 848 0032 08       		.byte	0x8
+ 849 0033 0D040000 		.4byte	.LASF1
+ 850 0037 02       		.uleb128 0x2
+ 851 0038 02       		.byte	0x2
+ 852 0039 05       		.byte	0x5
+ 853 003a 1B040000 		.4byte	.LASF2
+ 854 003e 02       		.uleb128 0x2
+ 855 003f 02       		.byte	0x2
+ 856 0040 07       		.byte	0x7
+ 857 0041 D0020000 		.4byte	.LASF3
+ 858 0045 02       		.uleb128 0x2
+ 859 0046 04       		.byte	0x4
+ 860 0047 05       		.byte	0x5
+ 861 0048 20010000 		.4byte	.LASF4
+ 862 004c 02       		.uleb128 0x2
+ 863 004d 04       		.byte	0x4
+ 864 004e 07       		.byte	0x7
+ 865 004f 68020000 		.4byte	.LASF5
+ 866 0053 02       		.uleb128 0x2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 29
+
+
+ 867 0054 08       		.byte	0x8
+ 868 0055 05       		.byte	0x5
+ 869 0056 CB000000 		.4byte	.LASF6
+ 870 005a 02       		.uleb128 0x2
+ 871 005b 08       		.byte	0x8
+ 872 005c 07       		.byte	0x7
+ 873 005d AF000000 		.4byte	.LASF7
+ 874 0061 03       		.uleb128 0x3
+ 875 0062 04       		.byte	0x4
+ 876 0063 05       		.byte	0x5
+ 877 0064 696E7400 		.ascii	"int\000"
+ 878 0068 02       		.uleb128 0x2
+ 879 0069 04       		.byte	0x4
+ 880 006a 07       		.byte	0x7
+ 881 006b 2C020000 		.4byte	.LASF8
+ 882 006f 04       		.uleb128 0x4
+ 883 0070 53010000 		.4byte	.LASF9
+ 884 0074 02       		.byte	0x2
+ 885 0075 5B       		.byte	0x5b
+ 886 0076 30000000 		.4byte	0x30
+ 887 007a 04       		.uleb128 0x4
+ 888 007b 13000000 		.4byte	.LASF10
+ 889 007f 02       		.byte	0x2
+ 890 0080 5C       		.byte	0x5c
+ 891 0081 3E000000 		.4byte	0x3e
+ 892 0085 04       		.uleb128 0x4
+ 893 0086 81010000 		.4byte	.LASF11
+ 894 008a 02       		.byte	0x2
+ 895 008b 5D       		.byte	0x5d
+ 896 008c 4C000000 		.4byte	0x4c
+ 897 0090 02       		.uleb128 0x2
+ 898 0091 04       		.byte	0x4
+ 899 0092 04       		.byte	0x4
+ 900 0093 AE030000 		.4byte	.LASF12
+ 901 0097 02       		.uleb128 0x2
+ 902 0098 08       		.byte	0x8
+ 903 0099 04       		.byte	0x4
+ 904 009a 62010000 		.4byte	.LASF13
+ 905 009e 04       		.uleb128 0x4
+ 906 009f BC040000 		.4byte	.LASF14
+ 907 00a3 02       		.byte	0x2
+ 908 00a4 6C       		.byte	0x6c
+ 909 00a5 A9000000 		.4byte	0xa9
+ 910 00a9 02       		.uleb128 0x2
+ 911 00aa 01       		.byte	0x1
+ 912 00ab 08       		.byte	0x8
+ 913 00ac 6F040000 		.4byte	.LASF15
+ 914 00b0 04       		.uleb128 0x4
+ 915 00b1 08040000 		.4byte	.LASF16
+ 916 00b5 02       		.byte	0x2
+ 917 00b6 F0       		.byte	0xf0
+ 918 00b7 BB000000 		.4byte	0xbb
+ 919 00bb 05       		.uleb128 0x5
+ 920 00bc 6F000000 		.4byte	0x6f
+ 921 00c0 05       		.uleb128 0x5
+ 922 00c1 7A000000 		.4byte	0x7a
+ 923 00c5 02       		.uleb128 0x2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 30
+
+
+ 924 00c6 04       		.byte	0x4
+ 925 00c7 07       		.byte	0x7
+ 926 00c8 4D030000 		.4byte	.LASF17
+ 927 00cc 06       		.uleb128 0x6
+ 928 00cd 0C       		.byte	0xc
+ 929 00ce 03       		.byte	0x3
+ 930 00cf 74       		.byte	0x74
+ 931 00d0 53010000 		.4byte	0x153
+ 932 00d4 07       		.uleb128 0x7
+ 933 00d5 7E030000 		.4byte	.LASF18
+ 934 00d9 03       		.byte	0x3
+ 935 00da 76       		.byte	0x76
+ 936 00db 6F000000 		.4byte	0x6f
+ 937 00df 02       		.byte	0x2
+ 938 00e0 23       		.byte	0x23
+ 939 00e1 00       		.uleb128 0
+ 940 00e2 07       		.uleb128 0x7
+ 941 00e3 B4030000 		.4byte	.LASF19
+ 942 00e7 03       		.byte	0x3
+ 943 00e8 77       		.byte	0x77
+ 944 00e9 6F000000 		.4byte	0x6f
+ 945 00ed 02       		.byte	0x2
+ 946 00ee 23       		.byte	0x23
+ 947 00ef 01       		.uleb128 0x1
+ 948 00f0 07       		.uleb128 0x7
+ 949 00f1 43030000 		.4byte	.LASF20
+ 950 00f5 03       		.byte	0x3
+ 951 00f6 78       		.byte	0x78
+ 952 00f7 6F000000 		.4byte	0x6f
+ 953 00fb 02       		.byte	0x2
+ 954 00fc 23       		.byte	0x23
+ 955 00fd 02       		.uleb128 0x2
+ 956 00fe 07       		.uleb128 0x7
+ 957 00ff 59010000 		.4byte	.LASF21
+ 958 0103 03       		.byte	0x3
+ 959 0104 79       		.byte	0x79
+ 960 0105 6F000000 		.4byte	0x6f
+ 961 0109 02       		.byte	0x2
+ 962 010a 23       		.byte	0x23
+ 963 010b 03       		.uleb128 0x3
+ 964 010c 07       		.uleb128 0x7
+ 965 010d C6000000 		.4byte	.LASF22
+ 966 0111 03       		.byte	0x3
+ 967 0112 7A       		.byte	0x7a
+ 968 0113 6F000000 		.4byte	0x6f
+ 969 0117 02       		.byte	0x2
+ 970 0118 23       		.byte	0x23
+ 971 0119 04       		.uleb128 0x4
+ 972 011a 07       		.uleb128 0x7
+ 973 011b D5010000 		.4byte	.LASF23
+ 974 011f 03       		.byte	0x3
+ 975 0120 7B       		.byte	0x7b
+ 976 0121 6F000000 		.4byte	0x6f
+ 977 0125 02       		.byte	0x2
+ 978 0126 23       		.byte	0x23
+ 979 0127 05       		.uleb128 0x5
+ 980 0128 07       		.uleb128 0x7
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 31
+
+
+ 981 0129 B1040000 		.4byte	.LASF24
+ 982 012d 03       		.byte	0x3
+ 983 012e 7C       		.byte	0x7c
+ 984 012f 7A000000 		.4byte	0x7a
+ 985 0133 02       		.byte	0x2
+ 986 0134 23       		.byte	0x23
+ 987 0135 06       		.uleb128 0x6
+ 988 0136 07       		.uleb128 0x7
+ 989 0137 74040000 		.4byte	.LASF25
+ 990 013b 03       		.byte	0x3
+ 991 013c 7D       		.byte	0x7d
+ 992 013d 7A000000 		.4byte	0x7a
+ 993 0141 02       		.byte	0x2
+ 994 0142 23       		.byte	0x23
+ 995 0143 08       		.uleb128 0x8
+ 996 0144 07       		.uleb128 0x7
+ 997 0145 1D030000 		.4byte	.LASF26
+ 998 0149 03       		.byte	0x3
+ 999 014a 7E       		.byte	0x7e
+ 1000 014b 6F000000 		.4byte	0x6f
+ 1001 014f 02       		.byte	0x2
+ 1002 0150 23       		.byte	0x23
+ 1003 0151 0A       		.uleb128 0xa
+ 1004 0152 00       		.byte	0
+ 1005 0153 04       		.uleb128 0x4
+ 1006 0154 EE010000 		.4byte	.LASF27
+ 1007 0158 03       		.byte	0x3
+ 1008 0159 7F       		.byte	0x7f
+ 1009 015a CC000000 		.4byte	0xcc
+ 1010 015e 06       		.uleb128 0x6
+ 1011 015f 04       		.byte	0x4
+ 1012 0160 03       		.byte	0x3
+ 1013 0161 8B       		.byte	0x8b
+ 1014 0162 83010000 		.4byte	0x183
+ 1015 0166 07       		.uleb128 0x7
+ 1016 0167 17050000 		.4byte	.LASF28
+ 1017 016b 03       		.byte	0x3
+ 1018 016c 8D       		.byte	0x8d
+ 1019 016d 6F000000 		.4byte	0x6f
+ 1020 0171 02       		.byte	0x2
+ 1021 0172 23       		.byte	0x23
+ 1022 0173 00       		.uleb128 0
+ 1023 0174 07       		.uleb128 0x7
+ 1024 0175 4A040000 		.4byte	.LASF29
+ 1025 0179 03       		.byte	0x3
+ 1026 017a 8E       		.byte	0x8e
+ 1027 017b 7A000000 		.4byte	0x7a
+ 1028 017f 02       		.byte	0x2
+ 1029 0180 23       		.byte	0x23
+ 1030 0181 02       		.uleb128 0x2
+ 1031 0182 00       		.byte	0
+ 1032 0183 04       		.uleb128 0x4
+ 1033 0184 51040000 		.4byte	.LASF30
+ 1034 0188 03       		.byte	0x3
+ 1035 0189 8F       		.byte	0x8f
+ 1036 018a 5E010000 		.4byte	0x15e
+ 1037 018e 06       		.uleb128 0x6
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 32
+
+
+ 1038 018f 0C       		.byte	0xc
+ 1039 0190 03       		.byte	0x3
+ 1040 0191 91       		.byte	0x91
+ 1041 0192 C1010000 		.4byte	0x1c1
+ 1042 0196 07       		.uleb128 0x7
+ 1043 0197 0D000000 		.4byte	.LASF31
+ 1044 019b 03       		.byte	0x3
+ 1045 019c 93       		.byte	0x93
+ 1046 019d 7A000000 		.4byte	0x7a
+ 1047 01a1 02       		.byte	0x2
+ 1048 01a2 23       		.byte	0x23
+ 1049 01a3 00       		.uleb128 0
+ 1050 01a4 07       		.uleb128 0x7
+ 1051 01a5 88010000 		.4byte	.LASF32
+ 1052 01a9 03       		.byte	0x3
+ 1053 01aa 94       		.byte	0x94
+ 1054 01ab C1010000 		.4byte	0x1c1
+ 1055 01af 02       		.byte	0x2
+ 1056 01b0 23       		.byte	0x23
+ 1057 01b1 04       		.uleb128 0x4
+ 1058 01b2 07       		.uleb128 0x7
+ 1059 01b3 00000000 		.4byte	.LASF33
+ 1060 01b7 03       		.byte	0x3
+ 1061 01b8 95       		.byte	0x95
+ 1062 01b9 C7010000 		.4byte	0x1c7
+ 1063 01bd 02       		.byte	0x2
+ 1064 01be 23       		.byte	0x23
+ 1065 01bf 08       		.uleb128 0x8
+ 1066 01c0 00       		.byte	0
+ 1067 01c1 08       		.uleb128 0x8
+ 1068 01c2 04       		.byte	0x4
+ 1069 01c3 BB000000 		.4byte	0xbb
+ 1070 01c7 08       		.uleb128 0x8
+ 1071 01c8 04       		.byte	0x4
+ 1072 01c9 83010000 		.4byte	0x183
+ 1073 01cd 04       		.uleb128 0x4
+ 1074 01ce 36050000 		.4byte	.LASF34
+ 1075 01d2 03       		.byte	0x3
+ 1076 01d3 96       		.byte	0x96
+ 1077 01d4 8E010000 		.4byte	0x18e
+ 1078 01d8 09       		.uleb128 0x9
+ 1079 01d9 01       		.byte	0x1
+ 1080 01da B6010000 		.4byte	.LASF48
+ 1081 01de 01       		.byte	0x1
+ 1082 01df 50       		.byte	0x50
+ 1083 01e0 01       		.byte	0x1
+ 1084 01e1 6F000000 		.4byte	0x6f
+ 1085 01e5 00000000 		.4byte	.LFB0
+ 1086 01e9 80000000 		.4byte	.LFE0
+ 1087 01ed 02       		.byte	0x2
+ 1088 01ee 7D       		.byte	0x7d
+ 1089 01ef 00       		.sleb128 0
+ 1090 01f0 01       		.byte	0x1
+ 1091 01f1 23020000 		.4byte	0x223
+ 1092 01f5 0A       		.uleb128 0xa
+ 1093 01f6 97040000 		.4byte	.LASF39
+ 1094 01fa 01       		.byte	0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 33
+
+
+ 1095 01fb 52       		.byte	0x52
+ 1096 01fc 6F000000 		.4byte	0x6f
+ 1097 0200 00000000 		.4byte	.LLST0
+ 1098 0204 0B       		.uleb128 0xb
+ 1099 0205 1E000000 		.4byte	.LVL1
+ 1100 0209 01       		.byte	0x1
+ 1101 020a D8060000 		.4byte	0x6d8
+ 1102 020e 0B       		.uleb128 0xb
+ 1103 020f 46000000 		.4byte	.LVL2
+ 1104 0213 01       		.byte	0x1
+ 1105 0214 E6060000 		.4byte	0x6e6
+ 1106 0218 0B       		.uleb128 0xb
+ 1107 0219 5E000000 		.4byte	.LVL3
+ 1108 021d 01       		.byte	0x1
+ 1109 021e F4060000 		.4byte	0x6f4
+ 1110 0222 00       		.byte	0
+ 1111 0223 0C       		.uleb128 0xc
+ 1112 0224 01       		.byte	0x1
+ 1113 0225 6B030000 		.4byte	.LASF35
+ 1114 0229 01       		.byte	0x1
+ 1115 022a A4       		.byte	0xa4
+ 1116 022b 01       		.byte	0x1
+ 1117 022c 00000000 		.4byte	.LFB1
+ 1118 0230 18000000 		.4byte	.LFE1
+ 1119 0234 02       		.byte	0x2
+ 1120 0235 7D       		.byte	0x7d
+ 1121 0236 00       		.sleb128 0
+ 1122 0237 01       		.byte	0x1
+ 1123 0238 47020000 		.4byte	0x247
+ 1124 023c 0B       		.uleb128 0xb
+ 1125 023d 0E000000 		.4byte	.LVL4
+ 1126 0241 01       		.byte	0x1
+ 1127 0242 02070000 		.4byte	0x702
+ 1128 0246 00       		.byte	0
+ 1129 0247 0D       		.uleb128 0xd
+ 1130 0248 01       		.byte	0x1
+ 1131 0249 1A020000 		.4byte	.LASF36
+ 1132 024d 01       		.byte	0x1
+ 1133 024e C4       		.byte	0xc4
+ 1134 024f 01       		.byte	0x1
+ 1135 0250 00000000 		.4byte	.LFB2
+ 1136 0254 38000000 		.4byte	.LFE2
+ 1137 0258 14000000 		.4byte	.LLST1
+ 1138 025c 01       		.byte	0x1
+ 1139 025d 91020000 		.4byte	0x291
+ 1140 0261 0E       		.uleb128 0xe
+ 1141 0262 88010000 		.4byte	.LASF32
+ 1142 0266 01       		.byte	0x1
+ 1143 0267 C4       		.byte	0xc4
+ 1144 0268 91020000 		.4byte	0x291
+ 1145 026c 34000000 		.4byte	.LLST2
+ 1146 0270 0E       		.uleb128 0xe
+ 1147 0271 4A040000 		.4byte	.LASF29
+ 1148 0275 01       		.byte	0x1
+ 1149 0276 C4       		.byte	0xc4
+ 1150 0277 7A000000 		.4byte	0x7a
+ 1151 027b 52000000 		.4byte	.LLST3
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 34
+
+
+ 1152 027f 0F       		.uleb128 0xf
+ 1153 0280 30000000 		.4byte	.LVL9
+ 1154 0284 01       		.byte	0x1
+ 1155 0285 16070000 		.4byte	0x716
+ 1156 0289 10       		.uleb128 0x10
+ 1157 028a 01       		.byte	0x1
+ 1158 028b 51       		.byte	0x51
+ 1159 028c 02       		.byte	0x2
+ 1160 028d 76       		.byte	0x76
+ 1161 028e 00       		.sleb128 0
+ 1162 028f 00       		.byte	0
+ 1163 0290 00       		.byte	0
+ 1164 0291 08       		.uleb128 0x8
+ 1165 0292 04       		.byte	0x4
+ 1166 0293 97020000 		.4byte	0x297
+ 1167 0297 11       		.uleb128 0x11
+ 1168 0298 6F000000 		.4byte	0x6f
+ 1169 029c 12       		.uleb128 0x12
+ 1170 029d 85030000 		.4byte	.LASF82
+ 1171 02a1 01       		.byte	0x1
+ 1172 02a2 E0       		.byte	0xe0
+ 1173 02a3 01       		.byte	0x1
+ 1174 02a4 7A000000 		.4byte	0x7a
+ 1175 02a8 01       		.byte	0x1
+ 1176 02a9 C4020000 		.4byte	0x2c4
+ 1177 02ad 13       		.uleb128 0x13
+ 1178 02ae 7A000000 		.4byte	.LASF38
+ 1179 02b2 01       		.byte	0x1
+ 1180 02b3 E0       		.byte	0xe0
+ 1181 02b4 C4020000 		.4byte	0x2c4
+ 1182 02b8 14       		.uleb128 0x14
+ 1183 02b9 6C656E00 		.ascii	"len\000"
+ 1184 02bd 01       		.byte	0x1
+ 1185 02be E2       		.byte	0xe2
+ 1186 02bf 7A000000 		.4byte	0x7a
+ 1187 02c3 00       		.byte	0
+ 1188 02c4 08       		.uleb128 0x8
+ 1189 02c5 04       		.byte	0x4
+ 1190 02c6 CA020000 		.4byte	0x2ca
+ 1191 02ca 11       		.uleb128 0x11
+ 1192 02cb 9E000000 		.4byte	0x9e
+ 1193 02cf 15       		.uleb128 0x15
+ 1194 02d0 01       		.byte	0x1
+ 1195 02d1 A3020000 		.4byte	.LASF37
+ 1196 02d5 01       		.byte	0x1
+ 1197 02d6 0701     		.2byte	0x107
+ 1198 02d8 01       		.byte	0x1
+ 1199 02d9 00000000 		.4byte	.LFB4
+ 1200 02dd 64000000 		.4byte	.LFE4
+ 1201 02e1 7E000000 		.4byte	.LLST4
+ 1202 02e5 01       		.byte	0x1
+ 1203 02e6 75030000 		.4byte	0x375
+ 1204 02ea 16       		.uleb128 0x16
+ 1205 02eb 7A000000 		.4byte	.LASF38
+ 1206 02ef 01       		.byte	0x1
+ 1207 02f0 0701     		.2byte	0x107
+ 1208 02f2 C4020000 		.4byte	0x2c4
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 35
+
+
+ 1209 02f6 9E000000 		.4byte	.LLST5
+ 1210 02fa 17       		.uleb128 0x17
+ 1211 02fb 5D020000 		.4byte	.LASF40
+ 1212 02ff 01       		.byte	0x1
+ 1213 0300 0901     		.2byte	0x109
+ 1214 0302 7A000000 		.4byte	0x7a
+ 1215 0306 BC000000 		.4byte	.LLST6
+ 1216 030a 17       		.uleb128 0x17
+ 1217 030b 3E040000 		.4byte	.LASF41
+ 1218 030f 01       		.byte	0x1
+ 1219 0310 0A01     		.2byte	0x10a
+ 1220 0312 7A000000 		.4byte	0x7a
+ 1221 0316 DA000000 		.4byte	.LLST7
+ 1222 031a 17       		.uleb128 0x17
+ 1223 031b 57050000 		.4byte	.LASF42
+ 1224 031f 01       		.byte	0x1
+ 1225 0320 0B01     		.2byte	0x10b
+ 1226 0322 7A000000 		.4byte	0x7a
+ 1227 0326 F8000000 		.4byte	.LLST8
+ 1228 032a 18       		.uleb128 0x18
+ 1229 032b 9C020000 		.4byte	0x29c
+ 1230 032f 06000000 		.4byte	.LBB4
+ 1231 0333 10000000 		.4byte	.LBE4
+ 1232 0337 01       		.byte	0x1
+ 1233 0338 0E01     		.2byte	0x10e
+ 1234 033a 5B030000 		.4byte	0x35b
+ 1235 033e 19       		.uleb128 0x19
+ 1236 033f AD020000 		.4byte	0x2ad
+ 1237 0343 22010000 		.4byte	.LLST9
+ 1238 0347 1A       		.uleb128 0x1a
+ 1239 0348 06000000 		.4byte	.LBB5
+ 1240 034c 10000000 		.4byte	.LBE5
+ 1241 0350 1B       		.uleb128 0x1b
+ 1242 0351 B8020000 		.4byte	0x2b8
+ 1243 0355 40010000 		.4byte	.LLST10
+ 1244 0359 00       		.byte	0
+ 1245 035a 00       		.byte	0
+ 1246 035b 1C       		.uleb128 0x1c
+ 1247 035c 22000000 		.4byte	.LVL18
+ 1248 0360 16070000 		.4byte	0x716
+ 1249 0364 10       		.uleb128 0x10
+ 1250 0365 01       		.byte	0x1
+ 1251 0366 52       		.byte	0x52
+ 1252 0367 02       		.byte	0x2
+ 1253 0368 75       		.byte	0x75
+ 1254 0369 00       		.sleb128 0
+ 1255 036a 10       		.uleb128 0x10
+ 1256 036b 01       		.byte	0x1
+ 1257 036c 51       		.byte	0x51
+ 1258 036d 05       		.byte	0x5
+ 1259 036e 77       		.byte	0x77
+ 1260 036f 00       		.sleb128 0
+ 1261 0370 76       		.byte	0x76
+ 1262 0371 00       		.sleb128 0
+ 1263 0372 22       		.byte	0x22
+ 1264 0373 00       		.byte	0
+ 1265 0374 00       		.byte	0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 36
+
+
+ 1266 0375 15       		.uleb128 0x15
+ 1267 0376 01       		.byte	0x1
+ 1268 0377 25040000 		.4byte	.LASF43
+ 1269 037b 01       		.byte	0x1
+ 1270 037c 3C01     		.2byte	0x13c
+ 1271 037e 01       		.byte	0x1
+ 1272 037f 00000000 		.4byte	.LFB5
+ 1273 0383 18000000 		.4byte	.LFE5
+ 1274 0387 77010000 		.4byte	.LLST11
+ 1275 038b 01       		.byte	0x1
+ 1276 038c C5030000 		.4byte	0x3c5
+ 1277 0390 16       		.uleb128 0x16
+ 1278 0391 1A000000 		.4byte	.LASF44
+ 1279 0395 01       		.byte	0x1
+ 1280 0396 3C01     		.2byte	0x13c
+ 1281 0398 9E000000 		.4byte	0x9e
+ 1282 039c 97010000 		.4byte	.LLST12
+ 1283 03a0 1D       		.uleb128 0x1d
+ 1284 03a1 25000000 		.4byte	.LASF45
+ 1285 03a5 01       		.byte	0x1
+ 1286 03a6 3E01     		.2byte	0x13e
+ 1287 03a8 6F000000 		.4byte	0x6f
+ 1288 03ac 02       		.byte	0x2
+ 1289 03ad 71       		.byte	0x71
+ 1290 03ae 7F       		.sleb128 -1
+ 1291 03af 1C       		.uleb128 0x1c
+ 1292 03b0 12000000 		.4byte	.LVL26
+ 1293 03b4 16070000 		.4byte	0x716
+ 1294 03b8 10       		.uleb128 0x10
+ 1295 03b9 01       		.byte	0x1
+ 1296 03ba 52       		.byte	0x52
+ 1297 03bb 01       		.byte	0x1
+ 1298 03bc 31       		.byte	0x31
+ 1299 03bd 10       		.uleb128 0x10
+ 1300 03be 01       		.byte	0x1
+ 1301 03bf 51       		.byte	0x51
+ 1302 03c0 02       		.byte	0x2
+ 1303 03c1 91       		.byte	0x91
+ 1304 03c2 77       		.sleb128 -9
+ 1305 03c3 00       		.byte	0
+ 1306 03c4 00       		.byte	0
+ 1307 03c5 15       		.uleb128 0x15
+ 1308 03c6 01       		.byte	0x1
+ 1309 03c7 DC040000 		.4byte	.LASF46
+ 1310 03cb 01       		.byte	0x1
+ 1311 03cc 5A01     		.2byte	0x15a
+ 1312 03ce 01       		.byte	0x1
+ 1313 03cf 00000000 		.4byte	.LFB6
+ 1314 03d3 20000000 		.4byte	.LFE6
+ 1315 03d7 C4010000 		.4byte	.LLST13
+ 1316 03db 01       		.byte	0x1
+ 1317 03dc 05040000 		.4byte	0x405
+ 1318 03e0 1D       		.uleb128 0x1d
+ 1319 03e1 61050000 		.4byte	.LASF47
+ 1320 03e5 01       		.byte	0x1
+ 1321 03e6 5C01     		.2byte	0x15c
+ 1322 03e8 15040000 		.4byte	0x415
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 37
+
+
+ 1323 03ec 02       		.byte	0x2
+ 1324 03ed 91       		.byte	0x91
+ 1325 03ee 74       		.sleb128 -12
+ 1326 03ef 1C       		.uleb128 0x1c
+ 1327 03f0 16000000 		.4byte	.LVL27
+ 1328 03f4 16070000 		.4byte	0x716
+ 1329 03f8 10       		.uleb128 0x10
+ 1330 03f9 01       		.byte	0x1
+ 1331 03fa 52       		.byte	0x52
+ 1332 03fb 01       		.byte	0x1
+ 1333 03fc 32       		.byte	0x32
+ 1334 03fd 10       		.uleb128 0x10
+ 1335 03fe 01       		.byte	0x1
+ 1336 03ff 51       		.byte	0x51
+ 1337 0400 02       		.byte	0x2
+ 1338 0401 91       		.byte	0x91
+ 1339 0402 74       		.sleb128 -12
+ 1340 0403 00       		.byte	0
+ 1341 0404 00       		.byte	0
+ 1342 0405 1E       		.uleb128 0x1e
+ 1343 0406 6F000000 		.4byte	0x6f
+ 1344 040a 15040000 		.4byte	0x415
+ 1345 040e 1F       		.uleb128 0x1f
+ 1346 040f C5000000 		.4byte	0xc5
+ 1347 0413 01       		.byte	0x1
+ 1348 0414 00       		.byte	0
+ 1349 0415 11       		.uleb128 0x11
+ 1350 0416 05040000 		.4byte	0x405
+ 1351 041a 20       		.uleb128 0x20
+ 1352 041b 01       		.byte	0x1
+ 1353 041c 07020000 		.4byte	.LASF49
+ 1354 0420 01       		.byte	0x1
+ 1355 0421 7301     		.2byte	0x173
+ 1356 0423 01       		.byte	0x1
+ 1357 0424 7A000000 		.4byte	0x7a
+ 1358 0428 00000000 		.4byte	.LFB7
+ 1359 042c 24000000 		.4byte	.LFE7
+ 1360 0430 02       		.byte	0x2
+ 1361 0431 7D       		.byte	0x7d
+ 1362 0432 00       		.sleb128 0
+ 1363 0433 01       		.byte	0x1
+ 1364 0434 50040000 		.4byte	0x450
+ 1365 0438 21       		.uleb128 0x21
+ 1366 0439 A6040000 		.4byte	.LASF50
+ 1367 043d 01       		.byte	0x1
+ 1368 043e 7501     		.2byte	0x175
+ 1369 0440 7A000000 		.4byte	0x7a
+ 1370 0444 00       		.byte	0
+ 1371 0445 0B       		.uleb128 0xb
+ 1372 0446 18000000 		.4byte	.LVL29
+ 1373 044a 01       		.byte	0x1
+ 1374 044b 34070000 		.4byte	0x734
+ 1375 044f 00       		.byte	0
+ 1376 0450 22       		.uleb128 0x22
+ 1377 0451 01       		.byte	0x1
+ 1378 0452 7D050000 		.4byte	.LASF51
+ 1379 0456 01       		.byte	0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 38
+
+
+ 1380 0457 9501     		.2byte	0x195
+ 1381 0459 01       		.byte	0x1
+ 1382 045a 6F000000 		.4byte	0x6f
+ 1383 045e 00000000 		.4byte	.LFB8
+ 1384 0462 18000000 		.4byte	.LFE8
+ 1385 0466 02       		.byte	0x2
+ 1386 0467 7D       		.byte	0x7d
+ 1387 0468 00       		.sleb128 0
+ 1388 0469 01       		.byte	0x1
+ 1389 046a 22       		.uleb128 0x22
+ 1390 046b 01       		.byte	0x1
+ 1391 046c 68050000 		.4byte	.LASF52
+ 1392 0470 01       		.byte	0x1
+ 1393 0471 B001     		.2byte	0x1b0
+ 1394 0473 01       		.byte	0x1
+ 1395 0474 6F000000 		.4byte	0x6f
+ 1396 0478 00000000 		.4byte	.LFB9
+ 1397 047c 18000000 		.4byte	.LFE9
+ 1398 0480 02       		.byte	0x2
+ 1399 0481 7D       		.byte	0x7d
+ 1400 0482 00       		.sleb128 0
+ 1401 0483 01       		.byte	0x1
+ 1402 0484 20       		.uleb128 0x20
+ 1403 0485 01       		.byte	0x1
+ 1404 0486 45050000 		.4byte	.LASF53
+ 1405 048a 01       		.byte	0x1
+ 1406 048b CF01     		.2byte	0x1cf
+ 1407 048d 01       		.byte	0x1
+ 1408 048e 7A000000 		.4byte	0x7a
+ 1409 0492 00000000 		.4byte	.LFB10
+ 1410 0496 14000000 		.4byte	.LFE10
+ 1411 049a 02       		.byte	0x2
+ 1412 049b 7D       		.byte	0x7d
+ 1413 049c 00       		.sleb128 0
+ 1414 049d 01       		.byte	0x1
+ 1415 049e D5040000 		.4byte	0x4d5
+ 1416 04a2 16       		.uleb128 0x16
+ 1417 04a3 88010000 		.4byte	.LASF32
+ 1418 04a7 01       		.byte	0x1
+ 1419 04a8 CF01     		.2byte	0x1cf
+ 1420 04aa D5040000 		.4byte	0x4d5
+ 1421 04ae E4010000 		.4byte	.LLST14
+ 1422 04b2 16       		.uleb128 0x16
+ 1423 04b3 4A040000 		.4byte	.LASF29
+ 1424 04b7 01       		.byte	0x1
+ 1425 04b8 CF01     		.2byte	0x1cf
+ 1426 04ba 7A000000 		.4byte	0x7a
+ 1427 04be 10020000 		.4byte	.LLST15
+ 1428 04c2 0F       		.uleb128 0xf
+ 1429 04c3 0E000000 		.4byte	.LVL33
+ 1430 04c7 01       		.byte	0x1
+ 1431 04c8 4C070000 		.4byte	0x74c
+ 1432 04cc 10       		.uleb128 0x10
+ 1433 04cd 01       		.byte	0x1
+ 1434 04ce 51       		.byte	0x51
+ 1435 04cf 03       		.byte	0x3
+ 1436 04d0 F3       		.byte	0xf3
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 39
+
+
+ 1437 04d1 01       		.uleb128 0x1
+ 1438 04d2 50       		.byte	0x50
+ 1439 04d3 00       		.byte	0
+ 1440 04d4 00       		.byte	0
+ 1441 04d5 08       		.uleb128 0x8
+ 1442 04d6 04       		.byte	0x4
+ 1443 04d7 6F000000 		.4byte	0x6f
+ 1444 04db 23       		.uleb128 0x23
+ 1445 04dc 01       		.byte	0x1
+ 1446 04dd 0C030000 		.4byte	.LASF54
+ 1447 04e1 01       		.byte	0x1
+ 1448 04e2 ED01     		.2byte	0x1ed
+ 1449 04e4 01       		.byte	0x1
+ 1450 04e5 7A000000 		.4byte	0x7a
+ 1451 04e9 00000000 		.4byte	.LFB11
+ 1452 04ed 28000000 		.4byte	.LFE11
+ 1453 04f1 31020000 		.4byte	.LLST16
+ 1454 04f5 01       		.byte	0x1
+ 1455 04f6 1D050000 		.4byte	0x51d
+ 1456 04fa 16       		.uleb128 0x16
+ 1457 04fb 88010000 		.4byte	.LASF32
+ 1458 04ff 01       		.byte	0x1
+ 1459 0500 ED01     		.2byte	0x1ed
+ 1460 0502 D5040000 		.4byte	0x4d5
+ 1461 0506 51020000 		.4byte	.LLST17
+ 1462 050a 0F       		.uleb128 0xf
+ 1463 050b 1E000000 		.4byte	.LVL36
+ 1464 050f 01       		.byte	0x1
+ 1465 0510 4C070000 		.4byte	0x74c
+ 1466 0514 10       		.uleb128 0x10
+ 1467 0515 01       		.byte	0x1
+ 1468 0516 51       		.byte	0x51
+ 1469 0517 03       		.byte	0x3
+ 1470 0518 F3       		.byte	0xf3
+ 1471 0519 01       		.uleb128 0x1
+ 1472 051a 50       		.byte	0x50
+ 1473 051b 00       		.byte	0
+ 1474 051c 00       		.byte	0
+ 1475 051d 23       		.uleb128 0x23
+ 1476 051e 01       		.byte	0x1
+ 1477 051f DC010000 		.4byte	.LASF55
+ 1478 0523 01       		.byte	0x1
+ 1479 0524 0802     		.2byte	0x208
+ 1480 0526 01       		.byte	0x1
+ 1481 0527 6F000000 		.4byte	0x6f
+ 1482 052b 00000000 		.4byte	.LFB12
+ 1483 052f 1C000000 		.4byte	.LFE12
+ 1484 0533 7D020000 		.4byte	.LLST18
+ 1485 0537 01       		.byte	0x1
+ 1486 0538 61050000 		.4byte	0x561
+ 1487 053c 1D       		.uleb128 0x1d
+ 1488 053d 37040000 		.4byte	.LASF56
+ 1489 0541 01       		.byte	0x1
+ 1490 0542 0A02     		.2byte	0x20a
+ 1491 0544 6F000000 		.4byte	0x6f
+ 1492 0548 02       		.byte	0x2
+ 1493 0549 91       		.byte	0x91
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 40
+
+
+ 1494 054a 77       		.sleb128 -9
+ 1495 054b 1C       		.uleb128 0x1c
+ 1496 054c 10000000 		.4byte	.LVL37
+ 1497 0550 4C070000 		.4byte	0x74c
+ 1498 0554 10       		.uleb128 0x10
+ 1499 0555 01       		.byte	0x1
+ 1500 0556 52       		.byte	0x52
+ 1501 0557 01       		.byte	0x1
+ 1502 0558 31       		.byte	0x31
+ 1503 0559 10       		.uleb128 0x10
+ 1504 055a 01       		.byte	0x1
+ 1505 055b 51       		.byte	0x51
+ 1506 055c 02       		.byte	0x2
+ 1507 055d 91       		.byte	0x91
+ 1508 055e 77       		.sleb128 -9
+ 1509 055f 00       		.byte	0
+ 1510 0560 00       		.byte	0
+ 1511 0561 20       		.uleb128 0x20
+ 1512 0562 01       		.byte	0x1
+ 1513 0563 69010000 		.4byte	.LASF57
+ 1514 0567 01       		.byte	0x1
+ 1515 0568 2702     		.2byte	0x227
+ 1516 056a 01       		.byte	0x1
+ 1517 056b 6F000000 		.4byte	0x6f
+ 1518 056f 00000000 		.4byte	.LFB13
+ 1519 0573 20000000 		.4byte	.LFE13
+ 1520 0577 02       		.byte	0x2
+ 1521 0578 7D       		.byte	0x7d
+ 1522 0579 00       		.sleb128 0
+ 1523 057a 01       		.byte	0x1
+ 1524 057b 90050000 		.4byte	0x590
+ 1525 057f 17       		.uleb128 0x17
+ 1526 0580 1A010000 		.4byte	.LASF58
+ 1527 0584 01       		.byte	0x1
+ 1528 0585 2902     		.2byte	0x229
+ 1529 0587 6F000000 		.4byte	0x6f
+ 1530 058b 9D020000 		.4byte	.LLST19
+ 1531 058f 00       		.byte	0
+ 1532 0590 20       		.uleb128 0x20
+ 1533 0591 01       		.byte	0x1
+ 1534 0592 56030000 		.4byte	.LASF59
+ 1535 0596 01       		.byte	0x1
+ 1536 0597 4B02     		.2byte	0x24b
+ 1537 0599 01       		.byte	0x1
+ 1538 059a 85000000 		.4byte	0x85
+ 1539 059e 00000000 		.4byte	.LFB14
+ 1540 05a2 1C000000 		.4byte	.LFE14
+ 1541 05a6 02       		.byte	0x2
+ 1542 05a7 7D       		.byte	0x7d
+ 1543 05a8 00       		.sleb128 0
+ 1544 05a9 01       		.byte	0x1
+ 1545 05aa BF050000 		.4byte	0x5bf
+ 1546 05ae 17       		.uleb128 0x17
+ 1547 05af FB000000 		.4byte	.LASF60
+ 1548 05b3 01       		.byte	0x1
+ 1549 05b4 4D02     		.2byte	0x24d
+ 1550 05b6 85000000 		.4byte	0x85
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 41
+
+
+ 1551 05ba D3020000 		.4byte	.LLST20
+ 1552 05be 00       		.byte	0
+ 1553 05bf 22       		.uleb128 0x22
+ 1554 05c0 01       		.byte	0x1
+ 1555 05c1 96030000 		.4byte	.LASF61
+ 1556 05c5 01       		.byte	0x1
+ 1557 05c6 6902     		.2byte	0x269
+ 1558 05c8 01       		.byte	0x1
+ 1559 05c9 6F000000 		.4byte	0x6f
+ 1560 05cd 00000000 		.4byte	.LFB15
+ 1561 05d1 0C000000 		.4byte	.LFE15
+ 1562 05d5 02       		.byte	0x2
+ 1563 05d6 7D       		.byte	0x7d
+ 1564 05d7 00       		.sleb128 0
+ 1565 05d8 01       		.byte	0x1
+ 1566 05d9 22       		.uleb128 0x22
+ 1567 05da 01       		.byte	0x1
+ 1568 05db 7F040000 		.4byte	.LASF62
+ 1569 05df 01       		.byte	0x1
+ 1570 05e0 8002     		.2byte	0x280
+ 1571 05e2 01       		.byte	0x1
+ 1572 05e3 6F000000 		.4byte	0x6f
+ 1573 05e7 00000000 		.4byte	.LFB16
+ 1574 05eb 0C000000 		.4byte	.LFE16
+ 1575 05ef 02       		.byte	0x2
+ 1576 05f0 7D       		.byte	0x7d
+ 1577 05f1 00       		.sleb128 0
+ 1578 05f2 01       		.byte	0x1
+ 1579 05f3 22       		.uleb128 0x22
+ 1580 05f4 01       		.byte	0x1
+ 1581 05f5 01050000 		.4byte	.LASF63
+ 1582 05f9 01       		.byte	0x1
+ 1583 05fa 9802     		.2byte	0x298
+ 1584 05fc 01       		.byte	0x1
+ 1585 05fd 6F000000 		.4byte	0x6f
+ 1586 0601 00000000 		.4byte	.LFB17
+ 1587 0605 0C000000 		.4byte	.LFE17
+ 1588 0609 02       		.byte	0x2
+ 1589 060a 7D       		.byte	0x7d
+ 1590 060b 00       		.sleb128 0
+ 1591 060c 01       		.byte	0x1
+ 1592 060d 22       		.uleb128 0x22
+ 1593 060e 01       		.byte	0x1
+ 1594 060f 96000000 		.4byte	.LASF64
+ 1595 0613 01       		.byte	0x1
+ 1596 0614 AF02     		.2byte	0x2af
+ 1597 0616 01       		.byte	0x1
+ 1598 0617 7A000000 		.4byte	0x7a
+ 1599 061b 00000000 		.4byte	.LFB18
+ 1600 061f 0C000000 		.4byte	.LFE18
+ 1601 0623 02       		.byte	0x2
+ 1602 0624 7D       		.byte	0x7d
+ 1603 0625 00       		.sleb128 0
+ 1604 0626 01       		.byte	0x1
+ 1605 0627 24       		.uleb128 0x24
+ 1606 0628 1E050000 		.4byte	.LASF65
+ 1607 062c 03       		.byte	0x3
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 42
+
+
+ 1608 062d 1402     		.2byte	0x214
+ 1609 062f BB000000 		.4byte	0xbb
+ 1610 0633 01       		.byte	0x1
+ 1611 0634 01       		.byte	0x1
+ 1612 0635 1E       		.uleb128 0x1e
+ 1613 0636 6F000000 		.4byte	0x6f
+ 1614 063a 45060000 		.4byte	0x645
+ 1615 063e 1F       		.uleb128 0x1f
+ 1616 063f C5000000 		.4byte	0xc5
+ 1617 0643 06       		.byte	0x6
+ 1618 0644 00       		.byte	0
+ 1619 0645 25       		.uleb128 0x25
+ 1620 0646 81000000 		.4byte	.LASF66
+ 1621 064a 01       		.byte	0x1
+ 1622 064b 1D       		.byte	0x1d
+ 1623 064c 57060000 		.4byte	0x657
+ 1624 0650 01       		.byte	0x1
+ 1625 0651 05       		.byte	0x5
+ 1626 0652 03       		.byte	0x3
+ 1627 0653 00000000 		.4byte	USBUART_1_lineCoding
+ 1628 0657 05       		.uleb128 0x5
+ 1629 0658 35060000 		.4byte	0x635
+ 1630 065c 25       		.uleb128 0x25
+ 1631 065d 29010000 		.4byte	.LASF67
+ 1632 0661 01       		.byte	0x1
+ 1633 0662 1E       		.byte	0x1e
+ 1634 0663 BB000000 		.4byte	0xbb
+ 1635 0667 01       		.byte	0x1
+ 1636 0668 05       		.byte	0x5
+ 1637 0669 03       		.byte	0x3
+ 1638 066a 00000000 		.4byte	USBUART_1_lineChanged
+ 1639 066e 25       		.uleb128 0x25
+ 1640 066f 27030000 		.4byte	.LASF68
+ 1641 0673 01       		.byte	0x1
+ 1642 0674 1F       		.byte	0x1f
+ 1643 0675 C0000000 		.4byte	0xc0
+ 1644 0679 01       		.byte	0x1
+ 1645 067a 05       		.byte	0x5
+ 1646 067b 03       		.byte	0x3
+ 1647 067c 00000000 		.4byte	USBUART_1_lineControlBitmap
+ 1648 0680 25       		.uleb128 0x25
+ 1649 0681 B7020000 		.4byte	.LASF69
+ 1650 0685 01       		.byte	0x1
+ 1651 0686 20       		.byte	0x20
+ 1652 0687 BB000000 		.4byte	0xbb
+ 1653 068b 01       		.byte	0x1
+ 1654 068c 05       		.byte	0x5
+ 1655 068d 03       		.byte	0x3
+ 1656 068e 00000000 		.4byte	USBUART_1_cdc_data_in_ep
+ 1657 0692 25       		.uleb128 0x25
+ 1658 0693 00010000 		.4byte	.LASF70
+ 1659 0697 01       		.byte	0x1
+ 1660 0698 21       		.byte	0x21
+ 1661 0699 BB000000 		.4byte	0xbb
+ 1662 069d 01       		.byte	0x1
+ 1663 069e 05       		.byte	0x5
+ 1664 069f 03       		.byte	0x3
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 43
+
+
+ 1665 06a0 00000000 		.4byte	USBUART_1_cdc_data_out_ep
+ 1666 06a4 1E       		.uleb128 0x1e
+ 1667 06a5 53010000 		.4byte	0x153
+ 1668 06a9 B4060000 		.4byte	0x6b4
+ 1669 06ad 1F       		.uleb128 0x1f
+ 1670 06ae C5000000 		.4byte	0xc5
+ 1671 06b2 08       		.byte	0x8
+ 1672 06b3 00       		.byte	0
+ 1673 06b4 26       		.uleb128 0x26
+ 1674 06b5 A9010000 		.4byte	.LASF71
+ 1675 06b9 04       		.byte	0x4
+ 1676 06ba 34       		.byte	0x34
+ 1677 06bb C1060000 		.4byte	0x6c1
+ 1678 06bf 01       		.byte	0x1
+ 1679 06c0 01       		.byte	0x1
+ 1680 06c1 05       		.uleb128 0x5
+ 1681 06c2 A4060000 		.4byte	0x6a4
+ 1682 06c6 26       		.uleb128 0x26
+ 1683 06c7 3F010000 		.4byte	.LASF72
+ 1684 06cb 04       		.byte	0x4
+ 1685 06cc 35       		.byte	0x35
+ 1686 06cd D3060000 		.4byte	0x6d3
+ 1687 06d1 01       		.byte	0x1
+ 1688 06d2 01       		.byte	0x1
+ 1689 06d3 05       		.uleb128 0x5
+ 1690 06d4 CD010000 		.4byte	0x1cd
+ 1691 06d8 27       		.uleb128 0x27
+ 1692 06d9 01       		.byte	0x1
+ 1693 06da C2040000 		.4byte	.LASF73
+ 1694 06de 04       		.byte	0x4
+ 1695 06df 4B       		.byte	0x4b
+ 1696 06e0 01       		.byte	0x1
+ 1697 06e1 6F000000 		.4byte	0x6f
+ 1698 06e5 01       		.byte	0x1
+ 1699 06e6 27       		.uleb128 0x27
+ 1700 06e7 01       		.byte	0x1
+ 1701 06e8 39020000 		.4byte	.LASF74
+ 1702 06ec 04       		.byte	0x4
+ 1703 06ed 58       		.byte	0x58
+ 1704 06ee 01       		.byte	0x1
+ 1705 06ef 6F000000 		.4byte	0x6f
+ 1706 06f3 01       		.byte	0x1
+ 1707 06f4 27       		.uleb128 0x27
+ 1708 06f5 01       		.byte	0x1
+ 1709 06f6 8E010000 		.4byte	.LASF75
+ 1710 06fa 04       		.byte	0x4
+ 1711 06fb 51       		.byte	0x51
+ 1712 06fc 01       		.byte	0x1
+ 1713 06fd 6F000000 		.4byte	0x6f
+ 1714 0701 01       		.byte	0x1
+ 1715 0702 28       		.uleb128 0x28
+ 1716 0703 01       		.byte	0x1
+ 1717 0704 E5000000 		.4byte	.LASF76
+ 1718 0708 03       		.byte	0x3
+ 1719 0709 C9       		.byte	0xc9
+ 1720 070a 01       		.byte	0x1
+ 1721 070b 01       		.byte	0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 44
+
+
+ 1722 070c 16070000 		.4byte	0x716
+ 1723 0710 29       		.uleb128 0x29
+ 1724 0711 6F000000 		.4byte	0x6f
+ 1725 0715 00       		.byte	0
+ 1726 0716 28       		.uleb128 0x28
+ 1727 0717 01       		.byte	0x1
+ 1728 0718 EE040000 		.4byte	.LASF77
+ 1729 071c 03       		.byte	0x3
+ 1730 071d C5       		.byte	0xc5
+ 1731 071e 01       		.byte	0x1
+ 1732 071f 01       		.byte	0x1
+ 1733 0720 34070000 		.4byte	0x734
+ 1734 0724 29       		.uleb128 0x29
+ 1735 0725 6F000000 		.4byte	0x6f
+ 1736 0729 29       		.uleb128 0x29
+ 1737 072a 91020000 		.4byte	0x291
+ 1738 072e 29       		.uleb128 0x29
+ 1739 072f 7A000000 		.4byte	0x7a
+ 1740 0733 00       		.byte	0
+ 1741 0734 2A       		.uleb128 0x2a
+ 1742 0735 01       		.byte	0x1
+ 1743 0736 F7020000 		.4byte	.LASF83
+ 1744 073a 03       		.byte	0x3
+ 1745 073b C4       		.byte	0xc4
+ 1746 073c 01       		.byte	0x1
+ 1747 073d 7A000000 		.4byte	0x7a
+ 1748 0741 01       		.byte	0x1
+ 1749 0742 4C070000 		.4byte	0x74c
+ 1750 0746 29       		.uleb128 0x29
+ 1751 0747 6F000000 		.4byte	0x6f
+ 1752 074b 00       		.byte	0
+ 1753 074c 2B       		.uleb128 0x2b
+ 1754 074d 01       		.byte	0x1
+ 1755 074e E3020000 		.4byte	.LASF78
+ 1756 0752 03       		.byte	0x3
+ 1757 0753 C7       		.byte	0xc7
+ 1758 0754 01       		.byte	0x1
+ 1759 0755 7A000000 		.4byte	0x7a
+ 1760 0759 01       		.byte	0x1
+ 1761 075a 29       		.uleb128 0x29
+ 1762 075b 6F000000 		.4byte	0x6f
+ 1763 075f 29       		.uleb128 0x29
+ 1764 0760 D5040000 		.4byte	0x4d5
+ 1765 0764 29       		.uleb128 0x29
+ 1766 0765 7A000000 		.4byte	0x7a
+ 1767 0769 00       		.byte	0
+ 1768 076a 00       		.byte	0
+ 1769              		.section	.debug_abbrev,"",%progbits
+ 1770              	.Ldebug_abbrev0:
+ 1771 0000 01       		.uleb128 0x1
+ 1772 0001 11       		.uleb128 0x11
+ 1773 0002 01       		.byte	0x1
+ 1774 0003 25       		.uleb128 0x25
+ 1775 0004 0E       		.uleb128 0xe
+ 1776 0005 13       		.uleb128 0x13
+ 1777 0006 0B       		.uleb128 0xb
+ 1778 0007 03       		.uleb128 0x3
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 45
+
+
+ 1779 0008 0E       		.uleb128 0xe
+ 1780 0009 1B       		.uleb128 0x1b
+ 1781 000a 0E       		.uleb128 0xe
+ 1782 000b 55       		.uleb128 0x55
+ 1783 000c 06       		.uleb128 0x6
+ 1784 000d 11       		.uleb128 0x11
+ 1785 000e 01       		.uleb128 0x1
+ 1786 000f 52       		.uleb128 0x52
+ 1787 0010 01       		.uleb128 0x1
+ 1788 0011 10       		.uleb128 0x10
+ 1789 0012 06       		.uleb128 0x6
+ 1790 0013 00       		.byte	0
+ 1791 0014 00       		.byte	0
+ 1792 0015 02       		.uleb128 0x2
+ 1793 0016 24       		.uleb128 0x24
+ 1794 0017 00       		.byte	0
+ 1795 0018 0B       		.uleb128 0xb
+ 1796 0019 0B       		.uleb128 0xb
+ 1797 001a 3E       		.uleb128 0x3e
+ 1798 001b 0B       		.uleb128 0xb
+ 1799 001c 03       		.uleb128 0x3
+ 1800 001d 0E       		.uleb128 0xe
+ 1801 001e 00       		.byte	0
+ 1802 001f 00       		.byte	0
+ 1803 0020 03       		.uleb128 0x3
+ 1804 0021 24       		.uleb128 0x24
+ 1805 0022 00       		.byte	0
+ 1806 0023 0B       		.uleb128 0xb
+ 1807 0024 0B       		.uleb128 0xb
+ 1808 0025 3E       		.uleb128 0x3e
+ 1809 0026 0B       		.uleb128 0xb
+ 1810 0027 03       		.uleb128 0x3
+ 1811 0028 08       		.uleb128 0x8
+ 1812 0029 00       		.byte	0
+ 1813 002a 00       		.byte	0
+ 1814 002b 04       		.uleb128 0x4
+ 1815 002c 16       		.uleb128 0x16
+ 1816 002d 00       		.byte	0
+ 1817 002e 03       		.uleb128 0x3
+ 1818 002f 0E       		.uleb128 0xe
+ 1819 0030 3A       		.uleb128 0x3a
+ 1820 0031 0B       		.uleb128 0xb
+ 1821 0032 3B       		.uleb128 0x3b
+ 1822 0033 0B       		.uleb128 0xb
+ 1823 0034 49       		.uleb128 0x49
+ 1824 0035 13       		.uleb128 0x13
+ 1825 0036 00       		.byte	0
+ 1826 0037 00       		.byte	0
+ 1827 0038 05       		.uleb128 0x5
+ 1828 0039 35       		.uleb128 0x35
+ 1829 003a 00       		.byte	0
+ 1830 003b 49       		.uleb128 0x49
+ 1831 003c 13       		.uleb128 0x13
+ 1832 003d 00       		.byte	0
+ 1833 003e 00       		.byte	0
+ 1834 003f 06       		.uleb128 0x6
+ 1835 0040 13       		.uleb128 0x13
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 46
+
+
+ 1836 0041 01       		.byte	0x1
+ 1837 0042 0B       		.uleb128 0xb
+ 1838 0043 0B       		.uleb128 0xb
+ 1839 0044 3A       		.uleb128 0x3a
+ 1840 0045 0B       		.uleb128 0xb
+ 1841 0046 3B       		.uleb128 0x3b
+ 1842 0047 0B       		.uleb128 0xb
+ 1843 0048 01       		.uleb128 0x1
+ 1844 0049 13       		.uleb128 0x13
+ 1845 004a 00       		.byte	0
+ 1846 004b 00       		.byte	0
+ 1847 004c 07       		.uleb128 0x7
+ 1848 004d 0D       		.uleb128 0xd
+ 1849 004e 00       		.byte	0
+ 1850 004f 03       		.uleb128 0x3
+ 1851 0050 0E       		.uleb128 0xe
+ 1852 0051 3A       		.uleb128 0x3a
+ 1853 0052 0B       		.uleb128 0xb
+ 1854 0053 3B       		.uleb128 0x3b
+ 1855 0054 0B       		.uleb128 0xb
+ 1856 0055 49       		.uleb128 0x49
+ 1857 0056 13       		.uleb128 0x13
+ 1858 0057 38       		.uleb128 0x38
+ 1859 0058 0A       		.uleb128 0xa
+ 1860 0059 00       		.byte	0
+ 1861 005a 00       		.byte	0
+ 1862 005b 08       		.uleb128 0x8
+ 1863 005c 0F       		.uleb128 0xf
+ 1864 005d 00       		.byte	0
+ 1865 005e 0B       		.uleb128 0xb
+ 1866 005f 0B       		.uleb128 0xb
+ 1867 0060 49       		.uleb128 0x49
+ 1868 0061 13       		.uleb128 0x13
+ 1869 0062 00       		.byte	0
+ 1870 0063 00       		.byte	0
+ 1871 0064 09       		.uleb128 0x9
+ 1872 0065 2E       		.uleb128 0x2e
+ 1873 0066 01       		.byte	0x1
+ 1874 0067 3F       		.uleb128 0x3f
+ 1875 0068 0C       		.uleb128 0xc
+ 1876 0069 03       		.uleb128 0x3
+ 1877 006a 0E       		.uleb128 0xe
+ 1878 006b 3A       		.uleb128 0x3a
+ 1879 006c 0B       		.uleb128 0xb
+ 1880 006d 3B       		.uleb128 0x3b
+ 1881 006e 0B       		.uleb128 0xb
+ 1882 006f 27       		.uleb128 0x27
+ 1883 0070 0C       		.uleb128 0xc
+ 1884 0071 49       		.uleb128 0x49
+ 1885 0072 13       		.uleb128 0x13
+ 1886 0073 11       		.uleb128 0x11
+ 1887 0074 01       		.uleb128 0x1
+ 1888 0075 12       		.uleb128 0x12
+ 1889 0076 01       		.uleb128 0x1
+ 1890 0077 40       		.uleb128 0x40
+ 1891 0078 0A       		.uleb128 0xa
+ 1892 0079 9742     		.uleb128 0x2117
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 47
+
+
+ 1893 007b 0C       		.uleb128 0xc
+ 1894 007c 01       		.uleb128 0x1
+ 1895 007d 13       		.uleb128 0x13
+ 1896 007e 00       		.byte	0
+ 1897 007f 00       		.byte	0
+ 1898 0080 0A       		.uleb128 0xa
+ 1899 0081 34       		.uleb128 0x34
+ 1900 0082 00       		.byte	0
+ 1901 0083 03       		.uleb128 0x3
+ 1902 0084 0E       		.uleb128 0xe
+ 1903 0085 3A       		.uleb128 0x3a
+ 1904 0086 0B       		.uleb128 0xb
+ 1905 0087 3B       		.uleb128 0x3b
+ 1906 0088 0B       		.uleb128 0xb
+ 1907 0089 49       		.uleb128 0x49
+ 1908 008a 13       		.uleb128 0x13
+ 1909 008b 02       		.uleb128 0x2
+ 1910 008c 06       		.uleb128 0x6
+ 1911 008d 00       		.byte	0
+ 1912 008e 00       		.byte	0
+ 1913 008f 0B       		.uleb128 0xb
+ 1914 0090 898201   		.uleb128 0x4109
+ 1915 0093 00       		.byte	0
+ 1916 0094 11       		.uleb128 0x11
+ 1917 0095 01       		.uleb128 0x1
+ 1918 0096 9542     		.uleb128 0x2115
+ 1919 0098 0C       		.uleb128 0xc
+ 1920 0099 31       		.uleb128 0x31
+ 1921 009a 13       		.uleb128 0x13
+ 1922 009b 00       		.byte	0
+ 1923 009c 00       		.byte	0
+ 1924 009d 0C       		.uleb128 0xc
+ 1925 009e 2E       		.uleb128 0x2e
+ 1926 009f 01       		.byte	0x1
+ 1927 00a0 3F       		.uleb128 0x3f
+ 1928 00a1 0C       		.uleb128 0xc
+ 1929 00a2 03       		.uleb128 0x3
+ 1930 00a3 0E       		.uleb128 0xe
+ 1931 00a4 3A       		.uleb128 0x3a
+ 1932 00a5 0B       		.uleb128 0xb
+ 1933 00a6 3B       		.uleb128 0x3b
+ 1934 00a7 0B       		.uleb128 0xb
+ 1935 00a8 27       		.uleb128 0x27
+ 1936 00a9 0C       		.uleb128 0xc
+ 1937 00aa 11       		.uleb128 0x11
+ 1938 00ab 01       		.uleb128 0x1
+ 1939 00ac 12       		.uleb128 0x12
+ 1940 00ad 01       		.uleb128 0x1
+ 1941 00ae 40       		.uleb128 0x40
+ 1942 00af 0A       		.uleb128 0xa
+ 1943 00b0 9742     		.uleb128 0x2117
+ 1944 00b2 0C       		.uleb128 0xc
+ 1945 00b3 01       		.uleb128 0x1
+ 1946 00b4 13       		.uleb128 0x13
+ 1947 00b5 00       		.byte	0
+ 1948 00b6 00       		.byte	0
+ 1949 00b7 0D       		.uleb128 0xd
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 48
+
+
+ 1950 00b8 2E       		.uleb128 0x2e
+ 1951 00b9 01       		.byte	0x1
+ 1952 00ba 3F       		.uleb128 0x3f
+ 1953 00bb 0C       		.uleb128 0xc
+ 1954 00bc 03       		.uleb128 0x3
+ 1955 00bd 0E       		.uleb128 0xe
+ 1956 00be 3A       		.uleb128 0x3a
+ 1957 00bf 0B       		.uleb128 0xb
+ 1958 00c0 3B       		.uleb128 0x3b
+ 1959 00c1 0B       		.uleb128 0xb
+ 1960 00c2 27       		.uleb128 0x27
+ 1961 00c3 0C       		.uleb128 0xc
+ 1962 00c4 11       		.uleb128 0x11
+ 1963 00c5 01       		.uleb128 0x1
+ 1964 00c6 12       		.uleb128 0x12
+ 1965 00c7 01       		.uleb128 0x1
+ 1966 00c8 40       		.uleb128 0x40
+ 1967 00c9 06       		.uleb128 0x6
+ 1968 00ca 9742     		.uleb128 0x2117
+ 1969 00cc 0C       		.uleb128 0xc
+ 1970 00cd 01       		.uleb128 0x1
+ 1971 00ce 13       		.uleb128 0x13
+ 1972 00cf 00       		.byte	0
+ 1973 00d0 00       		.byte	0
+ 1974 00d1 0E       		.uleb128 0xe
+ 1975 00d2 05       		.uleb128 0x5
+ 1976 00d3 00       		.byte	0
+ 1977 00d4 03       		.uleb128 0x3
+ 1978 00d5 0E       		.uleb128 0xe
+ 1979 00d6 3A       		.uleb128 0x3a
+ 1980 00d7 0B       		.uleb128 0xb
+ 1981 00d8 3B       		.uleb128 0x3b
+ 1982 00d9 0B       		.uleb128 0xb
+ 1983 00da 49       		.uleb128 0x49
+ 1984 00db 13       		.uleb128 0x13
+ 1985 00dc 02       		.uleb128 0x2
+ 1986 00dd 06       		.uleb128 0x6
+ 1987 00de 00       		.byte	0
+ 1988 00df 00       		.byte	0
+ 1989 00e0 0F       		.uleb128 0xf
+ 1990 00e1 898201   		.uleb128 0x4109
+ 1991 00e4 01       		.byte	0x1
+ 1992 00e5 11       		.uleb128 0x11
+ 1993 00e6 01       		.uleb128 0x1
+ 1994 00e7 9542     		.uleb128 0x2115
+ 1995 00e9 0C       		.uleb128 0xc
+ 1996 00ea 31       		.uleb128 0x31
+ 1997 00eb 13       		.uleb128 0x13
+ 1998 00ec 00       		.byte	0
+ 1999 00ed 00       		.byte	0
+ 2000 00ee 10       		.uleb128 0x10
+ 2001 00ef 8A8201   		.uleb128 0x410a
+ 2002 00f2 00       		.byte	0
+ 2003 00f3 02       		.uleb128 0x2
+ 2004 00f4 0A       		.uleb128 0xa
+ 2005 00f5 9142     		.uleb128 0x2111
+ 2006 00f7 0A       		.uleb128 0xa
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 49
+
+
+ 2007 00f8 00       		.byte	0
+ 2008 00f9 00       		.byte	0
+ 2009 00fa 11       		.uleb128 0x11
+ 2010 00fb 26       		.uleb128 0x26
+ 2011 00fc 00       		.byte	0
+ 2012 00fd 49       		.uleb128 0x49
+ 2013 00fe 13       		.uleb128 0x13
+ 2014 00ff 00       		.byte	0
+ 2015 0100 00       		.byte	0
+ 2016 0101 12       		.uleb128 0x12
+ 2017 0102 2E       		.uleb128 0x2e
+ 2018 0103 01       		.byte	0x1
+ 2019 0104 03       		.uleb128 0x3
+ 2020 0105 0E       		.uleb128 0xe
+ 2021 0106 3A       		.uleb128 0x3a
+ 2022 0107 0B       		.uleb128 0xb
+ 2023 0108 3B       		.uleb128 0x3b
+ 2024 0109 0B       		.uleb128 0xb
+ 2025 010a 27       		.uleb128 0x27
+ 2026 010b 0C       		.uleb128 0xc
+ 2027 010c 49       		.uleb128 0x49
+ 2028 010d 13       		.uleb128 0x13
+ 2029 010e 20       		.uleb128 0x20
+ 2030 010f 0B       		.uleb128 0xb
+ 2031 0110 01       		.uleb128 0x1
+ 2032 0111 13       		.uleb128 0x13
+ 2033 0112 00       		.byte	0
+ 2034 0113 00       		.byte	0
+ 2035 0114 13       		.uleb128 0x13
+ 2036 0115 05       		.uleb128 0x5
+ 2037 0116 00       		.byte	0
+ 2038 0117 03       		.uleb128 0x3
+ 2039 0118 0E       		.uleb128 0xe
+ 2040 0119 3A       		.uleb128 0x3a
+ 2041 011a 0B       		.uleb128 0xb
+ 2042 011b 3B       		.uleb128 0x3b
+ 2043 011c 0B       		.uleb128 0xb
+ 2044 011d 49       		.uleb128 0x49
+ 2045 011e 13       		.uleb128 0x13
+ 2046 011f 00       		.byte	0
+ 2047 0120 00       		.byte	0
+ 2048 0121 14       		.uleb128 0x14
+ 2049 0122 34       		.uleb128 0x34
+ 2050 0123 00       		.byte	0
+ 2051 0124 03       		.uleb128 0x3
+ 2052 0125 08       		.uleb128 0x8
+ 2053 0126 3A       		.uleb128 0x3a
+ 2054 0127 0B       		.uleb128 0xb
+ 2055 0128 3B       		.uleb128 0x3b
+ 2056 0129 0B       		.uleb128 0xb
+ 2057 012a 49       		.uleb128 0x49
+ 2058 012b 13       		.uleb128 0x13
+ 2059 012c 00       		.byte	0
+ 2060 012d 00       		.byte	0
+ 2061 012e 15       		.uleb128 0x15
+ 2062 012f 2E       		.uleb128 0x2e
+ 2063 0130 01       		.byte	0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 50
+
+
+ 2064 0131 3F       		.uleb128 0x3f
+ 2065 0132 0C       		.uleb128 0xc
+ 2066 0133 03       		.uleb128 0x3
+ 2067 0134 0E       		.uleb128 0xe
+ 2068 0135 3A       		.uleb128 0x3a
+ 2069 0136 0B       		.uleb128 0xb
+ 2070 0137 3B       		.uleb128 0x3b
+ 2071 0138 05       		.uleb128 0x5
+ 2072 0139 27       		.uleb128 0x27
+ 2073 013a 0C       		.uleb128 0xc
+ 2074 013b 11       		.uleb128 0x11
+ 2075 013c 01       		.uleb128 0x1
+ 2076 013d 12       		.uleb128 0x12
+ 2077 013e 01       		.uleb128 0x1
+ 2078 013f 40       		.uleb128 0x40
+ 2079 0140 06       		.uleb128 0x6
+ 2080 0141 9742     		.uleb128 0x2117
+ 2081 0143 0C       		.uleb128 0xc
+ 2082 0144 01       		.uleb128 0x1
+ 2083 0145 13       		.uleb128 0x13
+ 2084 0146 00       		.byte	0
+ 2085 0147 00       		.byte	0
+ 2086 0148 16       		.uleb128 0x16
+ 2087 0149 05       		.uleb128 0x5
+ 2088 014a 00       		.byte	0
+ 2089 014b 03       		.uleb128 0x3
+ 2090 014c 0E       		.uleb128 0xe
+ 2091 014d 3A       		.uleb128 0x3a
+ 2092 014e 0B       		.uleb128 0xb
+ 2093 014f 3B       		.uleb128 0x3b
+ 2094 0150 05       		.uleb128 0x5
+ 2095 0151 49       		.uleb128 0x49
+ 2096 0152 13       		.uleb128 0x13
+ 2097 0153 02       		.uleb128 0x2
+ 2098 0154 06       		.uleb128 0x6
+ 2099 0155 00       		.byte	0
+ 2100 0156 00       		.byte	0
+ 2101 0157 17       		.uleb128 0x17
+ 2102 0158 34       		.uleb128 0x34
+ 2103 0159 00       		.byte	0
+ 2104 015a 03       		.uleb128 0x3
+ 2105 015b 0E       		.uleb128 0xe
+ 2106 015c 3A       		.uleb128 0x3a
+ 2107 015d 0B       		.uleb128 0xb
+ 2108 015e 3B       		.uleb128 0x3b
+ 2109 015f 05       		.uleb128 0x5
+ 2110 0160 49       		.uleb128 0x49
+ 2111 0161 13       		.uleb128 0x13
+ 2112 0162 02       		.uleb128 0x2
+ 2113 0163 06       		.uleb128 0x6
+ 2114 0164 00       		.byte	0
+ 2115 0165 00       		.byte	0
+ 2116 0166 18       		.uleb128 0x18
+ 2117 0167 1D       		.uleb128 0x1d
+ 2118 0168 01       		.byte	0x1
+ 2119 0169 31       		.uleb128 0x31
+ 2120 016a 13       		.uleb128 0x13
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 51
+
+
+ 2121 016b 11       		.uleb128 0x11
+ 2122 016c 01       		.uleb128 0x1
+ 2123 016d 12       		.uleb128 0x12
+ 2124 016e 01       		.uleb128 0x1
+ 2125 016f 58       		.uleb128 0x58
+ 2126 0170 0B       		.uleb128 0xb
+ 2127 0171 59       		.uleb128 0x59
+ 2128 0172 05       		.uleb128 0x5
+ 2129 0173 01       		.uleb128 0x1
+ 2130 0174 13       		.uleb128 0x13
+ 2131 0175 00       		.byte	0
+ 2132 0176 00       		.byte	0
+ 2133 0177 19       		.uleb128 0x19
+ 2134 0178 05       		.uleb128 0x5
+ 2135 0179 00       		.byte	0
+ 2136 017a 31       		.uleb128 0x31
+ 2137 017b 13       		.uleb128 0x13
+ 2138 017c 02       		.uleb128 0x2
+ 2139 017d 06       		.uleb128 0x6
+ 2140 017e 00       		.byte	0
+ 2141 017f 00       		.byte	0
+ 2142 0180 1A       		.uleb128 0x1a
+ 2143 0181 0B       		.uleb128 0xb
+ 2144 0182 01       		.byte	0x1
+ 2145 0183 11       		.uleb128 0x11
+ 2146 0184 01       		.uleb128 0x1
+ 2147 0185 12       		.uleb128 0x12
+ 2148 0186 01       		.uleb128 0x1
+ 2149 0187 00       		.byte	0
+ 2150 0188 00       		.byte	0
+ 2151 0189 1B       		.uleb128 0x1b
+ 2152 018a 34       		.uleb128 0x34
+ 2153 018b 00       		.byte	0
+ 2154 018c 31       		.uleb128 0x31
+ 2155 018d 13       		.uleb128 0x13
+ 2156 018e 02       		.uleb128 0x2
+ 2157 018f 06       		.uleb128 0x6
+ 2158 0190 00       		.byte	0
+ 2159 0191 00       		.byte	0
+ 2160 0192 1C       		.uleb128 0x1c
+ 2161 0193 898201   		.uleb128 0x4109
+ 2162 0196 01       		.byte	0x1
+ 2163 0197 11       		.uleb128 0x11
+ 2164 0198 01       		.uleb128 0x1
+ 2165 0199 31       		.uleb128 0x31
+ 2166 019a 13       		.uleb128 0x13
+ 2167 019b 00       		.byte	0
+ 2168 019c 00       		.byte	0
+ 2169 019d 1D       		.uleb128 0x1d
+ 2170 019e 34       		.uleb128 0x34
+ 2171 019f 00       		.byte	0
+ 2172 01a0 03       		.uleb128 0x3
+ 2173 01a1 0E       		.uleb128 0xe
+ 2174 01a2 3A       		.uleb128 0x3a
+ 2175 01a3 0B       		.uleb128 0xb
+ 2176 01a4 3B       		.uleb128 0x3b
+ 2177 01a5 05       		.uleb128 0x5
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 52
+
+
+ 2178 01a6 49       		.uleb128 0x49
+ 2179 01a7 13       		.uleb128 0x13
+ 2180 01a8 02       		.uleb128 0x2
+ 2181 01a9 0A       		.uleb128 0xa
+ 2182 01aa 00       		.byte	0
+ 2183 01ab 00       		.byte	0
+ 2184 01ac 1E       		.uleb128 0x1e
+ 2185 01ad 01       		.uleb128 0x1
+ 2186 01ae 01       		.byte	0x1
+ 2187 01af 49       		.uleb128 0x49
+ 2188 01b0 13       		.uleb128 0x13
+ 2189 01b1 01       		.uleb128 0x1
+ 2190 01b2 13       		.uleb128 0x13
+ 2191 01b3 00       		.byte	0
+ 2192 01b4 00       		.byte	0
+ 2193 01b5 1F       		.uleb128 0x1f
+ 2194 01b6 21       		.uleb128 0x21
+ 2195 01b7 00       		.byte	0
+ 2196 01b8 49       		.uleb128 0x49
+ 2197 01b9 13       		.uleb128 0x13
+ 2198 01ba 2F       		.uleb128 0x2f
+ 2199 01bb 0B       		.uleb128 0xb
+ 2200 01bc 00       		.byte	0
+ 2201 01bd 00       		.byte	0
+ 2202 01be 20       		.uleb128 0x20
+ 2203 01bf 2E       		.uleb128 0x2e
+ 2204 01c0 01       		.byte	0x1
+ 2205 01c1 3F       		.uleb128 0x3f
+ 2206 01c2 0C       		.uleb128 0xc
+ 2207 01c3 03       		.uleb128 0x3
+ 2208 01c4 0E       		.uleb128 0xe
+ 2209 01c5 3A       		.uleb128 0x3a
+ 2210 01c6 0B       		.uleb128 0xb
+ 2211 01c7 3B       		.uleb128 0x3b
+ 2212 01c8 05       		.uleb128 0x5
+ 2213 01c9 27       		.uleb128 0x27
+ 2214 01ca 0C       		.uleb128 0xc
+ 2215 01cb 49       		.uleb128 0x49
+ 2216 01cc 13       		.uleb128 0x13
+ 2217 01cd 11       		.uleb128 0x11
+ 2218 01ce 01       		.uleb128 0x1
+ 2219 01cf 12       		.uleb128 0x12
+ 2220 01d0 01       		.uleb128 0x1
+ 2221 01d1 40       		.uleb128 0x40
+ 2222 01d2 0A       		.uleb128 0xa
+ 2223 01d3 9742     		.uleb128 0x2117
+ 2224 01d5 0C       		.uleb128 0xc
+ 2225 01d6 01       		.uleb128 0x1
+ 2226 01d7 13       		.uleb128 0x13
+ 2227 01d8 00       		.byte	0
+ 2228 01d9 00       		.byte	0
+ 2229 01da 21       		.uleb128 0x21
+ 2230 01db 34       		.uleb128 0x34
+ 2231 01dc 00       		.byte	0
+ 2232 01dd 03       		.uleb128 0x3
+ 2233 01de 0E       		.uleb128 0xe
+ 2234 01df 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 53
+
+
+ 2235 01e0 0B       		.uleb128 0xb
+ 2236 01e1 3B       		.uleb128 0x3b
+ 2237 01e2 05       		.uleb128 0x5
+ 2238 01e3 49       		.uleb128 0x49
+ 2239 01e4 13       		.uleb128 0x13
+ 2240 01e5 1C       		.uleb128 0x1c
+ 2241 01e6 0B       		.uleb128 0xb
+ 2242 01e7 00       		.byte	0
+ 2243 01e8 00       		.byte	0
+ 2244 01e9 22       		.uleb128 0x22
+ 2245 01ea 2E       		.uleb128 0x2e
+ 2246 01eb 00       		.byte	0
+ 2247 01ec 3F       		.uleb128 0x3f
+ 2248 01ed 0C       		.uleb128 0xc
+ 2249 01ee 03       		.uleb128 0x3
+ 2250 01ef 0E       		.uleb128 0xe
+ 2251 01f0 3A       		.uleb128 0x3a
+ 2252 01f1 0B       		.uleb128 0xb
+ 2253 01f2 3B       		.uleb128 0x3b
+ 2254 01f3 05       		.uleb128 0x5
+ 2255 01f4 27       		.uleb128 0x27
+ 2256 01f5 0C       		.uleb128 0xc
+ 2257 01f6 49       		.uleb128 0x49
+ 2258 01f7 13       		.uleb128 0x13
+ 2259 01f8 11       		.uleb128 0x11
+ 2260 01f9 01       		.uleb128 0x1
+ 2261 01fa 12       		.uleb128 0x12
+ 2262 01fb 01       		.uleb128 0x1
+ 2263 01fc 40       		.uleb128 0x40
+ 2264 01fd 0A       		.uleb128 0xa
+ 2265 01fe 9742     		.uleb128 0x2117
+ 2266 0200 0C       		.uleb128 0xc
+ 2267 0201 00       		.byte	0
+ 2268 0202 00       		.byte	0
+ 2269 0203 23       		.uleb128 0x23
+ 2270 0204 2E       		.uleb128 0x2e
+ 2271 0205 01       		.byte	0x1
+ 2272 0206 3F       		.uleb128 0x3f
+ 2273 0207 0C       		.uleb128 0xc
+ 2274 0208 03       		.uleb128 0x3
+ 2275 0209 0E       		.uleb128 0xe
+ 2276 020a 3A       		.uleb128 0x3a
+ 2277 020b 0B       		.uleb128 0xb
+ 2278 020c 3B       		.uleb128 0x3b
+ 2279 020d 05       		.uleb128 0x5
+ 2280 020e 27       		.uleb128 0x27
+ 2281 020f 0C       		.uleb128 0xc
+ 2282 0210 49       		.uleb128 0x49
+ 2283 0211 13       		.uleb128 0x13
+ 2284 0212 11       		.uleb128 0x11
+ 2285 0213 01       		.uleb128 0x1
+ 2286 0214 12       		.uleb128 0x12
+ 2287 0215 01       		.uleb128 0x1
+ 2288 0216 40       		.uleb128 0x40
+ 2289 0217 06       		.uleb128 0x6
+ 2290 0218 9742     		.uleb128 0x2117
+ 2291 021a 0C       		.uleb128 0xc
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 54
+
+
+ 2292 021b 01       		.uleb128 0x1
+ 2293 021c 13       		.uleb128 0x13
+ 2294 021d 00       		.byte	0
+ 2295 021e 00       		.byte	0
+ 2296 021f 24       		.uleb128 0x24
+ 2297 0220 34       		.uleb128 0x34
+ 2298 0221 00       		.byte	0
+ 2299 0222 03       		.uleb128 0x3
+ 2300 0223 0E       		.uleb128 0xe
+ 2301 0224 3A       		.uleb128 0x3a
+ 2302 0225 0B       		.uleb128 0xb
+ 2303 0226 3B       		.uleb128 0x3b
+ 2304 0227 05       		.uleb128 0x5
+ 2305 0228 49       		.uleb128 0x49
+ 2306 0229 13       		.uleb128 0x13
+ 2307 022a 3F       		.uleb128 0x3f
+ 2308 022b 0C       		.uleb128 0xc
+ 2309 022c 3C       		.uleb128 0x3c
+ 2310 022d 0C       		.uleb128 0xc
+ 2311 022e 00       		.byte	0
+ 2312 022f 00       		.byte	0
+ 2313 0230 25       		.uleb128 0x25
+ 2314 0231 34       		.uleb128 0x34
+ 2315 0232 00       		.byte	0
+ 2316 0233 03       		.uleb128 0x3
+ 2317 0234 0E       		.uleb128 0xe
+ 2318 0235 3A       		.uleb128 0x3a
+ 2319 0236 0B       		.uleb128 0xb
+ 2320 0237 3B       		.uleb128 0x3b
+ 2321 0238 0B       		.uleb128 0xb
+ 2322 0239 49       		.uleb128 0x49
+ 2323 023a 13       		.uleb128 0x13
+ 2324 023b 3F       		.uleb128 0x3f
+ 2325 023c 0C       		.uleb128 0xc
+ 2326 023d 02       		.uleb128 0x2
+ 2327 023e 0A       		.uleb128 0xa
+ 2328 023f 00       		.byte	0
+ 2329 0240 00       		.byte	0
+ 2330 0241 26       		.uleb128 0x26
+ 2331 0242 34       		.uleb128 0x34
+ 2332 0243 00       		.byte	0
+ 2333 0244 03       		.uleb128 0x3
+ 2334 0245 0E       		.uleb128 0xe
+ 2335 0246 3A       		.uleb128 0x3a
+ 2336 0247 0B       		.uleb128 0xb
+ 2337 0248 3B       		.uleb128 0x3b
+ 2338 0249 0B       		.uleb128 0xb
+ 2339 024a 49       		.uleb128 0x49
+ 2340 024b 13       		.uleb128 0x13
+ 2341 024c 3F       		.uleb128 0x3f
+ 2342 024d 0C       		.uleb128 0xc
+ 2343 024e 3C       		.uleb128 0x3c
+ 2344 024f 0C       		.uleb128 0xc
+ 2345 0250 00       		.byte	0
+ 2346 0251 00       		.byte	0
+ 2347 0252 27       		.uleb128 0x27
+ 2348 0253 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 55
+
+
+ 2349 0254 00       		.byte	0
+ 2350 0255 3F       		.uleb128 0x3f
+ 2351 0256 0C       		.uleb128 0xc
+ 2352 0257 03       		.uleb128 0x3
+ 2353 0258 0E       		.uleb128 0xe
+ 2354 0259 3A       		.uleb128 0x3a
+ 2355 025a 0B       		.uleb128 0xb
+ 2356 025b 3B       		.uleb128 0x3b
+ 2357 025c 0B       		.uleb128 0xb
+ 2358 025d 27       		.uleb128 0x27
+ 2359 025e 0C       		.uleb128 0xc
+ 2360 025f 49       		.uleb128 0x49
+ 2361 0260 13       		.uleb128 0x13
+ 2362 0261 3C       		.uleb128 0x3c
+ 2363 0262 0C       		.uleb128 0xc
+ 2364 0263 00       		.byte	0
+ 2365 0264 00       		.byte	0
+ 2366 0265 28       		.uleb128 0x28
+ 2367 0266 2E       		.uleb128 0x2e
+ 2368 0267 01       		.byte	0x1
+ 2369 0268 3F       		.uleb128 0x3f
+ 2370 0269 0C       		.uleb128 0xc
+ 2371 026a 03       		.uleb128 0x3
+ 2372 026b 0E       		.uleb128 0xe
+ 2373 026c 3A       		.uleb128 0x3a
+ 2374 026d 0B       		.uleb128 0xb
+ 2375 026e 3B       		.uleb128 0x3b
+ 2376 026f 0B       		.uleb128 0xb
+ 2377 0270 27       		.uleb128 0x27
+ 2378 0271 0C       		.uleb128 0xc
+ 2379 0272 3C       		.uleb128 0x3c
+ 2380 0273 0C       		.uleb128 0xc
+ 2381 0274 01       		.uleb128 0x1
+ 2382 0275 13       		.uleb128 0x13
+ 2383 0276 00       		.byte	0
+ 2384 0277 00       		.byte	0
+ 2385 0278 29       		.uleb128 0x29
+ 2386 0279 05       		.uleb128 0x5
+ 2387 027a 00       		.byte	0
+ 2388 027b 49       		.uleb128 0x49
+ 2389 027c 13       		.uleb128 0x13
+ 2390 027d 00       		.byte	0
+ 2391 027e 00       		.byte	0
+ 2392 027f 2A       		.uleb128 0x2a
+ 2393 0280 2E       		.uleb128 0x2e
+ 2394 0281 01       		.byte	0x1
+ 2395 0282 3F       		.uleb128 0x3f
+ 2396 0283 0C       		.uleb128 0xc
+ 2397 0284 03       		.uleb128 0x3
+ 2398 0285 0E       		.uleb128 0xe
+ 2399 0286 3A       		.uleb128 0x3a
+ 2400 0287 0B       		.uleb128 0xb
+ 2401 0288 3B       		.uleb128 0x3b
+ 2402 0289 0B       		.uleb128 0xb
+ 2403 028a 27       		.uleb128 0x27
+ 2404 028b 0C       		.uleb128 0xc
+ 2405 028c 49       		.uleb128 0x49
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 56
+
+
+ 2406 028d 13       		.uleb128 0x13
+ 2407 028e 3C       		.uleb128 0x3c
+ 2408 028f 0C       		.uleb128 0xc
+ 2409 0290 01       		.uleb128 0x1
+ 2410 0291 13       		.uleb128 0x13
+ 2411 0292 00       		.byte	0
+ 2412 0293 00       		.byte	0
+ 2413 0294 2B       		.uleb128 0x2b
+ 2414 0295 2E       		.uleb128 0x2e
+ 2415 0296 01       		.byte	0x1
+ 2416 0297 3F       		.uleb128 0x3f
+ 2417 0298 0C       		.uleb128 0xc
+ 2418 0299 03       		.uleb128 0x3
+ 2419 029a 0E       		.uleb128 0xe
+ 2420 029b 3A       		.uleb128 0x3a
+ 2421 029c 0B       		.uleb128 0xb
+ 2422 029d 3B       		.uleb128 0x3b
+ 2423 029e 0B       		.uleb128 0xb
+ 2424 029f 27       		.uleb128 0x27
+ 2425 02a0 0C       		.uleb128 0xc
+ 2426 02a1 49       		.uleb128 0x49
+ 2427 02a2 13       		.uleb128 0x13
+ 2428 02a3 3C       		.uleb128 0x3c
+ 2429 02a4 0C       		.uleb128 0xc
+ 2430 02a5 00       		.byte	0
+ 2431 02a6 00       		.byte	0
+ 2432 02a7 00       		.byte	0
+ 2433              		.section	.debug_loc,"",%progbits
+ 2434              	.Ldebug_loc0:
+ 2435              	.LLST0:
+ 2436 0000 00000000 		.4byte	.LVL0
+ 2437 0004 5E000000 		.4byte	.LVL3
+ 2438 0008 0200     		.2byte	0x2
+ 2439 000a 30       		.byte	0x30
+ 2440 000b 9F       		.byte	0x9f
+ 2441 000c 00000000 		.4byte	0
+ 2442 0010 00000000 		.4byte	0
+ 2443              	.LLST1:
+ 2444 0014 00000000 		.4byte	.LFB2
+ 2445 0018 02000000 		.4byte	.LCFI0
+ 2446 001c 0200     		.2byte	0x2
+ 2447 001e 7D       		.byte	0x7d
+ 2448 001f 00       		.sleb128 0
+ 2449 0020 02000000 		.4byte	.LCFI0
+ 2450 0024 38000000 		.4byte	.LFE2
+ 2451 0028 0200     		.2byte	0x2
+ 2452 002a 7D       		.byte	0x7d
+ 2453 002b 10       		.sleb128 16
+ 2454 002c 00000000 		.4byte	0
+ 2455 0030 00000000 		.4byte	0
+ 2456              	.LLST2:
+ 2457 0034 00000000 		.4byte	.LVL5
+ 2458 0038 12000000 		.4byte	.LVL7
+ 2459 003c 0100     		.2byte	0x1
+ 2460 003e 50       		.byte	0x50
+ 2461 003f 12000000 		.4byte	.LVL7
+ 2462 0043 38000000 		.4byte	.LFE2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 57
+
+
+ 2463 0047 0100     		.2byte	0x1
+ 2464 0049 56       		.byte	0x56
+ 2465 004a 00000000 		.4byte	0
+ 2466 004e 00000000 		.4byte	0
+ 2467              	.LLST3:
+ 2468 0052 00000000 		.4byte	.LVL5
+ 2469 0056 0A000000 		.4byte	.LVL6
+ 2470 005a 0100     		.2byte	0x1
+ 2471 005c 51       		.byte	0x51
+ 2472 005d 0A000000 		.4byte	.LVL6
+ 2473 0061 24000000 		.4byte	.LVL8
+ 2474 0065 0400     		.2byte	0x4
+ 2475 0067 F3       		.byte	0xf3
+ 2476 0068 01       		.uleb128 0x1
+ 2477 0069 51       		.byte	0x51
+ 2478 006a 9F       		.byte	0x9f
+ 2479 006b 24000000 		.4byte	.LVL8
+ 2480 006f 2F000000 		.4byte	.LVL9-1
+ 2481 0073 0100     		.2byte	0x1
+ 2482 0075 52       		.byte	0x52
+ 2483 0076 00000000 		.4byte	0
+ 2484 007a 00000000 		.4byte	0
+ 2485              	.LLST4:
+ 2486 007e 00000000 		.4byte	.LFB4
+ 2487 0082 02000000 		.4byte	.LCFI1
+ 2488 0086 0200     		.2byte	0x2
+ 2489 0088 7D       		.byte	0x7d
+ 2490 0089 00       		.sleb128 0
+ 2491 008a 02000000 		.4byte	.LCFI1
+ 2492 008e 64000000 		.4byte	.LFE4
+ 2493 0092 0200     		.2byte	0x2
+ 2494 0094 7D       		.byte	0x7d
+ 2495 0095 18       		.sleb128 24
+ 2496 0096 00000000 		.4byte	0
+ 2497 009a 00000000 		.4byte	0
+ 2498              	.LLST5:
+ 2499 009e 00000000 		.4byte	.LVL10
+ 2500 00a2 10000000 		.4byte	.LVL15
+ 2501 00a6 0100     		.2byte	0x1
+ 2502 00a8 50       		.byte	0x50
+ 2503 00a9 10000000 		.4byte	.LVL15
+ 2504 00ad 64000000 		.4byte	.LFE4
+ 2505 00b1 0100     		.2byte	0x1
+ 2506 00b3 57       		.byte	0x57
+ 2507 00b4 00000000 		.4byte	0
+ 2508 00b8 00000000 		.4byte	0
+ 2509              	.LLST6:
+ 2510 00bc 10000000 		.4byte	.LVL15
+ 2511 00c0 16000000 		.4byte	.LVL17
+ 2512 00c4 0100     		.2byte	0x1
+ 2513 00c6 54       		.byte	0x54
+ 2514 00c7 22000000 		.4byte	.LVL18
+ 2515 00cb 64000000 		.4byte	.LFE4
+ 2516 00cf 0100     		.2byte	0x1
+ 2517 00d1 54       		.byte	0x54
+ 2518 00d2 00000000 		.4byte	0
+ 2519 00d6 00000000 		.4byte	0
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 58
+
+
+ 2520              	.LLST7:
+ 2521 00da 12000000 		.4byte	.LVL16
+ 2522 00de 28000000 		.4byte	.LVL20
+ 2523 00e2 0100     		.2byte	0x1
+ 2524 00e4 55       		.byte	0x55
+ 2525 00e5 5A000000 		.4byte	.LVL22
+ 2526 00e9 64000000 		.4byte	.LFE4
+ 2527 00ed 0100     		.2byte	0x1
+ 2528 00ef 55       		.byte	0x55
+ 2529 00f0 00000000 		.4byte	0
+ 2530 00f4 00000000 		.4byte	0
+ 2531              	.LLST8:
+ 2532 00f8 00000000 		.4byte	.LVL10
+ 2533 00fc 10000000 		.4byte	.LVL15
+ 2534 0100 0200     		.2byte	0x2
+ 2535 0102 30       		.byte	0x30
+ 2536 0103 9F       		.byte	0x9f
+ 2537 0104 10000000 		.4byte	.LVL15
+ 2538 0108 26000000 		.4byte	.LVL19
+ 2539 010c 0100     		.2byte	0x1
+ 2540 010e 56       		.byte	0x56
+ 2541 010f 28000000 		.4byte	.LVL20
+ 2542 0113 64000000 		.4byte	.LFE4
+ 2543 0117 0100     		.2byte	0x1
+ 2544 0119 56       		.byte	0x56
+ 2545 011a 00000000 		.4byte	0
+ 2546 011e 00000000 		.4byte	0
+ 2547              	.LLST9:
+ 2548 0122 04000000 		.4byte	.LVL11
+ 2549 0126 10000000 		.4byte	.LVL15
+ 2550 012a 0100     		.2byte	0x1
+ 2551 012c 50       		.byte	0x50
+ 2552 012d 10000000 		.4byte	.LVL15
+ 2553 0131 64000000 		.4byte	.LFE4
+ 2554 0135 0100     		.2byte	0x1
+ 2555 0137 57       		.byte	0x57
+ 2556 0138 00000000 		.4byte	0
+ 2557 013c 00000000 		.4byte	0
+ 2558              	.LLST10:
+ 2559 0140 04000000 		.4byte	.LVL11
+ 2560 0144 06000000 		.4byte	.LVL12
+ 2561 0148 0200     		.2byte	0x2
+ 2562 014a 30       		.byte	0x30
+ 2563 014b 9F       		.byte	0x9f
+ 2564 014c 06000000 		.4byte	.LVL12
+ 2565 0150 0C000000 		.4byte	.LVL13
+ 2566 0154 0100     		.2byte	0x1
+ 2567 0156 54       		.byte	0x54
+ 2568 0157 0C000000 		.4byte	.LVL13
+ 2569 015b 0E000000 		.4byte	.LVL14
+ 2570 015f 0300     		.2byte	0x3
+ 2571 0161 74       		.byte	0x74
+ 2572 0162 7F       		.sleb128 -1
+ 2573 0163 9F       		.byte	0x9f
+ 2574 0164 0E000000 		.4byte	.LVL14
+ 2575 0168 10000000 		.4byte	.LVL15
+ 2576 016c 0100     		.2byte	0x1
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 59
+
+
+ 2577 016e 54       		.byte	0x54
+ 2578 016f 00000000 		.4byte	0
+ 2579 0173 00000000 		.4byte	0
+ 2580              	.LLST11:
+ 2581 0177 00000000 		.4byte	.LFB5
+ 2582 017b 02000000 		.4byte	.LCFI2
+ 2583 017f 0200     		.2byte	0x2
+ 2584 0181 7D       		.byte	0x7d
+ 2585 0182 00       		.sleb128 0
+ 2586 0183 02000000 		.4byte	.LCFI2
+ 2587 0187 18000000 		.4byte	.LFE5
+ 2588 018b 0200     		.2byte	0x2
+ 2589 018d 7D       		.byte	0x7d
+ 2590 018e 10       		.sleb128 16
+ 2591 018f 00000000 		.4byte	0
+ 2592 0193 00000000 		.4byte	0
+ 2593              	.LLST12:
+ 2594 0197 00000000 		.4byte	.LVL23
+ 2595 019b 0E000000 		.4byte	.LVL25
+ 2596 019f 0100     		.2byte	0x1
+ 2597 01a1 50       		.byte	0x50
+ 2598 01a2 0E000000 		.4byte	.LVL25
+ 2599 01a6 11000000 		.4byte	.LVL26-1
+ 2600 01aa 0200     		.2byte	0x2
+ 2601 01ac 71       		.byte	0x71
+ 2602 01ad 00       		.sleb128 0
+ 2603 01ae 11000000 		.4byte	.LVL26-1
+ 2604 01b2 18000000 		.4byte	.LFE5
+ 2605 01b6 0400     		.2byte	0x4
+ 2606 01b8 F3       		.byte	0xf3
+ 2607 01b9 01       		.uleb128 0x1
+ 2608 01ba 50       		.byte	0x50
+ 2609 01bb 9F       		.byte	0x9f
+ 2610 01bc 00000000 		.4byte	0
+ 2611 01c0 00000000 		.4byte	0
+ 2612              	.LLST13:
+ 2613 01c4 00000000 		.4byte	.LFB6
+ 2614 01c8 02000000 		.4byte	.LCFI3
+ 2615 01cc 0200     		.2byte	0x2
+ 2616 01ce 7D       		.byte	0x7d
+ 2617 01cf 00       		.sleb128 0
+ 2618 01d0 02000000 		.4byte	.LCFI3
+ 2619 01d4 20000000 		.4byte	.LFE6
+ 2620 01d8 0200     		.2byte	0x2
+ 2621 01da 7D       		.byte	0x7d
+ 2622 01db 10       		.sleb128 16
+ 2623 01dc 00000000 		.4byte	0
+ 2624 01e0 00000000 		.4byte	0
+ 2625              	.LLST14:
+ 2626 01e4 00000000 		.4byte	.LVL30
+ 2627 01e8 08000000 		.4byte	.LVL32
+ 2628 01ec 0100     		.2byte	0x1
+ 2629 01ee 50       		.byte	0x50
+ 2630 01ef 08000000 		.4byte	.LVL32
+ 2631 01f3 0D000000 		.4byte	.LVL33-1
+ 2632 01f7 0100     		.2byte	0x1
+ 2633 01f9 53       		.byte	0x53
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 60
+
+
+ 2634 01fa 0D000000 		.4byte	.LVL33-1
+ 2635 01fe 14000000 		.4byte	.LFE10
+ 2636 0202 0400     		.2byte	0x4
+ 2637 0204 F3       		.byte	0xf3
+ 2638 0205 01       		.uleb128 0x1
+ 2639 0206 50       		.byte	0x50
+ 2640 0207 9F       		.byte	0x9f
+ 2641 0208 00000000 		.4byte	0
+ 2642 020c 00000000 		.4byte	0
+ 2643              	.LLST15:
+ 2644 0210 00000000 		.4byte	.LVL30
+ 2645 0214 04000000 		.4byte	.LVL31
+ 2646 0218 0100     		.2byte	0x1
+ 2647 021a 51       		.byte	0x51
+ 2648 021b 04000000 		.4byte	.LVL31
+ 2649 021f 14000000 		.4byte	.LFE10
+ 2650 0223 0400     		.2byte	0x4
+ 2651 0225 F3       		.byte	0xf3
+ 2652 0226 01       		.uleb128 0x1
+ 2653 0227 51       		.byte	0x51
+ 2654 0228 9F       		.byte	0x9f
+ 2655 0229 00000000 		.4byte	0
+ 2656 022d 00000000 		.4byte	0
+ 2657              	.LLST16:
+ 2658 0231 00000000 		.4byte	.LFB11
+ 2659 0235 02000000 		.4byte	.LCFI4
+ 2660 0239 0200     		.2byte	0x2
+ 2661 023b 7D       		.byte	0x7d
+ 2662 023c 00       		.sleb128 0
+ 2663 023d 02000000 		.4byte	.LCFI4
+ 2664 0241 28000000 		.4byte	.LFE11
+ 2665 0245 0200     		.2byte	0x2
+ 2666 0247 7D       		.byte	0x7d
+ 2667 0248 08       		.sleb128 8
+ 2668 0249 00000000 		.4byte	0
+ 2669 024d 00000000 		.4byte	0
+ 2670              	.LLST17:
+ 2671 0251 00000000 		.4byte	.LVL34
+ 2672 0255 0A000000 		.4byte	.LVL35
+ 2673 0259 0100     		.2byte	0x1
+ 2674 025b 50       		.byte	0x50
+ 2675 025c 0A000000 		.4byte	.LVL35
+ 2676 0260 1D000000 		.4byte	.LVL36-1
+ 2677 0264 0100     		.2byte	0x1
+ 2678 0266 51       		.byte	0x51
+ 2679 0267 1D000000 		.4byte	.LVL36-1
+ 2680 026b 28000000 		.4byte	.LFE11
+ 2681 026f 0400     		.2byte	0x4
+ 2682 0271 F3       		.byte	0xf3
+ 2683 0272 01       		.uleb128 0x1
+ 2684 0273 50       		.byte	0x50
+ 2685 0274 9F       		.byte	0x9f
+ 2686 0275 00000000 		.4byte	0
+ 2687 0279 00000000 		.4byte	0
+ 2688              	.LLST18:
+ 2689 027d 00000000 		.4byte	.LFB12
+ 2690 0281 02000000 		.4byte	.LCFI5
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 61
+
+
+ 2691 0285 0200     		.2byte	0x2
+ 2692 0287 7D       		.byte	0x7d
+ 2693 0288 00       		.sleb128 0
+ 2694 0289 02000000 		.4byte	.LCFI5
+ 2695 028d 1C000000 		.4byte	.LFE12
+ 2696 0291 0200     		.2byte	0x2
+ 2697 0293 7D       		.byte	0x7d
+ 2698 0294 10       		.sleb128 16
+ 2699 0295 00000000 		.4byte	0
+ 2700 0299 00000000 		.4byte	0
+ 2701              	.LLST19:
+ 2702 029d 00000000 		.4byte	.LVL38
+ 2703 02a1 0E000000 		.4byte	.LVL39
+ 2704 02a5 0200     		.2byte	0x2
+ 2705 02a7 30       		.byte	0x30
+ 2706 02a8 9F       		.byte	0x9f
+ 2707 02a9 0E000000 		.4byte	.LVL39
+ 2708 02ad 12000000 		.4byte	.LVL40
+ 2709 02b1 0100     		.2byte	0x1
+ 2710 02b3 50       		.byte	0x50
+ 2711 02b4 12000000 		.4byte	.LVL40
+ 2712 02b8 14000000 		.4byte	.LVL41
+ 2713 02bc 0200     		.2byte	0x2
+ 2714 02be 30       		.byte	0x30
+ 2715 02bf 9F       		.byte	0x9f
+ 2716 02c0 14000000 		.4byte	.LVL41
+ 2717 02c4 20000000 		.4byte	.LFE13
+ 2718 02c8 0100     		.2byte	0x1
+ 2719 02ca 50       		.byte	0x50
+ 2720 02cb 00000000 		.4byte	0
+ 2721 02cf 00000000 		.4byte	0
+ 2722              	.LLST20:
+ 2723 02d3 04000000 		.4byte	.LVL42
+ 2724 02d7 0A000000 		.4byte	.LVL43
+ 2725 02db 0600     		.2byte	0x6
+ 2726 02dd 70       		.byte	0x70
+ 2727 02de 00       		.sleb128 0
+ 2728 02df 08       		.byte	0x8
+ 2729 02e0 FF       		.byte	0xff
+ 2730 02e1 1A       		.byte	0x1a
+ 2731 02e2 9F       		.byte	0x9f
+ 2732 02e3 0A000000 		.4byte	.LVL43
+ 2733 02e7 12000000 		.4byte	.LVL44
+ 2734 02eb 0100     		.2byte	0x1
+ 2735 02ed 51       		.byte	0x51
+ 2736 02ee 12000000 		.4byte	.LVL44
+ 2737 02f2 1C000000 		.4byte	.LFE14
+ 2738 02f6 0B00     		.2byte	0xb
+ 2739 02f8 72       		.byte	0x72
+ 2740 02f9 00       		.sleb128 0
+ 2741 02fa 38       		.byte	0x38
+ 2742 02fb 24       		.byte	0x24
+ 2743 02fc 73       		.byte	0x73
+ 2744 02fd 00       		.sleb128 0
+ 2745 02fe 08       		.byte	0x8
+ 2746 02ff FF       		.byte	0xff
+ 2747 0300 1A       		.byte	0x1a
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 62
+
+
+ 2748 0301 21       		.byte	0x21
+ 2749 0302 9F       		.byte	0x9f
+ 2750 0303 00000000 		.4byte	0
+ 2751 0307 00000000 		.4byte	0
+ 2752              		.section	.debug_aranges,"",%progbits
+ 2753 0000 A4000000 		.4byte	0xa4
+ 2754 0004 0200     		.2byte	0x2
+ 2755 0006 00000000 		.4byte	.Ldebug_info0
+ 2756 000a 04       		.byte	0x4
+ 2757 000b 00       		.byte	0
+ 2758 000c 0000     		.2byte	0
+ 2759 000e 0000     		.2byte	0
+ 2760 0010 00000000 		.4byte	.LFB0
+ 2761 0014 80000000 		.4byte	.LFE0-.LFB0
+ 2762 0018 00000000 		.4byte	.LFB1
+ 2763 001c 18000000 		.4byte	.LFE1-.LFB1
+ 2764 0020 00000000 		.4byte	.LFB2
+ 2765 0024 38000000 		.4byte	.LFE2-.LFB2
+ 2766 0028 00000000 		.4byte	.LFB4
+ 2767 002c 64000000 		.4byte	.LFE4-.LFB4
+ 2768 0030 00000000 		.4byte	.LFB5
+ 2769 0034 18000000 		.4byte	.LFE5-.LFB5
+ 2770 0038 00000000 		.4byte	.LFB6
+ 2771 003c 20000000 		.4byte	.LFE6-.LFB6
+ 2772 0040 00000000 		.4byte	.LFB7
+ 2773 0044 24000000 		.4byte	.LFE7-.LFB7
+ 2774 0048 00000000 		.4byte	.LFB8
+ 2775 004c 18000000 		.4byte	.LFE8-.LFB8
+ 2776 0050 00000000 		.4byte	.LFB9
+ 2777 0054 18000000 		.4byte	.LFE9-.LFB9
+ 2778 0058 00000000 		.4byte	.LFB10
+ 2779 005c 14000000 		.4byte	.LFE10-.LFB10
+ 2780 0060 00000000 		.4byte	.LFB11
+ 2781 0064 28000000 		.4byte	.LFE11-.LFB11
+ 2782 0068 00000000 		.4byte	.LFB12
+ 2783 006c 1C000000 		.4byte	.LFE12-.LFB12
+ 2784 0070 00000000 		.4byte	.LFB13
+ 2785 0074 20000000 		.4byte	.LFE13-.LFB13
+ 2786 0078 00000000 		.4byte	.LFB14
+ 2787 007c 1C000000 		.4byte	.LFE14-.LFB14
+ 2788 0080 00000000 		.4byte	.LFB15
+ 2789 0084 0C000000 		.4byte	.LFE15-.LFB15
+ 2790 0088 00000000 		.4byte	.LFB16
+ 2791 008c 0C000000 		.4byte	.LFE16-.LFB16
+ 2792 0090 00000000 		.4byte	.LFB17
+ 2793 0094 0C000000 		.4byte	.LFE17-.LFB17
+ 2794 0098 00000000 		.4byte	.LFB18
+ 2795 009c 0C000000 		.4byte	.LFE18-.LFB18
+ 2796 00a0 00000000 		.4byte	0
+ 2797 00a4 00000000 		.4byte	0
+ 2798              		.section	.debug_ranges,"",%progbits
+ 2799              	.Ldebug_ranges0:
+ 2800 0000 00000000 		.4byte	.LFB0
+ 2801 0004 80000000 		.4byte	.LFE0
+ 2802 0008 00000000 		.4byte	.LFB1
+ 2803 000c 18000000 		.4byte	.LFE1
+ 2804 0010 00000000 		.4byte	.LFB2
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 63
+
+
+ 2805 0014 38000000 		.4byte	.LFE2
+ 2806 0018 00000000 		.4byte	.LFB4
+ 2807 001c 64000000 		.4byte	.LFE4
+ 2808 0020 00000000 		.4byte	.LFB5
+ 2809 0024 18000000 		.4byte	.LFE5
+ 2810 0028 00000000 		.4byte	.LFB6
+ 2811 002c 20000000 		.4byte	.LFE6
+ 2812 0030 00000000 		.4byte	.LFB7
+ 2813 0034 24000000 		.4byte	.LFE7
+ 2814 0038 00000000 		.4byte	.LFB8
+ 2815 003c 18000000 		.4byte	.LFE8
+ 2816 0040 00000000 		.4byte	.LFB9
+ 2817 0044 18000000 		.4byte	.LFE9
+ 2818 0048 00000000 		.4byte	.LFB10
+ 2819 004c 14000000 		.4byte	.LFE10
+ 2820 0050 00000000 		.4byte	.LFB11
+ 2821 0054 28000000 		.4byte	.LFE11
+ 2822 0058 00000000 		.4byte	.LFB12
+ 2823 005c 1C000000 		.4byte	.LFE12
+ 2824 0060 00000000 		.4byte	.LFB13
+ 2825 0064 20000000 		.4byte	.LFE13
+ 2826 0068 00000000 		.4byte	.LFB14
+ 2827 006c 1C000000 		.4byte	.LFE14
+ 2828 0070 00000000 		.4byte	.LFB15
+ 2829 0074 0C000000 		.4byte	.LFE15
+ 2830 0078 00000000 		.4byte	.LFB16
+ 2831 007c 0C000000 		.4byte	.LFE16
+ 2832 0080 00000000 		.4byte	.LFB17
+ 2833 0084 0C000000 		.4byte	.LFE17
+ 2834 0088 00000000 		.4byte	.LFB18
+ 2835 008c 0C000000 		.4byte	.LFE18
+ 2836 0090 00000000 		.4byte	0
+ 2837 0094 00000000 		.4byte	0
+ 2838              		.section	.debug_line,"",%progbits
+ 2839              	.Ldebug_line0:
+ 2840 0000 3B020000 		.section	.debug_str,"MS",%progbits,1
+ 2840      02006E00 
+ 2840      00000201 
+ 2840      FB0E0D00 
+ 2840      01010101 
+ 2841              	.LASF33:
+ 2842 0000 70537461 		.ascii	"pStatusBlock\000"
+ 2842      74757342 
+ 2842      6C6F636B 
+ 2842      00
+ 2843              	.LASF31:
+ 2844 000d 636F756E 		.ascii	"count\000"
+ 2844      7400
+ 2845              	.LASF10:
+ 2846 0013 75696E74 		.ascii	"uint16\000"
+ 2846      313600
+ 2847              	.LASF44:
+ 2848 001a 74784461 		.ascii	"txDataByte\000"
+ 2848      74614279 
+ 2848      746500
+ 2849              	.LASF45:
+ 2850 0025 64617461 		.ascii	"dataByte\000"
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 64
+
+
+ 2850      42797465 
+ 2850      00
+ 2851              	.LASF81:
+ 2852 002e 433A5C55 		.ascii	"C:\\Users\\Luke\\Desktop\\Laserschutzschaltung.cyds"
+ 2852      73657273 
+ 2852      5C4C756B 
+ 2852      655C4465 
+ 2852      736B746F 
+ 2853 005d 6E5C4C61 		.ascii	"n\\Laserschutzschaltung.cydsn\000"
+ 2853      73657273 
+ 2853      63687574 
+ 2853      7A736368 
+ 2853      616C7475 
+ 2854              	.LASF38:
+ 2855 007a 73747269 		.ascii	"string\000"
+ 2855      6E6700
+ 2856              	.LASF66:
+ 2857 0081 55534255 		.ascii	"USBUART_1_lineCoding\000"
+ 2857      4152545F 
+ 2857      315F6C69 
+ 2857      6E65436F 
+ 2857      64696E67 
+ 2858              	.LASF64:
+ 2859 0096 55534255 		.ascii	"USBUART_1_GetLineControl\000"
+ 2859      4152545F 
+ 2859      315F4765 
+ 2859      744C696E 
+ 2859      65436F6E 
+ 2860              	.LASF7:
+ 2861 00af 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2861      206C6F6E 
+ 2861      6720756E 
+ 2861      7369676E 
+ 2861      65642069 
+ 2862              	.LASF22:
+ 2863 00c6 61646472 		.ascii	"addr\000"
+ 2863      00
+ 2864              	.LASF6:
+ 2865 00cb 6C6F6E67 		.ascii	"long long int\000"
+ 2865      206C6F6E 
+ 2865      6720696E 
+ 2865      7400
+ 2866              	.LASF0:
+ 2867 00d9 7369676E 		.ascii	"signed char\000"
+ 2867      65642063 
+ 2867      68617200 
+ 2868              	.LASF76:
+ 2869 00e5 55534255 		.ascii	"USBUART_1_EnableOutEP\000"
+ 2869      4152545F 
+ 2869      315F456E 
+ 2869      61626C65 
+ 2869      4F757445 
+ 2870              	.LASF60:
+ 2871 00fb 72617465 		.ascii	"rate\000"
+ 2871      00
+ 2872              	.LASF70:
+ 2873 0100 55534255 		.ascii	"USBUART_1_cdc_data_out_ep\000"
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 65
+
+
+ 2873      4152545F 
+ 2873      315F6364 
+ 2873      635F6461 
+ 2873      74615F6F 
+ 2874              	.LASF58:
+ 2875 011a 73746174 		.ascii	"state\000"
+ 2875      6500
+ 2876              	.LASF4:
+ 2877 0120 6C6F6E67 		.ascii	"long int\000"
+ 2877      20696E74 
+ 2877      00
+ 2878              	.LASF67:
+ 2879 0129 55534255 		.ascii	"USBUART_1_lineChanged\000"
+ 2879      4152545F 
+ 2879      315F6C69 
+ 2879      6E654368 
+ 2879      616E6765 
+ 2880              	.LASF72:
+ 2881 013f 55534255 		.ascii	"USBUART_1_currentTD\000"
+ 2881      4152545F 
+ 2881      315F6375 
+ 2881      7272656E 
+ 2881      74544400 
+ 2882              	.LASF9:
+ 2883 0153 75696E74 		.ascii	"uint8\000"
+ 2883      3800
+ 2884              	.LASF21:
+ 2885 0159 6570546F 		.ascii	"epToggle\000"
+ 2885      67676C65 
+ 2885      00
+ 2886              	.LASF13:
+ 2887 0162 646F7562 		.ascii	"double\000"
+ 2887      6C6500
+ 2888              	.LASF57:
+ 2889 0169 55534255 		.ascii	"USBUART_1_IsLineChanged\000"
+ 2889      4152545F 
+ 2889      315F4973 
+ 2889      4C696E65 
+ 2889      4368616E 
+ 2890              	.LASF11:
+ 2891 0181 75696E74 		.ascii	"uint32\000"
+ 2891      333200
+ 2892              	.LASF32:
+ 2893 0188 70446174 		.ascii	"pData\000"
+ 2893      6100
+ 2894              	.LASF75:
+ 2895 018e 55534255 		.ascii	"USBUART_1_InitControlWrite\000"
+ 2895      4152545F 
+ 2895      315F496E 
+ 2895      6974436F 
+ 2895      6E74726F 
+ 2896              	.LASF71:
+ 2897 01a9 55534255 		.ascii	"USBUART_1_EP\000"
+ 2897      4152545F 
+ 2897      315F4550 
+ 2897      00
+ 2898              	.LASF48:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 66
+
+
+ 2899 01b6 55534255 		.ascii	"USBUART_1_DispatchCDCClassRqst\000"
+ 2899      4152545F 
+ 2899      315F4469 
+ 2899      73706174 
+ 2899      63684344 
+ 2900              	.LASF23:
+ 2901 01d5 65704D6F 		.ascii	"epMode\000"
+ 2901      646500
+ 2902              	.LASF55:
+ 2903 01dc 55534255 		.ascii	"USBUART_1_GetChar\000"
+ 2903      4152545F 
+ 2903      315F4765 
+ 2903      74436861 
+ 2903      7200
+ 2904              	.LASF27:
+ 2905 01ee 545F5553 		.ascii	"T_USBUART_1_EP_CTL_BLOCK\000"
+ 2905      42554152 
+ 2905      545F315F 
+ 2905      45505F43 
+ 2905      544C5F42 
+ 2906              	.LASF49:
+ 2907 0207 55534255 		.ascii	"USBUART_1_GetCount\000"
+ 2907      4152545F 
+ 2907      315F4765 
+ 2907      74436F75 
+ 2907      6E7400
+ 2908              	.LASF36:
+ 2909 021a 55534255 		.ascii	"USBUART_1_PutData\000"
+ 2909      4152545F 
+ 2909      315F5075 
+ 2909      74446174 
+ 2909      6100
+ 2910              	.LASF8:
+ 2911 022c 756E7369 		.ascii	"unsigned int\000"
+ 2911      676E6564 
+ 2911      20696E74 
+ 2911      00
+ 2912              	.LASF74:
+ 2913 0239 55534255 		.ascii	"USBUART_1_InitNoDataControlTransfer\000"
+ 2913      4152545F 
+ 2913      315F496E 
+ 2913      69744E6F 
+ 2913      44617461 
+ 2914              	.LASF40:
+ 2915 025d 7374725F 		.ascii	"str_length\000"
+ 2915      6C656E67 
+ 2915      746800
+ 2916              	.LASF5:
+ 2917 0268 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2917      20756E73 
+ 2917      69676E65 
+ 2917      6420696E 
+ 2917      7400
+ 2918              	.LASF80:
+ 2919 027a 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\USBUART_1_cdc.c\000"
+ 2919      6E657261 
+ 2919      7465645F 
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 67
+
+
+ 2919      536F7572 
+ 2919      63655C50 
+ 2920              	.LASF37:
+ 2921 02a3 55534255 		.ascii	"USBUART_1_PutString\000"
+ 2921      4152545F 
+ 2921      315F5075 
+ 2921      74537472 
+ 2921      696E6700 
+ 2922              	.LASF69:
+ 2923 02b7 55534255 		.ascii	"USBUART_1_cdc_data_in_ep\000"
+ 2923      4152545F 
+ 2923      315F6364 
+ 2923      635F6461 
+ 2923      74615F69 
+ 2924              	.LASF3:
+ 2925 02d0 73686F72 		.ascii	"short unsigned int\000"
+ 2925      7420756E 
+ 2925      7369676E 
+ 2925      65642069 
+ 2925      6E7400
+ 2926              	.LASF78:
+ 2927 02e3 55534255 		.ascii	"USBUART_1_ReadOutEP\000"
+ 2927      4152545F 
+ 2927      315F5265 
+ 2927      61644F75 
+ 2927      74455000 
+ 2928              	.LASF83:
+ 2929 02f7 55534255 		.ascii	"USBUART_1_GetEPCount\000"
+ 2929      4152545F 
+ 2929      315F4765 
+ 2929      74455043 
+ 2929      6F756E74 
+ 2930              	.LASF54:
+ 2931 030c 55534255 		.ascii	"USBUART_1_GetAll\000"
+ 2931      4152545F 
+ 2931      315F4765 
+ 2931      74416C6C 
+ 2931      00
+ 2932              	.LASF26:
+ 2933 031d 696E7465 		.ascii	"interface\000"
+ 2933      72666163 
+ 2933      6500
+ 2934              	.LASF68:
+ 2935 0327 55534255 		.ascii	"USBUART_1_lineControlBitmap\000"
+ 2935      4152545F 
+ 2935      315F6C69 
+ 2935      6E65436F 
+ 2935      6E74726F 
+ 2936              	.LASF20:
+ 2937 0343 68774570 		.ascii	"hwEpState\000"
+ 2937      53746174 
+ 2937      6500
+ 2938              	.LASF17:
+ 2939 034d 73697A65 		.ascii	"sizetype\000"
+ 2939      74797065 
+ 2939      00
+ 2940              	.LASF59:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 68
+
+
+ 2941 0356 55534255 		.ascii	"USBUART_1_GetDTERate\000"
+ 2941      4152545F 
+ 2941      315F4765 
+ 2941      74445445 
+ 2941      52617465 
+ 2942              	.LASF35:
+ 2943 036b 55534255 		.ascii	"USBUART_1_CDC_Init\000"
+ 2943      4152545F 
+ 2943      315F4344 
+ 2943      435F496E 
+ 2943      697400
+ 2944              	.LASF18:
+ 2945 037e 61747472 		.ascii	"attrib\000"
+ 2945      696200
+ 2946              	.LASF82:
+ 2947 0385 55534255 		.ascii	"USBUART_1_StrLen\000"
+ 2947      4152545F 
+ 2947      315F5374 
+ 2947      724C656E 
+ 2947      00
+ 2948              	.LASF61:
+ 2949 0396 55534255 		.ascii	"USBUART_1_GetCharFormat\000"
+ 2949      4152545F 
+ 2949      315F4765 
+ 2949      74436861 
+ 2949      72466F72 
+ 2950              	.LASF12:
+ 2951 03ae 666C6F61 		.ascii	"float\000"
+ 2951      7400
+ 2952              	.LASF19:
+ 2953 03b4 61706945 		.ascii	"apiEpState\000"
+ 2953      70537461 
+ 2953      746500
+ 2954              	.LASF79:
+ 2955 03bf 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 2955      4320342E 
+ 2955      372E3320 
+ 2955      32303133 
+ 2955      30333132 
+ 2956 03f2 616E6368 		.ascii	"anch revision 196615]\000"
+ 2956      20726576 
+ 2956      6973696F 
+ 2956      6E203139 
+ 2956      36363135 
+ 2957              	.LASF16:
+ 2958 0408 72656738 		.ascii	"reg8\000"
+ 2958      00
+ 2959              	.LASF1:
+ 2960 040d 756E7369 		.ascii	"unsigned char\000"
+ 2960      676E6564 
+ 2960      20636861 
+ 2960      7200
+ 2961              	.LASF2:
+ 2962 041b 73686F72 		.ascii	"short int\000"
+ 2962      7420696E 
+ 2962      7400
+ 2963              	.LASF43:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 69
+
+
+ 2964 0425 55534255 		.ascii	"USBUART_1_PutChar\000"
+ 2964      4152545F 
+ 2964      315F5075 
+ 2964      74436861 
+ 2964      7200
+ 2965              	.LASF56:
+ 2966 0437 72784461 		.ascii	"rxData\000"
+ 2966      746100
+ 2967              	.LASF41:
+ 2968 043e 73656E64 		.ascii	"send_length\000"
+ 2968      5F6C656E 
+ 2968      67746800 
+ 2969              	.LASF29:
+ 2970 044a 6C656E67 		.ascii	"length\000"
+ 2970      746800
+ 2971              	.LASF30:
+ 2972 0451 545F5553 		.ascii	"T_USBUART_1_XFER_STATUS_BLOCK\000"
+ 2972      42554152 
+ 2972      545F315F 
+ 2972      58464552 
+ 2972      5F535441 
+ 2973              	.LASF15:
+ 2974 046f 63686172 		.ascii	"char\000"
+ 2974      00
+ 2975              	.LASF25:
+ 2976 0474 62756666 		.ascii	"bufferSize\000"
+ 2976      65725369 
+ 2976      7A6500
+ 2977              	.LASF62:
+ 2978 047f 55534255 		.ascii	"USBUART_1_GetParityType\000"
+ 2978      4152545F 
+ 2978      315F4765 
+ 2978      74506172 
+ 2978      69747954 
+ 2979              	.LASF39:
+ 2980 0497 72657175 		.ascii	"requestHandled\000"
+ 2980      65737448 
+ 2980      616E646C 
+ 2980      656400
+ 2981              	.LASF50:
+ 2982 04a6 62797465 		.ascii	"bytesCount\000"
+ 2982      73436F75 
+ 2982      6E7400
+ 2983              	.LASF24:
+ 2984 04b1 62756666 		.ascii	"buffOffset\000"
+ 2984      4F666673 
+ 2984      657400
+ 2985              	.LASF14:
+ 2986 04bc 63686172 		.ascii	"char8\000"
+ 2986      3800
+ 2987              	.LASF73:
+ 2988 04c2 55534255 		.ascii	"USBUART_1_InitControlRead\000"
+ 2988      4152545F 
+ 2988      315F496E 
+ 2988      6974436F 
+ 2988      6E74726F 
+ 2989              	.LASF46:
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 70
+
+
+ 2990 04dc 55534255 		.ascii	"USBUART_1_PutCRLF\000"
+ 2990      4152545F 
+ 2990      315F5075 
+ 2990      7443524C 
+ 2990      4600
+ 2991              	.LASF77:
+ 2992 04ee 55534255 		.ascii	"USBUART_1_LoadInEP\000"
+ 2992      4152545F 
+ 2992      315F4C6F 
+ 2992      6164496E 
+ 2992      455000
+ 2993              	.LASF63:
+ 2994 0501 55534255 		.ascii	"USBUART_1_GetDataBits\000"
+ 2994      4152545F 
+ 2994      315F4765 
+ 2994      74446174 
+ 2994      61426974 
+ 2995              	.LASF28:
+ 2996 0517 73746174 		.ascii	"status\000"
+ 2996      757300
+ 2997              	.LASF65:
+ 2998 051e 55534255 		.ascii	"USBUART_1_transferState\000"
+ 2998      4152545F 
+ 2998      315F7472 
+ 2998      616E7366 
+ 2998      65725374 
+ 2999              	.LASF34:
+ 3000 0536 545F5553 		.ascii	"T_USBUART_1_TD\000"
+ 3000      42554152 
+ 3000      545F315F 
+ 3000      544400
+ 3001              	.LASF53:
+ 3002 0545 55534255 		.ascii	"USBUART_1_GetData\000"
+ 3002      4152545F 
+ 3002      315F4765 
+ 3002      74446174 
+ 3002      6100
+ 3003              	.LASF42:
+ 3004 0557 6275665F 		.ascii	"buf_index\000"
+ 3004      696E6465 
+ 3004      7800
+ 3005              	.LASF47:
+ 3006 0561 74784461 		.ascii	"txData\000"
+ 3006      746100
+ 3007              	.LASF52:
+ 3008 0568 55534255 		.ascii	"USBUART_1_CDCIsReady\000"
+ 3008      4152545F 
+ 3008      315F4344 
+ 3008      43497352 
+ 3008      65616479 
+ 3009              	.LASF51:
+ 3010 057d 55534255 		.ascii	"USBUART_1_DataIsReady\000"
+ 3010      4152545F 
+ 3010      315F4461 
+ 3010      74614973 
+ 3010      52656164 
+ 3011              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br
+ARM GAS  C:\Users\Luke\AppData\Local\Temp\ccJIvIRB.s 			page 71
+
+

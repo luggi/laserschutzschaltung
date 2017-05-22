@@ -1,0 +1,887 @@
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cc1j3UNy.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"PGA_1_PM.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.PGA_1_SaveConfig,"ax",%progbits
+  19              		.align	1
+  20              		.global	PGA_1_SaveConfig
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	PGA_1_SaveConfig, %function
+  24              	PGA_1_SaveConfig:
+  25              	.LFB0:
+  26              		.file 1 "Generated_Source\\PSoC5\\PGA_1_PM.c"
+   1:Generated_Source\PSoC5/PGA_1_PM.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/PGA_1_PM.c **** * File Name: PGA_1_PM.c  
+   3:Generated_Source\PSoC5/PGA_1_PM.c **** * Version 2.0
+   4:Generated_Source\PSoC5/PGA_1_PM.c **** *
+   5:Generated_Source\PSoC5/PGA_1_PM.c **** * Description:
+   6:Generated_Source\PSoC5/PGA_1_PM.c **** *  This file provides the power manager source code to the API for PGA 
+   7:Generated_Source\PSoC5/PGA_1_PM.c **** *  Component.
+   8:Generated_Source\PSoC5/PGA_1_PM.c **** *
+   9:Generated_Source\PSoC5/PGA_1_PM.c **** * Note:
+  10:Generated_Source\PSoC5/PGA_1_PM.c **** *
+  11:Generated_Source\PSoC5/PGA_1_PM.c **** ********************************************************************************
+  12:Generated_Source\PSoC5/PGA_1_PM.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC5/PGA_1_PM.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:Generated_Source\PSoC5/PGA_1_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:Generated_Source\PSoC5/PGA_1_PM.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC5/PGA_1_PM.c **** *******************************************************************************/
+  17:Generated_Source\PSoC5/PGA_1_PM.c **** 
+  18:Generated_Source\PSoC5/PGA_1_PM.c **** #include "PGA_1.h"
+  19:Generated_Source\PSoC5/PGA_1_PM.c **** 
+  20:Generated_Source\PSoC5/PGA_1_PM.c **** static PGA_1_BACKUP_STRUCT  PGA_1_backup;
+  21:Generated_Source\PSoC5/PGA_1_PM.c **** 
+  22:Generated_Source\PSoC5/PGA_1_PM.c **** 
+  23:Generated_Source\PSoC5/PGA_1_PM.c **** /*******************************************************************************
+  24:Generated_Source\PSoC5/PGA_1_PM.c **** * Function Name: PGA_1_SaveConfig
+  25:Generated_Source\PSoC5/PGA_1_PM.c **** ********************************************************************************
+  26:Generated_Source\PSoC5/PGA_1_PM.c **** *
+  27:Generated_Source\PSoC5/PGA_1_PM.c **** * Summary:
+  28:Generated_Source\PSoC5/PGA_1_PM.c **** *  Save the current user register configuration.
+  29:Generated_Source\PSoC5/PGA_1_PM.c **** *
+  30:Generated_Source\PSoC5/PGA_1_PM.c **** * Parameters:
+  31:Generated_Source\PSoC5/PGA_1_PM.c **** *  void
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cc1j3UNy.s 			page 2
+
+
+  32:Generated_Source\PSoC5/PGA_1_PM.c **** *
+  33:Generated_Source\PSoC5/PGA_1_PM.c **** * Return:
+  34:Generated_Source\PSoC5/PGA_1_PM.c **** *  void
+  35:Generated_Source\PSoC5/PGA_1_PM.c **** *
+  36:Generated_Source\PSoC5/PGA_1_PM.c **** *******************************************************************************/
+  37:Generated_Source\PSoC5/PGA_1_PM.c **** void PGA_1_SaveConfig(void) 
+  38:Generated_Source\PSoC5/PGA_1_PM.c **** {
+  27              		.loc 1 38 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 7047     		bx	lr
+  33              		.cfi_endproc
+  34              	.LFE0:
+  35              		.size	PGA_1_SaveConfig, .-PGA_1_SaveConfig
+  36              		.section	.text.PGA_1_RestoreConfig,"ax",%progbits
+  37              		.align	1
+  38              		.global	PGA_1_RestoreConfig
+  39              		.thumb
+  40              		.thumb_func
+  41              		.type	PGA_1_RestoreConfig, %function
+  42              	PGA_1_RestoreConfig:
+  43              	.LFB1:
+  39:Generated_Source\PSoC5/PGA_1_PM.c ****     /* Nothing to save as registers are System reset on retention flops */
+  40:Generated_Source\PSoC5/PGA_1_PM.c **** }
+  41:Generated_Source\PSoC5/PGA_1_PM.c **** 
+  42:Generated_Source\PSoC5/PGA_1_PM.c **** 
+  43:Generated_Source\PSoC5/PGA_1_PM.c **** /*******************************************************************************  
+  44:Generated_Source\PSoC5/PGA_1_PM.c **** * Function Name: PGA_1_RestoreConfig
+  45:Generated_Source\PSoC5/PGA_1_PM.c **** ********************************************************************************
+  46:Generated_Source\PSoC5/PGA_1_PM.c **** *
+  47:Generated_Source\PSoC5/PGA_1_PM.c **** * Summary:
+  48:Generated_Source\PSoC5/PGA_1_PM.c **** *  Restore the register configurations.
+  49:Generated_Source\PSoC5/PGA_1_PM.c **** *
+  50:Generated_Source\PSoC5/PGA_1_PM.c **** * Parameters:
+  51:Generated_Source\PSoC5/PGA_1_PM.c **** *  void
+  52:Generated_Source\PSoC5/PGA_1_PM.c **** *
+  53:Generated_Source\PSoC5/PGA_1_PM.c **** * Return:
+  54:Generated_Source\PSoC5/PGA_1_PM.c **** *  void
+  55:Generated_Source\PSoC5/PGA_1_PM.c **** *
+  56:Generated_Source\PSoC5/PGA_1_PM.c **** *******************************************************************************/
+  57:Generated_Source\PSoC5/PGA_1_PM.c **** void PGA_1_RestoreConfig(void) 
+  58:Generated_Source\PSoC5/PGA_1_PM.c **** {
+  44              		.loc 1 58 0
+  45              		.cfi_startproc
+  46              		@ args = 0, pretend = 0, frame = 0
+  47              		@ frame_needed = 0, uses_anonymous_args = 0
+  48              		@ link register save eliminated.
+  49 0000 7047     		bx	lr
+  50              		.cfi_endproc
+  51              	.LFE1:
+  52              		.size	PGA_1_RestoreConfig, .-PGA_1_RestoreConfig
+  53              		.section	.text.PGA_1_Sleep,"ax",%progbits
+  54              		.align	1
+  55              		.global	PGA_1_Sleep
+  56              		.thumb
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cc1j3UNy.s 			page 3
+
+
+  57              		.thumb_func
+  58              		.type	PGA_1_Sleep, %function
+  59              	PGA_1_Sleep:
+  60              	.LFB2:
+  59:Generated_Source\PSoC5/PGA_1_PM.c ****     /* Nothing to restore */
+  60:Generated_Source\PSoC5/PGA_1_PM.c **** }
+  61:Generated_Source\PSoC5/PGA_1_PM.c **** 
+  62:Generated_Source\PSoC5/PGA_1_PM.c **** 
+  63:Generated_Source\PSoC5/PGA_1_PM.c **** /*******************************************************************************   
+  64:Generated_Source\PSoC5/PGA_1_PM.c **** * Function Name: PGA_1_Sleep
+  65:Generated_Source\PSoC5/PGA_1_PM.c **** ********************************************************************************
+  66:Generated_Source\PSoC5/PGA_1_PM.c **** *
+  67:Generated_Source\PSoC5/PGA_1_PM.c **** * Summary:
+  68:Generated_Source\PSoC5/PGA_1_PM.c **** *  Disables block's operation and saves its configuration. Should be called 
+  69:Generated_Source\PSoC5/PGA_1_PM.c **** *  just prior to entering sleep.
+  70:Generated_Source\PSoC5/PGA_1_PM.c **** *
+  71:Generated_Source\PSoC5/PGA_1_PM.c **** * Parameters:
+  72:Generated_Source\PSoC5/PGA_1_PM.c **** *  None
+  73:Generated_Source\PSoC5/PGA_1_PM.c **** *
+  74:Generated_Source\PSoC5/PGA_1_PM.c **** * Return:
+  75:Generated_Source\PSoC5/PGA_1_PM.c **** *  None
+  76:Generated_Source\PSoC5/PGA_1_PM.c **** *
+  77:Generated_Source\PSoC5/PGA_1_PM.c **** * Global variables:
+  78:Generated_Source\PSoC5/PGA_1_PM.c **** *  PGA_1_backup: The structure field 'enableState' is modified 
+  79:Generated_Source\PSoC5/PGA_1_PM.c **** *  depending on the enable state of the block before entering to sleep mode.
+  80:Generated_Source\PSoC5/PGA_1_PM.c **** *
+  81:Generated_Source\PSoC5/PGA_1_PM.c **** *******************************************************************************/
+  82:Generated_Source\PSoC5/PGA_1_PM.c **** void PGA_1_Sleep(void) 
+  83:Generated_Source\PSoC5/PGA_1_PM.c **** {
+  61              		.loc 1 83 0
+  62              		.cfi_startproc
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65              		@ link register save eliminated.
+  84:Generated_Source\PSoC5/PGA_1_PM.c ****     /* Save PGA enable state */
+  85:Generated_Source\PSoC5/PGA_1_PM.c ****     if((PGA_1_PM_ACT_CFG_REG & PGA_1_ACT_PWR_EN) != 0u)
+  66              		.loc 1 85 0
+  67 0000 064B     		ldr	r3, .L6
+  68 0002 074A     		ldr	r2, .L6+4
+  69 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  70 0006 03F00803 		and	r3, r3, #8
+  71 000a 03F0FF01 		and	r1, r3, #255
+  72 000e 1BB1     		cbz	r3, .L4
+  86:Generated_Source\PSoC5/PGA_1_PM.c ****     {
+  87:Generated_Source\PSoC5/PGA_1_PM.c ****         /* Component is enabled */
+  88:Generated_Source\PSoC5/PGA_1_PM.c ****         PGA_1_backup.enableState = 1u;
+  73              		.loc 1 88 0
+  74 0010 0123     		movs	r3, #1
+  75 0012 1370     		strb	r3, [r2]
+  89:Generated_Source\PSoC5/PGA_1_PM.c ****         /* Stop the configuration */
+  90:Generated_Source\PSoC5/PGA_1_PM.c ****         PGA_1_Stop();
+  76              		.loc 1 90 0
+  77 0014 FFF7FEBF 		b	PGA_1_Stop
+  78              	.LVL0:
+  79              	.L4:
+  91:Generated_Source\PSoC5/PGA_1_PM.c ****     }
+  92:Generated_Source\PSoC5/PGA_1_PM.c ****     else
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cc1j3UNy.s 			page 4
+
+
+  93:Generated_Source\PSoC5/PGA_1_PM.c ****     {
+  94:Generated_Source\PSoC5/PGA_1_PM.c ****         /* Component is disabled */
+  95:Generated_Source\PSoC5/PGA_1_PM.c ****         PGA_1_backup.enableState = 0u;
+  80              		.loc 1 95 0
+  81 0018 1170     		strb	r1, [r2]
+  82 001a 7047     		bx	lr
+  83              	.L7:
+  84              		.align	2
+  85              	.L6:
+  86 001c A9430040 		.word	1073759145
+  87 0020 00000000 		.word	.LANCHOR0
+  88              		.cfi_endproc
+  89              	.LFE2:
+  90              		.size	PGA_1_Sleep, .-PGA_1_Sleep
+  91              		.section	.text.PGA_1_Wakeup,"ax",%progbits
+  92              		.align	1
+  93              		.global	PGA_1_Wakeup
+  94              		.thumb
+  95              		.thumb_func
+  96              		.type	PGA_1_Wakeup, %function
+  97              	PGA_1_Wakeup:
+  98              	.LFB3:
+  96:Generated_Source\PSoC5/PGA_1_PM.c ****     }
+  97:Generated_Source\PSoC5/PGA_1_PM.c ****     /* Save the configuration */
+  98:Generated_Source\PSoC5/PGA_1_PM.c ****     PGA_1_SaveConfig();
+  99:Generated_Source\PSoC5/PGA_1_PM.c **** }
+ 100:Generated_Source\PSoC5/PGA_1_PM.c **** 
+ 101:Generated_Source\PSoC5/PGA_1_PM.c **** 
+ 102:Generated_Source\PSoC5/PGA_1_PM.c **** /*******************************************************************************
+ 103:Generated_Source\PSoC5/PGA_1_PM.c **** * Function Name: PGA_1_Wakeup
+ 104:Generated_Source\PSoC5/PGA_1_PM.c **** ********************************************************************************
+ 105:Generated_Source\PSoC5/PGA_1_PM.c **** *
+ 106:Generated_Source\PSoC5/PGA_1_PM.c **** * Summary:
+ 107:Generated_Source\PSoC5/PGA_1_PM.c **** *  Enables block's operation and restores its configuration. Should be called
+ 108:Generated_Source\PSoC5/PGA_1_PM.c **** *  just after awaking from sleep.
+ 109:Generated_Source\PSoC5/PGA_1_PM.c **** *
+ 110:Generated_Source\PSoC5/PGA_1_PM.c **** * Parameters:
+ 111:Generated_Source\PSoC5/PGA_1_PM.c **** *  None
+ 112:Generated_Source\PSoC5/PGA_1_PM.c **** *
+ 113:Generated_Source\PSoC5/PGA_1_PM.c **** * Return:
+ 114:Generated_Source\PSoC5/PGA_1_PM.c **** *  void
+ 115:Generated_Source\PSoC5/PGA_1_PM.c **** *
+ 116:Generated_Source\PSoC5/PGA_1_PM.c **** * Global variables:
+ 117:Generated_Source\PSoC5/PGA_1_PM.c **** *  PGA_1_backup: The structure field 'enableState' is used to 
+ 118:Generated_Source\PSoC5/PGA_1_PM.c **** *  restore the enable state of block after wakeup from sleep mode.
+ 119:Generated_Source\PSoC5/PGA_1_PM.c **** * 
+ 120:Generated_Source\PSoC5/PGA_1_PM.c **** *******************************************************************************/
+ 121:Generated_Source\PSoC5/PGA_1_PM.c **** void PGA_1_Wakeup(void) 
+ 122:Generated_Source\PSoC5/PGA_1_PM.c **** {
+  99              		.loc 1 122 0
+ 100              		.cfi_startproc
+ 101              		@ args = 0, pretend = 0, frame = 0
+ 102              		@ frame_needed = 0, uses_anonymous_args = 0
+ 103              		@ link register save eliminated.
+ 123:Generated_Source\PSoC5/PGA_1_PM.c ****     /* Restore the configurations */
+ 124:Generated_Source\PSoC5/PGA_1_PM.c ****     PGA_1_RestoreConfig();
+ 125:Generated_Source\PSoC5/PGA_1_PM.c ****      /* Enables the component operation */
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cc1j3UNy.s 			page 5
+
+
+ 126:Generated_Source\PSoC5/PGA_1_PM.c ****     if(PGA_1_backup.enableState == 1u)
+ 104              		.loc 1 126 0
+ 105 0000 034B     		ldr	r3, .L10
+ 106 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 107 0004 012B     		cmp	r3, #1
+ 108 0006 01D1     		bne	.L8
+ 127:Generated_Source\PSoC5/PGA_1_PM.c ****     {
+ 128:Generated_Source\PSoC5/PGA_1_PM.c ****         PGA_1_Enable();
+ 109              		.loc 1 128 0
+ 110 0008 FFF7FEBF 		b	PGA_1_Enable
+ 111              	.LVL1:
+ 112              	.L8:
+ 113 000c 7047     		bx	lr
+ 114              	.L11:
+ 115 000e 00BF     		.align	2
+ 116              	.L10:
+ 117 0010 00000000 		.word	.LANCHOR0
+ 118              		.cfi_endproc
+ 119              	.LFE3:
+ 120              		.size	PGA_1_Wakeup, .-PGA_1_Wakeup
+ 121              		.bss
+ 122              		.set	.LANCHOR0,. + 0
+ 123              		.type	PGA_1_backup, %object
+ 124              		.size	PGA_1_backup, 4
+ 125              	PGA_1_backup:
+ 126 0000 00000000 		.space	4
+ 127              		.text
+ 128              	.Letext0:
+ 129              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 130              		.file 3 "Generated_Source\\PSoC5\\PGA_1.h"
+ 131              		.section	.debug_info,"",%progbits
+ 132              	.Ldebug_info0:
+ 133 0000 70010000 		.4byte	0x170
+ 134 0004 0400     		.2byte	0x4
+ 135 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 136 000a 04       		.byte	0x4
+ 137 000b 01       		.uleb128 0x1
+ 138 000c 79010000 		.4byte	.LASF26
+ 139 0010 01       		.byte	0x1
+ 140 0011 58020000 		.4byte	.LASF27
+ 141 0015 ED000000 		.4byte	.LASF28
+ 142 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 143 001d 00000000 		.4byte	0
+ 144 0021 00000000 		.4byte	.Ldebug_line0
+ 145 0025 02       		.uleb128 0x2
+ 146 0026 01       		.byte	0x1
+ 147 0027 06       		.byte	0x6
+ 148 0028 30020000 		.4byte	.LASF0
+ 149 002c 02       		.uleb128 0x2
+ 150 002d 01       		.byte	0x1
+ 151 002e 08       		.byte	0x8
+ 152 002f 48000000 		.4byte	.LASF1
+ 153 0033 02       		.uleb128 0x2
+ 154 0034 02       		.byte	0x2
+ 155 0035 05       		.byte	0x5
+ 156 0036 6F010000 		.4byte	.LASF2
+ 157 003a 02       		.uleb128 0x2
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cc1j3UNy.s 			page 6
+
+
+ 158 003b 02       		.byte	0x2
+ 159 003c 07       		.byte	0x7
+ 160 003d 3C020000 		.4byte	.LASF3
+ 161 0041 02       		.uleb128 0x2
+ 162 0042 04       		.byte	0x4
+ 163 0043 05       		.byte	0x5
+ 164 0044 07020000 		.4byte	.LASF4
+ 165 0048 02       		.uleb128 0x2
+ 166 0049 04       		.byte	0x4
+ 167 004a 07       		.byte	0x7
+ 168 004b 5B000000 		.4byte	.LASF5
+ 169 004f 02       		.uleb128 0x2
+ 170 0050 08       		.byte	0x8
+ 171 0051 05       		.byte	0x5
+ 172 0052 D1000000 		.4byte	.LASF6
+ 173 0056 02       		.uleb128 0x2
+ 174 0057 08       		.byte	0x8
+ 175 0058 07       		.byte	0x7
+ 176 0059 A0000000 		.4byte	.LASF7
+ 177 005d 03       		.uleb128 0x3
+ 178 005e 04       		.byte	0x4
+ 179 005f 05       		.byte	0x5
+ 180 0060 696E7400 		.ascii	"int\000"
+ 181 0064 02       		.uleb128 0x2
+ 182 0065 04       		.byte	0x4
+ 183 0066 07       		.byte	0x7
+ 184 0067 86000000 		.4byte	.LASF8
+ 185 006b 04       		.uleb128 0x4
+ 186 006c 6D000000 		.4byte	.LASF12
+ 187 0070 02       		.byte	0x2
+ 188 0071 9201     		.2byte	0x192
+ 189 0073 2C000000 		.4byte	0x2c
+ 190 0077 02       		.uleb128 0x2
+ 191 0078 04       		.byte	0x4
+ 192 0079 04       		.byte	0x4
+ 193 007a 42000000 		.4byte	.LASF9
+ 194 007e 02       		.uleb128 0x2
+ 195 007f 08       		.byte	0x8
+ 196 0080 04       		.byte	0x4
+ 197 0081 73000000 		.4byte	.LASF10
+ 198 0085 02       		.uleb128 0x2
+ 199 0086 01       		.byte	0x1
+ 200 0087 08       		.byte	0x8
+ 201 0088 E8000000 		.4byte	.LASF11
+ 202 008c 04       		.uleb128 0x4
+ 203 008d 56000000 		.4byte	.LASF13
+ 204 0091 02       		.byte	0x2
+ 205 0092 3C02     		.2byte	0x23c
+ 206 0094 98000000 		.4byte	0x98
+ 207 0098 05       		.uleb128 0x5
+ 208 0099 6B000000 		.4byte	0x6b
+ 209 009d 02       		.uleb128 0x2
+ 210 009e 04       		.byte	0x4
+ 211 009f 07       		.byte	0x7
+ 212 00a0 C8000000 		.4byte	.LASF14
+ 213 00a4 06       		.uleb128 0x6
+ 214 00a5 04       		.byte	0x4
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cc1j3UNy.s 			page 7
+
+
+ 215 00a6 03       		.byte	0x3
+ 216 00a7 2D       		.byte	0x2d
+ 217 00a8 DD000000 		.4byte	0xdd
+ 218 00ac 07       		.uleb128 0x7
+ 219 00ad 10020000 		.4byte	.LASF15
+ 220 00b1 03       		.byte	0x3
+ 221 00b2 2F       		.byte	0x2f
+ 222 00b3 6B000000 		.4byte	0x6b
+ 223 00b7 00       		.byte	0
+ 224 00b8 07       		.uleb128 0x7
+ 225 00b9 DF000000 		.4byte	.LASF16
+ 226 00bd 03       		.byte	0x3
+ 227 00be 30       		.byte	0x30
+ 228 00bf 6B000000 		.4byte	0x6b
+ 229 00c3 01       		.byte	0x1
+ 230 00c4 07       		.uleb128 0x7
+ 231 00c5 4F020000 		.4byte	.LASF17
+ 232 00c9 03       		.byte	0x3
+ 233 00ca 31       		.byte	0x31
+ 234 00cb 6B000000 		.4byte	0x6b
+ 235 00cf 02       		.byte	0x2
+ 236 00d0 07       		.uleb128 0x7
+ 237 00d1 1F000000 		.4byte	.LASF18
+ 238 00d5 03       		.byte	0x3
+ 239 00d6 32       		.byte	0x32
+ 240 00d7 6B000000 		.4byte	0x6b
+ 241 00db 03       		.byte	0x3
+ 242 00dc 00       		.byte	0
+ 243 00dd 08       		.uleb128 0x8
+ 244 00de 1C020000 		.4byte	.LASF19
+ 245 00e2 03       		.byte	0x3
+ 246 00e3 33       		.byte	0x33
+ 247 00e4 A4000000 		.4byte	0xa4
+ 248 00e8 09       		.uleb128 0x9
+ 249 00e9 B7000000 		.4byte	.LASF20
+ 250 00ed 01       		.byte	0x1
+ 251 00ee 25       		.byte	0x25
+ 252 00ef 01       		.byte	0x1
+ 253 00f0 09       		.uleb128 0x9
+ 254 00f1 0B000000 		.4byte	.LASF21
+ 255 00f5 01       		.byte	0x1
+ 256 00f6 39       		.byte	0x39
+ 257 00f7 01       		.byte	0x1
+ 258 00f8 0A       		.uleb128 0xa
+ 259 00f9 E8000000 		.4byte	0xe8
+ 260 00fd 00000000 		.4byte	.LFB0
+ 261 0101 02000000 		.4byte	.LFE0-.LFB0
+ 262 0105 01       		.uleb128 0x1
+ 263 0106 9C       		.byte	0x9c
+ 264 0107 0A       		.uleb128 0xa
+ 265 0108 F0000000 		.4byte	0xf0
+ 266 010c 00000000 		.4byte	.LFB1
+ 267 0110 02000000 		.4byte	.LFE1-.LFB1
+ 268 0114 01       		.uleb128 0x1
+ 269 0115 9C       		.byte	0x9c
+ 270 0116 0B       		.uleb128 0xb
+ 271 0117 7A000000 		.4byte	.LASF22
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cc1j3UNy.s 			page 8
+
+
+ 272 011b 01       		.byte	0x1
+ 273 011c 52       		.byte	0x52
+ 274 011d 00000000 		.4byte	.LFB2
+ 275 0121 24000000 		.4byte	.LFE2-.LFB2
+ 276 0125 01       		.uleb128 0x1
+ 277 0126 9C       		.byte	0x9c
+ 278 0127 35010000 		.4byte	0x135
+ 279 012b 0C       		.uleb128 0xc
+ 280 012c 18000000 		.4byte	.LVL0
+ 281 0130 65010000 		.4byte	0x165
+ 282 0134 00       		.byte	0
+ 283 0135 0B       		.uleb128 0xb
+ 284 0136 28000000 		.4byte	.LASF23
+ 285 013a 01       		.byte	0x1
+ 286 013b 79       		.byte	0x79
+ 287 013c 00000000 		.4byte	.LFB3
+ 288 0140 14000000 		.4byte	.LFE3-.LFB3
+ 289 0144 01       		.uleb128 0x1
+ 290 0145 9C       		.byte	0x9c
+ 291 0146 54010000 		.4byte	0x154
+ 292 014a 0C       		.uleb128 0xc
+ 293 014b 0C000000 		.4byte	.LVL1
+ 294 014f 6C010000 		.4byte	0x16c
+ 295 0153 00       		.byte	0
+ 296 0154 0D       		.uleb128 0xd
+ 297 0155 35000000 		.4byte	.LASF29
+ 298 0159 01       		.byte	0x1
+ 299 015a 14       		.byte	0x14
+ 300 015b DD000000 		.4byte	0xdd
+ 301 015f 05       		.uleb128 0x5
+ 302 0160 03       		.byte	0x3
+ 303 0161 00000000 		.4byte	PGA_1_backup
+ 304 0165 0E       		.uleb128 0xe
+ 305 0166 00000000 		.4byte	.LASF24
+ 306 016a 03       		.byte	0x3
+ 307 016b 3F       		.byte	0x3f
+ 308 016c 0E       		.uleb128 0xe
+ 309 016d 93000000 		.4byte	.LASF25
+ 310 0171 03       		.byte	0x3
+ 311 0172 47       		.byte	0x47
+ 312 0173 00       		.byte	0
+ 313              		.section	.debug_abbrev,"",%progbits
+ 314              	.Ldebug_abbrev0:
+ 315 0000 01       		.uleb128 0x1
+ 316 0001 11       		.uleb128 0x11
+ 317 0002 01       		.byte	0x1
+ 318 0003 25       		.uleb128 0x25
+ 319 0004 0E       		.uleb128 0xe
+ 320 0005 13       		.uleb128 0x13
+ 321 0006 0B       		.uleb128 0xb
+ 322 0007 03       		.uleb128 0x3
+ 323 0008 0E       		.uleb128 0xe
+ 324 0009 1B       		.uleb128 0x1b
+ 325 000a 0E       		.uleb128 0xe
+ 326 000b 55       		.uleb128 0x55
+ 327 000c 17       		.uleb128 0x17
+ 328 000d 11       		.uleb128 0x11
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cc1j3UNy.s 			page 9
+
+
+ 329 000e 01       		.uleb128 0x1
+ 330 000f 10       		.uleb128 0x10
+ 331 0010 17       		.uleb128 0x17
+ 332 0011 00       		.byte	0
+ 333 0012 00       		.byte	0
+ 334 0013 02       		.uleb128 0x2
+ 335 0014 24       		.uleb128 0x24
+ 336 0015 00       		.byte	0
+ 337 0016 0B       		.uleb128 0xb
+ 338 0017 0B       		.uleb128 0xb
+ 339 0018 3E       		.uleb128 0x3e
+ 340 0019 0B       		.uleb128 0xb
+ 341 001a 03       		.uleb128 0x3
+ 342 001b 0E       		.uleb128 0xe
+ 343 001c 00       		.byte	0
+ 344 001d 00       		.byte	0
+ 345 001e 03       		.uleb128 0x3
+ 346 001f 24       		.uleb128 0x24
+ 347 0020 00       		.byte	0
+ 348 0021 0B       		.uleb128 0xb
+ 349 0022 0B       		.uleb128 0xb
+ 350 0023 3E       		.uleb128 0x3e
+ 351 0024 0B       		.uleb128 0xb
+ 352 0025 03       		.uleb128 0x3
+ 353 0026 08       		.uleb128 0x8
+ 354 0027 00       		.byte	0
+ 355 0028 00       		.byte	0
+ 356 0029 04       		.uleb128 0x4
+ 357 002a 16       		.uleb128 0x16
+ 358 002b 00       		.byte	0
+ 359 002c 03       		.uleb128 0x3
+ 360 002d 0E       		.uleb128 0xe
+ 361 002e 3A       		.uleb128 0x3a
+ 362 002f 0B       		.uleb128 0xb
+ 363 0030 3B       		.uleb128 0x3b
+ 364 0031 05       		.uleb128 0x5
+ 365 0032 49       		.uleb128 0x49
+ 366 0033 13       		.uleb128 0x13
+ 367 0034 00       		.byte	0
+ 368 0035 00       		.byte	0
+ 369 0036 05       		.uleb128 0x5
+ 370 0037 35       		.uleb128 0x35
+ 371 0038 00       		.byte	0
+ 372 0039 49       		.uleb128 0x49
+ 373 003a 13       		.uleb128 0x13
+ 374 003b 00       		.byte	0
+ 375 003c 00       		.byte	0
+ 376 003d 06       		.uleb128 0x6
+ 377 003e 13       		.uleb128 0x13
+ 378 003f 01       		.byte	0x1
+ 379 0040 0B       		.uleb128 0xb
+ 380 0041 0B       		.uleb128 0xb
+ 381 0042 3A       		.uleb128 0x3a
+ 382 0043 0B       		.uleb128 0xb
+ 383 0044 3B       		.uleb128 0x3b
+ 384 0045 0B       		.uleb128 0xb
+ 385 0046 01       		.uleb128 0x1
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cc1j3UNy.s 			page 10
+
+
+ 386 0047 13       		.uleb128 0x13
+ 387 0048 00       		.byte	0
+ 388 0049 00       		.byte	0
+ 389 004a 07       		.uleb128 0x7
+ 390 004b 0D       		.uleb128 0xd
+ 391 004c 00       		.byte	0
+ 392 004d 03       		.uleb128 0x3
+ 393 004e 0E       		.uleb128 0xe
+ 394 004f 3A       		.uleb128 0x3a
+ 395 0050 0B       		.uleb128 0xb
+ 396 0051 3B       		.uleb128 0x3b
+ 397 0052 0B       		.uleb128 0xb
+ 398 0053 49       		.uleb128 0x49
+ 399 0054 13       		.uleb128 0x13
+ 400 0055 38       		.uleb128 0x38
+ 401 0056 0B       		.uleb128 0xb
+ 402 0057 00       		.byte	0
+ 403 0058 00       		.byte	0
+ 404 0059 08       		.uleb128 0x8
+ 405 005a 16       		.uleb128 0x16
+ 406 005b 00       		.byte	0
+ 407 005c 03       		.uleb128 0x3
+ 408 005d 0E       		.uleb128 0xe
+ 409 005e 3A       		.uleb128 0x3a
+ 410 005f 0B       		.uleb128 0xb
+ 411 0060 3B       		.uleb128 0x3b
+ 412 0061 0B       		.uleb128 0xb
+ 413 0062 49       		.uleb128 0x49
+ 414 0063 13       		.uleb128 0x13
+ 415 0064 00       		.byte	0
+ 416 0065 00       		.byte	0
+ 417 0066 09       		.uleb128 0x9
+ 418 0067 2E       		.uleb128 0x2e
+ 419 0068 00       		.byte	0
+ 420 0069 3F       		.uleb128 0x3f
+ 421 006a 19       		.uleb128 0x19
+ 422 006b 03       		.uleb128 0x3
+ 423 006c 0E       		.uleb128 0xe
+ 424 006d 3A       		.uleb128 0x3a
+ 425 006e 0B       		.uleb128 0xb
+ 426 006f 3B       		.uleb128 0x3b
+ 427 0070 0B       		.uleb128 0xb
+ 428 0071 27       		.uleb128 0x27
+ 429 0072 19       		.uleb128 0x19
+ 430 0073 20       		.uleb128 0x20
+ 431 0074 0B       		.uleb128 0xb
+ 432 0075 00       		.byte	0
+ 433 0076 00       		.byte	0
+ 434 0077 0A       		.uleb128 0xa
+ 435 0078 2E       		.uleb128 0x2e
+ 436 0079 00       		.byte	0
+ 437 007a 31       		.uleb128 0x31
+ 438 007b 13       		.uleb128 0x13
+ 439 007c 11       		.uleb128 0x11
+ 440 007d 01       		.uleb128 0x1
+ 441 007e 12       		.uleb128 0x12
+ 442 007f 06       		.uleb128 0x6
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cc1j3UNy.s 			page 11
+
+
+ 443 0080 40       		.uleb128 0x40
+ 444 0081 18       		.uleb128 0x18
+ 445 0082 9742     		.uleb128 0x2117
+ 446 0084 19       		.uleb128 0x19
+ 447 0085 00       		.byte	0
+ 448 0086 00       		.byte	0
+ 449 0087 0B       		.uleb128 0xb
+ 450 0088 2E       		.uleb128 0x2e
+ 451 0089 01       		.byte	0x1
+ 452 008a 3F       		.uleb128 0x3f
+ 453 008b 19       		.uleb128 0x19
+ 454 008c 03       		.uleb128 0x3
+ 455 008d 0E       		.uleb128 0xe
+ 456 008e 3A       		.uleb128 0x3a
+ 457 008f 0B       		.uleb128 0xb
+ 458 0090 3B       		.uleb128 0x3b
+ 459 0091 0B       		.uleb128 0xb
+ 460 0092 27       		.uleb128 0x27
+ 461 0093 19       		.uleb128 0x19
+ 462 0094 11       		.uleb128 0x11
+ 463 0095 01       		.uleb128 0x1
+ 464 0096 12       		.uleb128 0x12
+ 465 0097 06       		.uleb128 0x6
+ 466 0098 40       		.uleb128 0x40
+ 467 0099 18       		.uleb128 0x18
+ 468 009a 9742     		.uleb128 0x2117
+ 469 009c 19       		.uleb128 0x19
+ 470 009d 01       		.uleb128 0x1
+ 471 009e 13       		.uleb128 0x13
+ 472 009f 00       		.byte	0
+ 473 00a0 00       		.byte	0
+ 474 00a1 0C       		.uleb128 0xc
+ 475 00a2 898201   		.uleb128 0x4109
+ 476 00a5 00       		.byte	0
+ 477 00a6 11       		.uleb128 0x11
+ 478 00a7 01       		.uleb128 0x1
+ 479 00a8 9542     		.uleb128 0x2115
+ 480 00aa 19       		.uleb128 0x19
+ 481 00ab 31       		.uleb128 0x31
+ 482 00ac 13       		.uleb128 0x13
+ 483 00ad 00       		.byte	0
+ 484 00ae 00       		.byte	0
+ 485 00af 0D       		.uleb128 0xd
+ 486 00b0 34       		.uleb128 0x34
+ 487 00b1 00       		.byte	0
+ 488 00b2 03       		.uleb128 0x3
+ 489 00b3 0E       		.uleb128 0xe
+ 490 00b4 3A       		.uleb128 0x3a
+ 491 00b5 0B       		.uleb128 0xb
+ 492 00b6 3B       		.uleb128 0x3b
+ 493 00b7 0B       		.uleb128 0xb
+ 494 00b8 49       		.uleb128 0x49
+ 495 00b9 13       		.uleb128 0x13
+ 496 00ba 02       		.uleb128 0x2
+ 497 00bb 18       		.uleb128 0x18
+ 498 00bc 00       		.byte	0
+ 499 00bd 00       		.byte	0
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cc1j3UNy.s 			page 12
+
+
+ 500 00be 0E       		.uleb128 0xe
+ 501 00bf 2E       		.uleb128 0x2e
+ 502 00c0 00       		.byte	0
+ 503 00c1 3F       		.uleb128 0x3f
+ 504 00c2 19       		.uleb128 0x19
+ 505 00c3 03       		.uleb128 0x3
+ 506 00c4 0E       		.uleb128 0xe
+ 507 00c5 3A       		.uleb128 0x3a
+ 508 00c6 0B       		.uleb128 0xb
+ 509 00c7 3B       		.uleb128 0x3b
+ 510 00c8 0B       		.uleb128 0xb
+ 511 00c9 27       		.uleb128 0x27
+ 512 00ca 19       		.uleb128 0x19
+ 513 00cb 3C       		.uleb128 0x3c
+ 514 00cc 19       		.uleb128 0x19
+ 515 00cd 00       		.byte	0
+ 516 00ce 00       		.byte	0
+ 517 00cf 00       		.byte	0
+ 518              		.section	.debug_aranges,"",%progbits
+ 519 0000 34000000 		.4byte	0x34
+ 520 0004 0200     		.2byte	0x2
+ 521 0006 00000000 		.4byte	.Ldebug_info0
+ 522 000a 04       		.byte	0x4
+ 523 000b 00       		.byte	0
+ 524 000c 0000     		.2byte	0
+ 525 000e 0000     		.2byte	0
+ 526 0010 00000000 		.4byte	.LFB0
+ 527 0014 02000000 		.4byte	.LFE0-.LFB0
+ 528 0018 00000000 		.4byte	.LFB1
+ 529 001c 02000000 		.4byte	.LFE1-.LFB1
+ 530 0020 00000000 		.4byte	.LFB2
+ 531 0024 24000000 		.4byte	.LFE2-.LFB2
+ 532 0028 00000000 		.4byte	.LFB3
+ 533 002c 14000000 		.4byte	.LFE3-.LFB3
+ 534 0030 00000000 		.4byte	0
+ 535 0034 00000000 		.4byte	0
+ 536              		.section	.debug_ranges,"",%progbits
+ 537              	.Ldebug_ranges0:
+ 538 0000 00000000 		.4byte	.LFB0
+ 539 0004 02000000 		.4byte	.LFE0
+ 540 0008 00000000 		.4byte	.LFB1
+ 541 000c 02000000 		.4byte	.LFE1
+ 542 0010 00000000 		.4byte	.LFB2
+ 543 0014 24000000 		.4byte	.LFE2
+ 544 0018 00000000 		.4byte	.LFB3
+ 545 001c 14000000 		.4byte	.LFE3
+ 546 0020 00000000 		.4byte	0
+ 547 0024 00000000 		.4byte	0
+ 548              		.section	.debug_line,"",%progbits
+ 549              	.Ldebug_line0:
+ 550 0000 9A000000 		.section	.debug_str,"MS",%progbits,1
+ 550      02005000 
+ 550      00000201 
+ 550      FB0E0D00 
+ 550      01010101 
+ 551              	.LASF24:
+ 552 0000 5047415F 		.ascii	"PGA_1_Stop\000"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cc1j3UNy.s 			page 13
+
+
+ 552      315F5374 
+ 552      6F7000
+ 553              	.LASF21:
+ 554 000b 5047415F 		.ascii	"PGA_1_RestoreConfig\000"
+ 554      315F5265 
+ 554      73746F72 
+ 554      65436F6E 
+ 554      66696700 
+ 555              	.LASF18:
+ 556 001f 73634352 		.ascii	"scCR3Reg\000"
+ 556      33526567 
+ 556      00
+ 557              	.LASF23:
+ 558 0028 5047415F 		.ascii	"PGA_1_Wakeup\000"
+ 558      315F5761 
+ 558      6B657570 
+ 558      00
+ 559              	.LASF29:
+ 560 0035 5047415F 		.ascii	"PGA_1_backup\000"
+ 560      315F6261 
+ 560      636B7570 
+ 560      00
+ 561              	.LASF9:
+ 562 0042 666C6F61 		.ascii	"float\000"
+ 562      7400
+ 563              	.LASF1:
+ 564 0048 756E7369 		.ascii	"unsigned char\000"
+ 564      676E6564 
+ 564      20636861 
+ 564      7200
+ 565              	.LASF13:
+ 566 0056 72656738 		.ascii	"reg8\000"
+ 566      00
+ 567              	.LASF5:
+ 568 005b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 568      20756E73 
+ 568      69676E65 
+ 568      6420696E 
+ 568      7400
+ 569              	.LASF12:
+ 570 006d 75696E74 		.ascii	"uint8\000"
+ 570      3800
+ 571              	.LASF10:
+ 572 0073 646F7562 		.ascii	"double\000"
+ 572      6C6500
+ 573              	.LASF22:
+ 574 007a 5047415F 		.ascii	"PGA_1_Sleep\000"
+ 574      315F536C 
+ 574      65657000 
+ 575              	.LASF8:
+ 576 0086 756E7369 		.ascii	"unsigned int\000"
+ 576      676E6564 
+ 576      20696E74 
+ 576      00
+ 577              	.LASF25:
+ 578 0093 5047415F 		.ascii	"PGA_1_Enable\000"
+ 578      315F456E 
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cc1j3UNy.s 			page 14
+
+
+ 578      61626C65 
+ 578      00
+ 579              	.LASF7:
+ 580 00a0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 580      206C6F6E 
+ 580      6720756E 
+ 580      7369676E 
+ 580      65642069 
+ 581              	.LASF20:
+ 582 00b7 5047415F 		.ascii	"PGA_1_SaveConfig\000"
+ 582      315F5361 
+ 582      7665436F 
+ 582      6E666967 
+ 582      00
+ 583              	.LASF14:
+ 584 00c8 73697A65 		.ascii	"sizetype\000"
+ 584      74797065 
+ 584      00
+ 585              	.LASF6:
+ 586 00d1 6C6F6E67 		.ascii	"long long int\000"
+ 586      206C6F6E 
+ 586      6720696E 
+ 586      7400
+ 587              	.LASF16:
+ 588 00df 73634352 		.ascii	"scCR1Reg\000"
+ 588      31526567 
+ 588      00
+ 589              	.LASF11:
+ 590 00e8 63686172 		.ascii	"char\000"
+ 590      00
+ 591              	.LASF28:
+ 592 00ed 433A5C55 		.ascii	"C:\\Users\\Luggi\\Desktop\\Aktuelles Projekt Laser_"
+ 592      73657273 
+ 592      5C4C7567 
+ 592      67695C44 
+ 592      65736B74 
+ 593 011c 73636875 		.ascii	"schutzschaltung\\Aktuelles Projekt Laser_schutzscha"
+ 593      747A7363 
+ 593      68616C74 
+ 593      756E675C 
+ 593      416B7475 
+ 594 014e 6C74756E 		.ascii	"ltung\\Laserschutzschaltung.cydsn\000"
+ 594      675C4C61 
+ 594      73657273 
+ 594      63687574 
+ 594      7A736368 
+ 595              	.LASF2:
+ 596 016f 73686F72 		.ascii	"short int\000"
+ 596      7420696E 
+ 596      7400
+ 597              	.LASF26:
+ 598 0179 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 598      4320342E 
+ 598      392E3320 
+ 598      32303135 
+ 598      30333033 
+ 599 01ac 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ARM GAS  C:\Users\Luggi\AppData\Local\Temp\cc1j3UNy.s 			page 15
+
+
+ 599      20726576 
+ 599      6973696F 
+ 599      6E203232 
+ 599      31323230 
+ 600 01df 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 600      66756E63 
+ 600      74696F6E 
+ 600      2D736563 
+ 600      74696F6E 
+ 601              	.LASF4:
+ 602 0207 6C6F6E67 		.ascii	"long int\000"
+ 602      20696E74 
+ 602      00
+ 603              	.LASF15:
+ 604 0210 656E6162 		.ascii	"enableState\000"
+ 604      6C655374 
+ 604      61746500 
+ 605              	.LASF19:
+ 606 021c 5047415F 		.ascii	"PGA_1_BACKUP_STRUCT\000"
+ 606      315F4241 
+ 606      434B5550 
+ 606      5F535452 
+ 606      55435400 
+ 607              	.LASF0:
+ 608 0230 7369676E 		.ascii	"signed char\000"
+ 608      65642063 
+ 608      68617200 
+ 609              	.LASF3:
+ 610 023c 73686F72 		.ascii	"short unsigned int\000"
+ 610      7420756E 
+ 610      7369676E 
+ 610      65642069 
+ 610      6E7400
+ 611              	.LASF17:
+ 612 024f 73634352 		.ascii	"scCR2Reg\000"
+ 612      32526567 
+ 612      00
+ 613              	.LASF27:
+ 614 0258 47656E65 		.ascii	"Generated_Source\\PSoC5\\PGA_1_PM.c\000"
+ 614      72617465 
+ 614      645F536F 
+ 614      75726365 
+ 614      5C50536F 
+ 615              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -1,0 +1,884 @@
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccOWEGuk.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Filter_Coefficients.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	Filter_ChannelAFirCoefficients
+  19              		.section	.rodata
+  20              		.align	2
+  21              		.type	Filter_ChannelAFirCoefficients, %object
+  22              		.size	Filter_ChannelAFirCoefficients, 512
+  23              	Filter_ChannelAFirCoefficients:
+  24 0000 F6       		.byte	-10
+  25 0001 F5       		.byte	-11
+  26 0002 FF       		.byte	-1
+  27 0003 00       		.byte	0
+  28 0004 3F       		.byte	63
+  29 0005 F6       		.byte	-10
+  30 0006 FF       		.byte	-1
+  31 0007 00       		.byte	0
+  32 0008 77       		.byte	119
+  33 0009 F6       		.byte	-10
+  34 000a FF       		.byte	-1
+  35 000b 00       		.byte	0
+  36 000c A5       		.byte	-91
+  37 000d F6       		.byte	-10
+  38 000e FF       		.byte	-1
+  39 000f 00       		.byte	0
+  40 0010 D1       		.byte	-47
+  41 0011 F6       		.byte	-10
+  42 0012 FF       		.byte	-1
+  43 0013 00       		.byte	0
+  44 0014 03       		.byte	3
+  45 0015 F7       		.byte	-9
+  46 0016 FF       		.byte	-1
+  47 0017 00       		.byte	0
+  48 0018 45       		.byte	69
+  49 0019 F7       		.byte	-9
+  50 001a FF       		.byte	-1
+  51 001b 00       		.byte	0
+  52 001c A2       		.byte	-94
+  53 001d F7       		.byte	-9
+  54 001e FF       		.byte	-1
+  55 001f 00       		.byte	0
+  56 0020 27       		.byte	39
+  57 0021 F8       		.byte	-8
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccOWEGuk.s 			page 2
+
+
+  58 0022 FF       		.byte	-1
+  59 0023 00       		.byte	0
+  60 0024 DE       		.byte	-34
+  61 0025 F8       		.byte	-8
+  62 0026 FF       		.byte	-1
+  63 0027 00       		.byte	0
+  64 0028 D6       		.byte	-42
+  65 0029 F9       		.byte	-7
+  66 002a FF       		.byte	-1
+  67 002b 00       		.byte	0
+  68 002c 1D       		.byte	29
+  69 002d FB       		.byte	-5
+  70 002e FF       		.byte	-1
+  71 002f 00       		.byte	0
+  72 0030 C0       		.byte	-64
+  73 0031 FC       		.byte	-4
+  74 0032 FF       		.byte	-1
+  75 0033 00       		.byte	0
+  76 0034 CD       		.byte	-51
+  77 0035 FE       		.byte	-2
+  78 0036 FF       		.byte	-1
+  79 0037 00       		.byte	0
+  80 0038 53       		.byte	83
+  81 0039 01       		.byte	1
+  82 003a 00       		.byte	0
+  83 003b 00       		.byte	0
+  84 003c 60       		.byte	96
+  85 003d 04       		.byte	4
+  86 003e 00       		.byte	0
+  87 003f 00       		.byte	0
+  88 0040 03       		.byte	3
+  89 0041 08       		.byte	8
+  90 0042 00       		.byte	0
+  91 0043 00       		.byte	0
+  92 0044 49       		.byte	73
+  93 0045 0C       		.byte	12
+  94 0046 00       		.byte	0
+  95 0047 00       		.byte	0
+  96 0048 3E       		.byte	62
+  97 0049 11       		.byte	17
+  98 004a 00       		.byte	0
+  99 004b 00       		.byte	0
+ 100 004c F0       		.byte	-16
+ 101 004d 16       		.byte	22
+ 102 004e 00       		.byte	0
+ 103 004f 00       		.byte	0
+ 104 0050 6A       		.byte	106
+ 105 0051 1D       		.byte	29
+ 106 0052 00       		.byte	0
+ 107 0053 00       		.byte	0
+ 108 0054 B5       		.byte	-75
+ 109 0055 24       		.byte	36
+ 110 0056 00       		.byte	0
+ 111 0057 00       		.byte	0
+ 112 0058 DD       		.byte	-35
+ 113 0059 2C       		.byte	44
+ 114 005a 00       		.byte	0
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccOWEGuk.s 			page 3
+
+
+ 115 005b 00       		.byte	0
+ 116 005c E7       		.byte	-25
+ 117 005d 35       		.byte	53
+ 118 005e 00       		.byte	0
+ 119 005f 00       		.byte	0
+ 120 0060 DB       		.byte	-37
+ 121 0061 3F       		.byte	63
+ 122 0062 00       		.byte	0
+ 123 0063 00       		.byte	0
+ 124 0064 BD       		.byte	-67
+ 125 0065 4A       		.byte	74
+ 126 0066 00       		.byte	0
+ 127 0067 00       		.byte	0
+ 128 0068 91       		.byte	-111
+ 129 0069 56       		.byte	86
+ 130 006a 00       		.byte	0
+ 131 006b 00       		.byte	0
+ 132 006c 58       		.byte	88
+ 133 006d 63       		.byte	99
+ 134 006e 00       		.byte	0
+ 135 006f 00       		.byte	0
+ 136 0070 10       		.byte	16
+ 137 0071 71       		.byte	113
+ 138 0072 00       		.byte	0
+ 139 0073 00       		.byte	0
+ 140 0074 B7       		.byte	-73
+ 141 0075 7F       		.byte	127
+ 142 0076 00       		.byte	0
+ 143 0077 00       		.byte	0
+ 144 0078 4A       		.byte	74
+ 145 0079 8F       		.byte	-113
+ 146 007a 00       		.byte	0
+ 147 007b 00       		.byte	0
+ 148 007c C0       		.byte	-64
+ 149 007d 9F       		.byte	-97
+ 150 007e 00       		.byte	0
+ 151 007f 00       		.byte	0
+ 152 0080 11       		.byte	17
+ 153 0081 B1       		.byte	-79
+ 154 0082 00       		.byte	0
+ 155 0083 00       		.byte	0
+ 156 0084 33       		.byte	51
+ 157 0085 C3       		.byte	-61
+ 158 0086 00       		.byte	0
+ 159 0087 00       		.byte	0
+ 160 0088 19       		.byte	25
+ 161 0089 D6       		.byte	-42
+ 162 008a 00       		.byte	0
+ 163 008b 00       		.byte	0
+ 164 008c B3       		.byte	-77
+ 165 008d E9       		.byte	-23
+ 166 008e 00       		.byte	0
+ 167 008f 00       		.byte	0
+ 168 0090 F2       		.byte	-14
+ 169 0091 FD       		.byte	-3
+ 170 0092 00       		.byte	0
+ 171 0093 00       		.byte	0
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccOWEGuk.s 			page 4
+
+
+ 172 0094 C2       		.byte	-62
+ 173 0095 12       		.byte	18
+ 174 0096 01       		.byte	1
+ 175 0097 00       		.byte	0
+ 176 0098 0F       		.byte	15
+ 177 0099 28       		.byte	40
+ 178 009a 01       		.byte	1
+ 179 009b 00       		.byte	0
+ 180 009c C4       		.byte	-60
+ 181 009d 3D       		.byte	61
+ 182 009e 01       		.byte	1
+ 183 009f 00       		.byte	0
+ 184 00a0 C9       		.byte	-55
+ 185 00a1 53       		.byte	83
+ 186 00a2 01       		.byte	1
+ 187 00a3 00       		.byte	0
+ 188 00a4 06       		.byte	6
+ 189 00a5 6A       		.byte	106
+ 190 00a6 01       		.byte	1
+ 191 00a7 00       		.byte	0
+ 192 00a8 60       		.byte	96
+ 193 00a9 80       		.byte	-128
+ 194 00aa 01       		.byte	1
+ 195 00ab 00       		.byte	0
+ 196 00ac BC       		.byte	-68
+ 197 00ad 96       		.byte	-106
+ 198 00ae 01       		.byte	1
+ 199 00af 00       		.byte	0
+ 200 00b0 00       		.byte	0
+ 201 00b1 AD       		.byte	-83
+ 202 00b2 01       		.byte	1
+ 203 00b3 00       		.byte	0
+ 204 00b4 0E       		.byte	14
+ 205 00b5 C3       		.byte	-61
+ 206 00b6 01       		.byte	1
+ 207 00b7 00       		.byte	0
+ 208 00b8 CB       		.byte	-53
+ 209 00b9 D8       		.byte	-40
+ 210 00ba 01       		.byte	1
+ 211 00bb 00       		.byte	0
+ 212 00bc 19       		.byte	25
+ 213 00bd EE       		.byte	-18
+ 214 00be 01       		.byte	1
+ 215 00bf 00       		.byte	0
+ 216 00c0 DC       		.byte	-36
+ 217 00c1 02       		.byte	2
+ 218 00c2 02       		.byte	2
+ 219 00c3 00       		.byte	0
+ 220 00c4 F6       		.byte	-10
+ 221 00c5 16       		.byte	22
+ 222 00c6 02       		.byte	2
+ 223 00c7 00       		.byte	0
+ 224 00c8 4D       		.byte	77
+ 225 00c9 2A       		.byte	42
+ 226 00ca 02       		.byte	2
+ 227 00cb 00       		.byte	0
+ 228 00cc C4       		.byte	-60
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccOWEGuk.s 			page 5
+
+
+ 229 00cd 3C       		.byte	60
+ 230 00ce 02       		.byte	2
+ 231 00cf 00       		.byte	0
+ 232 00d0 41       		.byte	65
+ 233 00d1 4E       		.byte	78
+ 234 00d2 02       		.byte	2
+ 235 00d3 00       		.byte	0
+ 236 00d4 AB       		.byte	-85
+ 237 00d5 5E       		.byte	94
+ 238 00d6 02       		.byte	2
+ 239 00d7 00       		.byte	0
+ 240 00d8 EA       		.byte	-22
+ 241 00d9 6D       		.byte	109
+ 242 00da 02       		.byte	2
+ 243 00db 00       		.byte	0
+ 244 00dc E7       		.byte	-25
+ 245 00dd 7B       		.byte	123
+ 246 00de 02       		.byte	2
+ 247 00df 00       		.byte	0
+ 248 00e0 8D       		.byte	-115
+ 249 00e1 88       		.byte	-120
+ 250 00e2 02       		.byte	2
+ 251 00e3 00       		.byte	0
+ 252 00e4 CA       		.byte	-54
+ 253 00e5 93       		.byte	-109
+ 254 00e6 02       		.byte	2
+ 255 00e7 00       		.byte	0
+ 256 00e8 8D       		.byte	-115
+ 257 00e9 9D       		.byte	-99
+ 258 00ea 02       		.byte	2
+ 259 00eb 00       		.byte	0
+ 260 00ec C6       		.byte	-58
+ 261 00ed A5       		.byte	-91
+ 262 00ee 02       		.byte	2
+ 263 00ef 00       		.byte	0
+ 264 00f0 6A       		.byte	106
+ 265 00f1 AC       		.byte	-84
+ 266 00f2 02       		.byte	2
+ 267 00f3 00       		.byte	0
+ 268 00f4 6D       		.byte	109
+ 269 00f5 B1       		.byte	-79
+ 270 00f6 02       		.byte	2
+ 271 00f7 00       		.byte	0
+ 272 00f8 C9       		.byte	-55
+ 273 00f9 B4       		.byte	-76
+ 274 00fa 02       		.byte	2
+ 275 00fb 00       		.byte	0
+ 276 00fc 79       		.byte	121
+ 277 00fd B6       		.byte	-74
+ 278 00fe 02       		.byte	2
+ 279 00ff 00       		.byte	0
+ 280 0100 79       		.byte	121
+ 281 0101 B6       		.byte	-74
+ 282 0102 02       		.byte	2
+ 283 0103 00       		.byte	0
+ 284 0104 C9       		.byte	-55
+ 285 0105 B4       		.byte	-76
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccOWEGuk.s 			page 6
+
+
+ 286 0106 02       		.byte	2
+ 287 0107 00       		.byte	0
+ 288 0108 6D       		.byte	109
+ 289 0109 B1       		.byte	-79
+ 290 010a 02       		.byte	2
+ 291 010b 00       		.byte	0
+ 292 010c 6A       		.byte	106
+ 293 010d AC       		.byte	-84
+ 294 010e 02       		.byte	2
+ 295 010f 00       		.byte	0
+ 296 0110 C6       		.byte	-58
+ 297 0111 A5       		.byte	-91
+ 298 0112 02       		.byte	2
+ 299 0113 00       		.byte	0
+ 300 0114 8D       		.byte	-115
+ 301 0115 9D       		.byte	-99
+ 302 0116 02       		.byte	2
+ 303 0117 00       		.byte	0
+ 304 0118 CA       		.byte	-54
+ 305 0119 93       		.byte	-109
+ 306 011a 02       		.byte	2
+ 307 011b 00       		.byte	0
+ 308 011c 8D       		.byte	-115
+ 309 011d 88       		.byte	-120
+ 310 011e 02       		.byte	2
+ 311 011f 00       		.byte	0
+ 312 0120 E7       		.byte	-25
+ 313 0121 7B       		.byte	123
+ 314 0122 02       		.byte	2
+ 315 0123 00       		.byte	0
+ 316 0124 EA       		.byte	-22
+ 317 0125 6D       		.byte	109
+ 318 0126 02       		.byte	2
+ 319 0127 00       		.byte	0
+ 320 0128 AB       		.byte	-85
+ 321 0129 5E       		.byte	94
+ 322 012a 02       		.byte	2
+ 323 012b 00       		.byte	0
+ 324 012c 41       		.byte	65
+ 325 012d 4E       		.byte	78
+ 326 012e 02       		.byte	2
+ 327 012f 00       		.byte	0
+ 328 0130 C4       		.byte	-60
+ 329 0131 3C       		.byte	60
+ 330 0132 02       		.byte	2
+ 331 0133 00       		.byte	0
+ 332 0134 4D       		.byte	77
+ 333 0135 2A       		.byte	42
+ 334 0136 02       		.byte	2
+ 335 0137 00       		.byte	0
+ 336 0138 F6       		.byte	-10
+ 337 0139 16       		.byte	22
+ 338 013a 02       		.byte	2
+ 339 013b 00       		.byte	0
+ 340 013c DC       		.byte	-36
+ 341 013d 02       		.byte	2
+ 342 013e 02       		.byte	2
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccOWEGuk.s 			page 7
+
+
+ 343 013f 00       		.byte	0
+ 344 0140 19       		.byte	25
+ 345 0141 EE       		.byte	-18
+ 346 0142 01       		.byte	1
+ 347 0143 00       		.byte	0
+ 348 0144 CB       		.byte	-53
+ 349 0145 D8       		.byte	-40
+ 350 0146 01       		.byte	1
+ 351 0147 00       		.byte	0
+ 352 0148 0E       		.byte	14
+ 353 0149 C3       		.byte	-61
+ 354 014a 01       		.byte	1
+ 355 014b 00       		.byte	0
+ 356 014c 00       		.byte	0
+ 357 014d AD       		.byte	-83
+ 358 014e 01       		.byte	1
+ 359 014f 00       		.byte	0
+ 360 0150 BC       		.byte	-68
+ 361 0151 96       		.byte	-106
+ 362 0152 01       		.byte	1
+ 363 0153 00       		.byte	0
+ 364 0154 60       		.byte	96
+ 365 0155 80       		.byte	-128
+ 366 0156 01       		.byte	1
+ 367 0157 00       		.byte	0
+ 368 0158 06       		.byte	6
+ 369 0159 6A       		.byte	106
+ 370 015a 01       		.byte	1
+ 371 015b 00       		.byte	0
+ 372 015c C9       		.byte	-55
+ 373 015d 53       		.byte	83
+ 374 015e 01       		.byte	1
+ 375 015f 00       		.byte	0
+ 376 0160 C4       		.byte	-60
+ 377 0161 3D       		.byte	61
+ 378 0162 01       		.byte	1
+ 379 0163 00       		.byte	0
+ 380 0164 0F       		.byte	15
+ 381 0165 28       		.byte	40
+ 382 0166 01       		.byte	1
+ 383 0167 00       		.byte	0
+ 384 0168 C2       		.byte	-62
+ 385 0169 12       		.byte	18
+ 386 016a 01       		.byte	1
+ 387 016b 00       		.byte	0
+ 388 016c F2       		.byte	-14
+ 389 016d FD       		.byte	-3
+ 390 016e 00       		.byte	0
+ 391 016f 00       		.byte	0
+ 392 0170 B3       		.byte	-77
+ 393 0171 E9       		.byte	-23
+ 394 0172 00       		.byte	0
+ 395 0173 00       		.byte	0
+ 396 0174 19       		.byte	25
+ 397 0175 D6       		.byte	-42
+ 398 0176 00       		.byte	0
+ 399 0177 00       		.byte	0
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccOWEGuk.s 			page 8
+
+
+ 400 0178 33       		.byte	51
+ 401 0179 C3       		.byte	-61
+ 402 017a 00       		.byte	0
+ 403 017b 00       		.byte	0
+ 404 017c 11       		.byte	17
+ 405 017d B1       		.byte	-79
+ 406 017e 00       		.byte	0
+ 407 017f 00       		.byte	0
+ 408 0180 C0       		.byte	-64
+ 409 0181 9F       		.byte	-97
+ 410 0182 00       		.byte	0
+ 411 0183 00       		.byte	0
+ 412 0184 4A       		.byte	74
+ 413 0185 8F       		.byte	-113
+ 414 0186 00       		.byte	0
+ 415 0187 00       		.byte	0
+ 416 0188 B7       		.byte	-73
+ 417 0189 7F       		.byte	127
+ 418 018a 00       		.byte	0
+ 419 018b 00       		.byte	0
+ 420 018c 10       		.byte	16
+ 421 018d 71       		.byte	113
+ 422 018e 00       		.byte	0
+ 423 018f 00       		.byte	0
+ 424 0190 58       		.byte	88
+ 425 0191 63       		.byte	99
+ 426 0192 00       		.byte	0
+ 427 0193 00       		.byte	0
+ 428 0194 91       		.byte	-111
+ 429 0195 56       		.byte	86
+ 430 0196 00       		.byte	0
+ 431 0197 00       		.byte	0
+ 432 0198 BD       		.byte	-67
+ 433 0199 4A       		.byte	74
+ 434 019a 00       		.byte	0
+ 435 019b 00       		.byte	0
+ 436 019c DB       		.byte	-37
+ 437 019d 3F       		.byte	63
+ 438 019e 00       		.byte	0
+ 439 019f 00       		.byte	0
+ 440 01a0 E7       		.byte	-25
+ 441 01a1 35       		.byte	53
+ 442 01a2 00       		.byte	0
+ 443 01a3 00       		.byte	0
+ 444 01a4 DD       		.byte	-35
+ 445 01a5 2C       		.byte	44
+ 446 01a6 00       		.byte	0
+ 447 01a7 00       		.byte	0
+ 448 01a8 B5       		.byte	-75
+ 449 01a9 24       		.byte	36
+ 450 01aa 00       		.byte	0
+ 451 01ab 00       		.byte	0
+ 452 01ac 6A       		.byte	106
+ 453 01ad 1D       		.byte	29
+ 454 01ae 00       		.byte	0
+ 455 01af 00       		.byte	0
+ 456 01b0 F0       		.byte	-16
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccOWEGuk.s 			page 9
+
+
+ 457 01b1 16       		.byte	22
+ 458 01b2 00       		.byte	0
+ 459 01b3 00       		.byte	0
+ 460 01b4 3E       		.byte	62
+ 461 01b5 11       		.byte	17
+ 462 01b6 00       		.byte	0
+ 463 01b7 00       		.byte	0
+ 464 01b8 49       		.byte	73
+ 465 01b9 0C       		.byte	12
+ 466 01ba 00       		.byte	0
+ 467 01bb 00       		.byte	0
+ 468 01bc 03       		.byte	3
+ 469 01bd 08       		.byte	8
+ 470 01be 00       		.byte	0
+ 471 01bf 00       		.byte	0
+ 472 01c0 60       		.byte	96
+ 473 01c1 04       		.byte	4
+ 474 01c2 00       		.byte	0
+ 475 01c3 00       		.byte	0
+ 476 01c4 53       		.byte	83
+ 477 01c5 01       		.byte	1
+ 478 01c6 00       		.byte	0
+ 479 01c7 00       		.byte	0
+ 480 01c8 CD       		.byte	-51
+ 481 01c9 FE       		.byte	-2
+ 482 01ca FF       		.byte	-1
+ 483 01cb 00       		.byte	0
+ 484 01cc C0       		.byte	-64
+ 485 01cd FC       		.byte	-4
+ 486 01ce FF       		.byte	-1
+ 487 01cf 00       		.byte	0
+ 488 01d0 1D       		.byte	29
+ 489 01d1 FB       		.byte	-5
+ 490 01d2 FF       		.byte	-1
+ 491 01d3 00       		.byte	0
+ 492 01d4 D6       		.byte	-42
+ 493 01d5 F9       		.byte	-7
+ 494 01d6 FF       		.byte	-1
+ 495 01d7 00       		.byte	0
+ 496 01d8 DE       		.byte	-34
+ 497 01d9 F8       		.byte	-8
+ 498 01da FF       		.byte	-1
+ 499 01db 00       		.byte	0
+ 500 01dc 27       		.byte	39
+ 501 01dd F8       		.byte	-8
+ 502 01de FF       		.byte	-1
+ 503 01df 00       		.byte	0
+ 504 01e0 A2       		.byte	-94
+ 505 01e1 F7       		.byte	-9
+ 506 01e2 FF       		.byte	-1
+ 507 01e3 00       		.byte	0
+ 508 01e4 45       		.byte	69
+ 509 01e5 F7       		.byte	-9
+ 510 01e6 FF       		.byte	-1
+ 511 01e7 00       		.byte	0
+ 512 01e8 03       		.byte	3
+ 513 01e9 F7       		.byte	-9
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccOWEGuk.s 			page 10
+
+
+ 514 01ea FF       		.byte	-1
+ 515 01eb 00       		.byte	0
+ 516 01ec D1       		.byte	-47
+ 517 01ed F6       		.byte	-10
+ 518 01ee FF       		.byte	-1
+ 519 01ef 00       		.byte	0
+ 520 01f0 A5       		.byte	-91
+ 521 01f1 F6       		.byte	-10
+ 522 01f2 FF       		.byte	-1
+ 523 01f3 00       		.byte	0
+ 524 01f4 77       		.byte	119
+ 525 01f5 F6       		.byte	-10
+ 526 01f6 FF       		.byte	-1
+ 527 01f7 00       		.byte	0
+ 528 01f8 3F       		.byte	63
+ 529 01f9 F6       		.byte	-10
+ 530 01fa FF       		.byte	-1
+ 531 01fb 00       		.byte	0
+ 532 01fc F6       		.byte	-10
+ 533 01fd F5       		.byte	-11
+ 534 01fe FF       		.byte	-1
+ 535 01ff 00       		.byte	0
+ 536              		.text
+ 537              	.Letext0:
+ 538              		.file 1 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 539              		.file 2 ".\\Generated_Source\\PSoC5\\Filter_Coefficients.c"
+ 540              		.section	.debug_info,"",%progbits
+ 541              	.Ldebug_info0:
+ 542 0000 AF000000 		.4byte	0xaf
+ 543 0004 0200     		.2byte	0x2
+ 544 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 545 000a 04       		.byte	0x4
+ 546 000b 01       		.uleb128 0x1
+ 547 000c 1B000000 		.4byte	.LASF13
+ 548 0010 01       		.byte	0x1
+ 549 0011 23010000 		.4byte	.LASF14
+ 550 0015 A6000000 		.4byte	.LASF15
+ 551 0019 00000000 		.4byte	.Ldebug_line0
+ 552 001d 02       		.uleb128 0x2
+ 553 001e 01       		.byte	0x1
+ 554 001f 06       		.byte	0x6
+ 555 0020 17010000 		.4byte	.LASF0
+ 556 0024 02       		.uleb128 0x2
+ 557 0025 01       		.byte	0x1
+ 558 0026 08       		.byte	0x8
+ 559 0027 98000000 		.4byte	.LASF1
+ 560 002b 02       		.uleb128 0x2
+ 561 002c 02       		.byte	0x2
+ 562 002d 05       		.byte	0x5
+ 563 002e 58010000 		.4byte	.LASF2
+ 564 0032 02       		.uleb128 0x2
+ 565 0033 02       		.byte	0x2
+ 566 0034 07       		.byte	0x7
+ 567 0035 04010000 		.4byte	.LASF3
+ 568 0039 03       		.uleb128 0x3
+ 569 003a 04       		.byte	0x4
+ 570 003b 05       		.byte	0x5
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccOWEGuk.s 			page 11
+
+
+ 571 003c 696E7400 		.ascii	"int\000"
+ 572 0040 02       		.uleb128 0x2
+ 573 0041 04       		.byte	0x4
+ 574 0042 07       		.byte	0x7
+ 575 0043 0E000000 		.4byte	.LASF4
+ 576 0047 02       		.uleb128 0x2
+ 577 0048 08       		.byte	0x8
+ 578 0049 05       		.byte	0x5
+ 579 004a 00000000 		.4byte	.LASF5
+ 580 004e 02       		.uleb128 0x2
+ 581 004f 08       		.byte	0x8
+ 582 0050 07       		.byte	0x7
+ 583 0051 7C000000 		.4byte	.LASF6
+ 584 0055 02       		.uleb128 0x2
+ 585 0056 04       		.byte	0x4
+ 586 0057 05       		.byte	0x5
+ 587 0058 F4000000 		.4byte	.LASF7
+ 588 005c 02       		.uleb128 0x2
+ 589 005d 04       		.byte	0x4
+ 590 005e 07       		.byte	0x7
+ 591 005f 81010000 		.4byte	.LASF8
+ 592 0063 02       		.uleb128 0x2
+ 593 0064 04       		.byte	0x4
+ 594 0065 07       		.byte	0x7
+ 595 0066 6A000000 		.4byte	.LASF9
+ 596 006a 02       		.uleb128 0x2
+ 597 006b 01       		.byte	0x1
+ 598 006c 08       		.byte	0x8
+ 599 006d 93000000 		.4byte	.LASF10
+ 600 0071 04       		.uleb128 0x4
+ 601 0072 64000000 		.4byte	.LASF16
+ 602 0076 01       		.byte	0x1
+ 603 0077 5B       		.byte	0x5b
+ 604 0078 24000000 		.4byte	0x24
+ 605 007c 02       		.uleb128 0x2
+ 606 007d 04       		.byte	0x4
+ 607 007e 04       		.byte	0x4
+ 608 007f 52010000 		.4byte	.LASF11
+ 609 0083 02       		.uleb128 0x2
+ 610 0084 08       		.byte	0x8
+ 611 0085 04       		.byte	0x4
+ 612 0086 FD000000 		.4byte	.LASF12
+ 613 008a 05       		.uleb128 0x5
+ 614 008b 71000000 		.4byte	0x71
+ 615 008f 9B000000 		.4byte	0x9b
+ 616 0093 06       		.uleb128 0x6
+ 617 0094 5C000000 		.4byte	0x5c
+ 618 0098 FF01     		.2byte	0x1ff
+ 619 009a 00       		.byte	0
+ 620 009b 07       		.uleb128 0x7
+ 621 009c 62010000 		.4byte	.LASF17
+ 622 00a0 02       		.byte	0x2
+ 623 00a1 11       		.byte	0x11
+ 624 00a2 AD000000 		.4byte	0xad
+ 625 00a6 01       		.byte	0x1
+ 626 00a7 05       		.byte	0x5
+ 627 00a8 03       		.byte	0x3
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccOWEGuk.s 			page 12
+
+
+ 628 00a9 00000000 		.4byte	Filter_ChannelAFirCoefficients
+ 629 00ad 08       		.uleb128 0x8
+ 630 00ae 8A000000 		.4byte	0x8a
+ 631 00b2 00       		.byte	0
+ 632              		.section	.debug_abbrev,"",%progbits
+ 633              	.Ldebug_abbrev0:
+ 634 0000 01       		.uleb128 0x1
+ 635 0001 11       		.uleb128 0x11
+ 636 0002 01       		.byte	0x1
+ 637 0003 25       		.uleb128 0x25
+ 638 0004 0E       		.uleb128 0xe
+ 639 0005 13       		.uleb128 0x13
+ 640 0006 0B       		.uleb128 0xb
+ 641 0007 03       		.uleb128 0x3
+ 642 0008 0E       		.uleb128 0xe
+ 643 0009 1B       		.uleb128 0x1b
+ 644 000a 0E       		.uleb128 0xe
+ 645 000b 10       		.uleb128 0x10
+ 646 000c 06       		.uleb128 0x6
+ 647 000d 00       		.byte	0
+ 648 000e 00       		.byte	0
+ 649 000f 02       		.uleb128 0x2
+ 650 0010 24       		.uleb128 0x24
+ 651 0011 00       		.byte	0
+ 652 0012 0B       		.uleb128 0xb
+ 653 0013 0B       		.uleb128 0xb
+ 654 0014 3E       		.uleb128 0x3e
+ 655 0015 0B       		.uleb128 0xb
+ 656 0016 03       		.uleb128 0x3
+ 657 0017 0E       		.uleb128 0xe
+ 658 0018 00       		.byte	0
+ 659 0019 00       		.byte	0
+ 660 001a 03       		.uleb128 0x3
+ 661 001b 24       		.uleb128 0x24
+ 662 001c 00       		.byte	0
+ 663 001d 0B       		.uleb128 0xb
+ 664 001e 0B       		.uleb128 0xb
+ 665 001f 3E       		.uleb128 0x3e
+ 666 0020 0B       		.uleb128 0xb
+ 667 0021 03       		.uleb128 0x3
+ 668 0022 08       		.uleb128 0x8
+ 669 0023 00       		.byte	0
+ 670 0024 00       		.byte	0
+ 671 0025 04       		.uleb128 0x4
+ 672 0026 16       		.uleb128 0x16
+ 673 0027 00       		.byte	0
+ 674 0028 03       		.uleb128 0x3
+ 675 0029 0E       		.uleb128 0xe
+ 676 002a 3A       		.uleb128 0x3a
+ 677 002b 0B       		.uleb128 0xb
+ 678 002c 3B       		.uleb128 0x3b
+ 679 002d 0B       		.uleb128 0xb
+ 680 002e 49       		.uleb128 0x49
+ 681 002f 13       		.uleb128 0x13
+ 682 0030 00       		.byte	0
+ 683 0031 00       		.byte	0
+ 684 0032 05       		.uleb128 0x5
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccOWEGuk.s 			page 13
+
+
+ 685 0033 01       		.uleb128 0x1
+ 686 0034 01       		.byte	0x1
+ 687 0035 49       		.uleb128 0x49
+ 688 0036 13       		.uleb128 0x13
+ 689 0037 01       		.uleb128 0x1
+ 690 0038 13       		.uleb128 0x13
+ 691 0039 00       		.byte	0
+ 692 003a 00       		.byte	0
+ 693 003b 06       		.uleb128 0x6
+ 694 003c 21       		.uleb128 0x21
+ 695 003d 00       		.byte	0
+ 696 003e 49       		.uleb128 0x49
+ 697 003f 13       		.uleb128 0x13
+ 698 0040 2F       		.uleb128 0x2f
+ 699 0041 05       		.uleb128 0x5
+ 700 0042 00       		.byte	0
+ 701 0043 00       		.byte	0
+ 702 0044 07       		.uleb128 0x7
+ 703 0045 34       		.uleb128 0x34
+ 704 0046 00       		.byte	0
+ 705 0047 03       		.uleb128 0x3
+ 706 0048 0E       		.uleb128 0xe
+ 707 0049 3A       		.uleb128 0x3a
+ 708 004a 0B       		.uleb128 0xb
+ 709 004b 3B       		.uleb128 0x3b
+ 710 004c 0B       		.uleb128 0xb
+ 711 004d 49       		.uleb128 0x49
+ 712 004e 13       		.uleb128 0x13
+ 713 004f 3F       		.uleb128 0x3f
+ 714 0050 0C       		.uleb128 0xc
+ 715 0051 02       		.uleb128 0x2
+ 716 0052 0A       		.uleb128 0xa
+ 717 0053 00       		.byte	0
+ 718 0054 00       		.byte	0
+ 719 0055 08       		.uleb128 0x8
+ 720 0056 26       		.uleb128 0x26
+ 721 0057 00       		.byte	0
+ 722 0058 49       		.uleb128 0x49
+ 723 0059 13       		.uleb128 0x13
+ 724 005a 00       		.byte	0
+ 725 005b 00       		.byte	0
+ 726 005c 00       		.byte	0
+ 727              		.section	.debug_aranges,"",%progbits
+ 728 0000 14000000 		.4byte	0x14
+ 729 0004 0200     		.2byte	0x2
+ 730 0006 00000000 		.4byte	.Ldebug_info0
+ 731 000a 04       		.byte	0x4
+ 732 000b 00       		.byte	0
+ 733 000c 0000     		.2byte	0
+ 734 000e 0000     		.2byte	0
+ 735 0010 00000000 		.4byte	0
+ 736 0014 00000000 		.4byte	0
+ 737              		.section	.debug_line,"",%progbits
+ 738              	.Ldebug_line0:
+ 739 0000 58000000 		.section	.debug_str,"MS",%progbits,1
+ 739      02005200 
+ 739      00000201 
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccOWEGuk.s 			page 14
+
+
+ 739      FB0E0D00 
+ 739      01010101 
+ 740              	.LASF5:
+ 741 0000 6C6F6E67 		.ascii	"long long int\000"
+ 741      206C6F6E 
+ 741      6720696E 
+ 741      7400
+ 742              	.LASF4:
+ 743 000e 756E7369 		.ascii	"unsigned int\000"
+ 743      676E6564 
+ 743      20696E74 
+ 743      00
+ 744              	.LASF13:
+ 745 001b 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 745      4320342E 
+ 745      372E3320 
+ 745      32303133 
+ 745      30333132 
+ 746 004e 616E6368 		.ascii	"anch revision 196615]\000"
+ 746      20726576 
+ 746      6973696F 
+ 746      6E203139 
+ 746      36363135 
+ 747              	.LASF16:
+ 748 0064 75696E74 		.ascii	"uint8\000"
+ 748      3800
+ 749              	.LASF9:
+ 750 006a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 750      20756E73 
+ 750      69676E65 
+ 750      6420696E 
+ 750      7400
+ 751              	.LASF6:
+ 752 007c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 752      206C6F6E 
+ 752      6720756E 
+ 752      7369676E 
+ 752      65642069 
+ 753              	.LASF10:
+ 754 0093 63686172 		.ascii	"char\000"
+ 754      00
+ 755              	.LASF1:
+ 756 0098 756E7369 		.ascii	"unsigned char\000"
+ 756      676E6564 
+ 756      20636861 
+ 756      7200
+ 757              	.LASF15:
+ 758 00a6 4A3A5C63 		.ascii	"J:\\c704\\C704224\\Cypress\\CY8C5868\\Aktuelles Pro"
+ 758      3730345C 
+ 758      43373034 
+ 758      3232345C 
+ 758      43797072 
+ 759 00d4 6A656B74 		.ascii	"jekt\\Laserschutzschaltung.cydsn\000"
+ 759      5C4C6173 
+ 759      65727363 
+ 759      6875747A 
+ 759      73636861 
+ARM GAS  C:\Users\csap2972\AppData\Local\Temp\ccOWEGuk.s 			page 15
+
+
+ 760              	.LASF7:
+ 761 00f4 6C6F6E67 		.ascii	"long int\000"
+ 761      20696E74 
+ 761      00
+ 762              	.LASF12:
+ 763 00fd 646F7562 		.ascii	"double\000"
+ 763      6C6500
+ 764              	.LASF3:
+ 765 0104 73686F72 		.ascii	"short unsigned int\000"
+ 765      7420756E 
+ 765      7369676E 
+ 765      65642069 
+ 765      6E7400
+ 766              	.LASF0:
+ 767 0117 7369676E 		.ascii	"signed char\000"
+ 767      65642063 
+ 767      68617200 
+ 768              	.LASF14:
+ 769 0123 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Filter_Coefficients.c\000"
+ 769      6E657261 
+ 769      7465645F 
+ 769      536F7572 
+ 769      63655C50 
+ 770              	.LASF11:
+ 771 0152 666C6F61 		.ascii	"float\000"
+ 771      7400
+ 772              	.LASF2:
+ 773 0158 73686F72 		.ascii	"short int\000"
+ 773      7420696E 
+ 773      7400
+ 774              	.LASF17:
+ 775 0162 46696C74 		.ascii	"Filter_ChannelAFirCoefficients\000"
+ 775      65725F43 
+ 775      68616E6E 
+ 775      656C4146 
+ 775      6972436F 
+ 776              	.LASF8:
+ 777 0181 73697A65 		.ascii	"sizetype\000"
+ 777      74797065 
+ 777      00
+ 778              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

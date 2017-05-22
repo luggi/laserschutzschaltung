@@ -1,0 +1,166 @@
+
+initialize:
+    acu(setmod,setmod) dmux(sa,sa) alu(set0) mac(clra)
+    acu(clear,clear) dmux(sa,sa) alu(hold) mac(hold) jmp(eob, WaitForNew)
+
+WaitForNew:
+    acu(hold,hold) dmux(sa,sa) alu(hold) mac(hold) jmpl(in1, PROGRAM)
+
+
+ChA_init:
+    acu(loadm, loadm) addr(ChA_MAX) dmux(sa,sa) alu(hold) mac(hold)
+    acu(loadl, loadl) addr(ChA_MIN) dmux(sa,sa) alu(hold) mac(hold) 
+    acu(hold, hold) addr(1) dmux(ba,sa) alu(hold) mac(hold) 
+    acu(read, clear) addr(ChA_START) dmux(sra,sra) alu(setb) mac(clra) write(da) jmp(eob,ChA_fir)
+
+ChA_firFinish:
+    acu(write, clear) addr(ChA_START) dmux(sa, srm) alu(setb) mac(hold)
+    acu(hold, hold) dmux(sa, sa) alu(hold) mac(hold)
+    acu(hold, hold) addr(1) dmux(sa, sa) alu(hold) mac(hold) write(bus) jmp(eob, ChA_EXIT)
+
+ChA_fir:
+    acu(incr,incr) dmux(sra,srm) alu(setb) mac(macc) jmpl(eob,acubeq, ChA_firFinish)
+
+
+area acu
+    ChA_MAX: dw  ChA_LAST,ChA_LAST
+    ChA_MIN: dw  ChA_FIRST, ChA_FIRST
+    ChA_START: dw ChA_FIRST, ChA_FIRST
+
+
+area data_b
+ChA_FIRST:dw 16774646
+dw 16774719
+dw 16774775
+dw 16774821
+dw 16774865
+dw 16774915
+dw 16774981
+dw 16775074
+dw 16775207
+dw 16775390
+dw 16775638
+dw 16775965
+dw 16776384
+dw 16776909
+dw 339
+dw 1120
+dw 2051
+dw 3145
+dw 4414
+dw 5872
+dw 7530
+dw 9397
+dw 11485
+dw 13799
+dw 16347
+dw 19133
+dw 22161
+dw 25432
+dw 28944
+dw 32695
+dw 36682
+dw 40896
+dw 45329
+dw 49971
+dw 54809
+dw 59827
+dw 65010
+dw 70338
+dw 75791
+dw 81348
+dw 86985
+dw 92678
+dw 98400
+dw 104124
+dw 109824
+dw 115470
+dw 121035
+dw 126489
+dw 131804
+dw 136950
+dw 141901
+dw 146628
+dw 151105
+dw 155307
+dw 159210
+dw 162791
+dw 166029
+dw 168906
+dw 171405
+dw 173510
+dw 175210
+dw 176493
+dw 177353
+dw 177785
+dw 177785
+dw 177353
+dw 176493
+dw 175210
+dw 173510
+dw 171405
+dw 168906
+dw 166029
+dw 162791
+dw 159210
+dw 155307
+dw 151105
+dw 146628
+dw 141901
+dw 136950
+dw 131804
+dw 126489
+dw 121035
+dw 115470
+dw 109824
+dw 104124
+dw 98400
+dw 92678
+dw 86985
+dw 81348
+dw 75791
+dw 70338
+dw 65010
+dw 59827
+dw 54809
+dw 49971
+dw 45329
+dw 40896
+dw 36682
+dw 32695
+dw 28944
+dw 25432
+dw 22161
+dw 19133
+dw 16347
+dw 13799
+dw 11485
+dw 9397
+dw 7530
+dw 5872
+dw 4414
+dw 3145
+dw 2051
+dw 1120
+dw 339
+dw 16776909
+dw 16776384
+dw 16775965
+dw 16775638
+dw 16775390
+dw 16775207
+dw 16775074
+dw 16774981
+dw 16774915
+dw 16774865
+dw 16774821
+dw 16774775
+dw 16774719
+ChA_LAST: dw 16774646
+
+
+
+PROGRAM = ChA_init
+ChA_EXIT = WaitForNew
+
+
