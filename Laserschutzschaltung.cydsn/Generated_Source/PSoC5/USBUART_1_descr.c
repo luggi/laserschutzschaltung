@@ -37,7 +37,7 @@ const uint8 CYCODE USBUART_1_DEVICE0_DESCR[18u] = {
 /* Descriptor Length                       */ 0x12u,
 /* DescriptorType: DEVICE                  */ 0x01u,
 /* bcdUSB (ver 2.0)                        */ 0x00u, 0x02u,
-/* bDeviceClass                            */ 0x00u,
+/* bDeviceClass                            */ 0x02u,
 /* bDeviceSubClass                         */ 0x00u,
 /* bDeviceProtocol                         */ 0x00u,
 /* bMaxPacketSize0                         */ 0x08u,
@@ -52,15 +52,15 @@ const uint8 CYCODE USBUART_1_DEVICE0_DESCR[18u] = {
 /*********************************************************************
 * Config Descriptor  
 *********************************************************************/
-const uint8 CYCODE USBUART_1_DEVICE0_CONFIGURATION0_DESCR[97u] = {
+const uint8 CYCODE USBUART_1_DEVICE0_CONFIGURATION0_DESCR[67u] = {
 /*  Config Descriptor Length               */ 0x09u,
 /*  DescriptorType: CONFIG                 */ 0x02u,
-/*  wTotalLength                           */ 0x61u, 0x00u,
+/*  wTotalLength                           */ 0x43u, 0x00u,
 /*  bNumInterfaces                         */ 0x02u,
 /*  bConfigurationValue                    */ 0x01u,
-/*  iConfiguration                         */ 0x00u,
+/*  iConfiguration                         */ 0x02u,
 /*  bmAttributes                           */ 0xC0u,
-/*  bMaxPower                              */ 0x19u,
+/*  bMaxPower                              */ 0x32u,
 /*********************************************************************
 * CDC Interface Descriptor
 *********************************************************************/
@@ -68,7 +68,7 @@ const uint8 CYCODE USBUART_1_DEVICE0_CONFIGURATION0_DESCR[97u] = {
 /*  DescriptorType: INTERFACE              */ 0x04u,
 /*  bInterfaceNumber                       */ 0x00u,
 /*  bAlternateSetting                      */ 0x00u,
-/*  bNumEndpoints                          */ 0x03u,
+/*  bNumEndpoints                          */ 0x01u,
 /*  bInterfaceClass                        */ 0x02u,
 /*  bInterfaceSubClass                     */ 0x02u,
 /*  bInterfaceProtocol                     */ 0x01u,
@@ -88,13 +88,21 @@ const uint8 CYCODE USBUART_1_DEVICE0_CONFIGURATION0_DESCR[97u] = {
 /*  bDescriptorSubtype                     */ 0x02u,
 /*  bmCapabilities                         */ 0x02u,
 /*********************************************************************
+* Union Descriptor
+*********************************************************************/
+/*  Union Descriptor Length                */ 0x05u,
+/*  DescriptorType: CS_INTERFACE           */ 0x24u,
+/*  bDescriptorSubtype                     */ 0x06u,
+/*  bControlInterface                      */ 0x00u,
+/*  bSubordinateInterface                  */ 0x01u,
+/*********************************************************************
 * Call Management Descriptor
 *********************************************************************/
 /*  Call Management Descriptor Length      */ 0x05u,
 /*  DescriptorType: CS_INTERFACE           */ 0x24u,
 /*  bDescriptorSubtype                     */ 0x01u,
 /*  bmCapabilities                         */ 0x00u,
-/*  bDataInterface                         */ 0x00u,
+/*  bDataInterface                         */ 0x01u,
 /*********************************************************************
 * Endpoint Descriptor
 *********************************************************************/
@@ -102,75 +110,26 @@ const uint8 CYCODE USBUART_1_DEVICE0_CONFIGURATION0_DESCR[97u] = {
 /*  DescriptorType: ENDPOINT               */ 0x05u,
 /*  bEndpointAddress                       */ 0x81u,
 /*  bmAttributes                           */ 0x03u,
-/*  wMaxPacketSize                         */ 0x40u, 0x00u,
-/*  bInterval                              */ 0x02u,
+/*  wMaxPacketSize                         */ 0x08u, 0x00u,
+/*  bInterval                              */ 0x0Au,
 /*********************************************************************
-* Endpoint Descriptor
-*********************************************************************/
-/*  Endpoint Descriptor Length             */ 0x07u,
-/*  DescriptorType: ENDPOINT               */ 0x05u,
-/*  bEndpointAddress                       */ 0x02u,
-/*  bmAttributes                           */ 0x02u,
-/*  wMaxPacketSize                         */ 0x40u, 0x00u,
-/*  bInterval                              */ 0x00u,
-/*********************************************************************
-* Endpoint Descriptor
-*********************************************************************/
-/*  Endpoint Descriptor Length             */ 0x07u,
-/*  DescriptorType: ENDPOINT               */ 0x05u,
-/*  bEndpointAddress                       */ 0x83u,
-/*  bmAttributes                           */ 0x02u,
-/*  wMaxPacketSize                         */ 0x40u, 0x00u,
-/*  bInterval                              */ 0x00u,
-/*********************************************************************
-* CDC Interface Descriptor
+* Data Interface Descriptor
 *********************************************************************/
 /*  Interface Descriptor Length            */ 0x09u,
 /*  DescriptorType: INTERFACE              */ 0x04u,
 /*  bInterfaceNumber                       */ 0x01u,
 /*  bAlternateSetting                      */ 0x00u,
-/*  bNumEndpoints                          */ 0x03u,
-/*  bInterfaceClass                        */ 0x02u,
-/*  bInterfaceSubClass                     */ 0x02u,
-/*  bInterfaceProtocol                     */ 0x01u,
-/*  iInterface                             */ 0x07u,
-/*********************************************************************
-* Header Descriptor
-*********************************************************************/
-/*  Header Descriptor Length               */ 0x05u,
-/*  DescriptorType: CS_INTERFACE           */ 0x24u,
-/*  bDescriptorSubtype                     */ 0x00u,
-/*  bcdADC                                 */ 0x10u, 0x01u,
-/*********************************************************************
-* Abstract Control Management Descriptor
-*********************************************************************/
-/*  Abstract Control Management Descriptor Length*/ 0x04u,
-/*  DescriptorType: CS_INTERFACE           */ 0x24u,
-/*  bDescriptorSubtype                     */ 0x02u,
-/*  bmCapabilities                         */ 0x02u,
-/*********************************************************************
-* Call Management Descriptor
-*********************************************************************/
-/*  Call Management Descriptor Length      */ 0x05u,
-/*  DescriptorType: CS_INTERFACE           */ 0x24u,
-/*  bDescriptorSubtype                     */ 0x01u,
-/*  bmCapabilities                         */ 0x00u,
-/*  bDataInterface                         */ 0x00u,
+/*  bNumEndpoints                          */ 0x02u,
+/*  bInterfaceClass                        */ 0x0Au,
+/*  bInterfaceSubClass                     */ 0x00u,
+/*  bInterfaceProtocol                     */ 0x00u,
+/*  iInterface                             */ 0x04u,
 /*********************************************************************
 * Endpoint Descriptor
 *********************************************************************/
 /*  Endpoint Descriptor Length             */ 0x07u,
 /*  DescriptorType: ENDPOINT               */ 0x05u,
-/*  bEndpointAddress                       */ 0x84u,
-/*  bmAttributes                           */ 0x03u,
-/*  wMaxPacketSize                         */ 0x08u, 0x00u,
-/*  bInterval                              */ 0x02u,
-/*********************************************************************
-* Endpoint Descriptor
-*********************************************************************/
-/*  Endpoint Descriptor Length             */ 0x07u,
-/*  DescriptorType: ENDPOINT               */ 0x05u,
-/*  bEndpointAddress                       */ 0x05u,
+/*  bEndpointAddress                       */ 0x82u,
 /*  bmAttributes                           */ 0x02u,
 /*  wMaxPacketSize                         */ 0x40u, 0x00u,
 /*  bInterval                              */ 0x00u,
@@ -179,7 +138,7 @@ const uint8 CYCODE USBUART_1_DEVICE0_CONFIGURATION0_DESCR[97u] = {
 *********************************************************************/
 /*  Endpoint Descriptor Length             */ 0x07u,
 /*  DescriptorType: ENDPOINT               */ 0x05u,
-/*  bEndpointAddress                       */ 0x86u,
+/*  bEndpointAddress                       */ 0x03u,
 /*  bmAttributes                           */ 0x02u,
 /*  wMaxPacketSize                         */ 0x40u, 0x00u,
 /*  bInterval                              */ 0x00u
@@ -188,7 +147,7 @@ const uint8 CYCODE USBUART_1_DEVICE0_CONFIGURATION0_DESCR[97u] = {
 /*********************************************************************
 * String Descriptor Table
 *********************************************************************/
-const uint8 CYCODE USBUART_1_STRING_DESCRIPTORS[403u] = {
+const uint8 CYCODE USBUART_1_STRING_DESCRIPTORS[159u] = {
 /*********************************************************************
 * Language ID Descriptor
 *********************************************************************/
@@ -232,60 +191,6 @@ const uint8 CYCODE USBUART_1_STRING_DESCRIPTORS[403u] = {
  (uint8)'a', 0u,(uint8)'t', 0u,(uint8)'a', 0u,(uint8)' ', 0u,(uint8)'I', 0u,
  (uint8)'n', 0u,(uint8)'t', 0u,(uint8)'e', 0u,(uint8)'r', 0u,(uint8)'f', 0u,
  (uint8)'a', 0u,(uint8)'c', 0u,(uint8)'e', 0u,
-/*********************************************************************
-* String Descriptor: "CDC Communication Interface 0"
-*********************************************************************/
-/* Descriptor Length                       */ 0x3Cu,
-/* DescriptorType: STRING                  */ 0x03u,
- (uint8)'C', 0u,(uint8)'D', 0u,(uint8)'C', 0u,(uint8)' ', 0u,(uint8)'C', 0u,
- (uint8)'o', 0u,(uint8)'m', 0u,(uint8)'m', 0u,(uint8)'u', 0u,(uint8)'n', 0u,
- (uint8)'i', 0u,(uint8)'c', 0u,(uint8)'a', 0u,(uint8)'t', 0u,(uint8)'i', 0u,
- (uint8)'o', 0u,(uint8)'n', 0u,(uint8)' ', 0u,(uint8)'I', 0u,(uint8)'n', 0u,
- (uint8)'t', 0u,(uint8)'e', 0u,(uint8)'r', 0u,(uint8)'f', 0u,(uint8)'a', 0u,
- (uint8)'c', 0u,(uint8)'e', 0u,(uint8)' ', 0u,(uint8)'0', 0u,
-/*********************************************************************
-* String Descriptor: "CDC Data Interface 0"
-*********************************************************************/
-/* Descriptor Length                       */ 0x2Au,
-/* DescriptorType: STRING                  */ 0x03u,
- (uint8)'C', 0u,(uint8)'D', 0u,(uint8)'C', 0u,(uint8)' ', 0u,(uint8)'D', 0u,
- (uint8)'a', 0u,(uint8)'t', 0u,(uint8)'a', 0u,(uint8)' ', 0u,(uint8)'I', 0u,
- (uint8)'n', 0u,(uint8)'t', 0u,(uint8)'e', 0u,(uint8)'r', 0u,(uint8)'f', 0u,
- (uint8)'a', 0u,(uint8)'c', 0u,(uint8)'e', 0u,(uint8)' ', 0u,(uint8)'0', 0u,
-/*********************************************************************
-* String Descriptor: "CDC Communication Interface 1"
-*********************************************************************/
-/* Descriptor Length                       */ 0x3Cu,
-/* DescriptorType: STRING                  */ 0x03u,
- (uint8)'C', 0u,(uint8)'D', 0u,(uint8)'C', 0u,(uint8)' ', 0u,(uint8)'C', 0u,
- (uint8)'o', 0u,(uint8)'m', 0u,(uint8)'m', 0u,(uint8)'u', 0u,(uint8)'n', 0u,
- (uint8)'i', 0u,(uint8)'c', 0u,(uint8)'a', 0u,(uint8)'t', 0u,(uint8)'i', 0u,
- (uint8)'o', 0u,(uint8)'n', 0u,(uint8)' ', 0u,(uint8)'I', 0u,(uint8)'n', 0u,
- (uint8)'t', 0u,(uint8)'e', 0u,(uint8)'r', 0u,(uint8)'f', 0u,(uint8)'a', 0u,
- (uint8)'c', 0u,(uint8)'e', 0u,(uint8)' ', 0u,(uint8)'1', 0u,
-/*********************************************************************
-* String Descriptor: "CDC Data Interface 1"
-*********************************************************************/
-/* Descriptor Length                       */ 0x2Au,
-/* DescriptorType: STRING                  */ 0x03u,
- (uint8)'C', 0u,(uint8)'D', 0u,(uint8)'C', 0u,(uint8)' ', 0u,(uint8)'D', 0u,
- (uint8)'a', 0u,(uint8)'t', 0u,(uint8)'a', 0u,(uint8)' ', 0u,(uint8)'I', 0u,
- (uint8)'n', 0u,(uint8)'t', 0u,(uint8)'e', 0u,(uint8)'r', 0u,(uint8)'f', 0u,
- (uint8)'a', 0u,(uint8)'c', 0u,(uint8)'e', 0u,(uint8)' ', 0u,(uint8)'1', 0u,
-/*********************************************************************
-* String Descriptor: "USBUART 1"
-*********************************************************************/
-/* Descriptor Length                       */ 0x14u,
-/* DescriptorType: STRING                  */ 0x03u,
- (uint8)'U', 0u,(uint8)'S', 0u,(uint8)'B', 0u,(uint8)'U', 0u,(uint8)'A', 0u,
- (uint8)'R', 0u,(uint8)'T', 0u,(uint8)' ', 0u,(uint8)'1', 0u,
-/*********************************************************************
-* String Descriptor: "USBUART 2"
-*********************************************************************/
-/* Descriptor Length                       */ 0x14u,
-/* DescriptorType: STRING                  */ 0x03u,
- (uint8)'U', 0u,(uint8)'S', 0u,(uint8)'B', 0u,(uint8)'U', 0u,(uint8)'A', 0u,
- (uint8)'R', 0u,(uint8)'T', 0u,(uint8)' ', 0u,(uint8)'2', 0u,
 /*********************************************************************/
 /* Marks the end of the list.              */ 0x00u};
 /*********************************************************************/
@@ -308,17 +213,14 @@ const uint8 CYCODE USBUART_1_SN_STRING_DESCRIPTOR[2] = {
 *                           configure the endpoint hardware for each
 *                           interface and alternate setting.
 *********************************************************************/
-const T_USBUART_1_EP_SETTINGS_BLOCK CYCODE USBUART_1_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE[6u] = {
+const T_USBUART_1_EP_SETTINGS_BLOCK CYCODE USBUART_1_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE[3u] = {
 /* IFC  ALT    EPAddr bmAttr MaxPktSize Class ********************/
-{0x00u, 0x00u, 0x81u, 0x03u, 0x0040u,   0x02u},
-{0x00u, 0x00u, 0x02u, 0x02u, 0x0040u,   0x02u},
-{0x00u, 0x00u, 0x83u, 0x02u, 0x0040u,   0x02u},
-{0x01u, 0x00u, 0x84u, 0x03u, 0x0008u,   0x02u},
-{0x01u, 0x00u, 0x05u, 0x02u, 0x0040u,   0x02u},
-{0x01u, 0x00u, 0x86u, 0x02u, 0x0040u,   0x02u}
+{0x00u, 0x00u, 0x81u, 0x03u, 0x0008u,   0x02u},
+{0x01u, 0x00u, 0x82u, 0x02u, 0x0040u,   0x0Au},
+{0x01u, 0x00u, 0x03u, 0x02u, 0x0040u,   0x0Au}
 };
 const uint8 CYCODE USBUART_1_DEVICE0_CONFIGURATION0_INTERFACE_CLASS[2u] = {
-0x02u, 0x02u
+0x02u, 0x0Au
 };
 /*********************************************************************
 * Config Dispatch Table -- Points to the Config Descriptor and each of
@@ -327,7 +229,7 @@ const uint8 CYCODE USBUART_1_DEVICE0_CONFIGURATION0_INTERFACE_CLASS[2u] = {
 *********************************************************************/
 const T_USBUART_1_LUT CYCODE USBUART_1_DEVICE0_CONFIGURATION0_TABLE[5u] = {
     {0x01u,     &USBUART_1_DEVICE0_CONFIGURATION0_DESCR},
-    {0x06u,     &USBUART_1_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE},
+    {0x03u,     &USBUART_1_DEVICE0_CONFIGURATION0_EP_SETTINGS_TABLE},
     {0x00u,    NULL},
     {0x00u,    NULL},
     {0x00u,     &USBUART_1_DEVICE0_CONFIGURATION0_INTERFACE_CLASS}

@@ -93,10 +93,10 @@ void Comp_2_Wakeup(void)                    ;
 *           Parameter Defaults        
 **************************************/
 
-#define Comp_2_DEFAULT_SPEED       (2u) 
+#define Comp_2_DEFAULT_SPEED       (1u) 
 #define Comp_2_DEFAULT_HYSTERESIS  (1u)
 #define Comp_2_DEFAULT_POLARITY    (1u)
-#define Comp_2_DEFAULT_BYPASS_SYNC (1u)
+#define Comp_2_DEFAULT_BYPASS_SYNC (0u)
 #define Comp_2_DEFAULT_PWRDWN_OVRD (0u)
 
 

@@ -100,7 +100,7 @@ void PGA_2_Enable(void)                ;
 
 #define PGA_2_DEFAULT_GAIN             (0u)
 #define PGA_2_VREF_MODE                ((0u != 0x00u) ? (0x00u) : PGA_2_GNDVREF_E)
-#define PGA_2_DEFAULT_POWER            (3u)
+#define PGA_2_DEFAULT_POWER            (1u)
 
 
 /***************************************

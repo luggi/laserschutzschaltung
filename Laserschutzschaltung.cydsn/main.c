@@ -55,7 +55,7 @@ pid pid1;
 int pidoutput;
 int setpoint = 3800;
 float Temperature;
-float current_output_coeff = 256.0f / (45.0f*(4095.0f/5000.0f));
+float current_output_coeff = 10000.0f / 45.0f;
 float set_current_psu = 0.0f;
 uint8_t auto_current=1;
 float slope = 0.5f; // ampere per second to increase/decrease the power supply
@@ -320,8 +320,8 @@ int main(void)
             }
             
             uint32_t temp = set_current_psu_actual*current_output_coeff;
-            uint8_t output_current = (temp > 255) ? 255 : temp;
-            DAC_Current_Control_SetValue(output_current);
+            uint32_t output_current = (temp > 10000) ? 10000 : temp;
+            PWM_2_WriteCompare(output_current);            
             
             if(!SW2_Read())
                 eventcounter = 0;
@@ -593,7 +593,6 @@ void peripheral_init(void)
     VDAC8_Start();
 	IDAC8_1_Start();
 	IDAC8_2_Start();
-    DAC_Current_Control_Start();
 	PGA_1_Start();
 	PGA_2_Start();
     PGA_1_SetGain(PGA_1_GAIN_02);
@@ -602,7 +601,7 @@ void peripheral_init(void)
 	LCD_Start();
 	Counter_1_Start();
     PWM_1_Start();
-    
+    PWM_2_Start();
 	
     /* User-implemented function to set-up DMA */
     DMA_Config();

@@ -56,7 +56,7 @@ uint8 Fault_Reg_ReadMask(void) ;
 ***************************************/
 
 /* Status Register Inputs */
-#define Fault_Reg_INPUTS              5
+#define Fault_Reg_INPUTS              6
 
 
 /***************************************

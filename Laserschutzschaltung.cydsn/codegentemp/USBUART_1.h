@@ -51,6 +51,7 @@
 #define USBUART_1_ENABLE_MSC_CLASS             (0u)
 #define USBUART_1_BOS_ENABLE                   (0u)
 #define USBUART_1_ENABLE_DESCRIPTOR_STRINGS    
+#define USBUART_1_ENABLE_MSOS_STRING           
 #define USBUART_1_ENABLE_SN_STRING             
 #define USBUART_1_ENABLE_IDSN_STRING           
 #define USBUART_1_ENABLE_STRINGS               
@@ -65,7 +66,7 @@
 #define USBUART_1_EP_MM                  (0u)
 #define USBUART_1_EP_MA                  (0u)
 #define USBUART_1_ENABLE_BATT_CHARG_DET  (0u)
-#define USBUART_1_GEN_16BITS_EP_ACCESS   (1u)
+#define USBUART_1_GEN_16BITS_EP_ACCESS   (0u)
 
 /* Enable Class APIs: MIDI, CDC, MSC. */         
 #define USBUART_1_ENABLE_CDC_CLASS_API   (0u != (1u))
@@ -101,9 +102,9 @@
 #define USBUART_1_EP1_ISR_REMOVE     (0u)
 #define USBUART_1_EP2_ISR_REMOVE     (0u)
 #define USBUART_1_EP3_ISR_REMOVE     (0u)
-#define USBUART_1_EP4_ISR_REMOVE     (0u)
-#define USBUART_1_EP5_ISR_REMOVE     (0u)
-#define USBUART_1_EP6_ISR_REMOVE     (0u)
+#define USBUART_1_EP4_ISR_REMOVE     (1u)
+#define USBUART_1_EP5_ISR_REMOVE     (1u)
+#define USBUART_1_EP6_ISR_REMOVE     (1u)
 #define USBUART_1_EP7_ISR_REMOVE     (1u)
 #define USBUART_1_EP8_ISR_REMOVE     (1u)
 #define USBUART_1_EP1_ISR_ACTIVE     ((0u == USBUART_1_EP1_ISR_REMOVE) ? 1u: 0u)

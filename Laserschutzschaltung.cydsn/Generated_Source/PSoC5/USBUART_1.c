@@ -84,9 +84,9 @@ uint8 USBUART_1_initVar = 0u;
         USBUART_1_ep1_dma__TR_OUTPUT,
         USBUART_1_ep2_dma__TR_OUTPUT,
         USBUART_1_ep3_dma__TR_OUTPUT,
-        USBUART_1_ep4_dma__TR_OUTPUT,
-        USBUART_1_ep5_dma__TR_OUTPUT,
-        USBUART_1_ep6_dma__TR_OUTPUT,
+        0u,
+        0u,
+        0u,
         0u,
         0u,
     };

@@ -39,7 +39,7 @@ extern uint8 PWM_1_initVar;
 #define PWM_1_DeadBand2_4                    (0u)
 
 #if !defined(PWM_1_PWMUDB_genblk8_stsreg__REMOVED)
-    #define PWM_1_UseStatus                  (0u)
+    #define PWM_1_UseStatus                  (1u)
 #else
     #define PWM_1_UseStatus                  (0u)
 #endif /* !defined(PWM_1_PWMUDB_genblk8_stsreg__REMOVED) */
@@ -226,7 +226,7 @@ void PWM_1_RestoreConfig(void) ;
 /***************************************
 *         Initialization Values
 **************************************/
-#define PWM_1_INIT_PERIOD_VALUE          (50u)
+#define PWM_1_INIT_PERIOD_VALUE          (10u)
 #define PWM_1_INIT_COMPARE_VALUE1        (1u)
 #define PWM_1_INIT_COMPARE_VALUE2        (63u)
 #define PWM_1_INIT_INTERRUPTS_MODE       (uint8)(((uint8)(0u <<   \

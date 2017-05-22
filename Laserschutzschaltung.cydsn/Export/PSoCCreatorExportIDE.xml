@@ -7,14 +7,14 @@
       <Tool Name="prebuild" Command="" Options="" />
       <Tool Name="assembler" Command="arm-none-eabi-as.exe" Options="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -alh=${OutputDir}/${CompileFile}.lst -g" />
       <Tool Name="compiler" Command="arm-none-eabi-gcc.exe" Options="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -Wall -ffunction-sections -Og -flto -ffat-lto-objects -lnosys" />
-      <Tool Name="linker" Command="arm-none-eabi-gcc.exe" Options="-mcpu=cortex-m3 -mthumb -g -ffunction-sections -Og -flto -ffat-lto-objects -l m -L Generated_Source\PSoC5 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T &quot;C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn\Generated_Source\PSoC5\cm3gcc.ld&quot; -specs=nano.specs -Wl,--gc-sections" />
+      <Tool Name="linker" Command="arm-none-eabi-gcc.exe" Options="-mcpu=cortex-m3 -mthumb -g -ffunction-sections -Og -flto -ffat-lto-objects -l m -L Generated_Source\PSoC5 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn\Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections" />
       <Tool Name="postbuild" Command="" Options="" />
     </Toolchain>
     <Toolchain Name="ARM MDK Generic" Selected="False">
       <Tool Name="prebuild" Command="" Options="" />
       <Tool Name="assembler" Command="armasm.exe" Options="--cpu=Cortex-M3 --diag_style=gnu --thumb -i. -iGenerated_Source\PSoC5 -g --list=${OutputDir}/${CompileFile}.lst" />
       <Tool Name="compiler" Command="armcc.exe" Options="--cpu=Cortex-M3 --diag_style=gnu -I. -IGenerated_Source\PSoC5 --list --signed_chars -g -D DEBUG -O0 --split_sections" />
-      <Tool Name="linker" Command="armlink.exe" Options="--cpu=Cortex-M3 --diag_style=gnu --no_startup --library_type=microlib --map --list ${OutputDir}/${ProjectShortName}.map --scatter &quot;C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn\Generated_Source\PSoC5\Cm3RealView.scat&quot;" />
+      <Tool Name="linker" Command="armlink.exe" Options="--cpu=Cortex-M3 --diag_style=gnu --no_startup --library_type=microlib --map --list ${OutputDir}/${ProjectShortName}.map --scatter C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn\Generated_Source\PSoC5\Cm3RealView.scat" />
       <Tool Name="postbuild" Command="" Options="" />
     </Toolchain>
     <Toolchain Name="ARM IAR Generic" Selected="False">
@@ -25,7 +25,7 @@
       <Tool Name="postbuild" Command="" Options="" />
     </Toolchain>
   </Toolchains>
-  <Project Name="Laserschutzschaltung" Path="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn" Version="5.50" Type="Normal">
+  <Project Name="Laserschutzschaltung" Path="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn" Version="5.50" Type="Normal">
     <CMSIS_SVD_File>Laserschutzschaltung.svd</CMSIS_SVD_File>
     <Datasheet />
     <LinkerFiles>
@@ -34,20 +34,20 @@
       <LinkerFile Toolchain="ARM IAR Generic">.\Generated_Source\PSoC5\Cm3Iar.icf</LinkerFile>
     </LinkerFiles>
     <Folders>
-      <Folder BuildType="STRICT" Path="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn">
-          <File BuildType="BUILD" Toolchain="">main.c</File>
-          <File BuildType="BUILD" Toolchain="">pid.c</File>
-          <File BuildType="BUILD" Toolchain="">cli.c</File>
-          <File BuildType="BUILD" Toolchain="">eeprom.c</File>
+      <Folder BuildType="STRICT" Path="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn">
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn">
           <File BuildType="BUILD" Toolchain="">device.h</File>
           <File BuildType="BUILD" Toolchain="">pid.h</File>
           <File BuildType="BUILD" Toolchain="">cli.h</File>
           <File BuildType="BUILD" Toolchain="">eeprom.h</File>
+          <File BuildType="BUILD" Toolchain="">main.c</File>
+          <File BuildType="BUILD" Toolchain="">pid.c</File>
+          <File BuildType="BUILD" Toolchain="">cli.c</File>
+          <File BuildType="BUILD" Toolchain="">eeprom.c</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn\Generated_Source\PSoC5">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn\Generated_Source\PSoC5">
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn">
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitter_cfg.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitter_cfg.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cydevice.h</File>
@@ -109,6 +109,9 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Comp_2.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Comp_2.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Comp_2_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Diode_Pumpseite_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Diode_Pumpseite.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Diode_Pumpseite.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Comp_3.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Comp_3.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Comp_3_PM.c</File>
@@ -160,6 +163,9 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DAC_PGA_OUT_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DAC_PGA_OUT.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DAC_PGA_OUT.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Potentiometer_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Potentiometer.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Potentiometer.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Counter_1.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Counter_1.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Counter_1_PM.c</File>
@@ -209,12 +215,6 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareimport.ld</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareexport.ld</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareimport.scat</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DAC_Current_Control.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DAC_Current_Control.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DAC_Current_Control_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DAC_Curr_OUT_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DAC_Curr_OUT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DAC_Curr_OUT.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\USBUART_1.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\USBUART_1.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\USBUART_1_audio.c</File>
@@ -248,22 +248,10 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_1_PM.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_4.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_4.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Diode_Oscillation_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Diode_Oscillation.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Diode_Oscillation.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_SAR_Seq_2.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_SAR_Seq_2.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_SAR_Seq_2_PM.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_SAR_Seq_2_INT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Diode_seed_adc_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Diode_seed_adc.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Diode_seed_adc.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Diode_pump_adc_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Diode_pump_adc.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Diode_pump_adc.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Diode_osc_adc_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Diode_osc_adc.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Diode_osc_adc.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_SAR_Seq_2_SAR.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_SAR_Seq_2_SAR.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_SAR_Seq_2_SAR_INT.c</File>
@@ -276,61 +264,75 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_SAR_Seq_2_FinalBuf_dma.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_SAR_Seq_2_IRQ.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_SAR_Seq_2_IRQ.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Current_poti_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Current_poti.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Current_poti.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_2_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_5.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_5.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Curr_control_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Curr_control.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Curr_control.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\pump_diode_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\pump_diode.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\pump_diode.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\osc_diode_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\osc_diode.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\osc_diode.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\seed_diode_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\seed_diode.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\seed_diode.h</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn\Export\ARM_GCC_Generic">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn\Export\ARM_GCC_Generic">
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn">
           <File BuildType="BUILD" Toolchain="ARM GCC Generic">.\Export\ARM_GCC_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn\Export\ARM_MDK_Generic">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn\Export\ARM_MDK_Generic">
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn">
           <File BuildType="BUILD" Toolchain="ARM MDK Generic">.\Export\ARM_MDK_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn\Export\ARM_IAR_Generic">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn\Export\ARM_IAR_Generic">
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn">
           <File BuildType="BUILD" Toolchain="ARM IAR Generic">.\Export\ARM_IAR_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\codegentemp">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn" />
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_441">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn" />
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_473">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn" />
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051_Keil_952">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn" />
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn" />
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn" />
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0p">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn" />
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM3">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn" />
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM4">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn" />
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM7">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn" />
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\Generated_Source\PSoC3">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn" />
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\Generated_Source\PSoC4">
-        <Files Root="C:\Users\Luggi\Desktop\Aktuelles Projekt Laser_schutzschaltung\Aktuelles Projekt Laser_schutzschaltung\Laserschutzschaltung.cydsn" />
+        <Files Root="C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn" />
       </Folder>
     </Folders>
   </Project>
