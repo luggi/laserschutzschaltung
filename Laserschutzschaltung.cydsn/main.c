@@ -143,6 +143,17 @@ CY_ISR(pidISR)
 	Counter_1_ReadStatusRegister();
 	pidStatus=1;
 }
+void value_to_string00_00(char* buffer, float value){ // prints format 00.00
+            
+    if(value < 0)
+        value = 0;
+			buffer[0] = ((int)value / 10) % 10 + '0';
+			buffer[1] = ((int)value  % 10) + '0';
+			buffer[2] = '.';
+			buffer[3] = (int)(value * 10) % 10 + '0';
+			buffer[4] = (int)(value * 100) % 10 + '0';
+			buffer[5] = '\0';
+}
 
 void value_to_string1(char* buffer, float value){ // prints format 000.00
             
@@ -263,16 +274,18 @@ int main(void)
             power_diode[PUMP_PD] = calc_diode_power(ADC_SAR_Seq_2_GetResult16(PUMP_PD) ,photodiode_power_coefficients[1],0x0fff); // pump pd
             power_diode[SEED_PD] = calc_diode_power(ADC_SAR_Seq_2_GetResult16(SEED_PD) ,photodiode_power_coefficients[2],0x0fff); // seed pd
             
+            set_current_psu = calc_diode_power(ADC_SAR_Seq_2_GetResult16(3) ,9.0f,0x0fff); // current
+            
             LCD_Position(1u, 0u);
             value_to_string2(buffer,power_diode[OSCILLATION_PD]);
 			LCD_PrintString(buffer);
             
-            value_to_string2(buffer,power_diode[PUMP_PD]);
-            LCD_Position(0u, 12u);
+            value_to_string00_00(buffer,set_current_psu);
+            LCD_Position(0u, 11u);
             LCD_PrintString(buffer);
             
-            value_to_string2(buffer,power_diode[SEED_PD]);
-            LCD_Position(1u, 12u);
+            value_to_string00_00(buffer,power_diode[SEED_PD]);
+            LCD_Position(1u, 11u);
             LCD_PrintString(buffer);
             
             
@@ -339,7 +352,7 @@ int main(void)
 			pid_calc(&pid1, setpoint,(int32_t)(Temperature*100),100);
 			
 			LCD_Position(0u,5u); // manuell Integer to String konvertieren
-            value_to_string1(buffer, Temperature);
+            value_to_string00_00(buffer, Temperature);
 			LCD_PrintString(buffer);
             
             if(debug)
@@ -354,7 +367,7 @@ int main(void)
 			}
             
             LCD_Position(1u,5u);
-            value_to_string1(buffer, (float)setpoint/100);
+            value_to_string00_00(buffer, (float)setpoint/100);
 			LCD_PrintString(buffer);
             
 
