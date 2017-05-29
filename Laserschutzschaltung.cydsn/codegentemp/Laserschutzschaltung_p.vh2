@@ -1,5 +1,5 @@
 -- Project:   Laserschutzschaltung
--- Generated: 05/22/2017 15:13:55
+-- Generated: 05/29/2017 14:29:16
 -- PSoC Creator  4.0 Update 1
 
 ENTITY Laserschutzschaltung IS
@@ -76,6 +76,7 @@ ARCHITECTURE __DEFAULT__ OF Laserschutzschaltung IS
     SIGNAL Net_938 : bit;
     SIGNAL Net_943 : bit;
     SIGNAL Osc_err : bit;
+    SIGNAL Osc_err_low : bit;
     SIGNAL Potentiometer(0)__PA : bit;
     SIGNAL Pump_ref(0)__PA : bit;
     SIGNAL SW2(0)__PA : bit;
@@ -371,19 +372,21 @@ ARCHITECTURE __DEFAULT__ OF Laserschutzschaltung IS
     ATTRIBUTE Location OF \Comp_3:ctComp\ : LABEL IS "F(Comparator,0)";
     ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell9";
     ATTRIBUTE Location OF \ADC_SAR_1:ADC_SAR\ : LABEL IS "F(SAR,0)";
-    ATTRIBUTE Location OF \IDAC8_2:viDAC8\ : LABEL IS "F(VIDAC,3)";
-    ATTRIBUTE Location OF \PGA_1:SC\ : LABEL IS "F(SC,3)";
+    ATTRIBUTE Location OF \IDAC8_2:viDAC8\ : LABEL IS "F(VIDAC,0)";
+    ATTRIBUTE Location OF \PGA_1:SC\ : LABEL IS "F(SC,0)";
     ATTRIBUTE Location OF \ADC_DelSig_1:DSM\ : LABEL IS "F(DSM,0)";
     ATTRIBUTE lib_model OF \Control_RS:Sync:ctrl_reg\ : LABEL IS "controlcell1";
     ATTRIBUTE lib_model OF \USBUART_1:Vbus_ps:sts:sts_reg\ : LABEL IS "statuscell1";
     ATTRIBUTE Location OF \USBUART_1:USB\ : LABEL IS "F(USB,0)";
     ATTRIBUTE lib_model OF \Fault_Reg:sts:sts_reg\ : LABEL IS "statuscell2";
-    ATTRIBUTE Location OF \PGA_2:SC\ : LABEL IS "F(SC,0)";
+    ATTRIBUTE Location OF \PGA_2:SC\ : LABEL IS "F(SC,2)";
     ATTRIBUTE Location OF \ADC_SAR_Seq_2:SAR:ADC_SAR\ : LABEL IS "F(SAR,1)";
     ATTRIBUTE lib_model OF \ADC_SAR_Seq_2:bSAR_SEQ:CtrlReg\ : LABEL IS "controlcell2";
     ATTRIBUTE lib_model OF \ADC_SAR_Seq_2:bSAR_SEQ:EOCSts\ : LABEL IS "statuscell3";
     ATTRIBUTE lib_model OF \ADC_SAR_Seq_2:TempBuf\ : LABEL IS "drqcell2";
     ATTRIBUTE lib_model OF \ADC_SAR_Seq_2:FinalBuf\ : LABEL IS "drqcell3";
+    ATTRIBUTE Location OF \VDAC8_1:viDAC8\ : LABEL IS "F(VIDAC,3)";
+    ATTRIBUTE Location OF \Comp_4:ctComp\ : LABEL IS "F(Comparator,1)";
     ATTRIBUTE lib_model OF cy_srff_1 : LABEL IS "macrocell10";
     ATTRIBUTE lib_model OF \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ : LABEL IS "macrocell11";
     ATTRIBUTE lib_model OF \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ : LABEL IS "macrocell12";
@@ -2913,7 +2916,7 @@ BEGIN
 
     Net_943:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * main_1 * !main_2 * main_3)",
+            eqn_main => "(!main_0 * main_1 * !main_2 * !main_3 * main_4)",
             regmode => 0,
             clken_mode => 1)
         PORT MAP(
@@ -2921,7 +2924,8 @@ BEGIN
             main_0 => Osc_err,
             main_1 => \Comp_2:Net_1\,
             main_2 => Temp_err,
-            main_3 => \Comp_3:Net_1\);
+            main_3 => Osc_err_low,
+            main_4 => \Comp_3:Net_1\);
 
     Seed1:macrocell
         GENERIC MAP(
@@ -3277,6 +3281,14 @@ BEGIN
             dma_req_0 => \USBUART_1:dma_request_0\,
             dma_termin => \USBUART_1:dma_terminate\);
 
+    \USBUART_1:ep_4\:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => \USBUART_1:ep_int_4\,
+            clock => ClockBlock_BUS_CLK);
+
     \USBUART_1:ep_3\:interrupt
         GENERIC MAP(
             int_type => "10",
@@ -3331,6 +3343,22 @@ BEGIN
             is_nmi => 0)
         PORT MAP(
             interrupt => Net_521,
+            clock => ClockBlock_BUS_CLK);
+
+    \USBUART_1:ep_5\:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => \USBUART_1:ep_int_5\,
+            clock => ClockBlock_BUS_CLK);
+
+    \USBUART_1:ep_6\:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => \USBUART_1:ep_int_6\,
             clock => ClockBlock_BUS_CLK);
 
     \Fault_Reg:sts:sts_reg\:statuscell
@@ -3500,9 +3528,25 @@ BEGIN
             cmp => Net_938,
             irq => \PWM_2:Net_54\);
 
+    \VDAC8_1:viDAC8\:vidaccell
+        GENERIC MAP(
+            cy_registers => "",
+            is_all_if_any => 0,
+            reg_data => 0)
+        PORT MAP(
+            reset => open,
+            idir => open,
+            ioff => open);
+
+    \Comp_4:ctComp\:comparatorcell
+        GENERIC MAP(
+            cy_registers => "")
+        PORT MAP(
+            out => Osc_err_low);
+
     cy_srff_1:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * main_1 * !main_2 * main_3 * !main_4) + (main_5)",
+            eqn_main => "(!main_0 * main_1 * !main_2 * !main_3 * main_4 * !main_5) + (main_6)",
             regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
@@ -3512,9 +3556,10 @@ BEGIN
             main_0 => Osc_err,
             main_1 => \Comp_2:Net_1\,
             main_2 => Temp_err,
-            main_3 => \Comp_3:Net_1\,
-            main_4 => cy_srff_1,
-            main_5 => Net_795);
+            main_3 => Osc_err_low,
+            main_4 => \Comp_3:Net_1\,
+            main_5 => cy_srff_1,
+            main_6 => Net_795);
 
     \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\:macrocell
         GENERIC MAP(

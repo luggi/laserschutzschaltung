@@ -90,6 +90,8 @@
 #include "seed_diode.h"
 #include "SW2_aliases.h"
 #include "SW2.h"
+#include "VDAC8_1.h"
+#include "Comp_4.h"
 #include "LCD_LCDPort_aliases.h"
 #include "LCD_LCDPort.h"
 #include "ADC_SAR_1_IRQ.h"

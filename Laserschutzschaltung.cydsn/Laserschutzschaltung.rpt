@@ -1,4 +1,4 @@
-Loading plugins phase: Elapsed time ==> 0s.405ms
+Loading plugins phase: Elapsed time ==> 0s.483ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn\Laserschutzschaltung.cyprj -d CY8C5868AXI-LP035 -s C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
@@ -8,10 +8,10 @@ ADD: sdb.M0065: information: Analog terminal "vdac_ref" on ADC_SAR_SEQ_v2_0 is u
  * C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_v2_0\PSoC5\ADC_SAR_SEQ_v2_0.cysch (Shape_885)
 
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 4s.664ms
+Elaboration phase: Elapsed time ==> 3s.432ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.421ms
+HDL generation phase: Elapsed time ==> 0s.156ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -45,7 +45,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Luggi
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Mon May 22 15:13:48 2017
+Mon May 29 14:29:09 2017
 
 
 ======================================================================
@@ -55,7 +55,7 @@ Options  :    -yv2 -q10 Laserschutzschaltung.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Mon May 22 15:13:48 2017
+Mon May 29 14:29:09 2017
 
 Flattening file 'C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\not_v1_0\not_v1_0.v'
 Flattening file 'C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'
@@ -95,7 +95,7 @@ Linking 'C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\
 Linking 'C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
 Using control file 'Laserschutzschaltung.ctl'.
-Laserschutzschaltung.v (line 2160, col 82):  Note: Substituting module 'cmp_vv_vv' for '='.
+Laserschutzschaltung.v (line 2181, col 82):  Note: Substituting module 'cmp_vv_vv' for '='.
 
 vlogfe:  No errors.
 
@@ -107,7 +107,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Luggi
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Mon May 22 15:13:49 2017
+Mon May 29 14:29:09 2017
 
 Linking 'C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -149,7 +149,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Luggi
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Mon May 22 15:13:49 2017
+Mon May 29 14:29:10 2017
 
 Linking 'C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -245,9 +245,10 @@ Detecting unused logic.
 	Net_923
 	Net_920
 	\PWM_2:Net_114\
+	\Comp_4:Net_9\
 
 
-Deleted 59 User equations/components.
+Deleted 60 User equations/components.
 Deleted 0 Synthesized equations/components.
 
 ------------------------------------------------------
@@ -348,6 +349,10 @@ Aliasing tmpOE__pump_diode_net_0 to tmpOE__Diode_Pumpseite_net_0
 Aliasing tmpOE__osc_diode_net_0 to tmpOE__Diode_Pumpseite_net_0
 Aliasing tmpOE__seed_diode_net_0 to tmpOE__Diode_Pumpseite_net_0
 Aliasing tmpOE__SW2_net_0 to tmpOE__Diode_Pumpseite_net_0
+Aliasing \VDAC8_1:Net_83\ to zero
+Aliasing \VDAC8_1:Net_81\ to zero
+Aliasing \VDAC8_1:Net_82\ to zero
+Aliasing \Comp_4:clock\ to zero
 Aliasing \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\\D\ to \ADC_SAR_Seq_2:MODIN1_5\
 Aliasing \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\\D\ to \ADC_SAR_Seq_2:MODIN1_4\
 Aliasing \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\\D\ to \ADC_SAR_Seq_2:MODIN1_3\
@@ -368,188 +373,193 @@ Removing Lhs of wire \Filter:Net_1\[37] = zero[2]
 Removing Lhs of wire \Filter:Net_4\[39] = zero[2]
 Removing Lhs of wire \Filter:Net_5\[40] = zero[2]
 Removing Lhs of wire one[57] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Rhs of wire Seed1[60] = \Comp_3:Net_9\[78]
-Removing Rhs of wire Temp_err[61] = \Control_RS:control_out_1\[332]
-Removing Rhs of wire Temp_err[61] = \Control_RS:control_1\[352]
-Removing Lhs of wire tmpOE__DAC_Out_net_0[63] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire tmpOE__Buzzer_net_0[80] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Rhs of wire Net_802[81] = \PWM_1:Net_57\[123]
-Removing Lhs of wire tmpOE__Diode_Seedseite_net_0[87] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire tmpOE__Seed_ref_net_0[93] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire tmpOE__Pump_ref_net_0[100] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \PWM_1:Net_107\[120] = Net_771[127]
-Removing Lhs of wire \PWM_1:Net_113\[121] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \LCD:tmpOE__LCDPort_net_6\[130] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \LCD:tmpOE__LCDPort_net_5\[131] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \LCD:tmpOE__LCDPort_net_4\[132] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \LCD:tmpOE__LCDPort_net_3\[133] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \LCD:tmpOE__LCDPort_net_2\[134] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \LCD:tmpOE__LCDPort_net_1\[135] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \LCD:tmpOE__LCDPort_net_0\[136] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \ADC_SAR_1:vp_ctl_0\[158] = zero[2]
-Removing Lhs of wire \ADC_SAR_1:vp_ctl_2\[159] = zero[2]
-Removing Lhs of wire \ADC_SAR_1:vn_ctl_1\[160] = zero[2]
-Removing Lhs of wire \ADC_SAR_1:vn_ctl_3\[161] = zero[2]
-Removing Lhs of wire \ADC_SAR_1:vp_ctl_1\[162] = zero[2]
-Removing Lhs of wire \ADC_SAR_1:vp_ctl_3\[163] = zero[2]
-Removing Lhs of wire \ADC_SAR_1:vn_ctl_0\[164] = zero[2]
-Removing Lhs of wire \ADC_SAR_1:vn_ctl_2\[165] = zero[2]
-Removing Rhs of wire \ADC_SAR_1:Net_188\[168] = \ADC_SAR_1:Net_221\[169]
-Removing Lhs of wire \ADC_SAR_1:soc\[175] = zero[2]
-Removing Lhs of wire \ADC_SAR_1:Net_381\[201] = zero[2]
-Removing Lhs of wire \IDAC8_2:Net_125\[203] = zero[2]
-Removing Lhs of wire \IDAC8_2:Net_158\[204] = zero[2]
-Removing Lhs of wire \IDAC8_2:Net_123\[205] = zero[2]
-Removing Lhs of wire \IDAC8_2:Net_194\[209] = zero[2]
-Removing Lhs of wire \IDAC8_2:Net_195\[210] = zero[2]
-Removing Lhs of wire tmpOE__DAC_PGA_OUT_net_0[212] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \PGA_1:Net_37\[220] = zero[2]
-Removing Lhs of wire \PGA_1:Net_40\[221] = zero[2]
-Removing Lhs of wire \PGA_1:Net_38\[222] = zero[2]
-Removing Lhs of wire \PGA_1:Net_39\[223] = zero[2]
-Removing Lhs of wire tmpOE__DAC_Current_net_0[229] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire tmpOE__Potentiometer_net_0[239] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \Counter_1:Net_82\[247] = zero[2]
-Removing Lhs of wire \Counter_1:Net_91\[248] = zero[2]
-Removing Rhs of wire Net_437[252] = \Counter_1:Net_42\[251]
-Removing Rhs of wire \ADC_DelSig_1:Net_488\[271] = \ADC_DelSig_1:Net_250\[307]
-Removing Lhs of wire \ADC_DelSig_1:Net_481\[274] = zero[2]
-Removing Lhs of wire \ADC_DelSig_1:Net_482\[275] = zero[2]
-Removing Lhs of wire \ADC_DelSig_1:Net_252\[309] = zero[2]
-Removing Lhs of wire \ADC_DelSig_1:soc\[311] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire tmpOE__temp_sens_net_0[315] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire Net_465[321] = cy_srff_1[320]
-Removing Rhs of wire Net_795[322] = \Control_RS:control_out_0\[331]
-Removing Rhs of wire Net_795[322] = \Control_RS:control_0\[353]
-Removing Lhs of wire tmpOE__Fault_net_0[324] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \Control_RS:clk\[329] = zero[2]
-Removing Lhs of wire \Control_RS:rst\[330] = zero[2]
-Removing Lhs of wire \USBUART_1:Vbus_ps:status_0\[356] = Net_522[357]
-Removing Lhs of wire \USBUART_1:Vbus_ps:status_1\[358] = zero[2]
-Removing Lhs of wire \USBUART_1:Vbus_ps:status_2\[359] = zero[2]
-Removing Lhs of wire \USBUART_1:Vbus_ps:status_3\[360] = zero[2]
-Removing Lhs of wire \USBUART_1:Vbus_ps:status_4\[361] = zero[2]
-Removing Lhs of wire \USBUART_1:Vbus_ps:status_5\[362] = zero[2]
-Removing Lhs of wire \USBUART_1:Vbus_ps:status_6\[363] = zero[2]
-Removing Lhs of wire \USBUART_1:Vbus_ps:status_7\[364] = zero[2]
-Removing Lhs of wire \USBUART_1:tmpOE__Dm_net_0\[369] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \USBUART_1:tmpOE__Dp_net_0\[376] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire tmpOE__VUSB_net_0[428] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire tmpOE__ADC_IN_net_0[441] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \Fault_Reg:status_0\[448] = cy_srff_1[320]
-Removing Lhs of wire \Fault_Reg:status_1\[449] = Net_943[59]
-Removing Lhs of wire \Fault_Reg:status_2\[450] = Seed1[60]
-Removing Lhs of wire \Fault_Reg:status_3\[451] = Seed2[34]
-Removing Lhs of wire \Fault_Reg:status_4\[452] = Osc_err[27]
-Removing Lhs of wire \Fault_Reg:status_5\[453] = Temp_err[61]
-Removing Lhs of wire \Fault_Reg:status_6\[454] = zero[2]
-Removing Lhs of wire \Fault_Reg:status_7\[455] = zero[2]
-Removing Lhs of wire \PGA_2:Net_37\[459] = zero[2]
-Removing Lhs of wire \PGA_2:Net_40\[460] = zero[2]
-Removing Lhs of wire \PGA_2:Net_38\[461] = zero[2]
-Removing Lhs of wire \PGA_2:Net_39\[462] = zero[2]
-Removing Lhs of wire \ADC_SAR_Seq_2:AMuxHw_2_Decoder_enable\[470] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \ADC_SAR_Seq_2:cmp_vv_vv_MODGEN_1\[472] = \ADC_SAR_Seq_2:MODULE_1:g1:a0:xeq\[806]
-Removing Rhs of wire \ADC_SAR_Seq_2:clock\[473] = \ADC_SAR_Seq_2:Net_3874\[706]
-Removing Rhs of wire \ADC_SAR_Seq_2:ch_addr_5\[475] = \ADC_SAR_Seq_2:bSAR_SEQ:count_5\[673]
-Removing Rhs of wire \ADC_SAR_Seq_2:ch_addr_4\[477] = \ADC_SAR_Seq_2:bSAR_SEQ:count_4\[674]
-Removing Rhs of wire \ADC_SAR_Seq_2:ch_addr_3\[479] = \ADC_SAR_Seq_2:bSAR_SEQ:count_3\[675]
-Removing Rhs of wire \ADC_SAR_Seq_2:ch_addr_2\[481] = \ADC_SAR_Seq_2:bSAR_SEQ:count_2\[676]
-Removing Rhs of wire \ADC_SAR_Seq_2:ch_addr_1\[483] = \ADC_SAR_Seq_2:bSAR_SEQ:count_1\[677]
-Removing Rhs of wire \ADC_SAR_Seq_2:ch_addr_0\[485] = \ADC_SAR_Seq_2:bSAR_SEQ:count_0\[678]
-Removing Lhs of wire \ADC_SAR_Seq_2:SAR:vp_ctl_0\[618] = zero[2]
-Removing Lhs of wire \ADC_SAR_Seq_2:SAR:vp_ctl_2\[619] = zero[2]
-Removing Lhs of wire \ADC_SAR_Seq_2:SAR:vn_ctl_1\[620] = zero[2]
-Removing Lhs of wire \ADC_SAR_Seq_2:SAR:vn_ctl_3\[621] = zero[2]
-Removing Lhs of wire \ADC_SAR_Seq_2:SAR:vp_ctl_1\[622] = zero[2]
-Removing Lhs of wire \ADC_SAR_Seq_2:SAR:vp_ctl_3\[623] = zero[2]
-Removing Lhs of wire \ADC_SAR_Seq_2:SAR:vn_ctl_0\[624] = zero[2]
-Removing Lhs of wire \ADC_SAR_Seq_2:SAR:vn_ctl_2\[625] = zero[2]
-Removing Lhs of wire \ADC_SAR_Seq_2:SAR:Net_188\[626] = \ADC_SAR_Seq_2:clock\[473]
-Removing Lhs of wire \ADC_SAR_Seq_2:SAR:soc\[632] = zero[2]
-Removing Rhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:enable\[663] = \ADC_SAR_Seq_2:bSAR_SEQ:control_0\[664]
-Removing Rhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:load_period\[665] = \ADC_SAR_Seq_2:bSAR_SEQ:control_1\[666]
-Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:status_7\[679] = zero[2]
-Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:status_6\[680] = zero[2]
-Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:status_5\[681] = zero[2]
-Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:status_4\[682] = zero[2]
-Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:status_3\[683] = zero[2]
-Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:status_2\[684] = zero[2]
-Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:status_1\[685] = zero[2]
-Removing Rhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:status_0\[686] = \ADC_SAR_Seq_2:bSAR_SEQ:nrq_edge_detect_reg\[687]
-Removing Rhs of wire Net_806[694] = \ADC_SAR_Seq_2:bSAR_SEQ:status_0\[686]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_5\[717] = \ADC_SAR_Seq_2:MODIN1_5\[718]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODIN1_5\[718] = \ADC_SAR_Seq_2:ch_addr_5\[475]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_4\[719] = \ADC_SAR_Seq_2:MODIN1_4\[720]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODIN1_4\[720] = \ADC_SAR_Seq_2:ch_addr_4\[477]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_3\[721] = \ADC_SAR_Seq_2:MODIN1_3\[722]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODIN1_3\[722] = \ADC_SAR_Seq_2:ch_addr_3\[479]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_2\[723] = \ADC_SAR_Seq_2:MODIN1_2\[724]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODIN1_2\[724] = \ADC_SAR_Seq_2:ch_addr_2\[481]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_1\[725] = \ADC_SAR_Seq_2:MODIN1_1\[726]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODIN1_1\[726] = \ADC_SAR_Seq_2:ch_addr_1\[483]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_0\[727] = \ADC_SAR_Seq_2:MODIN1_0\[728]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODIN1_0\[728] = \ADC_SAR_Seq_2:ch_addr_0\[485]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_5\[729] = \ADC_SAR_Seq_2:MODIN2_5\[730]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODIN2_5\[730] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\[474]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_4\[731] = \ADC_SAR_Seq_2:MODIN2_4\[732]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODIN2_4\[732] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\[476]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_3\[733] = \ADC_SAR_Seq_2:MODIN2_3\[734]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODIN2_3\[734] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\[478]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_2\[735] = \ADC_SAR_Seq_2:MODIN2_2\[736]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODIN2_2\[736] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\[480]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_1\[737] = \ADC_SAR_Seq_2:MODIN2_1\[738]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODIN2_1\[738] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\[482]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_0\[739] = \ADC_SAR_Seq_2:MODIN2_0\[740]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODIN2_0\[740] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\[484]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_5\[741] = \ADC_SAR_Seq_2:ch_addr_5\[475]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_4\[742] = \ADC_SAR_Seq_2:ch_addr_4\[477]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_3\[743] = \ADC_SAR_Seq_2:ch_addr_3\[479]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_2\[744] = \ADC_SAR_Seq_2:ch_addr_2\[481]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_1\[745] = \ADC_SAR_Seq_2:ch_addr_1\[483]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_0\[746] = \ADC_SAR_Seq_2:ch_addr_0\[485]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_5\[747] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\[474]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_4\[748] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\[476]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_3\[749] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\[478]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_2\[750] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\[480]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_1\[751] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\[482]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_0\[752] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\[484]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_5\[753] = \ADC_SAR_Seq_2:ch_addr_5\[475]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_4\[754] = \ADC_SAR_Seq_2:ch_addr_4\[477]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_3\[755] = \ADC_SAR_Seq_2:ch_addr_3\[479]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_2\[756] = \ADC_SAR_Seq_2:ch_addr_2\[481]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_1\[757] = \ADC_SAR_Seq_2:ch_addr_1\[483]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_0\[758] = \ADC_SAR_Seq_2:ch_addr_0\[485]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_5\[759] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\[474]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_4\[760] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\[476]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_3\[761] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\[478]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_2\[762] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\[480]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_1\[763] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\[482]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_0\[764] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\[484]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:aeqb_0\[771] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:eq_0\[772] = \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:xnor_array_0\[770]
-Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:eqi_0\[778] = \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:eq_5\[777]
-Removing Rhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:xeq\[806] = \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:aeqb_1\[779]
-Removing Lhs of wire \PWM_2:Net_107\[819] = zero[2]
-Removing Lhs of wire \PWM_2:Net_113\[820] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Rhs of wire Net_938[824] = \PWM_2:Net_57\[822]
-Removing Lhs of wire Net_925[827] = zero[2]
-Removing Lhs of wire tmpOE__Curr_control_net_0[831] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire tmpOE__pump_diode_net_0[837] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire tmpOE__osc_diode_net_0[843] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire tmpOE__seed_diode_net_0[849] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire tmpOE__SW2_net_0[855] = tmpOE__Diode_Pumpseite_net_0[53]
-Removing Lhs of wire \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\\D\[861] = \ADC_SAR_Seq_2:ch_addr_5\[475]
-Removing Lhs of wire \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\\D\[862] = \ADC_SAR_Seq_2:ch_addr_4\[477]
-Removing Lhs of wire \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\\D\[863] = \ADC_SAR_Seq_2:ch_addr_3\[479]
-Removing Lhs of wire \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\\D\[864] = \ADC_SAR_Seq_2:ch_addr_2\[481]
-Removing Lhs of wire \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\\D\[865] = \ADC_SAR_Seq_2:ch_addr_1\[483]
-Removing Lhs of wire \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\\D\[866] = \ADC_SAR_Seq_2:ch_addr_0\[485]
-Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:nrq_edge_detect_reg\\D\[931] = \ADC_SAR_Seq_2:bSAR_SEQ:nrq_edge_detect\[693]
-Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:nrq_reg\\D\[933] = \ADC_SAR_Seq_2:bSAR_SEQ:bus_clk_nrq_reg\[690]
+Removing Rhs of wire Seed1[60] = \Comp_3:Net_9\[79]
+Removing Rhs of wire Temp_err[61] = \Control_RS:control_out_1\[333]
+Removing Rhs of wire Temp_err[61] = \Control_RS:control_1\[353]
+Removing Rhs of wire Osc_err_low[62] = \Comp_4:Net_1\[873]
+Removing Lhs of wire tmpOE__DAC_Out_net_0[64] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire tmpOE__Buzzer_net_0[81] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Rhs of wire Net_802[82] = \PWM_1:Net_57\[124]
+Removing Lhs of wire tmpOE__Diode_Seedseite_net_0[88] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire tmpOE__Seed_ref_net_0[94] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire tmpOE__Pump_ref_net_0[101] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \PWM_1:Net_107\[121] = Net_771[128]
+Removing Lhs of wire \PWM_1:Net_113\[122] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \LCD:tmpOE__LCDPort_net_6\[131] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \LCD:tmpOE__LCDPort_net_5\[132] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \LCD:tmpOE__LCDPort_net_4\[133] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \LCD:tmpOE__LCDPort_net_3\[134] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \LCD:tmpOE__LCDPort_net_2\[135] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \LCD:tmpOE__LCDPort_net_1\[136] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \LCD:tmpOE__LCDPort_net_0\[137] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \ADC_SAR_1:vp_ctl_0\[159] = zero[2]
+Removing Lhs of wire \ADC_SAR_1:vp_ctl_2\[160] = zero[2]
+Removing Lhs of wire \ADC_SAR_1:vn_ctl_1\[161] = zero[2]
+Removing Lhs of wire \ADC_SAR_1:vn_ctl_3\[162] = zero[2]
+Removing Lhs of wire \ADC_SAR_1:vp_ctl_1\[163] = zero[2]
+Removing Lhs of wire \ADC_SAR_1:vp_ctl_3\[164] = zero[2]
+Removing Lhs of wire \ADC_SAR_1:vn_ctl_0\[165] = zero[2]
+Removing Lhs of wire \ADC_SAR_1:vn_ctl_2\[166] = zero[2]
+Removing Rhs of wire \ADC_SAR_1:Net_188\[169] = \ADC_SAR_1:Net_221\[170]
+Removing Lhs of wire \ADC_SAR_1:soc\[176] = zero[2]
+Removing Lhs of wire \ADC_SAR_1:Net_381\[202] = zero[2]
+Removing Lhs of wire \IDAC8_2:Net_125\[204] = zero[2]
+Removing Lhs of wire \IDAC8_2:Net_158\[205] = zero[2]
+Removing Lhs of wire \IDAC8_2:Net_123\[206] = zero[2]
+Removing Lhs of wire \IDAC8_2:Net_194\[210] = zero[2]
+Removing Lhs of wire \IDAC8_2:Net_195\[211] = zero[2]
+Removing Lhs of wire tmpOE__DAC_PGA_OUT_net_0[213] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \PGA_1:Net_37\[221] = zero[2]
+Removing Lhs of wire \PGA_1:Net_40\[222] = zero[2]
+Removing Lhs of wire \PGA_1:Net_38\[223] = zero[2]
+Removing Lhs of wire \PGA_1:Net_39\[224] = zero[2]
+Removing Lhs of wire tmpOE__DAC_Current_net_0[230] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire tmpOE__Potentiometer_net_0[240] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \Counter_1:Net_82\[248] = zero[2]
+Removing Lhs of wire \Counter_1:Net_91\[249] = zero[2]
+Removing Rhs of wire Net_437[253] = \Counter_1:Net_42\[252]
+Removing Rhs of wire \ADC_DelSig_1:Net_488\[272] = \ADC_DelSig_1:Net_250\[308]
+Removing Lhs of wire \ADC_DelSig_1:Net_481\[275] = zero[2]
+Removing Lhs of wire \ADC_DelSig_1:Net_482\[276] = zero[2]
+Removing Lhs of wire \ADC_DelSig_1:Net_252\[310] = zero[2]
+Removing Lhs of wire \ADC_DelSig_1:soc\[312] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire tmpOE__temp_sens_net_0[316] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire Net_465[322] = cy_srff_1[321]
+Removing Rhs of wire Net_795[323] = \Control_RS:control_out_0\[332]
+Removing Rhs of wire Net_795[323] = \Control_RS:control_0\[354]
+Removing Lhs of wire tmpOE__Fault_net_0[325] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \Control_RS:clk\[330] = zero[2]
+Removing Lhs of wire \Control_RS:rst\[331] = zero[2]
+Removing Lhs of wire \USBUART_1:Vbus_ps:status_0\[357] = Net_522[358]
+Removing Lhs of wire \USBUART_1:Vbus_ps:status_1\[359] = zero[2]
+Removing Lhs of wire \USBUART_1:Vbus_ps:status_2\[360] = zero[2]
+Removing Lhs of wire \USBUART_1:Vbus_ps:status_3\[361] = zero[2]
+Removing Lhs of wire \USBUART_1:Vbus_ps:status_4\[362] = zero[2]
+Removing Lhs of wire \USBUART_1:Vbus_ps:status_5\[363] = zero[2]
+Removing Lhs of wire \USBUART_1:Vbus_ps:status_6\[364] = zero[2]
+Removing Lhs of wire \USBUART_1:Vbus_ps:status_7\[365] = zero[2]
+Removing Lhs of wire \USBUART_1:tmpOE__Dm_net_0\[370] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \USBUART_1:tmpOE__Dp_net_0\[377] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire tmpOE__VUSB_net_0[432] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire tmpOE__ADC_IN_net_0[445] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \Fault_Reg:status_0\[452] = cy_srff_1[321]
+Removing Lhs of wire \Fault_Reg:status_1\[453] = Net_943[59]
+Removing Lhs of wire \Fault_Reg:status_2\[454] = Seed1[60]
+Removing Lhs of wire \Fault_Reg:status_3\[455] = Seed2[34]
+Removing Lhs of wire \Fault_Reg:status_4\[456] = Osc_err[27]
+Removing Lhs of wire \Fault_Reg:status_5\[457] = Temp_err[61]
+Removing Lhs of wire \Fault_Reg:status_6\[458] = zero[2]
+Removing Lhs of wire \Fault_Reg:status_7\[459] = zero[2]
+Removing Lhs of wire \PGA_2:Net_37\[463] = zero[2]
+Removing Lhs of wire \PGA_2:Net_40\[464] = zero[2]
+Removing Lhs of wire \PGA_2:Net_38\[465] = zero[2]
+Removing Lhs of wire \PGA_2:Net_39\[466] = zero[2]
+Removing Lhs of wire \ADC_SAR_Seq_2:AMuxHw_2_Decoder_enable\[474] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \ADC_SAR_Seq_2:cmp_vv_vv_MODGEN_1\[476] = \ADC_SAR_Seq_2:MODULE_1:g1:a0:xeq\[810]
+Removing Rhs of wire \ADC_SAR_Seq_2:clock\[477] = \ADC_SAR_Seq_2:Net_3874\[710]
+Removing Rhs of wire \ADC_SAR_Seq_2:ch_addr_5\[479] = \ADC_SAR_Seq_2:bSAR_SEQ:count_5\[677]
+Removing Rhs of wire \ADC_SAR_Seq_2:ch_addr_4\[481] = \ADC_SAR_Seq_2:bSAR_SEQ:count_4\[678]
+Removing Rhs of wire \ADC_SAR_Seq_2:ch_addr_3\[483] = \ADC_SAR_Seq_2:bSAR_SEQ:count_3\[679]
+Removing Rhs of wire \ADC_SAR_Seq_2:ch_addr_2\[485] = \ADC_SAR_Seq_2:bSAR_SEQ:count_2\[680]
+Removing Rhs of wire \ADC_SAR_Seq_2:ch_addr_1\[487] = \ADC_SAR_Seq_2:bSAR_SEQ:count_1\[681]
+Removing Rhs of wire \ADC_SAR_Seq_2:ch_addr_0\[489] = \ADC_SAR_Seq_2:bSAR_SEQ:count_0\[682]
+Removing Lhs of wire \ADC_SAR_Seq_2:SAR:vp_ctl_0\[622] = zero[2]
+Removing Lhs of wire \ADC_SAR_Seq_2:SAR:vp_ctl_2\[623] = zero[2]
+Removing Lhs of wire \ADC_SAR_Seq_2:SAR:vn_ctl_1\[624] = zero[2]
+Removing Lhs of wire \ADC_SAR_Seq_2:SAR:vn_ctl_3\[625] = zero[2]
+Removing Lhs of wire \ADC_SAR_Seq_2:SAR:vp_ctl_1\[626] = zero[2]
+Removing Lhs of wire \ADC_SAR_Seq_2:SAR:vp_ctl_3\[627] = zero[2]
+Removing Lhs of wire \ADC_SAR_Seq_2:SAR:vn_ctl_0\[628] = zero[2]
+Removing Lhs of wire \ADC_SAR_Seq_2:SAR:vn_ctl_2\[629] = zero[2]
+Removing Lhs of wire \ADC_SAR_Seq_2:SAR:Net_188\[630] = \ADC_SAR_Seq_2:clock\[477]
+Removing Lhs of wire \ADC_SAR_Seq_2:SAR:soc\[636] = zero[2]
+Removing Rhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:enable\[667] = \ADC_SAR_Seq_2:bSAR_SEQ:control_0\[668]
+Removing Rhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:load_period\[669] = \ADC_SAR_Seq_2:bSAR_SEQ:control_1\[670]
+Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:status_7\[683] = zero[2]
+Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:status_6\[684] = zero[2]
+Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:status_5\[685] = zero[2]
+Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:status_4\[686] = zero[2]
+Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:status_3\[687] = zero[2]
+Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:status_2\[688] = zero[2]
+Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:status_1\[689] = zero[2]
+Removing Rhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:status_0\[690] = \ADC_SAR_Seq_2:bSAR_SEQ:nrq_edge_detect_reg\[691]
+Removing Rhs of wire Net_806[698] = \ADC_SAR_Seq_2:bSAR_SEQ:status_0\[690]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_5\[721] = \ADC_SAR_Seq_2:MODIN1_5\[722]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODIN1_5\[722] = \ADC_SAR_Seq_2:ch_addr_5\[479]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_4\[723] = \ADC_SAR_Seq_2:MODIN1_4\[724]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODIN1_4\[724] = \ADC_SAR_Seq_2:ch_addr_4\[481]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_3\[725] = \ADC_SAR_Seq_2:MODIN1_3\[726]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODIN1_3\[726] = \ADC_SAR_Seq_2:ch_addr_3\[483]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_2\[727] = \ADC_SAR_Seq_2:MODIN1_2\[728]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODIN1_2\[728] = \ADC_SAR_Seq_2:ch_addr_2\[485]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_1\[729] = \ADC_SAR_Seq_2:MODIN1_1\[730]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODIN1_1\[730] = \ADC_SAR_Seq_2:ch_addr_1\[487]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newa_0\[731] = \ADC_SAR_Seq_2:MODIN1_0\[732]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODIN1_0\[732] = \ADC_SAR_Seq_2:ch_addr_0\[489]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_5\[733] = \ADC_SAR_Seq_2:MODIN2_5\[734]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODIN2_5\[734] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\[478]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_4\[735] = \ADC_SAR_Seq_2:MODIN2_4\[736]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODIN2_4\[736] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\[480]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_3\[737] = \ADC_SAR_Seq_2:MODIN2_3\[738]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODIN2_3\[738] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\[482]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_2\[739] = \ADC_SAR_Seq_2:MODIN2_2\[740]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODIN2_2\[740] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\[484]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_1\[741] = \ADC_SAR_Seq_2:MODIN2_1\[742]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODIN2_1\[742] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\[486]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:newb_0\[743] = \ADC_SAR_Seq_2:MODIN2_0\[744]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODIN2_0\[744] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\[488]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_5\[745] = \ADC_SAR_Seq_2:ch_addr_5\[479]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_4\[746] = \ADC_SAR_Seq_2:ch_addr_4\[481]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_3\[747] = \ADC_SAR_Seq_2:ch_addr_3\[483]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_2\[748] = \ADC_SAR_Seq_2:ch_addr_2\[485]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_1\[749] = \ADC_SAR_Seq_2:ch_addr_1\[487]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:dataa_0\[750] = \ADC_SAR_Seq_2:ch_addr_0\[489]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_5\[751] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\[478]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_4\[752] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\[480]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_3\[753] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\[482]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_2\[754] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\[484]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_1\[755] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\[486]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:datab_0\[756] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\[488]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_5\[757] = \ADC_SAR_Seq_2:ch_addr_5\[479]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_4\[758] = \ADC_SAR_Seq_2:ch_addr_4\[481]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_3\[759] = \ADC_SAR_Seq_2:ch_addr_3\[483]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_2\[760] = \ADC_SAR_Seq_2:ch_addr_2\[485]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_1\[761] = \ADC_SAR_Seq_2:ch_addr_1\[487]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:a_0\[762] = \ADC_SAR_Seq_2:ch_addr_0\[489]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_5\[763] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\[478]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_4\[764] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\[480]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_3\[765] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\[482]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_2\[766] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\[484]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_1\[767] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\[486]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:b_0\[768] = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\[488]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:aeqb_0\[775] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:eq_0\[776] = \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:xnor_array_0\[774]
+Removing Lhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:eqi_0\[782] = \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:eq_5\[781]
+Removing Rhs of wire \ADC_SAR_Seq_2:MODULE_1:g1:a0:xeq\[810] = \ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:aeqb_1\[783]
+Removing Lhs of wire \PWM_2:Net_107\[823] = zero[2]
+Removing Lhs of wire \PWM_2:Net_113\[824] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Rhs of wire Net_938[828] = \PWM_2:Net_57\[826]
+Removing Lhs of wire Net_925[831] = zero[2]
+Removing Lhs of wire tmpOE__Curr_control_net_0[835] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire tmpOE__pump_diode_net_0[841] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire tmpOE__osc_diode_net_0[847] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire tmpOE__seed_diode_net_0[853] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire tmpOE__SW2_net_0[859] = tmpOE__Diode_Pumpseite_net_0[53]
+Removing Lhs of wire \VDAC8_1:Net_83\[865] = zero[2]
+Removing Lhs of wire \VDAC8_1:Net_81\[866] = zero[2]
+Removing Lhs of wire \VDAC8_1:Net_82\[867] = zero[2]
+Removing Lhs of wire \Comp_4:clock\[872] = zero[2]
+Removing Lhs of wire \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\\D\[876] = \ADC_SAR_Seq_2:ch_addr_5\[479]
+Removing Lhs of wire \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\\D\[877] = \ADC_SAR_Seq_2:ch_addr_4\[481]
+Removing Lhs of wire \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\\D\[878] = \ADC_SAR_Seq_2:ch_addr_3\[483]
+Removing Lhs of wire \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\\D\[879] = \ADC_SAR_Seq_2:ch_addr_2\[485]
+Removing Lhs of wire \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\\D\[880] = \ADC_SAR_Seq_2:ch_addr_1\[487]
+Removing Lhs of wire \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\\D\[881] = \ADC_SAR_Seq_2:ch_addr_0\[489]
+Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:nrq_edge_detect_reg\\D\[946] = \ADC_SAR_Seq_2:bSAR_SEQ:nrq_edge_detect\[697]
+Removing Lhs of wire \ADC_SAR_Seq_2:bSAR_SEQ:nrq_reg\\D\[948] = \ADC_SAR_Seq_2:bSAR_SEQ:bus_clk_nrq_reg\[694]
 
 ------------------------------------------------------
-Aliased 0 equations, 193 wires.
+Aliased 0 equations, 198 wires.
 ------------------------------------------------------
 
 ----------------------------------------------------------
@@ -763,8 +773,9 @@ Note:  Expanding virtual equation for '\ADC_SAR_Seq_2:MODULE_1:g1:a0:gx:u0:gt_1\
 
 Substituting virtuals - pass 2:
 
-Note:  Expanding virtual equation for 'Net_943' (cost = 4):
-Net_943 <= (Temp_err
+Note:  Expanding virtual equation for 'Net_943' (cost = 5):
+Net_943 <= (Osc_err_low
+	OR Temp_err
 	OR not \Comp_3:Net_1\
 	OR not \Comp_2:Net_1\
 	OR Osc_err);
@@ -919,7 +930,7 @@ Circuit simplification results:
 ------------------------------------------------------
 Alias Detection
 ------------------------------------------------------
-Removing Lhs of wire \ADC_SAR_1:Net_188\[168] = \ADC_SAR_1:Net_376\[167]
+Removing Lhs of wire \ADC_SAR_1:Net_188\[169] = \ADC_SAR_1:Net_376\[168]
 
 ------------------------------------------------------
 Aliased 0 equations, 1 wires.
@@ -952,10 +963,10 @@ CYPRESS_DIR    : C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\warp
 Warp Program   : C:\Program Files\Cypress\PSoC Creator\4.0\PSoC Creator\warp\bin\warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn\Laserschutzschaltung.cyprj -dcpsoc3 Laserschutzschaltung.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 1s.029ms
+Warp synthesis phase: Elapsed time ==> 0s.982ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V4.0.0.432, Family: PSoC3, Started at: Monday, 22 May 2017 15:13:49
+cyp3fit: V4.0.0.432, Family: PSoC3, Started at: Monday, 29 May 2017 14:29:10
 Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Luggi\Documents\GitHub\laserschutzschaltung\Laserschutzschaltung.cydsn\Laserschutzschaltung.cyprj -d CY8C5868AXI-LP035 Laserschutzschaltung.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
@@ -2136,12 +2147,13 @@ Design Equations
         Output = Seed2 (fanout=1)
 
     MacroCell: Name=Net_943, Mode=(Combinatorial)
-        Total # of inputs        : 4
+        Total # of inputs        : 5
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         !(
-              !Osc_err * \Comp_2:Net_1\ * !Temp_err * \Comp_3:Net_1\
+              !Osc_err * \Comp_2:Net_1\ * !Temp_err * !Osc_err_low * 
+              \Comp_3:Net_1\
         );
         Output = Net_943 (fanout=2)
 
@@ -2218,15 +2230,15 @@ Design Equations
         Output = __ONE__ (fanout=3)
 
     MacroCell: Name=cy_srff_1, Mode=(D-Register)
-        Total # of inputs        : 6
+        Total # of inputs        : 7
         Total # of product terms : 2
         List of special equations: 
             Clock  = (ClockBlock_BUS_CLK) => Global
             Clock Enable: True
         Main Equation            : 2 pterms
         !(
-              !Osc_err * \Comp_2:Net_1\ * !Temp_err * \Comp_3:Net_1\ * 
-              !cy_srff_1
+              !Osc_err * \Comp_2:Net_1\ * !Temp_err * !Osc_err_low * 
+              \Comp_3:Net_1\ * !cy_srff_1
             + Net_795
         );
         Output = cy_srff_1 (fanout=3)
@@ -3741,6 +3753,15 @@ Design Equations
             is_nmi = 0
         }
 
+    interrupt: Name =\USBUART_1:ep_4\
+        PORT MAP (
+            interrupt => \USBUART_1:ep_int_4\ );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
+
     interrupt: Name =\USBUART_1:ep_3\
         PORT MAP (
             interrupt => \USBUART_1:ep_int_3\ );
@@ -3804,6 +3825,24 @@ Design Equations
             is_nmi = 0
         }
 
+    interrupt: Name =\USBUART_1:ep_5\
+        PORT MAP (
+            interrupt => \USBUART_1:ep_int_5\ );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
+
+    interrupt: Name =\USBUART_1:ep_6\
+        PORT MAP (
+            interrupt => \USBUART_1:ep_int_6\ );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
+
     interrupt: Name =\ADC_SAR_Seq_2:IRQ\
         PORT MAP (
             interrupt => Net_806 );
@@ -3826,7 +3865,7 @@ Digital Clocks                :    6 :    2 :    8 : 75.00 %
 Analog Clocks                 :    1 :    3 :    4 : 25.00 %
 CapSense Buffers              :    0 :    2 :    2 :  0.00 %
 Digital Filter Block          :    1 :    0 :    1 : 100.00 %
-Interrupts                    :   14 :   18 :   32 : 43.75 %
+Interrupts                    :   17 :   15 :   32 : 53.13 %
 IO                            :   34 :   38 :   72 : 47.22 %
 Segment LCD                   :    0 :    1 :    1 :  0.00 %
 CAN 2.0b                      :    0 :    1 :    1 :  0.00 %
@@ -3847,16 +3886,16 @@ UDB                           :      :      :      :
     Control Registers         :    2 :      :      :        
     Count7 Cells              :    1 :      :      :        
 Opamp                         :    0 :    4 :    4 :  0.00 %
-Comparator                    :    3 :    1 :    4 : 75.00 %
+Comparator                    :    4 :    0 :    4 : 100.00 %
 Delta-Sigma ADC               :    1 :    0 :    1 : 100.00 %
 LPF                           :    0 :    2 :    2 :  0.00 %
 SAR ADC                       :    2 :    0 :    2 : 100.00 %
 Analog (SC/CT) Blocks         :    2 :    2 :    4 : 50.00 %
 DAC                           :      :      :      :        
-  VIDAC                       :    3 :    1 :    4 : 75.00 %
+  VIDAC                       :    4 :    0 :    4 : 100.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.155ms
-Tech Mapping phase: Elapsed time ==> 0s.280ms
+Technology Mapping: Elapsed time ==> 0s.140ms
+Tech Mapping phase: Elapsed time ==> 0s.234ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Info: apr.M0002: Analog signal "\ADC_DelSig_1:Net_35\" is connected to one terminal only. (App=cydsfit)
@@ -3957,14 +3996,16 @@ SAR[0]@[FFB(SAR,0)] : \ADC_SAR_Seq_2:SAR:ADC_SAR\
 Comparator[3]@[FFB(Comparator,3)] : \Comp_1:ctComp\
 Comparator[2]@[FFB(Comparator,2)] : \Comp_2:ctComp\
 Comparator[1]@[FFB(Comparator,1)] : \Comp_3:ctComp\
-VIDAC[1]@[FFB(VIDAC,1)] : \IDAC8_1:viDAC8\
-VIDAC[2]@[FFB(VIDAC,2)] : \IDAC8_2:viDAC8\
-SC[3]@[FFB(SC,3)] : \PGA_1:SC\
-SC[1]@[FFB(SC,1)] : \PGA_2:SC\
+Comparator[0]@[FFB(Comparator,0)] : \Comp_4:ctComp\
+VIDAC[3]@[FFB(VIDAC,3)] : \IDAC8_1:viDAC8\
+VIDAC[1]@[FFB(VIDAC,1)] : \IDAC8_2:viDAC8\
+SC[0]@[FFB(SC,0)] : \PGA_1:SC\
+SC[2]@[FFB(SC,2)] : \PGA_2:SC\
 USB[0]@[FFB(USB,0)] : \USBUART_1:USB\
 VIDAC[0]@[FFB(VIDAC,0)] : \VDAC8:viDAC8\
-Log: apr.M0058: The analog placement iterative improvement is 37% done. (App=cydsfit)
-Log: apr.M0058: The analog placement iterative improvement is 62% done. (App=cydsfit)
+VIDAC[2]@[FFB(VIDAC,2)] : \VDAC8_1:viDAC8\
+Log: apr.M0058: The analog placement iterative improvement is 39% done. (App=cydsfit)
+Log: apr.M0058: The analog placement iterative improvement is 65% done. (App=cydsfit)
 Analog Placement Results:
 IO_4@[IOP=(0)][IoId=(4)] : ADC_IN(0) (fixed)
 IO_7@[IOP=(3)][IoId=(7)] : Buzzer(0) (fixed)
@@ -4002,126 +4043,100 @@ SAR[1]@[FFB(SAR,1)] : \ADC_SAR_Seq_2:SAR:ADC_SAR\
 Comparator[2]@[FFB(Comparator,2)] : \Comp_1:ctComp\
 Comparator[3]@[FFB(Comparator,3)] : \Comp_2:ctComp\
 Comparator[0]@[FFB(Comparator,0)] : \Comp_3:ctComp\
+Comparator[1]@[FFB(Comparator,1)] : \Comp_4:ctComp\
 VIDAC[1]@[FFB(VIDAC,1)] : \IDAC8_1:viDAC8\
-VIDAC[3]@[FFB(VIDAC,3)] : \IDAC8_2:viDAC8\
-SC[3]@[FFB(SC,3)] : \PGA_1:SC\
-SC[0]@[FFB(SC,0)] : \PGA_2:SC\
+VIDAC[0]@[FFB(VIDAC,0)] : \IDAC8_2:viDAC8\
+SC[0]@[FFB(SC,0)] : \PGA_1:SC\
+SC[2]@[FFB(SC,2)] : \PGA_2:SC\
 USB[0]@[FFB(USB,0)] : \USBUART_1:USB\
 VIDAC[2]@[FFB(VIDAC,2)] : \VDAC8:viDAC8\
+VIDAC[3]@[FFB(VIDAC,3)] : \VDAC8_1:viDAC8\
 
-Analog Placement phase: Elapsed time ==> 5s.210ms
+Analog Placement phase: Elapsed time ==> 4s.414ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
-Net "Net_302" overuses wire "AGR[4]"
-Net "Net_302" overuses wire "AGR[4]"
+Net "Net_616" overuses wire "AGL[4]"
+Net "Net_51" overuses wire "comp2- Wire"
 Net "Net_51" overuses wire "AGL[5]"
-Net "Net_308" overuses wire "AGR[6]"
-Net "Net_558" overuses wire "AGR[6]"
-Net "Net_558" overuses wire "AGL[6]"
+Net "Net_558" overuses wire "comp2- Wire"
 Net "Net_558" overuses wire "AGL[5]"
-Net "Net_91" overuses wire "AGL[4]"
-Net "Net_69" overuses wire "AGL[7]"
-Net "Net_93" overuses wire "AGL[6]"
-Net "Net_412" overuses wire "AGR[4]"
-Net "Net_412" overuses wire "AGL[4]"
-Net "Net_635" overuses wire "AGL[7]"
-Net "Net_302" overuses wire "AGR[5]"
-Net "Net_51" overuses wire "AGL[5]"
+Net "Net_558" overuses wire "AGL[5]"
 Net "Net_558" overuses wire "AGR[5]"
 Net "Net_558" overuses wire "AGL[5]"
+Net "Net_91" overuses wire "AGL[4]"
+Net "Net_412" overuses wire "AGL[4]"
+Net "Net_966" overuses wire "AGR[5]"
+Net "Net_51" overuses wire "comp2- Wire"
+Net "Net_51" overuses wire "AGL[5]"
+Net "Net_558" overuses wire "comp2- Wire"
 Net "Net_558" overuses wire "AGL[5]"
+Net "Net_558" overuses wire "AGR[4]"
+Net "Net_558" overuses wire "AGL[5]"
+Net "Net_412" overuses wire "AGR[4]"
 Net "Net_412" overuses wire "SAR vplus wire R"
 Net "Net_412" overuses wire "Vssa Wire"
 Net "AmuxNose::\ADC_DelSig_1:AMux\" overuses wire "Vssa Wire"
 Net "AmuxEye::\ADC_SAR_Seq_2:AMuxHw_2\" overuses wire "SAR vplus wire R"
 Net "AmuxEye::\ADC_SAR_Seq_2:AMuxHw_2\" overuses wire "SAR vplus wire R"
-Net "Net_302" overuses wire "AGR[4]"
-Net "Net_51" overuses wire "AGL[5]"
-Net "Net_558" overuses wire "AGL[5]"
-Net "Net_558" overuses wire "AGL[5]"
-Net "Net_91" overuses wire "AGL[4]"
-Net "Net_412" overuses wire "AGR[4]"
-Net "Net_412" overuses wire "AGL[4]"
-Net "Net_51" overuses wire "AGL[5]"
-Net "Net_558" overuses wire "AGL[5]"
-Net "Net_558" overuses wire "AGL[5]"
+Net "Net_616" overuses wire "amuxbusL"
+Net "Net_558" overuses wire "comp0- Wire"
+Net "Net_558" overuses wire "amuxbusL"
+Net "Net_558" overuses wire "amuxbusL"
+Net "Net_93" overuses wire "comp0- Wire"
 Net "Net_412" overuses wire "SAR vminus wire R"
 Net "Net_412" overuses wire "Vssa Wire"
 Net "\ADC_SAR_Seq_2:SAR:Net_126\" overuses wire "SAR vminus wire R"
 Net "AmuxNose::\ADC_DelSig_1:AMux\" overuses wire "Vssa Wire"
-Net "Net_616" overuses wire "amuxbusL"
-Net "Net_51" overuses wire "amuxbusL"
-Net "Net_91" overuses wire "AGL[4]"
-Net "Net_412" overuses wire "AGL[4]"
-Net "Net_91" overuses wire "AGL[4]"
-Net "Net_412" overuses wire "AGL[4]"
-Net "Net_308" overuses wire "sc3 out Wire"
-Net "Net_412" overuses wire "sc3 out Wire"
-Net "Net_412" overuses wire "SAR vplus wire R"
-Net "Net_412" overuses wire "Vssa Wire"
-Net "AmuxNose::\ADC_DelSig_1:AMux\" overuses wire "Vssa Wire"
-Net "AmuxEye::\ADC_SAR_Seq_2:AMuxHw_2\" overuses wire "SAR vplus wire R"
-Net "AmuxEye::\ADC_SAR_Seq_2:AMuxHw_2\" overuses wire "SAR vplus wire R"
-Net "Net_91" overuses wire "AGL[4]"
-Net "Net_412" overuses wire "AGL[4]"
-Net "Net_51" overuses wire "amuxbusL"
-Net "Net_91" overuses wire "amuxbusL"
-Net "Net_51" overuses wire "AGL[5]"
-Net "Net_558" overuses wire "AGL[5]"
-Net "Net_558" overuses wire "AGL[5]"
-Net "Net_51" overuses wire "amuxbusL"
-Net "Net_91" overuses wire "amuxbusL"
-Net "Net_51" overuses wire "AGL[5]"
-Net "Net_558" overuses wire "AGL[5]"
-Net "Net_558" overuses wire "AGL[5]"
-Net "Net_51" overuses wire "amuxbusL"
-Net "Net_91" overuses wire "amuxbusL"
-Net "Net_51" overuses wire "AGL[5]"
-Net "Net_558" overuses wire "AGL[5]"
-Net "Net_558" overuses wire "AGL[5]"
-Net "Net_51" overuses wire "AGL[5]"
-Net "Net_558" overuses wire "AGL[5]"
-Net "Net_51" overuses wire "amuxbusL"
-Net "Net_91" overuses wire "amuxbusL"
-Net "Net_51" overuses wire "AGL[5]"
-Net "Net_558" overuses wire "AGL[5]"
-Net "Net_51" overuses wire "amuxbusL"
-Net "Net_91" overuses wire "amuxbusL"
-Net "Net_51" overuses wire "AGL[5]"
-Net "Net_558" overuses wire "AGL[5]"
-Net "Net_51" overuses wire "amuxbusL"
-Net "Net_91" overuses wire "amuxbusL"
-Net "Net_51" overuses wire "AGL[5]"
-Net "Net_558" overuses wire "AGL[5]"
-Net "Net_51" overuses wire "amuxbusL"
-Net "Net_91" overuses wire "amuxbusL"
-Net "Net_51" overuses wire "AGL[5]"
-Net "Net_558" overuses wire "AGL[5]"
-Net "Net_51" overuses wire "amuxbusL"
-Net "Net_91" overuses wire "amuxbusL"
-Net "Net_51" overuses wire "AGL[5]"
-Net "Net_558" overuses wire "AGL[5]"
-Net "Net_91" overuses wire "AGL[4]"
-Net "Net_412" overuses wire "AGL[4]"
-Net "Net_412" overuses wire "sc0 out Wire"
-Net "Net_412" overuses wire "AGL[1]"
-Net "Net_635" overuses wire "sc0 out Wire"
-Net "AmuxEye::\ADC_SAR_Seq_2:AMuxHw_2\" overuses wire "AGL[1]"
+Net "Net_616" overuses wire "AGL[4]"
 Net "Net_308" overuses wire "AGR[6]"
+Net "Net_91" overuses wire "AGL[4]"
 Net "Net_93" overuses wire "AGL[6]"
 Net "Net_412" overuses wire "AGR[6]"
 Net "Net_412" overuses wire "AGL[6]"
-Net "Net_308" overuses wire "sc3 out Wire"
-Net "Net_412" overuses wire "sc3 out Wire"
+Net "Net_616" overuses wire "AGL[4]"
+Net "Net_91" overuses wire "AGL[4]"
 Net "Net_412" overuses wire "SAR vminus wire R"
 Net "Net_412" overuses wire "Vssa Wire"
 Net "\ADC_SAR_Seq_2:SAR:Net_126\" overuses wire "SAR vminus wire R"
 Net "AmuxNose::\ADC_DelSig_1:AMux\" overuses wire "Vssa Wire"
-Net "Net_308" overuses wire "sc3 out Wire"
-Net "Net_412" overuses wire "sc3 out Wire"
-Net "Net_302" overuses wire "AGR[0]"
-Net "Net_412" overuses wire "AGR[0]"
-Analog Routing phase: Elapsed time ==> 0s.265ms
+Net "Net_616" overuses wire "AGL[7]"
+Net "Net_91" overuses wire "AGL[4]"
+Net "Net_69" overuses wire "AGL[7]"
+Net "Net_412" overuses wire "AGL[4]"
+Net "Net_558" overuses wire "amuxbusL"
+Net "Net_558" overuses wire "amuxbusL"
+Net "Net_91" overuses wire "amuxbusL"
+Net "Net_51" overuses wire "comp2- Wire"
+Net "Net_51" overuses wire "AGL[5]"
+Net "Net_558" overuses wire "comp2- Wire"
+Net "Net_558" overuses wire "AGL[5]"
+Net "Net_558" overuses wire "AGL[5]"
+Net "Net_51" overuses wire "AGL[5]"
+Net "Net_558" overuses wire "amuxbusL"
+Net "Net_558" overuses wire "AGL[5]"
+Net "Net_91" overuses wire "amuxbusL"
+Net "Net_558" overuses wire "AGL[2]"
+Net "Net_91" overuses wire "AGL[4]"
+Net "Net_412" overuses wire "AGL[4]"
+Net "Net_965" overuses wire "AGL[2]"
+Net "Net_412" overuses wire "v3 Wire"
+Net "Net_966" overuses wire "v3 Wire"
+Net "Net_412" overuses wire "sc2 out Wire"
+Net "Net_965" overuses wire "sc2 out Wire"
+Net "Net_412" overuses wire "SAR vplus wire R"
+Net "Net_412" overuses wire "Vssa Wire"
+Net "AmuxNose::\ADC_DelSig_1:AMux\" overuses wire "Vssa Wire"
+Net "AmuxEye::\ADC_SAR_Seq_2:AMuxHw_2\" overuses wire "SAR vplus wire R"
+Net "AmuxEye::\ADC_SAR_Seq_2:AMuxHw_2\" overuses wire "SAR vplus wire R"
+Net "Net_308" overuses wire "sc0 out Wire"
+Net "Net_308" overuses wire "sc1vin2sc0out Sw__0b"
+Net "Net_308" overuses wire "sc1 Vin Wire"
+Net "Net_412" overuses wire "sc1 Vin Wire"
+Net "Net_412" overuses wire "sc1vin2sc0out Sw__0b"
+Net "Net_412" overuses wire "sc0 out Wire"
+Net "Net_412" overuses wire "sc2 out Wire"
+Net "Net_965" overuses wire "sc2 out Wire"
+Analog Routing phase: Elapsed time ==> 0s.187ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
@@ -4271,30 +4286,32 @@ Map of net to items {
   Net: Net_901 {
   }
   Net: Net_616 {
-    sc_0_vin
-    abusl0_x_sc_0_vin
-    abusl0
-    abusl0_x_opamp_2_vplus
+    sc_2_vin
+    abusl1_x_sc_2_vin
+    abusl1
+    abusl1_x_opamp_2_vplus
     opamp_2_vplus
     opamp_2_vplus_x_p0_4
     p0_4
   }
   Net: Net_302 {
-    sc_3_vin
-    amuxbusr_x_sc_3_vin
-    amuxbusr
-    amuxbusr_x_vidac_3_iout
-    vidac_3_iout
-    amuxbusr_x_p3_0
-    p3_0
-    p3_0_x_vidac_1_iout
+    sc_0_vin
+    agl0_x_sc_0_vin
+    agl0
+    agl0_x_agr0
+    agr0
+    agr0_x_vidac_1_iout
     vidac_1_iout
+    agl0_x_vidac_0_iout
+    vidac_0_iout
+    p3_0_x_vidac_1_iout
+    p3_0
   }
   Net: Net_51 {
     vidac_2_vout
-    amuxbusl_x_vidac_2_vout
-    amuxbusl
-    amuxbusl_x_p4_5
+    agl5_x_vidac_2_vout
+    agl5
+    agl5_x_p4_5
     p4_5
     abusl2_x_vidac_2_vout
     abusl2
@@ -4302,26 +4319,26 @@ Map of net to items {
     comp_2_vminus
   }
   Net: Net_308 {
-    sc_3_vout
-    agr6_x_sc_3_vout
+    sc_0_vout
+    sc_0_vout_x_sc_1_vin
+    sc_1_vin
+    agr6_x_sc_1_vin
     agr6
     agr6_x_p3_2
     p3_2
   }
   Net: Net_558 {
-    comp_3_vplus
-    agr5_x_comp_3_vplus
-    agr5
-    agl5_x_agr5
-    agl5
-    agl5_x_p4_1
+    comp_1_vminus
+    amuxbusr_x_comp_1_vminus
+    amuxbusr
+    amuxbusl_x_amuxbusr
+    amuxbusl
+    amuxbusl_x_p4_1
     p4_1
-    agr2_x_comp_3_vplus
-    agr2
-    agl2_x_agr2
-    agl2
-    agl2_x_comp_2_vplus
+    amuxbusl_x_comp_2_vplus
     comp_2_vplus
+    amuxbusr_x_comp_3_vplus
+    comp_3_vplus
   }
   Net: Net_91 {
     comp_0_vplus
@@ -4350,13 +4367,13 @@ Map of net to items {
     p3_4
     agr4_x_p3_4
     agr4
-    agr4_x_sc_1_vin
-    sc_1_vin
-    agr0_x_sc_1_vin
-    agr0
-    agl0_x_agr0
-    agl0
-    agl0_x_dsm_0_vplus
+    agr4_x_sc_3_vin
+    sc_3_vin
+    agr2_x_sc_3_vin
+    agr2
+    agl2_x_agr2
+    agl2
+    agl2_x_dsm_0_vplus
     dsm_0_vplus
   }
   Net: \ADC_DelSig_1:Net_249\ {
@@ -4367,11 +4384,11 @@ Map of net to items {
   }
   Net: \ADC_DelSig_1:Net_34\ {
   }
-  Net: Net_635 {
-    sc_0_vout
-    agl3_x_sc_0_vout
-    agl3
-    agl3_x_sar_0_vplus
+  Net: Net_965 {
+    sc_2_vout
+    abusl0_x_sc_2_vout
+    abusl0
+    abusl0_x_sar_0_vplus
     sar_0_vplus
   }
   Net: \ADC_SAR_1:Net_126\ {
@@ -4399,6 +4416,13 @@ Map of net to items {
   }
   Net: \ADC_SAR_Seq_2:SAR:Net_209\ {
   }
+  Net: Net_966 {
+    vidac_3_vout
+    agr5_x_vidac_3_vout
+    agr5
+    agr5_x_comp_1_vplus
+    comp_1_vplus
+  }
   Net: \IDAC8_1:Net_124\ {
   }
   Net: \IDAC8_2:Net_124\ {
@@ -4408,6 +4432,8 @@ Map of net to items {
   Net: \PGA_2:Net_17\ {
   }
   Net: \VDAC8:Net_77\ {
+  }
+  Net: \VDAC8_1:Net_77\ {
   }
   Net: AmuxNet::\ADC_DelSig_1:AMux\ {
     dsm_0_vminus
@@ -4434,49 +4460,51 @@ Map of net to items {
   }
 }
 Map of item to net {
-  sc_0_vin                                         -> Net_616
-  abusl0_x_sc_0_vin                                -> Net_616
-  abusl0                                           -> Net_616
-  abusl0_x_opamp_2_vplus                           -> Net_616
+  sc_2_vin                                         -> Net_616
+  abusl1_x_sc_2_vin                                -> Net_616
+  abusl1                                           -> Net_616
+  abusl1_x_opamp_2_vplus                           -> Net_616
   opamp_2_vplus                                    -> Net_616
   opamp_2_vplus_x_p0_4                             -> Net_616
   p0_4                                             -> Net_616
-  sc_3_vin                                         -> Net_302
-  amuxbusr_x_sc_3_vin                              -> Net_302
-  amuxbusr                                         -> Net_302
-  amuxbusr_x_vidac_3_iout                          -> Net_302
-  vidac_3_iout                                     -> Net_302
-  amuxbusr_x_p3_0                                  -> Net_302
-  p3_0                                             -> Net_302
-  p3_0_x_vidac_1_iout                              -> Net_302
+  sc_0_vin                                         -> Net_302
+  agl0_x_sc_0_vin                                  -> Net_302
+  agl0                                             -> Net_302
+  agl0_x_agr0                                      -> Net_302
+  agr0                                             -> Net_302
+  agr0_x_vidac_1_iout                              -> Net_302
   vidac_1_iout                                     -> Net_302
+  agl0_x_vidac_0_iout                              -> Net_302
+  vidac_0_iout                                     -> Net_302
+  p3_0_x_vidac_1_iout                              -> Net_302
+  p3_0                                             -> Net_302
   vidac_2_vout                                     -> Net_51
-  amuxbusl_x_vidac_2_vout                          -> Net_51
-  amuxbusl                                         -> Net_51
-  amuxbusl_x_p4_5                                  -> Net_51
+  agl5_x_vidac_2_vout                              -> Net_51
+  agl5                                             -> Net_51
+  agl5_x_p4_5                                      -> Net_51
   p4_5                                             -> Net_51
   abusl2_x_vidac_2_vout                            -> Net_51
   abusl2                                           -> Net_51
   abusl2_x_comp_2_vminus                           -> Net_51
   comp_2_vminus                                    -> Net_51
-  sc_3_vout                                        -> Net_308
-  agr6_x_sc_3_vout                                 -> Net_308
+  sc_0_vout                                        -> Net_308
+  sc_0_vout_x_sc_1_vin                             -> Net_308
+  sc_1_vin                                         -> Net_308
+  agr6_x_sc_1_vin                                  -> Net_308
   agr6                                             -> Net_308
   agr6_x_p3_2                                      -> Net_308
   p3_2                                             -> Net_308
-  comp_3_vplus                                     -> Net_558
-  agr5_x_comp_3_vplus                              -> Net_558
-  agr5                                             -> Net_558
-  agl5_x_agr5                                      -> Net_558
-  agl5                                             -> Net_558
-  agl5_x_p4_1                                      -> Net_558
+  comp_1_vminus                                    -> Net_558
+  amuxbusr_x_comp_1_vminus                         -> Net_558
+  amuxbusr                                         -> Net_558
+  amuxbusl_x_amuxbusr                              -> Net_558
+  amuxbusl                                         -> Net_558
+  amuxbusl_x_p4_1                                  -> Net_558
   p4_1                                             -> Net_558
-  agr2_x_comp_3_vplus                              -> Net_558
-  agr2                                             -> Net_558
-  agl2_x_agr2                                      -> Net_558
-  agl2                                             -> Net_558
-  agl2_x_comp_2_vplus                              -> Net_558
+  amuxbusl_x_comp_2_vplus                          -> Net_558
   comp_2_vplus                                     -> Net_558
+  amuxbusr_x_comp_3_vplus                          -> Net_558
+  comp_3_vplus                                     -> Net_558
   comp_0_vplus                                     -> Net_91
   agl4_x_comp_0_vplus                              -> Net_91
   agl4                                             -> Net_91
@@ -4497,19 +4525,19 @@ Map of item to net {
   p3_4                                             -> Net_412
   agr4_x_p3_4                                      -> Net_412
   agr4                                             -> Net_412
-  agr4_x_sc_1_vin                                  -> Net_412
-  sc_1_vin                                         -> Net_412
-  agr0_x_sc_1_vin                                  -> Net_412
-  agr0                                             -> Net_412
-  agl0_x_agr0                                      -> Net_412
-  agl0                                             -> Net_412
-  agl0_x_dsm_0_vplus                               -> Net_412
+  agr4_x_sc_3_vin                                  -> Net_412
+  sc_3_vin                                         -> Net_412
+  agr2_x_sc_3_vin                                  -> Net_412
+  agr2                                             -> Net_412
+  agl2_x_agr2                                      -> Net_412
+  agl2                                             -> Net_412
+  agl2_x_dsm_0_vplus                               -> Net_412
   dsm_0_vplus                                      -> Net_412
-  sc_0_vout                                        -> Net_635
-  agl3_x_sc_0_vout                                 -> Net_635
-  agl3                                             -> Net_635
-  agl3_x_sar_0_vplus                               -> Net_635
-  sar_0_vplus                                      -> Net_635
+  sc_2_vout                                        -> Net_965
+  abusl0_x_sc_2_vout                               -> Net_965
+  abusl0                                           -> Net_965
+  abusl0_x_sar_0_vplus                             -> Net_965
+  sar_0_vplus                                      -> Net_965
   sar_0_vrefhi                                     -> \ADC_SAR_1:Net_126\
   sar_0_vminus_x_sar_0_vrefhi                      -> \ADC_SAR_1:Net_126\
   sar_0_vminus                                     -> \ADC_SAR_1:Net_126\
@@ -4525,6 +4553,11 @@ Map of item to net {
   sar_1_vrefhi                                     -> \ADC_SAR_Seq_2:SAR:Net_126\
   sar_1_vminus_x_sar_1_vrefhi                      -> \ADC_SAR_Seq_2:SAR:Net_126\
   sar_1_vminus                                     -> \ADC_SAR_Seq_2:SAR:Net_126\
+  vidac_3_vout                                     -> Net_966
+  agr5_x_vidac_3_vout                              -> Net_966
+  agr5                                             -> Net_966
+  agr5_x_comp_1_vplus                              -> Net_966
+  comp_1_vplus                                     -> Net_966
   dsm_0_vminus                                     -> \ADC_DelSig_1:Net_20\
   common_vssa                                      -> \ADC_DelSig_1:Net_244\
   sar_1_vplus                                      -> \ADC_SAR_Seq_2:Net_2803\
@@ -5053,11 +5086,11 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = True
 IsVddaHalfUsedForSar1 = True
-Analog Code Generation phase: Elapsed time ==> 0s.046ms
+Analog Code Generation phase: Elapsed time ==> 0s.031ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2076: Total run-time: 3.6 sec.
+I2076: Total run-time: 3.0 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -5068,15 +5101,15 @@ PLD Packing Summary
 ------------------------------------------------------------
             Resource Type : Used : Free :  Max :  % Used
     ====================================================
-                     PLDs :   24 :   24 :   48 :  50.00%
+                     PLDs :   23 :   25 :   48 :  47.92%
 
 <CYPRESSTAG name="PLD Statistics">
 
         PLD Resource Type :     Average/LAB
     =======================================
-                   Inputs :            7.13
-                   Pterms :            3.92
-               Macrocells :            3.46
+                   Inputs :            7.48
+                   Pterms :            4.09
+               Macrocells :            3.61
 </CYPRESSTAG>
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
@@ -5088,7 +5121,7 @@ PLD Packing: Elapsed time ==> 0s.000ms
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.218ms
+Partitioning: Elapsed time ==> 0s.249ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -5098,7 +5131,7 @@ Final Placement Summary
 
        Resource Type :      Count : Avg Inputs : Avg Outputs
     ========================================================
-                 UDB :         14 :       6.71 :       5.93
+                 UDB :         13 :       7.38 :       6.38
 <CYPRESSTAG name="Final Placement Details">
 <CYPRESSTAG name="Component Details">
 
@@ -5106,30 +5139,9 @@ Final Placement Summary
 Component Placement Details
 ------------------------------------------------------------
 UDB [UDB=(0,0)] contents:
-LAB@[UDB=(0,0)][LB=0] #macrocells=4, #inputs=7, #pterms=4
+LAB@[UDB=(0,0)][LB=0] #macrocells=3, #inputs=7, #pterms=3
 {
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_13\, Mode=(D-Register) @ [UDB=(0,0)][LB=0][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_13\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_63\, Mode=(D-Register) @ [UDB=(0,0)][LB=0][MC=1]
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_53\, Mode=(D-Register) @ [UDB=(0,0)][LB=0][MC=0]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -5140,17 +5152,39 @@ LAB@[UDB=(0,0)][LB=0] #macrocells=4, #inputs=7, #pterms=4
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_63\ (fanout=1)
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_53\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_1\, Mode=(D-Register) @ [UDB=(0,0)][LB=0][MC=2]
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_44\, Mode=(D-Register) @ [UDB=(0,0)][LB=0][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_44\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_1\, Mode=(D-Register) @ [UDB=(0,0)][LB=0][MC=3]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -5170,32 +5204,11 @@ LAB@[UDB=(0,0)][LB=0] #macrocells=4, #inputs=7, #pterms=4
         Properties               : 
         {
         }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_15\, Mode=(D-Register) @ [UDB=(0,0)][LB=0][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_15\ (fanout=1)
-        Properties               : 
-        {
-        }
 }
 
 LAB@[UDB=(0,0)][LB=1] #macrocells=4, #inputs=7, #pterms=4
 {
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_29\, Mode=(D-Register) @ [UDB=(0,0)][LB=1][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_20\, Mode=(D-Register) @ [UDB=(0,0)][LB=1][MC=0]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -5206,12 +5219,12 @@ LAB@[UDB=(0,0)][LB=1] #macrocells=4, #inputs=7, #pterms=4
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
               !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
               !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_29\ (fanout=1)
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_20\ (fanout=1)
         Properties               : 
         {
         }
@@ -5237,7 +5250,7 @@ LAB@[UDB=(0,0)][LB=1] #macrocells=4, #inputs=7, #pterms=4
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_58\, Mode=(D-Register) @ [UDB=(0,0)][LB=1][MC=2]
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_23\, Mode=(D-Register) @ [UDB=(0,0)][LB=1][MC=2]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -5246,19 +5259,19 @@ LAB@[UDB=(0,0)][LB=1] #macrocells=4, #inputs=7, #pterms=4
         Main Equation            : 1 pterm
         (
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_58\ (fanout=1)
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_23\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_31\, Mode=(D-Register) @ [UDB=(0,0)][LB=1][MC=3]
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_29\, Mode=(D-Register) @ [UDB=(0,0)][LB=1][MC=3]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -5271,61 +5284,29 @@ LAB@[UDB=(0,0)][LB=1] #macrocells=4, #inputs=7, #pterms=4
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_31\ (fanout=1)
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_29\ (fanout=1)
         Properties               : 
         {
         }
 }
+
+statuscell: Name =\USBUART_1:Vbus_ps:sts:sts_reg\
+    PORT MAP (
+        status_0 => Net_522_SYNCOUT );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_md_select = "00000000"
+    }
+    Clock Enable: True
 
 UDB [UDB=(0,1)] contents:
-LAB@[UDB=(0,1)][LB=0] #macrocells=4, #inputs=7, #pterms=4
+LAB@[UDB=(0,1)][LB=0] #macrocells=4, #inputs=9, #pterms=4
 {
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_32\, Mode=(D-Register) @ [UDB=(0,1)][LB=0][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_32\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_38\, Mode=(D-Register) @ [UDB=(0,1)][LB=0][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_38\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_62\, Mode=(D-Register) @ [UDB=(0,1)][LB=0][MC=2]
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_57\, Mode=(D-Register) @ [UDB=(0,1)][LB=0][MC=0]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -5337,82 +5318,16 @@ LAB@[UDB=(0,1)][LB=0] #macrocells=4, #inputs=7, #pterms=4
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_62\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_0\, Mode=(D-Register) @ [UDB=(0,1)][LB=0][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
               !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
               !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_0\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(0,1)][LB=1] #macrocells=3, #inputs=7, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_35\, Mode=(D-Register) @ [UDB=(0,1)][LB=1][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_35\ (fanout=1)
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_57\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_3\, Mode=(D-Register) @ [UDB=(0,1)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_3\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_14\, Mode=(D-Register) @ [UDB=(0,1)][LB=1][MC=2]
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_14\, Mode=(D-Register) @ [UDB=(0,1)][LB=0][MC=1]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -5433,55 +5348,20 @@ LAB@[UDB=(0,1)][LB=1] #macrocells=3, #inputs=7, #pterms=3
         {
         }
 
-    [McSlotId=3]: (empty)
-}
-
-UDB [UDB=(0,2)] contents:
-LAB@[UDB=(0,2)][LB=0] #macrocells=4, #inputs=7, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_33\, Mode=(D-Register) @ [UDB=(0,2)][LB=0][MC=0]
-        Total # of inputs        : 7
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:bSAR_SEQ:cnt_enable\, Mode=(Combinatorial) @ [UDB=(0,1)][LB=0][MC=2]
+        Total # of inputs        : 2
         Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        !(
+              !Net_805 * !\ADC_SAR_Seq_2:bSAR_SEQ:load_period\
         );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_33\ (fanout=1)
+        Output = \ADC_SAR_Seq_2:bSAR_SEQ:cnt_enable\ (fanout=2)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_42\, Mode=(D-Register) @ [UDB=(0,2)][LB=0][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_42\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_53\, Mode=(D-Register) @ [UDB=(0,2)][LB=0][MC=2]
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_62\, Mode=(D-Register) @ [UDB=(0,1)][LB=0][MC=3]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -5492,109 +5372,20 @@ LAB@[UDB=(0,2)][LB=0] #macrocells=4, #inputs=7, #pterms=4
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_53\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_8\, Mode=(D-Register) @ [UDB=(0,2)][LB=0][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_8\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(0,2)][LB=1] #macrocells=3, #inputs=7, #pterms=3
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_7\, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_7\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_9\, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_9\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_36\, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
               !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_36\ (fanout=1)
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_62\ (fanout=1)
         Properties               : 
         {
         }
 }
 
-UDB [UDB=(0,3)] contents:
-LAB@[UDB=(0,3)][LB=0] #macrocells=4, #inputs=7, #pterms=4
+LAB@[UDB=(0,1)][LB=1] #macrocells=3, #inputs=7, #pterms=3
 {
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_25\, Mode=(D-Register) @ [UDB=(0,3)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_25\, Mode=(D-Register) @ [UDB=(0,1)][LB=1][MC=0]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -5615,7 +5406,8 @@ LAB@[UDB=(0,3)][LB=0] #macrocells=4, #inputs=7, #pterms=4
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_24\, Mode=(D-Register) @ [UDB=(0,3)][LB=0][MC=1]
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_9\, Mode=(D-Register) @ [UDB=(0,1)][LB=1][MC=2]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -5625,172 +5417,18 @@ LAB@[UDB=(0,3)][LB=0] #macrocells=4, #inputs=7, #pterms=4
         (
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
               !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_24\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_60\, Mode=(D-Register) @ [UDB=(0,3)][LB=0][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_60\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_20\, Mode=(D-Register) @ [UDB=(0,3)][LB=0][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_20\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(0,3)][LB=1] #macrocells=4, #inputs=7, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_21\, Mode=(D-Register) @ [UDB=(0,3)][LB=1][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_21\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_48\, Mode=(D-Register) @ [UDB=(0,3)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_48\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_50\, Mode=(D-Register) @ [UDB=(0,3)][LB=1][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_50\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_41\, Mode=(D-Register) @ [UDB=(0,3)][LB=1][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
               !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
               !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
               !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_41\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-UDB [UDB=(0,4)] contents:
-LAB@[UDB=(0,4)][LB=0] #macrocells=4, #inputs=7, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_27\, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_27\ (fanout=1)
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_9\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_6\, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=1]
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_6\, Mode=(D-Register) @ [UDB=(0,1)][LB=1][MC=3]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -5807,651 +5445,6 @@ LAB@[UDB=(0,4)][LB=0] #macrocells=4, #inputs=7, #pterms=4
               !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
         );
         Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_6\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_26\, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_26\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_47\, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_47\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(0,4)][LB=1] #macrocells=4, #inputs=7, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_54\, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_54\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_4\, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_4\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_30\, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_30\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_44\, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_44\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-synccell: Name =VUSB(0)_SYNC
-    PORT MAP (
-        in => Net_522 ,
-        out => Net_522_SYNCOUT ,
-        clock => ClockBlock_BUS_CLK );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(0,5)] is empty.
-UDB [UDB=(1,0)] contents:
-LAB@[UDB=(1,0)][LB=0] #macrocells=4, #inputs=7, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_22\, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_22\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_55\, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_55\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_5\, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_5\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_59\, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_59\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(1,0)][LB=1] #macrocells=4, #inputs=7, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_51\, Mode=(D-Register) @ [UDB=(1,0)][LB=1][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_51\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_34\, Mode=(D-Register) @ [UDB=(1,0)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_34\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_16\, Mode=(D-Register) @ [UDB=(1,0)][LB=1][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_16\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_61\, Mode=(D-Register) @ [UDB=(1,0)][LB=1][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_61\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-statuscell: Name =\ADC_SAR_Seq_2:bSAR_SEQ:EOCSts\
-    PORT MAP (
-        clock => \ADC_SAR_Seq_2:clock\ ,
-        status_0 => Net_806 ,
-        clk_en => \ADC_SAR_Seq_2:bSAR_SEQ:enable\ );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_md_select = "00000001"
-    }
-    Clock Polarity: Active High
-    Clock Enable: PosEdge(\ADC_SAR_Seq_2:bSAR_SEQ:enable\)
-
-UDB [UDB=(1,1)] contents:
-LAB@[UDB=(1,1)][LB=0] #macrocells=4, #inputs=7, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_2\, Mode=(D-Register) @ [UDB=(1,1)][LB=0][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_2\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_17\, Mode=(D-Register) @ [UDB=(1,1)][LB=0][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_17\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_37\, Mode=(D-Register) @ [UDB=(1,1)][LB=0][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_37\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_19\, Mode=(D-Register) @ [UDB=(1,1)][LB=0][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_19\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(1,1)][LB=1] #macrocells=4, #inputs=7, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_11\, Mode=(D-Register) @ [UDB=(1,1)][LB=1][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_11\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_28\, Mode=(D-Register) @ [UDB=(1,1)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_28\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_45\, Mode=(D-Register) @ [UDB=(1,1)][LB=1][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_45\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_23\, Mode=(D-Register) @ [UDB=(1,1)][LB=1][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_23\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-UDB [UDB=(1,2)] contents:
-LAB@[UDB=(1,2)][LB=0] #macrocells=3, #inputs=8, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\, Mode=(D-Register) @ [UDB=(1,2)][LB=0][MC=0]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:ch_addr_1\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ (fanout=65)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_46\, Mode=(D-Register) @ [UDB=(1,2)][LB=0][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_46\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_12\, Mode=(D-Register) @ [UDB=(1,2)][LB=0][MC=3]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_12\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(1,2)][LB=1] #macrocells=4, #inputs=9, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_10\, Mode=(D-Register) @ [UDB=(1,2)][LB=1][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_10\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_56\, Mode=(D-Register) @ [UDB=(1,2)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_56\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_18\, Mode=(D-Register) @ [UDB=(1,2)][LB=1][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_18\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:bSAR_SEQ:cnt_enable\, Mode=(Combinatorial) @ [UDB=(1,2)][LB=1][MC=3]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        !(
-              !Net_805 * !\ADC_SAR_Seq_2:bSAR_SEQ:load_period\
-        );
-        Output = \ADC_SAR_Seq_2:bSAR_SEQ:cnt_enable\ (fanout=2)
         Properties               : 
         {
         }
@@ -6479,45 +5472,52 @@ controlcell: Name =\ADC_SAR_Seq_2:bSAR_SEQ:CtrlReg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(1,3)] contents:
-LAB@[UDB=(1,3)][LB=0] #macrocells=1, #inputs=12, #pterms=8
+UDB [UDB=(0,2)] contents:
+LAB@[UDB=(0,2)][LB=0] #macrocells=4, #inputs=8, #pterms=4
 {
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active_split\, Mode=(Combinatorial) @ [UDB=(1,3)][LB=0][MC=0]
-        Total # of inputs        : 12
-        Total # of product terms : 8
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_42\, Mode=(D-Register) @ [UDB=(0,2)][LB=0][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
             Clock Enable: True
-        Main Equation            : 8 pterms
+        Main Equation            : 1 pterm
         (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:ch_addr_5\
-            + \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:ch_addr_4\
-            + \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:ch_addr_3\
-            + \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:ch_addr_2\
-            + !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:ch_addr_1\
-            + \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:ch_addr_1\
-            + !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ * 
-              \ADC_SAR_Seq_2:ch_addr_0\
-            + \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ * 
-              !\ADC_SAR_Seq_2:ch_addr_0\
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active_split\ (fanout=1)
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_42\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_63\, Mode=(D-Register) @ [UDB=(0,2)][LB=0][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_63\ (fanout=1)
+        Properties               : 
+        {
+        }
 
-LAB@[UDB=(1,3)][LB=1] #macrocells=4, #inputs=9, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=0]
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\, Mode=(D-Register) @ [UDB=(0,2)][LB=0][MC=2]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -6525,14 +5525,68 @@ LAB@[UDB=(1,3)][LB=1] #macrocells=4, #inputs=9, #pterms=4
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \ADC_SAR_Seq_2:ch_addr_5\
+              \ADC_SAR_Seq_2:ch_addr_3\
         );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ (fanout=66)
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ (fanout=66)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_39\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=1]
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_11\, Mode=(D-Register) @ [UDB=(0,2)][LB=0][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_11\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(0,2)][LB=1] #macrocells=4, #inputs=10, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=0]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:ch_addr_1\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ (fanout=65)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:ch_addr_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ (fanout=65)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_34\, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=2]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -6544,37 +5598,16 @@ LAB@[UDB=(1,3)][LB=1] #macrocells=4, #inputs=9, #pterms=4
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
               !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
               !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_39\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_52\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
               !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_52\ (fanout=1)
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_34\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=3]
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=3]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -6582,9 +5615,9 @@ LAB@[UDB=(1,3)][LB=1] #macrocells=4, #inputs=9, #pterms=4
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \ADC_SAR_Seq_2:ch_addr_0\
+              \ADC_SAR_Seq_2:ch_addr_4\
         );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ (fanout=65)
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ (fanout=66)
         Properties               : 
         {
         }
@@ -6615,10 +5648,99 @@ count7cell: Name =\ADC_SAR_Seq_2:bSAR_SEQ:ChannelCounter\
     Clock Polarity: Active High
     Clock Enable: PosEdge(\ADC_SAR_Seq_2:bSAR_SEQ:enable\)
 
-UDB [UDB=(1,4)] contents:
-LAB@[UDB=(1,4)][LB=0] #macrocells=4, #inputs=10, #pterms=4
+UDB [UDB=(0,3)] contents:
+LAB@[UDB=(0,3)][LB=0] #macrocells=2, #inputs=12, #pterms=8
 {
-    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_49\, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active_split\, Mode=(Combinatorial) @ [UDB=(0,3)][LB=0][MC=0]
+        Total # of inputs        : 12
+        Total # of product terms : 8
+            Clock Enable: True
+        Main Equation            : 8 pterms
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:ch_addr_5\
+            + \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:ch_addr_4\
+            + \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:ch_addr_3\
+            + \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:ch_addr_2\
+            + !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:ch_addr_1\
+            + \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:ch_addr_1\
+            + !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ * 
+              \ADC_SAR_Seq_2:ch_addr_0\
+            + \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\ * 
+              !\ADC_SAR_Seq_2:ch_addr_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active_split\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=__ZERO__, Mode=(Combinatorial) @ [UDB=(0,3)][LB=0][MC=1]
+        Total # of inputs        : 0
+        Total # of product terms : 0
+            Clock Enable: True
+        Main Equation            : 0 pterms
+        (
+            0
+        );
+        Output = __ZERO__ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(0,3)][LB=1] #macrocells=4, #inputs=12, #pterms=8
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_38\, Mode=(D-Register) @ [UDB=(0,3)][LB=1][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_38\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_58\, Mode=(D-Register) @ [UDB=(0,3)][LB=1][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_58\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_55\, Mode=(D-Register) @ [UDB=(0,3)][LB=1][MC=2]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -6630,86 +5752,16 @@ LAB@[UDB=(1,4)][LB=0] #macrocells=4, #inputs=10, #pterms=4
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
               !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_49\ (fanout=1)
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_55\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:ch_addr_3\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ (fanout=66)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:ch_addr_4\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ (fanout=66)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:ch_addr_2\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ (fanout=66)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(1,4)][LB=1] #macrocells=3, #inputs=12, #pterms=7
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_40\, Mode=(D-Register) @ [UDB=(1,4)][LB=1][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
-              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
-              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
-        );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_40\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\, Mode=(Combinatorial) @ [UDB=(1,4)][LB=1][MC=2]
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\, Mode=(Combinatorial) @ [UDB=(0,3)][LB=1][MC=3]
         Total # of inputs        : 9
         Total # of product terms : 5
             Clock Enable: True
@@ -6730,8 +5782,461 @@ LAB@[UDB=(1,4)][LB=1] #macrocells=3, #inputs=12, #pterms=7
         {
             soft = 1
         }
+}
 
-    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_57\, Mode=(D-Register) @ [UDB=(1,4)][LB=1][MC=3]
+UDB [UDB=(0,4)] contents:
+LAB@[UDB=(0,4)][LB=0] #macrocells=4, #inputs=8, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_40\, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_40\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_21\, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_21\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_19\, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_19\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:ch_addr_2\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ (fanout=66)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(0,4)][LB=1] #macrocells=4, #inputs=8, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_7\, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_7\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_35\, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_35\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_47\, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_47\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:ch_addr_5\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ (fanout=66)
+        Properties               : 
+        {
+        }
+}
+
+UDB [UDB=(0,5)] is empty.
+UDB [UDB=(1,0)] contents:
+LAB@[UDB=(1,0)][LB=0] #macrocells=4, #inputs=7, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_32\, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_32\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_50\, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_50\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_5\, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_5\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_54\, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_54\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(1,0)][LB=1] #macrocells=3, #inputs=7, #pterms=3
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_30\, Mode=(D-Register) @ [UDB=(1,0)][LB=1][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_30\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_45\, Mode=(D-Register) @ [UDB=(1,0)][LB=1][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_45\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_31\, Mode=(D-Register) @ [UDB=(1,0)][LB=1][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_31\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+synccell: Name =VUSB(0)_SYNC
+    PORT MAP (
+        in => Net_522 ,
+        out => Net_522_SYNCOUT ,
+        clock => ClockBlock_BUS_CLK );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+synccell: Name =\ADC_SAR_Seq_2:Sync:genblk1[0]:INST\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        in => \ADC_SAR_Seq_2:nrq\ ,
+        out => \ADC_SAR_Seq_2:Net_3935\ );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(1,1)] contents:
+LAB@[UDB=(1,1)][LB=0] #macrocells=4, #inputs=7, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_13\, Mode=(D-Register) @ [UDB=(1,1)][LB=0][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_13\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_36\, Mode=(D-Register) @ [UDB=(1,1)][LB=0][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_36\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_61\, Mode=(D-Register) @ [UDB=(1,1)][LB=0][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_61\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_27\, Mode=(D-Register) @ [UDB=(1,1)][LB=0][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_27\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(1,1)][LB=1] #macrocells=4, #inputs=7, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_41\, Mode=(D-Register) @ [UDB=(1,1)][LB=1][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_41\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_56\, Mode=(D-Register) @ [UDB=(1,1)][LB=1][MC=1]
         Total # of inputs        : 7
         Total # of product terms : 1
         List of special equations: 
@@ -6745,58 +6250,575 @@ LAB@[UDB=(1,4)][LB=1] #macrocells=3, #inputs=12, #pterms=7
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
               !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
               !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_56\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_3\, Mode=(D-Register) @ [UDB=(1,1)][LB=1][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
               \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_57\ (fanout=1)
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_3\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_4\, Mode=(D-Register) @ [UDB=(1,1)][LB=1][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_4\ (fanout=1)
         Properties               : 
         {
         }
 }
 
-statuscell: Name =\USBUART_1:Vbus_ps:sts:sts_reg\
-    PORT MAP (
-        status_0 => Net_522_SYNCOUT );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_md_select = "00000000"
-    }
-    Clock Enable: True
-
-UDB [UDB=(1,5)] contents:
-LAB@[UDB=(1,5)][LB=1] #macrocells=1, #inputs=0, #pterms=0
+UDB [UDB=(1,2)] contents:
+LAB@[UDB=(1,2)][LB=0] #macrocells=3, #inputs=7, #pterms=3
 {
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=__ZERO__, Mode=(Combinatorial) @ [UDB=(1,5)][LB=1][MC=1]
-        Total # of inputs        : 0
-        Total # of product terms : 0
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_18\, Mode=(D-Register) @ [UDB=(1,2)][LB=0][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
             Clock Enable: True
-        Main Equation            : 0 pterms
+        Main Equation            : 1 pterm
         (
-            0
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
         );
-        Output = __ZERO__ (fanout=1)
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_18\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_37\, Mode=(D-Register) @ [UDB=(1,2)][LB=0][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_37\ (fanout=1)
         Properties               : 
         {
         }
 
     [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_8\, Mode=(D-Register) @ [UDB=(1,2)][LB=0][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_8\ (fanout=1)
+        Properties               : 
+        {
+        }
 }
 
+LAB@[UDB=(1,2)][LB=1] #macrocells=4, #inputs=7, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_49\, Mode=(D-Register) @ [UDB=(1,2)][LB=1][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_49\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_33\, Mode=(D-Register) @ [UDB=(1,2)][LB=1][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_33\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_59\, Mode=(D-Register) @ [UDB=(1,2)][LB=1][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_59\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_26\, Mode=(D-Register) @ [UDB=(1,2)][LB=1][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_26\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+UDB [UDB=(1,3)] contents:
+LAB@[UDB=(1,3)][LB=0] #macrocells=4, #inputs=7, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_51\, Mode=(D-Register) @ [UDB=(1,3)][LB=0][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_51\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_17\, Mode=(D-Register) @ [UDB=(1,3)][LB=0][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_17\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_16\, Mode=(D-Register) @ [UDB=(1,3)][LB=0][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_16\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_52\, Mode=(D-Register) @ [UDB=(1,3)][LB=0][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_52\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(1,3)][LB=1] #macrocells=4, #inputs=7, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_10\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_10\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_46\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_46\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_22\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_22\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_24\, Mode=(D-Register) @ [UDB=(1,3)][LB=1][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_24\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+UDB [UDB=(1,4)] contents:
+LAB@[UDB=(1,4)][LB=0] #macrocells=4, #inputs=7, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_12\, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_12\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_0\, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_0\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_60\, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_60\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_15\, Mode=(D-Register) @ [UDB=(1,4)][LB=0][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_15\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(1,4)][LB=1] #macrocells=4, #inputs=7, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_48\, Mode=(D-Register) @ [UDB=(1,4)][LB=1][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_48\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_2\, Mode=(D-Register) @ [UDB=(1,4)][LB=1][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_2\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_39\, Mode=(D-Register) @ [UDB=(1,4)][LB=1][MC=2]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_39\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_28\, Mode=(D-Register) @ [UDB=(1,4)][LB=1][MC=3]
+        Total # of inputs        : 7
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (\ADC_SAR_Seq_2:clock\) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_is_active\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_5\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_4\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_3\ * 
+              \ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_2\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_1\ * 
+              !\ADC_SAR_Seq_2:AMuxHw_2_Decoder_old_id_0\
+        );
+        Output = \ADC_SAR_Seq_2:AMuxHw_2_Decoder_one_hot_28\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+UDB [UDB=(1,5)] is empty.
 UDB [UDB=(2,0)] contents:
-LAB@[UDB=(2,0)][LB=0] #macrocells=4, #inputs=9, #pterms=6
+LAB@[UDB=(2,0)][LB=0] #macrocells=4, #inputs=10, #pterms=6
 {
     [McSlotId=0]:     MacroCell: Name=cy_srff_1, Mode=(D-Register) @ [UDB=(2,0)][LB=0][MC=0]
-        Total # of inputs        : 6
+        Total # of inputs        : 7
         Total # of product terms : 2
         List of special equations: 
             Clock  = (ClockBlock_BUS_CLK) => Global
             Clock Enable: True
         Main Equation            : 2 pterms
         !(
-              !Osc_err * \Comp_2:Net_1\ * !Temp_err * \Comp_3:Net_1\ * 
-              !cy_srff_1
+              !Osc_err * \Comp_2:Net_1\ * !Temp_err * !Osc_err_low * 
+              \Comp_3:Net_1\ * !cy_srff_1
             + Net_795
         );
         Output = cy_srff_1 (fanout=3)
@@ -6804,26 +6826,27 @@ LAB@[UDB=(2,0)][LB=0] #macrocells=4, #inputs=9, #pterms=6
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=Seed1, Mode=(Combinatorial) @ [UDB=(2,0)][LB=0][MC=1]
+    [McSlotId=1]:     MacroCell: Name=Seed2, Mode=(Combinatorial) @ [UDB=(2,0)][LB=0][MC=1]
         Total # of inputs        : 1
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              !\Comp_3:Net_1\
+              !\Comp_2:Net_1\
         );
-        Output = Seed1 (fanout=1)
+        Output = Seed2 (fanout=1)
         Properties               : 
         {
         }
 
     [McSlotId=2]:     MacroCell: Name=Net_943, Mode=(Combinatorial) @ [UDB=(2,0)][LB=0][MC=2]
-        Total # of inputs        : 4
+        Total # of inputs        : 5
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         !(
-              !Osc_err * \Comp_2:Net_1\ * !Temp_err * \Comp_3:Net_1\
+              !Osc_err * \Comp_2:Net_1\ * !Temp_err * !Osc_err_low * 
+              \Comp_3:Net_1\
         );
         Output = Net_943 (fanout=2)
         Properties               : 
@@ -6893,15 +6916,15 @@ LAB@[UDB=(2,0)][LB=1] #macrocells=4, #inputs=4, #pterms=4
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=Seed2, Mode=(Combinatorial) @ [UDB=(2,0)][LB=1][MC=3]
+    [McSlotId=3]:     MacroCell: Name=Seed1, Mode=(Combinatorial) @ [UDB=(2,0)][LB=1][MC=3]
         Total # of inputs        : 1
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              !\Comp_2:Net_1\
+              !\Comp_3:Net_1\
         );
-        Output = Seed2 (fanout=1)
+        Output = Seed1 (fanout=1)
         Properties               : 
         {
         }
@@ -6948,21 +6971,27 @@ UDB [UDB=(2,3)] is empty.
 UDB [UDB=(2,4)] is empty.
 UDB [UDB=(2,5)] is empty.
 UDB [UDB=(3,0)] contents:
-synccell: Name =\ADC_SAR_Seq_2:Sync:genblk1[0]:INST\
+statuscell: Name =\ADC_SAR_Seq_2:bSAR_SEQ:EOCSts\
     PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        in => \ADC_SAR_Seq_2:nrq\ ,
-        out => \ADC_SAR_Seq_2:Net_3935\ );
+        clock => \ADC_SAR_Seq_2:clock\ ,
+        status_0 => Net_806 ,
+        clk_en => \ADC_SAR_Seq_2:bSAR_SEQ:enable\ );
     Properties:
     {
+        cy_force_order = 1
+        cy_md_select = "00000001"
     }
     Clock Polarity: Active High
-    Clock Enable: True
+    Clock Enable: PosEdge(\ADC_SAR_Seq_2:bSAR_SEQ:enable\)
 
-UDB [UDB=(3,1)] contents:
-LAB@[UDB=(3,1)][LB=0] #macrocells=1, #inputs=0, #pterms=0
+UDB [UDB=(3,1)] is empty.
+UDB [UDB=(3,2)] is empty.
+UDB [UDB=(3,3)] is empty.
+UDB [UDB=(3,4)] is empty.
+UDB [UDB=(3,5)] contents:
+LAB@[UDB=(3,5)][LB=0] #macrocells=1, #inputs=0, #pterms=0
 {
-    [McSlotId=0]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(3,1)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(3,5)][LB=0][MC=0]
         Total # of inputs        : 0
         Total # of product terms : 0
             Clock Enable: True
@@ -6980,10 +7009,6 @@ LAB@[UDB=(3,1)][LB=0] #macrocells=1, #inputs=0, #pterms=0
     [McSlotId=3]: (empty)
 }
 
-UDB [UDB=(3,2)] is empty.
-UDB [UDB=(3,3)] is empty.
-UDB [UDB=(3,4)] is empty.
-UDB [UDB=(3,5)] is empty.
 Intr container @ [IntrContainer=(0)]: 
   Intr@ [IntrContainer=(0)][IntrId=(0)] 
     interrupt: Name =Fault_isr
@@ -7034,6 +7059,33 @@ Intr container @ [IntrContainer=(0)]:
     interrupt: Name =\USBUART_1:ep_3\
         PORT MAP (
             interrupt => \USBUART_1:ep_int_3\ );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
+  Intr@ [IntrContainer=(0)][IntrId=(6)] 
+    interrupt: Name =\USBUART_1:ep_4\
+        PORT MAP (
+            interrupt => \USBUART_1:ep_int_4\ );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
+  Intr@ [IntrContainer=(0)][IntrId=(7)] 
+    interrupt: Name =\USBUART_1:ep_5\
+        PORT MAP (
+            interrupt => \USBUART_1:ep_int_5\ );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
+  Intr@ [IntrContainer=(0)][IntrId=(8)] 
+    interrupt: Name =\USBUART_1:ep_6\
+        PORT MAP (
+            interrupt => \USBUART_1:ep_int_6\ );
         Properties:
         {
             int_type = "10"
@@ -8380,6 +8432,16 @@ Comparator group 0:
         {
             cy_registers = ""
         }
+    Comparator Block @ F(Comparator,1): 
+    comparatorcell: Name =\Comp_4:ctComp\
+        PORT MAP (
+            vplus => Net_966 ,
+            vminus => Net_558 ,
+            out => Osc_err_low );
+        Properties:
+        {
+            cy_registers = ""
+        }
     Comparator Block @ F(Comparator,2): 
     comparatorcell: Name =\Comp_1:ctComp\
         PORT MAP (
@@ -8469,23 +8531,23 @@ LVD group 0: empty
 PM group 0: empty
 Analog (SC/CT) Blocks group 0: 
     SC Block @ F(SC,0): 
-    sccell: Name =\PGA_2:SC\
-        PORT MAP (
-            vref => \PGA_2:Net_17\ ,
-            vin => Net_616 ,
-            modout => \PGA_2:Net_41\ ,
-            vout => Net_635 );
-        Properties:
-        {
-            cy_registers = ""
-        }
-    SC Block @ F(SC,3): 
     sccell: Name =\PGA_1:SC\
         PORT MAP (
             vref => \PGA_1:Net_17\ ,
             vin => Net_302 ,
             modout => \PGA_1:Net_41\ ,
             vout => Net_308 );
+        Properties:
+        {
+            cy_registers = ""
+        }
+    SC Block @ F(SC,2): 
+    sccell: Name =\PGA_2:SC\
+        PORT MAP (
+            vref => \PGA_2:Net_17\ ,
+            vin => Net_616 ,
+            modout => \PGA_2:Net_41\ ,
+            vout => Net_965 );
         Properties:
         {
             cy_registers = ""
@@ -8562,6 +8624,17 @@ USB group 0:
             cy_registers = ""
         }
 VIDAC group 0: 
+    VIDAC Block @ F(VIDAC,0): 
+    vidaccell: Name =\IDAC8_2:viDAC8\
+        PORT MAP (
+            vout => \IDAC8_2:Net_124\ ,
+            iout => Net_302 );
+        Properties:
+        {
+            cy_registers = ""
+            is_all_if_any = 0
+            reg_data = 0
+        }
     VIDAC Block @ F(VIDAC,1): 
     vidaccell: Name =\IDAC8_1:viDAC8\
         PORT MAP (
@@ -8585,10 +8658,10 @@ VIDAC group 0:
             reg_data = 0
         }
     VIDAC Block @ F(VIDAC,3): 
-    vidaccell: Name =\IDAC8_2:viDAC8\
+    vidaccell: Name =\VDAC8_1:viDAC8\
         PORT MAP (
-            vout => \IDAC8_2:Net_124\ ,
-            iout => Net_302 );
+            vout => Net_966 ,
+            iout => \VDAC8_1:Net_77\ );
         Properties:
         {
             cy_registers = ""
@@ -8625,7 +8698,7 @@ SAR ADC group 0:
     SAR Block @ F(SAR,0): 
     sarcell: Name =\ADC_SAR_1:ADC_SAR\
         PORT MAP (
-            vplus => Net_635 ,
+            vplus => Net_965 ,
             vminus => \ADC_SAR_1:Net_126\ ,
             ext_pin => \ADC_SAR_1:Net_209\ ,
             vrefhi_out => \ADC_SAR_1:Net_126\ ,
@@ -8883,31 +8956,31 @@ Port | Pin | Fixed |      Type |       Drive Mode |               Name | Connect
 </CYPRESSTAG>
 </CYPRESSTAG>
 Digital component placer commit/Report: Elapsed time ==> 0s.000ms
-Digital Placement phase: Elapsed time ==> 4s.211ms
+Digital Placement phase: Elapsed time ==> 4s.149ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 3s.494ms
+Digital Routing phase: Elapsed time ==> 3s.744ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Generation">
-Bitstream Generation phase: Elapsed time ==> 0s.233ms
+Bitstream Generation phase: Elapsed time ==> 0s.249ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Verification">
-Bitstream Verification phase: Elapsed time ==> 0s.062ms
+Bitstream Verification phase: Elapsed time ==> 0s.093ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in Laserschutzschaltung_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.639ms
+Static timing analysis phase: Elapsed time ==> 0s.624ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.311ms
+Design database save phase: Elapsed time ==> 0s.296ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 14s.804ms
+cydsfit: Elapsed time ==> 14s.086ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 14s.804ms
-API generation phase: Elapsed time ==> 4s.789ms
+Fitter phase: Elapsed time ==> 14s.086ms
+API generation phase: Elapsed time ==> 4s.648ms
 Dependency generation phase: Elapsed time ==> 0s.046ms
-Cleanup phase: Elapsed time ==> 0s.015ms
+Cleanup phase: Elapsed time ==> 0s.031ms

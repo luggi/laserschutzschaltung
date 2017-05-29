@@ -99,15 +99,27 @@ enum {
 *   3: Writes this value to VDAC
 *
 *******************************************************************************/
-CY_ISR(filterVDAC)
+//CY_ISR_PROTO(filterVDAC) __attribute__ ((section(".data")));
+CY_ISR(filterVDAC) 
 {
+    int filter_read1;
+    int filter_read2;
+    
+    
 	filter_read = Filter_HOLDAM_REG;
-	filter_read += dac_offset;
     
-    if(filter_read > 255)
-        filter_read = 255;
     
-	VDAC8_SetValue(filter_read);
+    
+	filter_read1 = filter_read + dac_offset;
+    if(filter_read > dac_offset)
+        filter_read2 = filter_read - dac_offset;
+    else 
+        filter_read2 = 0;
+    
+    
+	VDAC8_Data = filter_read1 & 0xff;
+    VDAC8_1_Data = filter_read2 & 0xff;
+    
 	filterStatus = 1;
 }
 
